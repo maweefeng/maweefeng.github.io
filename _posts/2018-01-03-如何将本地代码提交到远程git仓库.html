@@ -355,6 +355,34 @@ cd到你的本地项目根目录下，执行git命令 </p>
 </blockquote></li>
 </ul>
 
+<h3 id="toc_1">列出分支的方法</h3>
+
+<p>列出所有远程分支
+$ git branch -r</p>
+
+<p>列出所有本地分支和远程分支
+$ git branch -a</p>
+
+<h3 id="toc_2">新建分支</h3>
+
+<ul>
+<li><p>新建一个分支，但依然停留在当前分支<br>
+$ git branch [branch-name]<br>
+如果想要切换到新建的分支，可以使用git checkout  [branch-name]</p></li>
+<li><p>新建一个分支，并切换到该分支<br>
+$ git checkout -b [branch]</p></li>
+<li><p>新建一个分支，指向指定commit<br>
+$ git branch [branch] [commit]</p></li>
+</ul>
+
+<p>之前是提交到主分支 所以使用的是git push -u origin master<br>
+现在的话不是主分支所以要改变一下分支的名称如下<br>
+最后提交的时候 可以使用git push -u origin [branch-name]</p>
+
+<blockquote>
+<p>前提:只有项目中关联一份远程git仓库的时候才可以使用以下方法去新建分支 如果没关联任何分支也查不到任何远程分支</p>
+</blockquote>
+
 
 </body>
 
