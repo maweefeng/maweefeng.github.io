@@ -74,27 +74,23 @@
 
 	
 		<div class="markdown-body">
-		<h1></h1>
+		<h1>使用Masonry自动布局遇到“Unable to simultaneously satisfy constraints”问题</h1>
 
-		<h3 id="toc_0">关于Xcode10中libstdc报错问题的解决</h3>
-
-<h3 id="toc_1">解决方法</h3>
-
-<p>首先解压同级目录下的libstdc压缩包</p>
-
-<h4 id="toc_2">1.真机</h4>
-
-<p>将libstdc_iPhoneOS拷贝到/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/lib</p>
-
-<h4 id="toc_3">2.模拟器</h4>
-
-<ul>
-<li><p>将libstdc_iPhoneSimulator拷贝到/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/usr/lib/</p></li>
-<li><p>将libstdc_iPhoneSimulator_runtime拷贝到/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime/Contents/Resources/RuntimeRoot/usr/lib/</p></li>
-</ul>
+		<p>出现这个问题是设置约束优先级错误，设置一下约束的优先级就行。<br/>
+<code><br/>
+        [self.doctorTitle mas_makeConstraints:^(MASConstraintMaker *make) {<br/>
+            make.left.equalTo(self.title.mas_left);<br/>
+            make.right.equalTo(self.title.mas_right);<br/>
+            make.top.equalTo(self.topline.mas_bottom).offset(10).priorityHigh();<br/>
+            make.height.mas_equalTo(@14);<br/>
+        }];<br/>
+</code></p>
 
 
 		</div>
+	
+
+ 
 	
 
   
