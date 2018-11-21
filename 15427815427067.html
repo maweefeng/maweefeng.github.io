@@ -47,8 +47,6 @@
         <li><label>MVVM+RAC</label></li>
 
           
-            <li><a title="RACCommand" href="15427818349146.html">RACCommand</a></li>
-          
             <li><a title="RACCommand" href="15427815427067.html">RACCommand</a></li>
           
 
@@ -80,8 +78,6 @@
                     
                       <li class="side-title"><span>MVVM+RAC</span></li>
                         
-                          <li><a title="RACCommand" href="15427818349146.html">RACCommand</a></li>
-                        
                           <li><a title="RACCommand" href="15427815427067.html">RACCommand</a></li>
                         
 
@@ -103,6 +99,12 @@
 
  <div class="markdown-body">
 <h1>RACCommand</h1>
+
+<p>RACCommand是ReactiveCocoa的基本组件之一，能节省开发的大部分时间，同时使得iOS/OS X 应用更健壮。</p>
+
+<p>我看到一部分ReactiveCocoa（以下简单RAC）新人并没有完全理解RACCommand，自然也就不知道怎么用它。所以我写了这个小小介绍性文章，希望能对你的理解有所帮助。RACCommand源文件里的注释写得很不错，不过它并没有给任何例子来说说具体怎么用它，对于RAC的新人来说，只看这些注释还是比较难以理解的。</p>
+
+<p>RACCommand类用于表示事件的执行，一般来说是在UI上的某些动作来触发这些事件，比如点击一个按钮。RACCommand的实例能够决定是否可以被执行，这个特性能反应在UI上，而且它能确保在其不可用时不会被执行。通常，当一个命令可以执行时，会将它的属性allowsConcurrentExecution设置为它的默认值：NO，从而确保在这个命令已经正在执行的时候，不会同时再执行新的操作。命令执行的返回值是一个RACSignal，因此我们能对该返回值进行next:，completed或error:，这在下文会有所展示。</p>
 
 <p>command的初始化方法中有一个enabledSignal参数，这个signal就是用来指名command能否被执行的。在我们的例子中，当用户输入的<a href="mailto:maweefeng@gmail.com">maweefeng@gmail.com</a>地址合法时，它才能被执行。self.emailValidSignal这个signal每当<a href="mailto:maweefeng@gmail.com">maweefeng@gmail.com</a>的文本更新时，会发送NO或YES。</p>
 
@@ -200,8 +202,6 @@ static NSString *const kSubscribeURL =@&quot;http://reactivetest.apiary.io/subsc
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="15427818349146.html"  title="Previous Post: RACCommand">&laquo; RACCommand</a>
-	    
 	</div>
   </div>
   <div class="large-6 columns">
