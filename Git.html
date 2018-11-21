@@ -8,17 +8,23 @@
   Git - 
   
   </title>
- <meta name="description" content="">
- <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+  
+  
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
     <link rel="stylesheet" href="asset/css/foundation.min.css" />
     <link rel="stylesheet" href="asset/css/docs.css" />
-
     <script src="asset/js/vendor/modernizr.js"></script>
     <script src="asset/js/vendor/jquery.js"></script>
-    <script src="asset/highlightjs/highlight.pack.js"></script>
-    <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
-    <script>hljs.initHighlightingOnLoad();</script>
-    
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
   </head>
   <body class="antialiased hide-extras">
     
@@ -28,11 +34,34 @@
 
 <nav class="top-bar docs-bar hide-for-small" data-topbar>
 
-<div id="header">
-    <h1><a href="index.html"></a></h1>
-</div>
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="archives.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li id=""><a target="_self" href="https://maweefeng.github.io/Debug.html">Debug</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
 
 </nav>
+
         <nav class="tab-bar show-for-small">
   <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
     <span> &nbsp; </span>
@@ -41,170 +70,51 @@
 
 <aside class="left-off-canvas-menu">
       <ul class="off-canvas-list">
-      <li><a href="index.html">Home</a></li>
-      
-        <li class="divider"></li>
-        <li><label>MVVM+RAC</label></li>
+       
+       <li><a href="index.html">HOME</a></li>
+    <li><a href="archives.html">Archives</a></li>
+    <li><a href="about.html">ABOUT</a></li>
 
-          
-            <li><a title="RACCommand" href="15427815427067.html">RACCommand</a></li>
-          
+    <li><label>Categories</label></li>
 
-      
-        <li class="divider"></li>
-        <li><label>IOS刨坑</label></li>
+        
+            <li><a href="MVVM+RAC.html">MVVM+RAC</a></li>
+        
+            <li><a href="IOS%E5%88%A8%E5%9D%91.html">IOS刨坑</a></li>
+        
+            <li><a href="iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html">iOS开发技巧</a></li>
+        
+            <li><a href="About%20Me.html">About Me</a></li>
+         
 
-          
-            <li><a title="Masonry布局“Unable to simultaneously satisfy constraints”" href="15426952413956.html">Masonry布局“Unable to simultaneously satisfy constraints”</a></li>
-          
-            <li><a title="Xcode10报错libstdc" href="15426943817961.html">Xcode10报错libstdc</a></li>
-          
-
-      
-        <li class="divider"></li>
-        <li><label>iOS开发技巧</label></li>
-
-          
-            <li><a title="高效的画线" href="15427834493345.html">高效的画线</a></li>
-          
-            <li><a title="为什么NSString使用Copy修饰符" href="15427834493281.html">为什么NSString使用Copy修饰符</a></li>
-          
-            <li><a title="iOS开发一些小技巧" href="15427834493214.html">iOS开发一些小技巧</a></li>
-          
-            <li><a title="ios导航条背景颜色" href="15427834493029.html">ios导航条背景颜色</a></li>
-          
-            <li><a title="在本书中，有一个示例代码从CAMediaTimingFunction获取控制点：" href="15427834492830.html">在本书中，有一个示例代码从CAMediaTimingFunction获取控制点：</a></li>
-          
-            <li><a title="关于Searchbar设置搜索图标的问题" href="15427834492767.html">关于Searchbar设置搜索图标的问题</a></li>
-          
-            <li><a title="Flutter && Python && OC" href="15427834492512.html">Flutter && Python && OC</a></li>
-          
-            <li><a title="UIImageView 动画的属性animationImages" href="15427834492322.html">UIImageView 动画的属性animationImages</a></li>
-          
-            <li><a title="SDWebImageview 不能加载HTTPS图片" href="15427834492260.html">SDWebImageview 不能加载HTTPS图片</a></li>
-          
-            <li><a title="对比Texture中Node和UIKit中View" href="15427834492083.html">对比Texture中Node和UIKit中View</a></li>
-          
-            <li><a title="Block防止内存泄漏问题" href="15427834491890.html">Block防止内存泄漏问题</a></li>
-          
-            <li><a title="设置Cell分割线顶头" href="15427834491628.html">设置Cell分割线顶头</a></li>
-          
-            <li><a title="视图的绘制周期" href="15427834491567.html">视图的绘制周期</a></li>
-          
-            <li><a title="设置图片拉伸范围" href="15427834491441.html">设置图片拉伸范围</a></li>
-          
-            <li><a title="给UITableView边框加阴影" href="15427834491377.html">给UITableView边框加阴影</a></li>
-          
-            <li><a title="通讯录排序" href="15427834491315.html">通讯录排序</a></li>
-          
-            <li><a title="堆栈的一点区别" href="15427834491253.html">堆栈的一点区别</a></li>
-          
-            <li><a title="隐藏导航栏底部的线条" href="15427834491194.html">隐藏导航栏底部的线条</a></li>
-          
-            <li><a title="代理修饰符" href="15427834491002.html">代理修饰符</a></li>
-          
-
-      
-        <li class="divider"></li>
-        <li><label>About Me</label></li>
-
-          
-            <li><a title="Hello Mr.Ma" href="15427857390238.html">Hello Mr.Ma</a></li>
-          
-
-      
       </ul>
     </aside>
 
 <a class="exit-off-canvas" href="#"></a>
 
+
         <section id="main-content" role="main" class="scroll-container">
+        
+       
 
-          <div class="row">
-            <div class="large-3 medium-3 columns">
-              <div class="hide-for-small">
-                <div class="sidebar">
-                <nav>
-                  <ul id="side-nav" class="side-nav">
-
-                    
-                      <li class="side-title"><span>MVVM+RAC</span></li>
+ <script type="text/javascript">
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
+</script>
+<div class="row">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="15427834492899.html">
+                
+                  <h1>git clone 过慢的问题</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
                         
-                          <li><a title="RACCommand" href="15427815427067.html">RACCommand</a></li>
-                        
-
-                    
-                      <li class="side-title"><span>IOS刨坑</span></li>
-                        
-                          <li><a title="Masonry布局“Unable to simultaneously satisfy constraints”" href="15426952413956.html">Masonry布局“Unable to simultaneously satisfy constraints”</a></li>
-                        
-                          <li><a title="Xcode10报错libstdc" href="15426943817961.html">Xcode10报错libstdc</a></li>
-                        
-
-                    
-                      <li class="side-title"><span>iOS开发技巧</span></li>
-                        
-                          <li><a title="高效的画线" href="15427834493345.html">高效的画线</a></li>
-                        
-                          <li><a title="为什么NSString使用Copy修饰符" href="15427834493281.html">为什么NSString使用Copy修饰符</a></li>
-                        
-                          <li><a title="iOS开发一些小技巧" href="15427834493214.html">iOS开发一些小技巧</a></li>
-                        
-                          <li><a title="ios导航条背景颜色" href="15427834493029.html">ios导航条背景颜色</a></li>
-                        
-                          <li><a title="在本书中，有一个示例代码从CAMediaTimingFunction获取控制点：" href="15427834492830.html">在本书中，有一个示例代码从CAMediaTimingFunction获取控制点：</a></li>
-                        
-                          <li><a title="关于Searchbar设置搜索图标的问题" href="15427834492767.html">关于Searchbar设置搜索图标的问题</a></li>
-                        
-                          <li><a title="Flutter && Python && OC" href="15427834492512.html">Flutter && Python && OC</a></li>
-                        
-                          <li><a title="UIImageView 动画的属性animationImages" href="15427834492322.html">UIImageView 动画的属性animationImages</a></li>
-                        
-                          <li><a title="SDWebImageview 不能加载HTTPS图片" href="15427834492260.html">SDWebImageview 不能加载HTTPS图片</a></li>
-                        
-                          <li><a title="对比Texture中Node和UIKit中View" href="15427834492083.html">对比Texture中Node和UIKit中View</a></li>
-                        
-                          <li><a title="Block防止内存泄漏问题" href="15427834491890.html">Block防止内存泄漏问题</a></li>
-                        
-                          <li><a title="设置Cell分割线顶头" href="15427834491628.html">设置Cell分割线顶头</a></li>
-                        
-                          <li><a title="视图的绘制周期" href="15427834491567.html">视图的绘制周期</a></li>
-                        
-                          <li><a title="设置图片拉伸范围" href="15427834491441.html">设置图片拉伸范围</a></li>
-                        
-                          <li><a title="给UITableView边框加阴影" href="15427834491377.html">给UITableView边框加阴影</a></li>
-                        
-                          <li><a title="通讯录排序" href="15427834491315.html">通讯录排序</a></li>
-                        
-                          <li><a title="堆栈的一点区别" href="15427834491253.html">堆栈的一点区别</a></li>
-                        
-                          <li><a title="隐藏导航栏底部的线条" href="15427834491194.html">隐藏导航栏底部的线条</a></li>
-                        
-                          <li><a title="代理修饰符" href="15427834491002.html">代理修饰符</a></li>
-                        
-
-                    
-                      <li class="side-title"><span>About Me</span></li>
-                        
-                          <li><a title="Hello Mr.Ma" href="15427857390238.html">Hello Mr.Ma</a></li>
-                        
-
-                    
-                  </ul>
-                </nav>
-                </div>
-              </div>
-            </div>
-            <div class="large-9 medium-9 columns">
-
- 
-
-
-	
-		<div class="markdown-body">
-		<h1>git clone 过慢的问题</h1>
-
-		<ul>
+                        	<ul>
 <li>进入网址<a href="https://www.ipaddress.com/">https://www.ipaddress.com/</a></li>
 <li>输入 gitHub.com 找到GitHub的ip地址 </li>
 <li>然后打开hosts 添加 ip <a href="http://github.com">http://github.com</a></li>
@@ -214,58 +124,532 @@
 
 <p>sudo vim /etc/hosts</p>
 
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Git.html'>Git</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834492024.html">
+                
+                  <h1>Command line instructions</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">Git global setup</h3>
+
+<p>git config --global user.name &quot;mawf09&quot;<br/>
+git config --global user.email &quot;<a href="mailto:mawf09@guahao.com">mawf09@guahao.com</a>&quot;</p>
+
+<h3 id="toc_1">Create a new repository</h3>
+
+<ul>
+<li>git clone <a href="mailto:git@git.guahao-inc.com">git@git.guahao-inc.com</a>:PalmHospital/PalmHospitalDrTongji.git</li>
+<li>cd PalmHospitalDrTongji</li>
+<li>touch README.md</li>
+<li>git add README.md</li>
+<li>git commit -m &quot;add README&quot;</li>
+<li>git push -u origin master</li>
+</ul>
+
+<h3 id="toc_2">Existing folder</h3>
+
+<ul>
+<li>cd existing_folder</li>
+<li>git init</li>
+<li>git remote add origin <a href="mailto:git@git.guahao-inc.com">git@git.guahao-inc.com</a>:PalmHospital/PalmHospitalDrTongji.git</li>
+<li>git add .</li>
+<li>git commit -m &quot;Initial commit&quot;</li>
+<li>git push -u origin master</li>
+</ul>
+
+<h3 id="toc_3">Existing Git repository</h3>
+
+<ul>
+<li>cd existing_repo</li>
+<li>git remote add origin <a href="mailto:git@git.guahao-inc.com">git@git.guahao-inc.com</a>:PalmHospital/PalmHospitalDrTongji.git</li>
+<li>git push -u origin --all</li>
+<li>git push -u origin --tags</li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Git.html'>Git</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834491963.html">
+                
+                  <h1>Git提交代码issue</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">issue1:</h3>
+
+<p>fatal:unable to access &#39;<a href="https://github.com/xxx/xxx.git">https://github.com/xxx/xxx.git</a>&#39; OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com 443</p>
+
+<h3 id="toc_1">解决方法：</h3>
+
+<p>env命令设置GIT_SSL_NO_VERIFY环境变量为”ture”，并同时调用正常的git clone命令 env GIT_SSL_NO_VERIFY=true git clone <a href="https://github.com/xxx/xxx.git">https://github.com/xxx/xxx.git</a><br/><br/>
+当你通过HTTPS访问Git远程仓库，如果服务器的SSL证书未经过第三方机构签署，那么Git就会报错。在克隆完毕的仓库中还需要将http.sslVerify设置为”false”。完整的命令如下：<br/><br/>
+git config http.sslVerify &quot;false&quot;、</p>
+
+<h3 id="toc_2">issue2：</h3>
+
+<p>Failed to connect to 127.0.0.1 port 1080: Connection refused<br/>
+查询是否使用代理：git config --global http.proxy <br/>
+取消代理：git config --global --unset http.proxy</p>
+
+<h3 id="toc_3">终端走代理</h3>
+
+<p>在终端中直接运行命令<br/>
+export http_proxy=<a href="http://proxyAddress:port">http://proxyAddress:port</a><br/>
+这个办法的好处是简单直接，并且影响面很小（只对当前终端有效，退出就不行了）。</p>
+
+<p>如果你用的是ss代理，在当前终端运行以下命令，那么wget curl 这类网络命令都会经过ss代理<br/>
+export ALL_PROXY=socks5://127.0.0.1:1080</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Git.html'>Git</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834491808.html">
+                
+                  <h1>终端命令设置代理</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>让终端走代理的几种方法<br/>
+Macproxyterminal<br/>
+（2017.9.17更新）</p>
+
+<p>方法1:<br/>
+在终端中直接运行命令<br/>
+export http_proxy=<a href="http://proxyAddress:port">http://proxyAddress:port</a><br/>
+这个办法的好处是简单直接，并且影响面很小（只对当前终端有效，退出就不行了）。</p>
+
+<p>如果你用的是ss代理，在当前终端运行以下命令，那么wget curl 这类网络命令都会经过ss代理<br/>
+export ALL_PROXY=socks5://127.0.0.1:1080</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Git.html'>Git</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834491747.html">
+                
+                  <h1>终端命令</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>我们可以在 terminal 用 system profiler 命令来获取连接 mac 的 usb 设备：<br/>
+system_profiler SPUSBDataType</p>
+
+<ul>
+<li>ls 查看当前路径下的文件以及文件夹的名字</li>
+<li>ls /bin 表示查看根目录下的bin文件夹的东西</li>
+<li>ls docments 查看当前路径下documents文件夹下的所有东西</li>
+<li>cd .. 跳转到当前路径的上一层</li>
+<li>pwd 显示当前操作的路径 (绝对路径)</li>
+<li>clear 清屏</li>
+<li>touch 生成文件</li>
+<li>ifconfig 查看设备的ip地址</li>
+<li>netstat -an </li>
+</ul>
+
+<h3 id="toc_0">查看内存占用情况</h3>
+
+<p>sudo du -sh * <br/>
+<img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fuch6fzertj30iy0da0ur.jpg" alt=""/></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Git.html'>Git</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834491504.html">
+                
+                  <h1>Git基础流</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">如何将本地代码提交到远程git仓库</h3>
+
+<ul>
+<li><p>第一步：建立git仓库 <br/>
+cd到你的本地项目根目录下，执行git命令 </p>
+
+<blockquote>
+<p>git init</p>
+</blockquote></li>
+<li><p>第二步：将项目的所有文件添加到仓库中   </p>
+
+<blockquote>
+<p>git add .  </p>
+</blockquote></li>
+<li><p>第三步：将add的文件commit到仓库</p>
+
+<blockquote>
+<p>git commit -m &quot;注释语句&quot;</p>
+</blockquote></li>
+<li><p>第四步：去github上创建自己的Repository</p></li>
+<li><p>第五步：重点来了，将本地的仓库关联到github上    </p>
+
+<blockquote>
+<p>git remote add origin 仓库url</p>
+</blockquote>
+
+<p>后面的https链接地址换成你自己的仓库url地址，也就是上面红框中标出来的地址</p></li>
+<li><p>第六步：上传github之前，要先pull一下，执行如下命令：</p>
+
+<blockquote>
+<p>git pull origin master</p>
+</blockquote>
+
+<p>遇到refusing to merge unrelated histories 使用以下代码  </p>
+
+<blockquote>
+<p>git pull origin master --allow-unrelated-histories</p>
+</blockquote></li>
+<li><p>第七步，也就是最后一步，上传代码到github远程仓库</p>
+
+<blockquote>
+<p>git push -u origin master  </p>
+</blockquote>
+
+<p>遇到提示fatal: refusing to merge unrelated histories可以试一下下面的强制push</p>
+
+<blockquote>
+<p>git push -u origin master -f //强制push</p>
+</blockquote></li>
+</ul>
+
+<h3 id="toc_1">列出分支的方法</h3>
+
+<p>列出所有远程分支<br/>
+$ git branch -r</p>
+
+<p>列出所有本地分支和远程分支<br/>
+$ git branch -a</p>
+
+<h3 id="toc_2">新建分支</h3>
+
+<ul>
+<li><p>新建一个分支，但依然停留在当前分支<br/><br/>
+$ git branch [branch-name]<br/><br/>
+如果想要切换到新建的分支，可以使用git checkout  [branch-name]</p></li>
+<li><p>新建一个分支，并切换到该分支<br/><br/>
+$ git checkout -b [branch]</p></li>
+<li><p>新建一个分支，指向指定commit<br/><br/>
+$ git branch [branch] [commit]</p></li>
+</ul>
+
+<p>之前是提交到主分支 所以使用的是git push -u origin master<br/><br/>
+现在的话不是主分支所以要改变一下分支的名称如下<br/><br/>
+最后提交的时候 可以使用git push -u origin [branch-name]</p>
+
+<blockquote>
+<p>前提:只有项目中关联一份远程git仓库的时候才可以使用以下方法去新建分支 如果没关联任何分支也查不到任何远程分支</p>
+</blockquote>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Git.html'>Git</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
+
+
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			
+			</p>
+			  </div>
+			</div>
 		</div>
-	
+	</div><!-- large 8 -->
 
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
-  
-  
-</div></div>
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1></h1>
+                <div class="site-des"></div>
+                <div class="social">
 
 
-<div class="page-bottom">
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="MVVM+RAC.html"><strong>MVVM+RAC</strong></a>
+        
+            <a href="IOS%E5%88%A8%E5%9D%91.html"><strong>IOS刨坑</strong></a>
+        
+            <a href="iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html"><strong>iOS开发技巧</strong></a>
+        
+            <a href="About%20Me.html"><strong>About Me</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15427857390238.html">Hello Mr.Ma</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15427834493345.html">高效的画线</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15427834493281.html">为什么NSString使用Copy修饰符</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15427834493214.html">iOS开发一些小技巧</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15427834493152.html">检测离屏渲染了</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
   <div class="row">
-  <hr />
-  <div class="small-9 columns">
-  <p class="copyright">Copyright &copy; 2015
+   <p class="copyright">Copyright &copy; 2015
 Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
 Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
-  </div>
-  <div class="small-3 columns">
-  <p class="copyright text-right"><a href="#header">TOP</a></p>
-  </div>
-   
   </div>
 </div>
 
         </section>
       </div>
     </div>
+
+  
     
-    
+
     <script src="asset/js/foundation.min.js"></script>
-    <script src="asset/js/foundation/foundation.offcanvas.js"></script>
     <script>
       $(document).foundation();
-
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
      
     </script>
+
     
+
 
 
   </body>
