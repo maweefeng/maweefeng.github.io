@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  MVVM+RAC - 
+  Command line instructions - 
   
   </title>
  <meta name="description" content="">
@@ -259,111 +259,84 @@
             </div>
             <div class="large-9 medium-9 columns">
 
- 
+ <div class="markdown-body">
+<h1>Command line instructions</h1>
+
+<h3 id="toc_0">Git global setup</h3>
+
+<p>git config --global user.name &quot;mawf09&quot;<br/>
+git config --global user.email &quot;<a href="mailto:mawf09@guahao.com">mawf09@guahao.com</a>&quot;</p>
+
+<h3 id="toc_1">Create a new repository</h3>
+
+<ul>
+<li>git clone <a href="mailto:git@git.guahao-inc.com">git@git.guahao-inc.com</a>:PalmHospital/PalmHospitalDrTongji.git</li>
+<li>cd PalmHospitalDrTongji</li>
+<li>touch README.md</li>
+<li>git add README.md</li>
+<li>git commit -m &quot;add README&quot;</li>
+<li>git push -u origin master</li>
+</ul>
+
+<h3 id="toc_2">Existing folder</h3>
+
+<ul>
+<li>cd existing_folder</li>
+<li>git init</li>
+<li>git remote add origin <a href="mailto:git@git.guahao-inc.com">git@git.guahao-inc.com</a>:PalmHospital/PalmHospitalDrTongji.git</li>
+<li>git add .</li>
+<li>git commit -m &quot;Initial commit&quot;</li>
+<li>git push -u origin master</li>
+</ul>
+
+<h3 id="toc_3">Existing Git repository</h3>
+
+<ul>
+<li>cd existing_repo</li>
+<li>git remote add origin <a href="mailto:git@git.guahao-inc.com">git@git.guahao-inc.com</a>:PalmHospital/PalmHospitalDrTongji.git</li>
+<li>git push -u origin --all</li>
+<li>git push -u origin --tags</li>
+</ul>
 
 
-	
-		<div class="markdown-body">
-		<h1>RACCommand</h1>
+</div>
 
-		<p>RACCommand是ReactiveCocoa的基本组件之一，能节省开发的大部分时间，同时使得iOS/OS X 应用更健壮。</p>
+<br /><br />
+<hr />
 
-<p>我看到一部分ReactiveCocoa（以下简单RAC）新人并没有完全理解RACCommand，自然也就不知道怎么用它。所以我写了这个小小介绍性文章，希望能对你的理解有所帮助。RACCommand源文件里的注释写得很不错，不过它并没有给任何例子来说说具体怎么用它，对于RAC的新人来说，只看这些注释还是比较难以理解的。</p>
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="15427834491963.html"  title="Previous Post: ">&laquo; </a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="15427834492083.html" 
+	        title="Next Post: node.view和view的差别">node.view和view的差别 &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
 
-<p>RACCommand类用于表示事件的执行，一般来说是在UI上的某些动作来触发这些事件，比如点击一个按钮。RACCommand的实例能够决定是否可以被执行，这个特性能反应在UI上，而且它能确保在其不可用时不会被执行。通常，当一个命令可以执行时，会将它的属性allowsConcurrentExecution设置为它的默认值：NO，从而确保在这个命令已经正在执行的时候，不会同时再执行新的操作。命令执行的返回值是一个RACSignal，因此我们能对该返回值进行next:，completed或error:，这在下文会有所展示。</p>
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
 
-<p>command的初始化方法中有一个enabledSignal参数，这个signal就是用来指名command能否被执行的。在我们的例子中，当用户输入的<a href="mailto:maweefeng@gmail.com">maweefeng@gmail.com</a>地址合法时，它才能被执行。self.emailValidSignal这个signal每当<a href="mailto:maweefeng@gmail.com">maweefeng@gmail.com</a>的文本更新时，会发送NO或YES。</p>
-
-<p>signalBlock参数在command需要执行时调用，这个block需要返回一个signal用来表示正在执行，之前将allowsConcurrentExecute的值设置为默认值NO，此时command会观察这个signal，而且在这个执行进度完成前，不允许新的执行。</p>
-
-<pre><code>#import &quot;SubscribeViewModel.h&quot;
-#import &quot;AFHTTPRequestOperationManager+RACSupport.h&quot;
-#import&quot;NSString+EmailAdditions.h&quot;
- 
-static NSString *const kSubscribeURL =@&quot;http://reactivetest.apiary.io/subscribers&quot;;
- 
-@interface SubscribeViewModel ()
-@property(nonatomic, strong) RACSignal*emailValidSignal;
-@end
- 
-@implementation SubscribeViewModel
- 
-- (id)init {
-       self= [super init];
-       if(self) {
-              [self mapSubscribeCommandStateToStatusMessage];
-       }
-       returnself;
-}
- 
--(void)mapSubscribeCommandStateToStatusMessage {
-       RACSignal*startedMessageSource = [self.subscribeCommand.executionSignals map:^id(RACSignal *subscribeSignal) {
-              return NSLocalizedString(@&quot;Sending request...&quot;, nil);
-       }];
- 
-       RACSignal*completedMessageSource = [self.subscribeCommand.executionSignals flattenMap:^RACStream *(RACSignal *subscribeSignal) {
-              return[[[subscribeSignal materialize] filter:^BOOL(RACEvent *event) {
-                     return event.eventType == RACEventTypeCompleted;
-              }]map:^id(id value) {
-                     return NSLocalizedString(@&quot;Thanks&quot;, nil);
-              }];
-       }];
- 
-       RACSignal*failedMessageSource = [[self.subscribeCommand.errors subscribeOn:[RACScheduler mainThreadScheduler]] map:^id(NSError *error) {
-              returnNSLocalizedString(@&quot;Error :(&quot;, nil);
-       }];
- 
-       RAC(self,statusMessage) = [RACSignal merge:@[startedMessageSource,completedMessageSource, failedMessageSource]];
-}
- 
-- (RACCommand *)subscribeCommand {
-       if(!_subscribeCommand) {
-              @weakify(self);
-              _subscribeCommand= [[RACCommand alloc] initWithEnabled:self.emailValidSignal signalBlock:^RACSignal *(id input) {
-                     @strongify(self);
-                     return[SubscribeViewModel postEmail:self.maweefeng@gmail.com];
-              }];
-       }
-       return_subscribeCommand;
-}
- 
-+ (RACSignal *)postEmail:(NSString *)maweefeng@gmail.com{
-       AFHTTPRequestOperationManager*manager = [AFHTTPRequestOperationManager manager];
-       manager.requestSerializer= [AFJSONRequestSerializer new];
-       NSDictionary*body = @{@&quot;maweefeng@gmail.com&quot;: maweefeng@gmail.com ?: @&quot;&quot;};
-       return[[[manager rac_POST:kSubscribeURL parameters:body] logError] replayLazily];
-}
- 
-- (RACSignal *)emailValidSignal {
-       if(!_emailValidSignal) {
-              _emailValidSignal= [RACObserve(self, maweefeng@gmail.com) map:^id(NSString *maweefeng@gmail.com) {
-                     return@([maweefeng@gmail.com isValidEmail]);
-              }];
-       }
-       return_emailValidSignal;
-}
- 
-@end
-呃，这是个大块头，我们一点一点来看。我们最感兴趣的RACCommand的创建如下：
-- (RACCommand *)subscribeCommand {
-       if(!_subscribeCommand) {
-              @weakify(self);
-              _subscribeCommand= [[RACCommand alloc] initWithEnabled:self.emailValidSignal signalBlock:^RACSignal *(id input) {
-                     @strongify(self);
-                     return[SubscribeViewModel postEmail:self.maweefeng@gmail.com];
-              }];
-       }
-       return _subscribeCommand;
-}
-
-</code></pre>
-
-
-		</div>
-	
-
-  
-  
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '15427834492024.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
 </div></div>
 
 

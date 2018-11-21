@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  MVVM+RAC - 
+  * ### 如何检测我的项目里面离屏渲染了 - 
   
   </title>
  <meta name="description" content="">
@@ -259,111 +259,107 @@
             </div>
             <div class="large-9 medium-9 columns">
 
- 
+ <div class="markdown-body">
+<h1>* ### 如何检测我的项目里面离屏渲染了</h1>
+
+<ul>
+<li><p>之前看了一些文章说在intruments里面的 CoreAnimation里面有工具.检测.(没找着.求补充)</p>
+
+<p>打开的正确方式:<br/>
+模拟器的 debug -&gt; 选取 color Offscreen-Rendered. </p></li>
+</ul>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1315383-752efaac717c3947.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="BB55F33F-97CC-4C28-B3F1-22456A2A7BD8.png"/></p>
+
+<p>开启后会把那些需要离屏渲染的图层高亮成黄色，这就意味着黄色图层可能存在性能问题。</p>
+
+<p>正常:是这样的<br/>
+ <img src="http://upload-images.jianshu.io/upload_images/1315383-de2aad921928fa7b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="正常渲染.png"/></p>
+
+<p>有问题的图层:</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1315383-61746e58c6057b02.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="调试.png"/><br/>
+可以看见我设置了圆角的imageView有问题.</p>
+
+<p>### 项目开发中怎么去处理?</p>
+
+<blockquote>
+<p>抛出一个问题:  需求就是有很多圆角那我们项目中应该怎么去处理圆角呢?</p>
+</blockquote>
+
+<ol>
+<li>使用<a href="http://www.jianshu.com/p/60cd5f8bb4cb">YYWebImage去处理</a> </li>
+<li><a href="http://www.jianshu.com/p/82e68984711f">iOS中圆角图片的处理</a></li>
+</ol>
+
+<p>相信看完两篇文章,多少都会能收获一点!</p>
+
+<blockquote>
+<p>有些人说:</p>
+
+<p>iOS 9.0 之后UIButton设置圆角会触发离屏渲染，而UIImageView里png图片设置圆角不会触发离屏渲染了，如果设置其他阴影效果之类的还是会触发离屏渲染的(这句话不知道谁说的.自己有没有去尝试呢???)</p>
+</blockquote>
+
+<p>结论: 经过测试</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1315383-a58dfe9543375e1d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="70915C7C-7523-4008-9A88-B5682407926D.png"/></p>
+
+<p>大家可以看到, <br/>
+UIButton 的 masksToBounds = YES下发生离屏渲染与 背景图存不存在有关系, 如果没有给按钮设置   <code>btn.image = [UIImage imageName:@&quot;xxxxx&quot;];</code> 是不会产生离屏渲染的 .</p>
+
+<p>关于 UIImageView,现在测试发现(现版本: iOS10),在性能的范围之内,给UIImageView设置圆角是不会触发离屏渲染的,但是同时给UIImageView设置背景色则肯定会触发.触发离屏渲染跟 png.jpg格式并无关联(可能采取的压缩格式不同,这里不做探讨,这里我给出结果是没有关系)</p>
+
+<hr/>
+
+<ul>
+<li>### 总结: </li>
+<li>对于网上一些文章得出的结论,我觉得大家得理性分析,并不是每个人都是对的,只有经过自己实践才能得出较好的定论.本文也是,我希望哪里有理解错或者其它什么错误请提出(认真脸.),人无完人,我希望在学习的道路上能碰见更多一起进步的人!</li>
+</ul>
+
+<p>作者：uncleRX<br/>
+链接：<a href="https://www.jianshu.com/p/57e2ec17585b">https://www.jianshu.com/p/57e2ec17585b</a><br/>
+來源：简书<br/>
+简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。</p>
 
 
-	
-		<div class="markdown-body">
-		<h1>RACCommand</h1>
+</div>
 
-		<p>RACCommand是ReactiveCocoa的基本组件之一，能节省开发的大部分时间，同时使得iOS/OS X 应用更健壮。</p>
+<br /><br />
+<hr />
 
-<p>我看到一部分ReactiveCocoa（以下简单RAC）新人并没有完全理解RACCommand，自然也就不知道怎么用它。所以我写了这个小小介绍性文章，希望能对你的理解有所帮助。RACCommand源文件里的注释写得很不错，不过它并没有给任何例子来说说具体怎么用它，对于RAC的新人来说，只看这些注释还是比较难以理解的。</p>
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="15427834493089.html"  title="Previous Post: ```">&laquo; ```</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="15427834493214.html" 
+	        title="Next Post: "> &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
 
-<p>RACCommand类用于表示事件的执行，一般来说是在UI上的某些动作来触发这些事件，比如点击一个按钮。RACCommand的实例能够决定是否可以被执行，这个特性能反应在UI上，而且它能确保在其不可用时不会被执行。通常，当一个命令可以执行时，会将它的属性allowsConcurrentExecution设置为它的默认值：NO，从而确保在这个命令已经正在执行的时候，不会同时再执行新的操作。命令执行的返回值是一个RACSignal，因此我们能对该返回值进行next:，completed或error:，这在下文会有所展示。</p>
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
 
-<p>command的初始化方法中有一个enabledSignal参数，这个signal就是用来指名command能否被执行的。在我们的例子中，当用户输入的<a href="mailto:maweefeng@gmail.com">maweefeng@gmail.com</a>地址合法时，它才能被执行。self.emailValidSignal这个signal每当<a href="mailto:maweefeng@gmail.com">maweefeng@gmail.com</a>的文本更新时，会发送NO或YES。</p>
-
-<p>signalBlock参数在command需要执行时调用，这个block需要返回一个signal用来表示正在执行，之前将allowsConcurrentExecute的值设置为默认值NO，此时command会观察这个signal，而且在这个执行进度完成前，不允许新的执行。</p>
-
-<pre><code>#import &quot;SubscribeViewModel.h&quot;
-#import &quot;AFHTTPRequestOperationManager+RACSupport.h&quot;
-#import&quot;NSString+EmailAdditions.h&quot;
- 
-static NSString *const kSubscribeURL =@&quot;http://reactivetest.apiary.io/subscribers&quot;;
- 
-@interface SubscribeViewModel ()
-@property(nonatomic, strong) RACSignal*emailValidSignal;
-@end
- 
-@implementation SubscribeViewModel
- 
-- (id)init {
-       self= [super init];
-       if(self) {
-              [self mapSubscribeCommandStateToStatusMessage];
-       }
-       returnself;
-}
- 
--(void)mapSubscribeCommandStateToStatusMessage {
-       RACSignal*startedMessageSource = [self.subscribeCommand.executionSignals map:^id(RACSignal *subscribeSignal) {
-              return NSLocalizedString(@&quot;Sending request...&quot;, nil);
-       }];
- 
-       RACSignal*completedMessageSource = [self.subscribeCommand.executionSignals flattenMap:^RACStream *(RACSignal *subscribeSignal) {
-              return[[[subscribeSignal materialize] filter:^BOOL(RACEvent *event) {
-                     return event.eventType == RACEventTypeCompleted;
-              }]map:^id(id value) {
-                     return NSLocalizedString(@&quot;Thanks&quot;, nil);
-              }];
-       }];
- 
-       RACSignal*failedMessageSource = [[self.subscribeCommand.errors subscribeOn:[RACScheduler mainThreadScheduler]] map:^id(NSError *error) {
-              returnNSLocalizedString(@&quot;Error :(&quot;, nil);
-       }];
- 
-       RAC(self,statusMessage) = [RACSignal merge:@[startedMessageSource,completedMessageSource, failedMessageSource]];
-}
- 
-- (RACCommand *)subscribeCommand {
-       if(!_subscribeCommand) {
-              @weakify(self);
-              _subscribeCommand= [[RACCommand alloc] initWithEnabled:self.emailValidSignal signalBlock:^RACSignal *(id input) {
-                     @strongify(self);
-                     return[SubscribeViewModel postEmail:self.maweefeng@gmail.com];
-              }];
-       }
-       return_subscribeCommand;
-}
- 
-+ (RACSignal *)postEmail:(NSString *)maweefeng@gmail.com{
-       AFHTTPRequestOperationManager*manager = [AFHTTPRequestOperationManager manager];
-       manager.requestSerializer= [AFJSONRequestSerializer new];
-       NSDictionary*body = @{@&quot;maweefeng@gmail.com&quot;: maweefeng@gmail.com ?: @&quot;&quot;};
-       return[[[manager rac_POST:kSubscribeURL parameters:body] logError] replayLazily];
-}
- 
-- (RACSignal *)emailValidSignal {
-       if(!_emailValidSignal) {
-              _emailValidSignal= [RACObserve(self, maweefeng@gmail.com) map:^id(NSString *maweefeng@gmail.com) {
-                     return@([maweefeng@gmail.com isValidEmail]);
-              }];
-       }
-       return_emailValidSignal;
-}
- 
-@end
-呃，这是个大块头，我们一点一点来看。我们最感兴趣的RACCommand的创建如下：
-- (RACCommand *)subscribeCommand {
-       if(!_subscribeCommand) {
-              @weakify(self);
-              _subscribeCommand= [[RACCommand alloc] initWithEnabled:self.emailValidSignal signalBlock:^RACSignal *(id input) {
-                     @strongify(self);
-                     return[SubscribeViewModel postEmail:self.maweefeng@gmail.com];
-              }];
-       }
-       return _subscribeCommand;
-}
-
-</code></pre>
-
-
-		</div>
-	
-
-  
-  
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '15427834493152.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
 </div></div>
 
 

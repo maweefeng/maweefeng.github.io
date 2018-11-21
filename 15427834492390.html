@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  MVVM+RAC - 
+  Xcode打包遇到的坑 - 
   
   </title>
  <meta name="description" content="">
@@ -259,111 +259,79 @@
             </div>
             <div class="large-9 medium-9 columns">
 
- 
+ <div class="markdown-body">
+<h1>Xcode打包遇到的坑</h1>
+
+<p>由于是接手别人做的项目，所以当把程序打包的时候出现了问题，证书和描述文件的问题 </p>
+
+<p>最开始尝试打开xcode的账户下载所有证书，结果发现并不能成功</p>
+
+<p>后来手动管理证书就可以看到之前在开发者中心创建的开发和发布证书，如下图所示<br/>
+<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fnczazu4irj30pd0iejte.jpg" alt=""/><br/>
+然后会到证书管理界面，会把你选中账号的所有相关证书列下来</p>
+
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fnczelaqz6j30pd0iedi6.jpg" alt=""/></p>
+
+<p>后面附带有状态，如果你的钥匙串keychain中没有的话，状态会是not in the keychain，顾名思义本地没有下载，这样的话要去开发者中心下载并且安装了.<br/><br/>
+下载完打包之前还要来看一下是不是已经在钥匙串中。  </p>
+
+<ul>
+<li>在钥匙串的话就可以跳过本文去愉快的打包了。<br/></li>
+<li>未在钥匙串接着看下面的操作</li>
+</ul>
+
+<p>如果还是没有在钥匙串的话，那么就比较麻烦了，我百度了一下，要先把之前的证书invoke，也就是删除，然后再回来创建，按照如图所示指引<br/><br/>
+<img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fnczjgrp8hj30m80getb7.jpg" alt=""/></p>
+
+<p>然而还有可能出现下面的情况 <br/>
+<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fnczn8eitqj30pd0ie0v3.jpg" alt=""/></p>
+
+<h3 id="toc_0">这就尴尬了是不是？</h3>
+
+<p>不用怕，把本地相关的钥匙串全部删除，并且把xcode关联的账户全部删除，最后再去添加账户，添加完账户之后继续按照手动管理证书，一步步操作生成证书就应该没有问题了。<br/><br/>
+另外还要去开发者中心找到指定的描述文件并且edit编辑，然后选中自己刚才创建的证书。<br/><br/>
+编辑完成之后下载描述文件以及证书接下来就可以进行打包了。<br/>
+<img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fnczxt1f66j30tx0imtam.jpg" alt=""/></p>
 
 
-	
-		<div class="markdown-body">
-		<h1>RACCommand</h1>
+</div>
 
-		<p>RACCommand是ReactiveCocoa的基本组件之一，能节省开发的大部分时间，同时使得iOS/OS X 应用更健壮。</p>
+<br /><br />
+<hr />
 
-<p>我看到一部分ReactiveCocoa（以下简单RAC）新人并没有完全理解RACCommand，自然也就不知道怎么用它。所以我写了这个小小介绍性文章，希望能对你的理解有所帮助。RACCommand源文件里的注释写得很不错，不过它并没有给任何例子来说说具体怎么用它，对于RAC的新人来说，只看这些注释还是比较难以理解的。</p>
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="15427834492322.html"  title="Previous Post: UIImageView 有一个动画的属性 animationImages">&laquo; UIImageView 有一个动画的属性 animationImages</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="15427834492451.html" 
+	        title="Next Post: Xcode开发中遇到头文件找不到的情况">Xcode开发中遇到头文件找不到的情况 &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
 
-<p>RACCommand类用于表示事件的执行，一般来说是在UI上的某些动作来触发这些事件，比如点击一个按钮。RACCommand的实例能够决定是否可以被执行，这个特性能反应在UI上，而且它能确保在其不可用时不会被执行。通常，当一个命令可以执行时，会将它的属性allowsConcurrentExecution设置为它的默认值：NO，从而确保在这个命令已经正在执行的时候，不会同时再执行新的操作。命令执行的返回值是一个RACSignal，因此我们能对该返回值进行next:，completed或error:，这在下文会有所展示。</p>
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
 
-<p>command的初始化方法中有一个enabledSignal参数，这个signal就是用来指名command能否被执行的。在我们的例子中，当用户输入的<a href="mailto:maweefeng@gmail.com">maweefeng@gmail.com</a>地址合法时，它才能被执行。self.emailValidSignal这个signal每当<a href="mailto:maweefeng@gmail.com">maweefeng@gmail.com</a>的文本更新时，会发送NO或YES。</p>
-
-<p>signalBlock参数在command需要执行时调用，这个block需要返回一个signal用来表示正在执行，之前将allowsConcurrentExecute的值设置为默认值NO，此时command会观察这个signal，而且在这个执行进度完成前，不允许新的执行。</p>
-
-<pre><code>#import &quot;SubscribeViewModel.h&quot;
-#import &quot;AFHTTPRequestOperationManager+RACSupport.h&quot;
-#import&quot;NSString+EmailAdditions.h&quot;
- 
-static NSString *const kSubscribeURL =@&quot;http://reactivetest.apiary.io/subscribers&quot;;
- 
-@interface SubscribeViewModel ()
-@property(nonatomic, strong) RACSignal*emailValidSignal;
-@end
- 
-@implementation SubscribeViewModel
- 
-- (id)init {
-       self= [super init];
-       if(self) {
-              [self mapSubscribeCommandStateToStatusMessage];
-       }
-       returnself;
-}
- 
--(void)mapSubscribeCommandStateToStatusMessage {
-       RACSignal*startedMessageSource = [self.subscribeCommand.executionSignals map:^id(RACSignal *subscribeSignal) {
-              return NSLocalizedString(@&quot;Sending request...&quot;, nil);
-       }];
- 
-       RACSignal*completedMessageSource = [self.subscribeCommand.executionSignals flattenMap:^RACStream *(RACSignal *subscribeSignal) {
-              return[[[subscribeSignal materialize] filter:^BOOL(RACEvent *event) {
-                     return event.eventType == RACEventTypeCompleted;
-              }]map:^id(id value) {
-                     return NSLocalizedString(@&quot;Thanks&quot;, nil);
-              }];
-       }];
- 
-       RACSignal*failedMessageSource = [[self.subscribeCommand.errors subscribeOn:[RACScheduler mainThreadScheduler]] map:^id(NSError *error) {
-              returnNSLocalizedString(@&quot;Error :(&quot;, nil);
-       }];
- 
-       RAC(self,statusMessage) = [RACSignal merge:@[startedMessageSource,completedMessageSource, failedMessageSource]];
-}
- 
-- (RACCommand *)subscribeCommand {
-       if(!_subscribeCommand) {
-              @weakify(self);
-              _subscribeCommand= [[RACCommand alloc] initWithEnabled:self.emailValidSignal signalBlock:^RACSignal *(id input) {
-                     @strongify(self);
-                     return[SubscribeViewModel postEmail:self.maweefeng@gmail.com];
-              }];
-       }
-       return_subscribeCommand;
-}
- 
-+ (RACSignal *)postEmail:(NSString *)maweefeng@gmail.com{
-       AFHTTPRequestOperationManager*manager = [AFHTTPRequestOperationManager manager];
-       manager.requestSerializer= [AFJSONRequestSerializer new];
-       NSDictionary*body = @{@&quot;maweefeng@gmail.com&quot;: maweefeng@gmail.com ?: @&quot;&quot;};
-       return[[[manager rac_POST:kSubscribeURL parameters:body] logError] replayLazily];
-}
- 
-- (RACSignal *)emailValidSignal {
-       if(!_emailValidSignal) {
-              _emailValidSignal= [RACObserve(self, maweefeng@gmail.com) map:^id(NSString *maweefeng@gmail.com) {
-                     return@([maweefeng@gmail.com isValidEmail]);
-              }];
-       }
-       return_emailValidSignal;
-}
- 
-@end
-呃，这是个大块头，我们一点一点来看。我们最感兴趣的RACCommand的创建如下：
-- (RACCommand *)subscribeCommand {
-       if(!_subscribeCommand) {
-              @weakify(self);
-              _subscribeCommand= [[RACCommand alloc] initWithEnabled:self.emailValidSignal signalBlock:^RACSignal *(id input) {
-                     @strongify(self);
-                     return[SubscribeViewModel postEmail:self.maweefeng@gmail.com];
-              }];
-       }
-       return _subscribeCommand;
-}
-
-</code></pre>
-
-
-		</div>
-	
-
-  
-  
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '15427834492390.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
 </div></div>
 
 

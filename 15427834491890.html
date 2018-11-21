@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  MVVM+RAC - 
+  朋友微博地址 - 
   
   </title>
  <meta name="description" content="">
@@ -259,111 +259,83 @@
             </div>
             <div class="large-9 medium-9 columns">
 
- 
+ <div class="markdown-body">
+<h1>朋友微博地址</h1>
 
+<p><a href="https://weibo.com/u/5750983168?refer_flag=1005050006_&amp;is_hot=1">https://weibo.com/u/5750983168?refer_flag=1005050006_&amp;is_hot=1</a></p>
 
-	
-		<div class="markdown-body">
-		<h1>RACCommand</h1>
+<h3 id="toc_0">关于block的一点注意 特别是网络请求这块</h3>
 
-		<p>RACCommand是ReactiveCocoa的基本组件之一，能节省开发的大部分时间，同时使得iOS/OS X 应用更健壮。</p>
+<p>Block捕获外界变量销毁<br/>
+我们再进一步想想，Block有个最大的特点是可以访问当前的作用域，我们随便创建一个数组，重复上面操作，是否能够销毁</p>
 
-<p>我看到一部分ReactiveCocoa（以下简单RAC）新人并没有完全理解RACCommand，自然也就不知道怎么用它。所以我写了这个小小介绍性文章，希望能对你的理解有所帮助。RACCommand源文件里的注释写得很不错，不过它并没有给任何例子来说说具体怎么用它，对于RAC的新人来说，只看这些注释还是比较难以理解的。</p>
-
-<p>RACCommand类用于表示事件的执行，一般来说是在UI上的某些动作来触发这些事件，比如点击一个按钮。RACCommand的实例能够决定是否可以被执行，这个特性能反应在UI上，而且它能确保在其不可用时不会被执行。通常，当一个命令可以执行时，会将它的属性allowsConcurrentExecution设置为它的默认值：NO，从而确保在这个命令已经正在执行的时候，不会同时再执行新的操作。命令执行的返回值是一个RACSignal，因此我们能对该返回值进行next:，completed或error:，这在下文会有所展示。</p>
-
-<p>command的初始化方法中有一个enabledSignal参数，这个signal就是用来指名command能否被执行的。在我们的例子中，当用户输入的<a href="mailto:maweefeng@gmail.com">maweefeng@gmail.com</a>地址合法时，它才能被执行。self.emailValidSignal这个signal每当<a href="mailto:maweefeng@gmail.com">maweefeng@gmail.com</a>的文本更新时，会发送NO或YES。</p>
-
-<p>signalBlock参数在command需要执行时调用，这个block需要返回一个signal用来表示正在执行，之前将allowsConcurrentExecute的值设置为默认值NO，此时command会观察这个signal，而且在这个执行进度完成前，不允许新的执行。</p>
-
-<pre><code>#import &quot;SubscribeViewModel.h&quot;
-#import &quot;AFHTTPRequestOperationManager+RACSupport.h&quot;
-#import&quot;NSString+EmailAdditions.h&quot;
- 
-static NSString *const kSubscribeURL =@&quot;http://reactivetest.apiary.io/subscribers&quot;;
- 
-@interface SubscribeViewModel ()
-@property(nonatomic, strong) RACSignal*emailValidSignal;
-@end
- 
-@implementation SubscribeViewModel
- 
-- (id)init {
-       self= [super init];
-       if(self) {
-              [self mapSubscribeCommandStateToStatusMessage];
-       }
-       returnself;
-}
- 
--(void)mapSubscribeCommandStateToStatusMessage {
-       RACSignal*startedMessageSource = [self.subscribeCommand.executionSignals map:^id(RACSignal *subscribeSignal) {
-              return NSLocalizedString(@&quot;Sending request...&quot;, nil);
-       }];
- 
-       RACSignal*completedMessageSource = [self.subscribeCommand.executionSignals flattenMap:^RACStream *(RACSignal *subscribeSignal) {
-              return[[[subscribeSignal materialize] filter:^BOOL(RACEvent *event) {
-                     return event.eventType == RACEventTypeCompleted;
-              }]map:^id(id value) {
-                     return NSLocalizedString(@&quot;Thanks&quot;, nil);
-              }];
-       }];
- 
-       RACSignal*failedMessageSource = [[self.subscribeCommand.errors subscribeOn:[RACScheduler mainThreadScheduler]] map:^id(NSError *error) {
-              returnNSLocalizedString(@&quot;Error :(&quot;, nil);
-       }];
- 
-       RAC(self,statusMessage) = [RACSignal merge:@[startedMessageSource,completedMessageSource, failedMessageSource]];
-}
- 
-- (RACCommand *)subscribeCommand {
-       if(!_subscribeCommand) {
-              @weakify(self);
-              _subscribeCommand= [[RACCommand alloc] initWithEnabled:self.emailValidSignal signalBlock:^RACSignal *(id input) {
-                     @strongify(self);
-                     return[SubscribeViewModel postEmail:self.maweefeng@gmail.com];
-              }];
-       }
-       return_subscribeCommand;
-}
- 
-+ (RACSignal *)postEmail:(NSString *)maweefeng@gmail.com{
-       AFHTTPRequestOperationManager*manager = [AFHTTPRequestOperationManager manager];
-       manager.requestSerializer= [AFJSONRequestSerializer new];
-       NSDictionary*body = @{@&quot;maweefeng@gmail.com&quot;: maweefeng@gmail.com ?: @&quot;&quot;};
-       return[[[manager rac_POST:kSubscribeURL parameters:body] logError] replayLazily];
-}
- 
-- (RACSignal *)emailValidSignal {
-       if(!_emailValidSignal) {
-              _emailValidSignal= [RACObserve(self, maweefeng@gmail.com) map:^id(NSString *maweefeng@gmail.com) {
-                     return@([maweefeng@gmail.com isValidEmail]);
-              }];
-       }
-       return_emailValidSignal;
-}
- 
-@end
-呃，这是个大块头，我们一点一点来看。我们最感兴趣的RACCommand的创建如下：
-- (RACCommand *)subscribeCommand {
-       if(!_subscribeCommand) {
-              @weakify(self);
-              _subscribeCommand= [[RACCommand alloc] initWithEnabled:self.emailValidSignal signalBlock:^RACSignal *(id input) {
-                     @strongify(self);
-                     return[SubscribeViewModel postEmail:self.maweefeng@gmail.com];
-              }];
-       }
-       return _subscribeCommand;
+<pre><code>- (void)blockDemo {
+    NSArray *outsideArray = @[@1, @2, @3];
+    
+    [self.service requestWithParms:nil WithResult:^(id data, NSError *error) {
+        // 处理业务逻辑
+        // ...
+        
+        NSLog(@&quot;Result from block:%@&quot;, data);
+        NSLog(@&quot;outsideArray :%@&quot;, outsideArray);
+    }];
 }
 
+打印结果：
+2018-03-25 19:55:40.997535+0800 NetworkCallback[4970:3641450] NextPageViewController has been dealloc!
+2018-03-25 19:55:44.831721+0800 NetworkCallback[4970:3641450] outsideArray :(
+    1,
+    2,
+    3
+)
 </code></pre>
 
+<p>神奇不？！<br/>
+注意，vc先销毁了，但是5s后，这个临时变量竟然还没有销毁。那么这个变量存储在哪里呢？留个悬念<br/>
+考虑一下，如果你在Block代码里访问了一个超大的文件，这个文件必然是保存内存的，然后此时你遇上了网络慢，接口好久没有返回，那么这个超大的文件就会一直占用内存<br/>
+内存小结<br/>
+使用Block无论是否有循环引用的可能，都要使用weakself，来防止vc被持有，而延迟释放<br/>
+Block会导致对象的生命周期被延长，特别是当某些大文件被Block访问时，有几率导致内存不足</p>
 
-		</div>
-	
 
-  
-  
+</div>
+
+<br /><br />
+<hr />
+
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="15427834491808.html"  title="Previous Post: 让终端走代理的几种方法">&laquo; 让终端走代理的几种方法</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="15427834491963.html" 
+	        title="Next Post: "> &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
+
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
+
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '15427834491890.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
 </div></div>
 
 
