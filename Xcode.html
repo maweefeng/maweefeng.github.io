@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  终端命令 - 
+  Xcode - 
   
   </title>
  <meta name="description" content="">
@@ -197,68 +197,27 @@
             </div>
             <div class="large-9 medium-9 columns">
 
- <div class="markdown-body">
-<h1>终端命令</h1>
-
-<p>我们可以在 terminal 用 system profiler 命令来获取连接 mac 的 usb 设备：<br/>
-system_profiler SPUSBDataType</p>
-
-<ul>
-<li>ls 查看当前路径下的文件以及文件夹的名字</li>
-<li>ls /bin 表示查看根目录下的bin文件夹的东西</li>
-<li>ls docments 查看当前路径下documents文件夹下的所有东西</li>
-<li>cd .. 跳转到当前路径的上一层</li>
-<li>pwd 显示当前操作的路径 (绝对路径)</li>
-<li>clear 清屏</li>
-<li>touch 生成文件</li>
-<li>ifconfig 查看设备的ip地址</li>
-<li>netstat -an </li>
-</ul>
-
-<h3 id="toc_0">查看内存占用情况</h3>
-
-<p>sudo du -sh * <br/>
-<img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fuch6fzertj30iy0da0ur.jpg" alt=""/></p>
+ 
 
 
-</div>
+	
+		<div class="markdown-body">
+		<h1>Xcode编译找不到头文件</h1>
 
-<br /><br />
-<hr />
+		<p>开发中遇到之前成功导入没有报错的头文件，后来打开工程之后报错说找不到头文件，这就很奇怪了。<br/>
+之前还是好好的，怎么睡了一觉代码还出现了问题呢。<br/><br/>
+然后就去搜索解决方法，发现是要到buildsettings下的Search Paths下面的User Header Search Paths 大概意思就是这个东西是头文件的搜索路径。<br/><br/>
+进去之后添加${SRCROOT}然后回车搞定就完成了。</p>
 
-<div class="row clearfix">
-  <div class="large-6 columns">
-	<div class="text-left" style="padding:15px 0px;">
-		
-	        <a href="15427834491808.html"  title="Previous Post: 终端命令设置代理">&laquo; 终端命令设置代理</a>
-	    
-	</div>
-  </div>
-  <div class="large-6 columns">
-	<div class="text-right" style="padding:15px 0px;">
-		
-	        <a href="15427834491628.html" 
-	        title="Next Post: 设置Cell分割线顶头">设置Cell分割线顶头 &raquo;</a>
-	    
-	</div>
-  </div>
-</div>
 
-<div class="row">
-<div style="padding:0px 0.93em;" class="share-comments">
+		</div>
+	
 
-</div>
-</div>
-<script type="text/javascript">
-	$(function(){
-		var currentURL = '15427834491747.html';
-		$('#side-nav a').each(function(){
-			if($(this).attr('href') == currentURL){
-				$(this).parent().addClass('active');
-			}
-		});
-	});
-</script>  
+ 
+	
+
+  
+  
 </div></div>
 
 
