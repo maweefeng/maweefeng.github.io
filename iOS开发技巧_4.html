@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  CocoaPods - 黑猫也紧张
+  iOS开发技巧 - 黑猫也紧张
   
   </title>
   
@@ -105,52 +105,32 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15427834492143.html">
+                <a class="clearlink" href="15427834491747.html">
                 
-                  <h1>pod install速度过慢</h1>
+                  <h1>终端命令</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>pod install速度慢的终极解决方案</p>
+                        	<p>我们可以在 terminal 用 system profiler 命令来获取连接 mac 的 usb 设备：<br/>
+system_profiler SPUSBDataType</p>
 
-<p>相信大家已经感受到pod install速度越来越慢了，网上提供了几种解决方案，但是都没有完全解决速度慢的问题。</p>
+<ul>
+<li>ls 查看当前路径下的文件以及文件夹的名字</li>
+<li>ls /bin 表示查看根目录下的bin文件夹的东西</li>
+<li>ls docments 查看当前路径下documents文件夹下的所有东西</li>
+<li>cd .. 跳转到当前路径的上一层</li>
+<li>pwd 显示当前操作的路径 (绝对路径)</li>
+<li>clear 清屏</li>
+<li>touch 生成文件</li>
+<li>ifconfig 查看设备的ip地址</li>
+<li>netstat -an </li>
+</ul>
 
-<p>使用国内镜像的Specs<br/>
-在pod install时使用命令pod install --no-repo-update<br/>
-使用proxychains使终端命令走代理<br/>
-下面就来说明一下这几种方法为何没有完全解决问题</p>
+<h3 id="toc_0">查看内存占用情况</h3>
 
-<p>使用国内镜像的Specs <br/>
-这个只是加快了Specs下载更新速度，而且如果使用国内镜像Specs，那么Podfile中就必须指明使用这个Specs。<br/>
-在pod install时使用命令pod install --no-repo-update <br/>
-install时不更新本地库，但如果第一次install还是要去github clone代码<br/>
-使用proxychains使终端命令走代理 <br/>
-这个只是使pod命令走代理，git download的时候不会走代理<br/>
-其实真正慢的原因并不在pod命令，而是在于github上的代码库访问速度慢，那么就知道真正的解决方案就是要加快git命令的速度。 <br/>
-我使用Shadowsocks代理，默认代理端口为1080，配置好代理之后去终端输入git配置命令，命令如下</p>
-
-<p>git config --global http.proxy socks5://127.0.0.1:1080<br/>
-1<br/>
-上面的命令是给git设置全局代理，但是我们并不希望国内git库也走代理，而是只需要github上的代码库走代理，命令如下</p>
-
-<p>git config --global http.<a href="https://github.com.proxy">https://github.com.proxy</a> socks5://127.0.0.1:1080<br/>
-1<br/>
-如此就从根本上解决了问题，下面附上设置代理前后git命令的速度 <br/>
-代理前 <br/>
-代理前<br/>
-代理后 <br/>
-这里写图片描述</p>
-
-<p>体验xiu的一下吧！</p>
-
-<p>（ps：如果要恢复/移除上面设置的git代理，使用如下命令</p>
-
-<p>git config --global --unset http.proxy<br/>
-1<br/>
-git config --global --unset http.<a href="https://github.com.proxy">https://github.com.proxy</a><br/>
-1<br/>
-）</p>
+<p>sudo du -sh * <br/>
+<img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fuch6fzertj30iy0da0ur.jpg" alt=""/></p>
 
                         
                       </div>
@@ -162,7 +142,7 @@ git config --global --unset http.<a href="https://github.com.proxy">https://gith
                     <span class="date">2018/11/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='CocoaPods.html'>CocoaPods</a></span>
+          					    <span class="posted-in"><a href='Git.html'>Git</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -176,31 +156,21 @@ git config --global --unset http.<a href="https://github.com.proxy">https://gith
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834491108.html">
+                <a class="clearlink" href="15427834491628.html">
                 
-                  <h1>You don’t have write permissions</h1>
+                  <h1>设置Cell分割线顶头</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h3 id="toc_0">终端运行sudo gem update出现如下错误</h3>
-
-<blockquote>
-<p>ERROR: While executing gem … (Gem::FilePermissionError) <br/>
-You don’t have write permissions for the /usr/bin directory.</p>
-</blockquote>
-
-<p>试一下这一段代码</p>
-
-<blockquote>
-<p>sudo gem install -n /usr/local/bin cocoapods</p>
-</blockquote>
-
-<p>这表示是在本地环境去安装cocoaPods</p>
-
-<h3 id="toc_1">使用Homebrew安装cocoaPods的地址</h3>
-
-<p>/usr/local/Cellar/</p>
+                        	<ul>
+<li>(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+cell.layoutMargins = UIEdgeInsetsZero;
+cell.separatorInset = UIEdgeInsetsZero;
+cell.preservesSuperviewLayoutMargins = NO;
+}
+UITableView设置系统cell的分割线顶头</li>
+</ul>
 
                         
                       </div>
@@ -212,7 +182,205 @@ You don’t have write permissions for the /usr/bin directory.</p>
                     <span class="date">2018/11/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='CocoaPods.html'>CocoaPods</a></span>
+          					    <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834491567.html">
+                
+                  <h1>视图的绘制周期</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>当view第一次在屏幕上显示的时候，系统会绘制它的内容，然后系统会截取内容的快照，并且将快照作为视图的可见外观，如果你永远不改变视图的内容，那么视图的绘制代码永远不会改变。如果更改了视图的内容，不用直接重新绘制，而是使用setNeedsDisplay或者setNeedsDisplayInRect方法是视图无效。这些方法会告知视图内容以及改变并且需要在下一次进行重绘。如果需要立马重绘，那么需要使用layoutIfNeeded方法。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834491504.html">
+                
+                  <h1>Git基础流</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">如何将本地代码提交到远程git仓库</h3>
+
+<ul>
+<li><p>第一步：建立git仓库 <br/>
+cd到你的本地项目根目录下，执行git命令 </p>
+
+<blockquote>
+<p>git init</p>
+</blockquote></li>
+<li><p>第二步：将项目的所有文件添加到仓库中   </p>
+
+<blockquote>
+<p>git add .  </p>
+</blockquote></li>
+<li><p>第三步：将add的文件commit到仓库</p>
+
+<blockquote>
+<p>git commit -m &quot;注释语句&quot;</p>
+</blockquote></li>
+<li><p>第四步：去github上创建自己的Repository</p></li>
+<li><p>第五步：重点来了，将本地的仓库关联到github上    </p>
+
+<blockquote>
+<p>git remote add origin 仓库url</p>
+</blockquote>
+
+<p>后面的https链接地址换成你自己的仓库url地址，也就是上面红框中标出来的地址</p></li>
+<li><p>第六步：上传github之前，要先pull一下，执行如下命令：</p>
+
+<blockquote>
+<p>git pull origin master</p>
+</blockquote>
+
+<p>遇到refusing to merge unrelated histories 使用以下代码  </p>
+
+<blockquote>
+<p>git pull origin master --allow-unrelated-histories</p>
+</blockquote></li>
+<li><p>第七步，也就是最后一步，上传代码到github远程仓库</p>
+
+<blockquote>
+<p>git push -u origin master  </p>
+</blockquote>
+
+<p>遇到提示fatal: refusing to merge unrelated histories可以试一下下面的强制push</p>
+
+<blockquote>
+<p>git push -u origin master -f //强制push</p>
+</blockquote></li>
+</ul>
+
+<h3 id="toc_1">列出分支的方法</h3>
+
+<p>列出所有远程分支<br/>
+$ git branch -r</p>
+
+<p>列出所有本地分支和远程分支<br/>
+$ git branch -a</p>
+
+<h3 id="toc_2">新建分支</h3>
+
+<ul>
+<li><p>新建一个分支，但依然停留在当前分支<br/><br/>
+$ git branch [branch-name]<br/><br/>
+如果想要切换到新建的分支，可以使用git checkout  [branch-name]</p></li>
+<li><p>新建一个分支，并切换到该分支<br/><br/>
+$ git checkout -b [branch]</p></li>
+<li><p>新建一个分支，指向指定commit<br/><br/>
+$ git branch [branch] [commit]</p></li>
+</ul>
+
+<p>之前是提交到主分支 所以使用的是git push -u origin master<br/><br/>
+现在的话不是主分支所以要改变一下分支的名称如下<br/><br/>
+最后提交的时候 可以使用git push -u origin [branch-name]</p>
+
+<blockquote>
+<p>前提:只有项目中关联一份远程git仓库的时候才可以使用以下方法去新建分支 如果没关联任何分支也查不到任何远程分支</p>
+</blockquote>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Git.html'>Git</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834491441.html">
+                
+                  <h1>设置图片拉伸范围</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ul>
+<li>(UIImage *)stretchableImageWithLeftCapWidth:(NSInteger)leftCapWidth topCapHeight:</li>
+</ul>
+
+<p>(NSInteger)topCapHeight 这个函数是UIImage的一个实例函数，它的功能是创建一个内容可拉伸，而边角不拉伸的图片，需要两个参数，第一个是左边不拉伸区域的宽度，第二个参数是上面不拉伸的高度。</p>
+
+<p>根据设置的宽度和高度，将接下来的一个像素进行左右扩展和上下拉伸。</p>
+
+<p>注意：可拉伸的范围都是距离leftCapWidth后的1竖排像素，和距离topCapHeight后的1横排像素。</p>
+
+<p>参数的意义是，如果参数指定10，5。那么，图片左边10个像素，上边5个像素。不会被拉伸，x坐标为11和一个像素会被横向复制，y坐标为6的一个像素会被纵向复制。</p>
+
+<blockquote>
+<p>注意：只是对一个像素进行复制到一定宽度。而图像后面的剩余像素也不会被拉伸。</p>
+</blockquote>
+
+<p>复制代码</p>
+
+<p>UIImage *img=[UIImage imageNamed:@&quot;bubbleSelf.png&quot;];<br/>
+    img=[img stretchableImageWithLeftCapWidth:15 topCapHeight:12];<br/>
+    UIImageView *imgView=[[UIImageView alloc]initWithImage:img];<br/>
+    [imgView setFrame:CGRectMake(10, 10, 200, 200)];<br/>
+    [self. view addSubview:imgView];</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -231,12 +399,12 @@ You don’t have write permissions for the /usr/bin directory.</p>
 			<div class="row">
 			  <div class="large-6 columns">
 			  <p class="text-left" style="padding-top:25px;">
-			   
+			   <a href="iOS开发技巧_3.html">&laquo; Prev Page</a>  
 			  </p>
 			  </div>
 			  <div class="large-6 columns">
 			<p class="text-right" style="padding-top:25px;">
-			
+			 <a href="iOS开发技巧_5.html">&raquo; Next Page</a> 
 			</p>
 			  </div>
 			</div>

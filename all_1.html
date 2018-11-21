@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  CocoaPods - 黑猫也紧张
+  黑猫也紧张
   
   </title>
   
@@ -105,52 +105,26 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15427834492143.html">
+                <a class="clearlink" href="15427834493029.html">
                 
-                  <h1>pod install速度过慢</h1>
+                  <h1>ios导航条背景颜色</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>pod install速度慢的终极解决方案</p>
+                        	<h4 id="toc_0">Situation one</h4>
 
-<p>相信大家已经感受到pod install速度越来越慢了，网上提供了几种解决方案，但是都没有完全解决速度慢的问题。</p>
+<p><code>self.navigationBar.barTintColor= [UIColor redColor];</code><br/>
+这时候的效果就是纯色的<br/>
+类似下面这样<br/>
+<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fsbvzqlgesj309f01oglk.jpg" alt=""/></p>
 
-<p>使用国内镜像的Specs<br/>
-在pod install时使用命令pod install --no-repo-update<br/>
-使用proxychains使终端命令走代理<br/>
-下面就来说明一下这几种方法为何没有完全解决问题</p>
+<h4 id="toc_1">Situation two</h4>
 
-<p>使用国内镜像的Specs <br/>
-这个只是加快了Specs下载更新速度，而且如果使用国内镜像Specs，那么Podfile中就必须指明使用这个Specs。<br/>
-在pod install时使用命令pod install --no-repo-update <br/>
-install时不更新本地库，但如果第一次install还是要去github clone代码<br/>
-使用proxychains使终端命令走代理 <br/>
-这个只是使pod命令走代理，git download的时候不会走代理<br/>
-其实真正慢的原因并不在pod命令，而是在于github上的代码库访问速度慢，那么就知道真正的解决方案就是要加快git命令的速度。 <br/>
-我使用Shadowsocks代理，默认代理端口为1080，配置好代理之后去终端输入git配置命令，命令如下</p>
+<p><code>self.navigationBar.backgroundColor = [UIColor redColor];</code><br/>
+<img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fsbvypka0rj309e01p0so.jpg" alt=""/></p>
 
-<p>git config --global http.proxy socks5://127.0.0.1:1080<br/>
-1<br/>
-上面的命令是给git设置全局代理，但是我们并不希望国内git库也走代理，而是只需要github上的代码库走代理，命令如下</p>
-
-<p>git config --global http.<a href="https://github.com.proxy">https://github.com.proxy</a> socks5://127.0.0.1:1080<br/>
-1<br/>
-如此就从根本上解决了问题，下面附上设置代理前后git命令的速度 <br/>
-代理前 <br/>
-代理前<br/>
-代理后 <br/>
-这里写图片描述</p>
-
-<p>体验xiu的一下吧！</p>
-
-<p>（ps：如果要恢复/移除上面设置的git代理，使用如下命令</p>
-
-<p>git config --global --unset http.proxy<br/>
-1<br/>
-git config --global --unset http.<a href="https://github.com.proxy">https://github.com.proxy</a><br/>
-1<br/>
-）</p>
+<p>一种是有渐变的半透明效果，一种就是简单的纯色效果。</p>
 
                         
                       </div>
@@ -162,7 +136,7 @@ git config --global --unset http.<a href="https://github.com.proxy">https://gith
                     <span class="date">2018/11/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='CocoaPods.html'>CocoaPods</a></span>
+          					    <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -176,31 +150,18 @@ git config --global --unset http.<a href="https://github.com.proxy">https://gith
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834491108.html">
+                <a class="clearlink" href="15427834492968.html">
                 
-                  <h1>You don’t have write permissions</h1>
+                  <h1>关于instrumets 找不到debug options</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h3 id="toc_0">终端运行sudo gem update出现如下错误</h3>
+                        	<p>现在已经取消了这个</p>
 
-<blockquote>
-<p>ERROR: While executing gem … (Gem::FilePermissionError) <br/>
-You don’t have write permissions for the /usr/bin directory.</p>
-</blockquote>
+<p>可以在xcode的debug - view debugging 找到</p>
 
-<p>试一下这一段代码</p>
-
-<blockquote>
-<p>sudo gem install -n /usr/local/bin cocoapods</p>
-</blockquote>
-
-<p>这表示是在本地环境去安装cocoaPods</p>
-
-<h3 id="toc_1">使用Homebrew安装cocoaPods的地址</h3>
-
-<p>/usr/local/Cellar/</p>
+<p>“核心动画工具和模板已在工具中弃用。之前在”调试选项“下的功能已移至Xcode，位于”Debug&gt; View Debugging“下。</p>
 
                         
                       </div>
@@ -212,7 +173,154 @@ You don’t have write permissions for the /usr/bin directory.</p>
                     <span class="date">2018/11/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='CocoaPods.html'>CocoaPods</a></span>
+          					    <span class="posted-in"><a href='Debug.html'>Debug</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834492899.html">
+                
+                  <h1>git clone 过慢的问题</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ul>
+<li>进入网址<a href="https://www.ipaddress.com/">https://www.ipaddress.com/</a></li>
+<li>输入 gitHub.com 找到GitHub的ip地址 </li>
+<li>然后打开hosts 添加 ip <a href="http://github.com">http://github.com</a></li>
+</ul>
+
+<h3 id="toc_0">打开hosts的操作是</h3>
+
+<p>sudo vim /etc/hosts</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Git.html'>Git</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834492830.html">
+                
+                  <h1>在本书中，有一个示例代码从CAMediaTimingFunction获取控制点：</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>//create timing function<br/>
+CAMediaTimingFunction *function = [CAMediaTimingFunction functionWithControlPoints:1 :0 :0.75 :1];</p>
+
+<p>我得到的controlPoint值似乎是错误的：</p>
+
+<p>CGPoint controlPoint1, controlPoint2;<br/>
+[function getControlPointAtIndex:1 values:(float *)&amp;controlPoint1]; <br/>
+[function getControlPointAtIndex:2 values:(float *)&amp;controlPoint2];<br/>
+The controlPoint value that I get seems to be wrong:</p>
+
+<p>controlPoint1   CGPoint (x = 5.2635442471208903E-315, y = 4.9406564584124654E-324)<br/><br/>
+controlPoint2   CGPoint (x = 0.0078125018408172764, y = 2.8421186829703262E-314)<br/><br/>
+但是，如果我使用float数组作为参数的类型values，我得到controlPoint的正确值：</p>
+
+<p>float c1p[2], c2p[2];<br/>
+[function getControlPointAtIndex:1 values:c1p];<br/>
+[function getControlPointAtIndex:2 values:c2p];<br/>
+The values are:</p>
+
+<p>controlPoint1   CGPoint (x = 1, y = 0)<br/><br/>
+controlPoint2   CGPoint (x = 0.75, y = 1) </p>
+
+<p>32位设备可以使用第一种方法 但是在64位设备就行不通了 </p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834492767.html">
+                
+                  <h1>关于Searchbar设置搜索图标的问题</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>因为这个大小在iOS中是固定的14*14<br/>
+如果UI给的切图不是这个尺寸就会出现失真的情况（ps：因为视图的默认contentMode是UIViewContentModeScaleToFill）<br/>
+网上有的方法一般是设置一个继承自UITextfield的searchBar<br/>
+去修改SearchBar的leftView</p>
+
+<pre><code>UIImageView *searchIcon = [[UIImageView alloc] init];
+searchIcon.image = [UIImage imageNamed:@&quot;searchbar_textfield_search_icon&quot;];
+searchIcon.contentMode = UIViewContentModeCenter;        searchIcon.size = CGSizeMake(14, 14);
+self.leftView = searchIcon;
+self.leftViewMode = UITextFieldViewModeAlways;
+
+</code></pre>
+
+<p>但是其实完全可以便利UISearchBar的子视图拿到textField<br/>
+再去设置textField.leftView.contendMode即可</p>
+
+<p>其实系统方法<br/>
+[xxxbar setImage:forSearchBarIcon:state];<br/>
+内部就是设置了textField的leftView</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -231,12 +339,12 @@ You don’t have write permissions for the /usr/bin directory.</p>
 			<div class="row">
 			  <div class="large-6 columns">
 			  <p class="text-left" style="padding-top:25px;">
-			   
+			   <a href="all.html">&laquo; Prev Page</a>  
 			  </p>
 			  </div>
 			  <div class="large-6 columns">
 			<p class="text-right" style="padding-top:25px;">
-			
+			 <a href="all_2.html">&raquo; Next Page</a> 
 			</p>
 			  </div>
 			</div>

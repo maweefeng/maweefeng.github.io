@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  Flutter && Python && OC - 黑猫也紧张
+  iOS开发技巧 - 黑猫也紧张
   
   </title>
   
@@ -96,36 +96,207 @@
        
 
  <script type="text/javascript">
-  $(function(){
-    $('#menu_item_index').addClass('is_active');
-  });
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
 </script>
 <div class="row">
-  <div class="large-8 medium-8 columns">
-      <div class="markdown-body article-wrap">
-       <div class="article">
-          
-          <h1>Flutter && Python && OC</h1>
-     
-        <div class="read-more clearfix">
-          <span class="date">2018/11/21</span>
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="15427834492968.html">
+                
+                  <h1>关于instrumets 找不到debug options</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>现在已经取消了这个</p>
 
-          <span>posted in&nbsp;</span> 
-          
-              <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
-           
-         
-          <span class="comments">
-            
+<p>可以在xcode的debug - view debugging 找到</p>
 
-            
-          </span>
+<p>“核心动画工具和模板已在工具中弃用。之前在”调试选项“下的功能已移至Xcode，位于”Debug&gt; View Debugging“下。</p>
 
-        </div>
-      </div><!-- article -->
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Debug.html'>Debug</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
-      <div class="article-content">
-      <h3 id="toc_0">dart的函数定义如下所示</h3>
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834492899.html">
+                
+                  <h1>git clone 过慢的问题</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ul>
+<li>进入网址<a href="https://www.ipaddress.com/">https://www.ipaddress.com/</a></li>
+<li>输入 gitHub.com 找到GitHub的ip地址 </li>
+<li>然后打开hosts 添加 ip <a href="http://github.com">http://github.com</a></li>
+</ul>
+
+<h3 id="toc_0">打开hosts的操作是</h3>
+
+<p>sudo vim /etc/hosts</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Git.html'>Git</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834492830.html">
+                
+                  <h1>在本书中，有一个示例代码从CAMediaTimingFunction获取控制点：</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>//create timing function<br/>
+CAMediaTimingFunction *function = [CAMediaTimingFunction functionWithControlPoints:1 :0 :0.75 :1];</p>
+
+<p>我得到的controlPoint值似乎是错误的：</p>
+
+<p>CGPoint controlPoint1, controlPoint2;<br/>
+[function getControlPointAtIndex:1 values:(float *)&amp;controlPoint1]; <br/>
+[function getControlPointAtIndex:2 values:(float *)&amp;controlPoint2];<br/>
+The controlPoint value that I get seems to be wrong:</p>
+
+<p>controlPoint1   CGPoint (x = 5.2635442471208903E-315, y = 4.9406564584124654E-324)<br/><br/>
+controlPoint2   CGPoint (x = 0.0078125018408172764, y = 2.8421186829703262E-314)<br/><br/>
+但是，如果我使用float数组作为参数的类型values，我得到controlPoint的正确值：</p>
+
+<p>float c1p[2], c2p[2];<br/>
+[function getControlPointAtIndex:1 values:c1p];<br/>
+[function getControlPointAtIndex:2 values:c2p];<br/>
+The values are:</p>
+
+<p>controlPoint1   CGPoint (x = 1, y = 0)<br/><br/>
+controlPoint2   CGPoint (x = 0.75, y = 1) </p>
+
+<p>32位设备可以使用第一种方法 但是在64位设备就行不通了 </p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834492767.html">
+                
+                  <h1>关于Searchbar设置搜索图标的问题</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>因为这个大小在iOS中是固定的14*14<br/>
+如果UI给的切图不是这个尺寸就会出现失真的情况（ps：因为视图的默认contentMode是UIViewContentModeScaleToFill）<br/>
+网上有的方法一般是设置一个继承自UITextfield的searchBar<br/>
+去修改SearchBar的leftView</p>
+
+<pre><code>UIImageView *searchIcon = [[UIImageView alloc] init];
+searchIcon.image = [UIImage imageNamed:@&quot;searchbar_textfield_search_icon&quot;];
+searchIcon.contentMode = UIViewContentModeCenter;        searchIcon.size = CGSizeMake(14, 14);
+self.leftView = searchIcon;
+self.leftViewMode = UITextFieldViewModeAlways;
+
+</code></pre>
+
+<p>但是其实完全可以便利UISearchBar的子视图拿到textField<br/>
+再去设置textField.leftView.contendMode即可</p>
+
+<p>其实系统方法<br/>
+[xxxbar setImage:forSearchBarIcon:state];<br/>
+内部就是设置了textField的leftView</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834492512.html">
+                
+                  <h1>Flutter && Python && OC</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">dart的函数定义如下所示</h3>
 
 <pre><code>// Define a function.
 printInteger(int aNumber) {
@@ -197,43 +368,46 @@ def xxx(self,a,b)
 
 <p>由于没有分号和大括号所以一定要注意缩进，</p>
 
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
-    
-
-      </div>
-
-      <div class="row">
-        <div class="large-6 columns">
-        <p class="text-left" style="padding:15px 0px;">
-      
-          <a href="15427834492767.html" 
-          title="Previous Post: 关于Searchbar设置搜索图标的问题">&laquo; 关于Searchbar设置搜索图标的问题</a>
-      
-        </p>
-        </div>
-        <div class="large-6 columns">
-      <p class="text-right" style="padding:15px 0px;">
-      
-          <a  href="15427834492451.html" 
-          title="Next Post: Xcode编译找不到头文件">Xcode编译找不到头文件 &raquo;</a>
-      
-      </p>
-        </div>
-      </div>
-      <div class="comments-wrap">
-        <div class="share-comments">
-          
-
-          
-
-          
-        </div>
-      </div>
-    </div><!-- article-wrap -->
-  </div><!-- large 8 -->
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
 
 
-
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   <a href="iOS开发技巧.html">&laquo; Prev Page</a>  
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			 <a href="iOS开发技巧_2.html">&raquo; Next Page</a> 
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
 
  <div class="large-4 medium-4 columns">
   <div class="hide-for-small">

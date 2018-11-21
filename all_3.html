@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  CocoaPods - 黑猫也紧张
+  黑猫也紧张
   
   </title>
   
@@ -176,31 +176,44 @@ git config --global --unset http.<a href="https://github.com.proxy">https://gith
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834491108.html">
+                <a class="clearlink" href="15427834492083.html">
                 
-                  <h1>You don’t have write permissions</h1>
+                  <h1>对比Texture中Node和UIKit中View</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h3 id="toc_0">终端运行sudo gem update出现如下错误</h3>
+                        	<h3 id="toc_0">node.view和view的差别</h3>
 
-<blockquote>
-<p>ERROR: While executing gem … (Gem::FilePermissionError) <br/>
-You don’t have write permissions for the /usr/bin directory.</p>
-</blockquote>
+<p>再一次深刻的体会到了node.view和view的差别。<br/><br/>
+最开始一直以为node.view就类似于ASTableNode对应的UITableview<br/><br/>
+其实远远没有那么简单，并不是那么的一个对应的关系.<br/>
+必须要把一些subnode都包到一个node里面最后这个node的view对应的是这些subnode的集合。<br/><br/>
+如果只是</p>
 
-<p>试一下这一段代码</p>
+<pre><code>ASDisplayNode * node = [[ASDisplayNode alloc]init];
+ASDisplayNode * subnode = [ASDisplayNode new];
+ASTextNode * textnode = [ASTextNode new];                    
+ASButtonNode * buttonnode = [ASButtonNode new];
+[node addSubnode:subnode];
+[node addSubnode:textnode];
+[node addSubnode:buttonnode];
 
-<blockquote>
-<p>sudo gem install -n /usr/local/bin cocoapods</p>
-</blockquote>
+</code></pre>
 
-<p>这表示是在本地环境去安装cocoaPods</p>
+<p>我是在给tableview添加node为tableHeaderView发现的这个问题 <br/>
+后面新建一个node 把这些subnode都包进去问题就解决了。</p>
 
-<h3 id="toc_1">使用Homebrew安装cocoaPods的地址</h3>
+<p>这个时候把node.view 当成这三个subnode的集合就会出现问题</p>
 
-<p>/usr/local/Cellar/</p>
+<h3 id="toc_1">阴影以及圆角的设置</h3>
+
+<p>在使用UIview添加阴影以及同时添加圆角的时候不能设.clipsToBounds = YES<br/>
+但是切圆角的时候就需要设置.clipsToBounds  = YES <br/>
+当时的做法也是最外层放置一个UIView的壳子，让外层的.clipsTobounds = NO 里面的.clipsTobounds = YES <br/>
+在外边的view添加阴影的效果。</p>
+
+<p>使用node的时候也是这样的原理。</p>
 
                         
                       </div>
@@ -212,7 +225,194 @@ You don’t have write permissions for the /usr/bin directory.</p>
                     <span class="date">2018/11/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='CocoaPods.html'>CocoaPods</a></span>
+          					    <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834492024.html">
+                
+                  <h1>Command line instructions</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">Git global setup</h3>
+
+<p>git config --global user.name &quot;mawf09&quot;<br/>
+git config --global user.email &quot;<a href="mailto:mawf09@guahao.com">mawf09@guahao.com</a>&quot;</p>
+
+<h3 id="toc_1">Create a new repository</h3>
+
+<ul>
+<li>git clone <a href="mailto:git@git.guahao-inc.com">git@git.guahao-inc.com</a>:PalmHospital/PalmHospitalDrTongji.git</li>
+<li>cd PalmHospitalDrTongji</li>
+<li>touch README.md</li>
+<li>git add README.md</li>
+<li>git commit -m &quot;add README&quot;</li>
+<li>git push -u origin master</li>
+</ul>
+
+<h3 id="toc_2">Existing folder</h3>
+
+<ul>
+<li>cd existing_folder</li>
+<li>git init</li>
+<li>git remote add origin <a href="mailto:git@git.guahao-inc.com">git@git.guahao-inc.com</a>:PalmHospital/PalmHospitalDrTongji.git</li>
+<li>git add .</li>
+<li>git commit -m &quot;Initial commit&quot;</li>
+<li>git push -u origin master</li>
+</ul>
+
+<h3 id="toc_3">Existing Git repository</h3>
+
+<ul>
+<li>cd existing_repo</li>
+<li>git remote add origin <a href="mailto:git@git.guahao-inc.com">git@git.guahao-inc.com</a>:PalmHospital/PalmHospitalDrTongji.git</li>
+<li>git push -u origin --all</li>
+<li>git push -u origin --tags</li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Git.html'>Git</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834491963.html">
+                
+                  <h1>Git提交代码issue</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">issue1:</h3>
+
+<p>fatal:unable to access &#39;<a href="https://github.com/xxx/xxx.git">https://github.com/xxx/xxx.git</a>&#39; OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com 443</p>
+
+<h3 id="toc_1">解决方法：</h3>
+
+<p>env命令设置GIT_SSL_NO_VERIFY环境变量为”ture”，并同时调用正常的git clone命令 env GIT_SSL_NO_VERIFY=true git clone <a href="https://github.com/xxx/xxx.git">https://github.com/xxx/xxx.git</a><br/><br/>
+当你通过HTTPS访问Git远程仓库，如果服务器的SSL证书未经过第三方机构签署，那么Git就会报错。在克隆完毕的仓库中还需要将http.sslVerify设置为”false”。完整的命令如下：<br/><br/>
+git config http.sslVerify &quot;false&quot;、</p>
+
+<h3 id="toc_2">issue2：</h3>
+
+<p>Failed to connect to 127.0.0.1 port 1080: Connection refused<br/>
+查询是否使用代理：git config --global http.proxy <br/>
+取消代理：git config --global --unset http.proxy</p>
+
+<h3 id="toc_3">终端走代理</h3>
+
+<p>在终端中直接运行命令<br/>
+export http_proxy=<a href="http://proxyAddress:port">http://proxyAddress:port</a><br/>
+这个办法的好处是简单直接，并且影响面很小（只对当前终端有效，退出就不行了）。</p>
+
+<p>如果你用的是ss代理，在当前终端运行以下命令，那么wget curl 这类网络命令都会经过ss代理<br/>
+export ALL_PROXY=socks5://127.0.0.1:1080</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Git.html'>Git</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834491890.html">
+                
+                  <h1>Block防止内存泄漏问题</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">关于block的一点注意 特别是网络请求这块</h3>
+
+<p>Block捕获外界变量销毁<br/>
+我们再进一步想想，Block有个最大的特点是可以访问当前的作用域，我们随便创建一个数组，重复上面操作，是否能够销毁</p>
+
+<pre><code>- (void)blockDemo {
+    NSArray *outsideArray = @[@1, @2, @3];
+    
+    [self.service requestWithParms:nil WithResult:^(id data, NSError *error) {
+        // 处理业务逻辑
+        // ...
+        
+        NSLog(@&quot;Result from block:%@&quot;, data);
+        NSLog(@&quot;outsideArray :%@&quot;, outsideArray);
+    }];
+}
+
+打印结果：
+2018-03-25 19:55:40.997535+0800 NetworkCallback[4970:3641450] NextPageViewController has been dealloc!
+2018-03-25 19:55:44.831721+0800 NetworkCallback[4970:3641450] outsideArray :(
+    1,
+    2,
+    3
+)
+</code></pre>
+
+<p>神奇不？！<br/>
+注意，vc先销毁了，但是5s后，这个临时变量竟然还没有销毁。那么这个变量存储在哪里呢？留个悬念<br/>
+考虑一下，如果你在Block代码里访问了一个超大的文件，这个文件必然是保存内存的，然后此时你遇上了网络慢，接口好久没有返回，那么这个超大的文件就会一直占用内存<br/>
+内存小结<br/>
+使用Block无论是否有循环引用的可能，都要使用weakself，来防止vc被持有，而延迟释放<br/>
+Block会导致对象的生命周期被延长，特别是当某些大文件被Block访问时，有几率导致内存不足</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -231,12 +431,12 @@ You don’t have write permissions for the /usr/bin directory.</p>
 			<div class="row">
 			  <div class="large-6 columns">
 			  <p class="text-left" style="padding-top:25px;">
-			   
+			   <a href="all_2.html">&laquo; Prev Page</a>  
 			  </p>
 			  </div>
 			  <div class="large-6 columns">
 			<p class="text-right" style="padding-top:25px;">
-			
+			 <a href="all_4.html">&raquo; Next Page</a> 
 			</p>
 			  </div>
 			</div>

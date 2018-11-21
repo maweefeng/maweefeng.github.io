@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  给UITableView边框加阴影 - 黑猫也紧张
+  iOS开发技巧 - 黑猫也紧张
   
   </title>
   
@@ -96,125 +96,67 @@
        
 
  <script type="text/javascript">
-  $(function(){
-    $('#menu_item_index').addClass('is_active');
-  });
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
 </script>
 <div class="row">
-  <div class="large-8 medium-8 columns">
-      <div class="markdown-body article-wrap">
-       <div class="article">
-          
-          <h1>给UITableView边框加阴影</h1>
-     
-        <div class="read-more clearfix">
-          <span class="date">2018/11/21</span>
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="15427834491002.html">
+                
+                  <h1>代理修饰符</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">为什么代理修饰要用weak而不是assgin</h3>
 
-          <span>posted in&nbsp;</span> 
-          
-              <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
-           
-         
-          <span class="comments">
-            
+<p>weak 一旦不被引用的时候就不会再使用了，就会被置位nil，oc中使用nil执行操作不会引起崩溃，所以即使再次使用也不会产生野指针。<br/><br/>
+但是如果是用assgin修饰，一旦不被引用不会自动置nil,当再次操作这个对象的代理方法的时候就会产生野指针引起程序崩溃。</p>
 
-            
-          </span>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
-        </div>
-      </div><!-- article -->
-
-      <div class="article-content">
-      <p>项目中有个需求要在UITableView加边框阴影  </p>
-
-<p>如果你的界面的UITableView是充满整个屏幕的话那么就可以使用这个简单的方法。   </p>
-
-<ul>
-<li>方法一</li>
-</ul>
-
-<pre><code>tableView.layer.shadowColor = UIColor(white: 000000, alpha: 0.3).CGColor
-
-tableView.layer.shadowOffset = CGSize(width: -6, height: 6)
-
-tableView.layer.shadowOpacity = 1
-
-tableView.clipsToBounds = false //这句最重要了，不然就显示不出来
-</code></pre>
-
-<h4 id="toc_0">问题来了</h4>
-
-<p>我的界面UITableview上面有一个固定不动的区域，如果单纯的照上面写的话，就会出现tableview盖住上面的问题 <br/>
-其实就是因为clipsToBounds = false 不对超出边框的部分进行切割。<br/><br/>
-因为UIScrollview默认clipsToBounds = true,所以你可能之前没有见过超出部分依然还显示在界面。 </p>
-
-<p>我的界面如下图所示<br/>
-<img src="https://lh3.googleusercontent.com/-Zq0sRfLUSQA/W_Jq6QFUYnI/AAAAAAAAlSU/JFoyTporhCgZafmew7cHT7yWGo2fn1ATQCHMYCw/I/15426133929938.jpg" alt=""/></p>
-
-<p>如果父视图的clipsToBounds = true那么在上面的子控件的clipsToBounds 也是true<br/><br/>
-所以必须要在UITableview下面添加一个UIView，可以使用下面的代码<br/><br/>
-必须要使UITableView的clipsToBounds = true，下面的父视图的clipsToBounds = false</p>
-
-<ul>
-<li>方法二</li>
-</ul>
-
-<pre><code>    self.backView = [[UIView alloc]initWithFrame:CGRectMake(originX, originY, Width,  height)];
-    self.backView.layer.shadowColor = [UIColor gh_colorFromHexString:@&quot;#002F81&quot;].CGColor;
-    self.backView.layer.shadowOffset = CGSizeMake(0, 2);
-    self.backView.layer.shadowOpacity = 0.1;
-    self.backView.layer.shadowRadius=8;//设置阴影半径
-    self.backView.clipsToBounds = false;
-    [self.view addSubview:self.backView];
-    
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,0, Width, height) style:UITableViewStylePlain];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    self.tableView.layer.cornerRadius = KScreenWidth/375 *4;
-    self.tableView.layer.masksToBounds = YES;
-    self.tableView.tableFooterView = [UIView new];
-    [self.backView addSubview:self.tableView];
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
 
 
-</code></pre>
-
-
-    
-
-      </div>
-
-      <div class="row">
-        <div class="large-6 columns">
-        <p class="text-left" style="padding:15px 0px;">
-      
-          <a href="15427834491441.html" 
-          title="Previous Post: 设置图片拉伸范围">&laquo; 设置图片拉伸范围</a>
-      
-        </p>
-        </div>
-        <div class="large-6 columns">
-      <p class="text-right" style="padding:15px 0px;">
-      
-          <a  href="15427834491315.html" 
-          title="Next Post: 通讯录排序">通讯录排序 &raquo;</a>
-      
-      </p>
-        </div>
-      </div>
-      <div class="comments-wrap">
-        <div class="share-comments">
-          
-
-          
-
-          
-        </div>
-      </div>
-    </div><!-- article-wrap -->
-  </div><!-- large 8 -->
-
-
-
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   <a href="iOS开发技巧_5.html">&laquo; Prev Page</a>  
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
 
  <div class="large-4 medium-4 columns">
   <div class="hide-for-small">
