@@ -113,178 +113,26 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15427834491890.html">
+                <a class="clearlink" href="15426943817961.html">
                 
-                  <h1>Block防止内存泄漏问题</h1>
+                  <h1>Xcode10报错libstdc</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h3 id="toc_0">关于block的一点注意 特别是网络请求这块</h3>
+                        	<h3 id="toc_0">解决方法</h3>
 
-<p>Block捕获外界变量销毁<br/>
-我们再进一步想想，Block有个最大的特点是可以访问当前的作用域，我们随便创建一个数组，重复上面操作，是否能够销毁</p>
+<p>首先解压同级目录下的libstdc压缩包</p>
 
-<pre><code>- (void)blockDemo {
-    NSArray *outsideArray = @[@1, @2, @3];
-    
-    [self.service requestWithParms:nil WithResult:^(id data, NSError *error) {
-        // 处理业务逻辑
-        // ...
-        
-        NSLog(@&quot;Result from block:%@&quot;, data);
-        NSLog(@&quot;outsideArray :%@&quot;, outsideArray);
-    }];
-}
+<h4 id="toc_1">1.真机</h4>
 
-打印结果：
-2018-03-25 19:55:40.997535+0800 NetworkCallback[4970:3641450] NextPageViewController has been dealloc!
-2018-03-25 19:55:44.831721+0800 NetworkCallback[4970:3641450] outsideArray :(
-    1,
-    2,
-    3
-)
-</code></pre>
+<p>将libstdc_iPhoneOS拷贝到/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/lib</p>
 
-<p>神奇不？！<br/>
-注意，vc先销毁了，但是5s后，这个临时变量竟然还没有销毁。那么这个变量存储在哪里呢？留个悬念<br/>
-考虑一下，如果你在Block代码里访问了一个超大的文件，这个文件必然是保存内存的，然后此时你遇上了网络慢，接口好久没有返回，那么这个超大的文件就会一直占用内存<br/>
-内存小结<br/>
-使用Block无论是否有循环引用的可能，都要使用weakself，来防止vc被持有，而延迟释放<br/>
-Block会导致对象的生命周期被延长，特别是当某些大文件被Block访问时，有几率导致内存不足</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834491808.html">
-                
-                  <h1>终端命令设置代理</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>让终端走代理的几种方法<br/>
-Macproxyterminal<br/>
-（2017.9.17更新）</p>
-
-<p>方法1:<br/>
-在终端中直接运行命令<br/>
-export http_proxy=<a href="http://proxyAddress:port">http://proxyAddress:port</a><br/>
-这个办法的好处是简单直接，并且影响面很小（只对当前终端有效，退出就不行了）。</p>
-
-<p>如果你用的是ss代理，在当前终端运行以下命令，那么wget curl 这类网络命令都会经过ss代理<br/>
-export ALL_PROXY=socks5://127.0.0.1:1080</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Git.html'>Git</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834491747.html">
-                
-                  <h1>终端命令</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>我们可以在 terminal 用 system profiler 命令来获取连接 mac 的 usb 设备：<br/>
-system_profiler SPUSBDataType</p>
+<h4 id="toc_2">2.模拟器</h4>
 
 <ul>
-<li>ls 查看当前路径下的文件以及文件夹的名字</li>
-<li>ls /bin 表示查看根目录下的bin文件夹的东西</li>
-<li>ls docments 查看当前路径下documents文件夹下的所有东西</li>
-<li>cd .. 跳转到当前路径的上一层</li>
-<li>pwd 显示当前操作的路径 (绝对路径)</li>
-<li>clear 清屏</li>
-<li>touch 生成文件</li>
-<li>ifconfig 查看设备的ip地址</li>
-<li>netstat -an </li>
-</ul>
-
-<h3 id="toc_0">查看内存占用情况</h3>
-
-<p>sudo du -sh * <br/>
-<img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fuch6fzertj30iy0da0ur.jpg" alt=""/></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Git.html'>Git</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834491628.html">
-                
-                  <h1>设置Cell分割线顶头</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ul>
-<li>(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-cell.layoutMargins = UIEdgeInsetsZero;
-cell.separatorInset = UIEdgeInsetsZero;
-cell.preservesSuperviewLayoutMargins = NO;
-}
-UITableView设置系统cell的分割线顶头</li>
+<li><p>将libstdc_iPhoneSimulator拷贝到/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/usr/lib/</p></li>
+<li><p>将libstdc_iPhoneSimulator_runtime拷贝到/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime/Contents/Resources/RuntimeRoot/usr/lib/</p></li>
 </ul>
 
                         
@@ -294,43 +142,10 @@ UITableView设置系统cell的分割线顶头</li>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/11/21</span>
+                    <span class="date">2018/11/20</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834491567.html">
-                
-                  <h1>视图的绘制周期</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>当view第一次在屏幕上显示的时候，系统会绘制它的内容，然后系统会截取内容的快照，并且将快照作为视图的可见外观，如果你永远不改变视图的内容，那么视图的绘制代码永远不会改变。如果更改了视图的内容，不用直接重新绘制，而是使用setNeedsDisplay或者setNeedsDisplayInRect方法是视图无效。这些方法会告知视图内容以及改变并且需要在下一次进行重绘。如果需要立马重绘，那么需要使用layoutIfNeeded方法。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
+          					    <span class="posted-in"><a href='IOS%E5%88%A8%E5%9D%91.html'>IOS刨坑</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -349,12 +164,12 @@ UITableView设置系统cell的分割线顶头</li>
 			<div class="row">
 			  <div class="large-6 columns">
 			  <p class="text-left" style="padding-top:25px;">
-			   <a href="all_3.html">&laquo; Prev Page</a>  
+			   <a href="all_6.html">&laquo; Prev Page</a>  
 			  </p>
 			  </div>
 			  <div class="large-6 columns">
 			<p class="text-right" style="padding-top:25px;">
-			 <a href="all_5.html">&raquo; Next Page</a> 
+			
 			</p>
 			  </div>
 			</div>

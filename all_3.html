@@ -78,11 +78,19 @@
         
             <li><a href="MVVM+RAC.html">MVVM+RAC</a></li>
         
+            <li><a href="CocoaPods.html">CocoaPods</a></li>
+        
             <li><a href="IOS%E5%88%A8%E5%9D%91.html">IOS刨坑</a></li>
+        
+            <li><a href="Git.html">Git</a></li>
         
             <li><a href="iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html">iOS开发技巧</a></li>
         
+            <li><a href="Debug.html">Debug</a></li>
+        
             <li><a href="About%20Me.html">About Me</a></li>
+        
+            <li><a href="Xcode.html">Xcode</a></li>
          
 
       </ul>
@@ -104,6 +112,43 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15427834492260.html">
+                
+                  <h1>SDWebImageview 不能加载HTTPS图片</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>这个问题是因为图片地址所在的服务器没有有效的SSL证书文件<br/>
+只需要在Options参数中设置SDWebImaweefenggeAllowInvalidSSLCertificates枚举就可</p>
+
+<pre><code>[self.avatarImageView sd_setImageWithURL: [NSURL URLWithString: famousStarObject.avatar] placeholderImage: [UIImage imageNamed: @&quot;icon_default_avator&quot;] options: SDWebImageAllowInvalidSSLCertificates];
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15427834492143.html">
                 
@@ -361,70 +406,6 @@ export ALL_PROXY=socks5://127.0.0.1:1080</p>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15427834491890.html">
-                
-                  <h1>Block防止内存泄漏问题</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">关于block的一点注意 特别是网络请求这块</h3>
-
-<p>Block捕获外界变量销毁<br/>
-我们再进一步想想，Block有个最大的特点是可以访问当前的作用域，我们随便创建一个数组，重复上面操作，是否能够销毁</p>
-
-<pre><code>- (void)blockDemo {
-    NSArray *outsideArray = @[@1, @2, @3];
-    
-    [self.service requestWithParms:nil WithResult:^(id data, NSError *error) {
-        // 处理业务逻辑
-        // ...
-        
-        NSLog(@&quot;Result from block:%@&quot;, data);
-        NSLog(@&quot;outsideArray :%@&quot;, outsideArray);
-    }];
-}
-
-打印结果：
-2018-03-25 19:55:40.997535+0800 NetworkCallback[4970:3641450] NextPageViewController has been dealloc!
-2018-03-25 19:55:44.831721+0800 NetworkCallback[4970:3641450] outsideArray :(
-    1,
-    2,
-    3
-)
-</code></pre>
-
-<p>神奇不？！<br/>
-注意，vc先销毁了，但是5s后，这个临时变量竟然还没有销毁。那么这个变量存储在哪里呢？留个悬念<br/>
-考虑一下，如果你在Block代码里访问了一个超大的文件，这个文件必然是保存内存的，然后此时你遇上了网络慢，接口好久没有返回，那么这个超大的文件就会一直占用内存<br/>
-内存小结<br/>
-使用Block无论是否有循环引用的可能，都要使用weakself，来防止vc被持有，而延迟释放<br/>
-Block会导致对象的生命周期被延长，特别是当某些大文件被Block访问时，有几率导致内存不足</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -481,11 +462,19 @@ Block会导致对象的生命周期被延长，特别是当某些大文件被Blo
         
             <a href="MVVM+RAC.html"><strong>MVVM+RAC</strong></a>
         
+            <a href="CocoaPods.html"><strong>CocoaPods</strong></a>
+        
             <a href="IOS%E5%88%A8%E5%9D%91.html"><strong>IOS刨坑</strong></a>
+        
+            <a href="Git.html"><strong>Git</strong></a>
         
             <a href="iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html"><strong>iOS开发技巧</strong></a>
         
+            <a href="Debug.html"><strong>Debug</strong></a>
+        
             <a href="About%20Me.html"><strong>About Me</strong></a>
+        
+            <a href="Xcode.html"><strong>Xcode</strong></a>
          
         </p>
 
@@ -500,6 +489,12 @@ Block会导致对象的生命周期被延长，特别是当某些大文件被Blo
                 <div class="side-content">
                 <ul class="posts-list">
 	      
+		      
+			      <li class="post">
+			        <a href="15427945343440.html">消除CocoaPods引入第三方SDK的警告</a>
+			      </li>
+		     
+		  
 		      
 			      <li class="post">
 			        <a href="15427857390238.html">Hello Mr.Ma</a>
@@ -521,12 +516,6 @@ Block会导致对象的生命周期被延长，特别是当某些大文件被Blo
 		      
 			      <li class="post">
 			        <a href="15427834493214.html">iOS开发一些小技巧</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15427834493152.html">检测离屏渲染了</a>
 			      </li>
 		     
 		  

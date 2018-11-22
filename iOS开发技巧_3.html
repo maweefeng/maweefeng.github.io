@@ -78,11 +78,19 @@
         
             <li><a href="MVVM+RAC.html">MVVM+RAC</a></li>
         
+            <li><a href="CocoaPods.html">CocoaPods</a></li>
+        
             <li><a href="IOS%E5%88%A8%E5%9D%91.html">IOS刨坑</a></li>
+        
+            <li><a href="Git.html">Git</a></li>
         
             <li><a href="iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html">iOS开发技巧</a></li>
         
+            <li><a href="Debug.html">Debug</a></li>
+        
             <li><a href="About%20Me.html">About Me</a></li>
+        
+            <li><a href="Xcode.html">Xcode</a></li>
          
 
       </ul>
@@ -105,231 +113,92 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15427834492083.html">
+                <a class="clearlink" href="15427834491315.html">
                 
-                  <h1>对比Texture中Node和UIKit中View</h1>
+                  <h1>通讯录排序</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h3 id="toc_0">node.view和view的差别</h3>
+                        	<h3 id="toc_0">苹果提供的排序方法</h3>
 
-<p>再一次深刻的体会到了node.view和view的差别。<br/><br/>
-最开始一直以为node.view就类似于ASTableNode对应的UITableview<br/><br/>
-其实远远没有那么简单，并不是那么的一个对应的关系.<br/>
-必须要把一些subnode都包到一个node里面最后这个node的view对应的是这些subnode的集合。<br/><br/>
-如果只是</p>
+<p>NSArray *stringArr = @[@&quot;我们&quot;,@&quot;我的&quot;, @&quot;重点&quot;, @&quot;重庆&quot;,  @&quot;三&quot;]; NSArray *result = [stringArr sortedArrayUsingSelector:@selector(localizedCompare:)];</p>
 
-<pre><code>ASDisplayNode * node = [[ASDisplayNode alloc]init];
-ASDisplayNode * subnode = [ASDisplayNode new];
-ASTextNode * textnode = [ASTextNode new];                    
-ASButtonNode * buttonnode = [ASButtonNode new];
-[node addSubnode:subnode];
-[node addSubnode:textnode];
-[node addSubnode:buttonnode];
+<p>字典当中的keyvalue 可以一个键对应一个数组。</p>
 
-</code></pre>
+<h3 id="toc_1">对数据进行排列按首字母进行分组</h3>
 
-<p>我是在给tableview添加node为tableHeaderView发现的这个问题 <br/>
-后面新建一个node 把这些subnode都包进去问题就解决了。</p>
-
-<p>这个时候把node.view 当成这三个subnode的集合就会出现问题</p>
-
-<h3 id="toc_1">阴影以及圆角的设置</h3>
-
-<p>在使用UIview添加阴影以及同时添加圆角的时候不能设.clipsToBounds = YES<br/>
-但是切圆角的时候就需要设置.clipsToBounds  = YES <br/>
-当时的做法也是最外层放置一个UIView的壳子，让外层的.clipsTobounds = NO 里面的.clipsTobounds = YES <br/>
-在外边的view添加阴影的效果。</p>
-
-<p>使用node的时候也是这样的原理。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834492024.html">
-                
-                  <h1>Command line instructions</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">Git global setup</h3>
-
-<p>git config --global user.name &quot;mawf09&quot;<br/>
-git config --global user.email &quot;<a href="mailto:mawf09@xxx.com">mawf09@xxx.com</a>&quot;</p>
-
-<h3 id="toc_1">Create a new repository</h3>
-
-<ul>
-<li>git clone git地址</li>
-<li>cd 制定文件夹</li>
-<li>touch README.md</li>
-<li>git add README.md</li>
-<li>git commit -m &quot;add README&quot;</li>
-<li>git push -u origin master</li>
-</ul>
-
-<h3 id="toc_2">Existing folder</h3>
-
-<ul>
-<li>cd existing_folder</li>
-<li>git init</li>
-<li>git remote add origin git地址</li>
-<li>git add .</li>
-<li>git commit -m &quot;Initial commit&quot;</li>
-<li>git push -u origin master</li>
-</ul>
-
-<h3 id="toc_3">Existing Git repository</h3>
-
-<ul>
-<li>cd existing_repo</li>
-<li>git remote add origin git地址</li>
-<li>git push -u origin --all</li>
-<li>git push -u origin --tags</li>
-</ul>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Git.html'>Git</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834491963.html">
-                
-                  <h1>Git提交代码issue</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">issue1:</h3>
-
-<p>fatal:unable to access &#39;<a href="https://github.com/xxx/xxx.git">https://github.com/xxx/xxx.git</a>&#39; OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com 443</p>
-
-<h3 id="toc_1">解决方法：</h3>
-
-<p>env命令设置GIT_SSL_NO_VERIFY环境变量为”ture”，并同时调用正常的git clone命令 env GIT_SSL_NO_VERIFY=true git clone <a href="https://github.com/xxx/xxx.git">https://github.com/xxx/xxx.git</a><br/><br/>
-当你通过HTTPS访问Git远程仓库，如果服务器的SSL证书未经过第三方机构签署，那么Git就会报错。在克隆完毕的仓库中还需要将http.sslVerify设置为”false”。完整的命令如下：<br/><br/>
-git config http.sslVerify &quot;false&quot;、</p>
-
-<h3 id="toc_2">issue2：</h3>
-
-<p>Failed to connect to 127.0.0.1 port 1080: Connection refused<br/>
-查询是否使用代理：git config --global http.proxy <br/>
-取消代理：git config --global --unset http.proxy</p>
-
-<h3 id="toc_3">终端走代理</h3>
-
-<p>在终端中直接运行命令<br/>
-export http_proxy=<a href="http://proxyAddress:port">http://proxyAddress:port</a><br/>
-这个办法的好处是简单直接，并且影响面很小（只对当前终端有效，退出就不行了）。</p>
-
-<p>如果你用的是ss代理，在当前终端运行以下命令，那么wget curl 这类网络命令都会经过ss代理<br/>
-export ALL_PROXY=socks5://127.0.0.1:1080</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Git.html'>Git</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834491890.html">
-                
-                  <h1>Block防止内存泄漏问题</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">关于block的一点注意 特别是网络请求这块</h3>
-
-<p>Block捕获外界变量销毁<br/>
-我们再进一步想想，Block有个最大的特点是可以访问当前的作用域，我们随便创建一个数组，重复上面操作，是否能够销毁</p>
-
-<pre><code>- (void)blockDemo {
-    NSArray *outsideArray = @[@1, @2, @3];
+<pre><code>这是苹果的方法
+-(void)userSorting:(NSMutableArray *)modelArr{
     
-    [self.service requestWithParms:nil WithResult:^(id data, NSError *error) {
-        // 处理业务逻辑
-        // ...
+    for ( modelAgreementCitizenItem *model in modelArr) {
+        //获取汉子的首字母
+        //把中文转拼音
         
-        NSLog(@&quot;Result from block:%@&quot;, data);
-        NSLog(@&quot;outsideArray :%@&quot;, outsideArray);
-    }];
+        NSMutableString *ms = [[NSMutableString alloc] initWithString:[model patientName]];
+        if (CFStringTransform((__bridge CFMutableStringRef)ms, 0, kCFStringTransformMandarinLatin, NO)) {
+            NSLog(@&quot;Pingying: %@&quot;, ms);
+        }
+        if (CFStringTransform((__bridge CFMutableStringRef)ms, 0, kCFStringTransformStripDiacritics, NO)) {
+            NSLog(@&quot;Pingying: %@&quot;, ms);
+        }
+        NSString *firstString = [[ms substringToIndex:1] uppercaseString];
+        
+        
+        NSMutableArray * arr = [self.nameDic objectForKey:firstString];
+        if (arr) {
+            [arr addObject:model];
+        }else{//如果没有 则需要创建一个添加到里面
+            [self.nameDic setObject:[@[model] mutableCopy] forKey:firstString];
+        }
+        
+    }
+    
+}
+这个方法使用起来比较慢 耗时较长
+-(NSMutableArray *)userSorting:(NSMutableArray *)modelArr{
+    
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    if(self.indexArr.count){
+        [self.indexArr removeAllObjects];
+    }
+    
+    for(int i=&#39;A&#39;;i&lt;=&#39;Z&#39;;i++)
+    {
+        NSMutableArray *rulesArray = [[NSMutableArray alloc] init];
+        
+        NSString *str1=[NSString stringWithFormat:@&quot;%c&quot;,i];
+        for(int j=0;j&lt;modelArr.count;j++)
+        {
+            modelAgreementCitizenItem *model = [modelArr objectAtIndex:j];  //这个model 是我自己创建的 里面包含用户的姓名 手机号 和 转化成功后的首字母
+            
+            if([[NSString getFirstLetter:model.patientName] isEqualToString:str1])
+            {
+                [rulesArray addObject:model];    //把首字母相同的人物model 放到同一个数组里面
+                [modelArr removeObject:model];   //model 放到 rulesArray 里面说明这个model 已经拍好序了 所以从总的modelArr里面删除
+                j--;
+                
+            }else{
+                
+            }
+        }
+        if (rulesArray.count !=0) {
+            [array addObject:rulesArray];
+            [self.indexArr addObject:[NSString stringWithFormat:@&quot;%c&quot;,i]]; //把大写字母也放到一个数组里面
+        }
+    }
+    
+    if (modelArr.count !=0) {
+        [array addObject:modelArr];
+        [self.indexArr addObject:@&quot;#&quot;];  //把首字母不是A~Z里的字符全部放到 array里面 然后返回
+    }
+    
+    return array;
+    
 }
 
-打印结果：
-2018-03-25 19:55:40.997535+0800 NetworkCallback[4970:3641450] NextPageViewController has been dealloc!
-2018-03-25 19:55:44.831721+0800 NetworkCallback[4970:3641450] outsideArray :(
-    1,
-    2,
-    3
-)
-</code></pre>
 
-<p>神奇不？！<br/>
-注意，vc先销毁了，但是5s后，这个临时变量竟然还没有销毁。那么这个变量存储在哪里呢？留个悬念<br/>
-考虑一下，如果你在Block代码里访问了一个超大的文件，这个文件必然是保存内存的，然后此时你遇上了网络慢，接口好久没有返回，那么这个超大的文件就会一直占用内存<br/>
-内存小结<br/>
-使用Block无论是否有循环引用的可能，都要使用weakself，来防止vc被持有，而延迟释放<br/>
-Block会导致对象的生命周期被延长，特别是当某些大文件被Block访问时，有几率导致内存不足</p>
+</code></pre>
 
                         
                       </div>
@@ -355,24 +224,17 @@ Block会导致对象的生命周期被延长，特别是当某些大文件被Blo
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834491808.html">
+                <a class="clearlink" href="15427834491253.html">
                 
-                  <h1>终端命令设置代理</h1>
+                  <h1>堆栈的一点区别</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>让终端走代理的几种方法<br/>
-Macproxyterminal<br/>
-（2017.9.17更新）</p>
-
-<p>方法1:<br/>
-在终端中直接运行命令<br/>
-export http_proxy=<a href="http://proxyAddress:port">http://proxyAddress:port</a><br/>
-这个办法的好处是简单直接，并且影响面很小（只对当前终端有效，退出就不行了）。</p>
-
-<p>如果你用的是ss代理，在当前终端运行以下命令，那么wget curl 这类网络命令都会经过ss代理<br/>
-export ALL_PROXY=socks5://127.0.0.1:1080</p>
+                        	<ul>
+<li>栈是后进先出的顺序<br/></li>
+<li>而堆是根据优先级的顺序 </li>
+</ul>
 
                         
                       </div>
@@ -384,7 +246,101 @@ export ALL_PROXY=socks5://127.0.0.1:1080</p>
                     <span class="date">2018/11/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='Git.html'>Git</a></span>
+          					    <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834491194.html">
+                
+                  <h1>隐藏导航栏底部的线条</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>有时候遇到一些特殊的要求，需要隐藏导航栏底部的线条。<br/>
+两行代码就可以做到。</p>
+
+<ul>
+<li><p>方法一:<br/><br/>
+设置导航栏的背景图（setBackgroundImage方法）<br/><br/>
+设置导航栏的shadowImage (setShadowImage方法)<br/><br/>
+UINavigationBar *navigationBar = self.navigationController.navigationBar;<br/><br/>
+//设置透明的背景图，便于识别底部线条有没有被隐藏<br/><br/>
+[navigationBar setBackgroundImage:[[UIImage alloc] init]<br/>
+                   forBarPosition:UIBarPositionAny<br/>
+                       barMetrics:UIBarMetricsDefault];<br/><br/>
+//此处使底部线条失效<br/>
+[navigationBar setShadowImage:[UIImage new]];</p></li>
+<li><p>方法二：<br/>
+self.navigationController.navigationBar.clipsToBounds = YES; </p></li>
+</ul>
+
+<h3 id="toc_0">导航栏全局属性设置</h3>
+
+<p>//全局设置导航栏主题<br/>
+- (void)setNavigationControllerAppearance {<br/>
+    [UINavigationBar appearance].barStyle  = UIBarStyleBlack;<br/>
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithWhite:0.1 alpha:0.5]];<br/>
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];<br/>
+}</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834491002.html">
+                
+                  <h1>代理修饰符</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">为什么代理修饰要用weak而不是assgin</h3>
+
+<p>weak 一旦不被引用的时候就不会再使用了，就会被置位nil，oc中使用nil执行操作不会引起崩溃，所以即使再次使用也不会产生野指针。<br/><br/>
+但是如果是用assgin修饰，一旦不被引用不会自动置nil,当再次操作这个对象的代理方法的时候就会产生野指针引起程序崩溃。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -408,7 +364,7 @@ export ALL_PROXY=socks5://127.0.0.1:1080</p>
 			  </div>
 			  <div class="large-6 columns">
 			<p class="text-right" style="padding-top:25px;">
-			 <a href="iOS开发技巧_4.html">&raquo; Next Page</a> 
+			
 			</p>
 			  </div>
 			</div>
@@ -453,11 +409,19 @@ export ALL_PROXY=socks5://127.0.0.1:1080</p>
         
             <a href="MVVM+RAC.html"><strong>MVVM+RAC</strong></a>
         
+            <a href="CocoaPods.html"><strong>CocoaPods</strong></a>
+        
             <a href="IOS%E5%88%A8%E5%9D%91.html"><strong>IOS刨坑</strong></a>
+        
+            <a href="Git.html"><strong>Git</strong></a>
         
             <a href="iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html"><strong>iOS开发技巧</strong></a>
         
+            <a href="Debug.html"><strong>Debug</strong></a>
+        
             <a href="About%20Me.html"><strong>About Me</strong></a>
+        
+            <a href="Xcode.html"><strong>Xcode</strong></a>
          
         </p>
 
@@ -472,6 +436,12 @@ export ALL_PROXY=socks5://127.0.0.1:1080</p>
                 <div class="side-content">
                 <ul class="posts-list">
 	      
+		      
+			      <li class="post">
+			        <a href="15427945343440.html">消除CocoaPods引入第三方SDK的警告</a>
+			      </li>
+		     
+		  
 		      
 			      <li class="post">
 			        <a href="15427857390238.html">Hello Mr.Ma</a>
@@ -493,12 +463,6 @@ export ALL_PROXY=socks5://127.0.0.1:1080</p>
 		      
 			      <li class="post">
 			        <a href="15427834493214.html">iOS开发一些小技巧</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15427834493152.html">检测离屏渲染了</a>
 			      </li>
 		     
 		  

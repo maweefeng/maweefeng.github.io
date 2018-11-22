@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  代理修饰符 - 黑猫也紧张
+  消除CocoaPods引入第三方SDK的警告 - 黑猫也紧张
   
   </title>
   
@@ -113,14 +113,14 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>代理修饰符</h1>
+          <h1>消除CocoaPods引入第三方SDK的警告</h1>
      
         <div class="read-more clearfix">
           <span class="date">2018/11/21</span>
 
           <span>posted in&nbsp;</span> 
           
-              <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
+              <span class="posted-in"><a href='CocoaPods.html'>CocoaPods</a></span>
            
          
           <span class="comments">
@@ -133,10 +133,47 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <h3 id="toc_0">为什么代理修饰要用weak而不是assgin</h3>
+      <p>有些强迫症不能看到xcode编译报出的警告⚠️，所以在podfile中添加一行<br/>
+<code>inhibit_all_warnings!</code><br/>
+如果没有多个<code>target</code>或者需要所有都隐藏这个黄色警告就在最外层写</p>
 
-<p>weak 一旦不被引用的时候就不会再使用了，就会被置位nil，oc中使用nil执行操作不会引起崩溃，所以即使再次使用也不会产生野指针。<br/><br/>
-但是如果是用assgin修饰，一旦不被引用不会自动置nil,当再次操作这个对象的代理方法的时候就会产生野指针引起程序崩溃。</p>
+<pre><code class="language-#"># platform :ios, &#39;9.0&#39;
+inhibit_all_warnings!
+
+target &#39;MVVM&#39; do
+  # Uncomment the next line if you&#39;re using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+   pod &#39;ReactiveObjC&#39;, &#39;~&gt; 3.1.0&#39;
+   pod &#39;MBProgressHUD&#39;, &#39;~&gt; 1.1.0&#39;
+   pod &#39;MJRefresh&#39;, &#39;~&gt; 3.1.15.7&#39;
+  # Pods for MVVM
+
+end
+</code></pre>
+
+<p>如果有多个target的话就可以在各个需要隐藏的target当中写上这句话</p>
+
+<pre><code class="language-#"># platform :ios, &#39;9.0&#39;
+
+target &#39;MVVM&#39; do
+  # Uncomment the next line if you&#39;re using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+  inhibit_all_warnings!
+   pod &#39;ReactiveObjC&#39;, &#39;~&gt; 3.1.0&#39;
+   pod &#39;MBProgressHUD&#39;, &#39;~&gt; 1.1.0&#39;
+   pod &#39;MJRefresh&#39;, &#39;~&gt; 3.1.15.7&#39;
+  # Pods for MVVM
+
+end
+
+target &#39;RAC&#39; do
+  # Uncomment the next line if you&#39;re using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+   pod &#39;Masonry&#39;, 
+   pod &#39;AFNetworking&#39;,   # Pods for RAC
+
+end
+</code></pre>
 
 
     
@@ -147,16 +184,13 @@
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="15427834491108.html" 
-          title="Previous Post: You don’t have write permissions">&laquo; You don’t have write permissions</a>
-      
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="15427815427067.html" 
-          title="Next Post: RACCommand">RACCommand &raquo;</a>
+          <a  href="15427857390238.html" 
+          title="Next Post: Hello Mr.Ma">Hello Mr.Ma &raquo;</a>
       
       </p>
         </div>
