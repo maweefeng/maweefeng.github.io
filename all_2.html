@@ -47,6 +47,8 @@
         <li><label>MVVM+RAC</label></li>
 
           
+            <li><a title="被神化的MVVM和被错误认识的Model层" href="15428536881209.html">被神化的MVVM和被错误认识的Model层</a></li>
+          
             <li><a title="RACCommand" href="15427815427067.html">RACCommand</a></li>
           
 
@@ -101,11 +103,11 @@
           
             <li><a title="iOS开发一些小技巧" href="15427834493214.html">iOS开发一些小技巧</a></li>
           
-            <li><a title="ios导航条背景颜色" href="15427834493029.html">ios导航条背景颜色</a></li>
+            <li><a title="iOS导航条背景颜色" href="15427834493029.html">iOS导航条背景颜色</a></li>
           
             <li><a title="CAMediaTimingFunction获取控制点：" href="15427834492830.html">CAMediaTimingFunction获取控制点：</a></li>
           
-            <li><a title="关于Searchbar设置搜索图标的问题" href="15427834492767.html">关于Searchbar设置搜索图标的问题</a></li>
+            <li><a title="UISearchbar 自定义搜索图标失真" href="15427834492767.html">UISearchbar 自定义搜索图标失真</a></li>
           
             <li><a title="Flutter && Python && OC" href="15427834492512.html">Flutter && Python && OC</a></li>
           
@@ -180,6 +182,8 @@
                     
                       <li class="side-title"><span>MVVM+RAC</span></li>
                         
+                          <li><a title="被神化的MVVM和被错误认识的Model层" href="15428536881209.html">被神化的MVVM和被错误认识的Model层</a></li>
+                        
                           <li><a title="RACCommand" href="15427815427067.html">RACCommand</a></li>
                         
 
@@ -226,11 +230,11 @@
                         
                           <li><a title="iOS开发一些小技巧" href="15427834493214.html">iOS开发一些小技巧</a></li>
                         
-                          <li><a title="ios导航条背景颜色" href="15427834493029.html">ios导航条背景颜色</a></li>
+                          <li><a title="iOS导航条背景颜色" href="15427834493029.html">iOS导航条背景颜色</a></li>
                         
                           <li><a title="CAMediaTimingFunction获取控制点：" href="15427834492830.html">CAMediaTimingFunction获取控制点：</a></li>
                         
-                          <li><a title="关于Searchbar设置搜索图标的问题" href="15427834492767.html">关于Searchbar设置搜索图标的问题</a></li>
+                          <li><a title="UISearchbar 自定义搜索图标失真" href="15427834492767.html">UISearchbar 自定义搜索图标失真</a></li>
                         
                           <li><a title="Flutter && Python && OC" href="15427834492512.html">Flutter && Python && OC</a></li>
                         
@@ -294,27 +298,31 @@
 
 	
 		<div class="markdown-body">
-		<h1>关于Searchbar设置搜索图标的问题</h1>
+		<h1>CAMediaTimingFunction获取控制点：</h1>
 
-		<p>因为这个大小在iOS中是固定的14*14<br/>
-如果UI给的切图不是这个尺寸就会出现失真的情况（ps：因为视图的默认contentMode是UIViewContentModeScaleToFill）<br/>
-网上有的方法一般是设置一个继承自UITextfield的searchBar<br/>
-去修改SearchBar的leftView</p>
+		<p>//create timing function<br/>
+CAMediaTimingFunction *function = [CAMediaTimingFunction functionWithControlPoints:1 :0 :0.75 :1];</p>
 
-<pre><code>UIImageView *searchIcon = [[UIImageView alloc] init];
-searchIcon.image = [UIImage imageNamed:@&quot;searchbar_textfield_search_icon&quot;];
-searchIcon.contentMode = UIViewContentModeCenter;        searchIcon.size = CGSizeMake(14, 14);
-self.leftView = searchIcon;
-self.leftViewMode = UITextFieldViewModeAlways;
+<p>我得到的controlPoint值似乎是错误的：</p>
 
-</code></pre>
+<p>CGPoint controlPoint1, controlPoint2;<br/>
+[function getControlPointAtIndex:1 values:(float *)&amp;controlPoint1]; <br/>
+[function getControlPointAtIndex:2 values:(float *)&amp;controlPoint2];<br/>
+The controlPoint value that I get seems to be wrong:</p>
 
-<p>但是其实完全可以便利UISearchBar的子视图拿到textField<br/>
-再去设置textField.leftView.contendMode即可</p>
+<p>controlPoint1   CGPoint (x = 5.2635442471208903E-315, y = 4.9406564584124654E-324)<br/><br/>
+controlPoint2   CGPoint (x = 0.0078125018408172764, y = 2.8421186829703262E-314)<br/><br/>
+但是，如果我使用float数组作为参数的类型values，我得到controlPoint的正确值：</p>
 
-<p>其实系统方法<br/>
-[xxxbar setImage:forSearchBarIcon:state];<br/>
-内部就是设置了textField的leftView</p>
+<p>float c1p[2], c2p[2];<br/>
+[function getControlPointAtIndex:1 values:c1p];<br/>
+[function getControlPointAtIndex:2 values:c2p];<br/>
+The values are:</p>
+
+<p>controlPoint1   CGPoint (x = 1, y = 0)<br/><br/>
+controlPoint2   CGPoint (x = 0.75, y = 1) </p>
+
+<p>32位设备可以使用第一种方法 但是在64位设备就行不通了 </p>
 
 
 		</div>

@@ -47,6 +47,8 @@
         <li><label>MVVM+RAC</label></li>
 
           
+            <li><a title="被神化的MVVM和被错误认识的Model层" href="15428536881209.html">被神化的MVVM和被错误认识的Model层</a></li>
+          
             <li><a title="RACCommand" href="15427815427067.html">RACCommand</a></li>
           
 
@@ -101,11 +103,11 @@
           
             <li><a title="iOS开发一些小技巧" href="15427834493214.html">iOS开发一些小技巧</a></li>
           
-            <li><a title="ios导航条背景颜色" href="15427834493029.html">ios导航条背景颜色</a></li>
+            <li><a title="iOS导航条背景颜色" href="15427834493029.html">iOS导航条背景颜色</a></li>
           
             <li><a title="CAMediaTimingFunction获取控制点：" href="15427834492830.html">CAMediaTimingFunction获取控制点：</a></li>
           
-            <li><a title="关于Searchbar设置搜索图标的问题" href="15427834492767.html">关于Searchbar设置搜索图标的问题</a></li>
+            <li><a title="UISearchbar 自定义搜索图标失真" href="15427834492767.html">UISearchbar 自定义搜索图标失真</a></li>
           
             <li><a title="Flutter && Python && OC" href="15427834492512.html">Flutter && Python && OC</a></li>
           
@@ -180,6 +182,8 @@
                     
                       <li class="side-title"><span>MVVM+RAC</span></li>
                         
+                          <li><a title="被神化的MVVM和被错误认识的Model层" href="15428536881209.html">被神化的MVVM和被错误认识的Model层</a></li>
+                        
                           <li><a title="RACCommand" href="15427815427067.html">RACCommand</a></li>
                         
 
@@ -226,11 +230,11 @@
                         
                           <li><a title="iOS开发一些小技巧" href="15427834493214.html">iOS开发一些小技巧</a></li>
                         
-                          <li><a title="ios导航条背景颜色" href="15427834493029.html">ios导航条背景颜色</a></li>
+                          <li><a title="iOS导航条背景颜色" href="15427834493029.html">iOS导航条背景颜色</a></li>
                         
                           <li><a title="CAMediaTimingFunction获取控制点：" href="15427834492830.html">CAMediaTimingFunction获取控制点：</a></li>
                         
-                          <li><a title="关于Searchbar设置搜索图标的问题" href="15427834492767.html">关于Searchbar设置搜索图标的问题</a></li>
+                          <li><a title="UISearchbar 自定义搜索图标失真" href="15427834492767.html">UISearchbar 自定义搜索图标失真</a></li>
                         
                           <li><a title="Flutter && Python && OC" href="15427834492512.html">Flutter && Python && OC</a></li>
                         
@@ -294,25 +298,23 @@
 
 	
 		<div class="markdown-body">
-		<h1>Xcode10报错libstdc</h1>
+		<h1>Masonry布局“Unable to simultaneously satisfy constraints”**</h1>
 
-		<h3 id="toc_0">解决方法</h3>
-
-<p>首先解压同级目录下的libstdc压缩包</p>
-
-<h4 id="toc_1">1.真机</h4>
-
-<p>将libstdc_iPhoneOS拷贝到/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/lib</p>
-
-<h4 id="toc_2">2.模拟器</h4>
-
-<ul>
-<li><p>将libstdc_iPhoneSimulator拷贝到/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/usr/lib/</p></li>
-<li><p>将libstdc_iPhoneSimulator_runtime拷贝到/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime/Contents/Resources/RuntimeRoot/usr/lib/</p></li>
-</ul>
+		<p>出现这个问题是设置约束优先级错误，设置一下约束的优先级就行。<br/>
+<code><br/>
+        [self.doctorTitle mas_makeConstraints:^(MASConstraintMaker *make) {<br/>
+            make.left.equalTo(self.title.mas_left);<br/>
+            make.right.equalTo(self.title.mas_right);<br/>
+            make.top.equalTo(self.topline.mas_bottom).offset(10).priorityHigh();<br/>
+            make.height.mas_equalTo(@14);<br/>
+        }];<br/>
+</code></p>
 
 
 		</div>
+	
+
+ 
 	
 
   
