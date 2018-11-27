@@ -78,6 +78,8 @@
         <li><label>IOS刨坑</label></li>
 
           
+            <li><a title="sizeThatFits和sizeToFit" href="15433027949667.html">sizeThatFits和sizeToFit</a></li>
+          
             <li><a title="Masonry布局“Unable to simultaneously satisfy constraints”**" href="15426952413956.html">Masonry布局“Unable to simultaneously satisfy constraints”**</a></li>
           
             <li><a title="Xcode10报错libstdc" href="15426943817961.html">Xcode10报错libstdc</a></li>
@@ -209,6 +211,8 @@
                     
                       <li class="side-title"><span>IOS刨坑</span></li>
                         
+                          <li><a title="sizeThatFits和sizeToFit" href="15433027949667.html">sizeThatFits和sizeToFit</a></li>
+                        
                           <li><a title="Masonry布局“Unable to simultaneously satisfy constraints”**" href="15426952413956.html">Masonry布局“Unable to simultaneously satisfy constraints”**</a></li>
                         
                           <li><a title="Xcode10报错libstdc" href="15426943817961.html">Xcode10报错libstdc</a></li>
@@ -307,9 +311,16 @@
 
 	
 		<div class="markdown-body">
-		<h1>视图的绘制周期</h1>
+		<h1>设置Cell分割线顶头</h1>
 
-		<p>当view第一次在屏幕上显示的时候，系统会绘制它的内容，然后系统会截取内容的快照，并且将快照作为视图的可见外观，如果你永远不改变视图的内容，那么视图的绘制代码永远不会改变。如果更改了视图的内容，不用直接重新绘制，而是使用setNeedsDisplay或者setNeedsDisplayInRect方法是视图无效。这些方法会告知视图内容以及改变并且需要在下一次进行重绘。如果需要立马重绘，那么需要使用layoutIfNeeded方法。</p>
+		<ul>
+<li>(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+cell.layoutMargins = UIEdgeInsetsZero;
+cell.separatorInset = UIEdgeInsetsZero;
+cell.preservesSuperviewLayoutMargins = NO;
+}
+UITableView设置系统cell的分割线顶头</li>
+</ul>
 
 
 		</div>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  Hello Mr.Ma
+  sizeThatFits和sizeToFit - Hello Mr.Ma
   
   </title>
  <meta name="description" content="">
@@ -306,41 +306,109 @@
             </div>
             <div class="large-9 medium-9 columns">
 
- 
+ <div class="markdown-body">
+<h1>sizeThatFits和sizeToFit</h1>
 
+<p>今天帮同事看一个布局约束的问题，（代码也是从别人手中接过来的，所以并不清楚怎么布局的）<br/>
+view是用xib画的，约束设置很多，本以为是约束的问题，设置了约束还是不能更改整个view的高度。</p>
 
-	
-		<div class="markdown-body">
-		<h1>git clone 过慢的问题</h1>
+<p>最后找了一会，我发现了一个方法 sizeThatFit 在sizeThatFit内部返回了size，所以刚才尽管指定的约束改了，但是还是不影响下面的方法返回size。</p>
 
-		<ul>
-<li>进入网址<a href="https://www.ipaddress.com/">https://www.ipaddress.com/</a></li>
-<li>输入 gitHub.com 找到GitHub的ip地址 </li>
-<li>然后打开hosts 添加 ip <a href="http://github.com">http://github.com</a></li>
+<p>所以就写了这个东西给不了解的同学一点点经验。</p>
+
+<pre><code>- (void)sizeToFit;                       // calls sizeThatFits: with current view bounds and changes bounds size.
+- (CGSize)sizeThatFits:(CGSize)size;     // return &#39;best&#39; size to fit given size. does not actually resize view. Default is return existing view size
+
+</code></pre>
+
+<p>上面是苹果的方法说明。</p>
+
+<p>sizeToFit 方法会返回一个苹果自带方法计算出的合适的宽高，即使你初始化的时候的宽和高设置错误，苹果也会给你算出一个合适的size让你填充你的内容。</p>
+
+<pre><code>-(void)addSizeToFitHelloLable{
+    
+    UILabel * hello = [[UILabel alloc]initWithFrame:CGRectMake(20, 20, 20, 100)];
+    hello.text = @&quot;hello world&quot;;
+    hello.backgroundColor = [UIColor redColor];
+    [self.view addSubview:hello];
+    [hello sizeToFit];
+    
+}
+
+</code></pre>
+
+<p>我这里设置的宽度和高度明显是不对的，但是当我调用sizeToFit之后就好多了，下面是调用前和调用之后的对比效果。</p>
+
+<ul>
+<li><p>调用之前<br/>
+<img src="media/15433027949667/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-27%20%E4%B8%8B%E5%8D%883.23.49.png" alt="屏幕快照 2018-11-27 下午3.23.49 "/></p></li>
+<li><p>调用之后<br/>
+<img src="media/15433027949667/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-27%20%E4%B8%8B%E5%8D%883.23.06.png" alt="屏幕快照 2018-11-27 下午3.23.06"/></p></li>
 </ul>
 
-<h3 id="toc_0">打开hosts的操作是</h3>
+<p>因为sizeToFit之后内部会调用调用sizeThatFits，所以还可以在自定义view当中重写sizeThatFits方法，去调整sizeToFit之后的size。</p>
 
-<p>sudo vim /etc/hosts</p>
+<pre><code>----------customLable.m-------------
+-(CGSize)sizeThatFits:(CGSize)size{
+    
+    [super sizeThatFits:size];
+    size.height = 40;
+    return size;
+    
+}
+</code></pre>
+
+<h4 id="toc_0">注意</h4>
+
+<p>添加自定义的lable到view上最后千万不能忘记调用sizeToFit方法，要不然内部重写的sizeThatFits不生效。</p>
+
+<pre><code>-(void)addCustomeSizeThatFitLable{
+    
+    CustomLable * hello = [[CustomLable alloc]initWithFrame:CGRectMake(20, 20, 200, 100)];
+    hello.text = @&quot;hello world&quot;;
+    hello.backgroundColor = [UIColor redColor];
+    [self.view addSubview:hello];
+    [hello sizeToFit]; 
+}
+</code></pre>
 
 
-		</div>
-	
+</div>
 
- 
-	
+<br /><br />
+<hr />
 
- 
-	
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="15428536881209.html" 
+	        title="Next Post: 被神化的MVVM和被错误认识的Model层">被神化的MVVM和被错误认识的Model层 &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
 
- 
-	
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
 
- 
-	
-
-  
-  
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '15433027949667.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
 </div></div>
 
 

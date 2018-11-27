@@ -78,6 +78,8 @@
         <li><label>IOS刨坑</label></li>
 
           
+            <li><a title="sizeThatFits和sizeToFit" href="15433027949667.html">sizeThatFits和sizeToFit</a></li>
+          
             <li><a title="Masonry布局“Unable to simultaneously satisfy constraints”**" href="15426952413956.html">Masonry布局“Unable to simultaneously satisfy constraints”**</a></li>
           
             <li><a title="Xcode10报错libstdc" href="15426943817961.html">Xcode10报错libstdc</a></li>
@@ -209,6 +211,8 @@
                     
                       <li class="side-title"><span>IOS刨坑</span></li>
                         
+                          <li><a title="sizeThatFits和sizeToFit" href="15433027949667.html">sizeThatFits和sizeToFit</a></li>
+                        
                           <li><a title="Masonry布局“Unable to simultaneously satisfy constraints”**" href="15426952413956.html">Masonry布局“Unable to simultaneously satisfy constraints”**</a></li>
                         
                           <li><a title="Xcode10报错libstdc" href="15426943817961.html">Xcode10报错libstdc</a></li>
@@ -307,183 +311,54 @@
 
 	
 		<div class="markdown-body">
-		<h1>iOS开发一些小技巧</h1>
+		<h1>为什么NSString使用Copy修饰符</h1>
 
-		<pre><code>去掉xcode黄色警告的方法
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored &quot;-Wdeprecated-declarations&quot;
- your code with warning
-#pragma clang diagnostic pop
+		<p>NSString为什么要用copy关键字，用strong会有什么问题？<br/>
+我们大部分的时候NSString的属性都是copy，那copy与strong的情况下到底有什么区别呢?我们以实例来说明：</p>
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored &quot;-Wunused-variable&quot;
- your code with warning
-#pragma clang diagnostic pop
-</code></pre>
-
-<pre><code>_coverView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
-在控制器init方法中初始化一个大小为self.view.bounds的uiview必须等待视图出来的时候才会进行 
-要不然一直在主线程等待
-如果直接给CGRectmake设置的话不用等界面加载就会执行
-应该是一个主线程问题 
-这个时候如果直接去xib里面的控件，就会出现取不到的情况，取出来是nil
-</code></pre>
-
-<pre><code>今天遇到个问题，后台用java写的，给我传回一个空字符串，类型是NSNull，用
-stringWithFormat:转出来居然是@&quot;&lt;null&gt;&quot;，
-注意，这不是空，NSNull和nil是不同的。需要用 xxx == [NSNull null]加以判断。
-</code></pre>
-
-<pre><code>去掉UITableView多余的空白行分割线
-有一种简单的方法
-self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-
-
-</code></pre>
-
-<hr/>
-
-<pre><code> 如何将本地代码提交到远程git仓库
-* 第一步：建立git仓库 
-cd到你的本地项目根目录下，执行git命令 
- git init
-* 第二步：将项目的所有文件添加到仓库中   
- git add .  
-* 第三步：将add的文件commit到仓库
-  git commit -m &quot;注释语句&quot;
-* 第四步：去github上创建自己的Repository
-* 第五步：重点来了，将本地的仓库关联到github上    
-  git remote add origin 仓库url
- 后面的https链接地址换成你自己的仓库url地址，也就是上面红框中标出来的地址
-* 第六步：上传github之前，要先pull一下，执行如下命令：
-  git pull origin master
-* 第七步，也就是最后一步，上传代码到github远程仓库
-  git push -u origin master  
-  git push -u origin master -f //强制push
-  每次如果有代码需要提交必须要add一下 并且在本地commit 打下log 再去拉取remote代码，
-  然后push到remote的这样一个流程。
-</code></pre>
-
-<h3 id="toc_0">button 的文字显示不全</h3>
-
-<pre><code> [label setAdjustsFontForContentSizeCategory:YES]调节字体大小.
-</code></pre>
-
-<h3 id="toc_1">从xib加载View</h3>
-
-<pre><code>// Instantiate the nib content without any reference to it.
-NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:@&quot;EPPZPlainView&quot; owner:nil options:nil];
-  
-// Find the view among nib contents (not too hard assuming there is only one view in it).
-UIView *plainView = [nibContents lastObject];
-  
-// Some hardcoded layout.
-CGSize padding = (CGSize){ 22.0, 22.0 };
-plainView.frame = (CGRect){padding.width, padding.height, plainView.frame.size};
-  
-// Add to the view hierarchy (thus retain).
-[self.view addSubview:plainView];
-</code></pre>
-
-<h3 id="toc_2">修改导航条的颜色</h3>
-
-<p><code>self.navigationController.navigationBar.barTintColor = [UIColor redColor];</code></p>
-
-<h3 id="toc_3">当某个UIView调用drawRect方法之后，它的默认背景就是黑色的</h3>
-
-<ul>
-<li>解决办法有在初始化的时候设置backgroundColor<br/></li>
-</ul>
-
-<pre><code>- (void)awakeFromNib {
-    [super awakeFromNib];
-    self.backgroundColor = [UIColor clearColor];
-    // Initialization code
-}
-- (id)initWithFrame:(CGRect)frame
+<pre><code class="language-@interface">@property(nonatomic,copy)NSString * str1;
+@property(nonatomic,strong)NSString*str2;
+@end
+然后写一个测试方法：
+-(void)test
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-        self.backgroundColor = [UIColor blueColor]
-    }
-    return self;
+    NSMutableString*str=[NSMutableString stringWithFormat:@&quot;helloworld&quot;];
+    self.str1=str;
+    self.str2=str;
+    NSLog(@&quot;str:%p--%p&quot;,str,&amp;str);
+    NSLog(@&quot;copy_str:%p--%p&quot;,_str1,&amp;_str1);
+    NSLog(@&quot;strong_str:%p--%p&quot;,_str2,&amp;_str2);
 }
 </code></pre>
 
-<ul>
-<li>或者在drawRect里面写下如下代码 </li>
-</ul>
+<p>最后我们运行看打印结果：</p>
 
-<pre><code>- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-    [[UIColor blueColor] setFill];  // changes are here
-    UIRectFill(rect);               // and here 
-}
+<pre><code class="language-2017-06-15">2017-06-15 15:21:55.910 oa[1236:78490] copy_str:0x600000026e60--0x7fc66cc06358
+2017-06-15 15:21:55.911 oa[1236:78490] strong_str:0x600000075cc0--0x7fc66cc06360
 </code></pre>
 
-<h3 id="toc_4">主线程死锁</h3>
+<p>从打印结果上我们可以看出str和_str2的对象地址是一样的，指向同一个对象，所以它们的值也是一样的，而str和_str1对象地址不同，是两个不同的对象，所以copy是深复制，创建了一个新的对象。 <br/>
+现在改变str的值，看看str1和str2有什么变化：</p>
 
-<pre><code>    NSLog(@&quot;1---%@&quot;,[NSThread currentThread]);
-    dispatch_sync(dispatch_get_main_queue(), ^{
-        NSLog(@&quot;2&quot;);
-    });
-    NSLog(@&quot;3&quot;);
-    
-    NSLog(@&quot;1---%@&quot;,[NSThread currentThread]);
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSLog(@&quot;2&quot;);
-    });
-    NSLog(@&quot;3&quot;);
-    //打印顺序 1，3，2
-    
-    先加入的通知先收到通知
-    先去执行通知的内容
-    
+<pre><code class="language-[str">    NSLog(@&quot;****************%@&quot;,self.str1);
+    NSLog(@&quot;****************%@&quot;,self.str2);
 </code></pre>
 
-<h3 id="toc_5">解决tableviewsection悬浮的问题</h3>
+<p>打印结果如下：</p>
 
-<pre><code>   
-   - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGFloat sectionHeaderHeight = 50;
-    if (scrollView.contentOffset.y&lt;=sectionHeaderHeight&amp;&amp;scrollView.contentOffset.y&gt;=0) {
-        scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
-    } else if (scrollView.contentOffset.y&gt;=sectionHeaderHeight) {
-        scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
-    }
-}
-
+<pre><code class="language-2017-06-15">2017-06-15 15:21:55.911 oa[1236:78490] ****************helloworldhry
 </code></pre>
 
-<h3 id="toc_6">NSURLSession请求</h3>
-
-<pre><code> NSURLSession * session = [NSURLSession sharedSession];
-    NSURLSessionDataTask * task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        NSDictionary * dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
-        
-        NSLog(@&quot;%@&quot;,dic);
-        
-    }];
-    [task resume];
-</code></pre>
-
-<h3 id="toc_7">实现点击按钮出发一次震动，比如“即刻”app的点赞</h3>
-
-<pre><code>导入AudioToolBox.framework
-在按钮的点击方法中执行
-AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);//上面是震动方法 不灵巧
-
-
-可以使用最新的
- UIImpactFeedbackGenerator  * zhend = [[UIImpactFeedbackGenerator alloc]initWithStyle:UIImpactFeedbackStyleLight];
-        [zhend impactOccurred];
-
-
-
-
-</code></pre>
+<p>从打印结果可以看出经过copy关键字修饰过的str1并没有因为str的变化而变化，经过strong修饰过的str2却随str的改变而改变。 <br/>
+所以，如果一般情况下，我们都不希望字串的值跟着str变化，所以我们一般用copy来设置string的属性。 <br/>
+如果希望字串的值跟着赋值的字串的值变化，可以使用strong。<br/>
+注意：上面的情况是针对于当把NSMutableString赋值给NSString的时候，才会有不同，如果是赋值是NSString对象，那么使用copy还是strong，结果都是一样的，因为NSString对象根本就不能改自身的值，他是不可变的。<br/>
+把一个对象赋值给一个属性变量，当这个对象变化了，如果希望属性变量变化就使用strong属性，如果希望属性变量不跟着变化，就是用copy属性。<br/>
+由此可以看出： <br/>
+对源头是NSMutableString的字符串，strong仅仅是指针引用，增加了引用计数器，这样源头改变的时候，用这种strong方式声明的变量（无论被赋值的变量是可变的还是不可变的），它也会跟着改变;而copy声明的变量，它不会跟着源头改变，它实际上是深拷贝。<br/>
+对源头是NSString的字符串，无论是strong声明的变量还是copy声明的变量，当第二次源头的字符串重新指向其它的地方的时候，它还是指向原来的最初的那个位置，也就是说其实二者都是指针引用，也就是浅拷贝。<br/>
+另外说明一下，这两者对内存计数的影响都是一样的，都会增加内存引用计数，都需要在最后的时候做处理。<br/>
+其实说白了，对字符串为啥要用这两种方式？我觉得还是一个安全问题，比如声明的一个NSString *mStr变量，然后把一个NSMutableString *str变量的赋值给它了，如果要求mStr跟着str变化，那么就用strong;如果mStr不能跟着str一起变化，那就用copy。而对于要把NSString类型的字符串赋值给mStr，那两都没啥区别。不会影响安全性，内存管理也一样。</p>
 
 
 		</div>

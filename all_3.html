@@ -78,6 +78,8 @@
         <li><label>IOS刨坑</label></li>
 
           
+            <li><a title="sizeThatFits和sizeToFit" href="15433027949667.html">sizeThatFits和sizeToFit</a></li>
+          
             <li><a title="Masonry布局“Unable to simultaneously satisfy constraints”**" href="15426952413956.html">Masonry布局“Unable to simultaneously satisfy constraints”**</a></li>
           
             <li><a title="Xcode10报错libstdc" href="15426943817961.html">Xcode10报错libstdc</a></li>
@@ -209,6 +211,8 @@
                     
                       <li class="side-title"><span>IOS刨坑</span></li>
                         
+                          <li><a title="sizeThatFits和sizeToFit" href="15433027949667.html">sizeThatFits和sizeToFit</a></li>
+                        
                           <li><a title="Masonry布局“Unable to simultaneously satisfy constraints”**" href="15426952413956.html">Masonry布局“Unable to simultaneously satisfy constraints”**</a></li>
                         
                           <li><a title="Xcode10报错libstdc" href="15426943817961.html">Xcode10报错libstdc</a></li>
@@ -307,20 +311,38 @@
 
 	
 		<div class="markdown-body">
-		<h1>UIImageView 动画的属性animationImages</h1>
+		<h1>Xcode打包遇到的坑</h1>
 
-		<pre><code class="language-beginImageArray.append(UIImage(named:">
-    let imageView = UIImageView(image: UIImage(named: &quot;switch 1.png&quot;))
-    imageView.center = view.center
-    imageView.animationImages = beginImageArray
-    // 动画持续时间 每一帧0.025秒，总共22帧
-    imageView.animationDuration = 0.025 * 22
-    imageView.animationRepeatCount = 1
-    // 动画结束后要把imageView的image属性设置成动画最后的一帧
-    imageView.image = UIImage(named: &quot;switch 22.png&quot;)
-    imageView.startAnimating()
-    view.addSubview(imageView)
-</code></pre>
+		<p>由于是接手别人做的项目，所以当把程序打包的时候出现了问题，证书和描述文件的问题 </p>
+
+<p>最开始尝试打开xcode的账户下载所有证书，结果发现并不能成功</p>
+
+<p>后来手动管理证书就可以看到之前在开发者中心创建的开发和发布证书，如下图所示<br/>
+<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fnczazu4irj30pd0iejte.jpg" alt=""/><br/>
+然后会到证书管理界面，会把你选中账号的所有相关证书列下来</p>
+
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fnczelaqz6j30pd0iedi6.jpg" alt=""/></p>
+
+<p>后面附带有状态，如果你的钥匙串keychain中没有的话，状态会是not in the keychain，顾名思义本地没有下载，这样的话要去开发者中心下载并且安装了.<br/><br/>
+下载完打包之前还要来看一下是不是已经在钥匙串中。  </p>
+
+<ul>
+<li>在钥匙串的话就可以跳过本文去愉快的打包了。<br/></li>
+<li>未在钥匙串接着看下面的操作</li>
+</ul>
+
+<p>如果还是没有在钥匙串的话，那么就比较麻烦了，我百度了一下，要先把之前的证书invoke，也就是删除，然后再回来创建，按照如图所示指引<br/><br/>
+<img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fnczjgrp8hj30m80getb7.jpg" alt=""/></p>
+
+<p>然而还有可能出现下面的情况 <br/>
+<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fnczn8eitqj30pd0ie0v3.jpg" alt=""/></p>
+
+<h3 id="toc_0">这就尴尬了是不是？</h3>
+
+<p>不用怕，把本地相关的钥匙串全部删除，并且把xcode关联的账户全部删除，最后再去添加账户，添加完账户之后继续按照手动管理证书，一步步操作生成证书就应该没有问题了。<br/><br/>
+另外还要去开发者中心找到指定的描述文件并且edit编辑，然后选中自己刚才创建的证书。<br/><br/>
+编辑完成之后下载描述文件以及证书接下来就可以进行打包了。<br/>
+<img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fnczxt1f66j30tx0imtam.jpg" alt=""/></p>
 
 
 		</div>

@@ -78,6 +78,8 @@
         <li><label>IOS刨坑</label></li>
 
           
+            <li><a title="sizeThatFits和sizeToFit" href="15433027949667.html">sizeThatFits和sizeToFit</a></li>
+          
             <li><a title="Masonry布局“Unable to simultaneously satisfy constraints”**" href="15426952413956.html">Masonry布局“Unable to simultaneously satisfy constraints”**</a></li>
           
             <li><a title="Xcode10报错libstdc" href="15426943817961.html">Xcode10报错libstdc</a></li>
@@ -209,6 +211,8 @@
                     
                       <li class="side-title"><span>IOS刨坑</span></li>
                         
+                          <li><a title="sizeThatFits和sizeToFit" href="15433027949667.html">sizeThatFits和sizeToFit</a></li>
+                        
                           <li><a title="Masonry布局“Unable to simultaneously satisfy constraints”**" href="15426952413956.html">Masonry布局“Unable to simultaneously satisfy constraints”**</a></li>
                         
                           <li><a title="Xcode10报错libstdc" href="15426943817961.html">Xcode10报错libstdc</a></li>
@@ -307,32 +311,43 @@
 
 	
 		<div class="markdown-body">
-		<h1>Git提交代码issue</h1>
+		<h1>Command line instructions</h1>
 
-		<h3 id="toc_0">issue1:</h3>
+		<h3 id="toc_0">Git global setup</h3>
 
-<p>fatal:unable to access &#39;<a href="https://github.com/xxx/xxx.git">https://github.com/xxx/xxx.git</a>&#39; OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com 443</p>
+<p>git config --global user.name &quot;mawf09&quot;<br/>
+git config --global user.email &quot;<a href="mailto:mawf09@xxx.com">mawf09@xxx.com</a>&quot;</p>
 
-<h3 id="toc_1">解决方法：</h3>
+<h3 id="toc_1">Create a new repository</h3>
 
-<p>env命令设置GIT_SSL_NO_VERIFY环境变量为”ture”，并同时调用正常的git clone命令 env GIT_SSL_NO_VERIFY=true git clone <a href="https://github.com/xxx/xxx.git">https://github.com/xxx/xxx.git</a><br/><br/>
-当你通过HTTPS访问Git远程仓库，如果服务器的SSL证书未经过第三方机构签署，那么Git就会报错。在克隆完毕的仓库中还需要将http.sslVerify设置为”false”。完整的命令如下：<br/><br/>
-git config http.sslVerify &quot;false&quot;、</p>
+<ul>
+<li>git clone git地址</li>
+<li>cd 制定文件夹</li>
+<li>touch README.md</li>
+<li>git add README.md</li>
+<li>git commit -m &quot;add README&quot;</li>
+<li>git push -u origin master</li>
+</ul>
 
-<h3 id="toc_2">issue2：</h3>
+<h3 id="toc_2">Existing folder</h3>
 
-<p>Failed to connect to 127.0.0.1 port 1080: Connection refused<br/>
-查询是否使用代理：git config --global http.proxy <br/>
-取消代理：git config --global --unset http.proxy</p>
+<ul>
+<li>cd existing_folder</li>
+<li>git init</li>
+<li>git remote add origin git地址</li>
+<li>git add .</li>
+<li>git commit -m &quot;Initial commit&quot;</li>
+<li>git push -u origin master</li>
+</ul>
 
-<h3 id="toc_3">终端走代理</h3>
+<h3 id="toc_3">Existing Git repository</h3>
 
-<p>在终端中直接运行命令<br/>
-export http_proxy=<a href="http://proxyAddress:port">http://proxyAddress:port</a><br/>
-这个办法的好处是简单直接，并且影响面很小（只对当前终端有效，退出就不行了）。</p>
-
-<p>如果你用的是ss代理，在当前终端运行以下命令，那么wget curl 这类网络命令都会经过ss代理<br/>
-export ALL_PROXY=socks5://127.0.0.1:1080</p>
+<ul>
+<li>cd existing_repo</li>
+<li>git remote add origin git地址</li>
+<li>git push -u origin --all</li>
+<li>git push -u origin --tags</li>
+</ul>
 
 
 		</div>

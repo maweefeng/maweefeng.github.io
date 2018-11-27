@@ -78,6 +78,8 @@
         <li><label>IOS刨坑</label></li>
 
           
+            <li><a title="sizeThatFits和sizeToFit" href="15433027949667.html">sizeThatFits和sizeToFit</a></li>
+          
             <li><a title="Masonry布局“Unable to simultaneously satisfy constraints”**" href="15426952413956.html">Masonry布局“Unable to simultaneously satisfy constraints”**</a></li>
           
             <li><a title="Xcode10报错libstdc" href="15426943817961.html">Xcode10报错libstdc</a></li>
@@ -209,6 +211,8 @@
                     
                       <li class="side-title"><span>IOS刨坑</span></li>
                         
+                          <li><a title="sizeThatFits和sizeToFit" href="15433027949667.html">sizeThatFits和sizeToFit</a></li>
+                        
                           <li><a title="Masonry布局“Unable to simultaneously satisfy constraints”**" href="15426952413956.html">Masonry布局“Unable to simultaneously satisfy constraints”**</a></li>
                         
                           <li><a title="Xcode10报错libstdc" href="15426943817961.html">Xcode10报错libstdc</a></li>
@@ -307,86 +311,69 @@
 
 	
 		<div class="markdown-body">
-		<h1>被神化的MVVM和被错误认识的Model层</h1>
+		<h1>sizeThatFits和sizeToFit</h1>
 
-		<p>MVVM是一种双向绑定技术，使用VM实现数据的变化更新视图，视图的变化更新数据的处理，整个过程是一种数据绑定的过程。<br/>
-网络上可以看到大多数人吹捧MVVM，但是千奇百怪的，并没有人能很好的理解MVVM，反而使代码变得异常复杂。<br/>
-<code>MVC的关系图</code></p>
+		<p>今天帮同事看一个布局约束的问题，（代码也是从别人手中接过来的，所以并不清楚怎么布局的）<br/>
+view是用xib画的，约束设置很多，本以为是约束的问题，设置了约束还是不能更改整个view的高度。</p>
 
-<pre><code class="language-sequence">V层-&gt;C层:事件
-Note right of V层:特殊情况下可以持有M层
-C层-&gt;V层:创建/更新
-C层-&gt;M层: 调用
-M层-&gt;C层: 通知
+<p>最后找了一会，我发现了一个方法 sizeThatFit 在sizeThatFit内部返回了size，所以刚才尽管指定的约束改了，但是还是不影响下面的方法返回size。</p>
+
+<p>所以就写了这个东西给不了解的同学一点点经验。</p>
+
+<pre><code>- (void)sizeToFit;                       // calls sizeThatFits: with current view bounds and changes bounds size.
+- (CGSize)sizeThatFits:(CGSize)size;     // return &#39;best&#39; size to fit given size. does not actually resize view. Default is return existing view size
+
 </code></pre>
 
-<table>
-<thead>
-<tr>
-<th>M</th>
-<th>V</th>
-<th>C</th>
-</tr>
-</thead>
+<p>上面是苹果的方法说明。</p>
 
-<tbody>
-<tr>
-<td>Model模型</td>
-<td>View视图</td>
-<td>Controller控制器</td>
-</tr>
-</tbody>
-</table>
+<p>sizeToFit 方法会返回一个苹果自带方法计算出的合适的宽高，即使你初始化的时候的宽和高设置错误，苹果也会给你算出一个合适的size让你填充你的内容。</p>
 
-<h3 id="toc_0">1.被误解的MVC</h3>
+<pre><code>-(void)addSizeToFitHelloLable{
+    
+    UILabel * hello = [[UILabel alloc]initWithFrame:CGRectMake(20, 20, 20, 100)];
+    hello.text = @&quot;hello world&quot;;
+    hello.backgroundColor = [UIColor redColor];
+    [self.view addSubview:hello];
+    [hello sizeToFit];
+    
+}
 
-<p>最开始实行的一套机制是MVC 但是很多业务代码被放在了C层处理，导致出现了一个C中出现了上千行代码，给调试带来了很多影响。</p>
-
-<p>后来才试着把JSON数据解析成数据模型，这样把一部分代码挪到了M模型层，但是这个模型是很简单的，只是单纯的属性定义。</p>
-
-<p>这样显然是不够的，很多业务代码还是存在C层当中，并没有对C很好的进行瘦身，这样的<code>MVC</code>框架太过臃肿。</p>
-
-<p>而其实真正的MVC框架中的M层不应该只是简单的数据模型，而应该是业务模型，也就是所有业务数据和业务实现逻辑应该定义在M层，而且应该和具体的界面没有关系,可以独立存在，甚至可以编译出静态库给第三方使用，就像我们下面将要说到的ViewModel层相似。</p>
-
-<h3 id="toc_1">2.引出ViewModel层</h3>
-
-<p>其实大多时候界面和业务逻辑是绑在一起的，这个界面的展示要调用某个业务逻辑，完成之后直接更新界面，大多时候C只是多余的，所以才把这部分的逻辑代码（网络请求，数据库操作，解析，业务逻辑）抽象出一个单独的类，这个类叫VM类。</p>
-
-<pre><code class="language-sequence">V层-&gt;VM层:
-VM层-&gt;V层:
-M层-&gt;VM层:
-VM层-&gt;M层:
-C层-&gt;VM层:
 </code></pre>
 
-<p>当前的VM层负责视图、模型、C层的三个部分的交互和耦合。</p>
+<p>我这里设置的宽度和高度明显是不对的，但是当我调用sizeToFit之后就好多了，下面是调用前和调用之后的对比效果。</p>
 
-<p>下一步考虑是不是可以把C层的事件处理也拿出来，然后就用到了RAC，负责事件的处理和传递。<br/>
-这样的话就可以达到给C层减肥的效果了。</p>
+<ul>
+<li><p>调用之前<br/>
+<img src="media/15433027949667/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-27%20%E4%B8%8B%E5%8D%883.23.49.png" alt="屏幕快照 2018-11-27 下午3.23.49 "/></p></li>
+<li><p>调用之后<br/>
+<img src="media/15433027949667/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-27%20%E4%B8%8B%E5%8D%883.23.06.png" alt="屏幕快照 2018-11-27 下午3.23.06"/></p></li>
+</ul>
 
-<p>但是并不是说C层就没有用了。</p>
+<p>因为sizeToFit之后内部会调用调用sizeThatFits，所以还可以在自定义view当中重写sizeThatFits方法，去调整sizeToFit之后的size。</p>
 
-<p>在MVVM中的M只是一个简单的饿数据模型的概念，如果把它当做一层，显然不符合横向切分的规则，所以MVVM中的M就是一个伪概念。</p>
+<pre><code>----------customLable.m-------------
+-(CGSize)sizeThatFits:(CGSize)size{
+    
+    [super sizeThatFits:size];
+    size.height = 40;
+    return size;
+    
+}
+</code></pre>
 
-<h3 id="toc_2">3.MVVM的过于神化</h3>
+<h4 id="toc_0">注意</h4>
 
-<p>同时MVVM当中的VM是严格和View绑定的，这是一种强耦合，但是实际情况下界面可能会随着升级而变化，往往业务逻辑是相对稳定的，所以上面的这种以VM为中心的设计模式很不清爽，所以MVVM当中的VM层也是一个<br/>
-伪概念。</p>
+<p>添加自定义的lable到view上最后千万不能忘记调用sizeToFit方法，要不然内部重写的sizeThatFits不生效。</p>
 
-<p>然后是View事件处理。C层是一个负责调度和控制的模块，他的作用就是处理视图的事件，然后调用业务逻辑，然后接收业务逻辑的处理结果通知，然后再通知视图去刷新界面，这就是C层存在的意义。<br/>
-而RAC的出现则将这部分的处理给活生生的代替掉了。也就是通过RAC所谓的响应式和触发式这种机制就能实现将事件的调度处理放在任何地方任何时候都能完成。这样做的目的使得我们可以分散和分解代码。但结果出现的问题呢？就是同一个单元调度处理逻辑和功能的构建完全放在了一个地方，但不同的单元逻辑的又分散在不同的地方，无法去分类统一管理和维护。因此你无法一下子就知道某个功能所有调度到底是如何实现以及在哪里实现的。因为RAC将功能构建和事件处理完全粘合到一个大的函数体内部，并且是代码套代码的模式，这种方式严重的破坏了面向对象里面的构建和处理分离的设计模式理论。更麻烦的是其高昂的学习和维护成本，代码阅读理解困难，以及无处不在的闭包使用。试想一下这个对于一个初学者来说是不是噩梦？，一旦出了问题对于维护和代码调试是不是噩梦？而且使用不当就会出现循环引用的严重问题。这样一来原本C层一个调度总管的职责被RAC来接管后，这些处理将变得分散和无序，当我们要做一些统一的管理比如HOOK和AOP方面的东西时就变得无法下手了。 不可否认的是RAC在处理连续调用以及顺序响应方面有一定的优势。一个例子是我们可能有连续的多个跟服务器的网络请求，这时候用RAC进行这种处理能方便的解决问题。但是我想说的是当存在这种场景时，我们更加应该将这种连续的网络调用在M层内部消化掉，而只给C层提供一个简易而方便的接口，让C层根本不需要关心这种调用的连续性。因此可以说为了把C层的代码给消化掉而引入RAC的机制，不仅没有简化掉系统反而降低了系统的可维护性和可读性。RAC机制根本就不适合用在事件处理中。优秀的应用和框架并不在代码的多寡，而是整体系统的代码简单易读，各部分职责分明，容易维护的调试。</p>
-
-<p><u>其实这一切的一切都来源于对MVC当中Model的错误认识和理解。</u></p>
-
-<h3 id="toc_3">4.正确理解MVC</h3>
-
-<p>M层不依赖C层和V层独立存在，C层负责关联二者，V层只负责展示，M层持有数据和业务的具体实现，而C层则处理事件响应以及业务的调用以及通知界面更新。三者之间一定要明确的定义为单向依赖，而不应该出现双向依赖。下面是三层的依赖关系图：</p>
-
-<pre><code class="language-sequence">M层-&gt;C层:被C层依赖
-Note right of M层:M:持有数据和业务的具体实现
-C层-&gt;V层:依赖V层
-Note left of V层:V:展示
-Note left of C层:C:关联M和V&amp;事件响应&amp;业务调用&amp;界面更新。
+<pre><code>-(void)addCustomeSizeThatFitLable{
+    
+    CustomLable * hello = [[CustomLable alloc]initWithFrame:CGRectMake(20, 20, 200, 100)];
+    hello.text = @&quot;hello world&quot;;
+    hello.backgroundColor = [UIColor redColor];
+    [self.view addSubview:hello];
+    [hello sizeToFit]; 
+}
 </code></pre>
 
 
