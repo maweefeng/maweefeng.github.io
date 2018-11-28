@@ -108,6 +108,8 @@
         <li><label>iOS开发技巧</label></li>
 
           
+            <li><a title="_cmd 与runtime的结合" href="15433701207076.html">_cmd 与runtime的结合</a></li>
+          
             <li><a title="高效的画线" href="15427834493345.html">高效的画线</a></li>
           
             <li><a title="为什么NSString使用Copy修饰符" href="15427834493281.html">为什么NSString使用Copy修饰符</a></li>
@@ -237,6 +239,8 @@
                     
                       <li class="side-title"><span>iOS开发技巧</span></li>
                         
+                          <li><a title="_cmd 与runtime的结合" href="15433701207076.html">_cmd 与runtime的结合</a></li>
+                        
                           <li><a title="高效的画线" href="15427834493345.html">高效的画线</a></li>
                         
                           <li><a title="为什么NSString使用Copy修饰符" href="15427834493281.html">为什么NSString使用Copy修饰符</a></li>
@@ -311,34 +315,32 @@
 
 	
 		<div class="markdown-body">
-		<h1>高效的画线</h1>
+		<h1>_cmd 与runtime的结合</h1>
 
-		<p>先创建一个UIBeizerPath 的对象path</p>
+		<p>只有运行时给分类添加属性，大部分都是这样的<br/>
+　　<br/>
+<code>　<br/>
+static char kExtendVarKey; // 键名<br/>
+　<br/>
+- (NSString *)customName {<br/>
+　　　　 return objc_getAssociatedObject(self, &amp;kExtendVarKey);<br/>
+　　 }<br/>
+　　- (void)setCustomName:(CustomNavigationControllerDelegate *)customName {<br/>
+　　　　objc_setAssociatedObject(self, &amp;kExtendVarKey,, customDelegate, OBJC_ASSOCIATION_RETAIN_COPY);<br/>
+　　}<br/>
+</code></p>
 
-<pre><code>UIBezierPath *path = [[UIBezierPath alloc] init];
-  [path moveToPoint:CGPointMake(175, 100)];
-  
-  [path addArcWithCenter:CGPointMake(150, 100) radius:25 startAngle:0 endAngle:2*M_PI clockwise:YES];
-  [path moveToPoint:CGPointMake(150, 125)];
-  [path addLineToPoint:CGPointMake(150, 175)];
-  [path addLineToPoint:CGPointMake(125, 225)];
-  [path moveToPoint:CGPointMake(150, 175)];
-  [path addLineToPoint:CGPointMake(175, 225)];
-  [path moveToPoint:CGPointMake(100, 150)];
-  [path addLineToPoint:CGPointMake(200, 150)];
-</code></pre>
+<p>_cmd 是隐藏的参数，表示当前方法的selector，另外隐藏参数self表示当前方法调用的对象实例。<br/>
+这个参数是唯一的参数，在一个文件中方法名不会重复。<br/>
+所以可以让它代替运行时当中的属性的键名。<br/>
+　　</p>
 
-<p>然后创建CAShapeLayer添加到视图的layer上 </p>
-
-<pre><code>CAShapeLayer *shapeLayer = [CAShapeLayer layer];
-  shapeLayer.strokeColor = [UIColor redColor].CGColor;
-  shapeLayer.fillColor = [UIColor clearColor].CGColor;
-  shapeLayer.lineWidth = 5;
-  shapeLayer.lineJoin = kCALineJoinRound;
-  shapeLayer.lineCap = kCALineCapRound;
-  shapeLayer.path = path.CGPath;
-  //add it to our view
-  [self.containerView.layer addSublayer:shapeLayer];
+<pre><code class="language-　　">- (NSString *)customName {
+　　　　 return objc_getAssociatedObject(self, _cmd);
+　　 }
+　　- (void)setCustomName:(CustomNavigationControllerDelegate *)customName {
+　　　　objc_setAssociatedObject(self, @selector(customName), customName, OBJC_ASSOCIATION_RETAIN_COPY);
+　　}
 </code></pre>
 
 

@@ -108,6 +108,8 @@
         <li><label>iOS开发技巧</label></li>
 
           
+            <li><a title="_cmd 与runtime的结合" href="15433701207076.html">_cmd 与runtime的结合</a></li>
+          
             <li><a title="高效的画线" href="15427834493345.html">高效的画线</a></li>
           
             <li><a title="为什么NSString使用Copy修饰符" href="15427834493281.html">为什么NSString使用Copy修饰符</a></li>
@@ -237,6 +239,8 @@
                     
                       <li class="side-title"><span>iOS开发技巧</span></li>
                         
+                          <li><a title="_cmd 与runtime的结合" href="15433701207076.html">_cmd 与runtime的结合</a></li>
+                        
                           <li><a title="高效的画线" href="15427834493345.html">高效的画线</a></li>
                         
                           <li><a title="为什么NSString使用Copy修饰符" href="15427834493281.html">为什么NSString使用Copy修饰符</a></li>
@@ -311,69 +315,32 @@
 
 	
 		<div class="markdown-body">
-		<h1>sizeThatFits和sizeToFit</h1>
+		<h1>_cmd 与runtime的结合</h1>
 
-		<p>今天帮同事看一个布局约束的问题，（代码也是从别人手中接过来的，所以并不清楚怎么布局的）<br/>
-view是用xib画的，约束设置很多，本以为是约束的问题，设置了约束还是不能更改整个view的高度。</p>
+		<p>只有运行时给分类添加属性，大部分都是这样的<br/>
+　　<br/>
+<code>　<br/>
+static char kExtendVarKey; // 键名<br/>
+　<br/>
+- (NSString *)customName {<br/>
+　　　　 return objc_getAssociatedObject(self, &amp;kExtendVarKey);<br/>
+　　 }<br/>
+　　- (void)setCustomName:(CustomNavigationControllerDelegate *)customName {<br/>
+　　　　objc_setAssociatedObject(self, &amp;kExtendVarKey,, customDelegate, OBJC_ASSOCIATION_RETAIN_COPY);<br/>
+　　}<br/>
+</code></p>
 
-<p>最后找了一会，我发现了一个方法 sizeThatFit 在sizeThatFit内部返回了size，所以刚才尽管指定的约束改了，但是还是不影响下面的方法返回size。</p>
+<p>_cmd 是隐藏的参数，表示当前方法的selector，另外隐藏参数self表示当前方法调用的对象实例。<br/>
+这个参数是唯一的参数，在一个文件中方法名不会重复。<br/>
+所以可以让它代替运行时当中的属性的键名。<br/>
+　　</p>
 
-<p>所以就写了这个东西给不了解的同学一点点经验。</p>
-
-<pre><code>- (void)sizeToFit;                       // calls sizeThatFits: with current view bounds and changes bounds size.
-- (CGSize)sizeThatFits:(CGSize)size;     // return &#39;best&#39; size to fit given size. does not actually resize view. Default is return existing view size
-
-</code></pre>
-
-<p>上面是苹果的方法说明。</p>
-
-<p>sizeToFit 方法会返回一个苹果自带方法计算出的合适的宽高，即使你初始化的时候的宽和高设置错误，苹果也会给你算出一个合适的size让你填充你的内容。</p>
-
-<pre><code>-(void)addSizeToFitHelloLable{
-    
-    UILabel * hello = [[UILabel alloc]initWithFrame:CGRectMake(20, 20, 20, 100)];
-    hello.text = @&quot;hello world&quot;;
-    hello.backgroundColor = [UIColor redColor];
-    [self.view addSubview:hello];
-    [hello sizeToFit];
-    
-}
-
-</code></pre>
-
-<p>我这里设置的宽度和高度明显是不对的，但是当我调用sizeToFit之后就好多了，下面是调用前和调用之后的对比效果。</p>
-
-<ul>
-<li><p>调用之前<br/>
-<img src="media/15433027949667/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-27%20%E4%B8%8B%E5%8D%883.23.49.png" alt="屏幕快照 2018-11-27 下午3.23.49 "/></p></li>
-<li><p>调用之后<br/>
-<img src="media/15433027949667/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-27%20%E4%B8%8B%E5%8D%883.23.06.png" alt="屏幕快照 2018-11-27 下午3.23.06"/></p></li>
-</ul>
-
-<p>因为sizeToFit之后内部会调用调用sizeThatFits，所以还可以在自定义view当中重写sizeThatFits方法，去调整sizeToFit之后的size。</p>
-
-<pre><code>----------customLable.m-------------
--(CGSize)sizeThatFits:(CGSize)size{
-    
-    [super sizeThatFits:size];
-    size.height = 40;
-    return size;
-    
-}
-</code></pre>
-
-<h4 id="toc_0">注意</h4>
-
-<p>添加自定义的lable到view上最后千万不能忘记调用sizeToFit方法，要不然内部重写的sizeThatFits不生效。</p>
-
-<pre><code>-(void)addCustomeSizeThatFitLable{
-    
-    CustomLable * hello = [[CustomLable alloc]initWithFrame:CGRectMake(20, 20, 200, 100)];
-    hello.text = @&quot;hello world&quot;;
-    hello.backgroundColor = [UIColor redColor];
-    [self.view addSubview:hello];
-    [hello sizeToFit]; 
-}
+<pre><code class="language-　　">- (NSString *)customName {
+　　　　 return objc_getAssociatedObject(self, _cmd);
+　　 }
+　　- (void)setCustomName:(CustomNavigationControllerDelegate *)customName {
+　　　　objc_setAssociatedObject(self, @selector(customName), customName, OBJC_ASSOCIATION_RETAIN_COPY);
+　　}
 </code></pre>
 
 

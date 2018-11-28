@@ -108,6 +108,8 @@
         <li><label>iOS开发技巧</label></li>
 
           
+            <li><a title="_cmd 与runtime的结合" href="15433701207076.html">_cmd 与runtime的结合</a></li>
+          
             <li><a title="高效的画线" href="15427834493345.html">高效的画线</a></li>
           
             <li><a title="为什么NSString使用Copy修饰符" href="15427834493281.html">为什么NSString使用Copy修饰符</a></li>
@@ -237,6 +239,8 @@
                     
                       <li class="side-title"><span>iOS开发技巧</span></li>
                         
+                          <li><a title="_cmd 与runtime的结合" href="15433701207076.html">_cmd 与runtime的结合</a></li>
+                        
                           <li><a title="高效的画线" href="15427834493345.html">高效的画线</a></li>
                         
                           <li><a title="为什么NSString使用Copy修饰符" href="15427834493281.html">为什么NSString使用Copy修饰符</a></li>
@@ -311,54 +315,35 @@
 
 	
 		<div class="markdown-body">
-		<h1>为什么NSString使用Copy修饰符</h1>
+		<h1>高效的画线</h1>
 
-		<p>NSString为什么要用copy关键字，用strong会有什么问题？<br/>
-我们大部分的时候NSString的属性都是copy，那copy与strong的情况下到底有什么区别呢?我们以实例来说明：</p>
+		<p>先创建一个UIBeizerPath 的对象path</p>
 
-<pre><code class="language-@interface">@property(nonatomic,copy)NSString * str1;
-@property(nonatomic,strong)NSString*str2;
-@end
-然后写一个测试方法：
--(void)test
-{
-    NSMutableString*str=[NSMutableString stringWithFormat:@&quot;helloworld&quot;];
-    self.str1=str;
-    self.str2=str;
-    NSLog(@&quot;str:%p--%p&quot;,str,&amp;str);
-    NSLog(@&quot;copy_str:%p--%p&quot;,_str1,&amp;_str1);
-    NSLog(@&quot;strong_str:%p--%p&quot;,_str2,&amp;_str2);
-}
+<pre><code>UIBezierPath *path = [[UIBezierPath alloc] init];
+  [path moveToPoint:CGPointMake(175, 100)];
+  
+  [path addArcWithCenter:CGPointMake(150, 100) radius:25 startAngle:0 endAngle:2*M_PI clockwise:YES];
+  [path moveToPoint:CGPointMake(150, 125)];
+  [path addLineToPoint:CGPointMake(150, 175)];
+  [path addLineToPoint:CGPointMake(125, 225)];
+  [path moveToPoint:CGPointMake(150, 175)];
+  [path addLineToPoint:CGPointMake(175, 225)];
+  [path moveToPoint:CGPointMake(100, 150)];
+  [path addLineToPoint:CGPointMake(200, 150)];
 </code></pre>
 
-<p>最后我们运行看打印结果：</p>
+<p>然后创建CAShapeLayer添加到视图的layer上 </p>
 
-<pre><code class="language-2017-06-15">2017-06-15 15:21:55.910 oa[1236:78490] copy_str:0x600000026e60--0x7fc66cc06358
-2017-06-15 15:21:55.911 oa[1236:78490] strong_str:0x600000075cc0--0x7fc66cc06360
+<pre><code>CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+  shapeLayer.strokeColor = [UIColor redColor].CGColor;
+  shapeLayer.fillColor = [UIColor clearColor].CGColor;
+  shapeLayer.lineWidth = 5;
+  shapeLayer.lineJoin = kCALineJoinRound;
+  shapeLayer.lineCap = kCALineCapRound;
+  shapeLayer.path = path.CGPath;
+  //add it to our view
+  [self.containerView.layer addSublayer:shapeLayer];
 </code></pre>
-
-<p>从打印结果上我们可以看出str和_str2的对象地址是一样的，指向同一个对象，所以它们的值也是一样的，而str和_str1对象地址不同，是两个不同的对象，所以copy是深复制，创建了一个新的对象。 <br/>
-现在改变str的值，看看str1和str2有什么变化：</p>
-
-<pre><code class="language-[str">    NSLog(@&quot;****************%@&quot;,self.str1);
-    NSLog(@&quot;****************%@&quot;,self.str2);
-</code></pre>
-
-<p>打印结果如下：</p>
-
-<pre><code class="language-2017-06-15">2017-06-15 15:21:55.911 oa[1236:78490] ****************helloworldhry
-</code></pre>
-
-<p>从打印结果可以看出经过copy关键字修饰过的str1并没有因为str的变化而变化，经过strong修饰过的str2却随str的改变而改变。 <br/>
-所以，如果一般情况下，我们都不希望字串的值跟着str变化，所以我们一般用copy来设置string的属性。 <br/>
-如果希望字串的值跟着赋值的字串的值变化，可以使用strong。<br/>
-注意：上面的情况是针对于当把NSMutableString赋值给NSString的时候，才会有不同，如果是赋值是NSString对象，那么使用copy还是strong，结果都是一样的，因为NSString对象根本就不能改自身的值，他是不可变的。<br/>
-把一个对象赋值给一个属性变量，当这个对象变化了，如果希望属性变量变化就使用strong属性，如果希望属性变量不跟着变化，就是用copy属性。<br/>
-由此可以看出： <br/>
-对源头是NSMutableString的字符串，strong仅仅是指针引用，增加了引用计数器，这样源头改变的时候，用这种strong方式声明的变量（无论被赋值的变量是可变的还是不可变的），它也会跟着改变;而copy声明的变量，它不会跟着源头改变，它实际上是深拷贝。<br/>
-对源头是NSString的字符串，无论是strong声明的变量还是copy声明的变量，当第二次源头的字符串重新指向其它的地方的时候，它还是指向原来的最初的那个位置，也就是说其实二者都是指针引用，也就是浅拷贝。<br/>
-另外说明一下，这两者对内存计数的影响都是一样的，都会增加内存引用计数，都需要在最后的时候做处理。<br/>
-其实说白了，对字符串为啥要用这两种方式？我觉得还是一个安全问题，比如声明的一个NSString *mStr变量，然后把一个NSMutableString *str变量的赋值给它了，如果要求mStr跟着str变化，那么就用strong;如果mStr不能跟着str一起变化，那就用copy。而对于要把NSString类型的字符串赋值给mStr，那两都没啥区别。不会影响安全性，内存管理也一样。</p>
 
 
 		</div>

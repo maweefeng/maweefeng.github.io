@@ -108,6 +108,8 @@
         <li><label>iOS开发技巧</label></li>
 
           
+            <li><a title="_cmd 与runtime的结合" href="15433701207076.html">_cmd 与runtime的结合</a></li>
+          
             <li><a title="高效的画线" href="15427834493345.html">高效的画线</a></li>
           
             <li><a title="为什么NSString使用Copy修饰符" href="15427834493281.html">为什么NSString使用Copy修饰符</a></li>
@@ -237,6 +239,8 @@
                     
                       <li class="side-title"><span>iOS开发技巧</span></li>
                         
+                          <li><a title="_cmd 与runtime的结合" href="15433701207076.html">_cmd 与runtime的结合</a></li>
+                        
                           <li><a title="高效的画线" href="15427834493345.html">高效的画线</a></li>
                         
                           <li><a title="为什么NSString使用Copy修饰符" href="15427834493281.html">为什么NSString使用Copy修饰符</a></li>
@@ -311,28 +315,31 @@
 
 	
 		<div class="markdown-body">
-		<h1>UISearchbar 自定义搜索图标失真</h1>
+		<h1>CAMediaTimingFunction获取控制点：</h1>
 
-		<p>关于Searchbar设置搜索图标的问题<br/>
-因为这个大小在iOS中是固定的14*14<br/>
-如果UI给的切图不是这个尺寸就会出现失真的情况（ps：因为视图的默认contentMode是UIViewContentModeScaleToFill）<br/>
-网上有的方法一般是设置一个继承自UITextfield的searchBar<br/>
-去修改SearchBar的leftView</p>
+		<p>//create timing function<br/>
+CAMediaTimingFunction *function = [CAMediaTimingFunction functionWithControlPoints:1 :0 :0.75 :1];</p>
 
-<pre><code>UIImageView *searchIcon = [[UIImageView alloc] init];
-searchIcon.image = [UIImage imageNamed:@&quot;searchbar_textfield_search_icon&quot;];
-searchIcon.contentMode = UIViewContentModeCenter;        searchIcon.size = CGSizeMake(14, 14);
-self.leftView = searchIcon;
-self.leftViewMode = UITextFieldViewModeAlways;
+<p>我得到的controlPoint值似乎是错误的：</p>
 
-</code></pre>
+<p>CGPoint controlPoint1, controlPoint2;<br/>
+[function getControlPointAtIndex:1 values:(float *)&amp;controlPoint1]; <br/>
+[function getControlPointAtIndex:2 values:(float *)&amp;controlPoint2];<br/>
+The controlPoint value that I get seems to be wrong:</p>
 
-<p>但是其实完全可以便利UISearchBar的子视图拿到textField<br/>
-再去设置textField.leftView.contendMode即可</p>
+<p>controlPoint1   CGPoint (x = 5.2635442471208903E-315, y = 4.9406564584124654E-324)<br/><br/>
+controlPoint2   CGPoint (x = 0.0078125018408172764, y = 2.8421186829703262E-314)<br/><br/>
+但是，如果我使用float数组作为参数的类型values，我得到controlPoint的正确值：</p>
 
-<p>其实系统方法<br/>
-[xxxbar setImage:forSearchBarIcon:state];<br/>
-内部就是设置了textField的leftView</p>
+<p>float c1p[2], c2p[2];<br/>
+[function getControlPointAtIndex:1 values:c1p];<br/>
+[function getControlPointAtIndex:2 values:c2p];<br/>
+The values are:</p>
+
+<p>controlPoint1   CGPoint (x = 1, y = 0)<br/><br/>
+controlPoint2   CGPoint (x = 0.75, y = 1) </p>
+
+<p>32位设备可以使用第一种方法 但是在64位设备就行不通了 </p>
 
 
 		</div>

@@ -108,6 +108,8 @@
         <li><label>iOS开发技巧</label></li>
 
           
+            <li><a title="_cmd 与runtime的结合" href="15433701207076.html">_cmd 与runtime的结合</a></li>
+          
             <li><a title="高效的画线" href="15427834493345.html">高效的画线</a></li>
           
             <li><a title="为什么NSString使用Copy修饰符" href="15427834493281.html">为什么NSString使用Copy修饰符</a></li>
@@ -237,6 +239,8 @@
                     
                       <li class="side-title"><span>iOS开发技巧</span></li>
                         
+                          <li><a title="_cmd 与runtime的结合" href="15433701207076.html">_cmd 与runtime的结合</a></li>
+                        
                           <li><a title="高效的画线" href="15427834493345.html">高效的画线</a></li>
                         
                           <li><a title="为什么NSString使用Copy修饰符" href="15427834493281.html">为什么NSString使用Copy修饰符</a></li>
@@ -311,43 +315,39 @@
 
 	
 		<div class="markdown-body">
-		<h1>Command line instructions</h1>
+		<h1>对比Texture中Node和UIKit中View</h1>
 
-		<h3 id="toc_0">Git global setup</h3>
+		<h3 id="toc_0">node.view和view的差别</h3>
 
-<p>git config --global user.name &quot;mawf09&quot;<br/>
-git config --global user.email &quot;<a href="mailto:mawf09@xxx.com">mawf09@xxx.com</a>&quot;</p>
+<p>再一次深刻的体会到了node.view和view的差别。<br/><br/>
+最开始一直以为node.view就类似于ASTableNode对应的UITableview<br/><br/>
+其实远远没有那么简单，并不是那么的一个对应的关系.<br/>
+必须要把一些subnode都包到一个node里面最后这个node的view对应的是这些subnode的集合。<br/><br/>
+如果只是</p>
 
-<h3 id="toc_1">Create a new repository</h3>
+<pre><code>ASDisplayNode * node = [[ASDisplayNode alloc]init];
+ASDisplayNode * subnode = [ASDisplayNode new];
+ASTextNode * textnode = [ASTextNode new];                    
+ASButtonNode * buttonnode = [ASButtonNode new];
+[node addSubnode:subnode];
+[node addSubnode:textnode];
+[node addSubnode:buttonnode];
 
-<ul>
-<li>git clone git地址</li>
-<li>cd 制定文件夹</li>
-<li>touch README.md</li>
-<li>git add README.md</li>
-<li>git commit -m &quot;add README&quot;</li>
-<li>git push -u origin master</li>
-</ul>
+</code></pre>
 
-<h3 id="toc_2">Existing folder</h3>
+<p>我是在给tableview添加node为tableHeaderView发现的这个问题 <br/>
+后面新建一个node 把这些subnode都包进去问题就解决了。</p>
 
-<ul>
-<li>cd existing_folder</li>
-<li>git init</li>
-<li>git remote add origin git地址</li>
-<li>git add .</li>
-<li>git commit -m &quot;Initial commit&quot;</li>
-<li>git push -u origin master</li>
-</ul>
+<p>这个时候把node.view 当成这三个subnode的集合就会出现问题</p>
 
-<h3 id="toc_3">Existing Git repository</h3>
+<h3 id="toc_1">阴影以及圆角的设置</h3>
 
-<ul>
-<li>cd existing_repo</li>
-<li>git remote add origin git地址</li>
-<li>git push -u origin --all</li>
-<li>git push -u origin --tags</li>
-</ul>
+<p>在使用UIview添加阴影以及同时添加圆角的时候不能设.clipsToBounds = YES<br/>
+但是切圆角的时候就需要设置.clipsToBounds  = YES <br/>
+当时的做法也是最外层放置一个UIView的壳子，让外层的.clipsTobounds = NO 里面的.clipsTobounds = YES <br/>
+在外边的view添加阴影的效果。</p>
+
+<p>使用node的时候也是这样的原理。</p>
 
 
 		</div>

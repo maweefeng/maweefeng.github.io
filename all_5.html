@@ -108,6 +108,8 @@
         <li><label>iOS开发技巧</label></li>
 
           
+            <li><a title="_cmd 与runtime的结合" href="15433701207076.html">_cmd 与runtime的结合</a></li>
+          
             <li><a title="高效的画线" href="15427834493345.html">高效的画线</a></li>
           
             <li><a title="为什么NSString使用Copy修饰符" href="15427834493281.html">为什么NSString使用Copy修饰符</a></li>
@@ -237,6 +239,8 @@
                     
                       <li class="side-title"><span>iOS开发技巧</span></li>
                         
+                          <li><a title="_cmd 与runtime的结合" href="15433701207076.html">_cmd 与runtime的结合</a></li>
+                        
                           <li><a title="高效的画线" href="15427834493345.html">高效的画线</a></li>
                         
                           <li><a title="为什么NSString使用Copy修饰符" href="15427834493281.html">为什么NSString使用Copy修饰符</a></li>
@@ -311,16 +315,27 @@
 
 	
 		<div class="markdown-body">
-		<h1>设置Cell分割线顶头</h1>
+		<h1>终端命令</h1>
 
-		<ul>
-<li>(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-cell.layoutMargins = UIEdgeInsetsZero;
-cell.separatorInset = UIEdgeInsetsZero;
-cell.preservesSuperviewLayoutMargins = NO;
-}
-UITableView设置系统cell的分割线顶头</li>
+		<p>我们可以在 terminal 用 system profiler 命令来获取连接 mac 的 usb 设备：<br/>
+system_profiler SPUSBDataType</p>
+
+<ul>
+<li>ls 查看当前路径下的文件以及文件夹的名字</li>
+<li>ls /bin 表示查看根目录下的bin文件夹的东西</li>
+<li>ls docments 查看当前路径下documents文件夹下的所有东西</li>
+<li>cd .. 跳转到当前路径的上一层</li>
+<li>pwd 显示当前操作的路径 (绝对路径)</li>
+<li>clear 清屏</li>
+<li>touch 生成文件</li>
+<li>ifconfig 查看设备的ip地址</li>
+<li>netstat -an </li>
 </ul>
+
+<h3 id="toc_0">查看内存占用情况</h3>
+
+<p>sudo du -sh * <br/>
+<img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fuch6fzertj30iy0da0ur.jpg" alt=""/></p>
 
 
 		</div>

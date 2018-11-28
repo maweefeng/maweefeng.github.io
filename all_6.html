@@ -108,6 +108,8 @@
         <li><label>iOS开发技巧</label></li>
 
           
+            <li><a title="_cmd 与runtime的结合" href="15433701207076.html">_cmd 与runtime的结合</a></li>
+          
             <li><a title="高效的画线" href="15427834493345.html">高效的画线</a></li>
           
             <li><a title="为什么NSString使用Copy修饰符" href="15427834493281.html">为什么NSString使用Copy修饰符</a></li>
@@ -237,6 +239,8 @@
                     
                       <li class="side-title"><span>iOS开发技巧</span></li>
                         
+                          <li><a title="_cmd 与runtime的结合" href="15433701207076.html">_cmd 与runtime的结合</a></li>
+                        
                           <li><a title="高效的画线" href="15427834493345.html">高效的画线</a></li>
                         
                           <li><a title="为什么NSString使用Copy修饰符" href="15427834493281.html">为什么NSString使用Copy修饰符</a></li>
@@ -311,84 +315,57 @@
 
 	
 		<div class="markdown-body">
-		<h1>通讯录排序</h1>
+		<h1>给UITableView边框加阴影</h1>
 
-		<h3 id="toc_0">苹果提供的排序方法</h3>
+		<p>项目中有个需求要在UITableView加边框阴影  </p>
 
-<p>NSArray *stringArr = @[@&quot;我们&quot;,@&quot;我的&quot;, @&quot;重点&quot;, @&quot;重庆&quot;,  @&quot;三&quot;]; NSArray *result = [stringArr sortedArrayUsingSelector:@selector(localizedCompare:)];</p>
+<p>如果你的界面的UITableView是充满整个屏幕的话那么就可以使用这个简单的方法。   </p>
 
-<p>字典当中的keyvalue 可以一个键对应一个数组。</p>
+<ul>
+<li>方法一</li>
+</ul>
 
-<h3 id="toc_1">对数据进行排列按首字母进行分组</h3>
+<pre><code>tableView.layer.shadowColor = UIColor(white: 000000, alpha: 0.3).CGColor
 
-<pre><code>这是苹果的方法
--(void)userSorting:(NSMutableArray *)modelArr{
+tableView.layer.shadowOffset = CGSize(width: -6, height: 6)
+
+tableView.layer.shadowOpacity = 1
+
+tableView.clipsToBounds = false //这句最重要了，不然就显示不出来
+</code></pre>
+
+<h4 id="toc_0">问题来了</h4>
+
+<p>我的界面UITableview上面有一个固定不动的区域，如果单纯的照上面写的话，就会出现tableview盖住上面的问题 <br/>
+其实就是因为clipsToBounds = false 不对超出边框的部分进行切割。<br/><br/>
+因为UIScrollview默认clipsToBounds = true,所以你可能之前没有见过超出部分依然还显示在界面。 </p>
+
+<p>我的界面如下图所示<br/>
+<img src="https://lh3.googleusercontent.com/-Zq0sRfLUSQA/W_Jq6QFUYnI/AAAAAAAAlSU/JFoyTporhCgZafmew7cHT7yWGo2fn1ATQCHMYCw/I/15426133929938.jpg" alt=""/></p>
+
+<p>如果父视图的clipsToBounds = true那么在上面的子控件的clipsToBounds 也是true<br/><br/>
+所以必须要在UITableview下面添加一个UIView，可以使用下面的代码<br/><br/>
+必须要使UITableView的clipsToBounds = true，下面的父视图的clipsToBounds = false</p>
+
+<ul>
+<li>方法二</li>
+</ul>
+
+<pre><code>    self.backView = [[UIView alloc]initWithFrame:CGRectMake(originX, originY, Width,  height)];
+    self.backView.layer.shadowColor = [UIColor gh_colorFromHexString:@&quot;#002F81&quot;].CGColor;
+    self.backView.layer.shadowOffset = CGSizeMake(0, 2);
+    self.backView.layer.shadowOpacity = 0.1;
+    self.backView.layer.shadowRadius=8;//设置阴影半径
+    self.backView.clipsToBounds = false;
+    [self.view addSubview:self.backView];
     
-    for ( modelAgreementCitizenItem *model in modelArr) {
-        //获取汉子的首字母
-        //把中文转拼音
-        
-        NSMutableString *ms = [[NSMutableString alloc] initWithString:[model patientName]];
-        if (CFStringTransform((__bridge CFMutableStringRef)ms, 0, kCFStringTransformMandarinLatin, NO)) {
-            NSLog(@&quot;Pingying: %@&quot;, ms);
-        }
-        if (CFStringTransform((__bridge CFMutableStringRef)ms, 0, kCFStringTransformStripDiacritics, NO)) {
-            NSLog(@&quot;Pingying: %@&quot;, ms);
-        }
-        NSString *firstString = [[ms substringToIndex:1] uppercaseString];
-        
-        
-        NSMutableArray * arr = [self.nameDic objectForKey:firstString];
-        if (arr) {
-            [arr addObject:model];
-        }else{//如果没有 则需要创建一个添加到里面
-            [self.nameDic setObject:[@[model] mutableCopy] forKey:firstString];
-        }
-        
-    }
-    
-}
-这个方法使用起来比较慢 耗时较长
--(NSMutableArray *)userSorting:(NSMutableArray *)modelArr{
-    
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-    if(self.indexArr.count){
-        [self.indexArr removeAllObjects];
-    }
-    
-    for(int i=&#39;A&#39;;i&lt;=&#39;Z&#39;;i++)
-    {
-        NSMutableArray *rulesArray = [[NSMutableArray alloc] init];
-        
-        NSString *str1=[NSString stringWithFormat:@&quot;%c&quot;,i];
-        for(int j=0;j&lt;modelArr.count;j++)
-        {
-            modelAgreementCitizenItem *model = [modelArr objectAtIndex:j];  //这个model 是我自己创建的 里面包含用户的姓名 手机号 和 转化成功后的首字母
-            
-            if([[NSString getFirstLetter:model.patientName] isEqualToString:str1])
-            {
-                [rulesArray addObject:model];    //把首字母相同的人物model 放到同一个数组里面
-                [modelArr removeObject:model];   //model 放到 rulesArray 里面说明这个model 已经拍好序了 所以从总的modelArr里面删除
-                j--;
-                
-            }else{
-                
-            }
-        }
-        if (rulesArray.count !=0) {
-            [array addObject:rulesArray];
-            [self.indexArr addObject:[NSString stringWithFormat:@&quot;%c&quot;,i]]; //把大写字母也放到一个数组里面
-        }
-    }
-    
-    if (modelArr.count !=0) {
-        [array addObject:modelArr];
-        [self.indexArr addObject:@&quot;#&quot;];  //把首字母不是A~Z里的字符全部放到 array里面 然后返回
-    }
-    
-    return array;
-    
-}
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,0, Width, height) style:UITableViewStylePlain];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.layer.cornerRadius = KScreenWidth/375 *4;
+    self.tableView.layer.masksToBounds = YES;
+    self.tableView.tableFooterView = [UIView new];
+    [self.backView addSubview:self.tableView];
 
 
 </code></pre>
