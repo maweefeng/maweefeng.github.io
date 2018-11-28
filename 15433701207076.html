@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  _cmd 与runtime的结合 - Hello Mr.Ma
+  _cmd 与 runtime 的结合 - Hello Mr.Ma
   
   </title>
  <meta name="description" content="">
@@ -108,7 +108,7 @@
         <li><label>iOS开发技巧</label></li>
 
           
-            <li><a title="_cmd 与runtime的结合" href="15433701207076.html">_cmd 与runtime的结合</a></li>
+            <li><a title="_cmd 与 runtime 的结合" href="15433701207076.html">_cmd 与 runtime 的结合</a></li>
           
             <li><a title="高效的画线" href="15427834493345.html">高效的画线</a></li>
           
@@ -239,7 +239,7 @@
                     
                       <li class="side-title"><span>iOS开发技巧</span></li>
                         
-                          <li><a title="_cmd 与runtime的结合" href="15433701207076.html">_cmd 与runtime的结合</a></li>
+                          <li><a title="_cmd 与 runtime 的结合" href="15433701207076.html">_cmd 与 runtime 的结合</a></li>
                         
                           <li><a title="高效的画线" href="15427834493345.html">高效的画线</a></li>
                         
@@ -311,10 +311,9 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>_cmd 与runtime的结合</h1>
+<h1>_cmd 与 runtime 的结合</h1>
 
-<p>只有运行时给分类添加属性，大部分都是这样的<br/>
-　　</p>
+<p>只有运行时给分类添加属性，大部分都是这样的</p>
 
 <pre><code class="language-static">- (NSString *)customName {
 　　　　 return objc_getAssociatedObject(self, &amp;kExtendVarKey);
@@ -326,13 +325,12 @@
 
 <p>_cmd 是隐藏的参数，表示当前方法的selector，另外隐藏参数self表示当前方法调用的对象实例。<br/>
 这个参数是唯一的参数，在一个文件中方法名不会重复。<br/>
-所以可以让它代替运行时当中的属性的键名。<br/>
-　　</p>
+所以可以让它代替运行时当中的属性的键名。</p>
 
 <pre><code class="language-　　">- (NSString *)customName {
 　　　　 return objc_getAssociatedObject(self, _cmd);
 　　 }
-　　- (void)setCustomName:(NSString *)customName {
+- (void)setCustomName:(NSString *)customName {
 　　　　objc_setAssociatedObject(self, @selector(customName), customName, OBJC_ASSOCIATION_RETAIN_COPY);
 　　}
 </code></pre>
