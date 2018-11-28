@@ -318,17 +318,15 @@
 		<h1>_cmd 与runtime的结合</h1>
 
 		<p>只有运行时给分类添加属性，大部分都是这样的<br/>
-　　<br/>
-<code>　<br/>
-static char kExtendVarKey; // 键名<br/>
-　<br/>
-- (NSString *)customName {<br/>
-　　　　 return objc_getAssociatedObject(self, &amp;kExtendVarKey);<br/>
-　　 }<br/>
-　　- (void)setCustomName:(CustomNavigationControllerDelegate *)customName {<br/>
-　　　　objc_setAssociatedObject(self, &amp;kExtendVarKey,, customDelegate, OBJC_ASSOCIATION_RETAIN_COPY);<br/>
-　　}<br/>
-</code></p>
+　　</p>
+
+<pre><code class="language-static">- (NSString *)customName {
+　　　　 return objc_getAssociatedObject(self, &amp;kExtendVarKey);
+　　 }
+- (void)setCustomName:(NSString *)customName {
+　　　　objc_setAssociatedObject(self, &amp;kExtendVarKey,, customDelegate, OBJC_ASSOCIATION_RETAIN_COPY);
+　}
+</code></pre>
 
 <p>_cmd 是隐藏的参数，表示当前方法的selector，另外隐藏参数self表示当前方法调用的对象实例。<br/>
 这个参数是唯一的参数，在一个文件中方法名不会重复。<br/>
@@ -338,7 +336,7 @@ static char kExtendVarKey; // 键名<br/>
 <pre><code class="language-　　">- (NSString *)customName {
 　　　　 return objc_getAssociatedObject(self, _cmd);
 　　 }
-　　- (void)setCustomName:(CustomNavigationControllerDelegate *)customName {
+　　- (void)setCustomName:(NSString *)customName {
 　　　　objc_setAssociatedObject(self, @selector(customName), customName, OBJC_ASSOCIATION_RETAIN_COPY);
 　　}
 </code></pre>
