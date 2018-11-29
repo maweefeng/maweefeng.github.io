@@ -314,7 +314,6 @@
 	<h1>为什么NSString使用Copy修饰符</h1>
 
 	<!-- Go to www.addthis.com/dashboard to customize your tools -->
-	<div class="addthis_inline_share_toolbox"></div>
 
 	<p>NSString为什么要用copy关键字，用strong会有什么问题？<br/>
 我们大部分的时候NSString的属性都是copy，那copy与strong的情况下到底有什么区别呢?我们以实例来说明：</p>
@@ -363,7 +362,10 @@
 另外说明一下，这两者对内存计数的影响都是一样的，都会增加内存引用计数，都需要在最后的时候做处理。<br/>
 其实说白了，对字符串为啥要用这两种方式？我觉得还是一个安全问题，比如声明的一个NSString *mStr变量，然后把一个NSMutableString *str变量的赋值给它了，如果要求mStr跟着str变化，那么就用strong;如果mStr不能跟着str一起变化，那就用copy。而对于要把NSString类型的字符串赋值给mStr，那两都没啥区别。不会影响安全性，内存管理也一样。</p>
 
-
+	<div class="share-comment">
+		<!-- Go to www.addthis.com/dashboard to customize your tools -->
+		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5bfe6ae3f692f811"></script>
+	</div>
 </div>
 
 <br /><br />
@@ -390,10 +392,7 @@
 	</script>
 	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-<div class="share-comment">
-	<!-- Go to www.addthis.com/dashboard to customize your tools -->
-	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5bfe6ae3f692f811"></script>
-</div>
+
 <br /><br />
 <hr />
 
