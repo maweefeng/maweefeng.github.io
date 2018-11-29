@@ -108,6 +108,8 @@
         <li><label>iOS开发技巧</label></li>
 
           
+            <li><a title="dispatch_semaphore_t 信号量" href="15433939231870.html">dispatch_semaphore_t 信号量</a></li>
+          
             <li><a title="_cmd 与 runtime 的结合" href="15433701207076.html">_cmd 与 runtime 的结合</a></li>
           
             <li><a title="高效的画线" href="15427834493345.html">高效的画线</a></li>
@@ -239,6 +241,8 @@
                     
                       <li class="side-title"><span>iOS开发技巧</span></li>
                         
+                          <li><a title="dispatch_semaphore_t 信号量" href="15433939231870.html">dispatch_semaphore_t 信号量</a></li>
+                        
                           <li><a title="_cmd 与 runtime 的结合" href="15433701207076.html">_cmd 与 runtime 的结合</a></li>
                         
                           <li><a title="高效的画线" href="15427834493345.html">高效的画线</a></li>
@@ -315,29 +319,53 @@
 
 	
 		<div class="markdown-body">
-		<h1>_cmd 与 runtime 的结合</h1>
+		<h1>dispatch_semaphore_t 信号量</h1>
 
-		<p>只有运行时给分类添加属性，大部分都是这样的</p>
+		<p>dispatch_semaphore_t 一种计算的信号量<br/>
+dispatch_semaphore_create 创建一个数值的信号量<br/>
+dispatch_semaphore_signal 对指定的信号量进行增加1</p>
 
-<pre><code class="language-static">- (NSString *)customName {
-　　　　 return objc_getAssociatedObject(self, &amp;kExtendVarKey);
-　　 }
-- (void)setCustomName:(NSString *)customName {
-　　　　objc_setAssociatedObject(self, &amp;kExtendVarKey,, customDelegate, OBJC_ASSOCIATION_RETAIN_COPY);
-　}
+<p>dispatch_semaphore_wait 会使传入的信号量减1，如果返回的值为0说明有任务进行中就阻碍当前的线程，如果返回的值大于0，就代表当前的线程当中没有任务再执行，就接着执行下面的任务。</p>
+
+<p>用这个可以起到顺序执行异步任务的功效。<br/>
+如果后一步的执行需要前一步执行完拿到结果才行的话，这也是一种异步顺序执行的方案。</p>
+
+<pre><code>- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self task:@&quot;task one starting&quot;];
+        dispatch_semaphore_signal(semaphore);
+    });
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self task:@&quot;task two starting&quot;];
+        dispatch_semaphore_signal(semaphore);
+    });
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self task:@&quot;task three starting&quot;];
+        dispatch_semaphore_signal(semaphore);
+    });
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    
+    // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)task:(NSString *)taskName{
+    NSLog(@&quot;%@&quot;,taskName);
+    sleep(1);
+}
+
 </code></pre>
 
-<p>_cmd 是隐藏的参数，表示当前方法的selector，另外隐藏参数self表示当前方法调用的对象实例。<br/>
-这个参数是唯一的参数，在一个文件中方法名不会重复。<br/>
-所以可以让它代替运行时当中的属性的键名。</p>
-
-<pre><code class="language-　　">- (NSString *)customName {
-　　　　 return objc_getAssociatedObject(self, _cmd);
-　　 }
-- (void)setCustomName:(NSString *)customName {
-　　　　objc_setAssociatedObject(self, @selector(customName), customName, OBJC_ASSOCIATION_RETAIN_COPY);
-　　}
-</code></pre>
+<p>先执行dispatch_semaphore_wait 然后发现线程任务还在进行，就开始堵塞当前任务的线程，等待dispatch_async内部执行完成信号量+1才会继续下面的执行。</p>
 
 
 		</div>

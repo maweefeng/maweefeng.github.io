@@ -108,6 +108,8 @@
         <li><label>iOS开发技巧</label></li>
 
           
+            <li><a title="dispatch_semaphore_t 信号量" href="15433939231870.html">dispatch_semaphore_t 信号量</a></li>
+          
             <li><a title="_cmd 与 runtime 的结合" href="15433701207076.html">_cmd 与 runtime 的结合</a></li>
           
             <li><a title="高效的画线" href="15427834493345.html">高效的画线</a></li>
@@ -239,6 +241,8 @@
                     
                       <li class="side-title"><span>iOS开发技巧</span></li>
                         
+                          <li><a title="dispatch_semaphore_t 信号量" href="15433939231870.html">dispatch_semaphore_t 信号量</a></li>
+                        
                           <li><a title="_cmd 与 runtime 的结合" href="15433701207076.html">_cmd 与 runtime 的结合</a></li>
                         
                           <li><a title="高效的画线" href="15427834493345.html">高效的画线</a></li>
@@ -315,31 +319,21 @@
 
 	
 		<div class="markdown-body">
-		<h1>CAMediaTimingFunction获取控制点：</h1>
+		<h1>iOS导航条背景颜色</h1>
 
-		<p>//create timing function<br/>
-CAMediaTimingFunction *function = [CAMediaTimingFunction functionWithControlPoints:1 :0 :0.75 :1];</p>
+		<h4 id="toc_0">Situation one</h4>
 
-<p>我得到的controlPoint值似乎是错误的：</p>
+<p><code>self.navigationBar.barTintColor= [UIColor redColor];</code><br/>
+这时候的效果就是纯色的<br/>
+类似下面这样<br/>
+<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fsbvzqlgesj309f01oglk.jpg" alt=""/></p>
 
-<p>CGPoint controlPoint1, controlPoint2;<br/>
-[function getControlPointAtIndex:1 values:(float *)&amp;controlPoint1]; <br/>
-[function getControlPointAtIndex:2 values:(float *)&amp;controlPoint2];<br/>
-The controlPoint value that I get seems to be wrong:</p>
+<h4 id="toc_1">Situation two</h4>
 
-<p>controlPoint1   CGPoint (x = 5.2635442471208903E-315, y = 4.9406564584124654E-324)<br/><br/>
-controlPoint2   CGPoint (x = 0.0078125018408172764, y = 2.8421186829703262E-314)<br/><br/>
-但是，如果我使用float数组作为参数的类型values，我得到controlPoint的正确值：</p>
+<p><code>self.navigationBar.backgroundColor = [UIColor redColor];</code><br/>
+<img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fsbvypka0rj309e01p0so.jpg" alt=""/></p>
 
-<p>float c1p[2], c2p[2];<br/>
-[function getControlPointAtIndex:1 values:c1p];<br/>
-[function getControlPointAtIndex:2 values:c2p];<br/>
-The values are:</p>
-
-<p>controlPoint1   CGPoint (x = 1, y = 0)<br/><br/>
-controlPoint2   CGPoint (x = 0.75, y = 1) </p>
-
-<p>32位设备可以使用第一种方法 但是在64位设备就行不通了 </p>
+<p>一种是有渐变的半透明效果，一种就是简单的纯色效果。</p>
 
 
 		</div>

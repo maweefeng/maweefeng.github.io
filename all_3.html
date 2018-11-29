@@ -108,6 +108,8 @@
         <li><label>iOS开发技巧</label></li>
 
           
+            <li><a title="dispatch_semaphore_t 信号量" href="15433939231870.html">dispatch_semaphore_t 信号量</a></li>
+          
             <li><a title="_cmd 与 runtime 的结合" href="15433701207076.html">_cmd 与 runtime 的结合</a></li>
           
             <li><a title="高效的画线" href="15427834493345.html">高效的画线</a></li>
@@ -239,6 +241,8 @@
                     
                       <li class="side-title"><span>iOS开发技巧</span></li>
                         
+                          <li><a title="dispatch_semaphore_t 信号量" href="15433939231870.html">dispatch_semaphore_t 信号量</a></li>
+                        
                           <li><a title="_cmd 与 runtime 的结合" href="15433701207076.html">_cmd 与 runtime 的结合</a></li>
                         
                           <li><a title="高效的画线" href="15427834493345.html">高效的画线</a></li>
@@ -315,12 +319,79 @@
 
 	
 		<div class="markdown-body">
-		<h1>Xcode编译找不到头文件</h1>
+		<h1>Flutter && Python && OC</h1>
 
-		<p>开发中遇到之前成功导入没有报错的头文件，后来打开工程之后报错说找不到头文件，这就很奇怪了。<br/>
-之前还是好好的，怎么睡了一觉代码还出现了问题呢。<br/><br/>
-然后就去搜索解决方法，发现是要到buildsettings下的Search Paths下面的User Header Search Paths 大概意思就是这个东西是头文件的搜索路径。<br/><br/>
-进去之后添加${SRCROOT}然后回车搞定就完成了。</p>
+		<h3 id="toc_0">dart的函数定义如下所示</h3>
+
+<pre><code>// Define a function.
+printInteger(int aNumber) {
+  print(&#39;The number is $aNumber.&#39;); // Print to console.
+}
+
+// This is where the app starts executing.
+main() {
+  var number = 42; // Declare and initialize a variable.
+  printInteger(number); // Call a function.
+}
+
+isNoble(atomicNumber) {
+  return _nobleGases[atomicNumber] != null;
+}
+
+如果函数只有单个语句，可以采用简略的形式：
+
+bool isNoble(int atomicNumber) =&gt; _nobleGases[atomicNumber] != null;
+
+
+</code></pre>
+
+<h3 id="toc_1">$dart取地址</h3>
+
+<pre><code>String say(String from, String msg, [String device]) {
+  var result = &#39;$from says $msg&#39;;
+  if (device != null) {
+    result = &#39;$result with a $device&#39;;
+  }
+  return result;
+}
+
+</code></pre>
+
+<p>以分号结尾 参数类型要指定也可以不指定<br/><br/>
+=&gt; 是{ return expr;} 的缩写</p>
+
+<h3 id="toc_2">oc的函数定义</h3>
+
+<pre><code>-(void)hello{
+
+print(@&quot;hello world&quot;);
+
+}
+-(void)hello(int a,int b){
+
+print(@&quot;hello world %d %d&quot;,a,b);
+
+}
+
+
+</code></pre>
+
+<p>无需注意缩进 但是返回值类型一定要明确</p>
+
+<h3 id="toc_3">python函数定义</h3>
+
+<pre><code>def xxxx:
+    print &#39;hello world&#39;
+    
+def xxx(a,b):
+   print(a,b)
+   
+def xxx(self,a,b)
+   print a,b
+   
+</code></pre>
+
+<p>由于没有分号和大括号所以一定要注意缩进，</p>
 
 
 		</div>

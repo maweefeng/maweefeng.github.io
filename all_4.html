@@ -108,6 +108,8 @@
         <li><label>iOS开发技巧</label></li>
 
           
+            <li><a title="dispatch_semaphore_t 信号量" href="15433939231870.html">dispatch_semaphore_t 信号量</a></li>
+          
             <li><a title="_cmd 与 runtime 的结合" href="15433701207076.html">_cmd 与 runtime 的结合</a></li>
           
             <li><a title="高效的画线" href="15427834493345.html">高效的画线</a></li>
@@ -239,6 +241,8 @@
                     
                       <li class="side-title"><span>iOS开发技巧</span></li>
                         
+                          <li><a title="dispatch_semaphore_t 信号量" href="15433939231870.html">dispatch_semaphore_t 信号量</a></li>
+                        
                           <li><a title="_cmd 与 runtime 的结合" href="15433701207076.html">_cmd 与 runtime 的结合</a></li>
                         
                           <li><a title="高效的画线" href="15427834493345.html">高效的画线</a></li>
@@ -315,39 +319,47 @@
 
 	
 		<div class="markdown-body">
-		<h1>对比Texture中Node和UIKit中View</h1>
+		<h1>pod install速度过慢</h1>
 
-		<h3 id="toc_0">node.view和view的差别</h3>
+		<p>pod install速度慢的终极解决方案</p>
 
-<p>再一次深刻的体会到了node.view和view的差别。<br/><br/>
-最开始一直以为node.view就类似于ASTableNode对应的UITableview<br/><br/>
-其实远远没有那么简单，并不是那么的一个对应的关系.<br/>
-必须要把一些subnode都包到一个node里面最后这个node的view对应的是这些subnode的集合。<br/><br/>
-如果只是</p>
+<p>相信大家已经感受到pod install速度越来越慢了，网上提供了几种解决方案，但是都没有完全解决速度慢的问题。</p>
 
-<pre><code>ASDisplayNode * node = [[ASDisplayNode alloc]init];
-ASDisplayNode * subnode = [ASDisplayNode new];
-ASTextNode * textnode = [ASTextNode new];                    
-ASButtonNode * buttonnode = [ASButtonNode new];
-[node addSubnode:subnode];
-[node addSubnode:textnode];
-[node addSubnode:buttonnode];
+<p>使用国内镜像的Specs<br/>
+在pod install时使用命令pod install --no-repo-update<br/>
+使用proxychains使终端命令走代理<br/>
+下面就来说明一下这几种方法为何没有完全解决问题</p>
 
-</code></pre>
+<p>使用国内镜像的Specs <br/>
+这个只是加快了Specs下载更新速度，而且如果使用国内镜像Specs，那么Podfile中就必须指明使用这个Specs。<br/>
+在pod install时使用命令pod install --no-repo-update <br/>
+install时不更新本地库，但如果第一次install还是要去github clone代码<br/>
+使用proxychains使终端命令走代理 <br/>
+这个只是使pod命令走代理，git download的时候不会走代理<br/>
+其实真正慢的原因并不在pod命令，而是在于github上的代码库访问速度慢，那么就知道真正的解决方案就是要加快git命令的速度。 <br/>
+我使用Shadowsocks代理，默认代理端口为1080，配置好代理之后去终端输入git配置命令，命令如下</p>
 
-<p>我是在给tableview添加node为tableHeaderView发现的这个问题 <br/>
-后面新建一个node 把这些subnode都包进去问题就解决了。</p>
+<p>git config --global http.proxy socks5://127.0.0.1:1080<br/>
+1<br/>
+上面的命令是给git设置全局代理，但是我们并不希望国内git库也走代理，而是只需要github上的代码库走代理，命令如下</p>
 
-<p>这个时候把node.view 当成这三个subnode的集合就会出现问题</p>
+<p>git config --global http.<a href="https://github.com.proxy">https://github.com.proxy</a> socks5://127.0.0.1:1080<br/>
+1<br/>
+如此就从根本上解决了问题，下面附上设置代理前后git命令的速度 <br/>
+代理前 <br/>
+代理前<br/>
+代理后 <br/>
+这里写图片描述</p>
 
-<h3 id="toc_1">阴影以及圆角的设置</h3>
+<p>体验xiu的一下吧！</p>
 
-<p>在使用UIview添加阴影以及同时添加圆角的时候不能设.clipsToBounds = YES<br/>
-但是切圆角的时候就需要设置.clipsToBounds  = YES <br/>
-当时的做法也是最外层放置一个UIView的壳子，让外层的.clipsTobounds = NO 里面的.clipsTobounds = YES <br/>
-在外边的view添加阴影的效果。</p>
+<p>（ps：如果要恢复/移除上面设置的git代理，使用如下命令</p>
 
-<p>使用node的时候也是这样的原理。</p>
+<p>git config --global --unset http.proxy<br/>
+1<br/>
+git config --global --unset http.<a href="https://github.com.proxy">https://github.com.proxy</a><br/>
+1<br/>
+）</p>
 
 
 		</div>
