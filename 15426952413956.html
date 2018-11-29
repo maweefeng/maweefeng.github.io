@@ -315,15 +315,16 @@
 
 	<!-- Go to www.addthis.com/dashboard to customize your tools -->
 
-	<p>出现这个问题是设置约束优先级错误，设置一下约束的优先级就行。<br/>
-<code><br/>
-        [self.doctorTitle mas_makeConstraints:^(MASConstraintMaker *make) {<br/>
-            make.left.equalTo(self.title.mas_left);<br/>
-            make.right.equalTo(self.title.mas_right);<br/>
-            make.top.equalTo(self.topline.mas_bottom).offset(10).priorityHigh();<br/>
-            make.height.mas_equalTo(@14);<br/>
-        }];<br/>
-</code></p>
+	<p>出现这个问题是设置约束优先级错误，设置一下约束的优先级就行。</p>
+
+<pre><code>[self.doctorTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.title.mas_left);
+            make.right.equalTo(self.title.mas_right);
+            make.top.equalTo(self.topline.mas_bottom).offset(10).priorityHigh();
+            make.height.mas_equalTo(@14);
+}];
+
+</code></pre>
 
 	<div class="share-comment">
 		<!-- Go to www.addthis.com/dashboard to customize your tools -->
