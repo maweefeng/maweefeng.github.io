@@ -62,10 +62,14 @@ ul.off-canvas-list li a:hover{background: #335a79;}
     border-bottom: 2px rgba(0,0,0,0.8) solid;
 }
 
-
-.sidebar {
-    padding: 0px 0px; padding-right: 8%;
+.sidebar{
+  box-shadow: -1px 0px 1px -2px rgba(0,0,0,0.9);
+  background-color: #fafafa;
+  padding: 0 30px 60px;
 }
+/* .sidebar {
+    padding: 0px 0px; padding-right: 8%;
+} */
 .sidebar .side-nav li {
     margin: 0;
     padding: 0;
