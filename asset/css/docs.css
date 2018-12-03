@@ -4,7 +4,7 @@
 }
 
 
-.top-bar,.tab-bar{ background-color: #fff; height: 65px;  border-bottom: solid 1px #F5F5F5;}
+.top-bar,.tab-bar{ background-color: rgb(33, 139, 51); height: 65px;  border-bottom: solid 1px #F5F5F5;}
 
 .tab-bar{ padding-top: 6px; height: 59px;}
 .tab-bar .menu-icon{ width: 100%; color: #333; }
@@ -20,7 +20,7 @@
 #sidebar{ margin-top: 0px;}
 .top-bar-section li:not(.has-form) a:not(.button){
   background-color: transparent;
-  color: #666;
+  color: #333;
   line-height: 1rem;
   display: inline-block;
   font-size: 12px;
@@ -36,21 +36,21 @@
 
 .top-bar-section li:not(.has-form) a:not(.button):hover {
   background: transparent;
-  color: #333; 
-  font-weight: normal;
+  color: #fff; 
+  font-weight: bold;
   
 }
 .top-bar-section li.is_active:not(.has-form) a:not(.button) {
     background: transparent;
-    font-weight: 700;
-    color: #333; 
-    border-bottom: 2px rgba(0,0,0,0.8) solid;
+    font-weight: bold;
+    color: #fff; 
+    border-bottom: 4px rgba(255,255,255,1.0) solid;
 }
 .top-bar-section li.is_active:not(.has-form) a:not(.button):hover {
     background: transparent;
-    font-weight: 700;
-    color: #333; 
-    border-bottom: 2px rgba(0,0,0,0.8) solid;
+    font-weight: bold;
+    color: #fff; 
+    border-bottom: 4px rgba(255,255,255,1.0) solid;
 }
 #main-menu{ padding-left: 0.93rem; padding-right: 0.93rem;}
 #site-logo{margin: 0; padding: 0;  margin-right: 40px;}
@@ -140,7 +140,7 @@ padding: 8px 0px; margin: 0;
   }
 #site-categories .posts-list li a:hover{text-decoration: underline;}
 .page-bottom{ margin:0px 0px; margin-bottom: 80px;}
-.page-bottom .copyright{ text-align: left;  margin: 0 0.93rem;  padding-top: 60px; font-size: 12px; color: #999;}
+.page-bottom .copyright{ text-align: left;  margin: 0 0.93rem;  padding-top: 0px; font-size: 12px; color: #999;}
 .page-bottom .copyright a{color: #999;text-decoration: underline ;}
 .page-bottom .copyright-text-center{ text-align: center;  font-size: 12px; color: #999;}
 

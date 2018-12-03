@@ -16,34 +16,33 @@
 
   <script src="asset/js/vendor/modernizr.js"></script>
   <script src="asset/js/vendor/jquery.js"></script>
-  <script src="asset/js/foundation.min.js"></script>
   <script src="asset/highlightjs/highlight.pack.js"></script>
   <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script>
     hljs.initHighlightingOnLoad();
-    // window.onload = function() {
+    window.onload = function() {
 
-    //   var footerPath = window.location.pathname.split('/')[window.location.pathname.split('/').length - 1];
-    //   if (footerPath == 'index.html') {
-    //     // alert('首页');
-    //     document.getElementById('menu_item_about').className = "";
-    //     document.getElementById('menu_item_index').className = "is_active";
-    //     document.getElementById('menu_item_archives').className = "";
-    //   }
-    //   if (footerPath == 'archives.html') {
-    //     // alert('分类');
-    //     document.getElementById('menu_item_about').className = "";
-    //     document.getElementById('menu_item_index').className = "";
-    //     document.getElementById('menu_item_archives').className = "is_active";
+      var footerPath = window.location.pathname.split('/')[window.location.pathname.split('/').length - 1];
+      if (footerPath == 'index.html') {
+        // alert('首页');
+        document.getElementById('menu_item_about').className = "";
+        document.getElementById('menu_item_index').className = "is_active";
+        document.getElementById('menu_item_archives').className = "";
+      }
+      if (footerPath == 'archives.html') {
+        // alert('分类');
+        document.getElementById('menu_item_about').className = "";
+        document.getElementById('menu_item_index').className = "";
+        document.getElementById('menu_item_archives').className = "is_active";
 
-    //   }
-    //   if (footerPath == 'About%20Me.html') {
-    //     // alert('关于我');
-    //     document.getElementById('menu_item_about').className = "is_active";
-    //     document.getElementById('menu_item_index').className = "";
-    //     document.getElementById('menu_item_archives').className = "";
-    //   }
-    // }
+      }
+      if (footerPath == 'About%20Me.html') {
+        // alert('关于我');
+        document.getElementById('menu_item_about').className = "is_active";
+        document.getElementById('menu_item_index').className = "";
+        document.getElementById('menu_item_archives').className = "";
+      }
+    }
   </script>
 
 </head>
@@ -81,6 +80,7 @@
       <aside class="left-off-canvas-menu">
         <ul class="off-canvas-list">
           <li><a href="index.html">Home</a></li>
+          <li><a href="archives.html">Archives</a></li>
           
           <li class="divider"></li>
           <li><label>iOS开发技巧</label></li>

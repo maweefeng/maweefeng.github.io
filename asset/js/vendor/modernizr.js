@@ -345,26 +345,3 @@ window.Modernizr = function (a, b, c) {
         }, q.className = q.className.replace(/(^|\s)no-js(\s|$)/, "$1$2") + (p ? " js " + F.join(" ") : ""), o
 }(this, this.document);
 
-window.onload = function() {
-
-    var footerPath = window.location.pathname.split('/')[window.location.pathname.split('/').length - 1];
-    if (footerPath == 'index.html') {
-      // alert('首页');
-      document.getElementById('menu_item_about').className = "";
-      document.getElementById('menu_item_index').className = "is_active";
-      document.getElementById('menu_item_archives').className = "";
-    }
-    if (footerPath == 'archives.html') {
-      // alert('分类');
-      document.getElementById('menu_item_about').className = "";
-      document.getElementById('menu_item_index').className = "";
-      document.getElementById('menu_item_archives').className = "is_active";
- 
-    }
-    if (footerPath == 'About%20Me.html') {
-      // alert('关于我');
-      document.getElementById('menu_item_about').className = "is_active";
-      document.getElementById('menu_item_index').className = "";
-      document.getElementById('menu_item_archives').className = "";
-    }
-  }(this, this.document);
