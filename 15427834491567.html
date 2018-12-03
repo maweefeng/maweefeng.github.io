@@ -131,25 +131,25 @@
 
 
       <section id="main-content" role="main" class="scroll-container"> <script type="text/javascript">
-  $(function(){
+  $(function () {
     $('#menu_item_index').addClass('is_active');
   });
 </script>
 <div class="row">
   <div class="large-8 medium-8 columns">
-      <div class="markdown-body article-wrap">
-       <div class="article">
-          
-          <h1>视图的绘制周期</h1>
-     
+    <div class="markdown-body article-wrap">
+      <div class="article">
+        
+        <h1>视图的绘制周期</h1>
+
         <div class="read-more clearfix">
           <span class="date">2018/11/21</span>
 
           <span>posted in&nbsp;</span> 
           
-              <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
-           
-         
+          <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
+          
+
           <span class="comments">
             
 
@@ -159,30 +159,32 @@
         </div>
       </div><!-- article -->
 
+      <!-- Go to www.addthis.com/dashboard to customize your tools -->
+      <div class="addthis_inline_share_toolbox"></div>
+
       <div class="article-content">
-      <p>当view第一次在屏幕上显示的时候，系统会绘制它的内容，然后系统会截取内容的快照，并且将快照作为视图的可见外观，如果你永远不改变视图的内容，那么视图的绘制代码永远不会改变。如果更改了视图的内容，不用直接重新绘制，而是使用setNeedsDisplay或者setNeedsDisplayInRect方法是视图无效。这些方法会告知视图内容以及改变并且需要在下一次进行重绘。如果需要立马重绘，那么需要使用layoutIfNeeded方法。</p>
+        <p>当view第一次在屏幕上显示的时候，系统会绘制它的内容，然后系统会截取内容的快照，并且将快照作为视图的可见外观，如果你永远不改变视图的内容，那么视图的绘制代码永远不会改变。如果更改了视图的内容，不用直接重新绘制，而是使用setNeedsDisplay或者setNeedsDisplayInRect方法是视图无效。这些方法会告知视图内容以及改变并且需要在下一次进行重绘。如果需要立马重绘，那么需要使用layoutIfNeeded方法。</p>
 
 
-    
+
 
       </div>
 
       <div class="row">
         <div class="large-6 columns">
-        <p class="text-left" style="padding:15px 0px;">
-      
-          <a href="15427834491628.html" 
-          title="Previous Post: 设置Cell分割线顶头">&laquo; 设置Cell分割线顶头</a>
-      
-        </p>
+          <p class="text-left" style="padding:15px 0px;">
+            
+            <a href="15427834491628.html" title="Previous Post: 设置Cell分割线顶头">&laquo; 设置Cell分割线顶头</a>
+            
+          </p>
         </div>
         <div class="large-6 columns">
-      <p class="text-right" style="padding:15px 0px;">
-      
-          <a  href="15427834491504.html" 
-          title="Next Post: Git基础流">Git基础流 &raquo;</a>
-      
-      </p>
+          <p class="text-right" style="padding:15px 0px;">
+            
+            <a href="15427834491504.html" title="Next Post: Git基础流">Git基础流
+              &raquo;</a>
+            
+          </p>
         </div>
       </div>
       <div class="comments-wrap">
@@ -217,12 +219,7 @@ s.setAttribute('data-timestamp', +new Date());
         </div>
       </div>
     </div><!-- article-wrap -->
-  </div><!-- large 8 -->
-
-
-
-
- <div class="large-4 medium-4 columns">
+  </div><!-- large 8 --> <div class="large-4 medium-4 columns">
   <div class="hide-for-small">
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">

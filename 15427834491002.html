@@ -131,25 +131,25 @@
 
 
       <section id="main-content" role="main" class="scroll-container"> <script type="text/javascript">
-  $(function(){
+  $(function () {
     $('#menu_item_index').addClass('is_active');
   });
 </script>
 <div class="row">
   <div class="large-8 medium-8 columns">
-      <div class="markdown-body article-wrap">
-       <div class="article">
-          
-          <h1>代理修饰符</h1>
-     
+    <div class="markdown-body article-wrap">
+      <div class="article">
+        
+        <h1>代理修饰符</h1>
+
         <div class="read-more clearfix">
           <span class="date">2018/11/21</span>
 
           <span>posted in&nbsp;</span> 
           
-              <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
-           
-         
+          <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
+          
+
           <span class="comments">
             
 
@@ -159,33 +159,35 @@
         </div>
       </div><!-- article -->
 
+      <!-- Go to www.addthis.com/dashboard to customize your tools -->
+      <div class="addthis_inline_share_toolbox"></div>
+
       <div class="article-content">
-      <h3 id="toc_0">为什么代理修饰要用weak而不是assgin</h3>
+        <h3 id="toc_0">为什么代理修饰要用weak而不是assgin</h3>
 
 <p>weak 一旦不被引用的时候就不会再使用了，就会被置位nil，oc中使用nil执行操作不会引起崩溃，所以即使再次使用也不会产生野指针。<br/><br/>
 但是如果是用assgin修饰，一旦不被引用不会自动置nil,当再次操作这个对象的代理方法的时候就会产生野指针引起程序崩溃。</p>
 
 
-    
+
 
       </div>
 
       <div class="row">
         <div class="large-6 columns">
-        <p class="text-left" style="padding:15px 0px;">
-      
-          <a href="15427834491108.html" 
-          title="Previous Post: You don’t have write permissions">&laquo; You don’t have write permissions</a>
-      
-        </p>
+          <p class="text-left" style="padding:15px 0px;">
+            
+            <a href="15427834491108.html" title="Previous Post: You don’t have write permissions">&laquo; You don’t have write permissions</a>
+            
+          </p>
         </div>
         <div class="large-6 columns">
-      <p class="text-right" style="padding:15px 0px;">
-      
-          <a  href="15427815427067.html" 
-          title="Next Post: RACCommand">RACCommand &raquo;</a>
-      
-      </p>
+          <p class="text-right" style="padding:15px 0px;">
+            
+            <a href="15427815427067.html" title="Next Post: RACCommand">RACCommand
+              &raquo;</a>
+            
+          </p>
         </div>
       </div>
       <div class="comments-wrap">
@@ -220,12 +222,7 @@ s.setAttribute('data-timestamp', +new Date());
         </div>
       </div>
     </div><!-- article-wrap -->
-  </div><!-- large 8 -->
-
-
-
-
- <div class="large-4 medium-4 columns">
+  </div><!-- large 8 --> <div class="large-4 medium-4 columns">
   <div class="hide-for-small">
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
