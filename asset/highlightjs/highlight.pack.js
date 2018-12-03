@@ -15,7 +15,7 @@
         var t = e && e.exec(n);
         return t && 0 == t.index
     }
-
+    
     function a(e) {
         var n = (e.className + " " + (e.parentNode ? e.parentNode.className : "")).split(/\s+/);
         return n = n.map(function (e) {
