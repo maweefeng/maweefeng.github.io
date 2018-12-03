@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  Git - Code Log 👨‍💻‍ 
+  Swift & Objective-C & C++之间的混编 - Code Log 👨‍💻‍ 
   
   </title>
  <meta name="description" content="">
@@ -328,41 +328,253 @@
             </div>
             <div class="large-9 medium-9 columns">
 
- 
+ <div class="markdown-body">
+	<h1>Swift & Objective-C & C++之间的混编</h1>
+
+	<h3 id="toc_0">①Objective-C 调用 C++</h3>
+
+<p>OC本身可以直接调用C的代码 比如直接可以调用printf方法。<br/>
+但是OC中的.m直接编译C++的代码就会出现编译错误<br/>
+需要把OC.m改成OC.mm之后（objective-c变成了objective-c++）引入iostream(<code>#include&lt;iostream&gt;</code>)就可以直接编译了。<br/>
+这可以在.mm文件当中直接使用c++的代码。<br/>
+也可以另外新建一个c++的文件，并且创建.h文件。</p>
+
+<pre><code>********CPPHello.hpp声明文件********
+#ifndef CPPHello_hpp
+#define CPPHello_hpp
+
+#include &lt;stdio.h&gt;
+class CPPHello{
+    
+public:
+    static void sayHello();
+};
+
+#endif /* CPPHello_hpp */
+********CPPHello.cpp实现文件********
+#include &quot;CPPHello.hpp&quot;
+
+void CPPHello::sayHello(){
+    
+    printf(&quot;hello world&quot;);
+    
+}
+</code></pre>
+
+<p><strong>注意:</strong>oc调用c++必须要把.m改成.mm,要不然会报错。</p>
+
+<h3 id="toc_1">②C++ 调用 Objective-C</h3>
+
+<p>新建cocoaTouch中的类，语言选择Objective-C，比如<code>objcHello.h</code>和<code>objcHello.m</code>然后在刚才的c++文件(<code>CPPHello.cpp</code>)中import <code>objcHello.h</code>就会出现编译错误。<br/>
+所以c++语言不能直接import OC的头文件要对头文件进行修改，把头文件所有内容删除替换成c++能够识别的代码比如c或者c++的代码。</p>
+
+<pre><code>//objcHello.h
+void objcSayHello();
+</code></pre>
+
+<p>另外<code>objcHello.m</code>文件要修改成<code>objcHello.mm</code>文件，然后<code>#import &lt;Foundation/Foundation.h&gt;</code>之后就可以在<code>objcHello.mm</code>文件调用oc的代码了。<br/>
+并且可以在<code>objcHello.mm</code>文件中写oc的类了，比如如下代码。</p>
+
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+#import &quot;ObjcHello.h&quot;
+
+@interface ObjcHello:NSObject
+
+-(void)sayHello;
+
+@end
+
+@implementation ObjcHello
+
+-(void)sayHello{
+    
+    NSLog(@&quot;hello objc&quot;);
+}
+@end
 
 
-	
-		<div class="markdown-body">
-		<h1>git clone 过慢的问题</h1>
+void objcSayHello(){
+    
+//  NSLog(@&quot;hello Objc&quot;);
+    ObjcHello * h = [ObjcHello new];
+    [h sayHello];
+}
+</code></pre>
 
-		<ul>
-<li>进入网址<a href="https://www.ipaddress.com/">https://www.ipaddress.com/</a></li>
-<li>输入 gitHub.com 找到GitHub的ip地址 </li>
-<li>然后打开hosts 添加 ip <a href="http://github.com">http://github.com</a></li>
-</ul>
+<p>然后修改完之后引入比如<code>#include &quot;ObjcHello.h&quot;</code>就可以在里面对.h文件的方法进行调用了。</p>
 
-<h3 id="toc_0">打开hosts的操作是</h3>
+<pre><code>#include &quot;CPPHello.hpp&quot;
+#include &quot;ObjcHello.h&quot;
+void CPPHello::sayHello(){
+    
+//   printf(&quot;hello world&quot;);
+    objcSayHello();
+    
+}
+</code></pre>
 
-<p>sudo vim /etc/hosts</p>
+<h3 id="toc_2">③Swift调用C</h3>
 
+<p>新建<code>CHello.h</code>文件，然后创建头文件，然后选择创建桥接文件。<br/>
+在这个桥接文件中#import其他公开头文件用来暴露给swift文件。</p>
 
+<p>1.在.h文件中声明一个方法</p>
+
+<pre><code>CHello.h
+#ifndef CHello_h
+#define CHello_h
+
+#include &lt;stdio.h&gt;
+void sayHello();
+#endif /* CHello_h */
+</code></pre>
+
+<p>2.在.c文件中实现一个方法</p>
+
+<pre><code>Chello.c 
+#include &quot;CHello.h&quot;
+
+void sayHello(){
+    
+    printf(&quot;hello c&quot;);
+    
+}
+</code></pre>
+
+<p>3.在桥接文件中引入<code>CHello.h</code></p>
+
+<pre><code>//  Use this file to import your target&#39;s public headers that you would like to expose to Swift.
+//
+
+#import &quot;CHello.h&quot;
+</code></pre>
+
+<p>4.在swift当中直接调用<code>sayHello()</code>方法</p>
+
+<h3 id="toc_3">④Swift &amp; Objective-C &amp; C++混编</h3>
+
+<p>新建OC的类比如OCHello.h和OCHello.m</p>
+
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+
+@interface OCHello : NSObject
+-(void)hello;
+@end
+</code></pre>
+
+<pre><code>#import &quot;OCHello.h&quot;
+
+@implementation OCHello
+-(void)hello{
+    
+    NSLog(@&quot;oc sayHello&quot;);
+}
+@end
+</code></pre>
+
+<p>然后在桥接文件中引入<code>OCHello.h</code><br/>
+在swift当中就可以直接调用,代码如下所示</p>
+
+<pre><code>import UIKit
+class ViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        var h = OCHello();
+        h.hello()
+
+    }
+}
+</code></pre>
+
+<p>如果想要swift调用c++的话可以把<code>OCHello.m</code>改成<code>OCHello.mm</code><br/>
+在.mm文件中写c++的代码如下所示</p>
+
+<pre><code>#include &lt;iostream&gt;
+#import &quot;OCHello.h&quot;
+
+@implementation OCHello
+-(void)hello{
+    
+//    NSLog(@&quot;oc sayHello&quot;);
+    std::cout&lt;&lt;&quot;hello cpp\n&quot;;
+}
+@end
+</code></pre>
+
+<p>swift当中的代码不做任何变化，这样就做到了三种语言的混编。</p>
+
+<h4 id="toc_4">提示</h4>
+
+<p>.mm文件当中可以写oc，c，c++的代码<br/>
+oc可以完全兼容c语言的代码<br/>
+swift不可以直接执行c语言的代码,要做一些声明比如上面的调用实现。<br/>
+swift不可以执行c++的代码，要用oc做中间层，一般要避免。</p>
+
+	<div class="share-comment">
+		<!-- Go to www.addthis.com/dashboard to customize your tools -->
+		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5bfe6ae3f692f811"></script>
+	</div>
+</div>
+
+<br /><br />
+<hr />
+
+<div id="disqus_thread">
+	<script>
+
+		/**
+		*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+		*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+		/*
+		var disqus_config = function () {
+		this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+		this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+		};
+		*/
+		(function () { // DON'T EDIT BELOW THIS LINE
+			var d = document, s = d.createElement('script');
+			s.src = 'https://maweefeng.disqus.com/embed.js';
+			s.setAttribute('data-timestamp', +new Date());
+			(d.head || d.body).appendChild(s);
+		})();
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+<br /><br />
+<hr />
+
+<div class="row clearfix">
+	<div class="large-6 columns">
+		<div class="text-left" style="padding:15px 0px;">
+			
 		</div>
-	
+	</div>
+	<div class="large-6 columns">
+		<div class="text-right" style="padding:15px 0px;">
+			
+			<a href="15433939231870.html" title="Next Post: dispatch_semaphore_t 信号量">dispatch_semaphore_t 信号量 &raquo;</a>
+			
+		</div>
+	</div>
+</div>
 
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
-  
-  </div>
+<div class="row">
+	<div style="padding:0px 0.93em;" class="share-comments">
+		
+	</div>
+</div>
+<script type="text/javascript">
+	$(function () {
+		var currentURL = '15438021304374.html';
+		$('#side-nav a').each(function () {
+			if ($(this).attr('href') == currentURL) {
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  </div>
 </div>
 
 

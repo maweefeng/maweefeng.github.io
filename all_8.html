@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  Git - Code Log 👨‍💻‍ 
+  Code Log 👨‍💻‍ 
   
   </title>
  <meta name="description" content="">
@@ -333,32 +333,25 @@
 
 	
 		<div class="markdown-body">
-		<h1>git clone 过慢的问题</h1>
+		<h1>Xcode10报错libstdc</h1>
 
-		<ul>
-<li>进入网址<a href="https://www.ipaddress.com/">https://www.ipaddress.com/</a></li>
-<li>输入 gitHub.com 找到GitHub的ip地址 </li>
-<li>然后打开hosts 添加 ip <a href="http://github.com">http://github.com</a></li>
+		<h3 id="toc_0">解决方法</h3>
+
+<p>首先解压同级目录下的libstdc压缩包</p>
+
+<h4 id="toc_1">1.真机</h4>
+
+<p>将libstdc_iPhoneOS拷贝到/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/lib</p>
+
+<h4 id="toc_2">2.模拟器</h4>
+
+<ul>
+<li><p>将libstdc_iPhoneSimulator拷贝到/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/usr/lib/</p></li>
+<li><p>将libstdc_iPhoneSimulator_runtime拷贝到/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime/Contents/Resources/RuntimeRoot/usr/lib/</p></li>
 </ul>
-
-<h3 id="toc_0">打开hosts的操作是</h3>
-
-<p>sudo vim /etc/hosts</p>
 
 
 		</div>
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
 	
 
   
