@@ -20,27 +20,26 @@
   <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script>
     hljs.initHighlightingOnLoad();
-    window.onload = function() {
+    window.onload = function () {
 
       var footerPath = window.location.pathname.split('/')[window.location.pathname.split('/').length - 1];
-      if (footerPath == 'index.html') {
-        // alert('首页');
-        document.getElementById('menu_item_about').className = "";
-        document.getElementById('menu_item_index').className = "is_active";
-        document.getElementById('menu_item_archives').className = "";
-      }
       if (footerPath == 'archives.html') {
         // alert('分类');
         document.getElementById('menu_item_about').className = "";
         document.getElementById('menu_item_index').className = "";
         document.getElementById('menu_item_archives').className = "is_active";
 
-      }
-      if (footerPath == 'About%20Me.html') {
+      } else if (footerPath == 'About%20Me.html') {
         // alert('关于我');
         document.getElementById('menu_item_about').className = "is_active";
         document.getElementById('menu_item_index').className = "";
         document.getElementById('menu_item_archives').className = "";
+      } else {
+        // alert('首页');
+        document.getElementById('menu_item_about').className = "";
+        document.getElementById('menu_item_index').className = "is_active";
+        document.getElementById('menu_item_archives').className = "";
+
       }
     }
   </script>
@@ -58,11 +57,11 @@
               <div style="position: absolute; width:100%;">
                 <ul id="main-menu" class="left">
 
-                  <li id="menu_item_index" ><a target="_self" href="index.html">Home</a></li>
+                  <li id="menu_item_index"><a target="_self" href="index.html">Home</a></li>
 
-                  <li id="menu_item_archives" ><a target="_self" href="archives.html">Archives</a></li>
+                  <li id="menu_item_archives"><a target="_self" href="archives.html">Archives</a></li>
 
-                  <li id="menu_item_about" ><a target="_self" href="About Me.html">About</a></li>
+                  <li id="menu_item_about"><a target="_self" href="About Me.html">About</a></li>
 
                 </ul>
               </div>
