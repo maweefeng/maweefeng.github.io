@@ -9,65 +9,84 @@
     Code Log 👨‍💻‍ 
     
   </title>
-  <meta name="description" content="">
+  
+  
   <link href="atom.xml" rel="alternate" title="Code Log 👨‍💻‍ " type="application/atom+xml">
   <link rel="stylesheet" href="asset/css/foundation.min.css" />
   <link rel="stylesheet" href="asset/css/docs.css" />
-
   <script src="asset/js/vendor/modernizr.js"></script>
   <script src="asset/js/vendor/jquery.js"></script>
   <script src="asset/highlightjs/highlight.pack.js"></script>
   <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script>
     hljs.initHighlightingOnLoad();
+    var  a = ""; 
+
     window.onload = function () {
 
       var footerPath = window.location.pathname.split('/')[window.location.pathname.split('/').length - 1];
       if (footerPath == 'archives.html') {
         // alert('分类');
-        document.getElementById('menu_item_about').className = "";
-        document.getElementById('menu_item_index').className = "";
-        document.getElementById('menu_item_archives').className = "is_active";
+        document.getElementById('main-menu').getElementsByTagName("li")[1].className = "is_active";
 
       } else if (footerPath == 'About%20Me.html') {
+        document.getElementById('main-menu').getElementsByTagName("li")[2].className = "is_active";
+
         // alert('关于我');
-        document.getElementById('menu_item_about').className = "is_active";
-        document.getElementById('menu_item_index').className = "";
-        document.getElementById('menu_item_archives').className = "";
+  
       } else {
         // alert('首页');
-        document.getElementById('menu_item_about').className = "";
-        document.getElementById('menu_item_index').className = "is_active";
-        document.getElementById('menu_item_archives').className = "";
+        document.getElementById('main-menu').getElementsByTagName("li")[0].className = "is_active";
+
 
       }
     }
   </script>
-
+  <script type="text/javascript">
+    function before_search() {
+      var searchVal = 'site: ' + document.getElementById('search_input').value;
+      document.getElementById('search_q').value = searchVal;
+      return true;
+    }
+  </script>
 </head>
 
 <body class="antialiased hide-extras">
 
   <div class="marketing off-canvas-wrap" data-offcanvas>
     <div class="inner-wrap">
-      <nav class="top-bar docs-bar hide-for-small" data-topbar="">
+
+
+      <nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
         <section class="top-bar-section">
           <div class="row">
             <div style="position: relative;width:100%;">
               <div style="position: absolute; width:100%;">
                 <ul id="main-menu" class="left">
+                  
+                  <li id=""><a id="" target="_self" href="index.html">Home</a></li>
+                  
+                  <li id=""><a id="" target="_self" href="archives.html">Archives</a></li>
+                  
+                  <li id=""><a id="" target="_self" href="About Me.html">About</a></li>
+                  
+                </ul>
 
-                  <li id="menu_item_index"><a target="_self" href="index.html">Home</a></li>
-
-                  <li id="menu_item_archives"><a target="_self" href="archives.html">Archives</a></li>
-
-                  <li id="menu_item_about"><a target="_self" href="About Me.html">About</a></li>
-
+                <ul class="right" id="search-wrap">
+                  <li>
+                    <form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+                      <input type="hidden" id="search_q" name="q" value="" />
+                      <input tabindex="1" type="search" id="search_input" placeholder="Search" />
+                    </form>
+                  </li>
                 </ul>
               </div>
             </div>
           </div>
         </section>
+
       </nav>
 
       <nav class="tab-bar show-for-small">
@@ -78,291 +97,57 @@
 
       <aside class="left-off-canvas-menu">
         <ul class="off-canvas-list">
-          <li><a href="index.html">Home</a></li>
+
+          <li><a href="index.html">HOME</a></li>
           <li><a href="archives.html">Archives</a></li>
-          
-          <li class="divider"></li>
-          <li><label>iOS开发技巧</label></li>
+          <li><a href="about.html">ABOUT</a></li>
+
+          <li><label>Categories</label></li>
 
           
-          <li><a title="dispatch_semaphore_t 信号量" href="15433939231870.html">dispatch_semaphore_t 信号量</a></li>
+          <li><a href="iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html">iOS开发技巧</a></li>
           
-          <li><a title="_cmd 与 runtime 的结合" href="15433701207076.html">_cmd 与 runtime 的结合</a></li>
+          <li><a href="Git.html">Git</a></li>
           
-          <li><a title="高效的画线" href="15427834493345.html">高效的画线</a></li>
+          <li><a href="CocoaPods.html">CocoaPods</a></li>
           
-          <li><a title="为什么NSString使用Copy修饰符" href="15427834493281.html">为什么NSString使用Copy修饰符</a></li>
+          <li><a href="IOS%E5%88%A8%E5%9D%91.html">IOS刨坑</a></li>
           
-          <li><a title="iOS开发一些小技巧" href="15427834493214.html">iOS开发一些小技巧</a></li>
+          <li><a href="MVVM+RAC.html">MVVM+RAC</a></li>
           
-          <li><a title="iOS导航条背景颜色" href="15427834493029.html">iOS导航条背景颜色</a></li>
+          <li><a href="Debug.html">Debug</a></li>
           
-          <li><a title="CAMediaTimingFunction获取控制点：" href="15427834492830.html">CAMediaTimingFunction获取控制点：</a></li>
+          <li><a href="Xcode.html">Xcode</a></li>
           
-          <li><a title="UISearchbar 自定义搜索图标失真" href="15427834492767.html">UISearchbar 自定义搜索图标失真</a></li>
+          <li><a href="%E4%BB%A3%E7%A0%81%E6%B7%B7%E7%BC%96.html">代码混编</a></li>
           
-          <li><a title="Flutter && Python && OC" href="15427834492512.html">Flutter && Python && OC</a></li>
-          
-          <li><a title="UIImageView 动画的属性animationImages" href="15427834492322.html">UIImageView 动画的属性animationImages</a></li>
-          
-          <li><a title="SDWebImageview 不能加载HTTPS图片" href="15427834492260.html">SDWebImageview 不能加载HTTPS图片</a></li>
-          
-          <li><a title="对比Texture中Node和UIKit中View" href="15427834492083.html">对比Texture中Node和UIKit中View</a></li>
-          
-          <li><a title="Block防止内存泄漏问题" href="15427834491890.html">Block防止内存泄漏问题</a></li>
-          
-          <li><a title="设置Cell分割线顶头" href="15427834491628.html">设置Cell分割线顶头</a></li>
-          
-          <li><a title="视图的绘制周期" href="15427834491567.html">视图的绘制周期</a></li>
-          
-          <li><a title="设置图片拉伸范围" href="15427834491441.html">设置图片拉伸范围</a></li>
-          
-          <li><a title="给UITableView边框加阴影" href="15427834491377.html">给UITableView边框加阴影</a></li>
-          
-          <li><a title="通讯录排序" href="15427834491315.html">通讯录排序</a></li>
-          
-          <li><a title="堆栈的一点区别" href="15427834491253.html">堆栈的一点区别</a></li>
-          
-          <li><a title="隐藏导航栏底部的线条" href="15427834491194.html">隐藏导航栏底部的线条</a></li>
-          
-          <li><a title="代理修饰符" href="15427834491002.html">代理修饰符</a></li>
+          <li><a href="About%20Me.html">About Me</a></li>
           
 
-          
-          <li class="divider"></li>
-          <li><label>Git</label></li>
-
-          
-          <li><a title="git clone 过慢的问题" href="15427834492899.html">git clone 过慢的问题</a></li>
-          
-          <li><a title="Command line instructions" href="15427834492024.html">Command line instructions</a></li>
-          
-          <li><a title="Git提交代码issue" href="15427834491963.html">Git提交代码issue</a></li>
-          
-          <li><a title="终端命令设置代理" href="15427834491808.html">终端命令设置代理</a></li>
-          
-          <li><a title="终端命令" href="15427834491747.html">终端命令</a></li>
-          
-          <li><a title="Git基础流" href="15427834491504.html">Git基础流</a></li>
-          
-
-          
-          <li class="divider"></li>
-          <li><label>CocoaPods</label></li>
-
-          
-          <li><a title="消除CocoaPods引入第三方SDK的警告" href="15427945343440.html">消除CocoaPods引入第三方SDK的警告</a></li>
-          
-          <li><a title="pod install速度过慢" href="15427834492143.html">pod install速度过慢</a></li>
-          
-          <li><a title="You don’t have write permissions" href="15427834491108.html">You don’t have write permissions</a></li>
-          
-
-          
-          <li class="divider"></li>
-          <li><label>IOS刨坑</label></li>
-
-          
-          <li><a title="sizeThatFits和sizeToFit" href="15433027949667.html">sizeThatFits和sizeToFit</a></li>
-          
-          <li><a title="Masonry布局“Unable to simultaneously satisfy constraints”" href="15426952413956.html">Masonry布局“Unable to simultaneously satisfy constraints”</a></li>
-          
-          <li><a title="Xcode10报错libstdc" href="15426943817961.html">Xcode10报错libstdc</a></li>
-          
-
-          
-          <li class="divider"></li>
-          <li><label>MVVM+RAC</label></li>
-
-          
-          <li><a title="被神化的MVVM和被错误认识的Model层" href="15428536881209.html">被神化的MVVM和被错误认识的Model层</a></li>
-          
-          <li><a title="RACCommand" href="15427815427067.html">RACCommand</a></li>
-          
-
-          
-          <li class="divider"></li>
-          <li><label>Debug</label></li>
-
-          
-          <li><a title="检测离屏渲染了" href="15427834493152.html">检测离屏渲染了</a></li>
-          
-          <li><a title="关于`instrumets` 找不到`debug options`" href="15427834492968.html">关于`instrumets` 找不到`debug options`</a></li>
-          
-
-          
-          <li class="divider"></li>
-          <li><label>Xcode</label></li>
-
-          
-          <li><a title="Xcode编译找不到头文件" href="15427834492451.html">Xcode编译找不到头文件</a></li>
-          
-          <li><a title="Xcode打包遇到的坑" href="15427834492390.html">Xcode打包遇到的坑</a></li>
-          
-
-          
-          <li class="divider"></li>
-          <li><label>代码混编</label></li>
-
-          
-          <li><a title="Swift & Objective-C & C++之间的混编" href="15438021304374.html">Swift & Objective-C & C++之间的混编</a></li>
-          
-
-          
-          <li class="divider"></li>
-          <li><label>About Me</label></li>
-
-          
-          <li><a title="Hello Mr.Ma" href="15427857390238.html">Hello Mr.Ma</a></li>
-          
-
-          
         </ul>
       </aside>
 
       <a class="exit-off-canvas" href="#"></a>
 
-      <section id="main-content" role="main" class="scroll-container">
 
-        <div class="row">
-          <div class="large-3 medium-3 columns">
-            <div class="hide-for-small">
-              <div class="sidebar">
-                <nav>
-                  <ul id="side-nav" class="side-nav">
-
-                    
-                    <li class="side-title"><span style="text-decoration:underline">iOS开发技巧</span></li>
-                    
-                    <li><a title="dispatch_semaphore_t 信号量" href="15433939231870.html">dispatch_semaphore_t 信号量</a></li>
-                    
-                    <li><a title="_cmd 与 runtime 的结合" href="15433701207076.html">_cmd 与 runtime 的结合</a></li>
-                    
-                    <li><a title="高效的画线" href="15427834493345.html">高效的画线</a></li>
-                    
-                    <li><a title="为什么NSString使用Copy修饰符" href="15427834493281.html">为什么NSString使用Copy修饰符</a></li>
-                    
-                    <li><a title="iOS开发一些小技巧" href="15427834493214.html">iOS开发一些小技巧</a></li>
-                    
-                    <li><a title="iOS导航条背景颜色" href="15427834493029.html">iOS导航条背景颜色</a></li>
-                    
-                    <li><a title="CAMediaTimingFunction获取控制点：" href="15427834492830.html">CAMediaTimingFunction获取控制点：</a></li>
-                    
-                    <li><a title="UISearchbar 自定义搜索图标失真" href="15427834492767.html">UISearchbar 自定义搜索图标失真</a></li>
-                    
-                    <li><a title="Flutter && Python && OC" href="15427834492512.html">Flutter && Python && OC</a></li>
-                    
-                    <li><a title="UIImageView 动画的属性animationImages" href="15427834492322.html">UIImageView 动画的属性animationImages</a></li>
-                    
-                    <li><a title="SDWebImageview 不能加载HTTPS图片" href="15427834492260.html">SDWebImageview 不能加载HTTPS图片</a></li>
-                    
-                    <li><a title="对比Texture中Node和UIKit中View" href="15427834492083.html">对比Texture中Node和UIKit中View</a></li>
-                    
-                    <li><a title="Block防止内存泄漏问题" href="15427834491890.html">Block防止内存泄漏问题</a></li>
-                    
-                    <li><a title="设置Cell分割线顶头" href="15427834491628.html">设置Cell分割线顶头</a></li>
-                    
-                    <li><a title="视图的绘制周期" href="15427834491567.html">视图的绘制周期</a></li>
-                    
-                    <li><a title="设置图片拉伸范围" href="15427834491441.html">设置图片拉伸范围</a></li>
-                    
-                    <li><a title="给UITableView边框加阴影" href="15427834491377.html">给UITableView边框加阴影</a></li>
-                    
-                    <li><a title="通讯录排序" href="15427834491315.html">通讯录排序</a></li>
-                    
-                    <li><a title="堆栈的一点区别" href="15427834491253.html">堆栈的一点区别</a></li>
-                    
-                    <li><a title="隐藏导航栏底部的线条" href="15427834491194.html">隐藏导航栏底部的线条</a></li>
-                    
-                    <li><a title="代理修饰符" href="15427834491002.html">代理修饰符</a></li>
-                    
-
-                    
-                    <li class="side-title"><span style="text-decoration:underline">Git</span></li>
-                    
-                    <li><a title="git clone 过慢的问题" href="15427834492899.html">git clone 过慢的问题</a></li>
-                    
-                    <li><a title="Command line instructions" href="15427834492024.html">Command line instructions</a></li>
-                    
-                    <li><a title="Git提交代码issue" href="15427834491963.html">Git提交代码issue</a></li>
-                    
-                    <li><a title="终端命令设置代理" href="15427834491808.html">终端命令设置代理</a></li>
-                    
-                    <li><a title="终端命令" href="15427834491747.html">终端命令</a></li>
-                    
-                    <li><a title="Git基础流" href="15427834491504.html">Git基础流</a></li>
-                    
-
-                    
-                    <li class="side-title"><span style="text-decoration:underline">CocoaPods</span></li>
-                    
-                    <li><a title="消除CocoaPods引入第三方SDK的警告" href="15427945343440.html">消除CocoaPods引入第三方SDK的警告</a></li>
-                    
-                    <li><a title="pod install速度过慢" href="15427834492143.html">pod install速度过慢</a></li>
-                    
-                    <li><a title="You don’t have write permissions" href="15427834491108.html">You don’t have write permissions</a></li>
-                    
-
-                    
-                    <li class="side-title"><span style="text-decoration:underline">IOS刨坑</span></li>
-                    
-                    <li><a title="sizeThatFits和sizeToFit" href="15433027949667.html">sizeThatFits和sizeToFit</a></li>
-                    
-                    <li><a title="Masonry布局“Unable to simultaneously satisfy constraints”" href="15426952413956.html">Masonry布局“Unable to simultaneously satisfy constraints”</a></li>
-                    
-                    <li><a title="Xcode10报错libstdc" href="15426943817961.html">Xcode10报错libstdc</a></li>
-                    
-
-                    
-                    <li class="side-title"><span style="text-decoration:underline">MVVM+RAC</span></li>
-                    
-                    <li><a title="被神化的MVVM和被错误认识的Model层" href="15428536881209.html">被神化的MVVM和被错误认识的Model层</a></li>
-                    
-                    <li><a title="RACCommand" href="15427815427067.html">RACCommand</a></li>
-                    
-
-                    
-                    <li class="side-title"><span style="text-decoration:underline">Debug</span></li>
-                    
-                    <li><a title="检测离屏渲染了" href="15427834493152.html">检测离屏渲染了</a></li>
-                    
-                    <li><a title="关于`instrumets` 找不到`debug options`" href="15427834492968.html">关于`instrumets` 找不到`debug options`</a></li>
-                    
-
-                    
-                    <li class="side-title"><span style="text-decoration:underline">Xcode</span></li>
-                    
-                    <li><a title="Xcode编译找不到头文件" href="15427834492451.html">Xcode编译找不到头文件</a></li>
-                    
-                    <li><a title="Xcode打包遇到的坑" href="15427834492390.html">Xcode打包遇到的坑</a></li>
-                    
-
-                    
-                    <li class="side-title"><span style="text-decoration:underline">代码混编</span></li>
-                    
-                    <li><a title="Swift & Objective-C & C++之间的混编" href="15438021304374.html">Swift & Objective-C & C++之间的混编</a></li>
-                    
-
-                    
-                    <li class="side-title"><span style="text-decoration:underline">About Me</span></li>
-                    
-                    <li><a title="Hello Mr.Ma" href="15427857390238.html">Hello Mr.Ma</a></li>
-                    
-
-                    
-                  </ul>
-                </nav>
-              </div>
-            </div>
-          </div>
-          <div class="large-9 medium-9 columns"> 
-
-
-	
-		<div class="markdown-body">
-		<h1>Swift & Objective-C & C++之间的混编</h1>
-
-		<h3 id="toc_0">①Objective-C 调用 C++</h3>
+      <section id="main-content" role="main" class="scroll-container"> <script type="text/javascript">
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
+</script>
+<div class="row">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="15438021304374.html">
+                
+                  <h1>Swift & Objective-C & C++之间的混编</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">①Objective-C 调用 C++</h3>
 
 <p>OC本身可以直接调用C的代码 比如直接可以调用printf方法。<br/>
 但是OC中的.m直接编译C++的代码就会出现编译错误<br/>
@@ -542,60 +327,553 @@ oc可以完全兼容c语言的代码<br/>
 swift不可以直接执行c语言的代码,要做一些声明比如上面的调用实现。<br/>
 swift不可以执行c++的代码，要用oc做中间层，一般要避免。</p>
 
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/3</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E4%BB%A3%E7%A0%81%E6%B7%B7%E7%BC%96.html'>代码混编</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15433939231870.html">
+                
+                  <h1>dispatch_semaphore_t 信号量</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><code>dispatch_semaphore_t</code> 一种计算的信号量<br/>
+<code>dispatch_semaphore_create</code> 创建一个数值的信号量<br/>
+<code>dispatch_semaphore_signal</code> 对指定的信号量进行增加1</p>
+
+<p><code>dispatch_semaphore_wait</code> 会使传入的信号量减1，如果返回的值为0说明有任务进行中就阻碍当前的线程，如果返回的值大于0，就代表当前的线程当中没有任务再执行，就接着执行下面的任务。</p>
+
+<p>用这个可以起到顺序执行异步任务的功效。<br/>
+如果后一步的执行需要前一步执行完拿到结果才行的话，这也是一种异步顺序执行的方案。</p>
+
+<pre><code>- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self task:@&quot;task one starting&quot;];
+        dispatch_semaphore_signal(semaphore);
+    });
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self task:@&quot;task two starting&quot;];
+        dispatch_semaphore_signal(semaphore);
+    });
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self task:@&quot;task three starting&quot;];
+        dispatch_semaphore_signal(semaphore);
+    });
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    
+    // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)task:(NSString *)taskName{
+    NSLog(@&quot;%@&quot;,taskName);
+    sleep(1);
+}
+
+</code></pre>
+
+<p>先执行dispatch_semaphore_wait 然后发现线程任务还在进行，就开始堵塞当前任务的线程，等待dispatch_async内部执行完成信号量+1才会继续下面的执行。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/28</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15433701207076.html">
+                
+                  <h1>_cmd 与 runtime 的结合</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>只有运行时给分类添加属性，大部分都是这样的</p>
+
+<pre><code class="language-static">- (NSString *)customName {
+　　　　 return objc_getAssociatedObject(self, &amp;kExtendVarKey);
+　　 }
+- (void)setCustomName:(NSString *)customName {
+　　　　objc_setAssociatedObject(self, &amp;kExtendVarKey,, customDelegate, OBJC_ASSOCIATION_RETAIN_COPY);
+　}
+</code></pre>
+
+<p>_cmd 是隐藏的参数，表示当前方法的selector，另外隐藏参数self表示当前方法调用的对象实例。<br/>
+这个参数是唯一的参数，在一个文件中方法名不会重复。<br/>
+所以可以让它代替运行时当中的属性的键名。</p>
+
+<pre><code class="language-　　">- (NSString *)customName {
+　　　　 return objc_getAssociatedObject(self, _cmd);
+　　 }
+- (void)setCustomName:(NSString *)customName {
+　　　　objc_setAssociatedObject(self, @selector(customName), customName, OBJC_ASSOCIATION_RETAIN_COPY);
+　　}
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/28</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15433027949667.html">
+                
+                  <h1>sizeThatFits和sizeToFit</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>今天帮同事看一个布局约束的问题，（代码也是从别人手中接过来的，所以并不清楚怎么布局的）<br/>
+view是用xib画的，约束设置很多，本以为是约束的问题，设置了约束还是不能更改整个view的高度。</p>
+
+<p>最后找了一会，我发现了一个方法 sizeThatFit 在sizeThatFit内部返回了size，所以刚才尽管指定的约束改了，但是还是不影响下面的方法返回size。</p>
+
+<p>所以就写了这个东西给不了解的同学一点点经验。</p>
+
+<pre><code>- (void)sizeToFit;                       // calls sizeThatFits: with current view bounds and changes bounds size.
+- (CGSize)sizeThatFits:(CGSize)size;     // return &#39;best&#39; size to fit given size. does not actually resize view. Default is return existing view size
+
+</code></pre>
+
+<p>上面是苹果的方法说明。</p>
+
+<p>sizeToFit 方法会返回一个苹果自带方法计算出的合适的宽高，即使你初始化的时候的宽和高设置错误，苹果也会给你算出一个合适的size让你填充你的内容。</p>
+
+<pre><code>-(void)addSizeToFitHelloLable{
+    
+    UILabel * hello = [[UILabel alloc]initWithFrame:CGRectMake(20, 20, 20, 100)];
+    hello.text = @&quot;hello world&quot;;
+    hello.backgroundColor = [UIColor redColor];
+    [self.view addSubview:hello];
+    [hello sizeToFit];
+    
+}
+
+</code></pre>
+
+<p>我这里设置的宽度和高度明显是不对的，但是当我调用sizeToFit之后就好多了，下面是调用前和调用之后的对比效果。</p>
+
+<ul>
+<li><p>调用之前<br/>
+<img src="media/15433027949667/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-27%20%E4%B8%8B%E5%8D%883.23.49.png" alt="屏幕快照 2018-11-27 下午3.23.49 "/></p></li>
+<li><p>调用之后<br/>
+<img src="media/15433027949667/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-27%20%E4%B8%8B%E5%8D%883.23.06.png" alt="屏幕快照 2018-11-27 下午3.23.06"/></p></li>
+</ul>
+
+<p>因为sizeToFit之后内部会调用调用sizeThatFits，所以还可以在自定义view当中重写sizeThatFits方法，去调整sizeToFit之后的size。</p>
+
+<pre><code>----------customLable.m-------------
+-(CGSize)sizeThatFits:(CGSize)size{
+    
+    [super sizeThatFits:size];
+    size.height = 40;
+    return size;
+    
+}
+</code></pre>
+
+<h4 id="toc_0">注意</h4>
+
+<p>添加自定义的lable到view上最后千万不能忘记调用sizeToFit方法，要不然内部重写的sizeThatFits不生效。</p>
+
+<pre><code>-(void)addCustomeSizeThatFitLable{
+    
+    CustomLable * hello = [[CustomLable alloc]initWithFrame:CGRectMake(20, 20, 200, 100)];
+    hello.text = @&quot;hello world&quot;;
+    hello.backgroundColor = [UIColor redColor];
+    [self.view addSubview:hello];
+    [hello sizeToFit]; 
+}
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/27</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='IOS%E5%88%A8%E5%9D%91.html'>IOS刨坑</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15428536881209.html">
+                
+                  <h1>被神化的MVVM和被错误认识的Model层</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>MVVM是一种双向绑定技术，使用VM实现数据的变化更新视图，视图的变化更新数据的处理，整个过程是一种数据绑定的过程。<br/>
+网络上可以看到大多数人吹捧MVVM，但是千奇百怪的，并没有人能很好的理解MVVM，反而使代码变得异常复杂。<br/>
+<code>MVC的关系图</code></p>
+
+<pre><code class="language-sequence">V层-&gt;C层:事件
+Note right of V层:特殊情况下可以持有M层
+C层-&gt;V层:创建/更新
+C层-&gt;M层: 调用
+M层-&gt;C层: 通知
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>M</th>
+<th>V</th>
+<th>C</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Model模型</td>
+<td>View视图</td>
+<td>Controller控制器</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_0">1.被误解的MVC</h3>
+
+<p>最开始实行的一套机制是MVC 但是很多业务代码被放在了C层处理，导致出现了一个C中出现了上千行代码，给调试带来了很多影响。</p>
+
+<p>后来才试着把JSON数据解析成数据模型，这样把一部分代码挪到了M模型层，但是这个模型是很简单的，只是单纯的属性定义。</p>
+
+<p>这样显然是不够的，很多业务代码还是存在C层当中，并没有对C很好的进行瘦身，这样的<code>MVC</code>框架太过臃肿。</p>
+
+<p>而其实真正的MVC框架中的M层不应该只是简单的数据模型，而应该是业务模型，也就是所有业务数据和业务实现逻辑应该定义在M层，而且应该和具体的界面没有关系,可以独立存在，甚至可以编译出静态库给第三方使用，就像我们下面将要说到的ViewModel层相似。</p>
+
+<h3 id="toc_1">2.引出ViewModel层</h3>
+
+<p>其实大多时候界面和业务逻辑是绑在一起的，这个界面的展示要调用某个业务逻辑，完成之后直接更新界面，大多时候C只是多余的，所以才把这部分的逻辑代码（网络请求，数据库操作，解析，业务逻辑）抽象出一个单独的类，这个类叫VM类。</p>
+
+<pre><code class="language-sequence">V层-&gt;VM层:
+VM层-&gt;V层:
+M层-&gt;VM层:
+VM层-&gt;M层:
+C层-&gt;VM层:
+</code></pre>
+
+<p>当前的VM层负责视图、模型、C层的三个部分的交互和耦合。</p>
+
+<p>下一步考虑是不是可以把C层的事件处理也拿出来，然后就用到了RAC，负责事件的处理和传递。<br/>
+这样的话就可以达到给C层减肥的效果了。</p>
+
+<p>但是并不是说C层就没有用了。</p>
+
+<p>在MVVM中的M只是一个简单的饿数据模型的概念，如果把它当做一层，显然不符合横向切分的规则，所以MVVM中的M就是一个伪概念。</p>
+
+<h3 id="toc_2">3.MVVM的过于神化</h3>
+
+<p>同时MVVM当中的VM是严格和View绑定的，这是一种强耦合，但是实际情况下界面可能会随着升级而变化，往往业务逻辑是相对稳定的，所以上面的这种以VM为中心的设计模式很不清爽，所以MVVM当中的VM层也是一个<br/>
+伪概念。</p>
+
+<p>然后是View事件处理。C层是一个负责调度和控制的模块，他的作用就是处理视图的事件，然后调用业务逻辑，然后接收业务逻辑的处理结果通知，然后再通知视图去刷新界面，这就是C层存在的意义。<br/>
+而RAC的出现则将这部分的处理给活生生的代替掉了。也就是通过RAC所谓的响应式和触发式这种机制就能实现将事件的调度处理放在任何地方任何时候都能完成。这样做的目的使得我们可以分散和分解代码。但结果出现的问题呢？就是同一个单元调度处理逻辑和功能的构建完全放在了一个地方，但不同的单元逻辑的又分散在不同的地方，无法去分类统一管理和维护。因此你无法一下子就知道某个功能所有调度到底是如何实现以及在哪里实现的。因为RAC将功能构建和事件处理完全粘合到一个大的函数体内部，并且是代码套代码的模式，这种方式严重的破坏了面向对象里面的构建和处理分离的设计模式理论。更麻烦的是其高昂的学习和维护成本，代码阅读理解困难，以及无处不在的闭包使用。试想一下这个对于一个初学者来说是不是噩梦？，一旦出了问题对于维护和代码调试是不是噩梦？而且使用不当就会出现循环引用的严重问题。这样一来原本C层一个调度总管的职责被RAC来接管后，这些处理将变得分散和无序，当我们要做一些统一的管理比如HOOK和AOP方面的东西时就变得无法下手了。 不可否认的是RAC在处理连续调用以及顺序响应方面有一定的优势。一个例子是我们可能有连续的多个跟服务器的网络请求，这时候用RAC进行这种处理能方便的解决问题。但是我想说的是当存在这种场景时，我们更加应该将这种连续的网络调用在M层内部消化掉，而只给C层提供一个简易而方便的接口，让C层根本不需要关心这种调用的连续性。因此可以说为了把C层的代码给消化掉而引入RAC的机制，不仅没有简化掉系统反而降低了系统的可维护性和可读性。RAC机制根本就不适合用在事件处理中。优秀的应用和框架并不在代码的多寡，而是整体系统的代码简单易读，各部分职责分明，容易维护的调试。</p>
+
+<p><u>其实这一切的一切都来源于对MVC当中Model的错误认识和理解。</u></p>
+
+<h3 id="toc_3">4.正确理解MVC</h3>
+
+<p>M层不依赖C层和V层独立存在，C层负责关联二者，V层只负责展示，M层持有数据和业务的具体实现，而C层则处理事件响应以及业务的调用以及通知界面更新。三者之间一定要明确的定义为单向依赖，而不应该出现双向依赖。下面是三层的依赖关系图：</p>
+
+<pre><code class="language-sequence">M层-&gt;C层:被C层依赖
+Note right of M层:M:持有数据和业务的具体实现
+C层-&gt;V层:依赖V层
+Note left of V层:V:展示
+Note left of C层:C:关联M和V&amp;事件响应&amp;业务调用&amp;界面更新。
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/22</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='MVVM+RAC.html'>MVVM+RAC</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
+
+
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			 <a href="all_1.html">&raquo; Next Page</a> 
+			</p>
+			  </div>
+			</div>
 		</div>
-	
+	</div><!-- large 8 -->
 
- 
-	
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <div class="site-a-logo"><img src="/asset/img/icon.png" /></div>
+            
+                <h1>Code Log 👨‍💻‍ </h1>
+                <div class="site-des"></div>
+                <div class="social">
 
- 
-	
 
- 
-	
 
- 
-	
+
+
+
+
+<a target="_blank" class="weibo" href="https://weibo.com/nervousCat" title="weibo">Weibo</a>
+
+<a target="_blank" class="github" target="_blank" href="https://github.com/maweefeng" title="GitHub">GitHub</a>
+<a target="_blank" class="email" href="mailto:maweefeng@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html"><strong>iOS开发技巧</strong></a>
+        
+            <a href="Git.html"><strong>Git</strong></a>
+        
+            <a href="CocoaPods.html"><strong>CocoaPods</strong></a>
+        
+            <a href="IOS%E5%88%A8%E5%9D%91.html"><strong>IOS刨坑</strong></a>
+        
+            <a href="MVVM+RAC.html"><strong>MVVM+RAC</strong></a>
+        
+            <a href="Debug.html"><strong>Debug</strong></a>
+        
+            <a href="Xcode.html"><strong>Xcode</strong></a>
+        
+            <a href="%E4%BB%A3%E7%A0%81%E6%B7%B7%E7%BC%96.html"><strong>代码混编</strong></a>
+        
+            <a href="About%20Me.html"><strong>About Me</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15438021304374.html">Swift & Objective-C & C++之间的混编</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15433939231870.html">dispatch_semaphore_t 信号量</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15433701207076.html">_cmd 与 runtime 的结合</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15433027949667.html">sizeThatFits和sizeToFit</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15428536881209.html">被神化的MVVM和被错误认识的Model层</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
 
   
-  </div>
-</div>
+    
 
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
 
-<div class="page-bottom">
-  <div class="row">
-    <hr />
-    <div class="small-9 columns">
-      <p class="copyright">Copyright &copy; 2018
-        Powered by Maweefeng,&nbsp;
-        Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
-      <p class="copyright">日光之下 永无新事</p>
-    </div>
-    <div class="small-3 columns">
-      <p class="copyright text-right"><a href="#header">TOP</a></p>
-    </div>
-
-  </div>
-</div>
-
-</section>
-</div>
-</div>
-
-
-<script src="asset/js/foundation.min.js"></script>
-<script src="asset/js/foundation/foundation.offcanvas.js"></script>
-<script>
-  $(document).foundation();
-
-
-</script>
-<script src="asset/chart/all-min.js"></script><script type="text/javascript">$(function(){    var mwebii=0;    var mwebChartEleId = 'mweb-chart-ele-';    $('pre>code').each(function(){        mwebii++;        var eleiid = mwebChartEleId+mwebii;        if($(this).hasClass('language-sequence')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = Diagram.parse($(this).text());            diagram.drawSVG(eleiid,{theme: 'simple'});        }else if($(this).hasClass('language-flow')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = flowchart.parse($(this).text());            diagram.drawSVG(eleiid);        }    });});</script>
+    <script src="asset/chart/all-min.js"></script><script type="text/javascript">$(function(){    var mwebii=0;    var mwebChartEleId = 'mweb-chart-ele-';    $('pre>code').each(function(){        mwebii++;        var eleiid = mwebChartEleId+mwebii;        if($(this).hasClass('language-sequence')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = Diagram.parse($(this).text());            diagram.drawSVG(eleiid,{theme: 'simple'});        }else if($(this).hasClass('language-flow')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = flowchart.parse($(this).text());            diagram.drawSVG(eleiid);        }    });});</script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
 
 
-<script id="dsq-count-scr" src="//maweefeng.disqus.com/count.js" async></script>
-</body>
-
+  </body>
 </html>

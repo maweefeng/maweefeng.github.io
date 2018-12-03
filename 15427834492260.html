@@ -9,65 +9,84 @@
     SDWebImageview 不能加载HTTPS图片 - Code Log 👨‍💻‍ 
     
   </title>
-  <meta name="description" content="">
+  
+  
   <link href="atom.xml" rel="alternate" title="Code Log 👨‍💻‍ " type="application/atom+xml">
   <link rel="stylesheet" href="asset/css/foundation.min.css" />
   <link rel="stylesheet" href="asset/css/docs.css" />
-
   <script src="asset/js/vendor/modernizr.js"></script>
   <script src="asset/js/vendor/jquery.js"></script>
   <script src="asset/highlightjs/highlight.pack.js"></script>
   <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script>
     hljs.initHighlightingOnLoad();
+    var  a = ""; 
+
     window.onload = function () {
 
       var footerPath = window.location.pathname.split('/')[window.location.pathname.split('/').length - 1];
       if (footerPath == 'archives.html') {
         // alert('分类');
-        document.getElementById('menu_item_about').className = "";
-        document.getElementById('menu_item_index').className = "";
-        document.getElementById('menu_item_archives').className = "is_active";
+        document.getElementById('main-menu').getElementsByTagName("li")[1].className = "is_active";
 
       } else if (footerPath == 'About%20Me.html') {
+        document.getElementById('main-menu').getElementsByTagName("li")[2].className = "is_active";
+
         // alert('关于我');
-        document.getElementById('menu_item_about').className = "is_active";
-        document.getElementById('menu_item_index').className = "";
-        document.getElementById('menu_item_archives').className = "";
+  
       } else {
         // alert('首页');
-        document.getElementById('menu_item_about').className = "";
-        document.getElementById('menu_item_index').className = "is_active";
-        document.getElementById('menu_item_archives').className = "";
+        document.getElementById('main-menu').getElementsByTagName("li")[0].className = "is_active";
+
 
       }
     }
   </script>
-
+  <script type="text/javascript">
+    function before_search() {
+      var searchVal = 'site: ' + document.getElementById('search_input').value;
+      document.getElementById('search_q').value = searchVal;
+      return true;
+    }
+  </script>
 </head>
 
 <body class="antialiased hide-extras">
 
   <div class="marketing off-canvas-wrap" data-offcanvas>
     <div class="inner-wrap">
-      <nav class="top-bar docs-bar hide-for-small" data-topbar="">
+
+
+      <nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
         <section class="top-bar-section">
           <div class="row">
             <div style="position: relative;width:100%;">
               <div style="position: absolute; width:100%;">
                 <ul id="main-menu" class="left">
+                  
+                  <li id=""><a id="" target="_self" href="index.html">Home</a></li>
+                  
+                  <li id=""><a id="" target="_self" href="archives.html">Archives</a></li>
+                  
+                  <li id=""><a id="" target="_self" href="About Me.html">About</a></li>
+                  
+                </ul>
 
-                  <li id="menu_item_index"><a target="_self" href="index.html">Home</a></li>
-
-                  <li id="menu_item_archives"><a target="_self" href="archives.html">Archives</a></li>
-
-                  <li id="menu_item_about"><a target="_self" href="About Me.html">About</a></li>
-
+                <ul class="right" id="search-wrap">
+                  <li>
+                    <form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+                      <input type="hidden" id="search_q" name="q" value="" />
+                      <input tabindex="1" type="search" id="search_input" placeholder="Search" />
+                    </form>
+                  </li>
                 </ul>
               </div>
             </div>
           </div>
         </section>
+
       </nav>
 
       <nav class="tab-bar show-for-small">
@@ -78,394 +97,284 @@
 
       <aside class="left-off-canvas-menu">
         <ul class="off-canvas-list">
-          <li><a href="index.html">Home</a></li>
+
+          <li><a href="index.html">HOME</a></li>
           <li><a href="archives.html">Archives</a></li>
-          
-          <li class="divider"></li>
-          <li><label>iOS开发技巧</label></li>
+          <li><a href="about.html">ABOUT</a></li>
+
+          <li><label>Categories</label></li>
 
           
-          <li><a title="dispatch_semaphore_t 信号量" href="15433939231870.html">dispatch_semaphore_t 信号量</a></li>
+          <li><a href="iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html">iOS开发技巧</a></li>
           
-          <li><a title="_cmd 与 runtime 的结合" href="15433701207076.html">_cmd 与 runtime 的结合</a></li>
+          <li><a href="Git.html">Git</a></li>
           
-          <li><a title="高效的画线" href="15427834493345.html">高效的画线</a></li>
+          <li><a href="CocoaPods.html">CocoaPods</a></li>
           
-          <li><a title="为什么NSString使用Copy修饰符" href="15427834493281.html">为什么NSString使用Copy修饰符</a></li>
+          <li><a href="IOS%E5%88%A8%E5%9D%91.html">IOS刨坑</a></li>
           
-          <li><a title="iOS开发一些小技巧" href="15427834493214.html">iOS开发一些小技巧</a></li>
+          <li><a href="MVVM+RAC.html">MVVM+RAC</a></li>
           
-          <li><a title="iOS导航条背景颜色" href="15427834493029.html">iOS导航条背景颜色</a></li>
+          <li><a href="Debug.html">Debug</a></li>
           
-          <li><a title="CAMediaTimingFunction获取控制点：" href="15427834492830.html">CAMediaTimingFunction获取控制点：</a></li>
+          <li><a href="Xcode.html">Xcode</a></li>
           
-          <li><a title="UISearchbar 自定义搜索图标失真" href="15427834492767.html">UISearchbar 自定义搜索图标失真</a></li>
+          <li><a href="%E4%BB%A3%E7%A0%81%E6%B7%B7%E7%BC%96.html">代码混编</a></li>
           
-          <li><a title="Flutter && Python && OC" href="15427834492512.html">Flutter && Python && OC</a></li>
-          
-          <li><a title="UIImageView 动画的属性animationImages" href="15427834492322.html">UIImageView 动画的属性animationImages</a></li>
-          
-          <li><a title="SDWebImageview 不能加载HTTPS图片" href="15427834492260.html">SDWebImageview 不能加载HTTPS图片</a></li>
-          
-          <li><a title="对比Texture中Node和UIKit中View" href="15427834492083.html">对比Texture中Node和UIKit中View</a></li>
-          
-          <li><a title="Block防止内存泄漏问题" href="15427834491890.html">Block防止内存泄漏问题</a></li>
-          
-          <li><a title="设置Cell分割线顶头" href="15427834491628.html">设置Cell分割线顶头</a></li>
-          
-          <li><a title="视图的绘制周期" href="15427834491567.html">视图的绘制周期</a></li>
-          
-          <li><a title="设置图片拉伸范围" href="15427834491441.html">设置图片拉伸范围</a></li>
-          
-          <li><a title="给UITableView边框加阴影" href="15427834491377.html">给UITableView边框加阴影</a></li>
-          
-          <li><a title="通讯录排序" href="15427834491315.html">通讯录排序</a></li>
-          
-          <li><a title="堆栈的一点区别" href="15427834491253.html">堆栈的一点区别</a></li>
-          
-          <li><a title="隐藏导航栏底部的线条" href="15427834491194.html">隐藏导航栏底部的线条</a></li>
-          
-          <li><a title="代理修饰符" href="15427834491002.html">代理修饰符</a></li>
+          <li><a href="About%20Me.html">About Me</a></li>
           
 
-          
-          <li class="divider"></li>
-          <li><label>Git</label></li>
-
-          
-          <li><a title="git clone 过慢的问题" href="15427834492899.html">git clone 过慢的问题</a></li>
-          
-          <li><a title="Command line instructions" href="15427834492024.html">Command line instructions</a></li>
-          
-          <li><a title="Git提交代码issue" href="15427834491963.html">Git提交代码issue</a></li>
-          
-          <li><a title="终端命令设置代理" href="15427834491808.html">终端命令设置代理</a></li>
-          
-          <li><a title="终端命令" href="15427834491747.html">终端命令</a></li>
-          
-          <li><a title="Git基础流" href="15427834491504.html">Git基础流</a></li>
-          
-
-          
-          <li class="divider"></li>
-          <li><label>CocoaPods</label></li>
-
-          
-          <li><a title="消除CocoaPods引入第三方SDK的警告" href="15427945343440.html">消除CocoaPods引入第三方SDK的警告</a></li>
-          
-          <li><a title="pod install速度过慢" href="15427834492143.html">pod install速度过慢</a></li>
-          
-          <li><a title="You don’t have write permissions" href="15427834491108.html">You don’t have write permissions</a></li>
-          
-
-          
-          <li class="divider"></li>
-          <li><label>IOS刨坑</label></li>
-
-          
-          <li><a title="sizeThatFits和sizeToFit" href="15433027949667.html">sizeThatFits和sizeToFit</a></li>
-          
-          <li><a title="Masonry布局“Unable to simultaneously satisfy constraints”" href="15426952413956.html">Masonry布局“Unable to simultaneously satisfy constraints”</a></li>
-          
-          <li><a title="Xcode10报错libstdc" href="15426943817961.html">Xcode10报错libstdc</a></li>
-          
-
-          
-          <li class="divider"></li>
-          <li><label>MVVM+RAC</label></li>
-
-          
-          <li><a title="被神化的MVVM和被错误认识的Model层" href="15428536881209.html">被神化的MVVM和被错误认识的Model层</a></li>
-          
-          <li><a title="RACCommand" href="15427815427067.html">RACCommand</a></li>
-          
-
-          
-          <li class="divider"></li>
-          <li><label>Debug</label></li>
-
-          
-          <li><a title="检测离屏渲染了" href="15427834493152.html">检测离屏渲染了</a></li>
-          
-          <li><a title="关于`instrumets` 找不到`debug options`" href="15427834492968.html">关于`instrumets` 找不到`debug options`</a></li>
-          
-
-          
-          <li class="divider"></li>
-          <li><label>Xcode</label></li>
-
-          
-          <li><a title="Xcode编译找不到头文件" href="15427834492451.html">Xcode编译找不到头文件</a></li>
-          
-          <li><a title="Xcode打包遇到的坑" href="15427834492390.html">Xcode打包遇到的坑</a></li>
-          
-
-          
-          <li class="divider"></li>
-          <li><label>代码混编</label></li>
-
-          
-          <li><a title="Swift & Objective-C & C++之间的混编" href="15438021304374.html">Swift & Objective-C & C++之间的混编</a></li>
-          
-
-          
-          <li class="divider"></li>
-          <li><label>About Me</label></li>
-
-          
-          <li><a title="Hello Mr.Ma" href="15427857390238.html">Hello Mr.Ma</a></li>
-          
-
-          
         </ul>
       </aside>
 
       <a class="exit-off-canvas" href="#"></a>
 
-      <section id="main-content" role="main" class="scroll-container">
 
-        <div class="row">
-          <div class="large-3 medium-3 columns">
-            <div class="hide-for-small">
-              <div class="sidebar">
-                <nav>
-                  <ul id="side-nav" class="side-nav">
+      <section id="main-content" role="main" class="scroll-container"> <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>SDWebImageview 不能加载HTTPS图片</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2018/11/21</span>
 
-                    
-                    <li class="side-title"><span style="text-decoration:underline">iOS开发技巧</span></li>
-                    
-                    <li><a title="dispatch_semaphore_t 信号量" href="15433939231870.html">dispatch_semaphore_t 信号量</a></li>
-                    
-                    <li><a title="_cmd 与 runtime 的结合" href="15433701207076.html">_cmd 与 runtime 的结合</a></li>
-                    
-                    <li><a title="高效的画线" href="15427834493345.html">高效的画线</a></li>
-                    
-                    <li><a title="为什么NSString使用Copy修饰符" href="15427834493281.html">为什么NSString使用Copy修饰符</a></li>
-                    
-                    <li><a title="iOS开发一些小技巧" href="15427834493214.html">iOS开发一些小技巧</a></li>
-                    
-                    <li><a title="iOS导航条背景颜色" href="15427834493029.html">iOS导航条背景颜色</a></li>
-                    
-                    <li><a title="CAMediaTimingFunction获取控制点：" href="15427834492830.html">CAMediaTimingFunction获取控制点：</a></li>
-                    
-                    <li><a title="UISearchbar 自定义搜索图标失真" href="15427834492767.html">UISearchbar 自定义搜索图标失真</a></li>
-                    
-                    <li><a title="Flutter && Python && OC" href="15427834492512.html">Flutter && Python && OC</a></li>
-                    
-                    <li><a title="UIImageView 动画的属性animationImages" href="15427834492322.html">UIImageView 动画的属性animationImages</a></li>
-                    
-                    <li><a title="SDWebImageview 不能加载HTTPS图片" href="15427834492260.html">SDWebImageview 不能加载HTTPS图片</a></li>
-                    
-                    <li><a title="对比Texture中Node和UIKit中View" href="15427834492083.html">对比Texture中Node和UIKit中View</a></li>
-                    
-                    <li><a title="Block防止内存泄漏问题" href="15427834491890.html">Block防止内存泄漏问题</a></li>
-                    
-                    <li><a title="设置Cell分割线顶头" href="15427834491628.html">设置Cell分割线顶头</a></li>
-                    
-                    <li><a title="视图的绘制周期" href="15427834491567.html">视图的绘制周期</a></li>
-                    
-                    <li><a title="设置图片拉伸范围" href="15427834491441.html">设置图片拉伸范围</a></li>
-                    
-                    <li><a title="给UITableView边框加阴影" href="15427834491377.html">给UITableView边框加阴影</a></li>
-                    
-                    <li><a title="通讯录排序" href="15427834491315.html">通讯录排序</a></li>
-                    
-                    <li><a title="堆栈的一点区别" href="15427834491253.html">堆栈的一点区别</a></li>
-                    
-                    <li><a title="隐藏导航栏底部的线条" href="15427834491194.html">隐藏导航栏底部的线条</a></li>
-                    
-                    <li><a title="代理修饰符" href="15427834491002.html">代理修饰符</a></li>
-                    
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
+           
+         
+          <span class="comments">
+            
 
-                    
-                    <li class="side-title"><span style="text-decoration:underline">Git</span></li>
-                    
-                    <li><a title="git clone 过慢的问题" href="15427834492899.html">git clone 过慢的问题</a></li>
-                    
-                    <li><a title="Command line instructions" href="15427834492024.html">Command line instructions</a></li>
-                    
-                    <li><a title="Git提交代码issue" href="15427834491963.html">Git提交代码issue</a></li>
-                    
-                    <li><a title="终端命令设置代理" href="15427834491808.html">终端命令设置代理</a></li>
-                    
-                    <li><a title="终端命令" href="15427834491747.html">终端命令</a></li>
-                    
-                    <li><a title="Git基础流" href="15427834491504.html">Git基础流</a></li>
-                    
+            
+          </span>
 
-                    
-                    <li class="side-title"><span style="text-decoration:underline">CocoaPods</span></li>
-                    
-                    <li><a title="消除CocoaPods引入第三方SDK的警告" href="15427945343440.html">消除CocoaPods引入第三方SDK的警告</a></li>
-                    
-                    <li><a title="pod install速度过慢" href="15427834492143.html">pod install速度过慢</a></li>
-                    
-                    <li><a title="You don’t have write permissions" href="15427834491108.html">You don’t have write permissions</a></li>
-                    
+        </div>
+      </div><!-- article -->
 
-                    
-                    <li class="side-title"><span style="text-decoration:underline">IOS刨坑</span></li>
-                    
-                    <li><a title="sizeThatFits和sizeToFit" href="15433027949667.html">sizeThatFits和sizeToFit</a></li>
-                    
-                    <li><a title="Masonry布局“Unable to simultaneously satisfy constraints”" href="15426952413956.html">Masonry布局“Unable to simultaneously satisfy constraints”</a></li>
-                    
-                    <li><a title="Xcode10报错libstdc" href="15426943817961.html">Xcode10报错libstdc</a></li>
-                    
-
-                    
-                    <li class="side-title"><span style="text-decoration:underline">MVVM+RAC</span></li>
-                    
-                    <li><a title="被神化的MVVM和被错误认识的Model层" href="15428536881209.html">被神化的MVVM和被错误认识的Model层</a></li>
-                    
-                    <li><a title="RACCommand" href="15427815427067.html">RACCommand</a></li>
-                    
-
-                    
-                    <li class="side-title"><span style="text-decoration:underline">Debug</span></li>
-                    
-                    <li><a title="检测离屏渲染了" href="15427834493152.html">检测离屏渲染了</a></li>
-                    
-                    <li><a title="关于`instrumets` 找不到`debug options`" href="15427834492968.html">关于`instrumets` 找不到`debug options`</a></li>
-                    
-
-                    
-                    <li class="side-title"><span style="text-decoration:underline">Xcode</span></li>
-                    
-                    <li><a title="Xcode编译找不到头文件" href="15427834492451.html">Xcode编译找不到头文件</a></li>
-                    
-                    <li><a title="Xcode打包遇到的坑" href="15427834492390.html">Xcode打包遇到的坑</a></li>
-                    
-
-                    
-                    <li class="side-title"><span style="text-decoration:underline">代码混编</span></li>
-                    
-                    <li><a title="Swift & Objective-C & C++之间的混编" href="15438021304374.html">Swift & Objective-C & C++之间的混编</a></li>
-                    
-
-                    
-                    <li class="side-title"><span style="text-decoration:underline">About Me</span></li>
-                    
-                    <li><a title="Hello Mr.Ma" href="15427857390238.html">Hello Mr.Ma</a></li>
-                    
-
-                    
-                  </ul>
-                </nav>
-              </div>
-            </div>
-          </div>
-          <div class="large-9 medium-9 columns"> <div class="markdown-body">
-	<h1>SDWebImageview 不能加载HTTPS图片</h1>
-
-	<p>这个问题是因为图片地址所在的服务器没有有效的SSL证书文件<br/>
+      <div class="article-content">
+      <p>这个问题是因为图片地址所在的服务器没有有效的SSL证书文件<br/>
 只需要在Options参数中设置SDWebImaweefenggeAllowInvalidSSLCertificates枚举就可</p>
 
 <pre><code>[self.avatarImageView sd_setImageWithURL: [NSURL URLWithString: famousStarObject.avatar] placeholderImage: [UIImage imageNamed: @&quot;icon_default_avator&quot;] options: SDWebImageAllowInvalidSSLCertificates];
 </code></pre>
 
-	<div class="share-comment">
-		<!-- Go to www.addthis.com/dashboard to customize your tools -->
-		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5bfe6ae3f692f811"></script>
-	</div>
-</div>
 
-<br /><br />
-<hr />
+    
 
-<div id="disqus_thread">
-	<script>
+      </div>
 
-		/**
-		*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-		*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-		/*
-		var disqus_config = function () {
-		this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-		this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-		};
-		*/
-		(function () { // DON'T EDIT BELOW THIS LINE
-			var d = document, s = d.createElement('script');
-			s.src = 'https://maweefeng.disqus.com/embed.js';
-			s.setAttribute('data-timestamp', +new Date());
-			(d.head || d.body).appendChild(s);
-		})();
-	</script>
-	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15427834492322.html" 
+          title="Previous Post: UIImageView 动画的属性animationImages">&laquo; UIImageView 动画的属性animationImages</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15427834492143.html" 
+          title="Next Post: pod install速度过慢">pod install速度过慢 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
 
-<br /><br />
-<hr />
+          
 
-<div class="row clearfix">
-	<div class="large-6 columns">
-		<div class="text-left" style="padding:15px 0px;">
-			
-			<a href="15427834492322.html" title="Previous Post: UIImageView 动画的属性animationImages">&laquo; UIImageView 动画的属性animationImages</a>
-			
-		</div>
-	</div>
-	<div class="large-6 columns">
-		<div class="text-right" style="padding:15px 0px;">
-			
-			<a href="15427834492143.html" title="Next Post: pod install速度过慢">pod install速度过慢 &raquo;</a>
-			
-		</div>
-	</div>
-</div>
-
-<div class="row">
-	<div style="padding:0px 0.93em;" class="share-comments">
-		
-	</div>
-</div>
-<script type="text/javascript">
-	$(function () {
-		var currentURL = '15427834492260.html';
-		$('#side-nav a').each(function () {
-			if ($(this).attr('href') == currentURL) {
-				$(this).parent().addClass('active');
-			}
-		});
-	});
-</script>  </div>
-</div>
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
 
 
-<div class="page-bottom">
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <div class="site-a-logo"><img src="/asset/img/icon.png" /></div>
+            
+                <h1>Code Log 👨‍💻‍ </h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+<a target="_blank" class="weibo" href="https://weibo.com/nervousCat" title="weibo">Weibo</a>
+
+<a target="_blank" class="github" target="_blank" href="https://github.com/maweefeng" title="GitHub">GitHub</a>
+<a target="_blank" class="email" href="mailto:maweefeng@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html"><strong>iOS开发技巧</strong></a>
+        
+            <a href="Git.html"><strong>Git</strong></a>
+        
+            <a href="CocoaPods.html"><strong>CocoaPods</strong></a>
+        
+            <a href="IOS%E5%88%A8%E5%9D%91.html"><strong>IOS刨坑</strong></a>
+        
+            <a href="MVVM+RAC.html"><strong>MVVM+RAC</strong></a>
+        
+            <a href="Debug.html"><strong>Debug</strong></a>
+        
+            <a href="Xcode.html"><strong>Xcode</strong></a>
+        
+            <a href="%E4%BB%A3%E7%A0%81%E6%B7%B7%E7%BC%96.html"><strong>代码混编</strong></a>
+        
+            <a href="About%20Me.html"><strong>About Me</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15438021304374.html">Swift & Objective-C & C++之间的混编</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15433939231870.html">dispatch_semaphore_t 信号量</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15433701207076.html">_cmd 与 runtime 的结合</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15433027949667.html">sizeThatFits和sizeToFit</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15428536881209.html">被神化的MVVM和被错误认识的Model层</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
   <div class="row">
-    <hr />
-    <div class="small-9 columns">
-      <p class="copyright">Copyright &copy; 2018
-        Powered by Maweefeng,&nbsp;
-        Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
-      <p class="copyright">日光之下 永无新事</p>
-    </div>
-    <div class="small-3 columns">
-      <p class="copyright text-right"><a href="#header">TOP</a></p>
-    </div>
-
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
   </div>
 </div>
 
-</section>
-</div>
-</div>
+        </section>
+      </div>
+    </div>
 
+  
+    
 
-<script src="asset/js/foundation.min.js"></script>
-<script src="asset/js/foundation/foundation.offcanvas.js"></script>
-<script>
-  $(document).foundation();
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
 
-
-</script>
-<script src="asset/chart/all-min.js"></script><script type="text/javascript">$(function(){    var mwebii=0;    var mwebChartEleId = 'mweb-chart-ele-';    $('pre>code').each(function(){        mwebii++;        var eleiid = mwebChartEleId+mwebii;        if($(this).hasClass('language-sequence')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = Diagram.parse($(this).text());            diagram.drawSVG(eleiid,{theme: 'simple'});        }else if($(this).hasClass('language-flow')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = flowchart.parse($(this).text());            diagram.drawSVG(eleiid);        }    });});</script>
+    <script src="asset/chart/all-min.js"></script><script type="text/javascript">$(function(){    var mwebii=0;    var mwebChartEleId = 'mweb-chart-ele-';    $('pre>code').each(function(){        mwebii++;        var eleiid = mwebChartEleId+mwebii;        if($(this).hasClass('language-sequence')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = Diagram.parse($(this).text());            diagram.drawSVG(eleiid,{theme: 'simple'});        }else if($(this).hasClass('language-flow')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = flowchart.parse($(this).text());            diagram.drawSVG(eleiid);        }    });});</script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
 
 
-<script id="dsq-count-scr" src="//maweefeng.disqus.com/count.js" async></script>
-</body>
-
+  </body>
 </html>
