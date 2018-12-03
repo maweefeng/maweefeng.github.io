@@ -20,35 +20,31 @@
   <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script>
     hljs.initHighlightingOnLoad();
-    var footerPath = window.location.pathname.split('/')[window.location.pathname.split('/').length-1];
-    function changeBranch() {
-      alert(footerPath);
+    window.onload = function() {
+
+      var footerPath = window.location.pathname.split('/')[window.location.pathname.split('/').length - 1];
       if (footerPath == 'index.html') {
-        document.getElementById('menu_item_about').className == '';
-        document.getElementById('menu_item_index').removeClass('is_active');
-        document.getElementById('menu_item_archives').className += 'is_active';
-        alert(document.getElementById('menu_item_archives').className);
+        // alert('首页');
+
+        document.getElementById('menu_item_about').className = "";
+        document.getElementById('menu_item_index').className = "is_active";
+        document.getElementById('menu_item_archives').className = "";
 
       }
       if (footerPath == 'archives.html') {
-        document.getElementById('menu_item_about').className == '';
-        document.getElementById('menu_item_index').removeClass('is_active');
-        document.getElementById('menu_item_archives').className += 'is_active';
-        alert(document.getElementById('menu_item_archives').className);
-        alert();
+        // alert('分类');
+        document.getElementById('menu_item_about').className = "";
+        document.getElementById('menu_item_index').className = "";
+        document.getElementById('menu_item_archives').className = "is_active";
 
       }
-      if (footerPath == 'About Me.html') {
-        document.getElementById('menu_item_index').removeClass('is_active');
-        document.getElementById('menu_item_archives').className += 'is_active';
-        alert(document.getElementById('menu_item_archives').className);
-        alert();
-
-        document.getElementById('menu_item_about').className == '';
+      if (footerPath == 'About%20Me.html') {
+        // alert('关于我');
+        document.getElementById('menu_item_about').className = "is_active";
+        document.getElementById('menu_item_index').className = "";
+        document.getElementById('menu_item_archives').className = "";
       }
-
     }
-
   </script>
 
 </head>
@@ -64,11 +60,11 @@
               <div style="position: absolute; width:100%;">
                 <ul id="main-menu" class="left">
 
-                  <li id="menu_item_index" class="is_active" onclick="changeBranch()"><a target="_self" href="index.html">Home</a></li>
+                  <li id="menu_item_index" ><a target="_self" href="index.html">Home</a></li>
 
-                  <li id="menu_item_archives" onclick="changeBranch()"><a target="_self" href="archives.html">Archives</a></li>
+                  <li id="menu_item_archives" ><a target="_self" href="archives.html">Archives</a></li>
 
-                  <li id="menu_item_about" onclick="changeBranch()"><a target="_self" href="About Me.html">About</a></li>
+                  <li id="menu_item_about" ><a target="_self" href="About Me.html">About</a></li>
 
                 </ul>
               </div>
