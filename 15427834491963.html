@@ -162,30 +162,34 @@
       </div><!-- article -->
 
       <div class="article-content">
-        <h3 id="toc_0">issue1:</h3>
+        <h3 id="toc_0">问题①:</h3>
 
-<p>fatal:unable to access &#39;<a href="https://github.com/xxx/xxx.git">https://github.com/xxx/xxx.git</a>&#39; OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com 443</p>
+<pre><code>fatal:unable to access &#39;https://github.com/xxx/xxx.git&#39; OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com 443
+</code></pre>
 
-<h3 id="toc_1">解决方法：</h3>
+<h5 id="toc_1">解决方法：</h5>
 
-<p>env命令设置GIT_SSL_NO_VERIFY环境变量为”ture”，并同时调用正常的git clone命令 env GIT_SSL_NO_VERIFY=true git clone <a href="https://github.com/xxx/xxx.git">https://github.com/xxx/xxx.git</a><br/><br/>
-当你通过HTTPS访问Git远程仓库，如果服务器的SSL证书未经过第三方机构签署，那么Git就会报错。在克隆完毕的仓库中还需要将http.sslVerify设置为”false”。完整的命令如下：<br/><br/>
-git config http.sslVerify &quot;false&quot;、</p>
+<pre><code>env命令设置GIT_SSL_NO_VERIFY环境变量为”ture”，并同时调用正常的git clone命令 env GIT_SSL_NO_VERIFY=true git clone https://github.com/xxx/xxx.git     
+当你通过HTTPS访问Git远程仓库，如果服务器的SSL证书未经过第三方机构签署，那么Git就会报错。在克隆完毕的仓库中还需要将http.sslVerify设置为”false”。完整的命令如下：    
+git config http.sslVerify &quot;false&quot;、
+</code></pre>
 
-<h3 id="toc_2">issue2：</h3>
+<h3 id="toc_2">问题②：</h3>
 
-<p>Failed to connect to 127.0.0.1 port 1080: Connection refused<br/>
-查询是否使用代理：git config --global http.proxy <br/>
-取消代理：git config --global --unset http.proxy</p>
+<pre><code>Failed to connect to 127.0.0.1 port 1080: Connection refused
+查询是否使用代理：git config --global http.proxy 
+取消代理：git config --global --unset http.proxy
+</code></pre>
 
-<h3 id="toc_3">终端走代理</h3>
+<h5 id="toc_3">解决方法：</h5>
 
-<p>在终端中直接运行命令<br/>
-export http_proxy=<a href="http://proxyAddress:port">http://proxyAddress:port</a><br/>
-这个办法的好处是简单直接，并且影响面很小（只对当前终端有效，退出就不行了）。</p>
+<pre><code>终端走代理,在终端中直接运行命令
+export http_proxy=http://proxyAddress:port
+这个办法的好处是简单直接，并且影响面很小（只对当前终端有效，退出就不行了）。
 
-<p>如果你用的是ss代理，在当前终端运行以下命令，那么wget curl 这类网络命令都会经过ss代理<br/>
-export ALL_PROXY=socks5://127.0.0.1:1080</p>
+如果你用的是ss代理，在当前终端运行以下命令，那么wget curl 这类网络命令都会经过ss代理
+export ALL_PROXY=socks5://127.0.0.1:1080
+</code></pre>
 
 
 

@@ -162,45 +162,46 @@
       </div><!-- article -->
 
       <div class="article-content">
-        <p>pod install速度慢的终极解决方案</p>
+        <ul>
+<li>①代理VPN方式</li>
+</ul>
 
-<p>相信大家已经感受到pod install速度越来越慢了，网上提供了几种解决方案，但是都没有完全解决速度慢的问题。</p>
+<p>相信大家已经感受到<code>pod install</code>速度越来越慢了，网上提供了几种解决方案，但是都没有完全解决速度慢的问题。</p>
 
-<p>使用国内镜像的Specs<br/>
-在pod install时使用命令pod install --no-repo-update<br/>
-使用proxychains使终端命令走代理<br/>
+<p>使用国内镜像的<code>Specs</code><br/>
+在<code>pod install</code>时使用命令<code>pod install --no-repo-update</code><br/>
+使用<code>proxychains</code>使终端命令走代理<br/>
 下面就来说明一下这几种方法为何没有完全解决问题</p>
 
-<p>使用国内镜像的Specs <br/>
-这个只是加快了Specs下载更新速度，而且如果使用国内镜像Specs，那么Podfile中就必须指明使用这个Specs。<br/>
-在pod install时使用命令pod install --no-repo-update <br/>
-install时不更新本地库，但如果第一次install还是要去github clone代码<br/>
-使用proxychains使终端命令走代理 <br/>
-这个只是使pod命令走代理，git download的时候不会走代理<br/>
+<p>使用国内镜像的<code>Specs</code> 极大地加快了<code>Specs</code>下载更新速度，而且如果使用国内镜像<code>Specs</code>，那么<code>Podfile</code>中就必须指明使用这个<code>Specs</code>。<br/>
+在<code>pod install</code>时使用命令<code>pod install --no-repo-update</code>时不更新本地库，但如果第一次<code>install</code>还是要去<code>github clone</code>代码<br/>
+使用<code>proxychains</code>使终端命令走代理 <br/>
+这个只是使pod命令走代理，<code>git download</code>的时候不会走代理<br/>
 其实真正慢的原因并不在pod命令，而是在于github上的代码库访问速度慢，那么就知道真正的解决方案就是要加快git命令的速度。 <br/>
 我使用Shadowsocks代理，默认代理端口为1080，配置好代理之后去终端输入git配置命令，命令如下</p>
 
-<p>git config --global http.proxy socks5://127.0.0.1:1080<br/>
-1<br/>
-上面的命令是给git设置全局代理，但是我们并不希望国内git库也走代理，而是只需要github上的代码库走代理，命令如下</p>
+<p><code>git config --global http.proxy socks5://127.0.0.1:1080</code></p>
 
-<p>git config --global http.<a href="https://github.com.proxy">https://github.com.proxy</a> socks5://127.0.0.1:1080<br/>
-1<br/>
-如此就从根本上解决了问题，下面附上设置代理前后git命令的速度 <br/>
-代理前 <br/>
-代理前<br/>
-代理后 <br/>
-这里写图片描述</p>
+<p>上面的命令是给git设置全局代理，但是我们并不希望国内git库也走代理，而是只需要github上的代码库走代理，命令如下</p>
 
-<p>体验xiu的一下吧！</p>
+<p><code>git config --global http.https://github.com.proxy socks5://127.0.0.1:1080</code></p>
 
-<p>（ps：如果要恢复/移除上面设置的git代理，使用如下命令</p>
+<p>ps：如果要恢复/移除上面设置的git代理，使用如下命令</p>
 
-<p>git config --global --unset http.proxy<br/>
-1<br/>
-git config --global --unset http.<a href="https://github.com.proxy">https://github.com.proxy</a><br/>
-1<br/>
-）</p>
+<pre><code>git config --global --unset http.proxy
+git config --global --unset http.https://github.com.proxy
+</code></pre>
+
+<ul>
+<li>②更改host</li>
+</ul>
+
+<pre><code>执行下面的操作会使整个过程更快一些
+
+* 进入网址https://www.ipaddress.com/
+* 输入 gitHub.com 找到GitHub的ip地址 
+* 然后打开hosts (打开hosts的操作是`sudo vim /etc/hosts`)添加 ip http://github.com
+</code></pre>
 
 
 

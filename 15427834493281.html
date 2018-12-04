@@ -162,13 +162,15 @@
       </div><!-- article -->
 
       <div class="article-content">
-        <p>NSString为什么要用copy关键字，用strong会有什么问题？<br/>
-我们大部分的时候NSString的属性都是copy，那copy与strong的情况下到底有什么区别呢?我们以实例来说明：</p>
+        <h6 id="toc_0">NSString为什么要用copy关键字，用strong会有什么问题？</h6>
 
-<pre><code class="language-@interface">@property(nonatomic,copy)NSString * str1;
+<p>我们大部分的时候NSString的属性都是copy，那copy与strong的情况下到底有什么区别呢?我们以实例来说明：</p>
+
+<pre><code>@interface ViewController ()
+@property(nonatomic,copy)NSString * str1;
 @property(nonatomic,strong)NSString*str2;
 @end
-然后写一个测试方法：
+
 -(void)test
 {
     NSMutableString*str=[NSMutableString stringWithFormat:@&quot;helloworld&quot;];
@@ -182,20 +184,23 @@
 
 <p>最后我们运行看打印结果：</p>
 
-<pre><code class="language-2017-06-15">2017-06-15 15:21:55.910 oa[1236:78490] copy_str:0x600000026e60--0x7fc66cc06358
+<pre><code>2017-06-15 15:21:55.910 oa[1236:78490] str:0x600000075cc0--0x7fff5bd7c9d8
+2017-06-15 15:21:55.910 oa[1236:78490] copy_str:0x600000026e60--0x7fc66cc06358
 2017-06-15 15:21:55.911 oa[1236:78490] strong_str:0x600000075cc0--0x7fc66cc06360
 </code></pre>
 
 <p>从打印结果上我们可以看出str和_str2的对象地址是一样的，指向同一个对象，所以它们的值也是一样的，而str和_str1对象地址不同，是两个不同的对象，所以copy是深复制，创建了一个新的对象。 <br/>
 现在改变str的值，看看str1和str2有什么变化：</p>
 
-<pre><code class="language-[str">    NSLog(@&quot;****************%@&quot;,self.str1);
+<pre><code>[str appendString:@&quot;hry&quot;];
+    NSLog(@&quot;****************%@&quot;,self.str1);
     NSLog(@&quot;****************%@&quot;,self.str2);
 </code></pre>
 
 <p>打印结果如下：</p>
 
-<pre><code class="language-2017-06-15">2017-06-15 15:21:55.911 oa[1236:78490] ****************helloworldhry
+<pre><code>2017-06-15 15:21:55.911 oa[1236:78490] ****************helloworld
+2017-06-15 15:21:55.911 oa[1236:78490] ****************helloworldhry
 </code></pre>
 
 <p>从打印结果可以看出经过copy关键字修饰过的str1并没有因为str的变化而变化，经过strong修饰过的str2却随str的改变而改变。 <br/>

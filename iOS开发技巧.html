@@ -147,14 +147,14 @@
                       
                       <div class="a-content-text">
                         
-                        	dispatch_semaphore_t 一种计算的信号量
-dispatch_semaphore_create 创建一个数值的信号量
-dispatch_semaphore_signal 对指定的信号量进行增加1
+                        	<p><code>dispatch_semaphore_t</code> 一种计算的信号量<br/>
+<code>dispatch_semaphore_create</code> 创建一个数值的信号量<br/>
+<code>dispatch_semaphore_signal</code> 对指定的信号量进行增加1</p>
 
-dispatch_semaphore_wait 会使传入的信号量减1，如果返回的值为0说明有任务进行中就阻碍当前的线程，如果返回的值大于0，就代表当前的线程当中没有任务再执行，就接着执行下面的任务。
+<p><code>dispatch_semaphore_wait</code> 会使传入的信号量减1，如果返回的值为0说明有任务进行中就阻碍当前的线程，如果返回的值大于0，就代表当前的线程当中没有任务再执行，就接着执行下面的任务。</p>
 
-用这个可以起到顺序执行异步任务的功效。
-如果后一步的执行需要前一步执行完拿到结果才行的话，这也是一种异步顺序执行的方案...
+<p>用这个可以起到顺序执行异步任务的功效。<br/>
+如果后一步的执行需要前一...</p>
                         
                       </div>
                   </div>
@@ -279,8 +279,27 @@ dispatch_semaphore_wait 会使传入的信号量减1，如果返回的值为0说
                       
                       <div class="a-content-text">
                         
-                        	NSString为什么要用copy关键字，用strong会有什么问题？
-我们大部分的时候NSString的属性都是copy，那copy与strong的情况下到底有什么区别呢?我们以实例来说明：...
+                        	<h6 id="toc_0">NSString为什么要用copy关键字，用strong会有什么问题？</h6>
+
+<p>我们大部分的时候NSString的属性都是copy，那copy与strong的情况下到底有什么区别呢?我们以实例来说明：</p>
+
+<pre><code>@interface ViewController ()
+@property(nonatomic,copy)NSString * str1;
+@property(nonatomic,strong)NSString*str2;
+@end
+
+-(void)test
+{
+    NSMutableString*str=[NSMutableString stringWithFormat:@&quot;helloworld&quot;];
+    self.str1=str;
+    self.str2=str;
+    NSLog(@&quot;str:%p--%p&quot;,str,&amp;str);
+    NSLog(@&quot;copy_str:%p--%p&quot;,_str1,&amp;_str1);
+    NSLog(@&quot;strong_str:%p--%p&quot;,_str2,&amp;_str2);
+}
+</code></pre>
+
+<p>最后我们运行看打印结...</p>
                         
                       </div>
                   </div>
@@ -312,7 +331,23 @@ dispatch_semaphore_wait 会使传入的信号量减1，如果返回的值为0说
                       
                       <div class="a-content-text">
                         
-                        	去掉xcode黄色警告的方法                       如何将本地代码提交到远程git仓库          控制器init方法执行时间
+                        	<pre><code>去掉xcode黄色警告的方法
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored &quot;-Wdeprecated-declarations&quot;
+ your code with warning
+#pragma clang diagnostic pop
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored &quot;-Wunused-variable&quot;
+ your code with warning
+#pragma clang diagnostic pop
+</code></pre>
+
+<pre><code>_coverView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+在控制器init方法中初始化一个大小为self.view.bounds的uiview必须等待视图出来的时候才会进行，要不然一直在主线程等待。
+如果直接给CGRectmake设置的话不用等界面加载就会执行，应该是一个主线程问题。 
+这个时候如果直接去xib里面的控件，就会出现取不到的情况，取出来是nil。
+</code></pre>
 button 的文字显示不全
 从xib加载View...
                         
@@ -391,8 +426,8 @@ button 的文字显示不全
                       
                       <div class="a-content-text">
                         
-                        	<pre><code class="language-//create">CAMediaTimingFunction *function = [CAMediaTimingFunction functionWithControlPoints:1 :0 :0.75 :1];
-
+                        	<pre><code>//create timing function
+CAMediaTimingFunction *function = [CAMediaTimingFunction functionWithControlPoints:1 :0 :0.75 :1];
 </code></pre>
 
 <p>我得到的controlPoint值似乎是错误的：</p>
@@ -408,7 +443,8 @@ controlPoint2   CGPoint (x = 0.0078125018408172764, y = 2.8421186829703262E-314)
 
 <p>但是，如果我使用float数组作为参数的类型values，我得到controlPoint的正确值：</p>
 
-<pre><code class="language-float">[function getControlPointAtIndex:1 values:c1p];
+<pre><code>float c1p[2], c2p[2];
+[function getControlPointAtIndex:1 values:c1p];
 [function getControlPointAtIndex:2 values:c2p];
 The values are:
 

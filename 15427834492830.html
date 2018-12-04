@@ -162,8 +162,8 @@
       </div><!-- article -->
 
       <div class="article-content">
-        <pre><code class="language-//create">CAMediaTimingFunction *function = [CAMediaTimingFunction functionWithControlPoints:1 :0 :0.75 :1];
-
+        <pre><code>//create timing function
+CAMediaTimingFunction *function = [CAMediaTimingFunction functionWithControlPoints:1 :0 :0.75 :1];
 </code></pre>
 
 <p>我得到的controlPoint值似乎是错误的：</p>
@@ -179,7 +179,8 @@ controlPoint2   CGPoint (x = 0.0078125018408172764, y = 2.8421186829703262E-314)
 
 <p>但是，如果我使用float数组作为参数的类型values，我得到controlPoint的正确值：</p>
 
-<pre><code class="language-float">[function getControlPointAtIndex:1 values:c1p];
+<pre><code>float c1p[2], c2p[2];
+[function getControlPointAtIndex:1 values:c1p];
 [function getControlPointAtIndex:2 values:c2p];
 The values are:
 
@@ -198,7 +199,7 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
         <div class="large-6 columns">
           <p class="text-left" style="padding:15px 0px;">
             
-            <a href="15427834492899.html" title="Previous Post: git clone 过慢的问题">&laquo; git clone 过慢的问题</a>
+            <a href="15427834493029.html" title="Previous Post: iOS导航条背景颜色">&laquo; iOS导航条背景颜色</a>
             
           </p>
         </div>

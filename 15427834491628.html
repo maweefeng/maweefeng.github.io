@@ -162,14 +162,14 @@
       </div><!-- article -->
 
       <div class="article-content">
-        <pre><code>- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+        <h6 id="toc_0">UITableView设置系统cell的分割线顶头</h6>
+
+<pre><code>- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     cell.layoutMargins = UIEdgeInsetsZero;
     cell.separatorInset = UIEdgeInsetsZero;
     cell.preservesSuperviewLayoutMargins = NO;
 }
 </code></pre>
-
-<p>UITableView设置系统cell的分割线顶头</p>
 
 
 

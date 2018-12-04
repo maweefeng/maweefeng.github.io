@@ -162,7 +162,7 @@
       </div><!-- article -->
 
       <div class="article-content">
-        <p>当view第一次在屏幕上显示的时候，系统会绘制它的内容，然后系统会截取内容的快照，并且将快照作为视图的可见外观，如果你永远不改变视图的内容，那么视图的绘制代码永远不会改变。如果更改了视图的内容，不用直接重新绘制，而是使用setNeedsDisplay或者setNeedsDisplayInRect方法是视图无效。这些方法会告知视图内容以及改变并且需要在下一次进行重绘。如果需要立马重绘，那么需要使用layoutIfNeeded方法。</p>
+        <p>当view第一次在屏幕上显示的时候，系统会绘制它的内容，然后系统会截取内容的快照，并且将快照作为视图的可见外观，如果你永远不改变视图的内容，那么视图的绘制代码永远不会改变。如果更改了视图的内容，不用直接重新绘制，而是使用<code>setNeedsDisplay</code>或者<code>setNeedsDisplayInRect</code>方法是视图无效。这些方法会告知视图内容以及改变并且需要在下一次进行重绘。如果需要立马重绘，那么需要使用<code>layoutIfNeeded</code>方法。</p>
 
 
 

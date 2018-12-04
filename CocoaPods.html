@@ -147,9 +147,25 @@
                       
                       <div class="a-content-text">
                         
-                        	有些强迫症不能看到xcode编译报出的警告⚠️，所以在podfile中添加一行
+                        	<p>有些强迫症不能看到xcode编译报出的警告⚠️，所以在podfile中添加一行<br/>
+<code>inhibit_all_warnings!</code><br/>
+如果没有多个<code>target</code>或者需要所有都隐藏这个黄色警告就在最外层写</p>
+
+<pre><code class="language-#"># platform :ios, &#39;9.0&#39;
 inhibit_all_warnings!
-如果没有多个target或者需要所有都隐藏这个黄色警告就在最外层写...
+
+target &#39;MVVM&#39; do
+  # Uncomment the next line if you&#39;re using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+   pod &#39;ReactiveObjC&#39;, &#39;~&gt; 3.1.0&#39;
+   pod &#39;MBProgressHUD&#39;, &#39;~&gt; 1.1.0&#39;
+   pod &#39;MJRefresh&#39;, &#39;~&gt; 3.1.15.7&#39;
+  # Pods for MVVM
+
+end
+</code></pre>
+
+<p>如果有多个target的话就可以在各个需要隐藏的target当中写上这句话</p>...
                         
                       </div>
                   </div>
@@ -181,15 +197,18 @@ inhibit_all_warnings!
                       
                       <div class="a-content-text">
                         
-                        	pod install速度慢的终极解决方案
+                        	<ul>
+<li>①代理VPN方式</li>
+</ul>
 
-相信大家已经感受到pod install速度越来越慢了，网上提供了几种解决方案，但是都没有完全解决速度慢的问题。
+<p>相信大家已经感受到<code>pod install</code>速度越来越慢了，网上提供了几种解决方案，但是都没有完全解决速度慢的问题。</p>
 
-使用国内镜像的Specs
-在pod install时使用命令pod install --no-repo-update
-使用proxychains使终端命令走代理
-下面就来说明一下这几种方法为何没有完全解决问题...
+<p>使用国内镜像的<code>Specs</code><br/>
+在<code>pod install</code>时使用命令<code>pod install --no-repo-update</code><br/>
+使用<code>proxychains</code>使终端命令走代理<br/>
+下面就来说明一下这几种方法为何没有完全解决问题</p>
 
+<p>使用国内镜像的<code>Specs</code> 极大地加快了<code>Specs</code>下载更新速度，而且如果使用国内</p>...
                         
                       </div>
                   </div>
@@ -221,11 +240,20 @@ inhibit_all_warnings!
                       
                       <div class="a-content-text">
                         
-                        	终端运行sudo gem update出现如下错误
+                        	<h3 id="toc_0">终端运行sudo gem update出现如下错误</h3>
 
-ERROR: While executing gem … (Gem::FilePermissionError) 
-You don’t have write permissions for the /usr/bin directory....
+<blockquote>
+<p>ERROR: While executing gem … (Gem::FilePermissionError) <br/>
+You don’t have write permissions for the /usr/bin directory.</p>
+</blockquote>
 
+<p>试一下这一段代码</p>
+
+<blockquote>
+<p>sudo gem install -n /usr/local/bin cocoapods</p>
+</blockquote>
+
+<p>这表示是在本地环境</p>...
                         
                       </div>
                   </div>

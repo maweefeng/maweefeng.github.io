@@ -162,17 +162,23 @@
       </div><!-- article -->
 
       <div class="article-content">
-        <p>让终端走代理的几种方法<br/>
-Macproxyterminal<br/>
-（2017.9.17更新）</p>
+        <h4 id="toc_0">让终端走代理的几种方法</h4>
 
-<p>方法1:<br/>
+<p><code>Macproxyterminal</code></p>
+
+<ul>
+<li><p>方法1:<br/>
 在终端中直接运行命令<br/>
 export http_proxy=<a href="http://proxyAddress:port">http://proxyAddress:port</a><br/>
-这个办法的好处是简单直接，并且影响面很小（只对当前终端有效，退出就不行了）。</p>
+这个办法的好处是简单直接，并且影响面很小（只对当前终端有效，退出就不行了）。<br/>
+如果你用的是ss代理，在当前终端运行以下命令，那么wget curl 这类网络命令都会经过ss代理<br/>
+export ALL_PROXY=socks5://127.0.0.1:1080</p></li>
+<li><p>方法2:<br/>
+比如我现在使用的shadowsocks工具可以直接设置全局代理，勾选就行了，一般使用的是PAC自动模式，这样可以根据条件选择代理or直连，保证速度和网站的可达性。</p></li>
+</ul>
 
-<p>如果你用的是ss代理，在当前终端运行以下命令，那么wget curl 这类网络命令都会经过ss代理<br/>
-export ALL_PROXY=socks5://127.0.0.1:1080</p>
+<p><img src="media/15427834491808/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-04%20%E4%B8%8B%E5%8D%881.09.57.png" alt="屏幕快照 2018-12-04 下午1.09.57"/><br/>
+shadowSocks软件的Git地址为<a href=""><code>https://github.com/shadowsocks/ShadowsocksX-NG</code></a></p>
 
 
 

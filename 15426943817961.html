@@ -162,7 +162,10 @@
       </div><!-- article -->
 
       <div class="article-content">
-        <h3 id="toc_0">解决方法</h3>
+        <p>由于<code>Xcode10</code> 已经禁用<code>libstdc++</code>、<code>libstdc++.6</code>、<code>libstdc++6.0.9</code>这三个库的使用,所以老项目中有用到这三个库的，会编译出错。<br/>
+我就遇到了这个问题，之前的项目引入的sdk依赖了libstdc++，所以当我升级到<code>xcode10</code>之后就编译不通过，于是在网上找到了解决方法。</p>
+
+<h3 id="toc_0">解决方法</h3>
 
 <p>首先解压同级目录下的libstdc压缩包</p>
 

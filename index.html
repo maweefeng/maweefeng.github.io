@@ -147,13 +147,13 @@
                       
                       <div class="a-content-text">
                         
-                        	①Objective-C 调用 C++
+                        	<h3 id="toc_0">①Objective-C 调用 C++</h3>
 
-OC本身可以直接调用C的代码 比如直接可以调用printf方法。
-但是OC中的.m直接编译C++的代码就会出现编译错误
-需要把OC.m改成OC.mm之后（objective-c变成了objective-c++）引入iostream(#include<iostream>)就可以直接编译了。
-这可以在.mm文件当中直接使用c++的代码。
-也可以另外新建一个c++的文件，并且创建.h文件。...
+<p>OC本身可以直接调用C的代码 比如直接可以调用printf方法。<br/>
+但是OC中的.m直接编译C++的代码就会出现编译错误<br/>
+需要把OC.m改成OC.mm之后（objective-c变成了objective-c++）引入iostream(<code>#include&lt;iostream&gt;</code>)就可以直接编译了。<br/>
+这可以在.mm文件当中直接使用c++的代码。<br/>
+也可以另外新建一个c++的文件，并且创建.h文件...</p>
                         
                       </div>
                   </div>
@@ -185,14 +185,14 @@ OC本身可以直接调用C的代码 比如直接可以调用printf方法。
                       
                       <div class="a-content-text">
                         
-                        	dispatch_semaphore_t 一种计算的信号量
-dispatch_semaphore_create 创建一个数值的信号量
-dispatch_semaphore_signal 对指定的信号量进行增加1
+                        	<p><code>dispatch_semaphore_t</code> 一种计算的信号量<br/>
+<code>dispatch_semaphore_create</code> 创建一个数值的信号量<br/>
+<code>dispatch_semaphore_signal</code> 对指定的信号量进行增加1</p>
 
-dispatch_semaphore_wait 会使传入的信号量减1，如果返回的值为0说明有任务进行中就阻碍当前的线程，如果返回的值大于0，就代表当前的线程当中没有任务再执行，就接着执行下面的任务。
+<p><code>dispatch_semaphore_wait</code> 会使传入的信号量减1，如果返回的值为0说明有任务进行中就阻碍当前的线程，如果返回的值大于0，就代表当前的线程当中没有任务再执行，就接着执行下面的任务。</p>
 
-用这个可以起到顺序执行异步任务的功效。
-如果后一步的执行需要前一步执行完拿到结果才行的话，这也是一种异步顺序执行的方案...
+<p>用这个可以起到顺序执行异步任务的功效。<br/>
+如果后一步的执行需要前一...</p>
                         
                       </div>
                   </div>
@@ -262,12 +262,19 @@ dispatch_semaphore_wait 会使传入的信号量减1，如果返回的值为0说
 		              
                       <div class="a-content-text">
                         
-                        	今天帮同事看一个布局约束的问题，（代码也是从别人手中接过来的，所以并不清楚怎么布局的）
-view是用xib画的，约束设置很多，本以为是约束的问题，设置了约束还是不能更改整个view的高度。
+                        	<p>今天帮同事看一个布局约束的问题，（代码也是从别人手中接过来的，所以并不清楚怎么布局的）<br/>
+view是用xib画的，约束设置很多，本以为是约束的问题，设置了约束还是不能更改整个view的高度。</p>
 
-最后找了一会，我发现了一个方法 sizeThatFit 在sizeThatFit内部返回了size，所以刚才尽管指定的约束改了，但是还是不影响下面的方法返回size。
+<p>最后找了一会，我发现了一个方法 sizeThatFit 在sizeThatFit内部返回了size，所以刚才尽管指定的约束改了，但是还是不影响下面的方法返回size。</p>
 
-所以就写了这个东西给不了解的同学一点点经验。
+<p>所以就写了这个东西给不了解的同学一点点经验。</p>
+
+<pre><code>- (void)sizeToFit;                       // calls sizeThatFits: with current view bounds and changes bounds size.
+- (CGSize)sizeThatFits:(CGSize)size;     // return &#39;best&#39; size to fit given size. does not actually resize view. Default is return existing view size
+
+</code></pre>
+
+<p>上面是苹果的方法说明。</p>
                         
                       </div>
                   </div>
@@ -299,8 +306,17 @@ view是用xib画的，约束设置很多，本以为是约束的问题，设置�
                       
                       <div class="a-content-text">
                         
-                        	MVVM是一种双向绑定技术，使用VM实现数据的变化更新视图，视图的变化更新数据的处理，整个过程是一种数据绑定的过程。
-网络上可以看到大多数人吹捧MVVM，但是千奇百怪的，并没有人能很好的理解MVVM，反而使代码变得异常复杂。...
+                        	<p>MVVM是一种双向绑定技术，使用VM实现数据的变化更新视图，视图的变化更新数据的处理，整个过程是一种数据绑定的过程。<br/>
+网络上可以看到大多数人吹捧MVVM，但是千奇百怪的，并没有人能很好的理解MVVM，反而使代码变得异常复杂。<br/>
+<code>MVC的关系图</code></p>
+
+<pre><code class="language-sequence">V层-&gt;C层:事件
+Note right of V层:特殊情况下可以持有M层
+C层-&gt;V层:创建/更新
+C层-&gt;M层: 调用
+M层-&gt;C层: 通知
+</code></pre>
+
                         
                       </div>
                   </div>
@@ -332,9 +348,25 @@ view是用xib画的，约束设置很多，本以为是约束的问题，设置�
                       
                       <div class="a-content-text">
                         
-                        	有些强迫症不能看到xcode编译报出的警告⚠️，所以在podfile中添加一行
+                        	<p>有些强迫症不能看到xcode编译报出的警告⚠️，所以在podfile中添加一行<br/>
+<code>inhibit_all_warnings!</code><br/>
+如果没有多个<code>target</code>或者需要所有都隐藏这个黄色警告就在最外层写</p>
+
+<pre><code class="language-#"># platform :ios, &#39;9.0&#39;
 inhibit_all_warnings!
-如果没有多个target或者需要所有都隐藏这个黄色警告就在最外层写...
+
+target &#39;MVVM&#39; do
+  # Uncomment the next line if you&#39;re using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+   pod &#39;ReactiveObjC&#39;, &#39;~&gt; 3.1.0&#39;
+   pod &#39;MBProgressHUD&#39;, &#39;~&gt; 1.1.0&#39;
+   pod &#39;MJRefresh&#39;, &#39;~&gt; 3.1.15.7&#39;
+  # Pods for MVVM
+
+end
+</code></pre>
+
+<p>如果有多个target的话就可以在各个需要隐藏的target当中写上这句话</p>...
                         
                       </div>
                   </div>
@@ -380,7 +412,7 @@ inhibit_all_warnings!
 <li>刷剧</li>
 </ul>
 
-<p>今年追了「绝命律师」「权力的游戏」「行尸走肉」「年轻的谢尔顿」「白夜追凶」「四重奏」「去他妈的世界」排名不分先后。</p>
+<p>2018年追了「绝命律师」「权力的游戏」「行尸走肉」「年轻的谢尔顿」「白夜追凶」「四重奏」「去他妈的世界」「梅尔罗斯」「了不起的麦瑟尔夫人」「碧蓝之海」「我是大哥大」排名不分先后。</p>
 
 <ul>
 <li>阅读</li>
@@ -388,7 +420,7 @@ inhibit_all_warnings!
 
 <p>最开始在念大学的时候买了个kindle入门款，因为当时手头没有足够的💰，再加上背光对我来说并不是必要的，所以对我来说这款设备足够了，真是买完不后悔系列。当你想要看书的时候，在上面看书的感觉几乎接近于书籍，虽然我很喜欢传统纸质书籍，但是纸质书的翻页体验真的太差了，kindle的翻页要比传统书籍好过很多倍，便携性更不用说了。</p>
 
-<p>在我iPhone 7 plus里安装了kindle for ios，方便在我不方便使用kindle的时候看书，在我MacBook中我安装了kindle for mac，我一般会把它全屏为一个独立的窗口，不管是在代码编译等待的时候看，还是专门去看，那种体验很舒服，最起码比在5.5寸屏幕上的效果要好很多。</p>
+<p>在手机里安装了<code>kindle for ios</code>，方便在我不方便使用<code>kindle</code>的时候看书，在我<code>MacBook</code>中我安装了<code>kindle for mac</code>，我一般会把它全屏为一个独立的窗口，不管是在代码编译等待的时候看，还是专门去看，那种体验很舒服，最起码比在5.5寸屏幕上的效果要好很多。</p>
 
 <p>你可以在<a href="http://weibo.com/nervousCat">weibo</a>上找到我。 </p>
 

@@ -151,12 +151,19 @@
 		              
                       <div class="a-content-text">
                         
-                        	今天帮同事看一个布局约束的问题，（代码也是从别人手中接过来的，所以并不清楚怎么布局的）
-view是用xib画的，约束设置很多，本以为是约束的问题，设置了约束还是不能更改整个view的高度。
+                        	<p>今天帮同事看一个布局约束的问题，（代码也是从别人手中接过来的，所以并不清楚怎么布局的）<br/>
+view是用xib画的，约束设置很多，本以为是约束的问题，设置了约束还是不能更改整个view的高度。</p>
 
-最后找了一会，我发现了一个方法 sizeThatFit 在sizeThatFit内部返回了size，所以刚才尽管指定的约束改了，但是还是不影响下面的方法返回size。
+<p>最后找了一会，我发现了一个方法 sizeThatFit 在sizeThatFit内部返回了size，所以刚才尽管指定的约束改了，但是还是不影响下面的方法返回size。</p>
 
-所以就写了这个东西给不了解的同学一点点经验。
+<p>所以就写了这个东西给不了解的同学一点点经验。</p>
+
+<pre><code>- (void)sizeToFit;                       // calls sizeThatFits: with current view bounds and changes bounds size.
+- (CGSize)sizeThatFits:(CGSize)size;     // return &#39;best&#39; size to fit given size. does not actually resize view. Default is return existing view size
+
+</code></pre>
+
+<p>上面是苹果的方法说明。</p>
                         
                       </div>
                   </div>
@@ -230,28 +237,15 @@ view是用xib画的，约束设置很多，本以为是约束的问题，设置�
                       
                       <div class="a-content-text">
                         
-                        	<h3 id="toc_0">解决方法</h3>
-
-<p>首先解压同级目录下的libstdc压缩包</p>
-
-<h4 id="toc_1">1.真机</h4>
-
-<p>将libstdc_iPhoneOS拷贝到/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/lib</p>
-
-<h4 id="toc_2">2.模拟器</h4>
-
-<ul>
-<li><p>将libstdc_iPhoneSimulator拷贝到/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/usr/lib/</p></li>
-<li><p>将libstdc_iPhoneSimulator_runtime拷贝到/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime/Contents/Resources/RuntimeRoot/usr/lib/</p></li>
-</ul>
-
+                        	<p>由于<code>Xcode10</code> 已经禁用<code>libstdc++</code>、<code>libstdc++.6</code>、<code>libstdc++6.0.9</code>这三个库的使用,所以老项目中有用到这三个库的，会编译出错。<br/>
+我就遇到了这个问题，之前的项目引入的sdk依赖了libstdc++，所以当我升级到<code>xcode10</code>之后就编译不通过，于是在网上找到了解决方法。</p>...
                         
                       </div>
                   </div>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                  
+                   <a href="15426943817961.html">Read more</a>&nbsp;&nbsp; 
                     <span class="date">2018/11/20</span>
                     <span>posted in&nbsp;</span> 
           				  
