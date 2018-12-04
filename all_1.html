@@ -199,8 +199,11 @@
                       
                       <div class="a-content-text">
                         
-                        	<pre><code>去掉xcode黄色警告的方法
-#pragma clang diagnostic push
+                        	<ul>
+<li>去掉xcode黄色警告的方法</li>
+</ul>
+
+<pre><code>#pragma clang diagnostic push
 #pragma clang diagnostic ignored &quot;-Wdeprecated-declarations&quot;
  your code with warning
 #pragma clang diagnostic pop
@@ -211,13 +214,9 @@
 #pragma clang diagnostic pop
 </code></pre>
 
-<pre><code>_coverView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
-在控制器init方法中初始化一个大小为self.view.bounds的uiview必须等待视图出来的时候才会进行，要不然一直在主线程等待。
-如果直接给CGRectmake设置的话不用等界面加载就会执行，应该是一个主线程问题。 
-这个时候如果直接去xib里面的控件，就会出现取不到的情况，取出来是nil。
-</code></pre>
-button 的文字显示不全
-从xib加载View...
+<ul>
+<li>控制器init方法执...</li>
+</ul>
                         
                       </div>
                   </div>
