@@ -147,186 +147,13 @@
                       
                       <div class="a-content-text">
                         
-                        	<h3 id="toc_0">①Objective-C 调用 C++</h3>
+                        	①Objective-C 调用 C++
 
-<p>OC本身可以直接调用C的代码 比如直接可以调用printf方法。<br/>
-但是OC中的.m直接编译C++的代码就会出现编译错误<br/>
-需要把OC.m改成OC.mm之后（objective-c变成了objective-c++）引入iostream(<code>#include&lt;iostream&gt;</code>)就可以直接编译了。<br/>
-这可以在.mm文件当中直接使用c++的代码。<br/>
-也可以另外新建一个c++的文件，并且创建.h文件。</p>
-
-<pre><code>********CPPHello.hpp声明文件********
-#ifndef CPPHello_hpp
-#define CPPHello_hpp
-
-#include &lt;stdio.h&gt;
-class CPPHello{
-    
-public:
-    static void sayHello();
-};
-
-#endif /* CPPHello_hpp */
-********CPPHello.cpp实现文件********
-#include &quot;CPPHello.hpp&quot;
-
-void CPPHello::sayHello(){
-    
-    printf(&quot;hello world&quot;);
-    
-}
-</code></pre>
-
-<p><strong>注意:</strong>oc调用c++必须要把.m改成.mm,要不然会报错。</p>
-
-<h3 id="toc_1">②C++ 调用 Objective-C</h3>
-
-<p>新建cocoaTouch中的类，语言选择Objective-C，比如<code>objcHello.h</code>和<code>objcHello.m</code>然后在刚才的c++文件(<code>CPPHello.cpp</code>)中import <code>objcHello.h</code>就会出现编译错误。<br/>
-所以c++语言不能直接import OC的头文件要对头文件进行修改，把头文件所有内容删除替换成c++能够识别的代码比如c或者c++的代码。</p>
-
-<pre><code>//objcHello.h
-void objcSayHello();
-</code></pre>
-
-<p>另外<code>objcHello.m</code>文件要修改成<code>objcHello.mm</code>文件，然后<code>#import &lt;Foundation/Foundation.h&gt;</code>之后就可以在<code>objcHello.mm</code>文件调用oc的代码了。<br/>
-并且可以在<code>objcHello.mm</code>文件中写oc的类了，比如如下代码。</p>
-
-<pre><code>#import &lt;Foundation/Foundation.h&gt;
-#import &quot;ObjcHello.h&quot;
-
-@interface ObjcHello:NSObject
-
--(void)sayHello;
-
-@end
-
-@implementation ObjcHello
-
--(void)sayHello{
-    
-    NSLog(@&quot;hello objc&quot;);
-}
-@end
-
-
-void objcSayHello(){
-    
-//  NSLog(@&quot;hello Objc&quot;);
-    ObjcHello * h = [ObjcHello new];
-    [h sayHello];
-}
-</code></pre>
-
-<p>然后修改完之后引入比如<code>#include &quot;ObjcHello.h&quot;</code>就可以在里面对.h文件的方法进行调用了。</p>
-
-<pre><code>#include &quot;CPPHello.hpp&quot;
-#include &quot;ObjcHello.h&quot;
-void CPPHello::sayHello(){
-    
-//   printf(&quot;hello world&quot;);
-    objcSayHello();
-    
-}
-</code></pre>
-
-<h3 id="toc_2">③Swift调用C</h3>
-
-<p>新建<code>CHello.h</code>文件，然后创建头文件，然后选择创建桥接文件。<br/>
-在这个桥接文件中#import其他公开头文件用来暴露给swift文件。</p>
-
-<p>1.在.h文件中声明一个方法</p>
-
-<pre><code>CHello.h
-#ifndef CHello_h
-#define CHello_h
-
-#include &lt;stdio.h&gt;
-void sayHello();
-#endif /* CHello_h */
-</code></pre>
-
-<p>2.在.c文件中实现一个方法</p>
-
-<pre><code>Chello.c 
-#include &quot;CHello.h&quot;
-
-void sayHello(){
-    
-    printf(&quot;hello c&quot;);
-    
-}
-</code></pre>
-
-<p>3.在桥接文件中引入<code>CHello.h</code></p>
-
-<pre><code>//  Use this file to import your target&#39;s public headers that you would like to expose to Swift.
-//
-
-#import &quot;CHello.h&quot;
-</code></pre>
-
-<p>4.在swift当中直接调用<code>sayHello()</code>方法</p>
-
-<h3 id="toc_3">④Swift &amp; Objective-C &amp; C++混编</h3>
-
-<p>新建OC的类比如OCHello.h和OCHello.m</p>
-
-<pre><code>#import &lt;Foundation/Foundation.h&gt;
-
-@interface OCHello : NSObject
--(void)hello;
-@end
-</code></pre>
-
-<pre><code>#import &quot;OCHello.h&quot;
-
-@implementation OCHello
--(void)hello{
-    
-    NSLog(@&quot;oc sayHello&quot;);
-}
-@end
-</code></pre>
-
-<p>然后在桥接文件中引入<code>OCHello.h</code><br/>
-在swift当中就可以直接调用,代码如下所示</p>
-
-<pre><code>import UIKit
-class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        var h = OCHello();
-        h.hello()
-
-    }
-}
-</code></pre>
-
-<p>如果想要swift调用c++的话可以把<code>OCHello.m</code>改成<code>OCHello.mm</code><br/>
-在.mm文件中写c++的代码如下所示</p>
-
-<pre><code>#include &lt;iostream&gt;
-#import &quot;OCHello.h&quot;
-
-@implementation OCHello
--(void)hello{
-    
-//    NSLog(@&quot;oc sayHello&quot;);
-    std::cout&lt;&lt;&quot;hello cpp\n&quot;;
-}
-@end
-</code></pre>
-
-<p>swift当中的代码不做任何变化，这样就做到了三种语言的混编。</p>
-
-<h4 id="toc_4">提示</h4>
-
-<p>.mm文件当中可以写oc，c，c++的代码<br/>
-oc可以完全兼容c语言的代码<br/>
-swift不可以直接执行c语言的代码,要做一些声明比如上面的调用实现。<br/>
-swift不可以执行c++的代码，要用oc做中间层，一般要避免。</p>
-
+OC本身可以直接调用C的代码 比如直接可以调用printf方法。
+但是OC中的.m直接编译C++的代码就会出现编译错误
+需要把OC.m改成OC.mm之后（objective-c变成了objective-c++）引入iostream(#include<iostream>)就可以直接编译了。
+这可以在.mm文件当中直接使用c++的代码。
+也可以另外新建一个c++的文件，并且创建.h文件。...
                         
                       </div>
                   </div>
@@ -358,52 +185,14 @@ swift不可以执行c++的代码，要用oc做中间层，一般要避免。</p>
                       
                       <div class="a-content-text">
                         
-                        	<p><code>dispatch_semaphore_t</code> 一种计算的信号量<br/>
-<code>dispatch_semaphore_create</code> 创建一个数值的信号量<br/>
-<code>dispatch_semaphore_signal</code> 对指定的信号量进行增加1</p>
+                        	dispatch_semaphore_t 一种计算的信号量
+dispatch_semaphore_create 创建一个数值的信号量
+dispatch_semaphore_signal 对指定的信号量进行增加1
 
-<p><code>dispatch_semaphore_wait</code> 会使传入的信号量减1，如果返回的值为0说明有任务进行中就阻碍当前的线程，如果返回的值大于0，就代表当前的线程当中没有任务再执行，就接着执行下面的任务。</p>
+dispatch_semaphore_wait 会使传入的信号量减1，如果返回的值为0说明有任务进行中就阻碍当前的线程，如果返回的值大于0，就代表当前的线程当中没有任务再执行，就接着执行下面的任务。
 
-<p>用这个可以起到顺序执行异步任务的功效。<br/>
-如果后一步的执行需要前一步执行完拿到结果才行的话，这也是一种异步顺序执行的方案。</p>
-
-<pre><code>- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self task:@&quot;task one starting&quot;];
-        dispatch_semaphore_signal(semaphore);
-    });
-    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-    
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self task:@&quot;task two starting&quot;];
-        dispatch_semaphore_signal(semaphore);
-    });
-    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-    
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self task:@&quot;task three starting&quot;];
-        dispatch_semaphore_signal(semaphore);
-    });
-    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-    
-    // Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)task:(NSString *)taskName{
-    NSLog(@&quot;%@&quot;,taskName);
-    sleep(1);
-}
-
-</code></pre>
-
-<p>先执行dispatch_semaphore_wait 然后发现线程任务还在进行，就开始堵塞当前任务的线程，等待dispatch_async内部执行完成信号量+1才会继续下面的执行。</p>
-
+用这个可以起到顺序执行异步任务的功效。
+如果后一步的执行需要前一步执行完拿到结果才行的话，这也是一种异步顺序执行的方案...
                         
                       </div>
                   </div>
@@ -435,28 +224,9 @@ swift不可以执行c++的代码，要用oc做中间层，一般要避免。</p>
                       
                       <div class="a-content-text">
                         
-                        	<p>只有运行时给分类添加属性，大部分都是这样的</p>
-
-<pre><code class="language-static">- (NSString *)customName {
-　　　　 return objc_getAssociatedObject(self, &amp;kExtendVarKey);
-　　 }
-- (void)setCustomName:(NSString *)customName {
-　　　　objc_setAssociatedObject(self, &amp;kExtendVarKey,, customDelegate, OBJC_ASSOCIATION_RETAIN_COPY);
-　}
-</code></pre>
-
-<p>_cmd 是隐藏的参数，表示当前方法的selector，另外隐藏参数self表示当前方法调用的对象实例。<br/>
-这个参数是唯一的参数，在一个文件中方法名不会重复。<br/>
-所以可以让它代替运行时当中的属性的键名。</p>
-
-<pre><code class="language-　　">- (NSString *)customName {
-　　　　 return objc_getAssociatedObject(self, _cmd);
-　　 }
-- (void)setCustomName:(NSString *)customName {
-　　　　objc_setAssociatedObject(self, @selector(customName), customName, OBJC_ASSOCIATION_RETAIN_COPY);
-　　}
-</code></pre>
-
+                        	_cmd 是隐藏的参数，表示当前方法的selector，另外隐藏参数self表示当前方法调用的对象实例。
+这个参数是唯一的参数，在一个文件中方法名不会重复。
+所以可以让它代替运行时当中的属性的键名。...
                         
                       </div>
                   </div>
@@ -486,71 +256,18 @@ swift不可以执行c++的代码，要用oc做中间层，一般要避免。</p>
                   <h1>sizeThatFits和sizeToFit</h1>
                   <div class="a-content">
                       
+		                  <div class="a-content-img">
+                      		<img src="media/15433027949667/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-27%20%E4%B8%8B%E5%8D%883.23.06.png" />
+                      	  </div>
+		              
                       <div class="a-content-text">
                         
-                        	<p>今天帮同事看一个布局约束的问题，（代码也是从别人手中接过来的，所以并不清楚怎么布局的）<br/>
-view是用xib画的，约束设置很多，本以为是约束的问题，设置了约束还是不能更改整个view的高度。</p>
+                        	今天帮同事看一个布局约束的问题，（代码也是从别人手中接过来的，所以并不清楚怎么布局的）
+view是用xib画的，约束设置很多，本以为是约束的问题，设置了约束还是不能更改整个view的高度。
 
-<p>最后找了一会，我发现了一个方法 sizeThatFit 在sizeThatFit内部返回了size，所以刚才尽管指定的约束改了，但是还是不影响下面的方法返回size。</p>
+最后找了一会，我发现了一个方法 sizeThatFit 在sizeThatFit内部返回了size，所以刚才尽管指定的约束改了，但是还是不影响下面的方法返回size。
 
-<p>所以就写了这个东西给不了解的同学一点点经验。</p>
-
-<pre><code>- (void)sizeToFit;                       // calls sizeThatFits: with current view bounds and changes bounds size.
-- (CGSize)sizeThatFits:(CGSize)size;     // return &#39;best&#39; size to fit given size. does not actually resize view. Default is return existing view size
-
-</code></pre>
-
-<p>上面是苹果的方法说明。</p>
-
-<p>sizeToFit 方法会返回一个苹果自带方法计算出的合适的宽高，即使你初始化的时候的宽和高设置错误，苹果也会给你算出一个合适的size让你填充你的内容。</p>
-
-<pre><code>-(void)addSizeToFitHelloLable{
-    
-    UILabel * hello = [[UILabel alloc]initWithFrame:CGRectMake(20, 20, 20, 100)];
-    hello.text = @&quot;hello world&quot;;
-    hello.backgroundColor = [UIColor redColor];
-    [self.view addSubview:hello];
-    [hello sizeToFit];
-    
-}
-
-</code></pre>
-
-<p>我这里设置的宽度和高度明显是不对的，但是当我调用sizeToFit之后就好多了，下面是调用前和调用之后的对比效果。</p>
-
-<ul>
-<li><p>调用之前<br/>
-<img src="media/15433027949667/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-27%20%E4%B8%8B%E5%8D%883.23.49.png" alt="屏幕快照 2018-11-27 下午3.23.49 "/></p></li>
-<li><p>调用之后<br/>
-<img src="media/15433027949667/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-27%20%E4%B8%8B%E5%8D%883.23.06.png" alt="屏幕快照 2018-11-27 下午3.23.06"/></p></li>
-</ul>
-
-<p>因为sizeToFit之后内部会调用调用sizeThatFits，所以还可以在自定义view当中重写sizeThatFits方法，去调整sizeToFit之后的size。</p>
-
-<pre><code>----------customLable.m-------------
--(CGSize)sizeThatFits:(CGSize)size{
-    
-    [super sizeThatFits:size];
-    size.height = 40;
-    return size;
-    
-}
-</code></pre>
-
-<h4 id="toc_0">注意</h4>
-
-<p>添加自定义的lable到view上最后千万不能忘记调用sizeToFit方法，要不然内部重写的sizeThatFits不生效。</p>
-
-<pre><code>-(void)addCustomeSizeThatFitLable{
-    
-    CustomLable * hello = [[CustomLable alloc]initWithFrame:CGRectMake(20, 20, 200, 100)];
-    hello.text = @&quot;hello world&quot;;
-    hello.backgroundColor = [UIColor redColor];
-    [self.view addSubview:hello];
-    [hello sizeToFit]; 
-}
-</code></pre>
-
+所以就写了这个东西给不了解的同学一点点经验。
                         
                       </div>
                   </div>
@@ -582,86 +299,8 @@ view是用xib画的，约束设置很多，本以为是约束的问题，设置�
                       
                       <div class="a-content-text">
                         
-                        	<p>MVVM是一种双向绑定技术，使用VM实现数据的变化更新视图，视图的变化更新数据的处理，整个过程是一种数据绑定的过程。<br/>
-网络上可以看到大多数人吹捧MVVM，但是千奇百怪的，并没有人能很好的理解MVVM，反而使代码变得异常复杂。<br/>
-<code>MVC的关系图</code></p>
-
-<pre><code class="language-sequence">V层-&gt;C层:事件
-Note right of V层:特殊情况下可以持有M层
-C层-&gt;V层:创建/更新
-C层-&gt;M层: 调用
-M层-&gt;C层: 通知
-</code></pre>
-
-<table>
-<thead>
-<tr>
-<th>M</th>
-<th>V</th>
-<th>C</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>Model模型</td>
-<td>View视图</td>
-<td>Controller控制器</td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="toc_0">1.被误解的MVC</h3>
-
-<p>最开始实行的一套机制是MVC 但是很多业务代码被放在了C层处理，导致出现了一个C中出现了上千行代码，给调试带来了很多影响。</p>
-
-<p>后来才试着把JSON数据解析成数据模型，这样把一部分代码挪到了M模型层，但是这个模型是很简单的，只是单纯的属性定义。</p>
-
-<p>这样显然是不够的，很多业务代码还是存在C层当中，并没有对C很好的进行瘦身，这样的<code>MVC</code>框架太过臃肿。</p>
-
-<p>而其实真正的MVC框架中的M层不应该只是简单的数据模型，而应该是业务模型，也就是所有业务数据和业务实现逻辑应该定义在M层，而且应该和具体的界面没有关系,可以独立存在，甚至可以编译出静态库给第三方使用，就像我们下面将要说到的ViewModel层相似。</p>
-
-<h3 id="toc_1">2.引出ViewModel层</h3>
-
-<p>其实大多时候界面和业务逻辑是绑在一起的，这个界面的展示要调用某个业务逻辑，完成之后直接更新界面，大多时候C只是多余的，所以才把这部分的逻辑代码（网络请求，数据库操作，解析，业务逻辑）抽象出一个单独的类，这个类叫VM类。</p>
-
-<pre><code class="language-sequence">V层-&gt;VM层:
-VM层-&gt;V层:
-M层-&gt;VM层:
-VM层-&gt;M层:
-C层-&gt;VM层:
-</code></pre>
-
-<p>当前的VM层负责视图、模型、C层的三个部分的交互和耦合。</p>
-
-<p>下一步考虑是不是可以把C层的事件处理也拿出来，然后就用到了RAC，负责事件的处理和传递。<br/>
-这样的话就可以达到给C层减肥的效果了。</p>
-
-<p>但是并不是说C层就没有用了。</p>
-
-<p>在MVVM中的M只是一个简单的饿数据模型的概念，如果把它当做一层，显然不符合横向切分的规则，所以MVVM中的M就是一个伪概念。</p>
-
-<h3 id="toc_2">3.MVVM的过于神化</h3>
-
-<p>同时MVVM当中的VM是严格和View绑定的，这是一种强耦合，但是实际情况下界面可能会随着升级而变化，往往业务逻辑是相对稳定的，所以上面的这种以VM为中心的设计模式很不清爽，所以MVVM当中的VM层也是一个<br/>
-伪概念。</p>
-
-<p>然后是View事件处理。C层是一个负责调度和控制的模块，他的作用就是处理视图的事件，然后调用业务逻辑，然后接收业务逻辑的处理结果通知，然后再通知视图去刷新界面，这就是C层存在的意义。<br/>
-而RAC的出现则将这部分的处理给活生生的代替掉了。也就是通过RAC所谓的响应式和触发式这种机制就能实现将事件的调度处理放在任何地方任何时候都能完成。这样做的目的使得我们可以分散和分解代码。但结果出现的问题呢？就是同一个单元调度处理逻辑和功能的构建完全放在了一个地方，但不同的单元逻辑的又分散在不同的地方，无法去分类统一管理和维护。因此你无法一下子就知道某个功能所有调度到底是如何实现以及在哪里实现的。因为RAC将功能构建和事件处理完全粘合到一个大的函数体内部，并且是代码套代码的模式，这种方式严重的破坏了面向对象里面的构建和处理分离的设计模式理论。更麻烦的是其高昂的学习和维护成本，代码阅读理解困难，以及无处不在的闭包使用。试想一下这个对于一个初学者来说是不是噩梦？，一旦出了问题对于维护和代码调试是不是噩梦？而且使用不当就会出现循环引用的严重问题。这样一来原本C层一个调度总管的职责被RAC来接管后，这些处理将变得分散和无序，当我们要做一些统一的管理比如HOOK和AOP方面的东西时就变得无法下手了。 不可否认的是RAC在处理连续调用以及顺序响应方面有一定的优势。一个例子是我们可能有连续的多个跟服务器的网络请求，这时候用RAC进行这种处理能方便的解决问题。但是我想说的是当存在这种场景时，我们更加应该将这种连续的网络调用在M层内部消化掉，而只给C层提供一个简易而方便的接口，让C层根本不需要关心这种调用的连续性。因此可以说为了把C层的代码给消化掉而引入RAC的机制，不仅没有简化掉系统反而降低了系统的可维护性和可读性。RAC机制根本就不适合用在事件处理中。优秀的应用和框架并不在代码的多寡，而是整体系统的代码简单易读，各部分职责分明，容易维护的调试。</p>
-
-<p><u>其实这一切的一切都来源于对MVC当中Model的错误认识和理解。</u></p>
-
-<h3 id="toc_3">4.正确理解MVC</h3>
-
-<p>M层不依赖C层和V层独立存在，C层负责关联二者，V层只负责展示，M层持有数据和业务的具体实现，而C层则处理事件响应以及业务的调用以及通知界面更新。三者之间一定要明确的定义为单向依赖，而不应该出现双向依赖。下面是三层的依赖关系图：</p>
-
-<pre><code class="language-sequence">M层-&gt;C层:被C层依赖
-Note right of M层:M:持有数据和业务的具体实现
-C层-&gt;V层:依赖V层
-Note left of V层:V:展示
-Note left of C层:C:关联M和V&amp;事件响应&amp;业务调用&amp;界面更新。
-</code></pre>
-
+                        	MVVM是一种双向绑定技术，使用VM实现数据的变化更新视图，视图的变化更新数据的处理，整个过程是一种数据绑定的过程。
+网络上可以看到大多数人吹捧MVVM，但是千奇百怪的，并没有人能很好的理解MVVM，反而使代码变得异常复杂。...
                         
                       </div>
                   </div>
@@ -673,6 +312,156 @@ Note left of C层:C:关联M和V&amp;事件响应&amp;业务调用&amp;界面更�
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='MVVM+RAC.html'>MVVM+RAC</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427945343440.html">
+                
+                  <h1>消除CocoaPods引入第三方SDK的警告</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	有些强迫症不能看到xcode编译报出的警告⚠️，所以在podfile中添加一行
+inhibit_all_warnings!
+如果没有多个target或者需要所有都隐藏这个黄色警告就在最外层写...
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='CocoaPods.html'>CocoaPods</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427857390238.html">
+                
+                  <h1>Hello Mr.Ma</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>简介：暂无介绍</p>
+
+<p>个人有着写日记的习惯，会写一些对待技术、文化、生活的看法，平时喜欢拍拍照，看看剧，看看书。  </p>
+
+<ul>
+<li>拍摄</li>
+</ul>
+
+<p>拍照用的是一款理光的相机GR2，这款相机比较小众，但是偶尔也会有路人看到我的机器后和我搭讪，这种感觉还是不错的，我个人很喜欢它的森山大道模式，（最开始也是因为这个购买它，不过后来这个模式用的其实不太多了）被别人安利了，又在网上看了看一些测评，街拍的好机器，就在淘宝下单买了，算是送给自己的生日礼物🎁，虽然功能不多，但是逼格对我来说够了。</p>
+
+<ul>
+<li>刷剧</li>
+</ul>
+
+<p>今年追了「绝命律师」「权力的游戏」「行尸走肉」「年轻的谢尔顿」「白夜追凶」「四重奏」「去他妈的世界」排名不分先后。</p>
+
+<ul>
+<li>阅读</li>
+</ul>
+
+<p>最开始在念大学的时候买了个kindle入门款，因为当时手头没有足够的💰，再加上背光对我来说并不是必要的，所以对我来说这款设备足够了，真是买完不后悔系列。当你想要看书的时候，在上面看书的感觉几乎接近于书籍，虽然我很喜欢传统纸质书籍，但是纸质书的翻页体验真的太差了，kindle的翻页要比传统书籍好过很多倍，便携性更不用说了。</p>
+
+<p>在我iPhone 7 plus里安装了kindle for ios，方便在我不方便使用kindle的时候看书，在我MacBook中我安装了kindle for mac，我一般会把它全屏为一个独立的窗口，不管是在代码编译等待的时候看，还是专门去看，那种体验很舒服，最起码比在5.5寸屏幕上的效果要好很多。</p>
+
+<p>你可以在<a href="http://weibo.com/nervousCat">weibo</a>上找到我。 </p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='About%20Me.html'>About Me</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834493345.html">
+                
+                  <h1>高效的画线</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>先创建一个UIBeizerPath 的对象path</p>
+
+<pre><code>UIBezierPath *path = [[UIBezierPath alloc] init];
+  [path moveToPoint:CGPointMake(175, 100)];
+  
+  [path addArcWithCenter:CGPointMake(150, 100) radius:25 startAngle:0 endAngle:2*M_PI clockwise:YES];
+  [path moveToPoint:CGPointMake(150, 125)];
+  [path addLineToPoint:CGPointMake(150, 175)];
+  [path addLineToPoint:CGPointMake(125, 225)];
+  [path moveToPoint:CGPointMake(150, 175)];
+  [path addLineToPoint:CGPointMake(175, 225)];
+  [path moveToPoint:CGPointMake(100, 150)];
+  [path addLineToPoint:CGPointMake(200, 150)];
+</code></pre>
+
+<p>然后创建CAShapeLayer添加到视图的layer上 </p>
+
+<pre><code>CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+  shapeLayer.strokeColor = [UIColor redColor].CGColor;
+  shapeLayer.fillColor = [UIColor clearColor].CGColor;
+  shapeLayer.lineWidth = 5;
+  shapeLayer.lineJoin = kCALineJoinRound;
+  shapeLayer.lineCap = kCALineCapRound;
+  shapeLayer.path = path.CGPath;
+  //add it to our view
+  [self.containerView.layer addSublayer:shapeLayer];
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
           				   
                   </div>
                   <div class="more-right right">

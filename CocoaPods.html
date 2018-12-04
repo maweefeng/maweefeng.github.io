@@ -147,48 +147,9 @@
                       
                       <div class="a-content-text">
                         
-                        	<p>有些强迫症不能看到xcode编译报出的警告⚠️，所以在podfile中添加一行<br/>
-<code>inhibit_all_warnings!</code><br/>
-如果没有多个<code>target</code>或者需要所有都隐藏这个黄色警告就在最外层写</p>
-
-<pre><code class="language-#"># platform :ios, &#39;9.0&#39;
+                        	有些强迫症不能看到xcode编译报出的警告⚠️，所以在podfile中添加一行
 inhibit_all_warnings!
-
-target &#39;MVVM&#39; do
-  # Uncomment the next line if you&#39;re using Swift or would like to use dynamic frameworks
-  # use_frameworks!
-   pod &#39;ReactiveObjC&#39;, &#39;~&gt; 3.1.0&#39;
-   pod &#39;MBProgressHUD&#39;, &#39;~&gt; 1.1.0&#39;
-   pod &#39;MJRefresh&#39;, &#39;~&gt; 3.1.15.7&#39;
-  # Pods for MVVM
-
-end
-</code></pre>
-
-<p>如果有多个target的话就可以在各个需要隐藏的target当中写上这句话</p>
-
-<pre><code class="language-#"># platform :ios, &#39;9.0&#39;
-
-target &#39;MVVM&#39; do
-  # Uncomment the next line if you&#39;re using Swift or would like to use dynamic frameworks
-  # use_frameworks!
-  inhibit_all_warnings!
-   pod &#39;ReactiveObjC&#39;, &#39;~&gt; 3.1.0&#39;
-   pod &#39;MBProgressHUD&#39;, &#39;~&gt; 1.1.0&#39;
-   pod &#39;MJRefresh&#39;, &#39;~&gt; 3.1.15.7&#39;
-  # Pods for MVVM
-
-end
-
-target &#39;RAC&#39; do
-  # Uncomment the next line if you&#39;re using Swift or would like to use dynamic frameworks
-  # use_frameworks!
-   pod &#39;Masonry&#39;, 
-   pod &#39;AFNetworking&#39;,   # Pods for RAC
-
-end
-</code></pre>
-
+如果没有多个target或者需要所有都隐藏这个黄色警告就在最外层写...
                         
                       </div>
                   </div>
@@ -220,45 +181,14 @@ end
                       
                       <div class="a-content-text">
                         
-                        	<p>pod install速度慢的终极解决方案</p>
+                        	pod install速度慢的终极解决方案
 
-<p>相信大家已经感受到pod install速度越来越慢了，网上提供了几种解决方案，但是都没有完全解决速度慢的问题。</p>
+相信大家已经感受到pod install速度越来越慢了，网上提供了几种解决方案，但是都没有完全解决速度慢的问题。
 
-<p>使用国内镜像的Specs<br/>
-在pod install时使用命令pod install --no-repo-update<br/>
-使用proxychains使终端命令走代理<br/>
-下面就来说明一下这几种方法为何没有完全解决问题</p>
-
-<p>使用国内镜像的Specs <br/>
-这个只是加快了Specs下载更新速度，而且如果使用国内镜像Specs，那么Podfile中就必须指明使用这个Specs。<br/>
-在pod install时使用命令pod install --no-repo-update <br/>
-install时不更新本地库，但如果第一次install还是要去github clone代码<br/>
-使用proxychains使终端命令走代理 <br/>
-这个只是使pod命令走代理，git download的时候不会走代理<br/>
-其实真正慢的原因并不在pod命令，而是在于github上的代码库访问速度慢，那么就知道真正的解决方案就是要加快git命令的速度。 <br/>
-我使用Shadowsocks代理，默认代理端口为1080，配置好代理之后去终端输入git配置命令，命令如下</p>
-
-<p>git config --global http.proxy socks5://127.0.0.1:1080<br/>
-1<br/>
-上面的命令是给git设置全局代理，但是我们并不希望国内git库也走代理，而是只需要github上的代码库走代理，命令如下</p>
-
-<p>git config --global http.<a href="https://github.com.proxy">https://github.com.proxy</a> socks5://127.0.0.1:1080<br/>
-1<br/>
-如此就从根本上解决了问题，下面附上设置代理前后git命令的速度 <br/>
-代理前 <br/>
-代理前<br/>
-代理后 <br/>
-这里写图片描述</p>
-
-<p>体验xiu的一下吧！</p>
-
-<p>（ps：如果要恢复/移除上面设置的git代理，使用如下命令</p>
-
-<p>git config --global --unset http.proxy<br/>
-1<br/>
-git config --global --unset http.<a href="https://github.com.proxy">https://github.com.proxy</a><br/>
-1<br/>
-）</p>
+使用国内镜像的Specs
+在pod install时使用命令pod install --no-repo-update
+使用proxychains使终端命令走代理
+下面就来说明一下这几种方法为何没有完全解决问题...
 
                         
                       </div>
@@ -291,24 +221,10 @@ git config --global --unset http.<a href="https://github.com.proxy">https://gith
                       
                       <div class="a-content-text">
                         
-                        	<h3 id="toc_0">终端运行sudo gem update出现如下错误</h3>
+                        	终端运行sudo gem update出现如下错误
 
-<blockquote>
-<p>ERROR: While executing gem … (Gem::FilePermissionError) <br/>
-You don’t have write permissions for the /usr/bin directory.</p>
-</blockquote>
-
-<p>试一下这一段代码</p>
-
-<blockquote>
-<p>sudo gem install -n /usr/local/bin cocoapods</p>
-</blockquote>
-
-<p>这表示是在本地环境去安装cocoaPods</p>
-
-<h3 id="toc_1">使用Homebrew安装cocoaPods的地址</h3>
-
-<p>/usr/local/Cellar/</p>
+ERROR: While executing gem … (Gem::FilePermissionError) 
+You don’t have write permissions for the /usr/bin directory....
 
                         
                       </div>

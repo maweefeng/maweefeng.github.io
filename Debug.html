@@ -147,97 +147,11 @@
                       
                       <div class="a-content-text">
                         
-                        	<ul>
-<li><p>之前看了一些文章说在intruments里面的 CoreAnimation里面有工具.检测.(没找着.求补充)</p>
+                        	instrumets 已经取消了debug options
 
-<p>打开的正确方式:<br/>
-模拟器的 debug -&gt; 选取 color Offscreen-Rendered. </p></li>
-</ul>
+可以在xcode的debug - view debugging 找到
 
-<p><img src="http://upload-images.jianshu.io/upload_images/1315383-752efaac717c3947.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="BB55F33F-97CC-4C28-B3F1-22456A2A7BD8.png"/></p>
-
-<p>开启后会把那些需要离屏渲染的图层高亮成黄色，这就意味着黄色图层可能存在性能问题。</p>
-
-<p>正常:是这样的<br/>
- <img src="http://upload-images.jianshu.io/upload_images/1315383-de2aad921928fa7b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="正常渲染.png"/></p>
-
-<p>有问题的图层:</p>
-
-<p><img src="http://upload-images.jianshu.io/upload_images/1315383-61746e58c6057b02.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="调试.png"/><br/>
-可以看见我设置了圆角的imageView有问题.</p>
-
-<p>### 项目开发中怎么去处理?</p>
-
-<blockquote>
-<p>抛出一个问题:  需求就是有很多圆角那我们项目中应该怎么去处理圆角呢?</p>
-</blockquote>
-
-<ol>
-<li>使用<a href="http://www.jianshu.com/p/60cd5f8bb4cb">YYWebImage去处理</a> </li>
-<li><a href="http://www.jianshu.com/p/82e68984711f">iOS中圆角图片的处理</a></li>
-</ol>
-
-<p>相信看完两篇文章,多少都会能收获一点!</p>
-
-<blockquote>
-<p>有些人说:</p>
-
-<p>iOS 9.0 之后UIButton设置圆角会触发离屏渲染，而UIImageView里png图片设置圆角不会触发离屏渲染了，如果设置其他阴影效果之类的还是会触发离屏渲染的(这句话不知道谁说的.自己有没有去尝试呢???)</p>
-</blockquote>
-
-<p>结论: 经过测试</p>
-
-<p><img src="http://upload-images.jianshu.io/upload_images/1315383-a58dfe9543375e1d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="70915C7C-7523-4008-9A88-B5682407926D.png"/></p>
-
-<p>大家可以看到, <br/>
-UIButton 的 masksToBounds = YES下发生离屏渲染与 背景图存不存在有关系, 如果没有给按钮设置   <code>btn.image = [UIImage imageName:@&quot;xxxxx&quot;];</code> 是不会产生离屏渲染的 .</p>
-
-<p>关于 UIImageView,现在测试发现(现版本: iOS10),在性能的范围之内,给UIImageView设置圆角是不会触发离屏渲染的,但是同时给UIImageView设置背景色则肯定会触发.触发离屏渲染跟 png.jpg格式并无关联(可能采取的压缩格式不同,这里不做探讨,这里我给出结果是没有关系)</p>
-
-<hr/>
-
-<ul>
-<li>### 总结: </li>
-<li>对于网上一些文章得出的结论,我觉得大家得理性分析,并不是每个人都是对的,只有经过自己实践才能得出较好的定论.本文也是,我希望哪里有理解错或者其它什么错误请提出(认真脸.),人无完人,我希望在学习的道路上能碰见更多一起进步的人!</li>
-</ul>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Debug.html'>Debug</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834492968.html">
-                
-                  <h1>关于`instrumets` 找不到`debug options`</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>现在已经取消了这个</p>
-
-<p>可以在xcode的<code>debug</code> - <code>view debugging</code> 找到</p>
-
-<p>“核心动画工具和模板已在工具中弃用。之前在”调试选项“下的功能已移至Xcode，位于”<code>Debug&gt; View Debugging</code>“下。</p>
-
+“核心动画工具和模板已在工具中弃用。之前在”调试选项“下的功能已移至Xcode，位于”Debug> View Debugging“下。
                         
                       </div>
                   </div>
