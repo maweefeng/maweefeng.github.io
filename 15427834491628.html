@@ -20,7 +20,6 @@
   <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script>
     hljs.initHighlightingOnLoad();
-    var  a = ""; 
 
     window.onload = function () {
 
@@ -29,7 +28,7 @@
         // alert('分类');
         document.getElementById('main-menu').getElementsByTagName("li")[1].className = "is_active";
 
-      } else if (footerPath == 'About%20Me.html') {
+      } else if (footerPath == 'about.html') {
         document.getElementById('main-menu').getElementsByTagName("li")[2].className = "is_active";
 
         // alert('关于我');
@@ -37,9 +36,9 @@
       } else {
         // alert('首页');
         document.getElementById('main-menu').getElementsByTagName("li")[0].className = "is_active";
-
-
       }
+
+
     }
   </script>
   <script type="text/javascript">
@@ -70,7 +69,7 @@
                   
                   <li id=""><a id="" target="_self" href="archives.html">Archives</a></li>
                   
-                  <li id=""><a id="" target="_self" href="About Me.html">About</a></li>
+                  <li id=""><a id="" target="_self" href="about.html">About</a></li>
                   
                 </ul>
 
@@ -100,30 +99,29 @@
 
           <li><a href="index.html">Home</a></li>
           <li><a href="archives.html">Archives</a></li>
-          <li><a href="About%20Me.html">About</a></li>
-
+          
           <li><label>Categories</label></li>
 
           
-          <li><a href="iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html">iOS开发技巧</a></li>
+          <li id="iOS开发技巧"><a href="iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html">iOS开发技巧</a></li>
           
-          <li><a href="Git.html">Git</a></li>
+          <li id="Git"><a href="Git.html">Git</a></li>
           
-          <li><a href="CocoaPods.html">CocoaPods</a></li>
+          <li id="CocoaPods"><a href="CocoaPods.html">CocoaPods</a></li>
           
-          <li><a href="iOS%E5%88%A8%E5%9D%91.html">iOS刨坑</a></li>
+          <li id="iOS刨坑"><a href="iOS%E5%88%A8%E5%9D%91.html">iOS刨坑</a></li>
           
-          <li><a href="MVVM+RAC.html">MVVM+RAC</a></li>
+          <li id="MVVM+RAC"><a href="MVVM+RAC.html">MVVM+RAC</a></li>
           
-          <li><a href="Debug.html">Debug</a></li>
+          <li id="Debug"><a href="Debug.html">Debug</a></li>
           
-          <li><a href="Xcode.html">Xcode</a></li>
+          <li id="Xcode"><a href="Xcode.html">Xcode</a></li>
           
-          <li><a href="%E4%BB%A3%E7%A0%81%E6%B7%B7%E7%BC%96.html">代码混编</a></li>
+          <li id="代码混编"><a href="%E4%BB%A3%E7%A0%81%E6%B7%B7%E7%BC%96.html">代码混编</a></li>
           
-          <li><a href="%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html">代码规范</a></li>
+          <li id="代码规范"><a href="%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html">代码规范</a></li>
           
-          <li><a href="About.html">About</a></li>
+          <li id="about"><a href="about.html">about</a></li>
           
 
         </ul>
@@ -281,7 +279,7 @@ s.setAttribute('data-timestamp', +new Date());
         
             <a href="%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html"><strong>代码规范</strong></a>
         
-            <a href="About.html"><strong>About</strong></a>
+            <a href="about.html"><strong>about</strong></a>
          
         </p>
 
