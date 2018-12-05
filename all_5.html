@@ -128,23 +128,42 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15426943817961.html">
+                <a class="clearlink" href="15427834493281.html">
                 
-                  <h1>Xcode10报错libstdc</h1>
+                  <h1>为什么NSString使用Copy修饰符</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>由于<code>Xcode10</code> 已经禁用<code>libstdc++</code>、<code>libstdc++.6</code>、<code>libstdc++6.0.9</code>这三个库的使用,所以老项目中有用到这三个库的，会编译出错。<br/>
-我就遇到了这个问题，之前的项目引入的sdk依赖了libstdc++，所以当我升级到<code>xcode10</code>之后就编译不通过，于是在网上找到了解决方法。</p>...
+                        	<h6 id="toc_0">NSString为什么要用copy关键字，用strong会有什么问题？</h6>
+
+<p>我们大部分的时候NSString的属性都是copy，那copy与strong的情况下到底有什么区别呢?我们以实例来说明：</p>
+
+<pre><code>@interface ViewController ()
+@property(nonatomic,copy)NSString * str1;
+@property(nonatomic,strong)NSString*str2;
+@end
+
+-(void)test
+{
+    NSMutableString*str=[NSMutableString stringWithFormat:@&quot;helloworld&quot;];
+    self.str1=str;
+    self.str2=str;
+    NSLog(@&quot;str:%p--%p&quot;,str,&amp;str);
+    NSLog(@&quot;copy_str:%p--%p&quot;,_str1,&amp;_str1);
+    NSLog(@&quot;strong_str:%p--%p&quot;,_str2,&amp;_str2);
+}
+</code></pre>
+
+<p>最后我们运行看打印结...</p>
                         
                       </div>
                   </div>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15426943817961.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/20</span>
+                   <a href="15427834493281.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2017/9/21</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>

@@ -128,110 +128,24 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15427834492390.html">
+                <a class="clearlink" href="15427834491890.html">
                 
-                  <h1>Xcode打包遇到的坑</h1>
+                  <h1>Block防止内存泄漏问题</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>由于是接手别人做的项目，所以当把程序打包的时候出现了问题，证书和描述文件的问题 </p>
+                        	<h3 id="toc_0">关于block的一点注意 特别是网络请求这块</h3>
 
-<p>最开始尝试打开xcode的账户下载所有证书，结果发现并不能成功</p>
-
-<p>后来手动管理证书就可以看到之前在开发者中心创建的开发和发布证书，如下图所示<br/>
-<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fnczazu4irj30pd0iejte.jpg" alt=""/><br/>
-然后会到证书管理界面，会把你选中账号的所有相关证书列下来</p>
-
-<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fnczelaqz6j30pd0iedi6.jpg" alt=""/></p>
+<p>Block捕获外界变量销毁<br/>
+我们再进一步想想，Block有个最大的特点是可以访问当前的作用域，我们随便创建一个数组，重复上面操作，是否能够销毁...</p>
                         
                       </div>
                   </div>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15427834492390.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834492322.html">
-                
-                  <h1>UIImageView 动画的属性animationImages</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<pre><code class="language-beginImageArray.append(UIImage(named:">
-    let imageView = UIImageView(image: UIImage(named: &quot;switch 1.png&quot;))
-    imageView.center = view.center
-    imageView.animationImages = beginImageArray
-    // 动画持续时间 每一帧0.025秒，总共22帧
-    imageView.animationDuration = 0.025 * 22
-    imageView.animationRepeatCount = 1
-    // 动画结束后要把imageView的image属性设置成动画最后的一帧
-    imageView.image = UIImage(named: &quot;switch 22.png&quot;)
-    imageView.startAnimating()
-    view.addSubview(imageView)
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834492260.html">
-                
-                  <h1>SDWebImageview 不能加载HTTPS图片</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>这个问题是因为图片地址所在的服务器没有有效的SSL证书文件<br/>
-只需要在Options参数中设置SDWebImaweefenggeAllowInvalidSSLCertificates枚举就可</p>
-
-<pre><code>[self.avatarImageView sd_setImageWithURL: [NSURL URLWithString: famousStarObject.avatar] placeholderImage: [UIImage imageNamed: @&quot;icon_default_avator&quot;] options: SDWebImageAllowInvalidSSLCertificates];
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
+                   <a href="15427834491890.html">Read more</a>&nbsp;&nbsp; 
                     <span class="date">2018/11/21</span>
                     <span>posted in&nbsp;</span> 
           				  
@@ -299,119 +213,17 @@ ASButtonNode * buttonnode = [ASButtonNode new];
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834491890.html">
+                <a class="clearlink" href="15427834492260.html">
                 
-                  <h1>Block防止内存泄漏问题</h1>
+                  <h1>SDWebImageview 不能加载HTTPS图片</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h3 id="toc_0">关于block的一点注意 特别是网络请求这块</h3>
+                        	<p>这个问题是因为图片地址所在的服务器没有有效的SSL证书文件<br/>
+只需要在Options参数中设置SDWebImaweefenggeAllowInvalidSSLCertificates枚举就可</p>
 
-<p>Block捕获外界变量销毁<br/>
-我们再进一步想想，Block有个最大的特点是可以访问当前的作用域，我们随便创建一个数组，重复上面操作，是否能够销毁...</p>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834491890.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834491690.html">
-                
-                  <h1>Runtime运行时</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ol>
-<li><p>runtime调用方法</p>
-
-<pre><code>- (void)test {
-TestModel *objct = [[TestModel alloc] init];
-((void (*) (id, SEL)) objc_msgSend) (objct, sel_registerName(&quot;country&quot;));
-((void (*) (id, SEL, NSString *)) objc_msgSend) (objct, sel_registerName(&quot;getProvince:&quot;), @&quot;广东省&quot;)；
-((void (*) (id, SEL, NSString *, NSString *)) objc_msgSend) (objct, sel_registerName(&quot;getCity:station:&quot;), @&quot;深圳市&quot;, @&quot;世界之窗&quot;)；
-NSString *weather = ((NSString* (*) (id, SEL)) objc_msgSend) (objct, sel_registerName(&quot;getWeather&quot;));
-NSLog(@&quot;%@&quot;, weather);
-}
-</code></pre></li>
-<li><p>给分类添加属性</p>
-
-<pre><code class="language-#import">#import &lt;objc/runtime.h&gt;
-static void *TestStringKey = &amp;TestStringKey;
-@implementation TestModel (String)
-- (void)setTestString:(NSString *)testString {
-objc_setAssociatedObject(self, TestStringKey, testString, OBJC_ASSOCIATION_COPY);
-}
-- (NSString *)testString {
-return objc_getAssociatedObject(self, TestStringKey);
-}
-@end
-</code></pre></li>
-<li><p>获取属性</p>
-
-<pre><code>使用class_copyIvarList获得的属性数组是Ivar类型 
-可以使用ivar_getName将ivar类型转换为char
-再使用NSString 的stringWithUTF8String方法转化为NSString类型。
-</code></pre></li>
-</ol>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834491628.html">
-                
-                  <h1>设置Cell分割线顶头</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h6 id="toc_0">UITableView设置系统cell的分割线顶头</h6>
-
-<pre><code>- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    cell.layoutMargins = UIEdgeInsetsZero;
-    cell.separatorInset = UIEdgeInsetsZero;
-    cell.preservesSuperviewLayoutMargins = NO;
-}
+<pre><code>[self.avatarImageView sd_setImageWithURL: [NSURL URLWithString: famousStarObject.avatar] placeholderImage: [UIImage imageNamed: @&quot;icon_default_avator&quot;] options: SDWebImageAllowInvalidSSLCertificates];
 </code></pre>
 
                         
@@ -438,14 +250,25 @@ return objc_getAssociatedObject(self, TestStringKey);
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834491567.html">
+                <a class="clearlink" href="15427834492322.html">
                 
-                  <h1>视图的绘制周期</h1>
+                  <h1>UIImageView 动画的属性animationImages</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>当view第一次在屏幕上显示的时候，系统会绘制它的内容，然后系统会截取内容的快照，并且将快照作为视图的可见外观，如果你永远不改变视图的内容，那么视图的绘制代码永远不会改变。如果更改了视图的内容，不用直接重新绘制，而是使用<code>setNeedsDisplay</code>或者<code>setNeedsDisplayInRect</code>方法是视图无效。这些方法会告知视图内容以及改变并且需要在下一次进行重绘。如果需要立马重绘，那么需要使用<code>layoutIfNeeded</code>方法。</p>
+                        	<pre><code class="language-beginImageArray.append(UIImage(named:">
+    let imageView = UIImageView(image: UIImage(named: &quot;switch 1.png&quot;))
+    imageView.center = view.center
+    imageView.animationImages = beginImageArray
+    // 动画持续时间 每一帧0.025秒，总共22帧
+    imageView.animationDuration = 0.025 * 22
+    imageView.animationRepeatCount = 1
+    // 动画结束后要把imageView的image属性设置成动画最后的一帧
+    imageView.image = UIImage(named: &quot;switch 22.png&quot;)
+    imageView.startAnimating()
+    view.addSubview(imageView)
+</code></pre>
 
                         
                       </div>
@@ -454,6 +277,222 @@ return objc_getAssociatedObject(self, TestStringKey);
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834492390.html">
+                
+                  <h1>Xcode打包遇到的坑</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>由于是接手别人做的项目，所以当把程序打包的时候出现了问题，证书和描述文件的问题 </p>
+
+<p>最开始尝试打开xcode的账户下载所有证书，结果发现并不能成功</p>
+
+<p>后来手动管理证书就可以看到之前在开发者中心创建的开发和发布证书，如下图所示<br/>
+<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fnczazu4irj30pd0iejte.jpg" alt=""/><br/>
+然后会到证书管理界面，会把你选中账号的所有相关证书列下来</p>
+
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fnczelaqz6j30pd0iedi6.jpg" alt=""/></p>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15427834492390.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834492451.html">
+                
+                  <h1>Xcode编译找不到头文件</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>开发中遇到之前成功导入没有报错的头文件，后来打开工程之后报错说找不到头文件，这就很奇怪了。<br/>
+之前还是好好的，怎么睡了一觉代码还出现了问题呢。<br/><br/>
+然后就去搜索解决方法，发现是要到<code>buildsettings</code>下的<code>Search Paths</code>下面的<code>User Header Search Paths</code> 大概意思就是这个东西是头文件的搜索路径。<br/><br/>
+进去之后添加<code>${SRCROOT}</code>然后回车搞定就完成了。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834492512.html">
+                
+                  <h1>Flutter && Python && OC</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">dart的函数定义如下所示</h3>
+
+<pre><code>// Define a function.
+printInteger(int aNumber) {
+  print(&#39;The number is $aNumber.&#39;); // Print to console.
+}
+
+// This is where the app starts executing.
+main() {
+  var number = 42; // Declare and initialize a variable.
+  printInteger(number); // Call a function.
+}
+
+isNoble(atomicNumber) {
+  return _nobleGases[atomicNumber] != null;
+}
+
+如果函数只有单个语句，可以采用简略的形式：
+
+bool isNoble(int atomicNumber) =&gt; _nobleGases[atomicNumber] != null;
+
+
+</code></pre>
+
+<h3 id="toc_1">$dart取地址</h3>
+
+<pre><code>String say(String from, String msg, [String device]) {
+  var result = &#39;$from says $msg&#39;;
+  if (device != null) {
+    result = &#39;$result with a $device&#39;;
+  }
+  return result;
+}
+
+</code></pre>
+
+<p>以分号结尾 参数类型要指定也可以不指定<br/><br/>
+=&gt; 是{ return expr;} 的缩写</p>
+
+<h3 id="toc_2">oc的函数定义</h3>
+
+<pre><code>-(void)hello{
+
+print(@&quot;hello world&quot;);
+
+}
+-(void)hello(int a,int b){
+
+print(@&quot;hello world %d %d&quot;,a,b);
+
+}
+
+
+</code></pre>
+
+<p>无需注意缩进 但是返回值类型一定要明确</p>
+
+<h3 id="toc_3">python函数定义</h3>
+
+<pre><code>def xxxx:
+    print &#39;hello world&#39;
+    
+def xxx(a,b):
+   print(a,b)
+   
+def xxx(self,a,b)
+   print a,b
+   
+</code></pre>
+
+<p>由于没有分号和大括号所以一定要注意缩进，</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834492767.html">
+                
+                  <h1>UISearchbar 自定义搜索图标失真</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	关于Searchbar设置搜索图标的问题
+因为这个大小在iOS中是固定的14*14
+如果UI给的切图不是这个尺寸就会出现失真的情况（ps：因为视图的默认contentMode是UIViewContentModeScaleToFill）
+网上有的方法一般是设置一个继承自UITextfield的searchBar
+去修改SearchBar的leftView。
+...
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15427834492767.html">Read more</a>&nbsp;&nbsp; 
                     <span class="date">2018/11/21</span>
                     <span>posted in&nbsp;</span> 
           				  

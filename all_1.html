@@ -183,39 +183,122 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834493345.html">
+                <a class="clearlink" href="15427834491002.html">
                 
-                  <h1>高效的画线</h1>
+                  <h1>代理修饰符</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>先创建一个UIBeizerPath 的对象path</p>
+                        	<h3 id="toc_0">为什么代理修饰要用weak而不是assgin</h3>
 
-<pre><code>UIBezierPath *path = [[UIBezierPath alloc] init];
-  [path moveToPoint:CGPointMake(175, 100)];
-  
-  [path addArcWithCenter:CGPointMake(150, 100) radius:25 startAngle:0 endAngle:2*M_PI clockwise:YES];
-  [path moveToPoint:CGPointMake(150, 125)];
-  [path addLineToPoint:CGPointMake(150, 175)];
-  [path addLineToPoint:CGPointMake(125, 225)];
-  [path moveToPoint:CGPointMake(150, 175)];
-  [path addLineToPoint:CGPointMake(175, 225)];
-  [path moveToPoint:CGPointMake(100, 150)];
-  [path addLineToPoint:CGPointMake(200, 150)];
-</code></pre>
+<p>weak 一旦不被引用的时候就不会再使用了，就会被置位nil，oc中使用nil执行操作不会引起崩溃，所以即使再次使用也不会产生野指针。<br/><br/>
+但是如果是用assgin修饰，一旦不被引用不会自动置nil,当再次操作这个对象的代理方法的时候就会产生野指针引起程序崩溃。</p>
 
-<p>然后创建CAShapeLayer添加到视图的layer上 </p>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
-<pre><code>CAShapeLayer *shapeLayer = [CAShapeLayer layer];
-  shapeLayer.strokeColor = [UIColor redColor].CGColor;
-  shapeLayer.fillColor = [UIColor clearColor].CGColor;
-  shapeLayer.lineWidth = 5;
-  shapeLayer.lineJoin = kCALineJoinRound;
-  shapeLayer.lineCap = kCALineCapRound;
-  shapeLayer.path = path.CGPath;
-  //add it to our view
-  [self.containerView.layer addSublayer:shapeLayer];
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834491108.html">
+                
+                  <h1>You don’t have write permissions</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">终端运行sudo gem update出现如下错误</h3>
+
+<blockquote>
+<p>ERROR: While executing gem … (Gem::FilePermissionError) <br/>
+You don’t have write permissions for the /usr/bin directory.</p>
+</blockquote>
+
+<p>试一下这一段代码</p>
+
+<blockquote>
+<p>sudo gem install -n /usr/local/bin cocoapods</p>
+</blockquote>
+
+<p>这表示是在本地环境</p>...
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15427834491108.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='CocoaPods.html'>CocoaPods</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834491194.html">
+                
+                  <h1>隐藏导航栏底部的线条</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>有时候遇到一些特殊的要求，需要隐藏导航栏底部的线条。<br/>
+两行代码就可以做到。</p>
+
+<ul>
+<li><p>方法一:<br/><br/>
+设置导航栏的背景图（setBackgroundImage方法）<br/><br/>
+设置导航栏的shadowImage (setShadowImage方法)<br/><br/>
+<code>UINavigationBar *navigationBar = self.navigationController.navigationBar;</code><br/>
+//设置透明的背景图，便于识别底部线条有没有被隐藏<br/><br/>
+<code>[navigationBar setBackgroundImage:[[UIImage alloc] init]<br/>
+                   forBarPosition:UIBarPositionAny<br/>
+                       barMetrics:UIBarMetricsDefault];</code> <br/>
+//此处使底部线条失效<br/>
+<code>[navigationBar setShadowImage:[UIImage new]];</code></p></li>
+<li><p>方法二：<br/>
+<code>self.navigationController.navigationBar.clipsToBounds = YES;</code></p></li>
+</ul>
+
+<h3 id="toc_0">导航栏全局属性设置</h3>
+
+<p>//全局设置导航栏主题</p>
+
+<pre><code>- (void)setNavigationControllerAppearance {
+    [UINavigationBar appearance].barStyle  = UIBarStyleBlack;
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithWhite:0.1 alpha:0.5]];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+}
+
 </code></pre>
 
                         
@@ -242,262 +325,105 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834493281.html">
+                <a class="clearlink" href="15427834491253.html">
                 
-                  <h1>为什么NSString使用Copy修饰符</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h6 id="toc_0">NSString为什么要用copy关键字，用strong会有什么问题？</h6>
-
-<p>我们大部分的时候NSString的属性都是copy，那copy与strong的情况下到底有什么区别呢?我们以实例来说明：</p>
-
-<pre><code>@interface ViewController ()
-@property(nonatomic,copy)NSString * str1;
-@property(nonatomic,strong)NSString*str2;
-@end
-
--(void)test
-{
-    NSMutableString*str=[NSMutableString stringWithFormat:@&quot;helloworld&quot;];
-    self.str1=str;
-    self.str2=str;
-    NSLog(@&quot;str:%p--%p&quot;,str,&amp;str);
-    NSLog(@&quot;copy_str:%p--%p&quot;,_str1,&amp;_str1);
-    NSLog(@&quot;strong_str:%p--%p&quot;,_str2,&amp;_str2);
-}
-</code></pre>
-
-<p>最后我们运行看打印结...</p>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834493281.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834493214.html">
-                
-                  <h1>iOS开发一些小技巧</h1>
+                  <h1>堆栈的一点区别</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<ul>
-<li>去掉xcode黄色警告的方法</li>
+<li>栈是后进先出的顺序<br/></li>
+<li>而堆是根据优先级的顺序 </li>
 </ul>
 
-<pre><code>#pragma clang diagnostic push
-#pragma clang diagnostic ignored &quot;-Wdeprecated-declarations&quot;
- your code with warning
-#pragma clang diagnostic pop
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored &quot;-Wunused-variable&quot;
- your code with warning
-#pragma clang diagnostic pop
-</code></pre>
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834491315.html">
+                
+                  <h1>通讯录排序</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">苹果提供的排序方法</h3>
+
+<p>NSArray *stringArr = @[@&quot;我们&quot;,@&quot;我的&quot;, @&quot;重点&quot;, @&quot;重庆&quot;,  @&quot;三&quot;]; NSArray *result = [stringArr sortedArrayUsingSelector:@selector(localizedCompare:)];</p>
+
+<p>字典当中的keyvalue 可以一个键对应一个数组。</p>...
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15427834491315.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834491377.html">
+                
+                  <h1>给UITableView边框加阴影</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>项目中有个需求要在UITableView加边框阴影  </p>
+
+<p>如果你的界面的UITableView是充满整个屏幕的话那么就可以使用这个简单的方法。   </p>
 
 <ul>
-<li>控制器init方法执...</li>
+<li>方法一</li>
 </ul>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834493214.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834493152.html">
-                
-                  <h1>检测离屏渲染了</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><code>instrumets</code> 已经取消了<code>debug options</code></p>
+<pre><code>tableView.layer.shadowColor = UIColor(white: 000000, alpha: 0.3).CGColor
 
-<p>可以在xcode的<code>debug</code> - <code>view debugging</code> 找到</p>
+tableView.layer.shadowOffset = CGSize(width: -6, height: 6)
 
-<p>“核心动画工具和模板已在工具中弃用。之前在”调试选项“下的功能已移至Xcode，位于”<code>Debug&gt; View Debugging</code>“下。</p>
+tableView.layer.shadowOpacity = 1
 
-<p><img src="http://upload-images.jianshu.io/upload_images/1315383-752efaac717c3947.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="BB55F33F-97CC-4C28-B3F1-22456A2A7BD8.png"/></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834493152.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834493029.html">
-                
-                  <h1>iOS导航条背景颜色</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h4 id="toc_0">Situation one</h4>
-
-<p><code>self.navigationBar.barTintColor= [UIColor redColor];</code><br/>
-这时候的效果就是纯色的<br/>
-类似下面这样<br/>
-<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fsbvzqlgesj309f01oglk.jpg" alt=""/></p>
-
-<h4 id="toc_1">Situation two</h4>
-
-<p><code>self.navigationBar.backgroundColor = [UIColor redColor];</code><br/>
-<img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fsbvypka0rj309e01p0so.jpg" alt=""/></p>
-
-<p>一种是有渐变的半透明效果，一种就是简单的纯色效果。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834492830.html">
-                
-                  <h1>CAMediaTimingFunction获取控制点：</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<pre><code>//create timing function
-CAMediaTimingFunction *function = [CAMediaTimingFunction functionWithControlPoints:1 :0 :0.75 :1];
+tableView.clipsToBounds = false //这句最重要了，不然就显示不出来
 </code></pre>
 
-<p>我得到的controlPoint值似乎是错误的：</p>
+<h4 id="toc_0">问题来了</h4>
 
-<pre><code>CGPoint controlPoint1, controlPoint2;
-[function getControlPointAtIndex:1 values:(float *)&amp;controlPoint1]; 
-[function getControlPointAtIndex:2 values:(float *)&amp;controlPoint2];
-The controlPoint value that I get seems to be wrong:
-
-controlPoint1   CGPoint (x = 5.2635442471208903E-315, y = 4.9406564584124654E-324)  
-controlPoint2   CGPoint (x = 0.0078125018408172764, y = 2.8421186829703262E-314)    
-</code></pre>
-
-<p>但是，如果我使用float数组作为参数的类型values，我得到controlPoint的正确值：</p>
-
-<pre><code>float c1p[2], c2p[2];
-[function getControlPointAtIndex:1 values:c1p];
-[function getControlPointAtIndex:2 values:c2p];
-The values are:
-
-controlPoint1   CGPoint (x = 1, y = 0)  
-controlPoint2   CGPoint (x = 0.75, y = 1) 
-</code></pre>
-
-<p>32位设备可以使用第一种方法 但是在64位设备就行不通了 </p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834492767.html">
-                
-                  <h1>UISearchbar 自定义搜索图标失真</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	关于Searchbar设置搜索图标的问题
-因为这个大小在iOS中是固定的14*14
-如果UI给的切图不是这个尺寸就会出现失真的情况（ps：因为视图的默认contentMode是UIViewContentModeScaleToFill）
-网上有的方法一般是设置一个继承自UITextfield的searchBar
-去修改SearchBar的leftView。
+<p>我的界面UITableview上面有一个固定不动的区域，如果单纯的照上面写的话，就会出现tableview盖住上面的问题</p>
 ...
                         
                       </div>
@@ -505,7 +431,44 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15427834492767.html">Read more</a>&nbsp;&nbsp; 
+                   <a href="15427834491377.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834491441.html">
+                
+                  <h1>设置图片拉伸范围</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code>- (UIImage *)stretchableImageWithLeftCapWidth:(NSInteger)leftCapWidth topCapHeight:(NSInteger)topCapHeight 
+</code></pre>
+
+<p>这个函数是UIImage的一个实例函数，它的功能是创建一个内容可拉伸，而边角不拉伸的图片，需要两个参数，第一个是左边不拉伸区域的宽度，第二个参数是上面不拉伸的高度。</p>
+
+<p>根据设置的宽度和</p>...
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15427834491441.html">Read more</a>&nbsp;&nbsp; 
                     <span class="date">2018/11/21</span>
                     <span>posted in&nbsp;</span> 
           				  
