@@ -44,7 +44,7 @@
 
 .top-bar-section li:not(.has-form) a:not(.button) {
   background-color: transparent;
-  color: #666;
+  color: rgba(170, 160, 160, 1);
   line-height: 1rem;
   display: inline-block;
   font-size: 12px;
@@ -64,22 +64,25 @@
 
 .top-bar-section li:not(.has-form) a:not(.button):hover {
   background: transparent;
-  font-weight: bold;
-  color: #fff;
+  font-weight: normal;
+  font-size: 14px;
+  color: rgba(170, 160, 160, 1);
 }
 
 .top-bar-section li.is_active:not(.has-form) a:not(.button) {
   background: transparent;
   font-weight: bold;
-  color: #fff;
-  border-bottom: 2px rgba(255, 255, 255, 1.0) solid;
+  color: #333;
+  font-size: 14px;
+  border-bottom: 2px rgba(1, 1, 1, 1) solid;
 }
 
 .top-bar-section li.is_active:not(.has-form) a:not(.button):hover {
   background: transparent;
   font-weight: bold;
-  color: #fff;
-  border-bottom: 2px rgba(255, 255, 255, 1.0) solid;
+  font-size: 14px;
+  color: #333;
+  border-bottom: 2px rgba(1, 1, 1, 1) solid;
 }
 
 #main-menu {
