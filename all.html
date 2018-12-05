@@ -10,6 +10,7 @@
     
   </title>
   
+  <meta name="keywords" content="xiaomashiyigedashabi" />
   
   <link href="atom.xml" rel="alternate" title="Code Log 👨‍💻‍ " type="application/atom+xml">
   <link rel="stylesheet" href="asset/css/foundation.min.css" />
@@ -111,7 +112,7 @@
           
           <li><a href="CocoaPods.html">CocoaPods</a></li>
           
-          <li><a href="IOS%E5%88%A8%E5%9D%91.html">IOS刨坑</a></li>
+          <li><a href="iOS%E5%88%A8%E5%9D%91.html">iOS刨坑</a></li>
           
           <li><a href="MVVM+RAC.html">MVVM+RAC</a></li>
           
@@ -121,7 +122,9 @@
           
           <li><a href="%E4%BB%A3%E7%A0%81%E6%B7%B7%E7%BC%96.html">代码混编</a></li>
           
-          <li><a href="About%20Me.html">About Me</a></li>
+          <li><a href="%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html">代码规范</a></li>
+          
+          <li><a href="About.html">About</a></li>
           
 
         </ul>
@@ -139,6 +142,65 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15439179971062.html">
+                
+                  <h1>iOS开发代码规范</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h1 id="toc_0">iOS开发代码规范</h1>
+
+<p>针对我的开发经验ViewController应该是这样的。</p>
+
+<pre><code>#pragma mark - Life Cycle|生命周期
+#pragma mark - UITableViewDataSource and UITableViewDelegate|主要是一些代理的方法
+#pragma mark - Private Method|私有方法（内部可调用）
+#pragma mark - Public  Method|公有方法
+#pragma mark - Set &amp; Get|getter 和 setter方法
+#pragma mark - Notification|接收通知之后执行的方法
+#pragma mark - Event|一些视图的点击事件 比如button
+#pragma mark - DelegeteHandler|代理的实现时间
+</code></pre>
+
+<h2 id="toc_1">1️⃣代码命名基础</h2>
+
+<h3 id="toc_2">①一般原则</h3>
+
+<ul>
+<li><p>明晰</p>
+
+<ul>
+<li><p>尽可能保持清晰和简洁是件好事，但由于简洁，清晰度不应受到影响：</p>
+
+<p>比如<code>insertObject:atIndex:</code>比较清晰，而<code>insert:at:</code>却不知道发生了什么...</p></li>
+</ul></li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15439179971062.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/12/4</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html'>代码规范</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15438021304374.html">
                 
@@ -285,7 +347,7 @@ view是用xib画的，约束设置很多，本以为是约束的问题，设置�
                     <span class="date">2018/11/27</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='IOS%E5%88%A8%E5%9D%91.html'>IOS刨坑</a></span>
+          					    <span class="posted-in"><a href='iOS%E5%88%A8%E5%9D%91.html'>iOS刨坑</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -412,7 +474,7 @@ end
 <li>刷剧</li>
 </ul>
 
-<p>2018年追了「绝命律师」「权力的游戏」「行尸走肉」「年轻的谢尔顿」「白夜追凶」「四重奏」「去他妈的世界」「梅尔罗斯」「了不起的麦瑟尔夫人」「碧蓝之海」「我是大哥大」排名不分先后。</p>
+<p>2018年追了「绝命律师」「权力的游戏」「行尸走肉」「年轻的谢尔顿」「白夜追凶」「四重奏」「去他妈的世界」「梅尔罗斯」「了不起的麦瑟尔夫人」「碧蓝之海」「我是大哥大」「深夜食堂」排名不分先后。</p>
 
 <ul>
 <li>阅读</li>
@@ -422,8 +484,6 @@ end
 
 <p>在手机里安装了<code>kindle for ios</code>，方便在我不方便使用<code>kindle</code>的时候看书，在我<code>MacBook</code>中我安装了<code>kindle for mac</code>，我一般会把它全屏为一个独立的窗口，不管是在代码编译等待的时候看，还是专门去看，那种体验很舒服，最起码比在5.5寸屏幕上的效果要好很多。</p>
 
-<p>你可以在<a href="http://weibo.com/nervousCat">weibo</a>上找到我。 </p>
-
                         
                       </div>
                   </div>
@@ -434,66 +494,7 @@ end
                     <span class="date">2018/11/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='About%20Me.html'>About Me</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834493345.html">
-                
-                  <h1>高效的画线</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>先创建一个UIBeizerPath 的对象path</p>
-
-<pre><code>UIBezierPath *path = [[UIBezierPath alloc] init];
-  [path moveToPoint:CGPointMake(175, 100)];
-  
-  [path addArcWithCenter:CGPointMake(150, 100) radius:25 startAngle:0 endAngle:2*M_PI clockwise:YES];
-  [path moveToPoint:CGPointMake(150, 125)];
-  [path addLineToPoint:CGPointMake(150, 175)];
-  [path addLineToPoint:CGPointMake(125, 225)];
-  [path moveToPoint:CGPointMake(150, 175)];
-  [path addLineToPoint:CGPointMake(175, 225)];
-  [path moveToPoint:CGPointMake(100, 150)];
-  [path addLineToPoint:CGPointMake(200, 150)];
-</code></pre>
-
-<p>然后创建CAShapeLayer添加到视图的layer上 </p>
-
-<pre><code>CAShapeLayer *shapeLayer = [CAShapeLayer layer];
-  shapeLayer.strokeColor = [UIColor redColor].CGColor;
-  shapeLayer.fillColor = [UIColor clearColor].CGColor;
-  shapeLayer.lineWidth = 5;
-  shapeLayer.lineJoin = kCALineJoinRound;
-  shapeLayer.lineCap = kCALineCapRound;
-  shapeLayer.path = path.CGPath;
-  //add it to our view
-  [self.containerView.layer addSublayer:shapeLayer];
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
+          					    <span class="posted-in"><a href='About.html'>About</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -566,7 +567,7 @@ end
         
             <a href="CocoaPods.html"><strong>CocoaPods</strong></a>
         
-            <a href="IOS%E5%88%A8%E5%9D%91.html"><strong>IOS刨坑</strong></a>
+            <a href="iOS%E5%88%A8%E5%9D%91.html"><strong>iOS刨坑</strong></a>
         
             <a href="MVVM+RAC.html"><strong>MVVM+RAC</strong></a>
         
@@ -576,7 +577,9 @@ end
         
             <a href="%E4%BB%A3%E7%A0%81%E6%B7%B7%E7%BC%96.html"><strong>代码混编</strong></a>
         
-            <a href="About%20Me.html"><strong>About Me</strong></a>
+            <a href="%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html"><strong>代码规范</strong></a>
+        
+            <a href="About.html"><strong>About</strong></a>
          
         </p>
 
@@ -591,6 +594,12 @@ end
                 <div class="side-content">
                 <ul class="posts-list">
 	      
+		      
+			      <li class="post">
+			        <a href="15439179971062.html">iOS开发代码规范</a>
+			      </li>
+		     
+		  
 		      
 			      <li class="post">
 			        <a href="15438021304374.html">Swift & Objective-C & C++之间的混编</a>
@@ -612,12 +621,6 @@ end
 		      
 			      <li class="post">
 			        <a href="15433027949667.html">sizeThatFits和sizeToFit</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15428536881209.html">被神化的MVVM和被错误认识的Model层</a>
 			      </li>
 		     
 		  

@@ -1,0 +1,988 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    
+    iOS开发代码规范 - Code Log 👨‍💻‍ 
+    
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="Code Log 👨‍💻‍ " type="application/atom+xml">
+  <link rel="stylesheet" href="asset/css/foundation.min.css" />
+  <link rel="stylesheet" href="asset/css/docs.css" />
+  <script src="asset/js/vendor/modernizr.js"></script>
+  <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>
+    hljs.initHighlightingOnLoad();
+    var  a = ""; 
+
+    window.onload = function () {
+
+      var footerPath = window.location.pathname.split('/')[window.location.pathname.split('/').length - 1];
+      if (footerPath == 'archives.html') {
+        // alert('分类');
+        document.getElementById('main-menu').getElementsByTagName("li")[1].className = "is_active";
+
+      } else if (footerPath == 'About%20Me.html') {
+        document.getElementById('main-menu').getElementsByTagName("li")[2].className = "is_active";
+
+        // alert('关于我');
+  
+      } else {
+        // alert('首页');
+        document.getElementById('main-menu').getElementsByTagName("li")[0].className = "is_active";
+
+
+      }
+    }
+  </script>
+  <script type="text/javascript">
+    function before_search() {
+      var searchVal = 'site: ' + document.getElementById('search_input').value;
+      document.getElementById('search_q').value = searchVal;
+      return true;
+    }
+  </script>
+</head>
+
+<body class="antialiased hide-extras">
+
+  <div class="marketing off-canvas-wrap" data-offcanvas>
+    <div class="inner-wrap">
+
+
+      <nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+        <section class="top-bar-section">
+          <div class="row">
+            <div style="position: relative;width:100%;">
+              <div style="position: absolute; width:100%;">
+                <ul id="main-menu" class="left">
+                  
+                  <li id=""><a id="" target="_self" href="index.html">Home</a></li>
+                  
+                  <li id=""><a id="" target="_self" href="archives.html">Archives</a></li>
+                  
+                  <li id=""><a id="" target="_self" href="About Me.html">About</a></li>
+                  
+                </ul>
+
+                <ul class="right" id="search-wrap">
+                  <li>
+                    <form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+                      <input type="hidden" id="search_q" name="q" value="" />
+                      <input tabindex="1" type="search" id="search_input" placeholder="Search" />
+                    </form>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </nav>
+
+      <nav class="tab-bar show-for-small">
+        <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+          <span> &nbsp; Code Log 👨‍💻‍ </span>
+        </a>
+      </nav>
+
+      <aside class="left-off-canvas-menu">
+        <ul class="off-canvas-list">
+
+          <li><a href="index.html">Home</a></li>
+          <li><a href="archives.html">Archives</a></li>
+          <li><a href="About%20Me.html">About</a></li>
+
+          <li><label>Categories</label></li>
+
+          
+          <li><a href="iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html">iOS开发技巧</a></li>
+          
+          <li><a href="Git.html">Git</a></li>
+          
+          <li><a href="CocoaPods.html">CocoaPods</a></li>
+          
+          <li><a href="iOS%E5%88%A8%E5%9D%91.html">iOS刨坑</a></li>
+          
+          <li><a href="MVVM+RAC.html">MVVM+RAC</a></li>
+          
+          <li><a href="Debug.html">Debug</a></li>
+          
+          <li><a href="Xcode.html">Xcode</a></li>
+          
+          <li><a href="%E4%BB%A3%E7%A0%81%E6%B7%B7%E7%BC%96.html">代码混编</a></li>
+          
+          <li><a href="%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html">代码规范</a></li>
+          
+          <li><a href="About.html">About</a></li>
+          
+
+        </ul>
+      </aside>
+
+      <a class="exit-off-canvas" href="#"></a>
+
+
+      <section id="main-content" role="main" class="scroll-container"> <script type="text/javascript">
+  $(function () {
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+    <div class="markdown-body article-wrap">
+      <div class="article">
+        
+        <h1>iOS开发代码规范</h1>
+
+        <div class="read-more clearfix">
+          <span class="date">2018/12/4</span>
+
+          <span>posted in&nbsp;</span> 
+          
+          <span class="posted-in"><a href='%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html'>代码规范</a></span>
+          
+
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <div class="addthis_inline_share_toolbox"></div>
+      </div><!-- article -->
+
+      <div class="article-content">
+        <p>针对我的开发经验ViewController应该是这样的。</p>
+
+<pre><code>#pragma mark - Life Cycle|生命周期
+#pragma mark - UITableViewDataSource and UITableViewDelegate|主要是一些代理的方法
+#pragma mark - Private Method|私有方法（内部可调用）
+#pragma mark - Public  Method|公有方法
+#pragma mark - Set &amp; Get|getter 和 setter方法
+#pragma mark - Notification|接收通知之后执行的方法
+#pragma mark - Event|一些视图的点击事件 比如button
+#pragma mark - DelegeteHandler|代理的实现时间
+</code></pre>
+
+<h2 id="toc_0">1️⃣代码命名基础</h2>
+
+<h3 id="toc_1">①一般原则</h3>
+
+<ul>
+<li><p>明晰</p>
+
+<ul>
+<li><p>尽可能保持清晰和简洁是件好事，但由于简洁，清晰度不应受到影响：</p>
+
+<p>比如<code>insertObject:atIndex:</code>比较清晰，而<code>insert:at:</code>却不知道发生了什么。</p></li>
+<li><p>一般来说，不要缩写事物的名称。把它们拼出来，即使它们很长：</p>
+
+<p>比如<code>setBackgroundColor:</code>和<code>setBkgdColor:</code><br/>
+有些缩写是很常见且取得了各方面的共识，所以你可以继续使用它们。<a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CodingGuidelines/Articles/APIAbbreviations.html#//apple_ref/doc/uid/20001285-BCIHCGAE">可接受的缩写和缩略语</a></p></li>
+</ul></li>
+<li><p>一致性</p>
+
+<ul>
+<li>尝试在整个Cocoa编程接口中使用一致的名称。如果您不确定，请浏览当前头文件或参考文档以获取先例。</li>
+<li><p>当你有一个方法应该利用多态性的类时，一致性尤为重要。在不同类中执行相同操作的方法应具有相同的名称。</p>
+
+<table>
+<thead>
+<tr>
+<th>code</th>
+<th>comment</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>- (NSInteger)tag</td>
+<td>定义中NSView，NSCell，NSControl。</td>
+</tr>
+<tr>
+<td>- (void)setStringValue:(NSString *)</td>
+<td>定义在许多Cocoa类中。</td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+</ul>
+
+<h3 id="toc_2">②前缀</h3>
+
+<p>前缀是编程接口中名称的重要部分。它们区分了软件的功能区域。前缀可防止第三方开发人员定义的符号与Apple定义的符号（以及Apple自己的框架中的符号之间）发生冲突。</p>
+
+<ul>
+<li><p>前缀具有规定的格式。它由两个或三个大写字母组成，不使用下划线或“子前缀”。以下是一些示例：</p></li>
+<li><p>在命名类，协议，函数，常量和typedef结构时使用前缀。千要不能在命名方法时，使用前缀; 方法存在于由定义它们的类创建的名称空间中。另外，不要使用前缀来命名结构体的字段。</p></li>
+</ul>
+
+<h2 id="toc_3">2️⃣命名方法</h2>
+
+<h3 id="toc_4">①通用规则</h3>
+
+<p>在命名方法时，请记住以下几条一般准则：</p>
+
+<ul>
+<li>使用小写字母开始名称，并将嵌入单词的第一个字母大写。不要使用前缀。</li>
+<li>对于表示对象采取的操作的方法，使用动词开始名称(禁止使用“do”或“does”)。</li>
+<li><p>如果方法返回接收者的属性，则在属性后面命名方法。除非间接返回一个或多个值，否则不必使用<code>get</code>。</p>
+
+<table>
+<thead>
+<tr>
+<th>code</th>
+<th>comment</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>- (NSSize)cellSize;</td>
+<td>正确</td>
+</tr>
+<tr>
+<td>- (NSSize)getCellSize;</td>
+<td>错误</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>在所有参数之前使用关键字</p>
+
+<table>
+<thead>
+<tr>
+<th>code</th>
+<th>comment</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>- (void)sendAction:(SEL)aSelector toObject:(id)anObject forAllCells:(BOOL)flag;</td>
+<td>正确</td>
+</tr>
+<tr>
+<td>- (void)sendAction:(SEL)aSelector :(id)anObject :(BOOL)flag;</td>
+<td>错误</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>在参数之前创建单词描述参数。</p>
+
+<table>
+<thead>
+<tr>
+<th>code</th>
+<th>comment</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>- (id)viewWithTag:(NSInteger)aTag;</td>
+<td>正确</td>
+</tr>
+<tr>
+<td>- (id)taggedView:(int)aTag;</td>
+<td>错误</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>在创建比继承方法更具体的方法时，在现有方法的末尾添加新关键字。</p>
+
+<table>
+<thead>
+<tr>
+<th>code</th>
+<th>comment</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>- (id)initWithFrame:(CGRect)frameRect;</td>
+<td>初始化方法</td>
+</tr>
+<tr>
+<td>- (id)initWithFrame:(CGRect)frameRect backgroundColor:(UIColor*)backgroundColor;</td>
+<td>自定义初始化方法</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>不要使用“and”来链接作为接收者属性的关键字。</p>
+
+<table>
+<thead>
+<tr>
+<th>code</th>
+<th>comment</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>- (int)runModalForDirectory:(NSString *)path file:(NSString *) name types:(NSArray *)fileTypes;</td>
+<td>正确</td>
+</tr>
+<tr>
+<td>- (int)runModalForDirectory:(NSString *)path andFile:(NSString *)name andTypes:(NSArray *)fileTypes;</td>
+<td>错误</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>如果该方法描述了两个单独的操作，请使用“和”链接它们。</p>
+
+<table>
+<thead>
+<tr>
+<th>- (BOOL)openFile:(NSString *)fullPath withApplication:(NSString *)appName andDeactivate:(BOOL)flag;</th>
+<th>NSWorkspace</th>
+</tr>
+</thead>
+
+<tbody>
+</tbody>
+</table></li>
+</ul>
+
+<h3 id="toc_5">②访问方法</h3>
+
+<p>访问器方法是设置和返回对象属性值的方法</p>
+
+<ul>
+<li><p>如果属性表示为名词，则格式为：</p>
+
+<pre><code>- (type)noun;
+
+- (void)setNoun：(type)aNoun ;
+</code></pre></li>
+<li><p>如果属性表示为形容词，则格式为：</p>
+
+<p>在声明属性的时候可以这么写<br/>
+<code>@property(nonatomic,assign,getter=isAdjective)BOOL Adjective;</code></p>
+
+<pre><code>- (BOOL)isAdjective;
+
+- (void)setAdjective:(BOOL)flag;
+</code></pre></li>
+<li><p>如果属性表示为动词，则格式为：</p>
+
+<pre><code>- (BOOL)verbObject;
+
+- (void)setVerbObject:(BOOL)flag;
+</code></pre></li>
+<li><p>不要使用分词将动词转换为形容词：</p>
+
+<table>
+<thead>
+<tr>
+<th>- (void)setAcceptsGlyphInfo:(BOOL)flag;</th>
+<th>对</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>- (BOOL)acceptsGlyphInfo;</td>
+<td>对</td>
+</tr>
+<tr>
+<td>- (void)setGlyphInfoAccepted:(BOOL)flag;</td>
+<td>错</td>
+</tr>
+<tr>
+<td>- (BOOL)glyphInfoAccepted;</td>
+<td>错</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>可以使用模态动词（动词前面加上“can”，“should”，“will”等）来澄清含义，但不要使用“do”或“does”。</p>
+
+<table>
+<thead>
+<tr>
+<th>- (void)setCanHide:(BOOL)flag;</th>
+<th>对</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>- (BOOL)canHide;</td>
+<td>对</td>
+</tr>
+<tr>
+<td>- (void)setShouldCloseDocument:(BOOL)flag;</td>
+<td>对</td>
+</tr>
+<tr>
+<td>- (BOOL)shouldCloseDocument;</td>
+<td>对</td>
+</tr>
+<tr>
+<td>- (void)setDoesAcceptGlyphInfo:(BOOL)flag;</td>
+<td>错</td>
+</tr>
+<tr>
+<td>- (BOOL)doesAcceptGlyphInfo;</td>
+<td>错</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>仅对间接返回对象和值的方法使用“get”。并且当需要返回多个项目时，才应将此表单用于方法。</p>
+
+<table>
+<thead>
+<tr>
+<th>- (void)getLineDash:(float *)pattern count:(int *)count phase:(float *)phase;</th>
+<th>NSBezierPath</th>
+</tr>
+</thead>
+
+<tbody>
+</tbody>
+</table></li>
+</ul>
+
+<h3 id="toc_6">③代理方法</h3>
+
+<p>委托方法（或委托方法）是在某些事件发生时对象在其委托中调用的方法（如果委托实现它们）。它们具有独特的形式，同样适用于在对象的数据源中调用的方法：</p>
+
+<ul>
+<li><p>方法的开始使用通过标识发送消息的对象的类(类名省略前缀，第一个字母为小写)：</p>
+
+<pre><code>- (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(int)row;
+- (BOOL)application:(NSApplication *)sender openFile:(NSString *)filename;
+</code></pre></li>
+<li><p>冒号追加到类名前（参数是对委托对象的引用），并且该方法只有一个参数，即发送者。</p>
+
+<pre><code>- (BOOL)applicationOpenUntitledFile:(NSApplication *)sender;
+</code></pre></li>
+<li><p>对此的一个例外是由于发布通知而调用的方法。在这种情况下，唯一的参数是通知对象。</p>
+
+<pre><code>- (void)windowDidChangeScreen:(NSNotification *)notification;
+</code></pre></li>
+<li><p>对于被调用以通知委托已发生或即将发生某些事情的方法，请使用“did”或“will”。</p>
+
+<pre><code>- (void)browserDidScroll:(NSBrowser *)sender;
+- (NSUndoManager *)windowWillReturnUndoManager:(NSWindow *)window;
+</code></pre></li>
+<li><p>虽然您可以使用“did”或“will”来调用要求委托代表另一个对象执行某些操作的方法，但首选“should”。</p>
+
+<pre><code>- (BOOL)windowShouldClose:(id)sender;
+</code></pre></li>
+</ul>
+
+<h3 id="toc_7">④集合方法</h3>
+
+<p>对于管理对象集合的对象（每个对象称为该集合的元素），约定是具有以下形式的方法：</p>
+
+<pre><code>- (void)addElement:(elementType)anObj;
+
+- (void)insertElement:(elementType)anObj atIndex:(int)index;
+
+- (void)removeElement:(elementType)anObj atIndex:(int)index;
+
+- (void)removeElement:(elementType)anObj;
+
+- (NSArray *)elements;
+</code></pre>
+
+<p>有一点需要主要如果集合是真正无序的，那么返回NSSet而不是NSArray</p>
+
+<h3 id="toc_8">⑤方法参数</h3>
+
+<p>有一些关于方法参数名称的一般规则：</p>
+
+<ul>
+<li>与方法一样，参数以小写字母开头，连续单词的第一个字母大写（例如，removeObject:(id)anObject）。</li>
+<li>不要在名称中使用“pointer”或“ptr”。使用参数的类型而不是它的名称声明它是否是指针。</li>
+<li>避免使用单字母和双字母名称作为参数。</li>
+<li>避免只保存几个字母的缩写。</li>
+</ul>
+
+<p>常用的方法参数</p>
+
+<pre><code class="language-...action:(SEL)aSelector">...alignment:(int)mode
+...atIndex:(int)index
+...content:(NSRect)aRect
+...doubleValue:(double)aDouble
+...floatValue:(float)aFloat
+...font:(NSFont *)fontObj
+...frame:(NSRect)frameRect
+...intValue:(int)anInt
+...keyEquivalent:(NSString *)charCode
+...length:(int)numBytes
+...point:(NSPoint)aPoint
+...stringValue:(NSString *)aString
+...tag:(int)anInt
+...target:(id)anObject
+...title:(NSString *)aString
+</code></pre>
+
+<h3 id="toc_9">⑥私有方法</h3>
+
+<p>在大多数情况下，私有方法名称通常遵循与公共方法名称相同的规则。但是，常见的约定是为私有方法提供前缀，以便很容易将它们与公共方法区分开来。即使采用这种约定，私有方法的名称也可能导致一种特殊类型的问题。当您设计Cocoa框架类的子类时，您无法知道您的私有方法是否无意中覆盖了具有相同名称的私有框架方法。</p>
+
+<p>Cocoa框架中大多数私有方法的名称都有一个下划线前缀（例如_fooData），以将它们标记为私有。从这个事实可以看出两个建议。</p>
+
+<ul>
+<li>不要使用下划线字符作为私有方法的前缀。</li>
+<li>如果您是一个大型Cocoa框架类（如NSView或UIView）的子类，并且您希望绝对确定您的私有方法的名称与超类中的名称不同，则可以将自己的前缀添加到私有方法中。前缀应尽可能唯一，可能基于您的公司或项目以及“XX_”形式。因此，如果您的项目名为Byte Flogger，则前缀可能是 BF_addObject:</li>
+</ul>
+
+<p>虽然给私有方法名称加一个前缀的建议似乎与先前声称方法存在于其类的命名空间中的说法相矛盾，但这里的意图是不同的：防止无意覆盖超类私有方法。</p>
+
+<h2 id="toc_10">3️⃣命名函数</h2>
+
+<p>Objective-C允许您通过函数和方法表达行为。当底层对象总是单例或者处理明显功能的子系统时，你应该使用函数而不是类方法。</p>
+
+<p>函数有一些通用的命名规则，您应该遵循：</p>
+
+<ul>
+<li><p>函数名称与方法名称类似，但有几个例外：</p>
+
+<ul>
+<li>它们以您用于类和常量的相同前缀开头。</li>
+<li>前缀后面的单词的第一个字母是大写的。</li>
+</ul></li>
+<li><p>大多数函数名称以描述函数具有的效果的动词开头：</p>
+
+<pre><code>NSHighlightRect
+NSDeallocateObject
+</code></pre></li>
+</ul>
+
+<p>查询属性的函数具有另一组命名规则：</p>
+
+<ul>
+<li><p>如果函数返回其第一个参数的属性，则省略动词。</p>
+
+<pre><code>unsigned int NSEventMaskFromType(NSEventType type)
+float NSHeight(NSRect aRect)
+</code></pre></li>
+<li><p>如果通过引用返回值，请使用“get”。</p>
+
+<pre><code>const char *NSGetSizeAndAlignment(const char *typePtr, unsigned int *sizep, unsigned int *alignp)
+
+</code></pre></li>
+<li><p>如果返回的值是布尔值，则该函数应以变形动词开头。</p>
+
+<pre><code>BOOL NSDecimalIsNotANumber(const NSDecimal *decimal)
+</code></pre></li>
+</ul>
+
+<h2 id="toc_11">4️⃣命名属性和数据类型</h2>
+
+<h4 id="toc_12">①声明的属性和实例变量</h4>
+
+<p>一个属性声明有效地声明了访问器的属性方法，如果属性表示为名词或动词，则格式为：<code>@property (…) type nounOrVerb;</code></p>
+
+<pre><code>@property (strong) NSString *title;
+@property (assign) BOOL showsAlpha;
+</code></pre>
+
+<p>但是，如果声明的属性的名称表示为形容词，则属性名称将省略“is”前缀，但指定get访问器的常规名称，例如：</p>
+
+<pre><code>@property (assign, getter=isEditable) BOOL editable;
+</code></pre>
+
+<h4 id="toc_13">②常量</h4>
+
+<p>常量的规则根据常量的创建方式而有所不同。</p>
+
+<h5 id="toc_14">2.1 枚举常量</h5>
+
+<ul>
+<li>对具有整数值的相关常量组使用枚举。</li>
+<li><p>枚举常量和它们分组的typedef遵循函数的命名约定。以下示例来自NSMatrix.h：</p>
+
+<pre><code>typedef enum _NSMatrixMode {
+    NSRadioModeMatrix           = 0,
+    NSHighlightModeMatrix       = 1,
+    NSListModeMatrix            = 2,
+    NSTrackModeMatrix           = 3
+} NSMatrixMode;
+</code></pre>
+
+<p>⚠️注意，typedef标签是不必要的。</p></li>
+<li><p>可以用位掩码等内容创建未命名的枚举，例如：</p>
+
+<pre><code>enum {
+    NSBorderlessWindowMask      = 0,
+    NSTitledWindowMask          = 1 &lt;&lt; 0,
+    NSClosableWindowMask        = 1 &lt;&lt; 1,
+    NSMiniaturizableWindowMask  = 1 &lt;&lt; 2,
+    NSResizableWindowMask       = 1 &lt;&lt; 3
+
+};
+</code></pre></li>
+</ul>
+
+<h5 id="toc_15">2.2 用const创建的常量</h5>
+
+<ul>
+<li>const创建浮点值常量。如果常量与其他常量无关，则可以用来const创建整数常量; 否则，使用枚举。</li>
+<li><p>const常量的格式由以下声明举例说明：</p>
+
+<pre><code>const float NSLightGray;
+</code></pre></li>
+</ul>
+
+<h5 id="toc_16">2.3其他类型的常量</h5>
+
+<ul>
+<li>通常，不要使用#define预处理器命令来创建常量。对于整数常量，使用枚举，对于浮点常量，使用const限定符，如上所述。</li>
+<li><p>对预处理器在确定是否将处理代码块时评估的符号使用大写字母。例如：<code>#ifdef DEBUG</code></p></li>
+<li><p>请注意，编译器定义的宏具有前导和尾随双下划线字符。例如：<code>__MACH__</code></p></li>
+<li><p>定义用于通知名称和字典键等用途的字符串的常量。通过使用字符串常量。如：<code>APPKIT_EXTERN NSString * NSPrintCopies;</code></p>
+
+<pre><code>#import &lt;UIKit/UIKitDefines.h&gt;
+UIKIT_EXTERN  NSString * NSPrintCopies;
+</code></pre></li>
+</ul>
+
+<h4 id="toc_17">③通知和异常</h4>
+
+<p>通知和例外的名称遵循类似的规则。但两者都有自己推荐的使用模式。</p>
+
+<ul>
+<li>通知</li>
+</ul>
+
+<p>如果一个类有一个委托，那么它的大部分通知都可能由委托通过一个已定义的委托方法接收。这些通知的名称应反映相应的委托方法。例如，全局NSApplication对象的委托自动注册，以便applicationDidBecomeActive:在应用程序发布时接收消息NSApplicationDidBecomeActiveNotification。</p>
+
+<pre><code>通知由全局NSString对象标识，其名称以这种方式组成：
+[关联类的名称] + [Did | will] + [UniquePartOfName] +通知
+NSApplicationDidBecomeActiveNotification
+NSWindowDidMiniaturizeNotification
+NSTextViewDidChangeSelectionNotification
+NSColorPanelColorDidChangeNotification
+
+</code></pre>
+
+<ul>
+<li>异常</li>
+</ul>
+
+<p>用来处理抛出的NSException使用异常。</p>
+
+<p>异常由全局NSString对象标识，其名称以这种方式组成：</p>
+
+<p><code>[Prefix] + [UniquePartOfName] + Exception<br/>
+</code>比如</p>
+
+<pre><code>NSColorListIOException
+NSColorListNotEditableException
+NSDraggingException
+NSFontUnavailableException
+NSIllegalSelectorException
+</code></pre>
+
+<h2 id="toc_18">5️⃣框架开发人员的技巧和技巧</h2>
+
+<p>开发框架有他们如何编写自己的代码比其他开发商更加谨慎。许多客户端应用程序可以在其框架中链接，并且由于这种广泛的暴露，框架中的任何缺陷可能会在整个系统中被放大。以下各项讨论了可以采用的编程技术，以确保框架的效率和完整性。</p>
+
+<ul>
+<li>类初始化</li>
+</ul>
+
+<p>在调用类的任何其他方法之前，initialize  类方法为您提供了一个懒惰地执行一次代码的地方。</p>
+
+<p>运行时发送initialize到继承链中的每个类，即使它没有实现它; 因此它可能initialize不止一次地调用一个类的方法（例如，如果一个子类没有实现它）。通常，您希望初始化代码只执行一次。确保这种情况发生的一种方法是使用dispatch_once()：</p>
+
+<pre><code>+ (void)initialize {
+    static dispatch_once_t onceToken = 0;
+    dispatch_once(&amp;onceToken, ^{
+        // the initializing code
+    }
+}
+</code></pre>
+
+<p>⚠️注意：  因为运行时将initialize发送到每个类，所以可能initialize会在子类的上下文中调用 - 如果子类没有实现initialize，那么调用将落入超类。如果您特别需要在相关类的上下文中执行初始化，则可以执行以下检查而不是使用dispatch_once()：</p>
+
+<pre><code>if（self == [NSFoo class]）{
+    //初始化代码
+}
+</code></pre>
+
+<ul>
+<li>指定的初始化器</li>
+</ul>
+
+<p>指定的初始值设定init项是调用init超类方法的类的方法。（其他初始值设定项调用init类定义的方法。）每个公共类都应该有一个或多个指定的初始值设定项。</p>
+
+<p>当您实现一个框架类时，您通常还必须实现其归档方法：initWithCoder:和encodeWithCoder:。注意不要在初始化代码路径中执行在取消归档对象时不会发生的事情。实现这一目标的一个好方法是，initWithCoder:如果您的类实现了归档，则从您指定的初始化程序和（它本身是指定的初始化程序）调用一个公共例程。</p>
+
+<ul>
+<li><p>初始化期间的错误检测</p>
+
+<ul>
+<li>通过调用重新分配自我super的指定初始化。</li>
+<li>检查返回值nil，这表示超类初始化中发生了一些错误。</li>
+<li>如果在初始化当前类时发生错误，请释放该对象并返回nil。</li>
+</ul></li>
+</ul>
+
+<p>下面是🌰代码</p>
+
+<pre><code>- (id)init {
+    self = [super init];  // Call a designated initializer here.
+    if (self != nil) {
+        // Initialize object  ...
+        if (someError) {
+            [self release];
+            self = nil;
+        }
+    }
+    return self;
+}
+</code></pre>
+
+<h4 id="toc_19">参考</h4>
+
+<p>[1]<a href="https://dwz.cn/oY1q9z0N">Apple Guideline</a><br/>
+[2]<a href="https://juejin.im/entry/5be2810e518825158c530d9b">iOS Coding Style Guide 代码规范</a></p>
+
+
+
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+          <p class="text-left" style="padding:15px 0px;">
+            
+          </p>
+        </div>
+        <div class="large-6 columns">
+          <p class="text-right" style="padding:15px 0px;">
+            
+            <a href="15438021304374.html" title="Next Post: Swift & Objective-C & C++之间的混编">Swift & Objective-C & C++之间的混编
+              &raquo;</a>
+            
+          </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5bfe6ae3f692f811"></script>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://maweefeng.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<script id="dsq-count-scr" src="//maweefeng.disqus.com/count.js" async></script>
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 --> <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <div class="site-a-logo"><img src="/asset/img/logo.png" /></div>
+            
+                <h1>Code Log 👨‍💻‍ </h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+<a target="_blank" class="weibo" href="https://weibo.com/nervousCat" title="weibo">Weibo</a>
+
+<a target="_blank" class="github" target="_blank" href="https://github.com/maweefeng" title="GitHub">GitHub</a>
+<a target="_blank" class="email" href="mailto:maweefeng@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html"><strong>iOS开发技巧</strong></a>
+        
+            <a href="Git.html"><strong>Git</strong></a>
+        
+            <a href="CocoaPods.html"><strong>CocoaPods</strong></a>
+        
+            <a href="iOS%E5%88%A8%E5%9D%91.html"><strong>iOS刨坑</strong></a>
+        
+            <a href="MVVM+RAC.html"><strong>MVVM+RAC</strong></a>
+        
+            <a href="Debug.html"><strong>Debug</strong></a>
+        
+            <a href="Xcode.html"><strong>Xcode</strong></a>
+        
+            <a href="%E4%BB%A3%E7%A0%81%E6%B7%B7%E7%BC%96.html"><strong>代码混编</strong></a>
+        
+            <a href="%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html"><strong>代码规范</strong></a>
+        
+            <a href="About.html"><strong>About</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15439179971062.html">iOS开发代码规范</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15438021304374.html">Swift & Objective-C & C++之间的混编</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15433939231870.html">dispatch_semaphore_t 信号量</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15433701207076.html">_cmd 与 runtime 的结合</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15433027949667.html">sizeThatFits和sizeToFit</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <!-- <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p> -->
+<p class="copyright">日光之下 永无新事</p>
+</div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    <script src="asset/chart/all-min.js"></script><script type="text/javascript">$(function(){    var mwebii=0;    var mwebChartEleId = 'mweb-chart-ele-';    $('pre>code').each(function(){        mwebii++;        var eleiid = mwebChartEleId+mwebii;        if($(this).hasClass('language-sequence')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = Diagram.parse($(this).text());            diagram.drawSVG(eleiid,{theme: 'simple'});        }else if($(this).hasClass('language-flow')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = flowchart.parse($(this).text());            diagram.drawSVG(eleiid);        }    });});</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+
+  </body>
+</html>

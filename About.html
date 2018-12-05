@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>
     
-    UISearchbar 自定义搜索图标失真 - Code Log 👨‍💻‍ 
+    About - Code Log 👨‍💻‍ 
     
   </title>
   
@@ -133,113 +133,88 @@
 
 
       <section id="main-content" role="main" class="scroll-container"> <script type="text/javascript">
-  $(function () {
-    $('#menu_item_index').addClass('is_active');
-  });
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
 </script>
 <div class="row">
-  <div class="large-8 medium-8 columns">
-    <div class="markdown-body article-wrap">
-      <div class="article">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="15427857390238.html">
+                
+                  <h1>Hello Mr.Ma</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>简介：暂无介绍</p>
+
+<p>个人有着写日记的习惯，会写一些对待技术、文化、生活的看法，平时喜欢拍拍照，看看剧，看看书。  </p>
+
+<ul>
+<li>拍摄</li>
+</ul>
+
+<p>拍照用的是一款理光的相机GR2，这款相机比较小众，但是偶尔也会有路人看到我的机器后和我搭讪，这种感觉还是不错的，我个人很喜欢它的森山大道模式，（最开始也是因为这个购买它，不过后来这个模式用的其实不太多了）被别人安利了，又在网上看了看一些测评，街拍的好机器，就在淘宝下单买了，算是送给自己的生日礼物🎁，虽然功能不多，但是逼格对我来说够了。</p>
+
+<ul>
+<li>刷剧</li>
+</ul>
+
+<p>2018年追了「绝命律师」「权力的游戏」「行尸走肉」「年轻的谢尔顿」「白夜追凶」「四重奏」「去他妈的世界」「梅尔罗斯」「了不起的麦瑟尔夫人」「碧蓝之海」「我是大哥大」「深夜食堂」排名不分先后。</p>
+
+<ul>
+<li>阅读</li>
+</ul>
+
+<p>最开始在念大学的时候买了个kindle入门款，因为当时手头没有足够的💰，再加上背光对我来说并不是必要的，所以对我来说这款设备足够了，真是买完不后悔系列。当你想要看书的时候，在上面看书的感觉几乎接近于书籍，虽然我很喜欢传统纸质书籍，但是纸质书的翻页体验真的太差了，kindle的翻页要比传统书籍好过很多倍，便携性更不用说了。</p>
+
+<p>在手机里安装了<code>kindle for ios</code>，方便在我不方便使用<code>kindle</code>的时候看书，在我<code>MacBook</code>中我安装了<code>kindle for mac</code>，我一般会把它全屏为一个独立的窗口，不管是在代码编译等待的时候看，还是专门去看，那种体验很舒服，最起码比在5.5寸屏幕上的效果要好很多。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='About.html'>About</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
         
-        <h1>UISearchbar 自定义搜索图标失真</h1>
-
-        <div class="read-more clearfix">
-          <span class="date">2018/11/21</span>
-
-          <span>posted in&nbsp;</span> 
-          
-          <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
-          
-
-          <span class="comments">
-            
-
-            
-          </span>
-
-        </div>
-        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-        <div class="addthis_inline_share_toolbox"></div>
-      </div><!-- article -->
-
-      <div class="article-content">
-        <p>关于Searchbar设置搜索图标的问题<br/>
-因为这个大小在iOS中是固定的14*14<br/>
-如果UI给的切图不是这个尺寸就会出现失真的情况（ps：因为视图的默认contentMode是UIViewContentModeScaleToFill）<br/>
-网上有的方法一般是设置一个继承自UITextfield的searchBar<br/>
-去修改SearchBar的leftView。</p>
-
-<pre><code>UIImageView *searchIcon = [[UIImageView alloc] init];
-searchIcon.image = [UIImage imageNamed:@&quot;searchbar_textfield_search_icon&quot;];
-searchIcon.contentMode = UIViewContentModeCenter;        searchIcon.size = CGSizeMake(14, 14);
-self.leftView = searchIcon;
-self.leftViewMode = UITextFieldViewModeAlways;
-
-</code></pre>
-
-<p>但是其实完全可以便利UISearchBar的子视图拿到textField<br/>
-再去设置textField.leftView.contendMode即可</p>
-
-<p>其实系统方法<br/>
-[xxxbar setImage:forSearchBarIcon:state];<br/>
-内部就是设置了textField的leftView</p>
+              
 
 
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
 
-
-      </div>
-
-      <div class="row">
-        <div class="large-6 columns">
-          <p class="text-left" style="padding:15px 0px;">
-            
-            <a href="15427834492830.html" title="Previous Post: CAMediaTimingFunction获取控制点：">&laquo; CAMediaTimingFunction获取控制点：</a>
-            
-          </p>
-        </div>
-        <div class="large-6 columns">
-          <p class="text-right" style="padding:15px 0px;">
-            
-            <a href="15427834492512.html" title="Next Post: Flutter && Python && OC">Flutter && Python && OC
-              &raquo;</a>
-            
-          </p>
-        </div>
-      </div>
-      <div class="comments-wrap">
-        <div class="share-comments">
-          <!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5bfe6ae3f692f811"></script>
-<div id="disqus_thread"></div>
-<script>
-
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://maweefeng.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<script id="dsq-count-scr" src="//maweefeng.disqus.com/count.js" async></script>
-
-          
-
-          
-        </div>
-      </div>
-    </div><!-- article-wrap -->
-  </div><!-- large 8 --> <div class="large-4 medium-4 columns">
+ <div class="large-4 medium-4 columns">
   <div class="hide-for-small">
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">

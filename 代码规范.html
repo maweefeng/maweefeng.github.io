@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>
     
-    UISearchbar 自定义搜索图标失真 - Code Log 👨‍💻‍ 
+    代码规范 - Code Log 👨‍💻‍ 
     
   </title>
   
@@ -133,113 +133,92 @@
 
 
       <section id="main-content" role="main" class="scroll-container"> <script type="text/javascript">
-  $(function () {
-    $('#menu_item_index').addClass('is_active');
-  });
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
 </script>
 <div class="row">
-  <div class="large-8 medium-8 columns">
-    <div class="markdown-body article-wrap">
-      <div class="article">
-        
-        <h1>UISearchbar 自定义搜索图标失真</h1>
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="15439179971062.html">
+                
+                  <h1>iOS开发代码规范</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h1 id="toc_0">iOS开发代码规范</h1>
 
-        <div class="read-more clearfix">
-          <span class="date">2018/11/21</span>
+<p>针对我的开发经验ViewController应该是这样的。</p>
 
-          <span>posted in&nbsp;</span> 
-          
-          <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
-          
-
-          <span class="comments">
-            
-
-            
-          </span>
-
-        </div>
-        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-        <div class="addthis_inline_share_toolbox"></div>
-      </div><!-- article -->
-
-      <div class="article-content">
-        <p>关于Searchbar设置搜索图标的问题<br/>
-因为这个大小在iOS中是固定的14*14<br/>
-如果UI给的切图不是这个尺寸就会出现失真的情况（ps：因为视图的默认contentMode是UIViewContentModeScaleToFill）<br/>
-网上有的方法一般是设置一个继承自UITextfield的searchBar<br/>
-去修改SearchBar的leftView。</p>
-
-<pre><code>UIImageView *searchIcon = [[UIImageView alloc] init];
-searchIcon.image = [UIImage imageNamed:@&quot;searchbar_textfield_search_icon&quot;];
-searchIcon.contentMode = UIViewContentModeCenter;        searchIcon.size = CGSizeMake(14, 14);
-self.leftView = searchIcon;
-self.leftViewMode = UITextFieldViewModeAlways;
-
+<pre><code>#pragma mark - Life Cycle|生命周期
+#pragma mark - UITableViewDataSource and UITableViewDelegate|主要是一些代理的方法
+#pragma mark - Private Method|私有方法（内部可调用）
+#pragma mark - Public  Method|公有方法
+#pragma mark - Set &amp; Get|getter 和 setter方法
+#pragma mark - Notification|接收通知之后执行的方法
+#pragma mark - Event|一些视图的点击事件 比如button
+#pragma mark - DelegeteHandler|代理的实现时间
 </code></pre>
 
-<p>但是其实完全可以便利UISearchBar的子视图拿到textField<br/>
-再去设置textField.leftView.contendMode即可</p>
+<h2 id="toc_1">1️⃣代码命名基础</h2>
 
-<p>其实系统方法<br/>
-[xxxbar setImage:forSearchBarIcon:state];<br/>
-内部就是设置了textField的leftView</p>
+<h3 id="toc_2">①一般原则</h3>
+
+<ul>
+<li><p>明晰</p>
+
+<ul>
+<li><p>尽可能保持清晰和简洁是件好事，但由于简洁，清晰度不应受到影响：</p>
+
+<p>比如<code>insertObject:atIndex:</code>比较清晰，而<code>insert:at:</code>却不知道发生了什么...</p></li>
+</ul></li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15439179971062.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/12/4</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html'>代码规范</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
 
 
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
 
-
-      </div>
-
-      <div class="row">
-        <div class="large-6 columns">
-          <p class="text-left" style="padding:15px 0px;">
-            
-            <a href="15427834492830.html" title="Previous Post: CAMediaTimingFunction获取控制点：">&laquo; CAMediaTimingFunction获取控制点：</a>
-            
-          </p>
-        </div>
-        <div class="large-6 columns">
-          <p class="text-right" style="padding:15px 0px;">
-            
-            <a href="15427834492512.html" title="Next Post: Flutter && Python && OC">Flutter && Python && OC
-              &raquo;</a>
-            
-          </p>
-        </div>
-      </div>
-      <div class="comments-wrap">
-        <div class="share-comments">
-          <!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5bfe6ae3f692f811"></script>
-<div id="disqus_thread"></div>
-<script>
-
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://maweefeng.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<script id="dsq-count-scr" src="//maweefeng.disqus.com/count.js" async></script>
-
-          
-
-          
-        </div>
-      </div>
-    </div><!-- article-wrap -->
-  </div><!-- large 8 --> <div class="large-4 medium-4 columns">
+ <div class="large-4 medium-4 columns">
   <div class="hide-for-small">
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
