@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>
     
-    iOS开发技巧 - Code Log 👨‍💻‍ 
+    UINavigationItem - Code Log 👨‍💻‍ 
     
   </title>
   
@@ -98,9 +98,9 @@
       <aside class="left-off-canvas-menu">
         <ul class="off-canvas-list">
 
-          <li><a href="index.html">HOME</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="archives.html">Archives</a></li>
-          <li><a href="about.html">ABOUT</a></li>
+          <li><a href="About%20Me.html">About</a></li>
 
           <li><label>Categories</label></li>
 
@@ -111,7 +111,7 @@
           
           <li><a href="CocoaPods.html">CocoaPods</a></li>
           
-          <li><a href="IOS%E5%88%A8%E5%9D%91.html">IOS刨坑</a></li>
+          <li><a href="iOS%E5%88%A8%E5%9D%91.html">iOS刨坑</a></li>
           
           <li><a href="MVVM+RAC.html">MVVM+RAC</a></li>
           
@@ -121,7 +121,9 @@
           
           <li><a href="%E4%BB%A3%E7%A0%81%E6%B7%B7%E7%BC%96.html">代码混编</a></li>
           
-          <li><a href="About%20Me.html">About Me</a></li>
+          <li><a href="%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html">代码规范</a></li>
+          
+          <li><a href="About.html">About</a></li>
           
 
         </ul>
@@ -131,69 +133,141 @@
 
 
       <section id="main-content" role="main" class="scroll-container"> <script type="text/javascript">
-	$(function(){
-		$('#menu_item_index').addClass('is_active');
-	});
+  $(function () {
+    $('#menu_item_index').addClass('is_active');
+  });
 </script>
 <div class="row">
-	<div class="large-8 medium-8 columns">
-		<div class="markdown-body home-categories">
-		
-			<div class="article">
-                <a class="clearlink" href="15427834491002.html">
-                
-                  <h1>代理修饰符</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">为什么代理修饰要用weak而不是assgin</h3>
-
-<p>weak 一旦不被引用的时候就不会再使用了，就会被置位nil，oc中使用nil执行操作不会引起崩溃，所以即使再次使用也不会产生野指针。<br/><br/>
-但是如果是用assgin修饰，一旦不被引用不会自动置nil,当再次操作这个对象的代理方法的时候就会产生野指针引起程序崩溃。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
+  <div class="large-8 medium-8 columns">
+    <div class="markdown-body article-wrap">
+      <div class="article">
         
-              
+        <h1>UINavigationItem</h1>
+
+        <div class="read-more clearfix">
+          <span class="date">2018/12/5</span>
+
+          <span>posted in&nbsp;</span> 
+          
+          <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
+          
+
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <div class="addthis_inline_share_toolbox"></div>
+      </div><!-- article -->
+
+      <div class="article-content">
+        <p>纵观Apple的官方应用程式的导航栏你就会发现在iOS11之后导航栏的高度会自动变化，文字的大小以及位置也会随之变化。<br/>
+这是iOS11之后的新特性，苹果是使用给UINavigationItem添加扩展的方法增加的新功能，这也给了我们新的一种思路，为了不去修改之前代码的原则上添加新的功能的方式。</p>
+
+<pre><code>extension UINavigationItem {
+    public enum LargeTitleDisplayMode : Int {
+        /// Automatically use the large out-of-line title based on the state of the previous item in the navigation bar. An item with largeTitleDisplayMode=Automatic will show or hide the large title based on the request of the previous navigation item. If the first item pushed is set to Automatic, then it will show the large title if the navigation bar has prefersLargeTitles=YES.
+        case automatic
+
+        
+        /// Always use a larger title when this item is top most.
+        case always
+
+        
+        /// Never use a larger title when this item is top most.
+        case never
+    }
+}
+</code></pre>
+
+<ul>
+<li>largeTitie的两种展现形式如下所示</li>
+</ul>
+
+<p><img src="media/15439873228318/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-05%20%E4%B8%8B%E5%8D%881.23.25.png" alt="屏幕快照 2018-12-05 下午1.23.25 " style="width:220px;"/><img src="media/15439873228318/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-05%20%E4%B8%8B%E5%8D%881.23.29.png" alt="屏幕快照 2018-12-05 下午1.23.29 " style="width:220px;"/></p>
+
+<h2 id="toc_0">设置方式</h2>
+
+<ul>
+<li><p>xib设置</p>
+
+<ul>
+<li>never 一直都是小标题</li>
+<li>automatic 自动切换</li>
+<li>always 一直都是大标题</li>
+</ul></li>
+</ul>
+
+<p><img src="media/15439873228318/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-05%20%E4%B8%8B%E5%8D%881.30.58.png" alt="屏幕快照 2018-12-05 下午1.30.58"/></p>
+
+<ul>
+<li><p>代码设置</p>
+
+<pre><code>因为这是新增加的属性所以要做判断
+ if #available(iOS 11.0, *) {
+        self.navigationItem.largeTitleDisplayMode = .automatic
+        } else {
+            // Fallback on earlier versions
+};
+</code></pre></li>
+</ul>
 
 
-			<div class="row">
-			  <div class="large-6 columns">
-			  <p class="text-left" style="padding-top:25px;">
-			   <a href="iOS开发技巧_3.html">&laquo; Prev Page</a>  
-			  </p>
-			  </div>
-			  <div class="large-6 columns">
-			<p class="text-right" style="padding-top:25px;">
-			
-			</p>
-			  </div>
-			</div>
-		</div>
-	</div><!-- large 8 -->
 
- <div class="large-4 medium-4 columns">
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+          <p class="text-left" style="padding:15px 0px;">
+            
+          </p>
+        </div>
+        <div class="large-6 columns">
+          <p class="text-right" style="padding:15px 0px;">
+            
+            <a href="15439179971062.html" title="Next Post: iOS开发代码规范">iOS开发代码规范
+              &raquo;</a>
+            
+          </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5bfe6ae3f692f811"></script>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://maweefeng.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<script id="dsq-count-scr" src="//maweefeng.disqus.com/count.js" async></script>
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 --> <div class="large-4 medium-4 columns">
   <div class="hide-for-small">
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
@@ -210,7 +284,7 @@
 
 
 
-<a target="_blank" class="weibo" href="https://weibo.com/nervousCat" title="weibo">Weibo</a>
+
 
 <a target="_blank" class="github" target="_blank" href="https://github.com/maweefeng" title="GitHub">GitHub</a>
 <a target="_blank" class="email" href="mailto:maweefeng@gmail.com" title="Email">Email</a>
@@ -235,7 +309,7 @@
         
             <a href="CocoaPods.html"><strong>CocoaPods</strong></a>
         
-            <a href="IOS%E5%88%A8%E5%9D%91.html"><strong>IOS刨坑</strong></a>
+            <a href="iOS%E5%88%A8%E5%9D%91.html"><strong>iOS刨坑</strong></a>
         
             <a href="MVVM+RAC.html"><strong>MVVM+RAC</strong></a>
         
@@ -245,7 +319,9 @@
         
             <a href="%E4%BB%A3%E7%A0%81%E6%B7%B7%E7%BC%96.html"><strong>代码混编</strong></a>
         
-            <a href="About%20Me.html"><strong>About Me</strong></a>
+            <a href="%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html"><strong>代码规范</strong></a>
+        
+            <a href="About.html"><strong>About</strong></a>
          
         </p>
 
@@ -262,6 +338,18 @@
 	      
 		      
 			      <li class="post">
+			        <a href="15439873228318.html">UINavigationItem</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15439179971062.html">iOS开发代码规范</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15438021304374.html">Swift & Objective-C & C++之间的混编</a>
 			      </li>
 		     
@@ -275,18 +363,6 @@
 		      
 			      <li class="post">
 			        <a href="15433701207076.html">_cmd 与 runtime 的结合</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15433027949667.html">sizeThatFits和sizeToFit</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15428536881209.html">被神化的MVVM和被错误认识的Model层</a>
 			      </li>
 		     
 		  

@@ -142,6 +142,109 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15427834492512.html">
+                
+                  <h1>Flutter && Python && OC</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">dart的函数定义如下所示</h3>
+
+<pre><code>// Define a function.
+printInteger(int aNumber) {
+  print(&#39;The number is $aNumber.&#39;); // Print to console.
+}
+
+// This is where the app starts executing.
+main() {
+  var number = 42; // Declare and initialize a variable.
+  printInteger(number); // Call a function.
+}
+
+isNoble(atomicNumber) {
+  return _nobleGases[atomicNumber] != null;
+}
+
+如果函数只有单个语句，可以采用简略的形式：
+
+bool isNoble(int atomicNumber) =&gt; _nobleGases[atomicNumber] != null;
+
+
+</code></pre>
+
+<h3 id="toc_1">$dart取地址</h3>
+
+<pre><code>String say(String from, String msg, [String device]) {
+  var result = &#39;$from says $msg&#39;;
+  if (device != null) {
+    result = &#39;$result with a $device&#39;;
+  }
+  return result;
+}
+
+</code></pre>
+
+<p>以分号结尾 参数类型要指定也可以不指定<br/><br/>
+=&gt; 是{ return expr;} 的缩写</p>
+
+<h3 id="toc_2">oc的函数定义</h3>
+
+<pre><code>-(void)hello{
+
+print(@&quot;hello world&quot;);
+
+}
+-(void)hello(int a,int b){
+
+print(@&quot;hello world %d %d&quot;,a,b);
+
+}
+
+
+</code></pre>
+
+<p>无需注意缩进 但是返回值类型一定要明确</p>
+
+<h3 id="toc_3">python函数定义</h3>
+
+<pre><code>def xxxx:
+    print &#39;hello world&#39;
+    
+def xxx(a,b):
+   print(a,b)
+   
+def xxx(self,a,b)
+   print a,b
+   
+</code></pre>
+
+<p>由于没有分号和大括号所以一定要注意缩进，</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.html'>iOS开发技巧</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15427834492451.html">
                 
                   <h1>Xcode编译找不到头文件</h1>
@@ -458,49 +561,6 @@ git config --global user.email &quot;<a href="mailto:mawf09@xxx.com">mawf09@xxx.
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15427834491963.html">
-                
-                  <h1>Git提交代码issue</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">问题①:</h3>
-
-<pre><code>fatal:unable to access &#39;https://github.com/xxx/xxx.git&#39; OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com 443
-</code></pre>
-
-<h5 id="toc_1">解决方法：</h5>
-
-<pre><code>env命令设置GIT_SSL_NO_VERIFY环境变量为”ture”，并同时调用正常的git clone命令 env GIT_SSL_NO_VERIFY=true git clone https://github.com/xxx/xxx.git     
-当你通过HTTPS访问Git远程仓库，如果服务器的SSL证书未经过第三方机构签署，那么Git就会报错。在克隆完毕的仓库中还需要将http.sslVerify设置为”false”。完整的命令如下：    
-git config http.sslVerify &quot;false&quot;、
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834491963.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Git.html'>Git</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -536,7 +596,7 @@ git config http.sslVerify &quot;false&quot;、
 
 
 
-<a target="_blank" class="weibo" href="https://weibo.com/nervousCat" title="weibo">Weibo</a>
+
 
 <a target="_blank" class="github" target="_blank" href="https://github.com/maweefeng" title="GitHub">GitHub</a>
 <a target="_blank" class="email" href="mailto:maweefeng@gmail.com" title="Email">Email</a>
@@ -590,6 +650,12 @@ git config http.sslVerify &quot;false&quot;、
 	      
 		      
 			      <li class="post">
+			        <a href="15439873228318.html">UINavigationItem</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15439179971062.html">iOS开发代码规范</a>
 			      </li>
 		     
@@ -609,12 +675,6 @@ git config http.sslVerify &quot;false&quot;、
 		      
 			      <li class="post">
 			        <a href="15433701207076.html">_cmd 与 runtime 的结合</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15433027949667.html">sizeThatFits和sizeToFit</a>
 			      </li>
 		     
 		  
