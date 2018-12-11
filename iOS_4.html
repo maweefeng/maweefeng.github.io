@@ -128,6 +128,48 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15426952413956.html">
+                
+                  <h1>Masonry布局“Unable to simultaneously satisfy constraints”</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>出现这个问题是设置约束优先级错误，设置一下约束的优先级就行。</p>
+
+<pre><code>[self.doctorTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.title.mas_left);
+            make.right.equalTo(self.title.mas_right);
+            make.top.equalTo(self.topline.mas_bottom).offset(10).priorityHigh();
+            make.height.mas_equalTo(@14);
+}];
+
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2017/11/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15427834493345.html">
                 
                   <h1>高效的画线</h1>
@@ -315,6 +357,12 @@
 	      
 		      
 			      <li class="post">
+			        <a href="15445081328797.html">App Icon Design</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15444306104604.html">Advanced Debugging with Xcode and LLDB</a>
 			      </li>
 		     
@@ -334,12 +382,6 @@
 		      
 			      <li class="post">
 			        <a href="15438021304374.html">Swift & Objective-C & C++之间的混编</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15433939231870.html">dispatch_semaphore_t 信号量</a>
 			      </li>
 		     
 		  

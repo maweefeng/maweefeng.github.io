@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>
     
-    SDWebImageview 不能加载HTTPS图片 - Code Log 👨‍💻‍ 
+    App Icon Design - Code Log 👨‍💻‍ 
     
   </title>
   
@@ -128,10 +128,12 @@
     <div class="markdown-body article-wrap">
       <div class="article">
         
-        <h1>SDWebImageview 不能加载HTTPS图片</h1>
+        <div class="f-img"><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.16.00.png" /></div>
+        
+        <h1>App Icon Design</h1>
 
         <div class="read-more clearfix">
-          <span class="date">2018/11/21</span>
+          <span class="date">2018/12/11</span>
 
           <span>posted in&nbsp;</span> 
           
@@ -150,11 +152,75 @@
       </div><!-- article -->
 
       <div class="article-content">
-        <p>这个问题是因为图片地址所在的服务器没有有效的SSL证书文件<br/>
-只需要在Options参数中设置SDWebImaweefenggeAllowInvalidSSLCertificates枚举就可</p>
+        <h2 id="toc_0">Design</h2>
 
-<pre><code>[self.avatarImageView sd_setImageWithURL: [NSURL URLWithString: famousStarObject.avatar] placeholderImage: [UIImage imageNamed: @&quot;icon_default_avator&quot;] options: SDWebImageAllowInvalidSSLCertificates];
-</code></pre>
+<p>我们对符号的应用可以追溯到很久很久之前，总所周知我们现在使用的文字就是从象形文字发展过来的。</p>
+
+<ul>
+<li><p>象征化</p>
+
+<p>找到一个简单易懂的象征，物体、图形标注或者符号。</p></li>
+<li><p>简单性</p>
+
+<p>设计要简单，不要杂乱无章，太过复杂。如果设计的好，人们一眼就能看懂。</p></li>
+<li><p>关联性</p>
+
+<p>创建与用户之间的感情连接，跟UI一样，图标是应用的脸面，一定要有趣并且引人注目</p></li>
+<li><p>传统性</p>
+
+<p>对图标的修改要有意义而且谨慎，不建议经常更改应用图标尤其是每次升级的时候，要与时俱进。</p></li>
+</ul>
+
+<p>比如最初的keynote的图标就是一张讲台，以后的每次迭代升级都是围绕着讲台进行的改变，是与时俱进的，风格不断变化。而且如果你注意到的话讲台上都有一个话筒，这个也是一直有延续的。</p>
+
+<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.16.00.png" alt="屏幕快照 2018-12-11 下午2.16.00"/></p>
+
+<p>iOS平台与macOS设计的不同又相同。</p>
+
+<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.19.41.png" alt="屏幕快照 2018-12-11 下午2.19.41"/></p>
+
+<p>配色，元素都是类似的，而且iOS的iwork图标更是保持了一致性，一致的地平面，一致的白色，没有多余复杂的元素。</p>
+
+<p>现在来看GarageBand和Music Memos的关系，有颜色和图标来看，明显有关系。圆圈代表了木吉他上的音孔，弦的振动很清晰很有趣，让人感到动感和创造力</p>
+
+<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.24.00.png" alt="屏幕快照 2018-12-11 下午2.24.00"/></p>
+
+<h5 id="toc_1">Q:怎么不显示名字，也能让人理解。</h5>
+
+<p>A:高对比度，颜色清晰可见，设计简单，构图独特。</p>
+
+<p>下面是News的图标的例子。</p>
+
+<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.32.55.png" alt="屏幕快照 2018-12-11 下午2.32.55"/></p>
+
+<p>进行了三次改变设计，才做到简单醒目，即使在文件夹的小图标也会一目了然，这点对于App Icon Design 十分重要。</p>
+
+<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.34.30.png" alt="屏幕快照 2018-12-11 下午2.34.30"/></p>
+
+<h2 id="toc_2">Process</h2>
+
+<p>设计是一个交互过程，设计时要去考虑这些环节。</p>
+
+<ul>
+<li><p>独特性 </p>
+
+<p>要做到有区分性，特别是对于一些类似功能的APP</p>
+
+<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.41.11.png" alt="屏幕快照 2018-12-11 下午2.41.11"/></p></li>
+<li><p>实践</p>
+
+<p>纸笔有时候比鼠标有用的多，绘画是激发灵感的好方法。</p>
+
+<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.40.50.png" alt="屏幕快照 2018-12-11 下午2.40.50"/></p></li>
+<li><p>测试</p>
+
+<p>要在主屏，在设置，在文件夹中测试不同情形的展示效果，要用图标展现界面的话要特别注意，Clear是一个很完美的典范，简单，多彩，高对比度。</p>
+
+<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.41.54.png" alt="屏幕快照 2018-12-11 下午2.41.54"/></p></li>
+<li><p>耐心</p>
+
+<p>答案不会立马就来，慢慢来，检查选项，保存好作品，有时候最简单的设计或者你放弃的设计师最好的选择。</p></li>
+</ul>
 
 
 
@@ -165,14 +231,12 @@
         <div class="large-6 columns">
           <p class="text-left" style="padding:15px 0px;">
             
-            <a href="15427834492143.html" title="Previous Post: pod install速度过慢">&laquo; pod install速度过慢</a>
-            
           </p>
         </div>
         <div class="large-6 columns">
           <p class="text-right" style="padding:15px 0px;">
             
-            <a href="15427834492322.html" title="Next Post: UIImageView 动画的属性animationImages">UIImageView 动画的属性animationImages
+            <a href="15444306104604.html" title="Next Post: Advanced Debugging with Xcode and LLDB">Advanced Debugging with Xcode and LLDB
               &raquo;</a>
             
           </p>
