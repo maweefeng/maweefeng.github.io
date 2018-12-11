@@ -262,7 +262,9 @@ poc 就可以直接代替后面的语句，可以简化常用的命令行语句�
 还可以可以直接查看view的frame<br/>
 po unsafeBitCast(指针,to:ScoreBoardView.self).frame</p></li>
 <li><p>刷新屏幕的帧缓存区<br/>
-如果写了expression语句之后界面没有及时刷新，但是又不想去重新运行代码，那么可以使用表达式<code>expression CAtransaction.flush()</code>刷新屏幕帧缓存区。</p></li>
+如果写了expression语句之后界面没有及时刷新，但是又不想去重新运行代码，那么可以使用表达式<br/>
+Swift<code>expression CAtransaction.flush()</code><br/>
+OC<code>expression [CAtransaction flush]</code>刷新屏幕帧缓存区。</p></li>
 </ol>
 
 <h3 id="toc_0">参考</h3>
