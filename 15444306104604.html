@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>
     
-    iOS导航条背景颜色 - Code Log 👨‍💻‍ 
+    Advanced Debugging with Xcode and LLDB - Code Log 👨‍💻‍ 
     
   </title>
   
@@ -128,10 +128,10 @@
     <div class="markdown-body article-wrap">
       <div class="article">
         
-        <h1>iOS导航条背景颜色</h1>
+        <h1>Advanced Debugging with Xcode and LLDB</h1>
 
         <div class="read-more clearfix">
-          <span class="date">2018/11/21</span>
+          <span class="date">2018/12/10</span>
 
           <span>posted in&nbsp;</span> 
           
@@ -150,19 +150,122 @@
       </div><!-- article -->
 
       <div class="article-content">
-        <h4 id="toc_0">Situation one</h4>
+        <ol>
+<li><p>expression语句 </p>
 
-<p><code>self.navigationBar.barTintColor= [UIColor redColor];</code><br/>
-这时候的效果就是纯色的<br/>
-类似下面这样<br/>
-<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fsbvzqlgesj309f01oglk.jpg" alt=""/></p>
+<p>不用重新运行程序直接实现代码效果</p>
 
-<h4 id="toc_1">Situation two</h4>
+<p><img src="media/15444306104604/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%884.29.55.png" alt="屏幕快照 2018-12-10 下午4.29.55"/></p>
 
-<p><code>self.navigationBar.backgroundColor = [UIColor redColor];</code><br/>
-<img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fsbvypka0rj309e01p0so.jpg" alt=""/></p>
+<ol>
+<li><p>描述</p>
 
-<p>一种是有渐变的半透明效果，一种就是简单的纯色效果。</p>
+<p>可以动态的改变条件，语法是<code>expression xxx = &quot;xxx&quot;</code> 后面是语句代码,类似程序中的代码并且支持加{}的判断等等语句。</p></li>
+<li><p>使用方法：</p>
+
+<ul>
+<li>调试台去写这个语句</li>
+<li>加断点去添加<code>action</code>。</li>
+</ul></li>
+</ol></li>
+<li><p>Symbolic Breakpoint</p>
+
+<ol>
+<li><p>描述</p>
+
+<p>符号断点，可以针对某一个方法(函数)设置断点并暂停执行；有时候，我们并不清楚会在什么情况下调用某一个函数，那我们可以通过符号断点来跟踪获取调用该函数的程序堆栈。</p>
+
+<p><img src="media/15444306104604/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%885.04.43.png" alt="屏幕快照 2018-12-10 下午5.04.43"/></p></li>
+<li><p>使用方法</p>
+
+<ul>
+<li> 方法一</li>
+</ul>
+
+<p>添加符号断点，比如如下所述-[UILabel setText:]</p>
+
+<p><img src="media/15444306104604/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%885.05.33.png" alt="屏幕快照 2018-12-10 下午5.05.33"/></p>
+
+<p>还可以添加condition语句 类似如上所述</p>
+
+<ul>
+<li>方法二</li>
+</ul>
+
+<p>直接在指定的语句添加断点加入<code>action</code>语句，如图所示</p>
+
+<p><img src="media/15444306104604/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%885.26.11.png" alt="屏幕快照 2018-12-10 下午5.26.11"/></p>
+
+<p><code>breakpoint set --one-shot true --name &quot;-[UILabel setText:]&quot;</code>    </p>
+
+<p><code>one-shot</code> 是一个临时断点，一旦触发后就自动删除</p></li>
+</ol></li>
+<li><p>跳过断点所指向的代码</p>
+
+<ol>
+<li><p>方式一</p>
+
+<p><img src="media/15444306104604/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%885.40.21.png" alt="屏幕快照 2018-12-10 下午5.40.21"/></p>
+
+<p>移动手柄实现 接下来就可以在控制台中写expression语句 <br/>
+<code>expression jumpAstronaut(animated:false)<br/>
+</code></p></li>
+<li><p>方式二</p></li>
+</ol>
+
+<p>直接编辑断点添加action语句 <br/>
+<img src="media/15444306104604/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%885.47.11.png" alt="屏幕快照 2018-12-10 下午5.47.11"/></p>
+
+<p><code>thread jump --by 1</code> 是跳过一句代码的意思。</p></li>
+<li><p>watchPoint </p>
+
+<p>观察指针，值发生改变的时候自动暂停。</p>
+
+<p><img src="media/15444306104604/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%885.58.26.png" alt="屏幕快照 2018-12-10 下午5.58.26"/><br/>
+右键某个属性，添加watchPoint</p></li>
+<li><p>创建别名</p>
+
+<p><code>command alias poc expression - l objc -O --</code><br/>
+poc 就可以直接代替后面的语句，可以简化常用的命令行语句。</p></li>
+<li><p>可以通过内存地址去获取对象 </p>
+
+<ol>
+<li><p>Objective-C</p>
+
+<p><code>po 指针</code> 可以直接打印出对象<br/>
+<img src="media/15444306104604/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8A%E5%8D%8811.12.11.png" alt="屏幕快照 2018-12-11 上午11.12.11"/></p></li>
+<li><p>Swift</p>
+
+<p>不能把数字当成指针去像OC一样打印出对象，要使用<code>expression - l objc -O -- 0x7fa967d781191548b60</code>转换为OC语言。 如果觉得这个语句太臃肿，可以为语句创建别名比如<code>command alias poc expression - l objc -O --</code>之后就可以直接<code>poc 指针</code>就可以达到oc当中同样的效果。</p></li>
+</ol></li>
+<li><p>获取图层树</p>
+
+<ol>
+<li><p>Objective-C</p>
+
+<p>调用<code>[self.view recursiveDescription]</code>打印出类似于这样的图层树。<br/>
+<img src="media/15444306104604/15444967235409.jpg" alt=""/></p></li>
+<li><p>Swift </p>
+
+<p>不能这么直接打印出图层树（swift不允许去调用未定义的函数），如果要让swift去像OC一样打印出类似于这样的图层树。<br/>
+调用语句<br/>
+<code>expression - l objc -O --[`self.view` recursiveDescription]<br/>
+</code>一定要加入反括号(反括号就像预处理器一样，它表示先评估其在当前帧中的内容，并插入结果，然后我们可以评估其余部分) 才能编译通过。</p></li>
+</ol></li>
+<li><p>unsafeBitCast查询对象的调试描述</p>
+
+<p>当只有指针，查看对象描述的时候在swift中可以使用 unsafeBitCast函数，给他一个内存地址，他不安全是因为它依赖你来提供正确的类型。</p>
+
+<p>po unsafeBitCast(指针,to:ScoreBoardView.self)<br/>
+还可以可以直接查看view的frame<br/>
+po unsafeBitCast(指针,to:ScoreBoardView.self).frame</p></li>
+<li><p>刷新屏幕的帧缓存区<br/>
+如果写了expression语句之后界面没有及时刷新，但是又不想去重新运行代码，那么可以使用表达式<code>expression CAtransaction.flush()</code>刷新屏幕帧缓存区。</p></li>
+</ol>
+
+<h3 id="toc_0">参考</h3>
+
+<p>[1]<a href="https://developer.apple.com/videos/play/wwdc2018/412/">https://developer.apple.com/videos/play/wwdc2018/412/</a></p>
 
 
 
@@ -173,14 +276,12 @@
         <div class="large-6 columns">
           <p class="text-left" style="padding:15px 0px;">
             
-            <a href="15427834492830.html" title="Previous Post: CAMediaTimingFunction获取控制点：">&laquo; CAMediaTimingFunction获取控制点：</a>
-            
           </p>
         </div>
         <div class="large-6 columns">
           <p class="text-right" style="padding:15px 0px;">
             
-            <a href="15427834493152.html" title="Next Post: 检测离屏渲染了">检测离屏渲染了
+            <a href="15439873228318.html" title="Next Post: UINavigationItem">UINavigationItem
               &raquo;</a>
             
           </p>

@@ -128,6 +128,43 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15427834491441.html">
+                
+                  <h1>设置图片拉伸范围</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code>- (UIImage *)stretchableImageWithLeftCapWidth:(NSInteger)leftCapWidth topCapHeight:(NSInteger)topCapHeight 
+</code></pre>
+
+<p>这个函数是UIImage的一个实例函数，它的功能是创建一个内容可拉伸，而边角不拉伸的图片，需要两个参数，第一个是左边不拉伸区域的宽度，第二个参数是上面不拉伸的高度。</p>
+
+<p>根据设置的宽度和</p>...
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15427834491441.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15427834491504.html">
                 
                   <h1>Git基础流</h1>
@@ -451,49 +488,6 @@ export ALL_PROXY=socks5://127.0.0.1:1080</p></li>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15427834491963.html">
-                
-                  <h1>Git提交代码issue</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">问题①:</h3>
-
-<pre><code>fatal:unable to access &#39;https://github.com/xxx/xxx.git&#39; OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com 443
-</code></pre>
-
-<h5 id="toc_1">解决方法：</h5>
-
-<pre><code>env命令设置GIT_SSL_NO_VERIFY环境变量为”ture”，并同时调用正常的git clone命令 env GIT_SSL_NO_VERIFY=true git clone https://github.com/xxx/xxx.git     
-当你通过HTTPS访问Git远程仓库，如果服务器的SSL证书未经过第三方机构签署，那么Git就会报错。在克隆完毕的仓库中还需要将http.sslVerify设置为”false”。完整的命令如下：    
-git config http.sslVerify &quot;false&quot;、
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834491963.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Git.html'>Git</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -571,6 +565,12 @@ git config http.sslVerify &quot;false&quot;、
 	      
 		      
 			      <li class="post">
+			        <a href="15444306104604.html">Advanced Debugging with Xcode and LLDB</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15439873228318.html">UINavigationItem</a>
 			      </li>
 		     
@@ -590,12 +590,6 @@ git config http.sslVerify &quot;false&quot;、
 		      
 			      <li class="post">
 			        <a href="15433939231870.html">dispatch_semaphore_t 信号量</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15433701207076.html">_cmd 与 runtime 的结合</a>
 			      </li>
 		     
 		  

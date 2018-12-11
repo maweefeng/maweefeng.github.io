@@ -128,6 +128,43 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15427834492767.html">
+                
+                  <h1>UISearchbar 自定义搜索图标失真</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	关于Searchbar设置搜索图标的问题
+因为这个大小在iOS中是固定的14*14
+如果UI给的切图不是这个尺寸就会出现失真的情况（ps：因为视图的默认contentMode是UIViewContentModeScaleToFill）
+网上有的方法一般是设置一个继承自UITextfield的searchBar
+去修改SearchBar的leftView。
+...
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15427834492767.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15427834492830.html">
                 
                   <h1>CAMediaTimingFunction获取控制点：</h1>
@@ -429,65 +466,6 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15427834493345.html">
-                
-                  <h1>高效的画线</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>先创建一个UIBeizerPath 的对象path</p>
-
-<pre><code>UIBezierPath *path = [[UIBezierPath alloc] init];
-  [path moveToPoint:CGPointMake(175, 100)];
-  
-  [path addArcWithCenter:CGPointMake(150, 100) radius:25 startAngle:0 endAngle:2*M_PI clockwise:YES];
-  [path moveToPoint:CGPointMake(150, 125)];
-  [path addLineToPoint:CGPointMake(150, 175)];
-  [path addLineToPoint:CGPointMake(125, 225)];
-  [path moveToPoint:CGPointMake(150, 175)];
-  [path addLineToPoint:CGPointMake(175, 225)];
-  [path moveToPoint:CGPointMake(100, 150)];
-  [path addLineToPoint:CGPointMake(200, 150)];
-</code></pre>
-
-<p>然后创建CAShapeLayer添加到视图的layer上 </p>
-
-<pre><code>CAShapeLayer *shapeLayer = [CAShapeLayer layer];
-  shapeLayer.strokeColor = [UIColor redColor].CGColor;
-  shapeLayer.fillColor = [UIColor clearColor].CGColor;
-  shapeLayer.lineWidth = 5;
-  shapeLayer.lineJoin = kCALineJoinRound;
-  shapeLayer.lineCap = kCALineCapRound;
-  shapeLayer.path = path.CGPath;
-  //add it to our view
-  [self.containerView.layer addSublayer:shapeLayer];
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2017/10/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -565,6 +543,12 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
 	      
 		      
 			      <li class="post">
+			        <a href="15444306104604.html">Advanced Debugging with Xcode and LLDB</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15439873228318.html">UINavigationItem</a>
 			      </li>
 		     
@@ -584,12 +568,6 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
 		      
 			      <li class="post">
 			        <a href="15433939231870.html">dispatch_semaphore_t 信号量</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15433701207076.html">_cmd 与 runtime 的结合</a>
 			      </li>
 		     
 		  

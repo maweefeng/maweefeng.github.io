@@ -128,6 +128,56 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15427945343440.html">
+                
+                  <h1>消除CocoaPods引入第三方SDK的警告</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>有些强迫症不能看到xcode编译报出的警告⚠️，所以在podfile中添加一行<br/>
+<code>inhibit_all_warnings!</code><br/>
+如果没有多个<code>target</code>或者需要所有都隐藏这个黄色警告就在最外层写</p>
+
+<pre><code class="language-#"># platform :ios, &#39;9.0&#39;
+inhibit_all_warnings!
+
+target &#39;MVVM&#39; do
+  # Uncomment the next line if you&#39;re using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+   pod &#39;ReactiveObjC&#39;, &#39;~&gt; 3.1.0&#39;
+   pod &#39;MBProgressHUD&#39;, &#39;~&gt; 1.1.0&#39;
+   pod &#39;MJRefresh&#39;, &#39;~&gt; 3.1.15.7&#39;
+  # Pods for MVVM
+
+end
+</code></pre>
+
+<p>如果有多个target的话就可以在各个需要隐藏的target当中写上这句话</p>...
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15427945343440.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='CocoaPods.html'>CocoaPods</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15427857390238.html">
                 
                   <h1>关于我</h1>
@@ -448,43 +498,6 @@ tableView.clipsToBounds = false //这句最重要了，不然就显示不出来
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15427834491441.html">
-                
-                  <h1>设置图片拉伸范围</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<pre><code>- (UIImage *)stretchableImageWithLeftCapWidth:(NSInteger)leftCapWidth topCapHeight:(NSInteger)topCapHeight 
-</code></pre>
-
-<p>这个函数是UIImage的一个实例函数，它的功能是创建一个内容可拉伸，而边角不拉伸的图片，需要两个参数，第一个是左边不拉伸区域的宽度，第二个参数是上面不拉伸的高度。</p>
-
-<p>根据设置的宽度和</p>...
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834491441.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -562,6 +575,12 @@ tableView.clipsToBounds = false //这句最重要了，不然就显示不出来
 	      
 		      
 			      <li class="post">
+			        <a href="15444306104604.html">Advanced Debugging with Xcode and LLDB</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15439873228318.html">UINavigationItem</a>
 			      </li>
 		     
@@ -581,12 +600,6 @@ tableView.clipsToBounds = false //这句最重要了，不然就显示不出来
 		      
 			      <li class="post">
 			        <a href="15433939231870.html">dispatch_semaphore_t 信号量</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15433701207076.html">_cmd 与 runtime 的结合</a>
 			      </li>
 		     
 		  

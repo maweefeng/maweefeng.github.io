@@ -128,6 +128,42 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15427834491002.html">
+                
+                  <h1>代理修饰符</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">为什么代理修饰要用weak而不是assgin</h3>
+
+<p>weak 一旦不被引用的时候就不会再使用了，就会被置位nil，oc中使用nil执行操作不会引起崩溃，所以即使再次使用也不会产生野指针。<br/><br/>
+但是如果是用assgin修饰，一旦不被引用不会自动置nil,当再次操作这个对象的代理方法的时候就会产生野指针引起程序崩溃。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15427834491194.html">
                 
                   <h1>隐藏导航栏底部的线条</h1>
@@ -422,70 +458,6 @@ tableView.clipsToBounds = false //这句最重要了，不然就显示不出来
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15427834491690.html">
-                
-                  <h1>Runtime运行时</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ol>
-<li><p>runtime调用方法</p>
-
-<pre><code>- (void)test {
-TestModel *objct = [[TestModel alloc] init];
-((void (*) (id, SEL)) objc_msgSend) (objct, sel_registerName(&quot;country&quot;));
-((void (*) (id, SEL, NSString *)) objc_msgSend) (objct, sel_registerName(&quot;getProvince:&quot;), @&quot;广东省&quot;)；
-((void (*) (id, SEL, NSString *, NSString *)) objc_msgSend) (objct, sel_registerName(&quot;getCity:station:&quot;), @&quot;深圳市&quot;, @&quot;世界之窗&quot;)；
-NSString *weather = ((NSString* (*) (id, SEL)) objc_msgSend) (objct, sel_registerName(&quot;getWeather&quot;));
-NSLog(@&quot;%@&quot;, weather);
-}
-</code></pre></li>
-<li><p>给分类添加属性</p>
-
-<pre><code class="language-#import">#import &lt;objc/runtime.h&gt;
-static void *TestStringKey = &amp;TestStringKey;
-@implementation TestModel (String)
-- (void)setTestString:(NSString *)testString {
-objc_setAssociatedObject(self, TestStringKey, testString, OBJC_ASSOCIATION_COPY);
-}
-- (NSString *)testString {
-return objc_getAssociatedObject(self, TestStringKey);
-}
-@end
-</code></pre></li>
-<li><p>获取属性</p>
-
-<pre><code>使用class_copyIvarList获得的属性数组是Ivar类型 
-可以使用ivar_getName将ivar类型转换为char
-再使用NSString 的stringWithUTF8String方法转化为NSString类型。
-</code></pre></li>
-</ol>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -563,6 +535,12 @@ return objc_getAssociatedObject(self, TestStringKey);
 	      
 		      
 			      <li class="post">
+			        <a href="15444306104604.html">Advanced Debugging with Xcode and LLDB</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15439873228318.html">UINavigationItem</a>
 			      </li>
 		     
@@ -582,12 +560,6 @@ return objc_getAssociatedObject(self, TestStringKey);
 		      
 			      <li class="post">
 			        <a href="15433939231870.html">dispatch_semaphore_t 信号量</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15433701207076.html">_cmd 与 runtime 的结合</a>
 			      </li>
 		     
 		  
