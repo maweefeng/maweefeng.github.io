@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>
     
-    Code Log 👨‍💻‍ 
+    What's New in LLVM（2017） - Code Log 👨‍💻‍ 
     
   </title>
   
@@ -119,65 +119,38 @@
 
 
       <section id="main-content" role="main" class="scroll-container"> <script type="text/javascript">
-	$(function(){
-		$('#menu_item_index').addClass('is_active');
-	});
+  $(function () {
+    $('#menu_item_index').addClass('is_active');
+  });
 </script>
 <div class="row">
-	<div class="large-8 medium-8 columns">
-		<div class="markdown-body home-categories">
-		
-			<div class="article">
-                <a class="clearlink" href="15426952413956.html">
-                
-                  <h1>Masonry布局“Unable to simultaneously satisfy constraints”</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>出现这个问题是设置约束优先级错误，设置一下约束的优先级就行。</p>
-
-<pre><code>[self.doctorTitle mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.title.mas_left);
-            make.right.equalTo(self.title.mas_right);
-            make.top.equalTo(self.topline.mas_bottom).offset(10).priorityHigh();
-            make.height.mas_equalTo(@14);
-}];
-
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2017/11/20</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
+  <div class="large-8 medium-8 columns">
+    <div class="markdown-body article-wrap">
+      <div class="article">
         
-			<div class="article">
-                <a class="clearlink" href="15446033549417.html">
-                
-                  <h1>What's New in LLVM（2017）</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">1.不同语言的api检查</h2>
+        <h1>What's New in LLVM（2017）</h1>
+
+        <div class="read-more clearfix">
+          <span class="date">2017/11/12</span>
+
+          <span>posted in&nbsp;</span> 
+          
+          <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          
+
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <div class="addthis_inline_share_toolbox"></div>
+      </div><!-- article -->
+
+      <div class="article-content">
+        <h2 id="toc_0">1.不同语言的api检查</h2>
 
 <pre><code>@available(iOS 11,*)--oc
 #available  --swift
@@ -249,159 +222,61 @@ return self.photoCount &gt; 0
 
 <p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%886.43.05.png" alt="屏幕快照 2018-12-12 下午6.43.05"/></p>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2017/11/12</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834493345.html">
-                
-                  <h1>高效的画线</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>先创建一个UIBeizerPath 的对象path</p>
-
-<pre><code>UIBezierPath *path = [[UIBezierPath alloc] init];
-  [path moveToPoint:CGPointMake(175, 100)];
-  
-  [path addArcWithCenter:CGPointMake(150, 100) radius:25 startAngle:0 endAngle:2*M_PI clockwise:YES];
-  [path moveToPoint:CGPointMake(150, 125)];
-  [path addLineToPoint:CGPointMake(150, 175)];
-  [path addLineToPoint:CGPointMake(125, 225)];
-  [path moveToPoint:CGPointMake(150, 175)];
-  [path addLineToPoint:CGPointMake(175, 225)];
-  [path moveToPoint:CGPointMake(100, 150)];
-  [path addLineToPoint:CGPointMake(200, 150)];
-</code></pre>
-
-<p>然后创建CAShapeLayer添加到视图的layer上 </p>
-
-<pre><code>CAShapeLayer *shapeLayer = [CAShapeLayer layer];
-  shapeLayer.strokeColor = [UIColor redColor].CGColor;
-  shapeLayer.fillColor = [UIColor clearColor].CGColor;
-  shapeLayer.lineWidth = 5;
-  shapeLayer.lineJoin = kCALineJoinRound;
-  shapeLayer.lineCap = kCALineCapRound;
-  shapeLayer.path = path.CGPath;
-  //add it to our view
-  [self.containerView.layer addSublayer:shapeLayer];
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2017/10/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834493281.html">
-                
-                  <h1>为什么NSString使用Copy修饰符</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h6 id="toc_0">NSString为什么要用copy关键字，用strong会有什么问题？</h6>
-
-<p>我们大部分的时候NSString的属性都是copy，那copy与strong的情况下到底有什么区别呢?我们以实例来说明：</p>
-
-<pre><code>@interface ViewController ()
-@property(nonatomic,copy)NSString * str1;
-@property(nonatomic,strong)NSString*str2;
-@end
-
--(void)test
-{
-    NSMutableString*str=[NSMutableString stringWithFormat:@&quot;helloworld&quot;];
-    self.str1=str;
-    self.str2=str;
-    NSLog(@&quot;str:%p--%p&quot;,str,&amp;str);
-    NSLog(@&quot;copy_str:%p--%p&quot;,_str1,&amp;_str1);
-    NSLog(@&quot;strong_str:%p--%p&quot;,_str2,&amp;_str2);
-}
-</code></pre>
-
-<p>最后我们运行看打印结...</p>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834493281.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2017/9/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-              
 
 
-			<div class="row">
-			  <div class="large-6 columns">
-			  <p class="text-left" style="padding-top:25px;">
-			   <a href="all_4.html">&laquo; Prev Page</a>  
-			  </p>
-			  </div>
-			  <div class="large-6 columns">
-			<p class="text-right" style="padding-top:25px;">
-			
-			</p>
-			  </div>
-			</div>
-		</div>
-	</div><!-- large 8 -->
 
- <div class="large-4 medium-4 columns">
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+          <p class="text-left" style="padding:15px 0px;">
+            
+            <a href="15426952413956.html" title="Previous Post: Masonry布局“Unable to simultaneously satisfy constraints”">&laquo; Masonry布局“Unable to simultaneously satisfy constraints”</a>
+            
+          </p>
+        </div>
+        <div class="large-6 columns">
+          <p class="text-right" style="padding:15px 0px;">
+            
+            <a href="15427834493345.html" title="Next Post: 高效的画线">高效的画线
+              &raquo;</a>
+            
+          </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5bfe6ae3f692f811"></script>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://maweefeng.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<script id="dsq-count-scr" src="//maweefeng.disqus.com/count.js" async></script>
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 --> <div class="large-4 medium-4 columns">
   <div class="hide-for-small">
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
