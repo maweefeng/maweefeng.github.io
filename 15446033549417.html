@@ -150,7 +150,9 @@
       </div><!-- article -->
 
       <div class="article-content">
-        <h2 id="toc_0">1.不同语言的api检查</h2>
+        <p>Xcode 9中的Apple LLVM编译器具有新的语言特性、改进的诊断和更强大的优化。了解Objective-C和c++的最新添加，了解新的和改进的警告和静态分析器检查，了解LLVM编译器技术如何为应用程序提供更快的构建时间和更好的运行时性能。</p>
+
+<h2 id="toc_0">1.不同语言的api检查</h2>
 
 <pre><code>@available(iOS 11,*)--oc
 #available  --swift
@@ -222,6 +224,47 @@ return self.photoCount &gt; 0
 
 <p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%886.43.05.png" alt="屏幕快照 2018-12-12 下午6.43.05"/></p>
 
+<h2 id="toc_5">4. 声明无参数的函数</h2>
+
+<h5 id="toc_6">Non-prototype declarations in C and Objective-C</h5>
+
+<p>非原型声明</p>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.47.06.png" alt="屏幕快照 2018-12-13 下午3.47.06"/></p>
+
+<p>在C和OC中意味着foo可以跟任何参数调用，这个行为可以追溯到1977年C语言，不匹配类型的调用会导致运行时的崩溃。<br/>
+在Xcode9 中编译器带有一个新的警告加强严格原型，会报出警告。</p>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.50.45.png" alt="屏幕快照 2018-12-13 下午3.50.45"/></p>
+
+<p>通常只需要在括号中添加void表示不接收任何参数传递。</p>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.51.41.png" alt="屏幕快照 2018-12-13 下午3.51.41"/></p>
+
+<p>任何带有参数的调用都会直接报错。</p>
+
+<p>另外block中不接收参数的时候也会出现同样的警告，如下所示。</p>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.52.47.png" alt="屏幕快照 2018-12-13 下午3.52.47"/></p>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.53.57.png" alt="屏幕快照 2018-12-13 下午3.53.57"/></p>
+
+<h3 id="toc_7">升级验证警告设置</h3>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%884.08.45.png" alt="屏幕快照 2018-12-13 下午4.08.45"/></p>
+
+<p>勾选Yes(Error)</p>
+
+<h6 id="toc_8">Strict Prototypes 勾选Yes(Error)之前 and 勾选之后</h6>
+
+<p><img src="media/15446033549417/Artboard%202@2x.png" alt="Artboard 2@2x"/></p>
+
+<p>勾选之后就不只是警告了，直接是错误提醒，让你开发的时候不得不注意，也是为了代码的安全性。</p>
+
+<h3 id="toc_9">结尾</h3>
+
+<p>WWDC2017剩余部分是关于C++的优化，如果感兴趣的话可以移步<a href="https://developer.apple.com/videos/play/wwdc2017/411">开发者网站</a>观看。</p>
+
 
 
 
@@ -231,14 +274,14 @@ return self.photoCount &gt; 0
         <div class="large-6 columns">
           <p class="text-left" style="padding:15px 0px;">
             
-            <a href="15426952413956.html" title="Previous Post: Masonry布局“Unable to simultaneously satisfy constraints”">&laquo; Masonry布局“Unable to simultaneously satisfy constraints”</a>
+            <a href="15427834493214.html" title="Previous Post: iOS开发一些小技巧">&laquo; iOS开发一些小技巧</a>
             
           </p>
         </div>
         <div class="large-6 columns">
           <p class="text-right" style="padding:15px 0px;">
             
-            <a href="15427834493345.html" title="Next Post: 高效的画线">高效的画线
+            <a href="15445109745059.html" title="Next Post: Love at First Launch">Love at First Launch
               &raquo;</a>
             
           </p>
@@ -335,7 +378,7 @@ s.setAttribute('data-timestamp', +new Date());
 	      
 		      
 			      <li class="post">
-			        <a href="15445081328797.html">App Icon Design</a>
+			        <a href="15446970341146.html">Building Apps with Dynamic Type</a>
 			      </li>
 		     
 		  
@@ -347,19 +390,19 @@ s.setAttribute('data-timestamp', +new Date());
 		  
 		      
 			      <li class="post">
-			        <a href="15439873228318.html">UINavigationItem</a>
+			        <a href="15427834493214.html">iOS开发一些小技巧</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15439179971062.html">iOS开发代码规范</a>
+			        <a href="15446033549417.html">What's New in LLVM（2017）</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15438021304374.html">Swift & Objective-C & C++之间的混编</a>
+			        <a href="15445109745059.html">Love at First Launch</a>
 			      </li>
 		     
 		  

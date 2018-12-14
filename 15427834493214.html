@@ -151,8 +151,7 @@
 
       <div class="article-content">
         <ul>
-<li>去掉xcode黄色警告的方法</li>
-</ul>
+<li><p>去掉xcode黄色警告的方法</p>
 
 <pre><code>#pragma clang diagnostic push
 #pragma clang diagnostic ignored &quot;-Wdeprecated-declarations&quot;
@@ -163,21 +162,15 @@
 #pragma clang diagnostic ignored &quot;-Wunused-variable&quot;
  your code with warning
 #pragma clang diagnostic pop
-</code></pre>
-
-<ul>
-<li>控制器init方法执行时间</li>
-</ul>
+</code></pre></li>
+<li><p>控制器init方法执行时间</p>
 
 <pre><code>_coverView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
 在控制器init方法中初始化一个大小为self.view.bounds的uiview必须等待视图出来的时候才会进行，要不然一直在主线程等待。
 如果直接给CGRectmake设置的话不用等界面加载就会执行，应该是一个主线程问题。 
 这个时候如果直接去xib里面的控件，就会出现取不到的情况，取出来是nil。
-</code></pre>
-
-<ul>
-<li>判断字符串为空</li>
-</ul>
+</code></pre></li>
+<li><p>判断字符串为空</p>
 
 <pre><code>今天遇到个问题，后台用java写的，给我传回一个空字符串，类型是NSNull，用
 stringWithFormat:转出来居然是@&quot;&lt;null&gt;&quot;，
@@ -187,11 +180,8 @@ stringWithFormat:转出来居然是@&quot;&lt;null&gt;&quot;，
 <pre><code>去掉UITableView多余的空白行分割线
 有一种简单的方法
 self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-</code></pre>
-
-<ul>
-<li>如何将本地代码提交到远程git仓库</li>
-</ul>
+</code></pre></li>
+<li><p>如何将本地代码提交到远程git仓库</p>
 
 <pre><code>* 第一步：建立git仓库 
 cd到你的本地项目根目录下，执行git命令 
@@ -211,44 +201,36 @@ cd到你的本地项目根目录下，执行git命令
   git push -u origin master -f //强制push
   每次如果有代码需要提交必须要add一下 并且在本地commit 打下log 再去拉取remote代码，
   然后push到remote的这样一个流程。
-</code></pre>
-
-<ul>
-<li>button 的文字显示不全</li>
-</ul>
+</code></pre></li>
+<li><p>button 的文字显示不全</p>
 
 <pre><code> [label setAdjustsFontForContentSizeCategory:YES]调节字体大小.
-</code></pre>
-
-<ul>
-<li>从xib加载View</li>
-</ul>
+</code></pre></li>
+<li><p>从xib加载View</p>
 
 <pre><code>// Instantiate the nib content without any reference to it.
 NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:@&quot;EPPZPlainView&quot; owner:nil options:nil];
-  
+
 // Find the view among nib contents (not too hard assuming there is only one view in it).
 UIView *plainView = [nibContents lastObject];
-  
+
 // Some hardcoded layout.
 CGSize padding = (CGSize){ 22.0, 22.0 };
 plainView.frame = (CGRect){padding.width, padding.height, plainView.frame.size};
-  
+
 // Add to the view hierarchy (thus retain).
 [self.view addSubview:plainView];
-</code></pre>
+</code></pre></li>
+<li><p>修改导航条的颜色</p>
 
-<ul>
-<li>修改导航条的颜色</li>
+<pre><code>self.navigationController.navigationBar.barTintColor = [UIColor redColor];```
+</code></pre></li>
 </ul>
 
-<p><code>self.navigationController.navigationBar.barTintColor = [UIColor redColor];</code></p>
-
 <ul>
-<li>当某个UIView调用drawRect方法之后，它的默认背景就是黑色的</li>
-</ul>
+<li><p>当某个UIView调用drawRect方法之后，它的默认背景就是黑色的</p>
 
-<p>解决办法有在初始化的时候设置backgroundColor   ` </p>
+<p>解决办法有在初始化的时候设置backgroundColor</p>
 
 <pre><code>- (void)awakeFromNib {
     [super awakeFromNib];
@@ -264,11 +246,8 @@ plainView.frame = (CGRect){padding.width, padding.height, plainView.frame.size};
     }
     return self;
 }
-</code></pre>
-
-<ul>
-<li>或者在drawRect里面写下如下代码 </li>
-</ul>
+</code></pre></li>
+<li><p>或者在drawRect里面写下如下代码 </p>
 
 <pre><code>- (void)drawRect:(CGRect)rect
 {
@@ -276,33 +255,27 @@ plainView.frame = (CGRect){padding.width, padding.height, plainView.frame.size};
     [[UIColor blueColor] setFill];  // changes are here
     UIRectFill(rect);               // and here 
 }
-</code></pre>
-
-<ul>
-<li>主线程死锁</li>
-</ul>
+</code></pre></li>
+<li><p>主线程死锁</p>
 
 <pre><code>    NSLog(@&quot;1---%@&quot;,[NSThread currentThread]);
     dispatch_sync(dispatch_get_main_queue(), ^{
         NSLog(@&quot;2&quot;);
     });
     NSLog(@&quot;3&quot;);
-    
+
     NSLog(@&quot;1---%@&quot;,[NSThread currentThread]);
     dispatch_async(dispatch_get_main_queue(), ^{
         NSLog(@&quot;2&quot;);
     });
     NSLog(@&quot;3&quot;);
     //打印顺序 1，3，2
-    
+
     先加入的通知先收到通知
     先去执行通知的内容
-    
-</code></pre>
 
-<ul>
-<li>解决tableviewsection悬浮的问题</li>
-</ul>
+</code></pre></li>
+<li><p>解决tableviewsection悬浮的问题</p>
 
 <pre><code>- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat sectionHeaderHeight = 50;
@@ -313,36 +286,42 @@ plainView.frame = (CGRect){padding.width, padding.height, plainView.frame.size};
     }
 }
 
-</code></pre>
-
-<ul>
-<li>NSURLSession请求</li>
-</ul>
+</code></pre></li>
+<li><p>NSURLSession请求</p>
 
 <pre><code> NSURLSession * session = [NSURLSession sharedSession];
     NSURLSessionDataTask * task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         NSDictionary * dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
-        
+
         NSLog(@&quot;%@&quot;,dic);
-        
+
     }];
     [task resume];
-</code></pre>
-
-<ul>
-<li>实现点击按钮出发一次震动，比如“即刻”app的点赞</li>
-</ul>
+</code></pre></li>
+<li><p>实现点击按钮出发一次震动，比如“即刻”app的点赞</p>
 
 <pre><code>导入AudioToolBox.framework
 在按钮的点击方法中执行
 AudioServicesPlaySystemSound(kSystemSo undID_Vibrate);//上面是震动方法 不灵巧
 
-
 可以使用最新的
  UIImpactFeedbackGenerator  * zhend = [[UIImpactFeedbackGenerator alloc]initWithStyle:UIImpactFeedbackStyleLight];
 
 [zhend impactOccurred];
+</code></pre></li>
+<li><p>getter方法中为何不能用self</p>
+
+<p>有经验的开发者应该都知道这一点，在getter方法中是不能使用self.的，比如：</p>
+
+<pre><code>- (NSString *)name
+{
+    NSLog(@&quot;rewrite getter&quot;);
+    return self.name;  // 错误的写法，会造成死循环
+}
 </code></pre>
+
+<p>原因代码注释中已经写了，这样会造成死循环。这里需要注意的是：self.name实际上就是执行了属性name的getter方法，getter方法中又调用了self.name， 会一直递归调用，直到程序崩溃。</p></li>
+</ul>
 
 
 
@@ -353,14 +332,14 @@ AudioServicesPlaySystemSound(kSystemSo undID_Vibrate);//上面是震动方法 �
         <div class="large-6 columns">
           <p class="text-left" style="padding:15px 0px;">
             
-            <a href="15427834493152.html" title="Previous Post: 检测离屏渲染了">&laquo; 检测离屏渲染了</a>
+            <a href="15444306104604.html" title="Previous Post: Advanced Debugging with Xcode and LLDB">&laquo; Advanced Debugging with Xcode and LLDB</a>
             
           </p>
         </div>
         <div class="large-6 columns">
           <p class="text-right" style="padding:15px 0px;">
             
-            <a href="15427815427067.html" title="Next Post: RACCommand">RACCommand
+            <a href="15446033549417.html" title="Next Post: What's New in LLVM（2017）">What's New in LLVM（2017）
               &raquo;</a>
             
           </p>
@@ -457,7 +436,7 @@ s.setAttribute('data-timestamp', +new Date());
 	      
 		      
 			      <li class="post">
-			        <a href="15445081328797.html">App Icon Design</a>
+			        <a href="15446970341146.html">Building Apps with Dynamic Type</a>
 			      </li>
 		     
 		  
@@ -469,19 +448,19 @@ s.setAttribute('data-timestamp', +new Date());
 		  
 		      
 			      <li class="post">
-			        <a href="15439873228318.html">UINavigationItem</a>
+			        <a href="15427834493214.html">iOS开发一些小技巧</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15439179971062.html">iOS开发代码规范</a>
+			        <a href="15446033549417.html">What's New in LLVM（2017）</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15438021304374.html">Swift & Objective-C & C++之间的混编</a>
+			        <a href="15445109745059.html">Love at First Launch</a>
 			      </li>
 		     
 		  

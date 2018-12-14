@@ -1,0 +1,500 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    
+    Love at First Launch - Code Log 👨‍💻‍ 
+    
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="Code Log 👨‍💻‍ " type="application/atom+xml">
+  <link rel="stylesheet" href="asset/css/foundation.min.css" />
+  <link rel="stylesheet" href="asset/css/docs.css" />
+  <script src="asset/js/vendor/modernizr.js"></script>
+  <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>
+    hljs.initHighlightingOnLoad();
+
+    window.onload = function () {
+
+      var footerPath = window.location.pathname.split('/')[window.location.pathname.split('/').length - 1];
+      if (footerPath == 'archives.html') {
+        // alert('分类');
+        document.getElementById('main-menu').getElementsByTagName("li")[1].className = "is_active";
+
+      } else if (footerPath == 'about.html') {
+        document.getElementById('main-menu').getElementsByTagName("li")[2].className = "is_active";
+
+        // alert('关于我');
+  
+      } else {
+        // alert('首页');
+        document.getElementById('main-menu').getElementsByTagName("li")[0].className = "is_active";
+      }
+
+
+    }
+  </script>
+  <script type="text/javascript">
+    function before_search() {
+      var searchVal = 'site: ' + document.getElementById('search_input').value;
+      document.getElementById('search_q').value = searchVal;
+      return true;
+    }
+  </script>
+</head>
+
+<body class="antialiased hide-extras">
+
+  <div class="marketing off-canvas-wrap" data-offcanvas>
+    <div class="inner-wrap">
+
+
+      <nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+        <section class="top-bar-section">
+          <div class="row">
+            <div style="position: relative;width:100%;">
+              <div style="position: absolute; width:100%;">
+                <ul id="main-menu" class="left">
+                  
+                  <li id=""><a id="" target="_self" href="index.html">Home</a></li>
+                  
+                  <li id=""><a id="" target="_self" href="archives.html">Archives</a></li>
+                  
+                  <li id=""><a id="" target="_self" href="about.html">About</a></li>
+                  
+                </ul>
+
+                <ul class="right" id="search-wrap">
+                  <li>
+                    <form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+                      <input type="hidden" id="search_q" name="q" value="" />
+                      <input tabindex="1" type="search" id="search_input" placeholder="Search" />
+                    </form>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </nav>
+
+      <nav class="tab-bar show-for-small">
+        <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+          <span> &nbsp; Code Log 👨‍💻‍ </span>
+        </a>
+      </nav>
+
+      <aside class="left-off-canvas-menu">
+        <ul class="off-canvas-list">
+
+          <li><a href="index.html">Home</a></li>
+          <li><a href="archives.html">Archives</a></li>
+          
+          <li><label>Categories</label></li>
+
+          
+          <li id="iOS"><a href="iOS.html">iOS</a></li>
+          
+          <li id="Git"><a href="Git.html">Git</a></li>
+          
+          <li id="CocoaPods"><a href="CocoaPods.html">CocoaPods</a></li>
+          
+          <li id="about"><a href="about.html">about</a></li>
+          
+
+        </ul>
+      </aside>
+
+      <a class="exit-off-canvas" href="#"></a>
+
+
+      <section id="main-content" role="main" class="scroll-container"> <script type="text/javascript">
+  $(function () {
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+    <div class="markdown-body article-wrap">
+      <div class="article">
+        
+        <h1>Love at First Launch</h1>
+
+        <div class="read-more clearfix">
+          <span class="date">2018/12/11</span>
+
+          <span>posted in&nbsp;</span> 
+          
+          <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          
+
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <div class="addthis_inline_share_toolbox"></div>
+      </div><!-- article -->
+
+      <div class="article-content">
+        <ul>
+<li>直接显示内容而不是弹出需要注册登录的页面</li>
+<li>通过交互引导用户，而不是一些文字引导</li>
+<li>延迟请求授权，而不是一下登录之后就开始要权限（定位，相机，图片）。</li>
+</ul>
+
+<p>针对延迟请求，想到一个好主意，就是新建一个类，可以是单例，负责管理这些请求。</p>
+
+<h1 id="toc_0">App Startup Time: Past, Present, and Future</h1>
+
+<p>了解在苹果平台上使用的dyld动态链接器，它是如何在这些年来发生变化的，以及它下一步的发展方向。了解改进的工具如何使优化应用程序的启动时间变得更容易，并了解dyld中的新更改如何进一步改善启动时间。</p>
+
+<ul>
+<li><p>startup time 启动时间</p>
+
+<p>main函数执行之前所用的时间</p></li>
+<li><p>launch closure启动收尾</p>
+
+<p>启动你的程序所需要的全部信息，比如使用什么dylib，他们的哪些偏移位置用于不同的符号，代码签名是什么，</p></li>
+</ul>
+
+<h2 id="toc_1">Improving App Startup Time</h2>
+
+<p>Do less！</p>
+
+<ul>
+<li>Ember fewer dylibs</li>
+<li>Declear fewer classes/methods</li>
+<li>Use fewer initializers</li>
+</ul>
+
+<p>减少代码，代码越少，启动速度越快。使用更少的dylib，减少嵌入的dylib,使用系统库效果会更好。应该声明较少的库和方法，减少初始化函数( <u>初始化函数是在main函数执行之前执行</u> )。</p>
+
+<p>Use more Swift</p>
+
+<ul>
+<li>No initializers</li>
+<li>Swift size improvements</li>
+</ul>
+
+<p>因为Swift从设计上避免了许多的陷阱，在c、c+++、oc可能遇到这些陷阱。<br/>
+Swift没有初始化器，不允许特定类型的未对齐的数据结构。所以转向Swift可以让你更容易获得快速的程序启动(Apple says)。</p>
+
+<h2 id="toc_2">Static initilizer tracing</h2>
+
+<p>静态初始化追踪器，instrument提供每个静态初始化器的准确时间。方便知道初始化的过程花费了多久的时间。</p>
+
+<p><img src="media/15445109745059/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%883.33.52.png" alt="屏幕快照 2018-12-11 下午3.33.52"/></p>
+
+<h2 id="toc_3">dyld3</h2>
+
+<h4 id="toc_4">为什么推出dylb3</h4>
+
+<p>提升速度（启动应用的时候尽量多的减少工程量）<br/>
+增强安全（更积极的安全检查）<br/>
+可测试性和可靠性</p>
+
+<h4 id="toc_5">怎么做到上述目标</h4>
+
+<ul>
+<li><p>速度</p>
+
+<ul>
+<li><p>把复杂操作dylb移出进程</p>
+
+<ul>
+<li>现在大多数dylb只是普通的后台程序</li>
+</ul></li>
+<li><p>允许部分dylb驻留在进程之中</p>
+
+<ul>
+<li>减少受攻击面积（驻留部分要尽可能少）</li>
+<li>提高启动速度
+
+<ul>
+<li>最快的代码就是你不写代码</li>
+<li>关注那些你几乎不执行的代码</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><p>安全</p>
+
+<ul>
+<li><p>确定安全敏感性组件身份</p>
+
+<ul>
+<li>边界检查</li>
+<li>@rpath 攻击</li>
+</ul></li>
+<li><p>标识可占用缓存的组件</p>
+
+<ul>
+<li>依赖关系不会改变</li>
+<li>符号在库中的偏移位置不会发生改变 </li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p><img src="media/15445109745059/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%885.36.31.png" alt="屏幕快照 2018-12-11 下午5.36.31"/></p>
+
+<p>dylb3有三个部分</p>
+
+<ul>
+<li>一个进程外的macho 解析编译器</li>
+<li>一个进程内的处理闭包（launch closures）的引擎</li>
+<li>一个缓存服务的启动闭包（launch closures）</li>
+</ul>
+
+<p>大多数启动的时候使用缓存不会触发进程外的mach-o parser/compiler<br/>
+launch closures比mach-o更简单<br/>
+launch closures为速度而构建</p>
+
+<h3 id="toc_6">使用dylb3要注意什么</h3>
+
+<p>完全兼容dylb2.x</p>
+
+<ul>
+<li>一些apis关闭了dylb3的优化导致程序变慢或者会在dylb3中使用回退模式</li>
+<li>一些为dylb2.x的优化不再有任何影响</li>
+</ul>
+
+<p>严格的链接语义<br/>
+在加入新动态连接器后，很多的语义可能现在还无法使用，甚至是错误的。</p>
+
+<ul>
+<li>放入一个支持旧二进制数据的工作区</li>
+<li>新的二进制数据可能导致链接错误 </li>
+</ul>
+
+
+
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+          <p class="text-left" style="padding:15px 0px;">
+            
+            <a href="15446033549417.html" title="Previous Post: What's New in LLVM（2017）">&laquo; What's New in LLVM（2017）</a>
+            
+          </p>
+        </div>
+        <div class="large-6 columns">
+          <p class="text-right" style="padding:15px 0px;">
+            
+            <a href="15445081328797.html" title="Next Post: App Icon Design">App Icon Design
+              &raquo;</a>
+            
+          </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5bfe6ae3f692f811"></script>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://maweefeng.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<script id="dsq-count-scr" src="//maweefeng.disqus.com/count.js" async></script>
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 --> <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <div class="site-a-logo"><img src="/asset/img/logo.png" /></div>
+            
+                <h1>Code Log 👨‍💻‍ </h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="github" target="_blank" href="https://github.com/maweefeng" title="GitHub">GitHub</a>
+<a target="_blank" class="email" href="mailto:maweefeng@gmail.com" title="Email">Email</a>
+  <!-- <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a> -->
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="iOS.html"><strong>iOS</strong></a>
+        
+            <a href="Git.html"><strong>Git</strong></a>
+        
+            <a href="CocoaPods.html"><strong>CocoaPods</strong></a>
+        
+            <a href="about.html"><strong>about</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15446970341146.html">Building Apps with Dynamic Type</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15444306104604.html">Advanced Debugging with Xcode and LLDB</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15427834493214.html">iOS开发一些小技巧</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15446033549417.html">What's New in LLVM（2017）</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15445109745059.html">Love at First Launch</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <!-- <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p> -->
+<p class="copyright">日光之下 永无新事</p>
+</div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    <script src="asset/chart/all-min.js"></script><script type="text/javascript">$(function(){    var mwebii=0;    var mwebChartEleId = 'mweb-chart-ele-';    $('pre>code').each(function(){        mwebii++;        var eleiid = mwebChartEleId+mwebii;        if($(this).hasClass('language-sequence')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = Diagram.parse($(this).text());            diagram.drawSVG(eleiid,{theme: 'simple'});        }else if($(this).hasClass('language-flow')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = flowchart.parse($(this).text());            diagram.drawSVG(eleiid);        }    });});</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+
+  </body>
+</html>

@@ -128,23 +128,45 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15428536881209.html">
+                <a class="clearlink" href="15427834491690.html">
                 
-                  <h1>被神化的MVVM和被错误认识的Model层</h1>
+                  <h1>Runtime运行时</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>MVVM是一种双向绑定技术，使用VM实现数据的变化更新视图，视图的变化更新数据的处理，整个过程是一种数据绑定的过程。<br/>
-网络上可以看到大多数人吹捧MVVM，但是千奇百怪的，并没有人能很好的理解MVVM，反而使代码变得异常复杂。<br/>
-<code>MVC的关系图</code></p>
+                        	<ol>
+<li><p>runtime调用方法</p>
 
-<pre><code class="language-sequence">V层-&gt;C层:事件
-Note right of V层:特殊情况下可以持有M层
-C层-&gt;V层:创建/更新
-C层-&gt;M层: 调用
-M层-&gt;C层: 通知
-</code></pre>
+<pre><code>- (void)test {
+TestModel *objct = [[TestModel alloc] init];
+((void (*) (id, SEL)) objc_msgSend) (objct, sel_registerName(&quot;country&quot;));
+((void (*) (id, SEL, NSString *)) objc_msgSend) (objct, sel_registerName(&quot;getProvince:&quot;), @&quot;广东省&quot;)；
+((void (*) (id, SEL, NSString *, NSString *)) objc_msgSend) (objct, sel_registerName(&quot;getCity:station:&quot;), @&quot;深圳市&quot;, @&quot;世界之窗&quot;)；
+NSString *weather = ((NSString* (*) (id, SEL)) objc_msgSend) (objct, sel_registerName(&quot;getWeather&quot;));
+NSLog(@&quot;%@&quot;, weather);
+}
+</code></pre></li>
+<li><p>给分类添加属性</p>
+
+<pre><code class="language-#import">#import &lt;objc/runtime.h&gt;
+static void *TestStringKey = &amp;TestStringKey;
+@implementation TestModel (String)
+- (void)setTestString:(NSString *)testString {
+objc_setAssociatedObject(self, TestStringKey, testString, OBJC_ASSOCIATION_COPY);
+}
+- (NSString *)testString {
+return objc_getAssociatedObject(self, TestStringKey);
+}
+@end
+</code></pre></li>
+<li><p>获取属性</p>
+
+<pre><code>使用class_copyIvarList获得的属性数组是Ivar类型 
+可以使用ivar_getName将ivar类型转换为char
+再使用NSString 的stringWithUTF8String方法转化为NSString类型。
+</code></pre></li>
+</ol>
 
                         
                       </div>
@@ -152,8 +174,8 @@ M层-&gt;C层: 通知
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15428536881209.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/22</span>
+                  
+                    <span class="date">2018/11/21</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -170,43 +192,37 @@ M层-&gt;C层: 通知
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427945343440.html">
+                <a class="clearlink" href="15427834491747.html">
                 
-                  <h1>消除CocoaPods引入第三方SDK的警告</h1>
+                  <h1>终端命令</h1>
                   <div class="a-content">
                       
+		                  <div class="a-content-img">
+                      		<img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fuch6fzertj30iy0da0ur.jpg" />
+                      	  </div>
+		              
                       <div class="a-content-text">
                         
-                        	<p>有些强迫症不能看到xcode编译报出的警告⚠️，所以在podfile中添加一行<br/>
-<code>inhibit_all_warnings!</code><br/>
-如果没有多个<code>target</code>或者需要所有都隐藏这个黄色警告就在最外层写</p>
+                        	<p>我们可以在 terminal 用 system profiler 命令来获取连接 mac 的 usb 设备：<br/>
+system_profiler SPUSBDataType</p>
 
-<pre><code class="language-#"># platform :ios, &#39;9.0&#39;
-inhibit_all_warnings!
-
-target &#39;MVVM&#39; do
-  # Uncomment the next line if you&#39;re using Swift or would like to use dynamic frameworks
-  # use_frameworks!
-   pod &#39;ReactiveObjC&#39;, &#39;~&gt; 3.1.0&#39;
-   pod &#39;MBProgressHUD&#39;, &#39;~&gt; 1.1.0&#39;
-   pod &#39;MJRefresh&#39;, &#39;~&gt; 3.1.15.7&#39;
-  # Pods for MVVM
-
-end
-</code></pre>
-
-<p>如果有多个target的话就可以在各个需要隐藏的target当中写上这句话</p>...
+<ul>
+<li>ls 查看当前路径下的文件以及文件夹的名字</li>
+<li>ls /bin 表示查看根目录下的bin文件夹的东西</li>
+<li>ls docments 查看当前路径下documents文件夹下的所有东西</li>
+<li>cd .. 跳转到当前路</li>
+</ul>...
                         
                       </div>
                   </div>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15427945343440.html">Read more</a>&nbsp;&nbsp; 
+                   <a href="15427834491747.html">Read more</a>&nbsp;&nbsp; 
                     <span class="date">2018/11/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='CocoaPods.html'>CocoaPods</a></span>
+          					    <span class="posted-in"><a href='Git.html'>Git</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -275,17 +291,70 @@ end
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834491002.html">
+                <a class="clearlink" href="15439179971062.html">
                 
-                  <h1>代理修饰符</h1>
+                  <h1>iOS开发代码规范</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h3 id="toc_0">为什么代理修饰要用weak而不是assgin</h3>
+                        	<p>针对我的开发经验ViewController应该是这样的。</p>
 
-<p>weak 一旦不被引用的时候就不会再使用了，就会被置位nil，oc中使用nil执行操作不会引起崩溃，所以即使再次使用也不会产生野指针。<br/><br/>
-但是如果是用assgin修饰，一旦不被引用不会自动置nil,当再次操作这个对象的代理方法的时候就会产生野指针引起程序崩溃。</p>
+<pre><code>#pragma mark - Life Cycle|生命周期
+#pragma mark - UITableViewDataSource and UITableViewDelegate|主要是一些代理的方法
+#pragma mark - Private Method|私有方法（内部可调用）
+#pragma mark - Public  Method|公有方法
+#pragma mark - Set &amp; Get|getter 和 setter方法
+#pragma mark - Notification|接收通知之后执行的方法
+#pragma mark - Event|一些视图的点击事件 比如button
+#pragma mark - DelegeteHandler|代理的实现时间
+</code></pre>
+
+<h2 id="toc_0">1️⃣代码命名基础</h2>
+
+<h3 id="toc_1">①一般原则</h3>
+
+<ul>
+<li><p>明晰</p>
+
+<ul>
+<li><p>尽可能保持清晰和简洁是件好事，但由于简洁，清晰度不应受到影响：</p>
+
+<p>比如<code>insertObject:atIndex:</code>比较清晰，而<code>insert:at:</code>却不知道发生了什么...</p></li>
+</ul></li>
+</ul>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15439179971062.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/12/4</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834491567.html">
+                
+                  <h1>视图的绘制周期</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>当view第一次在屏幕上显示的时候，系统会绘制它的内容，然后系统会截取内容的快照，并且将快照作为视图的可见外观，如果你永远不改变视图的内容，那么视图的绘制代码永远不会改变。如果更改了视图的内容，不用直接重新绘制，而是使用<code>setNeedsDisplay</code>或者<code>setNeedsDisplayInRect</code>方法是视图无效。这些方法会告知视图内容以及改变并且需要在下一次进行重绘。如果需要立马重绘，那么需要使用<code>layoutIfNeeded</code>方法。</p>
 
                         
                       </div>
@@ -311,86 +380,20 @@ end
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834491108.html">
+                <a class="clearlink" href="15427834491628.html">
                 
-                  <h1>You don’t have write permissions</h1>
+                  <h1>设置Cell分割线顶头</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h3 id="toc_0">终端运行sudo gem update出现如下错误</h3>
+                        	<h6 id="toc_0">UITableView设置系统cell的分割线顶头</h6>
 
-<blockquote>
-<p>ERROR: While executing gem … (Gem::FilePermissionError) <br/>
-You don’t have write permissions for the /usr/bin directory.</p>
-</blockquote>
-
-<p>试一下这一段代码</p>
-
-<blockquote>
-<p>sudo gem install -n /usr/local/bin cocoapods</p>
-</blockquote>
-
-<p>这表示是在本地环境</p>...
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834491108.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='CocoaPods.html'>CocoaPods</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834491194.html">
-                
-                  <h1>隐藏导航栏底部的线条</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>有时候遇到一些特殊的要求，需要隐藏导航栏底部的线条。<br/>
-两行代码就可以做到。</p>
-
-<ul>
-<li><p>方法一:<br/><br/>
-设置导航栏的背景图（setBackgroundImage方法）<br/><br/>
-设置导航栏的shadowImage (setShadowImage方法)<br/><br/>
-<code>UINavigationBar *navigationBar = self.navigationController.navigationBar;</code><br/>
-//设置透明的背景图，便于识别底部线条有没有被隐藏<br/><br/>
-<code>[navigationBar setBackgroundImage:[[UIImage alloc] init]<br/>
-                   forBarPosition:UIBarPositionAny<br/>
-                       barMetrics:UIBarMetricsDefault];</code> <br/>
-//此处使底部线条失效<br/>
-<code>[navigationBar setShadowImage:[UIImage new]];</code></p></li>
-<li><p>方法二：<br/>
-<code>self.navigationController.navigationBar.clipsToBounds = YES;</code></p></li>
-</ul>
-
-<h3 id="toc_0">导航栏全局属性设置</h3>
-
-<p>//全局设置导航栏主题</p>
-
-<pre><code>- (void)setNavigationControllerAppearance {
-    [UINavigationBar appearance].barStyle  = UIBarStyleBlack;
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithWhite:0.1 alpha:0.5]];
-    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+<pre><code>- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    cell.layoutMargins = UIEdgeInsetsZero;
+    cell.separatorInset = UIEdgeInsetsZero;
+    cell.preservesSuperviewLayoutMargins = NO;
 }
-
 </code></pre>
 
                         
@@ -417,17 +420,40 @@ You don’t have write permissions for the /usr/bin directory.</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834491253.html">
+                <a class="clearlink" href="15427834492830.html">
                 
-                  <h1>堆栈的一点区别</h1>
+                  <h1>CAMediaTimingFunction获取控制点：</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<ul>
-<li>栈是后进先出的顺序<br/></li>
-<li>而堆是根据优先级的顺序 </li>
-</ul>
+                        	<pre><code>//create timing function
+CAMediaTimingFunction *function = [CAMediaTimingFunction functionWithControlPoints:1 :0 :0.75 :1];
+</code></pre>
+
+<p>我得到的controlPoint值似乎是错误的：</p>
+
+<pre><code>CGPoint controlPoint1, controlPoint2;
+[function getControlPointAtIndex:1 values:(float *)&amp;controlPoint1]; 
+[function getControlPointAtIndex:2 values:(float *)&amp;controlPoint2];
+The controlPoint value that I get seems to be wrong:
+
+controlPoint1   CGPoint (x = 5.2635442471208903E-315, y = 4.9406564584124654E-324)  
+controlPoint2   CGPoint (x = 0.0078125018408172764, y = 2.8421186829703262E-314)    
+</code></pre>
+
+<p>但是，如果我使用float数组作为参数的类型values，我得到controlPoint的正确值：</p>
+
+<pre><code>float c1p[2], c2p[2];
+[function getControlPointAtIndex:1 values:c1p];
+[function getControlPointAtIndex:2 values:c2p];
+The values are:
+
+controlPoint1   CGPoint (x = 1, y = 0)  
+controlPoint2   CGPoint (x = 0.75, y = 1) 
+</code></pre>
+
+<p>32位设备可以使用第一种方法 但是在64位设备就行不通了 </p>
 
                         
                       </div>
@@ -453,26 +479,42 @@ You don’t have write permissions for the /usr/bin directory.</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834491315.html">
+                <a class="clearlink" href="15427834493281.html">
                 
-                  <h1>通讯录排序</h1>
+                  <h1>为什么NSString使用Copy修饰符</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h3 id="toc_0">苹果提供的排序方法</h3>
+                        	<h6 id="toc_0">NSString为什么要用copy关键字，用strong会有什么问题？</h6>
 
-<p>NSArray *stringArr = @[@&quot;我们&quot;,@&quot;我的&quot;, @&quot;重点&quot;, @&quot;重庆&quot;,  @&quot;三&quot;]; NSArray *result = [stringArr sortedArrayUsingSelector:@selector(localizedCompare:)];</p>
+<p>我们大部分的时候NSString的属性都是copy，那copy与strong的情况下到底有什么区别呢?我们以实例来说明：</p>
 
-<p>字典当中的keyvalue 可以一个键对应一个数组。</p>...
+<pre><code>@interface ViewController ()
+@property(nonatomic,copy)NSString * str1;
+@property(nonatomic,strong)NSString*str2;
+@end
+
+-(void)test
+{
+    NSMutableString*str=[NSMutableString stringWithFormat:@&quot;helloworld&quot;];
+    self.str1=str;
+    self.str2=str;
+    NSLog(@&quot;str:%p--%p&quot;,str,&amp;str);
+    NSLog(@&quot;copy_str:%p--%p&quot;,_str1,&amp;_str1);
+    NSLog(@&quot;strong_str:%p--%p&quot;,_str2,&amp;_str2);
+}
+</code></pre>
+
+<p>最后我们运行看打印结...</p>
                         
                       </div>
                   </div>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15427834491315.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
+                   <a href="15427834493281.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2017/9/21</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -565,7 +607,7 @@ You don’t have write permissions for the /usr/bin directory.</p>
 	      
 		      
 			      <li class="post">
-			        <a href="15445081328797.html">App Icon Design</a>
+			        <a href="15446970341146.html">Building Apps with Dynamic Type</a>
 			      </li>
 		     
 		  
@@ -577,19 +619,19 @@ You don’t have write permissions for the /usr/bin directory.</p>
 		  
 		      
 			      <li class="post">
-			        <a href="15439873228318.html">UINavigationItem</a>
+			        <a href="15427834493214.html">iOS开发一些小技巧</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15439179971062.html">iOS开发代码规范</a>
+			        <a href="15446033549417.html">What's New in LLVM（2017）</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15438021304374.html">Swift & Objective-C & C++之间的混编</a>
+			        <a href="15445109745059.html">Love at First Launch</a>
 			      </li>
 		     
 		  

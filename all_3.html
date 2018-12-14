@@ -128,188 +128,22 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15427834491890.html">
+                <a class="clearlink" href="15426952413956.html">
                 
-                  <h1>Block防止内存泄漏问题</h1>
+                  <h1>Masonry布局“Unable to simultaneously satisfy constraints”</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h3 id="toc_0">关于block的一点注意 特别是网络请求这块</h3>
+                        	<p>出现这个问题是设置约束优先级错误，设置一下约束的优先级就行。</p>
 
-<p>Block捕获外界变量销毁<br/>
-我们再进一步想想，Block有个最大的特点是可以访问当前的作用域，我们随便创建一个数组，重复上面操作，是否能够销毁...</p>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834491890.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<pre><code>[self.doctorTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.title.mas_left);
+            make.right.equalTo(self.title.mas_right);
+            make.top.equalTo(self.topline.mas_bottom).offset(10).priorityHigh();
+            make.height.mas_equalTo(@14);
+}];
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834491963.html">
-                
-                  <h1>Git提交代码issue</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">问题①:</h3>
-
-<pre><code>fatal:unable to access &#39;https://github.com/xxx/xxx.git&#39; OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com 443
-</code></pre>
-
-<h5 id="toc_1">解决方法：</h5>
-
-<pre><code>env命令设置GIT_SSL_NO_VERIFY环境变量为”ture”，并同时调用正常的git clone命令 env GIT_SSL_NO_VERIFY=true git clone https://github.com/xxx/xxx.git     
-当你通过HTTPS访问Git远程仓库，如果服务器的SSL证书未经过第三方机构签署，那么Git就会报错。在克隆完毕的仓库中还需要将http.sslVerify设置为”false”。完整的命令如下：    
-git config http.sslVerify &quot;false&quot;、
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834491963.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Git.html'>Git</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834492083.html">
-                
-                  <h1>对比Texture中Node和UIKit中View</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">node.view和view的差别</h3>
-
-<p>再一次深刻的体会到了node.view和view的差别。<br/><br/>
-最开始一直以为node.view就类似于ASTableNode对应的UITableview<br/><br/>
-其实远远没有那么简单，并不是那么的一个对应的关系.<br/>
-必须要把一些subnode都包到一个node里面最后这个node的view对应的是这些subnode的集合。<br/><br/>
-如果只是</p>
-
-<pre><code>ASDisplayNode * node = [[ASDisplayNode alloc]init];
-ASDisplayNode * subnode = [ASDisplayNode new];
-ASTextNode * textnode = [ASTextNode new];                    
-ASButtonNode * buttonnode = [ASButtonNode new];
-[node addSubnode:subnode];
-[node addSubnode:textnode];
-[node addSubnode:buttonnode];
-
-</code></pre>
-
-<p>我是在给tableview添加node为tableHeaderView发现的这</p>...
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834492083.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834492143.html">
-                
-                  <h1>pod install速度过慢</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ul>
-<li>①代理VPN方式</li>
-</ul>
-
-<p>相信大家已经感受到<code>pod install</code>速度越来越慢了，网上提供了几种解决方案，但是都没有完全解决速度慢的问题。</p>
-
-<p>使用国内镜像的<code>Specs</code><br/>
-在<code>pod install</code>时使用命令<code>pod install --no-repo-update</code><br/>
-使用<code>proxychains</code>使终端命令走代理<br/>
-下面就来说明一下这几种方法为何没有完全解决问题</p>
-
-<p>使用国内镜像的<code>Specs</code> 极大地加快了<code>Specs</code>下载更新速度，而且如果使用国内</p>...
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834492143.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='CocoaPods.html'>CocoaPods</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834492260.html">
-                
-                  <h1>SDWebImageview 不能加载HTTPS图片</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>这个问题是因为图片地址所在的服务器没有有效的SSL证书文件<br/>
-只需要在Options参数中设置SDWebImaweefenggeAllowInvalidSSLCertificates枚举就可</p>
-
-<pre><code>[self.avatarImageView sd_setImageWithURL: [NSURL URLWithString: famousStarObject.avatar] placeholderImage: [UIImage imageNamed: @&quot;icon_default_avator&quot;] options: SDWebImageAllowInvalidSSLCertificates];
 </code></pre>
 
                         
@@ -319,7 +153,7 @@ ASButtonNode * buttonnode = [ASButtonNode new];
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/11/21</span>
+                    <span class="date">2017/11/20</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -336,74 +170,28 @@ ASButtonNode * buttonnode = [ASButtonNode new];
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834492322.html">
+                <a class="clearlink" href="15438021304374.html">
                 
-                  <h1>UIImageView 动画的属性animationImages</h1>
+                  <h1>Swift & Objective-C & C++之间的混编</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<pre><code class="language-beginImageArray.append(UIImage(named:">
-    let imageView = UIImageView(image: UIImage(named: &quot;switch 1.png&quot;))
-    imageView.center = view.center
-    imageView.animationImages = beginImageArray
-    // 动画持续时间 每一帧0.025秒，总共22帧
-    imageView.animationDuration = 0.025 * 22
-    imageView.animationRepeatCount = 1
-    // 动画结束后要把imageView的image属性设置成动画最后的一帧
-    imageView.image = UIImage(named: &quot;switch 22.png&quot;)
-    imageView.startAnimating()
-    view.addSubview(imageView)
-</code></pre>
+                        	<h3 id="toc_0">①Objective-C 调用 C++</h3>
 
+<p>OC本身可以直接调用C的代码 比如直接可以调用printf方法。<br/>
+但是OC中的.m直接编译C++的代码就会出现编译错误<br/>
+需要把OC.m改成OC.mm之后（objective-c变成了objective-c++）引入iostream(<code>#include&lt;iostream&gt;</code>)就可以直接编译了。<br/>
+这可以在.mm文件当中直接使用c++的代码。<br/>
+也可以另外新建一个c++的文件，并且创建.h文件...</p>
                         
                       </div>
                   </div>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834492390.html">
-                
-                  <h1>Xcode打包遇到的坑</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>由于是接手别人做的项目，所以当把程序打包的时候出现了问题，证书和描述文件的问题 </p>
-
-<p>最开始尝试打开xcode的账户下载所有证书，结果发现并不能成功</p>
-
-<p>后来手动管理证书就可以看到之前在开发者中心创建的开发和发布证书，如下图所示<br/>
-<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fnczazu4irj30pd0iejte.jpg" alt=""/><br/>
-然后会到证书管理界面，会把你选中账号的所有相关证书列下来</p>
-
-<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fnczelaqz6j30pd0iedi6.jpg" alt=""/></p>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834492390.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
+                   <a href="15438021304374.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/12/3</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -440,6 +228,225 @@ ASButtonNode * buttonnode = [ASButtonNode new];
                   <div class="more-left left">
                   
                     <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15433939231870.html">
+                
+                  <h1>dispatch_semaphore_t 信号量</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><code>dispatch_semaphore_t</code> 一种计算的信号量<br/>
+<code>dispatch_semaphore_create</code> 创建一个数值的信号量<br/>
+<code>dispatch_semaphore_signal</code> 对指定的信号量进行增加1</p>
+
+<p><code>dispatch_semaphore_wait</code> 会使传入的信号量减1，如果返回的值为0说明有任务进行中就阻碍当前的线程，如果返回的值大于0，就代表当前的线程当中没有任务再执行，就接着执行下面的任务。</p>
+
+<p>用这个可以起到顺序执行异步任务的功效。<br/>
+如果后一步的执行需要前一...</p>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15433939231870.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/11/28</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834491194.html">
+                
+                  <h1>隐藏导航栏底部的线条</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>有时候遇到一些特殊的要求，需要隐藏导航栏底部的线条。<br/>
+两行代码就可以做到。</p>
+
+<ul>
+<li><p>方法一:<br/><br/>
+设置导航栏的背景图（setBackgroundImage方法）<br/><br/>
+设置导航栏的shadowImage (setShadowImage方法)<br/><br/>
+<code>UINavigationBar *navigationBar = self.navigationController.navigationBar;</code><br/>
+//设置透明的背景图，便于识别底部线条有没有被隐藏<br/><br/>
+<code>[navigationBar setBackgroundImage:[[UIImage alloc] init]<br/>
+                   forBarPosition:UIBarPositionAny<br/>
+                       barMetrics:UIBarMetricsDefault];</code> <br/>
+//此处使底部线条失效<br/>
+<code>[navigationBar setShadowImage:[UIImage new]];</code></p></li>
+<li><p>方法二：<br/>
+<code>self.navigationController.navigationBar.clipsToBounds = YES;</code></p></li>
+</ul>
+
+<h3 id="toc_0">导航栏全局属性设置</h3>
+
+<p>//全局设置导航栏主题</p>
+
+<pre><code>- (void)setNavigationControllerAppearance {
+    [UINavigationBar appearance].barStyle  = UIBarStyleBlack;
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithWhite:0.1 alpha:0.5]];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+}
+
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834491441.html">
+                
+                  <h1>设置图片拉伸范围</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code>- (UIImage *)stretchableImageWithLeftCapWidth:(NSInteger)leftCapWidth topCapHeight:(NSInteger)topCapHeight 
+</code></pre>
+
+<p>这个函数是UIImage的一个实例函数，它的功能是创建一个内容可拉伸，而边角不拉伸的图片，需要两个参数，第一个是左边不拉伸区域的宽度，第二个参数是上面不拉伸的高度。</p>
+
+<p>根据设置的宽度和</p>...
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15427834491441.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15433701207076.html">
+                
+                  <h1>_cmd 与 runtime 的结合</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	_cmd 是隐藏的参数，表示当前方法的selector，另外隐藏参数self表示当前方法调用的对象实例。
+这个参数是唯一的参数，在一个文件中方法名不会重复。
+所以可以让它代替运行时当中的属性的键名。...
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15433701207076.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/11/28</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15433027949667.html">
+                
+                  <h1>sizeThatFits和sizeToFit</h1>
+                  <div class="a-content">
+                      
+		                  <div class="a-content-img">
+                      		<img src="media/15433027949667/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-27%20%E4%B8%8B%E5%8D%883.23.06.png" />
+                      	  </div>
+		              
+                      <div class="a-content-text">
+                        
+                        	<p>今天帮同事看一个布局约束的问题，（代码也是从别人手中接过来的，所以并不清楚怎么布局的）<br/>
+view是用xib画的，约束设置很多，本以为是约束的问题，设置了约束还是不能更改整个view的高度。</p>
+
+<p>最后找了一会，我发现了一个方法 sizeThatFit 在sizeThatFit内部返回了size，所以刚才尽管指定的约束改了，但是还是不影响下面的方法返回size。</p>
+
+<p>所以就写了这个东西给不了解的同学一点点经验。</p>
+
+<pre><code>- (void)sizeToFit;                       // calls sizeThatFits: with current view bounds and changes bounds size.
+- (CGSize)sizeThatFits:(CGSize)size;     // return &#39;best&#39; size to fit given size. does not actually resize view. Default is return existing view size
+
+</code></pre>
+
+<p>上面是苹果的方法说明。</p>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15433027949667.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/11/27</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -532,7 +539,7 @@ ASButtonNode * buttonnode = [ASButtonNode new];
 	      
 		      
 			      <li class="post">
-			        <a href="15445081328797.html">App Icon Design</a>
+			        <a href="15446970341146.html">Building Apps with Dynamic Type</a>
 			      </li>
 		     
 		  
@@ -544,19 +551,19 @@ ASButtonNode * buttonnode = [ASButtonNode new];
 		  
 		      
 			      <li class="post">
-			        <a href="15439873228318.html">UINavigationItem</a>
+			        <a href="15427834493214.html">iOS开发一些小技巧</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15439179971062.html">iOS开发代码规范</a>
+			        <a href="15446033549417.html">What's New in LLVM（2017）</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15438021304374.html">Swift & Objective-C & C++之间的混编</a>
+			        <a href="15445109745059.html">Love at First Launch</a>
 			      </li>
 		     
 		  

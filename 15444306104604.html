@@ -260,11 +260,18 @@ poc 就可以直接代替后面的语句，可以简化常用的命令行语句�
 
 <p>po unsafeBitCast(指针,to:ScoreBoardView.self)<br/>
 还可以可以直接查看view的frame<br/>
-po unsafeBitCast(指针,to:ScoreBoardView.self).frame</p></li>
+po unsafeBitCast(指针,to:ScoreBoardView.self).frame</p>
+
+<p>同理OC中可以更方便的实现根据指针对对象进行相应的调试，比如更改 label 的内容</p>
+
+<pre><code>(lldb) expression [(UILabel*)0x7fb2c5f0fd70 setText:@&quot;hello&quot;];
+但是内存地址前面要跟相应的类型要不然会执行失败报错
+error: warning: receiver type &#39;long&#39; is not &#39;id&#39; or interface pointer, consider casting it to &#39;id&#39;
+</code></pre></li>
 <li><p>刷新屏幕的帧缓存区<br/>
 如果写了expression语句之后界面没有及时刷新，但是又不想去重新运行代码，那么可以使用表达式<br/>
-Swift<code>expression CAtransaction.flush()</code><br/>
-OC<code>expression [CAtransaction flush]</code>刷新屏幕帧缓存区。</p></li>
+Swift<code>expression CATransaction.flush()</code><br/>
+OC<code>expression [CATransaction flush]</code>刷新屏幕帧缓存区。</p></li>
 </ol>
 
 <h3 id="toc_0">参考</h3>
@@ -280,14 +287,14 @@ OC<code>expression [CAtransaction flush]</code>刷新屏幕帧缓存区。</p></
         <div class="large-6 columns">
           <p class="text-left" style="padding:15px 0px;">
             
-            <a href="15445081328797.html" title="Previous Post: App Icon Design">&laquo; App Icon Design</a>
+            <a href="15446970341146.html" title="Previous Post: Building Apps with Dynamic Type">&laquo; Building Apps with Dynamic Type</a>
             
           </p>
         </div>
         <div class="large-6 columns">
           <p class="text-right" style="padding:15px 0px;">
             
-            <a href="15439873228318.html" title="Next Post: UINavigationItem">UINavigationItem
+            <a href="15427834493214.html" title="Next Post: iOS开发一些小技巧">iOS开发一些小技巧
               &raquo;</a>
             
           </p>
@@ -384,7 +391,7 @@ s.setAttribute('data-timestamp', +new Date());
 	      
 		      
 			      <li class="post">
-			        <a href="15445081328797.html">App Icon Design</a>
+			        <a href="15446970341146.html">Building Apps with Dynamic Type</a>
 			      </li>
 		     
 		  
@@ -396,19 +403,19 @@ s.setAttribute('data-timestamp', +new Date());
 		  
 		      
 			      <li class="post">
-			        <a href="15439873228318.html">UINavigationItem</a>
+			        <a href="15427834493214.html">iOS开发一些小技巧</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15439179971062.html">iOS开发代码规范</a>
+			        <a href="15446033549417.html">What's New in LLVM（2017）</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15438021304374.html">Swift & Objective-C & C++之间的混编</a>
+			        <a href="15445109745059.html">Love at First Launch</a>
 			      </li>
 		     
 		  
