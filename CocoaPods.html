@@ -128,32 +128,39 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15427834492143.html">
+                <a class="clearlink" href="15427945343440.html">
                 
-                  <h1>pod install速度过慢</h1>
+                  <h1>消除CocoaPods引入第三方SDK的警告</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<ul>
-<li>①代理VPN方式</li>
-</ul>
+                        	<p>有些强迫症不能看到xcode编译报出的警告⚠️，所以在podfile中添加一行<br/>
+<code>inhibit_all_warnings!</code><br/>
+如果没有多个<code>target</code>或者需要所有都隐藏这个黄色警告就在最外层写</p>
 
-<p>相信大家已经感受到<code>pod install</code>速度越来越慢了，网上提供了几种解决方案，但是都没有完全解决速度慢的问题。</p>
+<pre><code class="language-#"># platform :ios, &#39;9.0&#39;
+inhibit_all_warnings!
 
-<p>使用国内镜像的<code>Specs</code><br/>
-在<code>pod install</code>时使用命令<code>pod install --no-repo-update</code><br/>
-使用<code>proxychains</code>使终端命令走代理<br/>
-下面就来说明一下这几种方法为何没有完全解决问题</p>
+target &#39;MVVM&#39; do
+  # Uncomment the next line if you&#39;re using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+   pod &#39;ReactiveObjC&#39;, &#39;~&gt; 3.1.0&#39;
+   pod &#39;MBProgressHUD&#39;, &#39;~&gt; 1.1.0&#39;
+   pod &#39;MJRefresh&#39;, &#39;~&gt; 3.1.15.7&#39;
+  # Pods for MVVM
 
-<p>使用国内镜像的<code>Specs</code> 极大地加快了<code>Specs</code>下载更新速度，而且如果使用国内</p>...
+end
+</code></pre>
+
+<p>如果有多个target的话就可以在各个需要隐藏的target当中写上这句话</p>...
                         
                       </div>
                   </div>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15427834492143.html">Read more</a>&nbsp;&nbsp; 
+                   <a href="15427945343440.html">Read more</a>&nbsp;&nbsp; 
                     <span class="date">2018/11/21</span>
                     <span>posted in&nbsp;</span> 
           				  
@@ -216,39 +223,32 @@ You don’t have write permissions for the /usr/bin directory.</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427945343440.html">
+                <a class="clearlink" href="15427834492143.html">
                 
-                  <h1>消除CocoaPods引入第三方SDK的警告</h1>
+                  <h1>pod install速度过慢</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>有些强迫症不能看到xcode编译报出的警告⚠️，所以在podfile中添加一行<br/>
-<code>inhibit_all_warnings!</code><br/>
-如果没有多个<code>target</code>或者需要所有都隐藏这个黄色警告就在最外层写</p>
+                        	<ul>
+<li>①代理VPN方式</li>
+</ul>
 
-<pre><code class="language-#"># platform :ios, &#39;9.0&#39;
-inhibit_all_warnings!
+<p>相信大家已经感受到<code>pod install</code>速度越来越慢了，网上提供了几种解决方案，但是都没有完全解决速度慢的问题。</p>
 
-target &#39;MVVM&#39; do
-  # Uncomment the next line if you&#39;re using Swift or would like to use dynamic frameworks
-  # use_frameworks!
-   pod &#39;ReactiveObjC&#39;, &#39;~&gt; 3.1.0&#39;
-   pod &#39;MBProgressHUD&#39;, &#39;~&gt; 1.1.0&#39;
-   pod &#39;MJRefresh&#39;, &#39;~&gt; 3.1.15.7&#39;
-  # Pods for MVVM
+<p>使用国内镜像的<code>Specs</code><br/>
+在<code>pod install</code>时使用命令<code>pod install --no-repo-update</code><br/>
+使用<code>proxychains</code>使终端命令走代理<br/>
+下面就来说明一下这几种方法为何没有完全解决问题</p>
 
-end
-</code></pre>
-
-<p>如果有多个target的话就可以在各个需要隐藏的target当中写上这句话</p>...
+<p>使用国内镜像的<code>Specs</code> 极大地加快了<code>Specs</code>下载更新速度，而且如果使用国内</p>...
                         
                       </div>
                   </div>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15427945343440.html">Read more</a>&nbsp;&nbsp; 
+                   <a href="15427834492143.html">Read more</a>&nbsp;&nbsp; 
                     <span class="date">2018/11/21</span>
                     <span>posted in&nbsp;</span> 
           				  
@@ -348,25 +348,25 @@ end
 		  
 		      
 			      <li class="post">
+			        <a href="15445109745059.html">Love at First Launch</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15445081328797.html">App Icon Design</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15444306104604.html">Advanced Debugging with Xcode and LLDB</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15427834493214.html">iOS开发一些小技巧</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15446033549417.html">What's New in LLVM（2017）</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15445109745059.html">Love at First Launch</a>
+			        <a href="15439873228318.html">UINavigationItem</a>
 			      </li>
 		     
 		  

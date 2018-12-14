@@ -168,251 +168,6 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15444306104604.html">
-                
-                  <h1>Advanced Debugging with Xcode and LLDB</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ol>
-<li><p>expression语句 </p>
-
-<p>不用重新运行程序直接实现代码效果</p>
-
-<p><img src="media/15444306104604/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%884.29.55.png" alt="屏幕快照 2018-12-10 下午4.29.55"/>￼</p>
-
-<ol>
-<li><p>描述</p>
-
-<p>可以动态的改变条件，语法是<code>expression xxx = &quot;xxx&quot;</code> 后面是语句代码,类似程序中的代码并且支持加{}的判断等等语句。</p></li>
-<li><p>使用方法：</p>
-
-<ul>
-<li>调试台去写这个语句</li>
-<li>加断点去添加...<code>action</code>。</li>
-</ul></li>
-</ol></li>
-</ol>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15444306104604.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/12/10</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834493214.html">
-                
-                  <h1>iOS开发一些小技巧</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ul>
-<li>去掉xcode黄色警告的方法</li>
-</ul>
-
-<pre><code>#pragma clang diagnostic push
-#pragma clang diagnostic ignored &quot;-Wdeprecated-declarations&quot;
- your code with warning
-#pragma clang diagnostic pop
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored &quot;-Wunused-variable&quot;
- your code with warning
-#pragma clang diagnostic pop
-</code></pre>
-
-<ul>
-<li>控制器init方法执...</li>
-</ul>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834493214.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15446033549417.html">
-                
-                  <h1>What's New in LLVM（2017）</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>Xcode 9中的Apple LLVM编译器具有新的语言特性、改进的诊断和更强大的优化。了解Objective-C和c++的最新添加，了解新的和改进的警告和静态分析器检查，了解LLVM编译器技术如何为应用程序提供更快的构建时间和更好的运行时性能。</p>
-
-<h2 id="toc_0">1.不同语言的api检查</h2>
-
-<pre><code>@available(iOS 11,*)--oc
-#available  --swift
-</code></pre>
-
-<p>便捷的方法检查（检查可用性，如果你要给某个新的系统加入新功能）</p>
-
-<pre><code>@interface MyAblumController : UIViewController
-
--(void)showFaces API_AVALABILITY(ios(11.0));
-
-@end
-</code></pre>
-
-<p>还可以移动整个类的范围</p>
-
-<pre><code>API_AVALABILITY(ios(11.0))
-@interface MyAblumController : UIViewController
-
--(void)showFaces ;
-
-@end
-</code></pre>
-
-<h2 id="toc_1">2.不要把Number元素和标量进行比较</h2>
-
-<pre><code>@property NSNumber * photoCount;
--(BOOL)hasPhotos{
-return self.photoCount &gt; 0
-}
-</code></pre>
-
-<p>因为这个比较相当于是把photoCount和指针nil相比，返回为YES,所以这个错误很严重。</p>
-
-<p><img src="media/15445814733953/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%884.26.59.png" alt="屏幕快照 2018-12-12 下午4.26.59"/></p>
-
-<p>编译器会报错，提醒你出现了问题，你可以把NSNumber转成interger之后再做判断。</p>
-
-<p><img src="media/15445814733953/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%884.28.18.png" alt="屏幕快照 2018-12-12 下午4.28.18"/></p>
-
-<h6 id="toc_2">Control Check in Build Setting</h6>
-
-<p>设置Suspicious Conversions 为YES(aggressive)当编译器不确定的时候会弹出如上提示。<br/>
-<img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%885.06.22.png" alt="屏幕快照 2018-12-12 下午5.06.22"/></p>
-
-<h2 id="toc_3">3. copy修饰NSMutableArray</h2>
-
-<p>赋值的时候等于是复制了一个不可变对象，所以以后运行时的时候会报错(如果你对这个数组进行修改)</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%886.45.36.png" alt="屏幕快照 2018-12-12 下午6.45.36"/></p>
-
-<p>这个时候就会报错，因为给self.titieArr赋值之后变成了不可变的，所以接下来的操作会导致错误。</p>
-
-<h6 id="toc_4">解决方法:</h6>
-
-<pre><code>//添加setter方法
--(void)setTitleArr:(NSMutableArray *)titleArr{
-    
-    self.titleArr= [titleArr mutableCopy];
-}
-</code></pre>
-
-<p>每次赋值的时候给数组赋值可变对象。</p>
-
-<p>另外为了及时发现bug可以开启每次build的时候analyze而不是每次都要去手动analyze（如果不开启的话上面的错误不会提示）</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%886.48.45.png" alt="屏幕快照 2018-12-12 下午6.48.45"/><br/>
-设置Analyze During Build 的值为Yes.</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%886.43.05.png" alt="屏幕快照 2018-12-12 下午6.43.05"/></p>
-
-<h2 id="toc_5">4. 声明无参数的函数</h2>
-
-<h5 id="toc_6">Non-prototype declarations in C and Objective-C</h5>
-
-<p>非原型声明</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.47.06.png" alt="屏幕快照 2018-12-13 下午3.47.06"/></p>
-
-<p>在C和OC中意味着foo可以跟任何参数调用，这个行为可以追溯到1977年C语言，不匹配类型的调用会导致运行时的崩溃。<br/>
-在Xcode9 中编译器带有一个新的警告加强严格原型，会报出警告。</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.50.45.png" alt="屏幕快照 2018-12-13 下午3.50.45"/></p>
-
-<p>通常只需要在括号中添加void表示不接收任何参数传递。</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.51.41.png" alt="屏幕快照 2018-12-13 下午3.51.41"/></p>
-
-<p>任何带有参数的调用都会直接报错。</p>
-
-<p>另外block中不接收参数的时候也会出现同样的警告，如下所示。</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.52.47.png" alt="屏幕快照 2018-12-13 下午3.52.47"/></p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.53.57.png" alt="屏幕快照 2018-12-13 下午3.53.57"/></p>
-
-<h3 id="toc_7">升级验证警告设置</h3>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%884.08.45.png" alt="屏幕快照 2018-12-13 下午4.08.45"/></p>
-
-<p>勾选Yes(Error)</p>
-
-<h6 id="toc_8">Strict Prototypes 勾选Yes(Error)之前 and 勾选之后</h6>
-
-<p><img src="media/15446033549417/Artboard%202@2x.png" alt="Artboard 2@2x"/></p>
-
-<p>勾选之后就不只是警告了，直接是错误提醒，让你开发的时候不得不注意，也是为了代码的安全性。</p>
-
-<h3 id="toc_9">结尾</h3>
-
-<p>WWDC2017剩余部分是关于C++的优化，如果感兴趣的话可以移步<a href="https://developer.apple.com/videos/play/wwdc2017/411">开发者网站</a>观看。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2017/11/12</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
                 <a class="clearlink" href="15445109745059.html">
                 
                   <h1>Love at First Launch</h1>
@@ -517,6 +272,56 @@ return self.photoCount &gt; 0
               </div><!-- article -->
         
 			<div class="article">
+                <a class="clearlink" href="15444306104604.html">
+                
+                  <h1>Advanced Debugging with Xcode and LLDB</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ol>
+<li><p>expression语句 </p>
+
+<p>不用重新运行程序直接实现代码效果</p>
+
+<p><img src="media/15444306104604/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%884.29.55.png" alt="屏幕快照 2018-12-10 下午4.29.55"/>￼</p>
+
+<ol>
+<li><p>描述</p>
+
+<p>可以动态的改变条件，语法是<code>expression xxx = &quot;xxx&quot;</code> 后面是语句代码,类似程序中的代码并且支持加{}的判断等等语句。</p></li>
+<li><p>使用方法：</p>
+
+<ul>
+<li>调试台去写这个语句</li>
+<li>加断点去添加...<code>action</code>。</li>
+</ul></li>
+</ol></li>
+</ol>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15444306104604.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/12/10</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15439873228318.html">
                 
                   <h1>UINavigationItem</h1>
@@ -566,29 +371,123 @@ return self.photoCount &gt; 0
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834493152.html">
+                <a class="clearlink" href="15439179971062.html">
                 
-                  <h1>检测离屏渲染了</h1>
+                  <h1>iOS开发代码规范</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><code>instrumets</code> 已经取消了<code>debug options</code></p>
+                        	<p>针对我的开发经验ViewController应该是这样的。</p>
 
-<p>可以在xcode的<code>debug</code> - <code>view debugging</code> 找到</p>
+<pre><code>#pragma mark - Life Cycle|生命周期
+#pragma mark - UITableViewDataSource and UITableViewDelegate|主要是一些代理的方法
+#pragma mark - Private Method|私有方法（内部可调用）
+#pragma mark - Public  Method|公有方法
+#pragma mark - Set &amp; Get|getter 和 setter方法
+#pragma mark - Notification|接收通知之后执行的方法
+#pragma mark - Event|一些视图的点击事件 比如button
+#pragma mark - DelegeteHandler|代理的实现时间
+</code></pre>
 
-<p>“核心动画工具和模板已在工具中弃用。之前在”调试选项“下的功能已移至Xcode，位于”<code>Debug&gt; View Debugging</code>“下。</p>
+<h2 id="toc_0">1️⃣代码命名基础</h2>
 
-<p><img src="http://upload-images.jianshu.io/upload_images/1315383-752efaac717c3947.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="BB55F33F-97CC-4C28-B3F1-22456A2A7BD8.png"/></p>
+<h3 id="toc_1">①一般原则</h3>
 
+<ul>
+<li><p>明晰</p>
+
+<ul>
+<li><p>尽可能保持清晰和简洁是件好事，但由于简洁，清晰度不应受到影响：</p>
+
+<p>比如<code>insertObject:atIndex:</code>比较清晰，而<code>insert:at:</code>却不知道发生了什么...</p></li>
+</ul></li>
+</ul>
                         
                       </div>
                   </div>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15427834493152.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
+                   <a href="15439179971062.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/12/4</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15438021304374.html">
+                
+                  <h1>Swift & Objective-C & C++之间的混编</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">①Objective-C 调用 C++</h3>
+
+<p>OC本身可以直接调用C的代码 比如直接可以调用printf方法。<br/>
+但是OC中的.m直接编译C++的代码就会出现编译错误<br/>
+需要把OC.m改成OC.mm之后（objective-c变成了objective-c++）引入iostream(<code>#include&lt;iostream&gt;</code>)就可以直接编译了。<br/>
+这可以在.mm文件当中直接使用c++的代码。<br/>
+也可以另外新建一个c++的文件，并且创建.h文件...</p>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15438021304374.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/12/3</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15433939231870.html">
+                
+                  <h1>dispatch_semaphore_t 信号量</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><code>dispatch_semaphore_t</code> 一种计算的信号量<br/>
+<code>dispatch_semaphore_create</code> 创建一个数值的信号量<br/>
+<code>dispatch_semaphore_signal</code> 对指定的信号量进行增加1</p>
+
+<p><code>dispatch_semaphore_wait</code> 会使传入的信号量减1，如果返回的值为0说明有任务进行中就阻碍当前的线程，如果返回的值大于0，就代表当前的线程当中没有任务再执行，就接着执行下面的任务。</p>
+
+<p>用这个可以起到顺序执行异步任务的功效。<br/>
+如果后一步的执行需要前一...</p>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15433939231870.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/11/28</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -687,25 +586,25 @@ return self.photoCount &gt; 0
 		  
 		      
 			      <li class="post">
+			        <a href="15445109745059.html">Love at First Launch</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15445081328797.html">App Icon Design</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15444306104604.html">Advanced Debugging with Xcode and LLDB</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15427834493214.html">iOS开发一些小技巧</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15446033549417.html">What's New in LLVM（2017）</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15445109745059.html">Love at First Launch</a>
+			        <a href="15439873228318.html">UINavigationItem</a>
 			      </li>
 		     
 		  

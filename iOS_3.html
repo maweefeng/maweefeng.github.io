@@ -128,124 +128,29 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15433027949667.html">
+                <a class="clearlink" href="15427834492390.html">
                 
-                  <h1>sizeThatFits和sizeToFit</h1>
+                  <h1>Xcode打包遇到的坑</h1>
                   <div class="a-content">
                       
-		                  <div class="a-content-img">
-                      		<img src="media/15433027949667/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-27%20%E4%B8%8B%E5%8D%883.23.06.png" />
-                      	  </div>
-		              
                       <div class="a-content-text">
                         
-                        	<p>今天帮同事看一个布局约束的问题，（代码也是从别人手中接过来的，所以并不清楚怎么布局的）<br/>
-view是用xib画的，约束设置很多，本以为是约束的问题，设置了约束还是不能更改整个view的高度。</p>
+                        	<p>由于是接手别人做的项目，所以当把程序打包的时候出现了问题，证书和描述文件的问题 </p>
 
-<p>最后找了一会，我发现了一个方法 sizeThatFit 在sizeThatFit内部返回了size，所以刚才尽管指定的约束改了，但是还是不影响下面的方法返回size。</p>
+<p>最开始尝试打开xcode的账户下载所有证书，结果发现并不能成功</p>
 
-<p>所以就写了这个东西给不了解的同学一点点经验。</p>
+<p>后来手动管理证书就可以看到之前在开发者中心创建的开发和发布证书，如下图所示<br/>
+<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fnczazu4irj30pd0iejte.jpg" alt=""/><br/>
+然后会到证书管理界面，会把你选中账号的所有相关证书列下来</p>
 
-<pre><code>- (void)sizeToFit;                       // calls sizeThatFits: with current view bounds and changes bounds size.
-- (CGSize)sizeThatFits:(CGSize)size;     // return &#39;best&#39; size to fit given size. does not actually resize view. Default is return existing view size
-
-</code></pre>
-
-<p>上面是苹果的方法说明。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fnczelaqz6j30pd0iedi6.jpg" alt=""/></p>
                         
                       </div>
                   </div>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15433027949667.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/27</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15428536881209.html">
-                
-                  <h1>被神化的MVVM和被错误认识的Model层</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>MVVM是一种双向绑定技术，使用VM实现数据的变化更新视图，视图的变化更新数据的处理，整个过程是一种数据绑定的过程。<br/>
-网络上可以看到大多数人吹捧MVVM，但是千奇百怪的，并没有人能很好的理解MVVM，反而使代码变得异常复杂。<br/>
-<code>MVC的关系图</code></p>
-
-<pre><code class="language-sequence">V层-&gt;C层:事件
-Note right of V层:特殊情况下可以持有M层
-C层-&gt;V层:创建/更新
-C层-&gt;M层: 调用
-M层-&gt;C层: 通知
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15428536881209.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/22</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834493029.html">
-                
-                  <h1>iOS导航条背景颜色</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h4 id="toc_0">Situation one</h4>
-
-<p><code>self.navigationBar.barTintColor= [UIColor redColor];</code><br/>
-这时候的效果就是纯色的<br/>
-类似下面这样<br/>
-<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fsbvzqlgesj309f01oglk.jpg" alt=""/></p>
-
-<h4 id="toc_1">Situation two</h4>
-
-<p><code>self.navigationBar.backgroundColor = [UIColor redColor];</code><br/>
-<img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fsbvypka0rj309e01p0so.jpg" alt=""/></p>
-
-<p>一种是有渐变的半透明效果，一种就是简单的纯色效果。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
+                   <a href="15427834492390.html">Read more</a>&nbsp;&nbsp; 
                     <span class="date">2018/11/21</span>
                     <span>posted in&nbsp;</span> 
           				  
@@ -263,75 +168,17 @@ M层-&gt;C层: 通知
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427815427067.html">
+                <a class="clearlink" href="15427834492451.html">
                 
-                  <h1>RACCommand</h1>
+                  <h1>Xcode编译找不到头文件</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	RACCommand是ReactiveCocoa的基本组件之一，能节省开发的大部分时间，同时使得iOS/OS X 应用更健壮。
-
-我看到一部分ReactiveCocoa（以下简单RAC）新人并没有完全理解RACCommand，自然也就不知道怎么用它。所以我写了这个小小介绍性文章，希望能对你的理解有所帮助。RACCommand源文件里的注释写得很不错，不过它并没有给任何例子来说说具体怎么用它，对于RAC的新人来说，只看这些注释还是比较难以理解的。
-...
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427815427067.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834493345.html">
-                
-                  <h1>高效的画线</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>先创建一个UIBeizerPath 的对象path</p>
-
-<pre><code>UIBezierPath *path = [[UIBezierPath alloc] init];
-  [path moveToPoint:CGPointMake(175, 100)];
-  
-  [path addArcWithCenter:CGPointMake(150, 100) radius:25 startAngle:0 endAngle:2*M_PI clockwise:YES];
-  [path moveToPoint:CGPointMake(150, 125)];
-  [path addLineToPoint:CGPointMake(150, 175)];
-  [path addLineToPoint:CGPointMake(125, 225)];
-  [path moveToPoint:CGPointMake(150, 175)];
-  [path addLineToPoint:CGPointMake(175, 225)];
-  [path moveToPoint:CGPointMake(100, 150)];
-  [path addLineToPoint:CGPointMake(200, 150)];
-</code></pre>
-
-<p>然后创建CAShapeLayer添加到视图的layer上 </p>
-
-<pre><code>CAShapeLayer *shapeLayer = [CAShapeLayer layer];
-  shapeLayer.strokeColor = [UIColor redColor].CGColor;
-  shapeLayer.fillColor = [UIColor clearColor].CGColor;
-  shapeLayer.lineWidth = 5;
-  shapeLayer.lineJoin = kCALineJoinRound;
-  shapeLayer.lineCap = kCALineCapRound;
-  shapeLayer.path = path.CGPath;
-  //add it to our view
-  [self.containerView.layer addSublayer:shapeLayer];
-</code></pre>
+                        	<p>开发中遇到之前成功导入没有报错的头文件，后来打开工程之后报错说找不到头文件，这就很奇怪了。<br/>
+之前还是好好的，怎么睡了一觉代码还出现了问题呢。<br/><br/>
+然后就去搜索解决方法，发现是要到<code>buildsettings</code>下的<code>Search Paths</code>下面的<code>User Header Search Paths</code> 大概意思就是这个东西是头文件的搜索路径。<br/><br/>
+进去之后添加<code>${SRCROOT}</code>然后回车搞定就完成了。</p>
 
                         
                       </div>
@@ -340,7 +187,7 @@ M层-&gt;C层: 通知
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2017/10/21</span>
+                    <span class="date">2018/11/21</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -460,25 +307,77 @@ def xxx(self,a,b)
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834492322.html">
+                <a class="clearlink" href="15427834492767.html">
                 
-                  <h1>UIImageView 动画的属性animationImages</h1>
+                  <h1>UISearchbar 自定义搜索图标失真</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<pre><code class="language-beginImageArray.append(UIImage(named:">
-    let imageView = UIImageView(image: UIImage(named: &quot;switch 1.png&quot;))
-    imageView.center = view.center
-    imageView.animationImages = beginImageArray
-    // 动画持续时间 每一帧0.025秒，总共22帧
-    imageView.animationDuration = 0.025 * 22
-    imageView.animationRepeatCount = 1
-    // 动画结束后要把imageView的image属性设置成动画最后的一帧
-    imageView.image = UIImage(named: &quot;switch 22.png&quot;)
-    imageView.startAnimating()
-    view.addSubview(imageView)
+                        	关于Searchbar设置搜索图标的问题
+因为这个大小在iOS中是固定的14*14
+如果UI给的切图不是这个尺寸就会出现失真的情况（ps：因为视图的默认contentMode是UIViewContentModeScaleToFill）
+网上有的方法一般是设置一个继承自UITextfield的searchBar
+去修改SearchBar的leftView。
+...
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15427834492767.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834492830.html">
+                
+                  <h1>CAMediaTimingFunction获取控制点：</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code>//create timing function
+CAMediaTimingFunction *function = [CAMediaTimingFunction functionWithControlPoints:1 :0 :0.75 :1];
 </code></pre>
+
+<p>我得到的controlPoint值似乎是错误的：</p>
+
+<pre><code>CGPoint controlPoint1, controlPoint2;
+[function getControlPointAtIndex:1 values:(float *)&amp;controlPoint1]; 
+[function getControlPointAtIndex:2 values:(float *)&amp;controlPoint2];
+The controlPoint value that I get seems to be wrong:
+
+controlPoint1   CGPoint (x = 5.2635442471208903E-315, y = 4.9406564584124654E-324)  
+controlPoint2   CGPoint (x = 0.0078125018408172764, y = 2.8421186829703262E-314)    
+</code></pre>
+
+<p>但是，如果我使用float数组作为参数的类型values，我得到controlPoint的正确值：</p>
+
+<pre><code>float c1p[2], c2p[2];
+[function getControlPointAtIndex:1 values:c1p];
+[function getControlPointAtIndex:2 values:c2p];
+The values are:
+
+controlPoint1   CGPoint (x = 1, y = 0)  
+controlPoint2   CGPoint (x = 0.75, y = 1) 
+</code></pre>
+
+<p>32位设备可以使用第一种方法 但是在64位设备就行不通了 </p>
 
                         
                       </div>
@@ -504,18 +403,26 @@ def xxx(self,a,b)
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834492260.html">
+                <a class="clearlink" href="15427834493029.html">
                 
-                  <h1>SDWebImageview 不能加载HTTPS图片</h1>
+                  <h1>iOS导航条背景颜色</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>这个问题是因为图片地址所在的服务器没有有效的SSL证书文件<br/>
-只需要在Options参数中设置SDWebImaweefenggeAllowInvalidSSLCertificates枚举就可</p>
+                        	<h4 id="toc_0">Situation one</h4>
 
-<pre><code>[self.avatarImageView sd_setImageWithURL: [NSURL URLWithString: famousStarObject.avatar] placeholderImage: [UIImage imageNamed: @&quot;icon_default_avator&quot;] options: SDWebImageAllowInvalidSSLCertificates];
-</code></pre>
+<p><code>self.navigationBar.barTintColor= [UIColor redColor];</code><br/>
+这时候的效果就是纯色的<br/>
+类似下面这样<br/>
+<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fsbvzqlgesj309f01oglk.jpg" alt=""/></p>
+
+<h4 id="toc_1">Situation two</h4>
+
+<p><code>self.navigationBar.backgroundColor = [UIColor redColor];</code><br/>
+<img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fsbvypka0rj309e01p0so.jpg" alt=""/></p>
+
+<p>一种是有渐变的半透明效果，一种就是简单的纯色效果。</p>
 
                         
                       </div>
@@ -524,6 +431,94 @@ def xxx(self,a,b)
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834493152.html">
+                
+                  <h1>检测离屏渲染了</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><code>instrumets</code> 已经取消了<code>debug options</code></p>
+
+<p>可以在xcode的<code>debug</code> - <code>view debugging</code> 找到</p>
+
+<p>“核心动画工具和模板已在工具中弃用。之前在”调试选项“下的功能已移至Xcode，位于”<code>Debug&gt; View Debugging</code>“下。</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1315383-752efaac717c3947.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="BB55F33F-97CC-4C28-B3F1-22456A2A7BD8.png"/></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15427834493152.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834493214.html">
+                
+                  <h1>iOS开发一些小技巧</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ul>
+<li>去掉xcode黄色警告的方法</li>
+</ul>
+
+<pre><code>#pragma clang diagnostic push
+#pragma clang diagnostic ignored &quot;-Wdeprecated-declarations&quot;
+ your code with warning
+#pragma clang diagnostic pop
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored &quot;-Wunused-variable&quot;
+ your code with warning
+#pragma clang diagnostic pop
+</code></pre>
+
+<ul>
+<li>控制器init方法执...</li>
+</ul>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15427834493214.html">Read more</a>&nbsp;&nbsp; 
                     <span class="date">2018/11/21</span>
                     <span>posted in&nbsp;</span> 
           				  
@@ -623,25 +618,25 @@ def xxx(self,a,b)
 		  
 		      
 			      <li class="post">
+			        <a href="15445109745059.html">Love at First Launch</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15445081328797.html">App Icon Design</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15444306104604.html">Advanced Debugging with Xcode and LLDB</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15427834493214.html">iOS开发一些小技巧</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15446033549417.html">What's New in LLVM（2017）</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15445109745059.html">Love at First Launch</a>
+			        <a href="15439873228318.html">UINavigationItem</a>
 			      </li>
 		     
 		  
