@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>
     
-    Runtime运行时 - Code Log 👨‍💻‍ 
+    What's New in Storyboards - Code Log 👨‍💻‍ 
     
   </title>
   
@@ -128,10 +128,10 @@
     <div class="markdown-body article-wrap">
       <div class="article">
         
-        <h1>Runtime运行时</h1>
+        <h1>What's New in Storyboards</h1>
 
         <div class="read-more clearfix">
-          <span class="date">2018/11/21</span>
+          <span class="date">2018/12/17</span>
 
           <span>posted in&nbsp;</span> 
           
@@ -150,38 +150,127 @@
       </div><!-- article -->
 
       <div class="article-content">
-        <ol>
-<li><p>runtime调用方法</p>
+        <h6 id="toc_0">故事板是在iOS和OS X上构建用户界面和应用程序流的好方法。了解如何有效地组织故事板，为接口定义segue，以及轻松地展开转换。深入讨论新的api，并听取关于如何创建优秀用户界面的技巧，并附带一些自定义的转场动画介绍和使用。</h6>
 
-<pre><code>- (void)test {
-TestModel *objct = [[TestModel alloc] init];
-((void (*) (id, SEL)) objc_msgSend) (objct, sel_registerName(&quot;country&quot;));
-((void (*) (id, SEL, NSString *)) objc_msgSend) (objct, sel_registerName(&quot;getProvince:&quot;), @&quot;广东省&quot;)；
-((void (*) (id, SEL, NSString *, NSString *)) objc_msgSend) (objct, sel_registerName(&quot;getCity:station:&quot;), @&quot;深圳市&quot;, @&quot;世界之窗&quot;)；
-NSString *weather = ((NSString* (*) (id, SEL)) objc_msgSend) (objct, sel_registerName(&quot;getWeather&quot;));
-NSLog(@&quot;%@&quot;, weather);
-}
-</code></pre></li>
-<li><p>给分类添加属性</p>
+<ol>
+<li><p>Refactor to Storyboard</p>
 
-<pre><code class="language-#import">#import &lt;objc/runtime.h&gt;
-static void *TestStringKey = &amp;TestStringKey;
-@implementation TestModel (String)
-- (void)setTestString:(NSString *)testString {
-objc_setAssociatedObject(self, TestStringKey, testString, OBJC_ASSOCIATION_COPY);
-}
-- (NSString *)testString {
-return objc_getAssociatedObject(self, TestStringKey);
-}
-@end
-</code></pre></li>
-<li><p>获取属性</p>
+<p>在 storyboard 中选中对应的 xib 文件，然后点击Editor-&gt;Refactor to Storyboard</p>
 
-<pre><code>使用class_copyIvarList获得的属性数组是Ivar类型 
-可以使用ivar_getName将ivar类型转换为char
-再使用NSString 的stringWithUTF8String方法转化为NSString类型。
-</code></pre></li>
+<p>可以把整个Storyboard文件中独立的部分重构出来。</p>
+
+<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.13.35.png" alt="屏幕快照 2018-12-17 上午10.13.35"/></p></li>
+<li><p>Storyboard Refrence</p>
+
+<p>拖动Storyboard Refrence到故事版中</p>
+
+<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.42.11.png" alt="屏幕快照 2018-12-17 上午10.42.11"/></p>
+
+<p>对Storyboard Refrence进行设置，选择引用的故事版，以及故事版的引用id(必须和故事版中控制器的 Storyboard ID对应)bundle 可以为空，因为我这里是单项目工程，如果多个 bundle 的话就需要指定不同的 bundle。</p>
+
+<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.41.40.png" alt="屏幕快照 2018-12-17 上午10.41.40"/> </p>
+
+<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.44.49.png" alt="屏幕快照 2018-12-17 上午10.44.49"/></p></li>
+<li><p>Storyboard Segue</p>
+
+<ul>
+<li><p>点击 segue 右侧Utilities -&gt; show the<br/>
+attributes inspector 可以设置自带的转场动画效果。<br/>
+<img src="media/15450120295637/15450155820528.jpg" alt=""/></p></li>
+<li><p>还可以指定Segue Class 在内部重写 perform 方法，记得要调用 [super perform]</p>
+
+<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8811.37.11.png" alt="屏幕快照 2018-12-17 上午11.37.11"/></p>
+
+<ul>
+<li><p>user modal presentation</p>
+
+<ul>
+<li>赋值转换代理对象 transitioning delegate</li>
+<li>调用 [super perform] 开始    modal presentation</li>
+<li>提交动画用于 presentation</li>
+<li>展示动画效果给目标控制器</li>
+</ul></li>
+<li><p>user dismisses presentation</p></li>
+<li><p>提交动画用于 dismissal</p></li>
+<li><p>展示dissmissal动画效果（动画控制器）</p></li>
+</ul></li>
+</ul></li>
 </ol>
+
+<h2 id="toc_1">注意⚠️</h2>
+
+<h5 id="toc_2">1️⃣设置转场动画的代理要在视图加载之前设置，比如在 presentViewController 之前 还有在 viewDidAppear 里面（试了在 viewDidLoad）当中不成功。</h5>
+
+<pre><code>#import &quot;PhotoViewController.h&quot;
+#import &quot;ScalingDismissAnimator.h&quot;
+
+@interface PhotoViewController ()&lt;UIViewControllerTransitioningDelegate&gt;
+
+@end
+
+@implementation PhotoViewController
+-(void)viewDidAppear:(BOOL)animated{
+    self.transitioningDelegate = self;
+    [super viewDidAppear:animated];
+}
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+}
+
+- (IBAction)dismiss:(UIButton *)sender {
+    [self dismissViewControllerAnimated:YES
+                             completion:nil];
+}
+
+-(id&lt;UIViewControllerAnimatedTransitioning&gt;)animationControllerForDismissedController:(UIViewController *)dismissed{
+    return   [[ScalingDismissAnimator alloc]init];
+
+}
+
+</code></pre>
+
+<p>在UIViewControllerAnimatedTransitioning类中除了实现 init 方法之外一定要实现这两个重要方法</p>
+
+<pre><code>- (NSTimeInterval)transitionDuration:(id &lt;UIViewControllerContextTransitioning&gt;)transitionContext {
+    
+    return 动画持续时间;
+}
+
+
+-(void)animateTransition:(id&lt;UIViewControllerContextTransitioning&gt;)transitionContext{
+
+在这个方法里面做动画事件
+
+}
+
+</code></pre>
+
+<h5 id="toc_3">2️⃣fromViewController和toViewController</h5>
+
+<p>要注意fromViewController和toViewController 比如A-&gt;B（present）<br/>
+那么A是fromViewController B 是toViewController<br/>
+然后如果 dissmissViewController 的时候B是fromViewController A是toViewController</p>
+
+<h5 id="toc_4">3️⃣转场动画背景为黑色</h5>
+
+<p>可以先把目标控制器的 view 加到[transitionContext containerView]效果会好很多，然后再加入要发生动画的控制器的 view 比如</p>
+
+<pre><code>-(void)animateTransitionEvent{
+    
+    [self.containerView addSubview:self.toViewController.view];
+    [self.containerView addSubview:self.fromViewController.view];
+    [UIView animateWithDuration:self.transitionDuration delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+        self.fromViewController.view.transform = CGAffineTransformMakeScale(0.1, 0.1);
+    } completion:^(BOOL finished) {
+        [self completeTransition];
+    }];
+}
+```
+
+
+
+</code></pre>
 
 
 
@@ -192,14 +281,12 @@ return objc_getAssociatedObject(self, TestStringKey);
         <div class="large-6 columns">
           <p class="text-left" style="padding:15px 0px;">
             
-            <a href="15427834491628.html" title="Previous Post: 设置Cell分割线顶头">&laquo; 设置Cell分割线顶头</a>
-            
           </p>
         </div>
         <div class="large-6 columns">
           <p class="text-right" style="padding:15px 0px;">
             
-            <a href="15427834491747.html" title="Next Post: 终端命令">终端命令
+            <a href="15446970341146.html" title="Next Post: Building Apps with Dynamic Type">Building Apps with Dynamic Type
               &raquo;</a>
             
           </p>
