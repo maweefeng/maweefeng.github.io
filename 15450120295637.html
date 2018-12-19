@@ -152,15 +152,15 @@
       <div class="article-content">
         <h6 id="toc_0">故事板是在iOS和OS X上构建用户界面和应用程序流的好方法。了解如何有效地组织故事板，为接口定义segue，以及轻松地展开转换。深入讨论新的api，并听取关于如何创建优秀用户界面的技巧，并附带一些自定义的转场动画介绍和使用。</h6>
 
-<ol>
-<li><p>Refactor to Storyboard</p>
+<h2 id="toc_1">1. Refactor to Storyboard</h2>
 
 <p>在 storyboard 中选中对应的 xib 文件，然后点击Editor-&gt;Refactor to Storyboard</p>
 
 <p>可以把整个Storyboard文件中独立的部分重构出来。</p>
 
-<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.13.35.png" alt="屏幕快照 2018-12-17 上午10.13.35"/></p></li>
-<li><p>Storyboard Refrence</p>
+<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.13.35.png" alt="屏幕快照 2018-12-17 上午10.13.35"/></p>
+
+<h2 id="toc_2">2. Storyboard Refrence</h2>
 
 <p>拖动Storyboard Refrence到故事版中</p>
 
@@ -170,8 +170,9 @@
 
 <p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.41.40.png" alt="屏幕快照 2018-12-17 上午10.41.40"/> </p>
 
-<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.44.49.png" alt="屏幕快照 2018-12-17 上午10.44.49"/></p></li>
-<li><p>Storyboard Segue</p>
+<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.44.49.png" alt="屏幕快照 2018-12-17 上午10.44.49"/></p>
+
+<h2 id="toc_3">3. Storyboard Segue</h2>
 
 <ul>
 <li><p>点击 segue 右侧Utilities -&gt; show the<br/>
@@ -194,12 +195,11 @@ attributes inspector 可以设置自带的转场动画效果。<br/>
 <li><p>提交动画用于 dismissal</p></li>
 <li><p>展示dissmissal动画效果（动画控制器）</p></li>
 </ul></li>
-</ul></li>
-</ol>
+</ul>
 
-<h2 id="toc_1">注意⚠️</h2>
+<h2 id="toc_4">注意⚠️</h2>
 
-<h5 id="toc_2">1️⃣设置转场动画的代理要在视图加载之前设置，比如在 presentViewController 之前 还有在 viewDidAppear 里面（试了在 viewDidLoad）当中不成功。</h5>
+<h5 id="toc_5">1️⃣设置转场动画的代理要在视图加载之前设置，比如在 presentViewController 之前 还有在 viewDidAppear 里面（试了在 viewDidLoad）当中不成功。</h5>
 
 <pre><code>#import &quot;PhotoViewController.h&quot;
 #import &quot;ScalingDismissAnimator.h&quot;
@@ -210,21 +210,21 @@ attributes inspector 可以设置自带的转场动画效果。<br/>
 
 @implementation PhotoViewController
 -(void)viewDidAppear:(BOOL)animated{
-    self.transitioningDelegate = self;
-    [super viewDidAppear:animated];
+self.transitioningDelegate = self;
+[super viewDidAppear:animated];
 }
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+[super viewDidLoad];
+// Do any additional setup after loading the view.
 }
 
 - (IBAction)dismiss:(UIButton *)sender {
-    [self dismissViewControllerAnimated:YES
-                             completion:nil];
+[self dismissViewControllerAnimated:YES
+                         completion:nil];
 }
 
 -(id&lt;UIViewControllerAnimatedTransitioning&gt;)animationControllerForDismissedController:(UIViewController *)dismissed{
-    return   [[ScalingDismissAnimator alloc]init];
+return   [[ScalingDismissAnimator alloc]init];
 
 }
 
@@ -234,7 +234,7 @@ attributes inspector 可以设置自带的转场动画效果。<br/>
 
 <pre><code>- (NSTimeInterval)transitionDuration:(id &lt;UIViewControllerContextTransitioning&gt;)transitionContext {
     
-    return 动画持续时间;
+return 动画持续时间;
 }
 
 
@@ -246,25 +246,25 @@ attributes inspector 可以设置自带的转场动画效果。<br/>
 
 </code></pre>
 
-<h5 id="toc_3">2️⃣fromViewController和toViewController</h5>
+<h5 id="toc_6">2️⃣fromViewController和toViewController</h5>
 
 <p>要注意fromViewController和toViewController 比如A-&gt;B（present）<br/>
 那么A是fromViewController B 是toViewController<br/>
 然后如果 dissmissViewController 的时候B是fromViewController A是toViewController</p>
 
-<h5 id="toc_4">3️⃣转场动画背景为黑色</h5>
+<h5 id="toc_7">3️⃣转场动画背景为黑色</h5>
 
 <p>可以先把目标控制器的 view 加到[transitionContext containerView]效果会好很多，然后再加入要发生动画的控制器的 view 比如</p>
 
 <pre><code>-(void)animateTransitionEvent{
     
-    [self.containerView addSubview:self.toViewController.view];
-    [self.containerView addSubview:self.fromViewController.view];
-    [UIView animateWithDuration:self.transitionDuration delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
-        self.fromViewController.view.transform = CGAffineTransformMakeScale(0.1, 0.1);
-    } completion:^(BOOL finished) {
-        [self completeTransition];
-    }];
+[self.containerView addSubview:self.toViewController.view];
+[self.containerView addSubview:self.fromViewController.view];
+[UIView animateWithDuration:self.transitionDuration delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+    self.fromViewController.view.transform = CGAffineTransformMakeScale(0.1, 0.1);
+} completion:^(BOOL finished) {
+    [self completeTransition];
+}];
 }
 </code></pre>
 
