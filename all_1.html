@@ -10,7 +10,6 @@
     
   </title>
   
-  <meta name="keywords" content="sudo gem update" />
   
   <link href="atom.xml" rel="alternate" title="Code Log 👨‍💻‍ " type="application/atom+xml">
   <link rel="stylesheet" href="asset/css/foundation.min.css" />
@@ -128,6 +127,44 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15438021304374.html">
+                
+                  <h1>Swift & Objective-C & C++之间的混编</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">①Objective-C 调用 C++</h3>
+
+<p>OC本身可以直接调用C的代码 比如直接可以调用printf方法。<br/>
+但是OC中的.m直接编译C++的代码就会出现编译错误<br/>
+需要把OC.m改成OC.mm之后（objective-c变成了objective-c++）引入iostream(<code>#include&lt;iostream&gt;</code>)就可以直接编译了。<br/>
+这可以在.mm文件当中直接使用c++的代码。<br/>
+也可以另外新建一个c++的文件，并且创建.h文件...</p>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15438021304374.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/12/3</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15433939231870.html">
                 
@@ -432,51 +469,6 @@ end
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15427834491108.html">
-                
-                  <h1>You don’t have write permissions</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">终端运行sudo gem update出现如下错误</h3>
-
-<blockquote>
-<p>ERROR: While executing gem … (Gem::FilePermissionError) <br/>
-You don’t have write permissions for the /usr/bin directory.</p>
-</blockquote>
-
-<p>试一下这一段代码</p>
-
-<blockquote>
-<p>sudo gem install -n /usr/local/bin cocoapods</p>
-</blockquote>
-
-<p>这表示是在本地环境</p>...
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834491108.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='CocoaPods.html'>CocoaPods</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -554,6 +546,12 @@ You don’t have write permissions for the /usr/bin directory.</p>
 	      
 		      
 			      <li class="post">
+			        <a href="15451226434486.html">UICollectionView入门</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15450120295637.html">What's New in Storyboards</a>
 			      </li>
 		     
@@ -573,12 +571,6 @@ You don’t have write permissions for the /usr/bin directory.</p>
 		      
 			      <li class="post">
 			        <a href="15445081328797.html">App Icon Design</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15444306104604.html">Advanced Debugging with Xcode and LLDB</a>
 			      </li>
 		     
 		  

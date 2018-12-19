@@ -128,6 +128,46 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15427834491628.html">
+                
+                  <h1>设置Cell分割线顶头</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h6 id="toc_0">UITableView设置系统cell的分割线顶头</h6>
+
+<pre><code>- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    cell.layoutMargins = UIEdgeInsetsZero;
+    cell.separatorInset = UIEdgeInsetsZero;
+    cell.preservesSuperviewLayoutMargins = NO;
+}
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15427834491690.html">
                 
                   <h1>Runtime运行时</h1>
@@ -455,43 +495,6 @@ ASButtonNode * buttonnode = [ASButtonNode new];
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15427834492260.html">
-                
-                  <h1>SDWebImageview 不能加载HTTPS图片</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>这个问题是因为图片地址所在的服务器没有有效的SSL证书文件<br/>
-只需要在Options参数中设置SDWebImaweefenggeAllowInvalidSSLCertificates枚举就可</p>
-
-<pre><code>[self.avatarImageView sd_setImageWithURL: [NSURL URLWithString: famousStarObject.avatar] placeholderImage: [UIImage imageNamed: @&quot;icon_default_avator&quot;] options: SDWebImageAllowInvalidSSLCertificates];
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -569,6 +572,12 @@ ASButtonNode * buttonnode = [ASButtonNode new];
 	      
 		      
 			      <li class="post">
+			        <a href="15451226434486.html">UICollectionView入门</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15450120295637.html">What's New in Storyboards</a>
 			      </li>
 		     
@@ -588,12 +597,6 @@ ASButtonNode * buttonnode = [ASButtonNode new];
 		      
 			      <li class="post">
 			        <a href="15445081328797.html">App Icon Design</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15444306104604.html">Advanced Debugging with Xcode and LLDB</a>
 			      </li>
 		     
 		  

@@ -1,0 +1,643 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    
+    UICollectionView入门 - Code Log 👨‍💻‍ 
+    
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="Code Log 👨‍💻‍ " type="application/atom+xml">
+  <link rel="stylesheet" href="asset/css/foundation.min.css" />
+  <link rel="stylesheet" href="asset/css/docs.css" />
+  <script src="asset/js/vendor/modernizr.js"></script>
+  <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>
+    hljs.initHighlightingOnLoad();
+
+    window.onload = function () {
+
+      var footerPath = window.location.pathname.split('/')[window.location.pathname.split('/').length - 1];
+      if (footerPath == 'archives.html') {
+        // alert('分类');
+        document.getElementById('main-menu').getElementsByTagName("li")[1].className = "is_active";
+
+      } else if (footerPath == 'about.html') {
+        document.getElementById('main-menu').getElementsByTagName("li")[2].className = "is_active";
+
+        // alert('关于我');
+  
+      } else {
+        // alert('首页');
+        document.getElementById('main-menu').getElementsByTagName("li")[0].className = "is_active";
+      }
+
+
+    }
+  </script>
+  <script type="text/javascript">
+    function before_search() {
+      var searchVal = 'site: ' + document.getElementById('search_input').value;
+      document.getElementById('search_q').value = searchVal;
+      return true;
+    }
+  </script>
+</head>
+
+<body class="antialiased hide-extras">
+
+  <div class="marketing off-canvas-wrap" data-offcanvas>
+    <div class="inner-wrap">
+
+
+      <nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+        <section class="top-bar-section">
+          <div class="row">
+            <div style="position: relative;width:100%;">
+              <div style="position: absolute; width:100%;">
+                <ul id="main-menu" class="left">
+                  
+                  <li id=""><a id="" target="_self" href="index.html">Home</a></li>
+                  
+                  <li id=""><a id="" target="_self" href="archives.html">Archives</a></li>
+                  
+                  <li id=""><a id="" target="_self" href="about.html">About</a></li>
+                  
+                </ul>
+
+                <ul class="right" id="search-wrap">
+                  <li>
+                    <form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+                      <input type="hidden" id="search_q" name="q" value="" />
+                      <input tabindex="1" type="search" id="search_input" placeholder="Search" />
+                    </form>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </nav>
+
+      <nav class="tab-bar show-for-small">
+        <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+          <span> &nbsp; Code Log 👨‍💻‍ </span>
+        </a>
+      </nav>
+
+      <aside class="left-off-canvas-menu">
+        <ul class="off-canvas-list">
+
+          <li><a href="index.html">Home</a></li>
+          <li><a href="archives.html">Archives</a></li>
+          
+          <li><label>Categories</label></li>
+
+          
+          <li id="iOS"><a href="iOS.html">iOS</a></li>
+          
+          <li id="Git"><a href="Git.html">Git</a></li>
+          
+          <li id="CocoaPods"><a href="CocoaPods.html">CocoaPods</a></li>
+          
+          <li id="about"><a href="about.html">about</a></li>
+          
+
+        </ul>
+      </aside>
+
+      <a class="exit-off-canvas" href="#"></a>
+
+
+      <section id="main-content" role="main" class="scroll-container"> <script type="text/javascript">
+  $(function () {
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+    <div class="markdown-body article-wrap">
+      <div class="article">
+        
+        <h1>UICollectionView入门</h1>
+
+        <div class="read-more clearfix">
+          <span class="date">2018/12/18</span>
+
+          <span>posted in&nbsp;</span> 
+          
+          <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          
+
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <div class="addthis_inline_share_toolbox"></div>
+      </div><!-- article -->
+
+      <div class="article-content">
+        <ol>
+<li><p>设计数据源和代理</p>
+
+<p>每个集合视图都必须具有数据源对象。该数据源对象是内容，你的应用程序显示。它可以是应用程序数据模型中的对象，也可以是管理集合视图的视图控制器。数据源的唯一要求是它必须能够提供集合视图所需的信息，例如有多少项以及在显示这些项时要使用的视图。</p>
+
+<p>UICollectionViewDelegate是一个可选的（但建议）对象管理有关的介绍，并与您的内容互动方面。虽然代表的主要工作是管理单元格突出显示和选择，但可以扩展它以提供其他信息。例如，流布局扩展了基本委托行为以自定义布局指标，例如单元格的大小和它们之间的间距</p>
+
+<p><strong>For example:</strong></p>
+
+<pre><code> self.collectionView.delegate = self;
+ self.collectionView.dataSource = self;
+</code></pre></li>
+<li><p>注册 cells 和 suppelementary Views</p>
+
+<ul>
+<li>配置cell
+
+<ul>
+<li>registerClass:forCellWithReuseIdentifier:</li>
+<li>registerNib:forCellWithReuseIdentifier:</li>
+</ul></li>
+<li><p>配置suppelementary Views</p>
+
+<ul>
+<li>registerClass:forSupplementaryViewOfKind:withReuseIdentifier:</li>
+<li>registerNib:forSupplementaryViewOfKind:withReuseIdentifier:</li>
+</ul></li>
+</ul>
+
+<p><strong>For example:</strong></p>
+
+<pre><code> [self.collectionView registerNib:[UINib nibWithNibName:@&quot;MyCustomCell&quot; bundle:nil] forCellWithReuseIdentifier:@&quot;cell&quot;];
+</code></pre></li>
+<li><p>数据源管理您的内容</p>
+
+<ul>
+<li>集合视图包含多少个部分？</li>
+<li>对于给定的部分，部分包含多少项？</li>
+<li>对于给定的部分或项目，应使用哪些视图来显示相应的内容？</li>
+</ul>
+
+<p><strong>For example:</strong></p>
+
+<pre><code>-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView*)collectionView {
+        // _data is a class member variable that contains one array per section.
+        return [_data count];
+    }
+
+-(NSInteger)collectionView:(UICollectionView*)collectionView numberOfItemsInSection:(NSInteger)section {
+        NSArray* sectionArray = [_data objectAtIndex:section];
+        return [sectionArray count];
+    }
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    MyCustomCell * newCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@&quot;cell&quot;
+                              forIndexPath:indexPath];
+
+   newCell.cellLabel.text = [NSString stringWithFormat：@“Section：％d，Item：％d”，indexPath.section，indexPath.item];
+    return newCell;
+}
+
+</code></pre></li>
+<li><p>设计数据对象</p>
+
+<p>高效的数据源使用节和项来帮助组织其底层数据对象。将数据组织成部分和项目可以使以后更轻松地实现数据源方法。而且由于您经常调用数据源方法，因此您需要确保这些方法的实现能够尽快检索数据。</p>
+
+<p>比如下面这个结构</p>
+
+<p><img src="media/15451226434486/15451228663086.png" alt=""/></p></li>
+<li><p>插入，删除和移动部分和项目</p>
+
+<p>在通知集合视图任何更改之前更新数据源至关重要，要插入，删除或移动单个部分或项目，请按照下列步骤操作：</p>
+
+<ul>
+<li>更新数据源对象中的数据</li>
+<li>调用集合视图的相应方法以插入或删除节或项。</li>
+</ul>
+
+<p>以编程方式添加，删除或移动单个项目时，集合视图的方法会自动创建动画以反映更改。但是，如果要同时为多个更改设置动画，则必须在块内执行所有插入，删除或移动调用，并将该块传递给该performBatchUpdates:completion:方法。然后，批量更新过程会同时为所有更改设置动画，您可以自由地混合调用以插入，删除或移动同一块中的项目。</p>
+
+<p><strong>For example:</strong></p>
+
+<pre><code>[self.collectionView performBatchUpdates:^{
+   NSArray* itemPaths = [self.collectionView indexPathsForSelectedItems];
+
+   // Delete the items from the data source.
+   [self deleteItemsFromDataSourceAtIndexPaths:itemPaths];
+
+   // Now delete the items from the collection view.
+   [self.collectionView deleteItemsAtIndexPaths:itemPaths];
+} completion:nil];
+</code></pre></li>
+<li><p>管理选择和亮点的可视状态</p>
+
+<p>backgroundView当单元格第一次加载以及单元格未突出显示或未选中时，单元格的属性将始终为默认视图。selectedBackgroundView每当突出显示或选择单元格时，该属性都会替换默认的背景视图。在这种情况下，当选择或突出显示时，单元格的背景颜色将从红色变为白色。</p>
+
+<p><strong>For example:</strong></p>
+
+<pre><code>#import &quot;MyCustomCell.h&quot;
+
+@implementation MyCustomCell
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+
+    UIView * backgroundView = [[UIView alloc] initWithFrame:self.bounds];
+    backgroundView.backgroundColor = [UIColor redColor];
+    self.backgroundView = backgroundView;
+
+    UIView * selectedBGView = [[UIView alloc] initWithFrame:self.bounds];
+    selectedBGView.backgroundColor = [UIColor whiteColor];
+    self.selectedBackgroundView = selectedBGView;
+    // Initialization code
+}
+
+@end
+</code></pre></li>
+<li><p>显示单元格的编辑菜单<br/>
+<img src="media/15451226434486/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-18%20%E4%B8%8B%E5%8D%886.05.55.png" alt="屏幕快照 2018-12-18 下午6.05.55" style="width:257px;"/></p>
+
+<ul>
+<li>委托必须实现与处理操作相关的所有三种方法：
+
+<ul>
+<li>collectionView:shouldShowMenuForItemAtIndexPath:</li>
+<li>collectionView:canPerformAction:forItemAtIndexPath:withSender:</li>
+<li>collectionView:performAction:forItemAtIndexPath:withSender:</li>
+</ul></li>
+</ul>
+
+<p>collectionView:shouldShowMenuForItemAtIndexPath:方法必须返回YES。<br/>
+collectionView:canPerformAction:forItemAtIndexPath:withSender:方法必须返回YES至少一个所需的动作。集合视图支持以下操作：<br/>
+cut:copy:paste:</p>
+
+<p><strong>For example:</strong></p>
+
+<pre><code>-(BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath{
+
+    return YES;
+}
+
+- (BOOL)collectionView:(UICollectionView *)collectionView
+      canPerformAction:(SEL)action
+    forItemAtIndexPath:(NSIndexPath *)indexPath
+            withSender:(id)sender {
+    // Support only copying and pasting of cells.
+    if ([NSStringFromSelector(action) isEqualToString:@&quot;copy:&quot;]
+        || [NSStringFromSelector(action) isEqualToString:@&quot;paste:&quot;])
+        return YES;
+
+    // Prevent all other actions.
+    return NO;
+}
+-(void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender{
+
+    if ([NSStringFromSelector(action) isEqualToString:@&quot;copy:&quot;]){
+        if(_selectCopyArray.count) [_selectCopyArray removeAllObjects];
+        [_selectCopyArray addObject:@[@&quot;1&quot;,@&quot;2&quot;]];
+    }
+
+    if ([NSStringFromSelector(action) isEqualToString:@&quot;paste:&quot;]){
+
+        [self.dataSource addObjectsFromArray:_selectCopyArray];
+        [self.collectionView reloadData];
+
+    }
+
+}
+</code></pre></li>
+<li><p>流式布局<code>UICollectionViewFlowLayout</code></p>
+
+<ul>
+<li><p>描述</p>
+
+<p>您可以使用具体的布局对象（UICollectionViewFlowLayout类）在集合视图中排列项目。流布局实现了基于行的分解布局，这意味着布局对象将单元放置在线性路径上，并尽可能多地沿着该行拟合单元。<strong>当布局对象在当前行上没有空间时，它会创建一个新行并在那里继续布局过程</strong></p>
+
+<p>可以通过编程方式或使用Xcode中的Interface Builder来配置流布局。配置流布局的步骤如下：</p>
+
+<ul>
+<li>创建流布局对象并将其分配给集合视图</li>
+<li>配置单元格的宽度和高度。</li>
+<li>为线条和项目设置间距选项（根据需要）。</li>
+<li>如果需要节标题或节页脚，请指定其大小。</li>
+<li>设置布局的滚动方向。</li>
+</ul></li>
+</ul>
+
+<p><strong>自定义流布局属性</strong></p>
+
+<ul>
+<li><p>①指定流布局中的项目大小</p>
+
+<ul>
+<li><p>xib 实现</p>
+
+<ul>
+<li>滚动方向</li>
+</ul>
+
+<p><img src="media/15451226434486/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-19%20%E4%B8%8A%E5%8D%8810.06.44.png" alt="屏幕快照 2018-12-19 上午10.06.44"/> </p>
+
+<ul>
+<li>大小间距等属性设置</li>
+</ul>
+
+<p><img src="media/15451226434486/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-19%20%E4%B8%8A%E5%8D%8810.06.30.png" alt="屏幕快照 2018-12-19 上午10.06.30"/></p></li>
+</ul>
+
+<p><strong>注意</strong>：您必须至少指定单元格的宽度和高度，如果不这样做，则会为您的项目指定宽度和高度为0，并且永远不会显示。</p>
+
+<ul>
+<li><p>代码实现</p>
+
+<ul>
+<li><p>单元格相同的大小直接设置<code>self.flowLayout.itemSize</code></p></li>
+<li><p>单元格指定不同的大小实现<br/>
+<code>collectionView:layout:sizeForItemAtIndexPath:</code>。可以使用提供的索引路径信息来返回相应项的大小。</p>
+
+<p><img src="media/15451226434486/15451873998702.png" alt=""/><br/>
+如果要动态改变项目的间距或大小，可以使用UICollectionViewDelegateFlowLayout 协议的方法。</p>
+
+<pre><code>//UICollectionViewDelegateFlowLayout 代理方法
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath;
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section;
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section;
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section;
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section;
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section;
+</code></pre>
+
+<p><strong>如果存在给定方法，则流布局对象将调用该方法，而不是使用它具有的固定值。</strong><br/>
+实现必须为集合视图中的所有项返回适当的值。</p>
+
+<p><strong>注意</strong>:为单元格指定不同的大小时，单行上的项目数可能因行而异。</p></li>
+</ul></li>
+</ul></li>
+<li><p>②指定项目和行之间的空间</p>
+
+<p>使用流布局，您可以指定同一行上的项目之间的最小间距以及连续行之间的最小间距。提供的间距仅为最小间距。由于它如何布置内容，流布局对象可能会将项之间的间距增加到大于您指定的值的值。当布置的项目具有不同的尺寸时，布局对象可以类似地增加实际的行间距。</p>
+
+<ul>
+<li><p>项目之间的实际间距可能大于最小值</p>
+
+<p><img src="media/15451226434486/15451882901753.png" alt=""/></p></li>
+<li><p>如果项目大小不同，行间距会有所不同</p>
+
+<p><img src="media/15451226434486/15451883323733.png" alt=""/></p>
+
+<ul>
+<li>xib 实现见上面的图</li>
+<li>代码实现
+
+<ul>
+<li>固定间距 self.flowLayout.minimumLineSpacing和 self.flowLayout.minimumInteritemSpacing属性静态设置间距</li>
+<li>collectionView:layout:minimumLineSpacingForSectionAtIndex:和collectionView:layout:minimumInteritemSpacingForSectionAtIndex:方法。</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><p>③使用Section Insets来调整内容的边距</p>
+
+<p>使用insets在节的标题视图之后和页脚视图之前插入空格或者使用insets在内容的两侧插入空</p>
+
+<p><img src="media/15451226434486/15451888644969.png" alt=""/><br/>
+格。</p>
+
+<p>部分插入更改了布置单元格的可用空间，可以限制给定行中单元格的数量。</p></li>
+</ul></li>
+</ol>
+
+<h3 id="toc_0">总结</h3>
+
+<p>这篇文章包含了一个初学者刚开始接触UICollecctionView 所需要了解的内容，也一步步教你怎么使用一个最基础的视图。包含代理方法，itemSize，itemInset sectionInset 等等。<br/>
+基本上这些已经能满足一个初学者的要求了，如果需要进阶教程，后续会有进阶教程。</p>
+
+
+
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+          <p class="text-left" style="padding:15px 0px;">
+            
+          </p>
+        </div>
+        <div class="large-6 columns">
+          <p class="text-right" style="padding:15px 0px;">
+            
+            <a href="15450120295637.html" title="Next Post: What's New in Storyboards">What's New in Storyboards
+              &raquo;</a>
+            
+          </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5bfe6ae3f692f811"></script>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://maweefeng.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<script id="dsq-count-scr" src="//maweefeng.disqus.com/count.js" async></script>
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 --> <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <div class="site-a-logo"><img src="/asset/img/logo.png" /></div>
+            
+                <h1>Code Log 👨‍💻‍ </h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="github" target="_blank" href="https://github.com/maweefeng" title="GitHub">GitHub</a>
+<a target="_blank" class="email" href="mailto:maweefeng@gmail.com" title="Email">Email</a>
+  <!-- <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a> -->
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="iOS.html"><strong>iOS</strong></a>
+        
+            <a href="Git.html"><strong>Git</strong></a>
+        
+            <a href="CocoaPods.html"><strong>CocoaPods</strong></a>
+        
+            <a href="about.html"><strong>about</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15451226434486.html">UICollectionView入门</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15450120295637.html">What's New in Storyboards</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15446970341146.html">Building Apps with Dynamic Type</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15445109745059.html">Love at First Launch</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15445081328797.html">App Icon Design</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <!-- <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p> -->
+<p class="copyright">日光之下 永无新事</p>
+</div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    <script src="asset/chart/all-min.js"></script><script type="text/javascript">$(function(){    var mwebii=0;    var mwebChartEleId = 'mweb-chart-ele-';    $('pre>code').each(function(){        mwebii++;        var eleiid = mwebChartEleId+mwebii;        if($(this).hasClass('language-sequence')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = Diagram.parse($(this).text());            diagram.drawSVG(eleiid,{theme: 'simple'});        }else if($(this).hasClass('language-flow')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = flowchart.parse($(this).text());            diagram.drawSVG(eleiid);        }    });});</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+
+  </body>
+</html>
