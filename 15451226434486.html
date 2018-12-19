@@ -150,8 +150,7 @@
       </div><!-- article -->
 
       <div class="article-content">
-        <ol>
-<li><p>设计数据源和代理</p>
+        <h2 id="toc_0">1. 设计数据源和代理</h2>
 
 <p>每个集合视图都必须具有数据源对象。该数据源对象是内容，你的应用程序显示。它可以是应用程序数据模型中的对象，也可以是管理集合视图的视图控制器。数据源的唯一要求是它必须能够提供集合视图所需的信息，例如有多少项以及在显示这些项时要使用的视图。</p>
 
@@ -161,8 +160,9 @@
 
 <pre><code> self.collectionView.delegate = self;
  self.collectionView.dataSource = self;
-</code></pre></li>
-<li><p>注册 cells 和 suppelementary Views</p>
+</code></pre>
+
+<h2 id="toc_1">2. 注册 cells 和 suppelementary Views</h2>
 
 <ul>
 <li>配置cell
@@ -182,8 +182,9 @@
 <p><strong>For example:</strong></p>
 
 <pre><code> [self.collectionView registerNib:[UINib nibWithNibName:@&quot;MyCustomCell&quot; bundle:nil] forCellWithReuseIdentifier:@&quot;cell&quot;];
-</code></pre></li>
-<li><p>数据源管理您的内容</p>
+</code></pre>
+
+<h2 id="toc_2">3. 数据源管理您的内容</h2>
 
 <ul>
 <li>集合视图包含多少个部分？</li>
@@ -197,29 +198,33 @@
         // _data is a class member variable that contains one array per section.
         return [_data count];
     }
-
+    
 -(NSInteger)collectionView:(UICollectionView*)collectionView numberOfItemsInSection:(NSInteger)section {
         NSArray* sectionArray = [_data objectAtIndex:section];
         return [sectionArray count];
     }
-
+    
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     MyCustomCell * newCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@&quot;cell&quot;
                               forIndexPath:indexPath];
-
+    
    newCell.cellLabel.text = [NSString stringWithFormat：@“Section：％d，Item：％d”，indexPath.section，indexPath.item];
     return newCell;
 }
+    
+</code></pre>
 
-</code></pre></li>
-<li><p>设计数据对象</p>
+<h2 id="toc_3">4. 设计数据对象</h2>
 
 <p>高效的数据源使用节和项来帮助组织其底层数据对象。将数据组织成部分和项目可以使以后更轻松地实现数据源方法。而且由于您经常调用数据源方法，因此您需要确保这些方法的实现能够尽快检索数据。</p>
 
 <p>比如下面这个结构</p>
 
-<p><img src="media/15451226434486/15451228663086.png" alt=""/></p></li>
-<li><p>插入，删除和移动部分和项目</p>
+<p><img src="media/15451226434486/15451228663086.png" alt=""/></p>
+
+<ol>
+<li>插入，删除和移动部分和项目</li>
+</ol>
 
 <p>在通知集合视图任何更改之前更新数据源至关重要，要插入，删除或移动单个部分或项目，请按照下列步骤操作：</p>
 
@@ -234,41 +239,45 @@
 
 <pre><code>[self.collectionView performBatchUpdates:^{
    NSArray* itemPaths = [self.collectionView indexPathsForSelectedItems];
-
+ 
    // Delete the items from the data source.
    [self deleteItemsFromDataSourceAtIndexPaths:itemPaths];
-
+ 
    // Now delete the items from the collection view.
    [self.collectionView deleteItemsAtIndexPaths:itemPaths];
 } completion:nil];
-</code></pre></li>
-<li><p>管理选择和亮点的可视状态</p>
+</code></pre>
+
+<h2 id="toc_4">6. 管理选择和亮点的可视状态</h2>
 
 <p>backgroundView当单元格第一次加载以及单元格未突出显示或未选中时，单元格的属性将始终为默认视图。selectedBackgroundView每当突出显示或选择单元格时，该属性都会替换默认的背景视图。在这种情况下，当选择或突出显示时，单元格的背景颜色将从红色变为白色。</p>
 
 <p><strong>For example:</strong></p>
 
 <pre><code>#import &quot;MyCustomCell.h&quot;
-
+    
 @implementation MyCustomCell
-
+    
 - (void)awakeFromNib {
     [super awakeFromNib];
-
+    
     UIView * backgroundView = [[UIView alloc] initWithFrame:self.bounds];
     backgroundView.backgroundColor = [UIColor redColor];
     self.backgroundView = backgroundView;
-
+    
     UIView * selectedBGView = [[UIView alloc] initWithFrame:self.bounds];
     selectedBGView.backgroundColor = [UIColor whiteColor];
     self.selectedBackgroundView = selectedBGView;
     // Initialization code
 }
-
+    
 @end
-</code></pre></li>
+</code></pre>
+
+<ol>
 <li><p>显示单元格的编辑菜单<br/>
-<img src="media/15451226434486/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-18%20%E4%B8%8B%E5%8D%886.05.55.png" alt="屏幕快照 2018-12-18 下午6.05.55" style="width:257px;"/></p>
+<img src="media/15451226434486/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-18%20%E4%B8%8B%E5%8D%886.05.55.png" alt="屏幕快照 2018-12-18 下午6.05.55" style="width:257px;"/></p></li>
+</ol>
 
 <ul>
 <li>委托必须实现与处理操作相关的所有三种方法：
@@ -287,10 +296,10 @@ cut:copy:paste:</p>
 <p><strong>For example:</strong></p>
 
 <pre><code>-(BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath{
-
+    
     return YES;
 }
-
+    
 - (BOOL)collectionView:(UICollectionView *)collectionView
       canPerformAction:(SEL)action
     forItemAtIndexPath:(NSIndexPath *)indexPath
@@ -299,27 +308,31 @@ cut:copy:paste:</p>
     if ([NSStringFromSelector(action) isEqualToString:@&quot;copy:&quot;]
         || [NSStringFromSelector(action) isEqualToString:@&quot;paste:&quot;])
         return YES;
-
+    
     // Prevent all other actions.
     return NO;
 }
 -(void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender{
-
+    
     if ([NSStringFromSelector(action) isEqualToString:@&quot;copy:&quot;]){
         if(_selectCopyArray.count) [_selectCopyArray removeAllObjects];
         [_selectCopyArray addObject:@[@&quot;1&quot;,@&quot;2&quot;]];
     }
-
+    
     if ([NSStringFromSelector(action) isEqualToString:@&quot;paste:&quot;]){
-
+        
         [self.dataSource addObjectsFromArray:_selectCopyArray];
         [self.collectionView reloadData];
-
+    
     }
-
+        
+    
+    
+    
 }
-</code></pre></li>
-<li><p>流式布局<code>UICollectionViewFlowLayout</code></p>
+</code></pre>
+
+<h2 id="toc_5">8. 流式布局<code>UICollectionViewFlowLayout</code></h2>
 
 <ul>
 <li><p>描述</p>
@@ -416,10 +429,9 @@ cut:copy:paste:</p>
 格。</p>
 
 <p>部分插入更改了布置单元格的可用空间，可以限制给定行中单元格的数量。</p></li>
-</ul></li>
-</ol>
+</ul>
 
-<h3 id="toc_0">总结</h3>
+<h3 id="toc_6">总结</h3>
 
 <p>这篇文章包含了一个初学者刚开始接触UICollecctionView 所需要了解的内容，也一步步教你怎么使用一个最基础的视图。包含代理方法，itemSize，itemInset sectionInset 等等。<br/>
 基本上这些已经能满足一个初学者的要求了，如果需要进阶教程，后续会有进阶教程。</p>
