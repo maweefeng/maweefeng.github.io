@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>
     
-    UINavigationItem - Code Log 👨‍💻‍ 
+    iOS - Code Log 👨‍💻‍ 
     
   </title>
   
@@ -119,143 +119,85 @@
 
 
       <section id="main-content" role="main" class="scroll-container"> <script type="text/javascript">
-  $(function () {
-    $('#menu_item_index').addClass('is_active');
-  });
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
 </script>
 <div class="row">
-  <div class="large-8 medium-8 columns">
-    <div class="markdown-body article-wrap">
-      <div class="article">
-        
-        <h1>UINavigationItem</h1>
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="15427834493281.html">
+                
+                  <h1>为什么NSString使用Copy修饰符</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h6 id="toc_0">NSString为什么要用copy关键字，用strong会有什么问题？</h6>
 
-        <div class="read-more clearfix">
-          <span class="date">2018/12/5</span>
+<p>我们大部分的时候NSString的属性都是copy，那copy与strong的情况下到底有什么区别呢?我们以实例来说明：</p>
 
-          <span>posted in&nbsp;</span> 
-          
-          <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          
+<pre><code>@interface ViewController ()
+@property(nonatomic,copy)NSString * str1;
+@property(nonatomic,strong)NSString*str2;
+@end
 
-          <span class="comments">
-            
-
-            
-          </span>
-
-        </div>
-        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-        <div class="addthis_inline_share_toolbox"></div>
-      </div><!-- article -->
-
-      <div class="article-content">
-        <p>纵观Apple的官方应用程式的导航栏你就会发现在iOS11之后导航栏的高度会自动变化，文字的大小以及位置也会随之变化。<br/>
-这是iOS11之后的新特性，苹果是使用给UINavigationItem添加扩展的方法增加的新功能，这也给了我们新的一种思路，为了不去修改之前代码的原则上添加新的功能的方式。</p>
-
-<pre><code>extension UINavigationItem {
-    public enum LargeTitleDisplayMode : Int {
-        /// Automatically use the large out-of-line title based on the state of the previous item in the navigation bar. An item with largeTitleDisplayMode=Automatic will show or hide the large title based on the request of the previous navigation item. If the first item pushed is set to Automatic, then it will show the large title if the navigation bar has prefersLargeTitles=YES.
-        case automatic
-
-        
-        /// Always use a larger title when this item is top most.
-        case always
-
-        
-        /// Never use a larger title when this item is top most.
-        case never
-    }
+-(void)test
+{
+    NSMutableString*str=[NSMutableString stringWithFormat:@&quot;helloworld&quot;];
+    self.str1=str;
+    self.str2=str;
+    NSLog(@&quot;str:%p--%p&quot;,str,&amp;str);
+    NSLog(@&quot;copy_str:%p--%p&quot;,_str1,&amp;_str1);
+    NSLog(@&quot;strong_str:%p--%p&quot;,_str2,&amp;_str2);
 }
 </code></pre>
 
-<ul>
-<li>largeTitie的两种展现形式如下所示</li>
-</ul>
+<p>最后我们运行看打印结...</p>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15427834493281.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2017/9/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
-<p><img src="media/15439873228318/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-05%20%E4%B8%8B%E5%8D%881.23.25.png" alt="屏幕快照 2018-12-05 下午1.23.25 " style="width:220px;"/><img src="media/15439873228318/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-05%20%E4%B8%8B%E5%8D%881.23.29.png" alt="屏幕快照 2018-12-05 下午1.23.29 " style="width:220px;"/></p>
-
-<h2 id="toc_0">设置方式</h2>
-
-<ul>
-<li><p>xib设置</p>
-
-<ul>
-<li>never 一直都是小标题</li>
-<li>automatic 自动切换</li>
-<li>always 一直都是大标题</li>
-</ul></li>
-</ul>
-
-<p><img src="media/15439873228318/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-05%20%E4%B8%8B%E5%8D%881.30.58.png" alt="屏幕快照 2018-12-05 下午1.30.58"/></p>
-
-<ul>
-<li><p>代码设置</p>
-
-<pre><code>因为这是新增加的属性所以要做判断
- if #available(iOS 11.0, *) {
-        self.navigationItem.largeTitleDisplayMode = .automatic
-        } else {
-            // Fallback on earlier versions
-};
-</code></pre></li>
-</ul>
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
 
 
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   <a href="iOS_4.html">&laquo; Prev Page</a>  
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
 
-
-      </div>
-
-      <div class="row">
-        <div class="large-6 columns">
-          <p class="text-left" style="padding:15px 0px;">
-            
-            <a href="15444306104604.html" title="Previous Post: Advanced Debugging with Xcode and LLDB">&laquo; Advanced Debugging with Xcode and LLDB</a>
-            
-          </p>
-        </div>
-        <div class="large-6 columns">
-          <p class="text-right" style="padding:15px 0px;">
-            
-            <a href="15439179971062.html" title="Next Post: iOS开发代码规范">iOS开发代码规范
-              &raquo;</a>
-            
-          </p>
-        </div>
-      </div>
-      <div class="comments-wrap">
-        <div class="share-comments">
-          <!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5bfe6ae3f692f811"></script>
-<div id="disqus_thread"></div>
-<script>
-
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://maweefeng.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<script id="dsq-count-scr" src="//maweefeng.disqus.com/count.js" async></script>
-
-          
-
-          
-        </div>
-      </div>
-    </div><!-- article-wrap -->
-  </div><!-- large 8 --> <div class="large-4 medium-4 columns">
+ <div class="large-4 medium-4 columns">
   <div class="hide-for-small">
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">

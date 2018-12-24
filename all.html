@@ -128,9 +128,63 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15452016090680.html">
+                
+                  <h1>UICollectionView 进阶篇</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">1. 加入手势支持</h2>
+
+<ol>
+<li><p>为什么要加入手势</p>
+
+<p>场景</p>
+
+<ul>
+<li>触发对集合视图的布局信息的更改。</li>
+<li><p>直接操作单元格和视图。</p>
+
+<p>应该始终将手势识别器附加到UICollectionView本身 而不是特定的单元格或视图。该UICollectionView是UIScrollView的子类，所以你的附加手势识别到集合的看法是不太可能，必须跟踪的其他手势干扰。此外，由于集合视图可以访问您的数据源和布局对象，因此您仍然可以访问适当操作单元格和视图所需的所有信息。</p></li>
+</ul></li>
+<li><p>怎么通过手势改变布局信息</p>
+
+<p>手势识别器提供了一种动态修改布局参数的简便方法。例如，您可以使用捏合手势识别器来更改自定义布局中项目之间的间距。用于配置这种手势识别器的过程相对简单。</p>
+
+<ol>
+<li>创建手势识别器。</li>
+<li>将手势识别器附加到集合视图。</li>
+<li>使用手势识别器的处理程序方法更新布局参数并使布局对象无效。</li>
+</ol></li>
+</ol>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15452016090680.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/12/19</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15451226434486.html">
                 
-                  <h1>UICollectionView入门</h1>
+                  <h1>UICollectionView入门篇</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
@@ -452,62 +506,6 @@
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15439179971062.html">
-                
-                  <h1>iOS开发代码规范</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>针对我的开发经验ViewController应该是这样的。</p>
-
-<pre><code>#pragma mark - Life Cycle|生命周期
-#pragma mark - UITableViewDataSource and UITableViewDelegate|主要是一些代理的方法
-#pragma mark - Private Method|私有方法（内部可调用）
-#pragma mark - Public  Method|公有方法
-#pragma mark - Set &amp; Get|getter 和 setter方法
-#pragma mark - Notification|接收通知之后执行的方法
-#pragma mark - Event|一些视图的点击事件 比如button
-#pragma mark - DelegeteHandler|代理的实现时间
-</code></pre>
-
-<h2 id="toc_0">1️⃣代码命名基础</h2>
-
-<h3 id="toc_1">①一般原则</h3>
-
-<ul>
-<li><p>明晰</p>
-
-<ul>
-<li><p>尽可能保持清晰和简洁是件好事，但由于简洁，清晰度不应受到影响：</p>
-
-<p>比如<code>insertObject:atIndex:</code>比较清晰，而<code>insert:at:</code>却不知道发生了什么...</p></li>
-</ul></li>
-</ul>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15439179971062.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/12/4</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -585,7 +583,13 @@
 	      
 		      
 			      <li class="post">
-			        <a href="15451226434486.html">UICollectionView入门</a>
+			        <a href="15452016090680.html">UICollectionView 进阶篇</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15451226434486.html">UICollectionView入门篇</a>
 			      </li>
 		     
 		  
@@ -604,12 +608,6 @@
 		      
 			      <li class="post">
 			        <a href="15445109745059.html">Love at First Launch</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15445081328797.html">App Icon Design</a>
 			      </li>
 		     
 		  

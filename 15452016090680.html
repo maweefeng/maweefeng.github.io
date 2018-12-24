@@ -1,0 +1,724 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    
+    UICollectionView 进阶篇 - Code Log 👨‍💻‍ 
+    
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="Code Log 👨‍💻‍ " type="application/atom+xml">
+  <link rel="stylesheet" href="asset/css/foundation.min.css" />
+  <link rel="stylesheet" href="asset/css/docs.css" />
+  <script src="asset/js/vendor/modernizr.js"></script>
+  <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>
+    hljs.initHighlightingOnLoad();
+
+    window.onload = function () {
+
+      var footerPath = window.location.pathname.split('/')[window.location.pathname.split('/').length - 1];
+      if (footerPath == 'archives.html') {
+        // alert('分类');
+        document.getElementById('main-menu').getElementsByTagName("li")[1].className = "is_active";
+
+      } else if (footerPath == 'about.html') {
+        document.getElementById('main-menu').getElementsByTagName("li")[2].className = "is_active";
+
+        // alert('关于我');
+  
+      } else {
+        // alert('首页');
+        document.getElementById('main-menu').getElementsByTagName("li")[0].className = "is_active";
+      }
+
+
+    }
+  </script>
+  <script type="text/javascript">
+    function before_search() {
+      var searchVal = 'site: ' + document.getElementById('search_input').value;
+      document.getElementById('search_q').value = searchVal;
+      return true;
+    }
+  </script>
+</head>
+
+<body class="antialiased hide-extras">
+
+  <div class="marketing off-canvas-wrap" data-offcanvas>
+    <div class="inner-wrap">
+
+
+      <nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+        <section class="top-bar-section">
+          <div class="row">
+            <div style="position: relative;width:100%;">
+              <div style="position: absolute; width:100%;">
+                <ul id="main-menu" class="left">
+                  
+                  <li id=""><a id="" target="_self" href="index.html">Home</a></li>
+                  
+                  <li id=""><a id="" target="_self" href="archives.html">Archives</a></li>
+                  
+                  <li id=""><a id="" target="_self" href="about.html">About</a></li>
+                  
+                </ul>
+
+                <ul class="right" id="search-wrap">
+                  <li>
+                    <form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+                      <input type="hidden" id="search_q" name="q" value="" />
+                      <input tabindex="1" type="search" id="search_input" placeholder="Search" />
+                    </form>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </nav>
+
+      <nav class="tab-bar show-for-small">
+        <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+          <span> &nbsp; Code Log 👨‍💻‍ </span>
+        </a>
+      </nav>
+
+      <aside class="left-off-canvas-menu">
+        <ul class="off-canvas-list">
+
+          <li><a href="index.html">Home</a></li>
+          <li><a href="archives.html">Archives</a></li>
+          
+          <li><label>Categories</label></li>
+
+          
+          <li id="iOS"><a href="iOS.html">iOS</a></li>
+          
+          <li id="Git"><a href="Git.html">Git</a></li>
+          
+          <li id="CocoaPods"><a href="CocoaPods.html">CocoaPods</a></li>
+          
+          <li id="about"><a href="about.html">about</a></li>
+          
+
+        </ul>
+      </aside>
+
+      <a class="exit-off-canvas" href="#"></a>
+
+
+      <section id="main-content" role="main" class="scroll-container"> <script type="text/javascript">
+  $(function () {
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+    <div class="markdown-body article-wrap">
+      <div class="article">
+        
+        <h1>UICollectionView 进阶篇</h1>
+
+        <div class="read-more clearfix">
+          <span class="date">2018/12/19</span>
+
+          <span>posted in&nbsp;</span> 
+          
+          <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          
+
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <div class="addthis_inline_share_toolbox"></div>
+      </div><!-- article -->
+
+      <div class="article-content">
+        <h2 id="toc_0">1. 加入手势支持</h2>
+
+<ol>
+<li><p>为什么要加入手势</p>
+
+<p>场景</p>
+
+<ul>
+<li>触发对集合视图的布局信息的更改。</li>
+<li><p>直接操作单元格和视图。</p>
+
+<p>应该始终将手势识别器附加到UICollectionView本身 而不是特定的单元格或视图。该UICollectionView是UIScrollView的子类，所以你的附加手势识别到集合的看法是不太可能，必须跟踪的其他手势干扰。此外，由于集合视图可以访问您的数据源和布局对象，因此您仍然可以访问适当操作单元格和视图所需的所有信息。</p></li>
+</ul></li>
+<li><p>怎么通过手势改变布局信息</p>
+
+<p>手势识别器提供了一种动态修改布局参数的简便方法。例如，您可以使用捏合手势识别器来更改自定义布局中项目之间的间距。用于配置这种手势识别器的过程相对简单。</p>
+
+<ol>
+<li>创建手势识别器。</li>
+<li>将手势识别器附加到集合视图。</li>
+<li>使用手势识别器的处理程序方法更新布局参数并使布局对象无效。</li>
+</ol>
+
+<p>动态修改 itemSize</p>
+
+<pre><code>-(void)viewDidLoad {
+    [super viewDidLoad];
+ UIPinchGestureRecognizer * pinch = [[UIPinchGestureRecognizer alloc]initWithTarget:self action:@selector(handlePinchGesture:)];
+
+[self.collectionView addGestureRecognizer:pinch];
+
+} 
+-(void)handlePinchGesture:(UIPinchGestureRecognizer*)sender{
+
+    if ([sender numberOfTouches] != 2)
+        return;
+
+    // Update the custom layout parameter and invalidate.
+    CGSize initSize = self.flowLayout.itemSize;
+    CGFloat maxWidth = 200;
+    CGFloat maxHeight = 200;
+    CGFloat minWidth = 20;
+    CGFloat minHeight = 20;
+    CGFloat width;
+    CGFloat height;
+    if (initSize.width*sender.scale&gt;maxWidth) {
+        width = maxWidth;
+    }else if(initSize.width*sender.scale&lt;minWidth){
+        width = minWidth;
+    }else{
+        width =initSize.width*sender.scale;
+    }
+    if (initSize.height*sender.scale&gt;maxHeight) {
+        height = maxHeight;
+    }else if(initSize.height*sender.scale&lt;minHeight){
+        height = minHeight;
+    }else{
+        height = initSize.height*sender.scale;
+    }
+
+    self.flowLayout.itemSize = CGSizeMake(width, height);
+
+}
+</code></pre>
+
+<p>注意:如果实现了长按显示 menu 的代理方法，那么长按 cell 的手势就会失灵，如果想要长按 cell 手势生效的话就不要实现-collectionView: shouldShowMenuForItemAtIndexPath:这个方法，或者让其返回NO。</p></li>
+</ol>
+
+<h2 id="toc_1">2. 创建自定义布局UICollectionViewLayout</h2>
+
+<h3 id="toc_2">2.1 什么场景会使用自定义布局</h3>
+
+<ul>
+<li><p>布局看起来不像网格或基于行的破坏布局（将项目放入一行直到它已满的布局，然后继续到下一行，直到放置所有项目）或者需要滚动超过一个方向。</p></li>
+<li><p>经常更改所有单元格位置，创建自定义布局要比修改现有流程布局更少工作量。</p></li>
+</ul>
+
+<p>对于自定义布局，您需要子类UICollectionViewLayout，这为您的设计提供了一个全新的起点。只有少数方法为您的布局对象提供核心行为，并且在您的实现中是必需的。其余的方法可供您根据需要覆盖以调整布局行为。核心方法处理以下关键任务：</p>
+
+<ul>
+<li>指定可滚动内容区域的大小。</li>
+<li>为构成布局的单元格和视图提供属性对象，以便集合视图可以定位每个单元格和视图。</li>
+</ul>
+
+<p>虽然您可以创建仅实现核心方法的功能布局对象，但如果您实现了几个可选方法，则布局可能会更具吸引力。</p>
+
+<h3 id="toc_3">2.2 了解核心布局过程</h3>
+
+<p>集合视图直接与您的自定义布局对象一起使用，以管理整个布局过程。当集合视图确定它需要布局信息时，它会要求您的布局对象提供它。例如，集合视图在首次显示或调整大小时会询问布局信息。您还可以通过调用invalidateLayout布局对象的方法告诉集合视图显式更新其布局。该方法抛弃现有布局信息并强制布局对象生成新的布局信息。</p>
+
+<p><strong>注意</strong>：不要将布局对象的invalidateLayout方法与集合视图的reloadData方法混淆。调用该invalidateLayout方法不一定会导致集合视图丢弃其现有的单元格和子视图。相反，它会强制布局对象在移动和添加或删除项目时根据需要重新计算其所有布局属性。如果数据源中的数据已更改，则该reloadData方法合适。无论您如何启动布局更新，实际布局过程都是相同的。<br/>
+另外invalidateLayout不会立马更新，而是会标记需要更新，在下一个视图更新周期开始更新。</p>
+
+<p>在布局过程中始终按以下顺序调用这些方法：</p>
+
+<ol>
+<li>使用该prepareLayout方法执行提供布局信息所需的前期计算。</li>
+<li>使用此collectionViewContentSize方法可根据初始计算返回整个内容区域的整体大小。</li>
+<li><p>使用此layoutAttributesForElementsInRect:方法返回指定矩形中的单元格和视图的属性。</p>
+
+<p><img src="media/15452016090680/15452078979227.png" alt=""/></p></li>
+</ol>
+
+<h3 id="toc_4">2.3 准备布局 prepareLayout</h3>
+
+<p>该prepareLayout方法用于为集合视图中的每个视图实例化所有布局属性对象，然后将这些属性缓存在我们的layoutInformation字典中供以后使用。</p>
+
+<h4 id="toc_5">2.3.1 创建布局属性&amp;&amp;存储布局属性</h4>
+
+<p>布局负责的属性对象是UICollectionViewLayoutAttributes类的实例。可以在应用程序中以各种不同的方法创建这些实例。<br/>
+在创建UICollectionViewLayoutAttributes类的新实例时，使用以下类方法之一：</p>
+
+<ul>
+<li>layoutAttributesForCellWithIndexPath:</li>
+<li>layoutAttributesForSupplementaryViewOfKind:withIndexPath:</li>
+<li>layoutAttributesForDecorationViewOfKind:withIndexPath:</li>
+</ul>
+
+<p>创建每个属性对象后，为相应的视图设置相关属性。至少，在布局中设置视图的大小和位置。如果布局的视图重叠，请为zIndex属性指定值以确保重叠视图的一致排序。其他属性可让您控制单元格或视图的可见性或外观，并可根据需要进行更改。如果标准属性类不适合您的应用程序需求，则可以对其进行子类化和扩展，以存储有关每个视图的其他信息。子类化布局属性时，需要实现isEqual:比较自定义属性的方法，因为集合视图对其某些操作使用此方法。</p>
+
+<p><img src="media/15452016090680/15452123837139.png" alt=""/></p>
+
+<p>在自定义的UICollectionViewLayout子类中实现 prepareLayout 方法</p>
+
+<pre><code>- (void)prepareLayout {
+//初始化存储布局属性的字典
+    NSMutableDictionary *layoutInformation = [NSMutableDictionary dictionary];
+    NSMutableDictionary *cellInformation = [NSMutableDictionary dictionary];
+    NSIndexPath *indexPath;
+    NSInteger numSections = [self.collectionView numberOfSections;]
+    for(NSInteger section = 0; section &lt; numSections; section++){
+        NSInteger numItems = [self.collectionView numberOfItemsInSection:section];
+        for(NSInteger item = 0; item &lt; numItems; item++){
+            indexPath = [NSIndexPath indexPathForItem:item inSection:section];
+            MyCustomAttributes *attributes =
+            [self attributesWithChildrenAtIndexPath:indexPath];
+            [cellInformation setObject:attributes forKey:indexPath];
+        }
+    }
+    //end of first section
+    //continuation of prepareLayout implementation
+    for(NSInteger section = numSections - 1; section &gt;= 0; section—-){
+        NSInteger numItems = [self.collectionView numberOfItemsInSection:section];
+        NSInteger totalHeight = 0;
+        for(NSInteger item = 0; item &lt; numItems; item++){
+            indexPath = [NSIndexPath indexPathForItem:item inSection:section];
+            MyCustomAttributes *attributes = [cellInfo objectForKey:indexPath]; // 1
+            attributes.frame = [self frameForCellAtIndexPath:indexPath
+                                withHeight:totalHeight];
+            [self adjustFramesOfChildrenAndConnectorsForClassAtIndexPath:indexPath]; // 2
+            cellInfo[indexPath] = attributes;
+            totalHeight += [self.customDataSource
+                            numRowsForClassAndChildrenAtIndexPath:indexPath]; // 3
+        }
+        if(section == 0){
+            self.maxNumRows = totalHeight; // 4
+        }
+    }
+    [layoutInformation setObject:cellInformation forKey:@&quot;MyCellKind&quot;]; // 5
+    self.layoutInformation = layoutInformation
+}
+</code></pre>
+
+<p>代码中序号部分的解释</p>
+
+<ol>
+<li>在设置单元框架之前，从本地字典中检索在第一次传递数据时创建的布局属性。</li>
+<li>自定义adjustFramesOfChildrenAndConnectorsForClassAtIndexPath:方法递归调整所有单元格的子孙的帧等，以匹配单元格的帧。</li>
+<li>将调整后的属性放回字典后，totalHeight调整变量以反映下一个项目的框架需要的位置。这是代码利用自定义协议的地方。无论什么对象实现该协议需要实现该numRowsForClassAndChildrenAtIndexPath:方法，该方法返回每个类需要占用多少行，因为它具有多少个子节点。</li>
+<li>maxNumRows属性（以后需要来设置内容的大小）被设置为第0部分的总高度。具有最长高度的列始终为0部分，其高度已针对树中的所有子项进行调整，因为此实现不包括智能空间调整。</li>
+<li>该方法通过将具有所有单元属性的layoutInformation字典插入到本地字典中并以唯一字符串标识符作为其键来结束。</li>
+</ol>
+
+<p>用于在最后一步中插入字典的字符串标识符用于整个自定义布局的其余部分，以检索单元格的正确属性。当补充观点在示例中进一步发挥作用时变得更加重要。</p>
+
+<pre><code>//预布局方法 所有的布局应该写在这里面
+- (void)prepareLayout
+//此方法应该返回当前屏幕正在显示的视图（cell 头尾视图）的布局属性集合（UICollectionViewLayoutAttributes 对象集合）
+- (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
+//根据indexPath去对应的UICollectionViewLayoutAttributes  这个是取值的，要重写，在移动删除的时候系统会调用改方法重新去UICollectionViewLayoutAttributes然后布局
+- (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
+- (UICollectionViewLayoutAttributes *)layoutAttributesForSupplementaryViewOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath
+- //返回当前的ContentSize
+- (CGSize)collectionViewContentSize
+//是否重新布局 
+-(BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds
+//这4个方法用来处理插入、删除和移动cell时的一些动画 瀑布流代码详解
+- (void)prepareForCollectionViewUpdates:(NSArray *)updateItems
+- (UICollectionViewLayoutAttributes*)initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath *)itemIndexPath
+- (nullable UICollectionViewLayoutAttributes *)finalLayoutAttributesForDisappearingItemAtIndexPath:(NSIndexPath *)itemIndexPath
+- (void)finalizeCollectionViewUpdates
+//9.0之后处理移动相关
+- (UICollectionViewLayoutInvalidationContext *)invalidationContextForInteractivelyMovingItems:(NSArray&lt;NSIndexPath *&gt; *)targetIndexPaths withTargetPosition:(CGPoint)targetPosition previousIndexPaths:(NSArray&lt;NSIndexPath *&gt; *)previousIndexPaths previousPosition:(CGPoint)previousPosition NS_AVAILABLE_IOS(9_0)
+- (UICollectionViewLayoutInvalidationContext *)invalidationContextForEndingInteractiveMovementOfItemsToFinalIndexPaths:(NSArray&lt;NSIndexPath *&gt; *)indexPaths previousIndexPaths:(NSArray&lt;NSIndexPath *&gt; *)previousIndexPaths movementCancelled:(BOOL)movementCancelled NS_AVAILABLE_IOS(9_0)
+</code></pre>
+
+<h4 id="toc_6">2.3.2 添加补充视图</h4>
+
+<ol>
+<li><p>向布局添加补充视图的步骤如下：</p>
+
+<ul>
+<li>使用registerClass:forSupplementaryViewOfKind:withReuseIdentifier:或registerNib:forSupplementaryViewOfKind:withReuseIdentifier:方法将补充视图注册到集合视图的布局对象。</li>
+<li>在您的数据源中，实现collectionView:viewForSupplementaryElementOfKind:atIndexPath:。因为这些视图是可重用的，可以先dequeueReusableSupplementaryViewOfKind:withReuseIdentifier:forIndexPath:去获取</li>
+<li>在 prepareLayout 中为您的补充视图创建布局属性对象，就像对单元格一样。</li>
+<li>在layoutAttributesForElementsInRect:方法报道查看的属性数组中所有游戏这些布局属性对象。</li>
+<li><p>实现layoutAttributesForSupplementaryViewOfKind:atIndexPath:方法以在查询时报道查看指定补充视图的属性对象。</p>
+
+<p><strong>For example</strong>   </p>
+
+<pre><code>- (void)viewDidLoad {
+    [super viewDidLoad];
+
+[self.collectionView registerNib:[UINib nibWithNibName:@&quot;headerView&quot; bundle:nil] forSupplementaryViewOfKind:AC_UICollectionElementKindSectionHeader  withReuseIdentifier:@&quot;header&quot;];
+
+}
+
+-(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
+
+    UICollectionReusableView*header ;
+    if (kind == AC_UICollectionElementKindSectionHeader)
+    {
+
+        header = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@&quot;header&quot; forIndexPath:indexPath];
+        return header;
+    }
+
+    return header;
+}
+</code></pre>
+
+<p>在自定义的UICollectionViewLayout 实现以下方法</p>
+
+<pre><code>
+//返回补充视图的布局属性
+- (UICollectionViewLayoutAttributes *)layoutAttributesForSupplementaryViewOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewLayoutAttributes *attribute = nil;
+    if ([elementKind isEqualToString:AC_UICollectionElementKindSectionHeader]) {
+        attribute = self.headLayoutInfo[indexPath];
+    }else if ([elementKind isEqualToString:AC_UICollectionElementKindSectionFooter]){
+        attribute = self.footLayoutInfo[indexPath];
+    }
+    return attribute;
+}
+
+</code></pre></li>
+</ul></li>
+<li><p>注意</p>
+
+<p>另外需要注意的是注册xib headerview的时候要选择指定的UICollectionReusableView 然后在上面添加其他控件。</p>
+
+<p><img src="media/15452016090680/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-24%20%E4%B8%8A%E5%8D%8811.28.22.png" alt="屏幕快照 2018-12-24 上午11.28.22"/></p></li>
+</ol>
+
+<h4 id="toc_7">2.3.3 使插入和删除动画更有趣</h4>
+
+<p>要想触发自定义 uicollectionviewlayout 的这个方面，必须使用    [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.dataSource.count-1 inSection:0]]];这类语句，而不能只是简单的 reloadData。</p>
+
+<pre><code>- (void)prepareForCollectionViewUpdates:(NSArray *)updateItems
+{
+    [super prepareForCollectionViewUpdates:updateItems];
+    NSMutableArray *indexPaths = [NSMutableArray array];
+    for (UICollectionViewUpdateItem *updateItem in updateItems) {
+        switch (updateItem.updateAction) {
+            case UICollectionUpdateActionInsert:
+                [indexPaths addObject:updateItem.indexPathAfterUpdate];
+                break;
+            case UICollectionUpdateActionDelete:
+                [indexPaths addObject:updateItem.indexPathBeforeUpdate];
+                break;
+            case UICollectionUpdateActionMove:
+                //[indexPaths addObject:updateItem.indexPathBeforeUpdate];
+                //[indexPaths addObject:updateItem.indexPathAfterUpdate];
+                break;
+            default:
+                NSLog(@&quot;unhandled case: %@&quot;, updateItem);
+                break;
+        }
+    }
+    self.shouldanimationArr = indexPaths;
+}
+
+</code></pre>
+
+<p>还要指定插入单元格的初始属性和最终属性,代码中不是对每个单元格都进行了动画渲染，只是对特定数组中的单元格渲染，上面的代码是筛选匹配。</p>
+
+<pre><code class="language-//指定插入单元格的初始属性">- (UICollectionViewLayoutAttributes*)initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath *)itemIndexPath
+{
+    
+    if ([self.shouldanimationArr containsObject:itemIndexPath]) {
+        UICollectionViewLayoutAttributes *attr = self.cellLayoutInfo[itemIndexPath];
+        
+        attr.transform = CGAffineTransformRotate(CGAffineTransformMakeScale(0.2, 0.2), M_PI);
+        attr.center = CGPointMake(CGRectGetMidX(self.collectionView.bounds), CGRectGetMaxY(self.collectionView.bounds));
+        attr.alpha = 1;
+        [self.shouldanimationArr removeObject:itemIndexPath];
+        return attr;
+    }
+    return nil;
+}
+
+//对应UICollectionViewUpdateItem 的indexPathAfterUpdate 设置调用
+- (nullable UICollectionViewLayoutAttributes *)finalLayoutAttributesForDisappearingItemAtIndexPath:(NSIndexPath *)itemIndexPath
+{
+    if ([self.shouldanimationArr containsObject:itemIndexPath]) {
+        UICollectionViewLayoutAttributes *attr = self.cellLayoutInfo[itemIndexPath];
+        
+        attr.transform = CGAffineTransformRotate(CGAffineTransformMakeScale(2, 2), 0);
+        attr.center = CGPointMake(CGRectGetMidX(self.collectionView.bounds), CGRectGetMaxY(self.collectionView.bounds));
+        attr.alpha = 0;
+        [self.shouldanimationArr removeObject:itemIndexPath];
+        return attr;
+    }
+    return nil;
+}
+
+</code></pre>
+
+<h4 id="toc_8">2.3.4 改善布局的滚动体验</h4>
+
+<p>自定义布局对象可以影响集合视图的滚动行为，以创建更好的用户体验。当滚动相关的触摸事件结束时，滚动视图基于当前有效的速度和减速率确定滚动内容的最终静止位置。当集合视图知道该位置时，它会询问其布局对象是否应通过调用其targetContentOffsetForProposedContentOffset:withScrollingVelocity:方法来修改位置。因为它在底层内容仍在移动时调用此方法，所以您的自定义布局可能会影响滚动内容的最终静止点。</p>
+
+<p>图2-4演示了如何使用布局对象来更改集合视图的滚动行为。假设集合视图偏移从（0,0）开始，用户向左滑动。集合视图计算滚动自然停止的位置，并将该值作为“建议的”内容偏移值提供。您的布局对象可能会更改建议的值，以确保滚动停止时，项目在集合视图的可见边界中精确居中。此新值将成为目标内容偏移量，并且是从targetContentOffsetForProposedContentOffset:withScrollingVelocity:方法返回的值。</p>
+
+<p>图2-4   将建议的内容偏移更改为更合适的值<br/>
+<img src="media/15452016090680/15456428519882.png" alt=""/></p>
+
+<p>在自定义的UICollectionViewLayout 中实现</p>
+
+<pre><code>-(CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity{
+    
+    
+    计算最终的位置并返回
+    
+    return proposedContentOffset;
+    
+    
+}
+</code></pre>
+
+<h2 id="toc_9">3. 总结</h2>
+
+<ul>
+<li><p>考虑使用该prepareLayout方法创建和存储以后需要的UICollectionViewLayoutAttributes对象。集合视图将在某个时刻要求布局属性对象，如果您拥有相对较少的项目（数百个）或这些项目的实际布局属性不经常更改，则更应该预先创建和存储它们。</p>
+
+<p>但是，如果您的布局需要管理数千个项目，则需要权衡缓存与重新计算的好处。对于布局不经常更改的可变大小的项目，缓存通常无需定期重新计算复杂的布局信息。</p>
+
+<p>对于大量固定大小的项目，按需计算属性可能更简单。对于属性经常变化的项目，您可能无论如何都会重新计算，因此缓存可能会占用内存中的额外空间。</p></li>
+<li><p>避免继承UICollectionView。集合视图很少或没有自己的外观。相反，它从数据源对象中提取其所有视图，并从布局对象中提取所有与布局相关的信息。如果您尝试以三维方式布置项目，那么正确的方法是实现自定义布局，该布局设置每个单元格的3D变换并适当地查看。</p></li>
+<li><p>不要从自定义布局对象的方法中调用visibleCells方法。除了布局对象告诉它之外，集合视图不知道单元格的位置，因此，询问可见单元格只是将请求转发给布局对象。UICollectionViewlayoutAttributesForElementsInRect:</p>
+
+<p>您的布局对象应始终知道内容区域中项目的位置，并且应该能够随时返回这些项目的属性。</p></li>
+</ul>
+
+
+
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+          <p class="text-left" style="padding:15px 0px;">
+            
+          </p>
+        </div>
+        <div class="large-6 columns">
+          <p class="text-right" style="padding:15px 0px;">
+            
+            <a href="15451226434486.html" title="Next Post: UICollectionView入门篇">UICollectionView入门篇
+              &raquo;</a>
+            
+          </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5bfe6ae3f692f811"></script>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://maweefeng.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<script id="dsq-count-scr" src="//maweefeng.disqus.com/count.js" async></script>
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 --> <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <div class="site-a-logo"><img src="/asset/img/logo.png" /></div>
+            
+                <h1>Code Log 👨‍💻‍ </h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="github" target="_blank" href="https://github.com/maweefeng" title="GitHub">GitHub</a>
+<a target="_blank" class="email" href="mailto:maweefeng@gmail.com" title="Email">Email</a>
+  <!-- <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a> -->
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="iOS.html"><strong>iOS</strong></a>
+        
+            <a href="Git.html"><strong>Git</strong></a>
+        
+            <a href="CocoaPods.html"><strong>CocoaPods</strong></a>
+        
+            <a href="about.html"><strong>about</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15452016090680.html">UICollectionView 进阶篇</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15451226434486.html">UICollectionView入门篇</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15450120295637.html">What's New in Storyboards</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15446970341146.html">Building Apps with Dynamic Type</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15445109745059.html">Love at First Launch</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <!-- <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p> -->
+<p class="copyright">日光之下 永无新事</p>
+</div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    <script src="asset/chart/all-min.js"></script><script type="text/javascript">$(function(){    var mwebii=0;    var mwebChartEleId = 'mweb-chart-ele-';    $('pre>code').each(function(){        mwebii++;        var eleiid = mwebChartEleId+mwebii;        if($(this).hasClass('language-sequence')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = Diagram.parse($(this).text());            diagram.drawSVG(eleiid,{theme: 'simple'});        }else if($(this).hasClass('language-flow')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = flowchart.parse($(this).text());            diagram.drawSVG(eleiid);        }    });});</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+
+  </body>
+</html>

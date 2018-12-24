@@ -128,6 +128,56 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15427834492083.html">
+                
+                  <h1>对比Texture中Node和UIKit中View</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">node.view和view的差别</h3>
+
+<p>再一次深刻的体会到了node.view和view的差别。<br/><br/>
+最开始一直以为node.view就类似于ASTableNode对应的UITableview<br/><br/>
+其实远远没有那么简单，并不是那么的一个对应的关系.<br/>
+必须要把一些subnode都包到一个node里面最后这个node的view对应的是这些subnode的集合。<br/><br/>
+如果只是</p>
+
+<pre><code>ASDisplayNode * node = [[ASDisplayNode alloc]init];
+ASDisplayNode * subnode = [ASDisplayNode new];
+ASTextNode * textnode = [ASTextNode new];                    
+ASButtonNode * buttonnode = [ASButtonNode new];
+[node addSubnode:subnode];
+[node addSubnode:textnode];
+[node addSubnode:buttonnode];
+
+</code></pre>
+
+<p>我是在给tableview添加node为tableHeaderView发现的这</p>...
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15427834492083.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15427834492260.html">
                 
                   <h1>SDWebImageview 不能加载HTTPS图片</h1>
@@ -483,51 +533,6 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15427834493029.html">
-                
-                  <h1>iOS导航条背景颜色</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h4 id="toc_0">Situation one</h4>
-
-<p><code>self.navigationBar.barTintColor= [UIColor redColor];</code><br/>
-这时候的效果就是纯色的<br/>
-类似下面这样<br/>
-<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fsbvzqlgesj309f01oglk.jpg" alt=""/></p>
-
-<h4 id="toc_1">Situation two</h4>
-
-<p><code>self.navigationBar.backgroundColor = [UIColor redColor];</code><br/>
-<img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fsbvypka0rj309e01p0so.jpg" alt=""/></p>
-
-<p>一种是有渐变的半透明效果，一种就是简单的纯色效果。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -605,7 +610,13 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
 	      
 		      
 			      <li class="post">
-			        <a href="15451226434486.html">UICollectionView入门</a>
+			        <a href="15452016090680.html">UICollectionView 进阶篇</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15451226434486.html">UICollectionView入门篇</a>
 			      </li>
 		     
 		  
@@ -624,12 +635,6 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
 		      
 			      <li class="post">
 			        <a href="15445109745059.html">Love at First Launch</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15445081328797.html">App Icon Design</a>
 			      </li>
 		     
 		  
