@@ -128,6 +128,65 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15427834492830.html">
+                
+                  <h1>CAMediaTimingFunction获取控制点：</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code>//create timing function
+CAMediaTimingFunction *function = [CAMediaTimingFunction functionWithControlPoints:1 :0 :0.75 :1];
+</code></pre>
+
+<p>我得到的controlPoint值似乎是错误的：</p>
+
+<pre><code>CGPoint controlPoint1, controlPoint2;
+[function getControlPointAtIndex:1 values:(float *)&amp;controlPoint1]; 
+[function getControlPointAtIndex:2 values:(float *)&amp;controlPoint2];
+The controlPoint value that I get seems to be wrong:
+
+controlPoint1   CGPoint (x = 5.2635442471208903E-315, y = 4.9406564584124654E-324)  
+controlPoint2   CGPoint (x = 0.0078125018408172764, y = 2.8421186829703262E-314)    
+</code></pre>
+
+<p>但是，如果我使用float数组作为参数的类型values，我得到controlPoint的正确值：</p>
+
+<pre><code>float c1p[2], c2p[2];
+[function getControlPointAtIndex:1 values:c1p];
+[function getControlPointAtIndex:2 values:c2p];
+The values are:
+
+controlPoint1   CGPoint (x = 1, y = 0)  
+controlPoint2   CGPoint (x = 0.75, y = 1) 
+</code></pre>
+
+<p>32位设备可以使用第一种方法 但是在64位设备就行不通了 </p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15427834493029.html">
                 
                   <h1>iOS导航条背景颜色</h1>
@@ -516,65 +575,6 @@ return self.photoCount &gt; 0
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15427834493345.html">
-                
-                  <h1>高效的画线</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>先创建一个UIBeizerPath 的对象path</p>
-
-<pre><code>UIBezierPath *path = [[UIBezierPath alloc] init];
-  [path moveToPoint:CGPointMake(175, 100)];
-  
-  [path addArcWithCenter:CGPointMake(150, 100) radius:25 startAngle:0 endAngle:2*M_PI clockwise:YES];
-  [path moveToPoint:CGPointMake(150, 125)];
-  [path addLineToPoint:CGPointMake(150, 175)];
-  [path addLineToPoint:CGPointMake(125, 225)];
-  [path moveToPoint:CGPointMake(150, 175)];
-  [path addLineToPoint:CGPointMake(175, 225)];
-  [path moveToPoint:CGPointMake(100, 150)];
-  [path addLineToPoint:CGPointMake(200, 150)];
-</code></pre>
-
-<p>然后创建CAShapeLayer添加到视图的layer上 </p>
-
-<pre><code>CAShapeLayer *shapeLayer = [CAShapeLayer layer];
-  shapeLayer.strokeColor = [UIColor redColor].CGColor;
-  shapeLayer.fillColor = [UIColor clearColor].CGColor;
-  shapeLayer.lineWidth = 5;
-  shapeLayer.lineJoin = kCALineJoinRound;
-  shapeLayer.lineCap = kCALineCapRound;
-  shapeLayer.path = path.CGPath;
-  //add it to our view
-  [self.containerView.layer addSublayer:shapeLayer];
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2017/10/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -652,6 +652,12 @@ return self.photoCount &gt; 0
 	      
 		      
 			      <li class="post">
+			        <a href="15471123133942.html">Value and Reference Collections</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15452016090680.html">UICollectionView 进阶篇</a>
 			      </li>
 		     
@@ -671,12 +677,6 @@ return self.photoCount &gt; 0
 		      
 			      <li class="post">
 			        <a href="15446970341146.html">Building Apps with Dynamic Type</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15445109745059.html">Love at First Launch</a>
 			      </li>
 		     
 		  

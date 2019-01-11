@@ -128,6 +128,41 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15427834491890.html">
+                
+                  <h1>Block防止内存泄漏问题</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">关于block的一点注意 特别是网络请求这块</h3>
+
+<p>Block捕获外界变量销毁<br/>
+我们再进一步想想，Block有个最大的特点是可以访问当前的作用域，我们随便创建一个数组，重复上面操作，是否能够销毁...</p>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15427834491890.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15427834492083.html">
                 
                   <h1>对比Texture中Node和UIKit中View</h1>
@@ -474,65 +509,6 @@ def xxx(self,a,b)
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15427834492830.html">
-                
-                  <h1>CAMediaTimingFunction获取控制点：</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<pre><code>//create timing function
-CAMediaTimingFunction *function = [CAMediaTimingFunction functionWithControlPoints:1 :0 :0.75 :1];
-</code></pre>
-
-<p>我得到的controlPoint值似乎是错误的：</p>
-
-<pre><code>CGPoint controlPoint1, controlPoint2;
-[function getControlPointAtIndex:1 values:(float *)&amp;controlPoint1]; 
-[function getControlPointAtIndex:2 values:(float *)&amp;controlPoint2];
-The controlPoint value that I get seems to be wrong:
-
-controlPoint1   CGPoint (x = 5.2635442471208903E-315, y = 4.9406564584124654E-324)  
-controlPoint2   CGPoint (x = 0.0078125018408172764, y = 2.8421186829703262E-314)    
-</code></pre>
-
-<p>但是，如果我使用float数组作为参数的类型values，我得到controlPoint的正确值：</p>
-
-<pre><code>float c1p[2], c2p[2];
-[function getControlPointAtIndex:1 values:c1p];
-[function getControlPointAtIndex:2 values:c2p];
-The values are:
-
-controlPoint1   CGPoint (x = 1, y = 0)  
-controlPoint2   CGPoint (x = 0.75, y = 1) 
-</code></pre>
-
-<p>32位设备可以使用第一种方法 但是在64位设备就行不通了 </p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -610,6 +586,12 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
 	      
 		      
 			      <li class="post">
+			        <a href="15471123133942.html">Value and Reference Collections</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15452016090680.html">UICollectionView 进阶篇</a>
 			      </li>
 		     
@@ -629,12 +611,6 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
 		      
 			      <li class="post">
 			        <a href="15446970341146.html">Building Apps with Dynamic Type</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15445109745059.html">Love at First Launch</a>
 			      </li>
 		     
 		  

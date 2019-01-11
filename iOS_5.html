@@ -128,6 +128,65 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15427834493345.html">
+                
+                  <h1>高效的画线</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>先创建一个UIBeizerPath 的对象path</p>
+
+<pre><code>UIBezierPath *path = [[UIBezierPath alloc] init];
+  [path moveToPoint:CGPointMake(175, 100)];
+  
+  [path addArcWithCenter:CGPointMake(150, 100) radius:25 startAngle:0 endAngle:2*M_PI clockwise:YES];
+  [path moveToPoint:CGPointMake(150, 125)];
+  [path addLineToPoint:CGPointMake(150, 175)];
+  [path addLineToPoint:CGPointMake(125, 225)];
+  [path moveToPoint:CGPointMake(150, 175)];
+  [path addLineToPoint:CGPointMake(175, 225)];
+  [path moveToPoint:CGPointMake(100, 150)];
+  [path addLineToPoint:CGPointMake(200, 150)];
+</code></pre>
+
+<p>然后创建CAShapeLayer添加到视图的layer上 </p>
+
+<pre><code>CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+  shapeLayer.strokeColor = [UIColor redColor].CGColor;
+  shapeLayer.fillColor = [UIColor clearColor].CGColor;
+  shapeLayer.lineWidth = 5;
+  shapeLayer.lineJoin = kCALineJoinRound;
+  shapeLayer.lineCap = kCALineCapRound;
+  shapeLayer.path = path.CGPath;
+  //add it to our view
+  [self.containerView.layer addSublayer:shapeLayer];
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2017/10/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15427834493281.html">
                 
                   <h1>为什么NSString使用Copy修饰符</h1>
@@ -256,6 +315,12 @@
 	      
 		      
 			      <li class="post">
+			        <a href="15471123133942.html">Value and Reference Collections</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15452016090680.html">UICollectionView 进阶篇</a>
 			      </li>
 		     
@@ -275,12 +340,6 @@
 		      
 			      <li class="post">
 			        <a href="15446970341146.html">Building Apps with Dynamic Type</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15445109745059.html">Love at First Launch</a>
 			      </li>
 		     
 		  

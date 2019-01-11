@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>
     
-    代理修饰符 - Code Log 👨‍💻‍ 
+    Value and Reference Collections - Code Log 👨‍💻‍ 
     
   </title>
   
@@ -128,10 +128,10 @@
     <div class="markdown-body article-wrap">
       <div class="article">
         
-        <h1>代理修饰符</h1>
+        <h1>Value and Reference Collections</h1>
 
         <div class="read-more clearfix">
-          <span class="date">2018/11/21</span>
+          <span class="date">2019/1/10</span>
 
           <span>posted in&nbsp;</span> 
           
@@ -150,10 +150,80 @@
       </div><!-- article -->
 
       <div class="article-content">
-        <h3 id="toc_0">为什么代理修饰要用weak而不是assgin</h3>
+        <p>值类型和引用类型的集合有所不同,看下图可知。</p>
 
-<p>weak 一旦不被引用的时候就不会再使用了，就会被置位nil，oc中使用nil执行操作不会引起崩溃，所以即使再次使用也不会产生野指针。<br/><br/>
-但是如果是用assgin修饰，一旦不被引用不会自动置nil,当再次操作这个对象的代理方法的时候就会产生野指针引起程序崩溃。</p>
+<p><img src="media/15471123133942/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-01-10%20%E4%B8%8B%E5%8D%885.25.48.png" alt="屏幕快照 2019-01-10 下午5.25.48"/></p>
+
+<pre><code>示例1      
+let x = NSMutableArray()
+x.add(&quot;🐵&quot;)
+let y = x
+y.add(&quot;🐶&quot;)    
+print(x,y)
+//结果
+(
+    &quot;🐵&quot;,
+    &quot;🐶&quot;
+) (
+    &quot;🐵&quot;,
+    &quot;🐶&quot;
+)  
+</code></pre>
+
+<pre><code>示例2     
+var x:[String] = []
+x.append(&quot;🐵&quot;)
+var y = x
+y.append(&quot;🐶&quot;)
+    
+print(x,y)
+//结果  
+[&quot;🐵&quot;] [&quot;🐵&quot;, &quot;🐶&quot;]
+</code></pre>
+
+<p>打印内存地址，探究 x 和 y 内存指向空间的关系。</p>
+
+<pre><code>示例3  
+var x:[String] = []
+x.append(&quot;🐵&quot;)
+let xaddress = String(format: &quot;%p&quot;, x)
+print(&quot;xaddress===\(xaddress)&quot;)
+var y = x
+let yaddress = String(format: &quot;%p&quot;, y)
+print(&quot;yaddress===\(yaddress)&quot;)
+y.append(&quot;🐶&quot;)
+print(&quot;yaddress===\(yaddress)&quot;)
+
+//结果
+xaddress===0x600000434640
+yaddress===0x6000004346a0
+yaddress===0x6000004346a0
+</code></pre>
+
+<pre><code>示例4  
+let x = NSMutableArray()
+x.add(&quot;🐵&quot;)
+let xaddress = String(format: &quot;%p&quot;, x)
+print(&quot;xaddress===\(xaddress)&quot;)
+let y = x
+let yaddress = String(format: &quot;%p&quot;, y)
+print(&quot;yaddress===\(yaddress)&quot;)
+y.add(&quot;🐶&quot;)
+print(&quot;yaddress===\(yaddress)&quot;)
+
+//结果
+xaddress===0x6000004508c0
+yaddress===0x6000004508c0
+yaddress===0x6000004508c0
+</code></pre>
+
+<p>示例3中的  <code>var y = x</code>会使y开辟一个新的内存空间，内容是复制x的内容，y添加元素，从而不会影响到 x。</p>
+
+<p>但是示例4对于 <code>let y = x</code> 没有开辟新的内存空间 还是指向同一块区域，所以当 y 发生改变的时候 x 的值也发生了改变。</p>
+
+<h3 id="toc_0">结语</h3>
+
+<p>NS前缀的是引用类型，引用类型只存在一份内存，因此改变一个值就会引起另一个值的改变，这个需要引起注意。</p>
 
 
 
@@ -164,14 +234,12 @@
         <div class="large-6 columns">
           <p class="text-left" style="padding:15px 0px;">
             
-            <a href="15427857390238.html" title="Previous Post: 关于我">&laquo; 关于我</a>
-            
           </p>
         </div>
         <div class="large-6 columns">
           <p class="text-right" style="padding:15px 0px;">
             
-            <a href="15427834491108.html" title="Next Post: You don’t have write permissions">You don’t have write permissions
+            <a href="15452016090680.html" title="Next Post: UICollectionView 进阶篇">UICollectionView 进阶篇
               &raquo;</a>
             
           </p>
