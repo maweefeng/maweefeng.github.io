@@ -128,6 +128,49 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15427834491963.html">
+                
+                  <h1>Git提交代码issue</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">问题①:</h3>
+
+<pre><code>fatal:unable to access &#39;https://github.com/xxx/xxx.git&#39; OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com 443
+</code></pre>
+
+<h5 id="toc_1">解决方法：</h5>
+
+<pre><code>env命令设置GIT_SSL_NO_VERIFY环境变量为”ture”，并同时调用正常的git clone命令 env GIT_SSL_NO_VERIFY=true git clone https://github.com/xxx/xxx.git     
+当你通过HTTPS访问Git远程仓库，如果服务器的SSL证书未经过第三方机构签署，那么Git就会报错。在克隆完毕的仓库中还需要将http.sslVerify设置为”false”。完整的命令如下：    
+git config http.sslVerify &quot;false&quot;、
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15427834491963.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Git.html'>Git</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15427834492083.html">
                 
                   <h1>对比Texture中Node和UIKit中View</h1>
@@ -480,43 +523,6 @@ def xxx(self,a,b)
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15427834492767.html">
-                
-                  <h1>UISearchbar 自定义搜索图标失真</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	关于Searchbar设置搜索图标的问题
-因为这个大小在iOS中是固定的14*14
-如果UI给的切图不是这个尺寸就会出现失真的情况（ps：因为视图的默认contentMode是UIViewContentModeScaleToFill）
-网上有的方法一般是设置一个继承自UITextfield的searchBar
-去修改SearchBar的leftView。
-...
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834492767.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -594,6 +600,12 @@ def xxx(self,a,b)
 	      
 		      
 			      <li class="post">
+			        <a href="15474609644602.html">Localization Issue Warning Storyboard</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15471123133942.html">Value and Reference Collections</a>
 			      </li>
 		     
@@ -613,12 +625,6 @@ def xxx(self,a,b)
 		      
 			      <li class="post">
 			        <a href="15450120295637.html">What's New in Storyboards</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15446970341146.html">Building Apps with Dynamic Type</a>
 			      </li>
 		     
 		  

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>
     
-    检测离屏渲染了 - Code Log 👨‍💻‍ 
+    Localization Issue Warning Storyboard - Code Log 👨‍💻‍ 
     
   </title>
   
@@ -128,10 +128,10 @@
     <div class="markdown-body article-wrap">
       <div class="article">
         
-        <h1>检测离屏渲染了</h1>
+        <h1>Localization Issue Warning Storyboard</h1>
 
         <div class="read-more clearfix">
-          <span class="date">2018/11/21</span>
+          <span class="date">2019/1/14</span>
 
           <span>posted in&nbsp;</span> 
           
@@ -150,58 +150,30 @@
       </div><!-- article -->
 
       <div class="article-content">
-        <p><code>instrumets</code> 已经取消了<code>debug options</code></p>
+        <p>当我使用 xib 设置自动布局的时候出现了下面的警告</p>
 
-<p>可以在xcode的<code>debug</code> - <code>view debugging</code> 找到</p>
-
-<p>“核心动画工具和模板已在工具中弃用。之前在”调试选项“下的功能已移至Xcode，位于”<code>Debug&gt; View Debugging</code>“下。</p>
-
-<p><img src="http://upload-images.jianshu.io/upload_images/1315383-752efaac717c3947.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="BB55F33F-97CC-4C28-B3F1-22456A2A7BD8.png"/></p>
-
-<p>开启后会把那些需要离屏渲染的图层高亮成黄色，这就意味着黄色图层可能存在性能问题。</p>
-
-<p>正常:是这样的<br/>
- <img src="http://upload-images.jianshu.io/upload_images/1315383-de2aad921928fa7b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="正常渲染.png"/></p>
-
-<p>有问题的图层:</p>
-
-<p><img src="http://upload-images.jianshu.io/upload_images/1315383-61746e58c6057b02.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="调试.png"/><br/>
-可以看见我设置了圆角的imageView有问题.</p>
-
-<p>### 项目开发中怎么去处理?</p>
+<p><img src="media/15474609644602/15474616779035.png" alt=""/></p>
 
 <blockquote>
-<p>抛出一个问题:  需求就是有很多圆角那我们项目中应该怎么去处理圆角呢?</p>
+<p>Certain autolayout constraint combinations may result in an appropriate layout in the current development language but will pose issues in other languages and regions.</p>
 </blockquote>
+
+<p>然后看了苹果官方的文档，说是使用“自动布局”相对于彼此布置视图而没有固定的原点，宽度和高度，以便在语言或区域设置更改时视图重新定位和调整大小。自动布局使得可以为所有语言提供一组.storyboard和.xib文件，并且main.Storyboard默认进行本地化</p>
+
+<p>对国际化应用程序使用自动布局时，请遵循以下提示。</p>
 
 <ol>
-<li>使用<a href="http://www.jianshu.com/p/60cd5f8bb4cb">YYWebImage去处理</a> </li>
-<li><a href="http://www.jianshu.com/p/82e68984711f">iOS中圆角图片的处理</a></li>
+<li><p>删除固定宽度约束。允许显示要调整大小的本地化文本的视图。如果使用固定宽度约束，则本地化文本可能会在某些语言中出现裁剪。</p></li>
+<li><p>使用内在内容大小。文本字段和标签的默认行为是自动调整大小。如果视图未调整为本地化文本的大小，请选择视图并选择“Editor”&gt;“size To Fit”。</p></li>
+<li><p>使用leading和trailing属性。添加约束时，请使用属性leading和trailing水平约束。对于从左到右的语言，例如英语，属性leading和trailing等同于left和right。对于从右到左的语言，如希伯来语或阿拉伯语，leading并trailing等同于right和left。的leading和trailing属性是用于水平约束的默认值。</p></li>
+<li><p>将视图固定到相邻视图。这个操作会导致多米诺骨牌效应。当一个视图调整大小以适合本地化文本时，其他视图也会这样做。否则，某些语言的视图可能会重叠。</p></li>
+<li><p>不断测试您的布局更改。使用不同的语言设置测试您的应用，如测试国际化应用中所述。</p></li>
+<li><p>不要设置window的最小大小或最大大小。让window及其内容视图调整为包含视图的大小，这可能会在语言更改时更改。</p></li>
 </ol>
 
-<p>相信看完两篇文章,多少都会能收获一点!</p>
+<h2 id="toc_0">解决问题</h2>
 
-<blockquote>
-<p>有些人说:</p>
-
-<p>iOS 9.0 之后UIButton设置圆角会触发离屏渲染，而UIImageView里png图片设置圆角不会触发离屏渲染了，如果设置其他阴影效果之类的还是会触发离屏渲染的(这句话不知道谁说的.自己有没有去尝试呢???)</p>
-</blockquote>
-
-<p>结论: 经过测试</p>
-
-<p><img src="http://upload-images.jianshu.io/upload_images/1315383-a58dfe9543375e1d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="70915C7C-7523-4008-9A88-B5682407926D.png"/></p>
-
-<p>大家可以看到, <br/>
-UIButton 的 masksToBounds = YES下发生离屏渲染与 背景图存不存在有关系, 如果没有给按钮设置   <code>btn.image = [UIImage imageName:@&quot;xxxxx&quot;];</code> 是不会产生离屏渲染的 .</p>
-
-<p>关于 UIImageView,现在测试发现(现版本: iOS10),在性能的范围之内,给UIImageView设置圆角是不会触发离屏渲染的,但是同时给UIImageView设置背景色则肯定会触发.触发离屏渲染跟 png.jpg格式并无关联(可能采取的压缩格式不同,这里不做探讨,这里我给出结果是没有关系)</p>
-
-<hr/>
-
-<ul>
-<li> 总结: </li>
-<li>对于网上一些文章得出的结论,我觉得大家得理性分析,并不是每个人都是对的,只有经过自己实践才能得出较好的定论.本文也是,我希望哪里有理解错或者其它什么错误请提出(认真脸.),人无完人,我希望在学习的道路上能碰见更多一起进步的人!</li>
-</ul>
+<p>在这里不作过多国际化 xib 约束的讨论，针对我遇到的问题，我可以把宽度的约束删除，改成 leading 和 trailing 结合的方式。</p>
 
 
 
@@ -212,14 +184,12 @@ UIButton 的 masksToBounds = YES下发生离屏渲染与 背景图存不存在�
         <div class="large-6 columns">
           <p class="text-left" style="padding:15px 0px;">
             
-            <a href="15427834493029.html" title="Previous Post: iOS导航条背景颜色">&laquo; iOS导航条背景颜色</a>
-            
           </p>
         </div>
         <div class="large-6 columns">
           <p class="text-right" style="padding:15px 0px;">
             
-            <a href="15427834493214.html" title="Next Post: iOS开发一些小技巧">iOS开发一些小技巧
+            <a href="15471123133942.html" title="Next Post: Value and Reference Collections">Value and Reference Collections
               &raquo;</a>
             
           </p>
