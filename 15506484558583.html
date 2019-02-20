@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>
     
-    终端命令 - Code Log 👨‍💻‍ 
+    OC以及Swift中的闭包 - Code Log 👨‍💻‍ 
     
   </title>
   
@@ -128,14 +128,14 @@
     <div class="markdown-body article-wrap">
       <div class="article">
         
-        <h1>终端命令</h1>
+        <h1>OC以及Swift中的闭包</h1>
 
         <div class="read-more clearfix">
-          <span class="date">2018/11/21</span>
+          <span class="date">2019/2/20</span>
 
           <span>posted in&nbsp;</span> 
           
-          <span class="posted-in"><a href='Git.html'>Git</a></span>
+          <span class="posted-in"><a href='iOS.html'>iOS</a></span>
           
 
           <span class="comments">
@@ -150,63 +150,108 @@
       </div><!-- article -->
 
       <div class="article-content">
-        <p>我们可以在 terminal 用 system profiler 命令来获取连接 mac 的 usb 设备：<br/>
-system_profiler SPUSBDataType</p>
+        <p>因为在实际开发中闭包会经常用到，几乎和代理实现同样的功能，所以我们来探究一下OC和 swift中的闭包。</p>
 
-<ul>
-<li>ls 查看当前路径下的文件以及文件夹的名字</li>
-<li>ls /bin 表示查看根目录下的bin文件夹的东西</li>
-<li>ls docments 查看当前路径下documents文件夹下的所有东西</li>
-<li>cd .. 跳转到当前路径的上一层</li>
-<li>pwd 显示当前操作的路径 (绝对路径)</li>
-<li>clear 清屏</li>
-<li>touch 生成文件</li>
-<li>ifconfig 查看设备的ip地址</li>
-<li>netstat -an </li>
-</ul>
+<h3 id="toc_0">Objecticve-C</h3>
 
-<h3 id="toc_0">查看内存占用情况</h3>
+<h4 id="toc_1">①声明Block</h4>
 
-<p>sudo du -sh * <br/>
-<img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fuch6fzertj30iy0da0ur.jpg" alt=""/></p>
+<p>OC中有两种声明方式</p>
 
-<h3 id="toc_1">Command line instructions</h3>
+<ol>
+<li><p>方式一 </p>
 
-<h3 id="toc_2">Git global setup</h3>
+<pre><code>typedef void(^BlockName)(NSString * name);
 
-<p>git config --global user.name &quot;mawf09&quot;<br/>
-git config --global <a href="mailto:user.maweefeng@gmail.com">user.maweefeng@gmail.com</a> &quot;<a href="mailto:mawf09@xxx.com">mawf09@xxx.com</a>&quot;</p>
+@property(nonatomic,copy)BlockName hello;
+</code></pre></li>
+<li><p>方式一 </p>
 
-<h3 id="toc_3">Create a new repository</h3>
+<pre><code>@property(nonatomic,copy)void(^Test)(NSString * name);
+</code></pre></li>
+</ol>
 
-<ul>
-<li>git clone git地址</li>
-<li>cd 制定文件夹</li>
-<li>touch README.md</li>
-<li>git add README.md</li>
-<li>git commit -m &quot;add README&quot;</li>
-<li>git push -u origin master</li>
-</ul>
+<h4 id="toc_2">②实现Block</h4>
 
-<h3 id="toc_4">Existing folder</h3>
+<pre><code>self.Test = ^(NSString *name) {
+        NSLog(@&quot;%@&quot;,name);
+    };
 
-<ul>
-<li>cd existing_folder</li>
-<li>git init</li>
-<li>git remote add origin git地址</li>
-<li>git add .</li>
-<li>git commit -m &quot;Initial commit&quot;</li>
-<li>git push -u origin master</li>
-</ul>
+self.hello = ^(NSString *name) {
+        NSLog(@&quot;%@&quot;,name);
+    };
+</code></pre>
 
-<h3 id="toc_5">Existing Git repository</h3>
+<h4 id="toc_3">③调用Block</h4>
 
-<ul>
-<li>cd existing_repo</li>
-<li>git remote add origin git地址</li>
-<li>git push -u origin --all</li>
-<li>git push -u origin --tags</li>
-</ul>
+<pre><code>self.Test(@&quot;hello&quot;);
+self.hello(@&quot;hello&quot;);
+</code></pre>
+
+<h3 id="toc_4">One more thing</h3>
+
+<p>另外类似于AFN的网络请求，我们也可以在方法当中把 block 当成参数传递。</p>
+
+<pre><code>.h文件
+#import &lt;UIKit/UIKit.h&gt;
+@interface ViewController : UIViewController
+
+-(void)sayHello:(void(^)(NSString * name))hello;
+
+@end
+
+</code></pre>
+
+<pre><code>.m 文件
+#import &quot;ViewController.h&quot;
+
+@implementation ViewController
+
+-(void)sayHello:(void (^)(NSString *))hello{
+    
+    hello(@&quot;name&quot;);   
+}
+</code></pre>
+
+<h3 id="toc_5">Swift</h3>
+
+<h4 id="toc_6">①使用别名声明 block</h4>
+
+<p>typealias HelloBlock = (_ str:String) -&gt; ()</p>
+
+<p>然后使其成为属性<br/>
+var block:HelloBlock?</p>
+
+<h4 id="toc_7">②实现block</h4>
+
+<pre><code>self.block = {
+    str in
+    print(str)        
+}
+</code></pre>
+
+<h4 id="toc_8">③调用Block</h4>
+
+<pre><code>block!(&quot;hello&quot;)
+</code></pre>
+
+<h3 id="toc_9">One more thing</h3>
+
+<p>和OC类似，我们在 swift 当中也可以在方法中传递闭包，把闭包当成是参数。</p>
+
+<p>声明方法</p>
+
+<pre><code>func loadRequest(callBack : (_ str:String)-&gt;()){
+        callBack(&quot;hello&quot;)
+}
+</code></pre>
+
+<p>调用方法</p>
+
+<pre><code>self.loadRequest { (str) in
+    print(str)
+}
+</code></pre>
 
 
 
@@ -217,14 +262,12 @@ git config --global <a href="mailto:user.maweefeng@gmail.com">user.maweefeng@gma
         <div class="large-6 columns">
           <p class="text-left" style="padding:15px 0px;">
             
-            <a href="15427834491690.html" title="Previous Post: Runtime运行时">&laquo; Runtime运行时</a>
-            
           </p>
         </div>
         <div class="large-6 columns">
           <p class="text-right" style="padding:15px 0px;">
             
-            <a href="15427834491808.html" title="Next Post: 终端命令设置代理">终端命令设置代理
+            <a href="15474609644602.html" title="Next Post: Localization Issue Warning Storyboard">Localization Issue Warning Storyboard
               &raquo;</a>
             
           </p>

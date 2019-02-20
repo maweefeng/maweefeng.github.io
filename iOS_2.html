@@ -128,6 +128,48 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15428536881209.html">
+                
+                  <h1>被神化的MVVM和被错误认识的Model层</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>MVVM是一种双向绑定技术，使用VM实现数据的变化更新视图，视图的变化更新数据的处理，整个过程是一种数据绑定的过程。<br/>
+网络上可以看到大多数人吹捧MVVM，但是千奇百怪的，并没有人能很好的理解MVVM，反而使代码变得异常复杂。<br/>
+<code>MVC的关系图</code></p>
+
+<pre><code class="language-sequence">V层-&gt;C层:事件
+Note right of V层:特殊情况下可以持有M层
+C层-&gt;V层:创建/更新
+C层-&gt;M层: 调用
+M层-&gt;C层: 通知
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15428536881209.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/11/22</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15427834491002.html">
                 
                   <h1>代理修饰符</h1>
@@ -418,46 +460,6 @@ tableView.clipsToBounds = false //这句最重要了，不然就显示不出来
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15427834491628.html">
-                
-                  <h1>设置Cell分割线顶头</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h6 id="toc_0">UITableView设置系统cell的分割线顶头</h6>
-
-<pre><code>- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    cell.layoutMargins = UIEdgeInsetsZero;
-    cell.separatorInset = UIEdgeInsetsZero;
-    cell.preservesSuperviewLayoutMargins = NO;
-}
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -535,6 +537,12 @@ tableView.clipsToBounds = false //这句最重要了，不然就显示不出来
 	      
 		      
 			      <li class="post">
+			        <a href="15506484558583.html">OC以及Swift中的闭包</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15474609644602.html">Localization Issue Warning Storyboard</a>
 			      </li>
 		     
@@ -554,12 +562,6 @@ tableView.clipsToBounds = false //这句最重要了，不然就显示不出来
 		      
 			      <li class="post">
 			        <a href="15451226434486.html">UICollectionView入门篇</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15450120295637.html">What's New in Storyboards</a>
 			      </li>
 		     
 		  

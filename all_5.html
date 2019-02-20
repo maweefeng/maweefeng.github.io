@@ -128,6 +128,109 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15427834492512.html">
+                
+                  <h1>Flutter && Python && OC</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">dart的函数定义如下所示</h3>
+
+<pre><code>// Define a function.
+printInteger(int aNumber) {
+  print(&#39;The number is $aNumber.&#39;); // Print to console.
+}
+
+// This is where the app starts executing.
+main() {
+  var number = 42; // Declare and initialize a variable.
+  printInteger(number); // Call a function.
+}
+
+isNoble(atomicNumber) {
+  return _nobleGases[atomicNumber] != null;
+}
+
+如果函数只有单个语句，可以采用简略的形式：
+
+bool isNoble(int atomicNumber) =&gt; _nobleGases[atomicNumber] != null;
+
+
+</code></pre>
+
+<h3 id="toc_1">$dart取地址</h3>
+
+<pre><code>String say(String from, String msg, [String device]) {
+  var result = &#39;$from says $msg&#39;;
+  if (device != null) {
+    result = &#39;$result with a $device&#39;;
+  }
+  return result;
+}
+
+</code></pre>
+
+<p>以分号结尾 参数类型要指定也可以不指定<br/><br/>
+=&gt; 是{ return expr;} 的缩写</p>
+
+<h3 id="toc_2">oc的函数定义</h3>
+
+<pre><code>-(void)hello{
+
+print(@&quot;hello world&quot;);
+
+}
+-(void)hello(int a,int b){
+
+print(@&quot;hello world %d %d&quot;,a,b);
+
+}
+
+
+</code></pre>
+
+<p>无需注意缩进 但是返回值类型一定要明确</p>
+
+<h3 id="toc_3">python函数定义</h3>
+
+<pre><code>def xxxx:
+    print &#39;hello world&#39;
+    
+def xxx(a,b):
+   print(a,b)
+   
+def xxx(self,a,b)
+   print a,b
+   
+</code></pre>
+
+<p>由于没有分号和大括号所以一定要注意缩进，</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15427834492767.html">
                 
                   <h1>UISearchbar 自定义搜索图标失真</h1>
@@ -424,48 +527,6 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15426952413956.html">
-                
-                  <h1>Masonry布局“Unable to simultaneously satisfy constraints”</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>出现这个问题是设置约束优先级错误，设置一下约束的优先级就行。</p>
-
-<pre><code>[self.doctorTitle mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.title.mas_left);
-            make.right.equalTo(self.title.mas_right);
-            make.top.equalTo(self.topline.mas_bottom).offset(10).priorityHigh();
-            make.height.mas_equalTo(@14);
-}];
-
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2017/11/20</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -543,6 +604,12 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
 	      
 		      
 			      <li class="post">
+			        <a href="15506484558583.html">OC以及Swift中的闭包</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15474609644602.html">Localization Issue Warning Storyboard</a>
 			      </li>
 		     
@@ -562,12 +629,6 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
 		      
 			      <li class="post">
 			        <a href="15451226434486.html">UICollectionView入门篇</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15450120295637.html">What's New in Storyboards</a>
 			      </li>
 		     
 		  
