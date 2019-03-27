@@ -253,6 +253,32 @@ var block:HelloBlock?</p>
 }
 </code></pre>
 
+<h2 id="toc_10">避免循环引用的问题</h2>
+
+<p>另外还需要注意循环引用，有三种方法</p>
+
+<p>一、在闭包外写 weak var weakSelf = self<br/>
+在内部需要调用 self 的地方使用 weakSelf代替。<br/>
+二、在闭包内部写[weak self]</p>
+
+<pre><code>self.loadRequest {[weak self] (str) in
+    
+    self.view.backgroundColor = UIColor.redColor()
+
+    print(str)
+}
+</code></pre>
+
+<p>三、在闭包中写 [unowned self]</p>
+
+<pre><code>self.loadRequest {[unowned self] (str) in
+    
+    self.view.backgroundColor = UIColor.redColor()
+
+    print(str)
+}     
+</code></pre>
+
 
 
 
@@ -261,6 +287,8 @@ var block:HelloBlock?</p>
       <div class="row">
         <div class="large-6 columns">
           <p class="text-left" style="padding:15px 0px;">
+            
+            <a href="15536750345410.html" title="Previous Post: Swift 和 OC 实现“热加载”">&laquo; Swift 和 OC 实现“热加载”</a>
             
           </p>
         </div>
@@ -364,6 +392,12 @@ s.setAttribute('data-timestamp', +new Date());
 	      
 		      
 			      <li class="post">
+			        <a href="15536750345410.html">Swift 和 OC 实现“热加载”</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15506484558583.html">OC以及Swift中的闭包</a>
 			      </li>
 		     
@@ -383,12 +417,6 @@ s.setAttribute('data-timestamp', +new Date());
 		      
 			      <li class="post">
 			        <a href="15452016090680.html">UICollectionView 进阶篇</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15451226434486.html">UICollectionView入门篇</a>
 			      </li>
 		     
 		  

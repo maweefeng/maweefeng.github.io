@@ -128,6 +128,47 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15536750345410.html">
+                
+                  <h1>Swift 和 OC 实现“热加载”</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>众所周知，Google 推出的跨平台框架Flutter 有着很好的编译优势<code>Flutter Hot Reload</code>，每次改变之后，点击 <code>reload</code> 就会实现实时编译。那么其实我们也可以实现<code>Swift</code>和<code>OC</code>的实时编译。</p>
+
+<h4 id="toc_0">InjectionIII</h4>
+
+<p>通过这个工具可以实现类似Flutter 的快速编译。</p>
+
+<h6 id="toc_1">实现思路：</h6>
+
+<p>Injection 会监听源代码文件的变化，如果文件被改动了，Injection Server 就会执行 rebuildClass 重新进行编译、打包成动态库，也就是 .dylib 文件。编译、打包成动态库后使用 writeSting 方法通过 Socket 通知运行的 App。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15536750345410.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2019/3/27</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15506484558583.html">
                 
                   <h1>OC以及Swift中的闭包</h1>
@@ -440,57 +481,6 @@ print(x,y)
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15445109745059.html">
-                
-                  <h1>Love at First Launch</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ul>
-<li>直接显示内容而不是弹出需要注册登录的页面</li>
-<li>通过交互引导用户，而不是一些文字引导</li>
-<li>延迟请求授权，而不是一下登录之后就开始要权限（定位，相机，图片）。</li>
-</ul>
-
-<p>针对延迟请求，想到一个好主意，就是新建一个类，可以是单例，负责管理这些请求。</p>
-
-<h1 id="toc_0">App Startup Time: Past, Present, and Future</h1>
-
-<p>了解在苹果平台上使用的dyld动态链接器，它是如何在这些年来发生变化的，以及它下一步的发展方向。了解改进的工具如何使优化应用程序的启动时间变得更容易，并了解dyld中的新更改如何进一步改善启动时间。</p>
-
-<ul>
-<li><p>startup time 启动时间</p>
-
-<p>main函数执行之前所用的时间</p></li>
-<li><p>launch closure启动收尾</p>
-
-<p>启动你的程序所需要的全部信息，比如使用什么dylib，他们的哪些偏移位置用于不同的符号，代码签名是什么，</p></li>
-</ul>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15445109745059.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/12/11</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -568,6 +558,12 @@ print(x,y)
 	      
 		      
 			      <li class="post">
+			        <a href="15536750345410.html">Swift 和 OC 实现“热加载”</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15506484558583.html">OC以及Swift中的闭包</a>
 			      </li>
 		     
@@ -587,12 +583,6 @@ print(x,y)
 		      
 			      <li class="post">
 			        <a href="15452016090680.html">UICollectionView 进阶篇</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15451226434486.html">UICollectionView入门篇</a>
 			      </li>
 		     
 		  

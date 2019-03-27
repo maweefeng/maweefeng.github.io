@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>
     
-    给UITableView边框加阴影 - Code Log 👨‍💻‍ 
+    Swift 和 OC 实现“热加载” - Code Log 👨‍💻‍ 
     
   </title>
   
@@ -128,10 +128,10 @@
     <div class="markdown-body article-wrap">
       <div class="article">
         
-        <h1>给UITableView边框加阴影</h1>
+        <h1>Swift 和 OC 实现“热加载”</h1>
 
         <div class="read-more clearfix">
-          <span class="date">2018/11/21</span>
+          <span class="date">2019/3/27</span>
 
           <span>posted in&nbsp;</span> 
           
@@ -150,58 +150,73 @@
       </div><!-- article -->
 
       <div class="article-content">
-        <p>项目中有个需求要在UITableView加边框阴影  </p>
+        <p>众所周知，Google 推出的跨平台框架Flutter 有着很好的编译优势<code>Flutter Hot Reload</code>，每次改变之后，点击 <code>reload</code> 就会实现实时编译。那么其实我们也可以实现<code>Swift</code>和<code>OC</code>的实时编译。</p>
 
-<p>如果你的界面的UITableView是充满整个屏幕的话那么就可以使用这个简单的方法。   </p>
+<h4 id="toc_0">InjectionIII</h4>
 
-<ul>
-<li>方法一</li>
-</ul>
+<p>通过这个工具可以实现类似Flutter 的快速编译。</p>
 
-<pre><code>tableView.layer.shadowColor = UIColor(white: 000000, alpha: 0.3).CGColor
+<h6 id="toc_1">实现思路：</h6>
 
-tableView.layer.shadowOffset = CGSize(width: -6, height: 6)
+<p>Injection 会监听源代码文件的变化，如果文件被改动了，Injection Server 就会执行 rebuildClass 重新进行编译、打包成动态库，也就是 .dylib 文件。编译、打包成动态库后使用 writeSting 方法通过 Socket 通知运行的 App。</p>
 
-tableView.layer.shadowOpacity = 1
+<h4 id="toc_2">安装方式</h4>
 
-tableView.clipsToBounds = false //这句最重要了，不然就显示不出来
+<ol>
+<li><p>Mac App Store下载安装</p>
+
+<p><img src="media/15536750345410/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-03-27%20%E4%B8%8B%E5%8D%884.26.20.png" alt="屏幕快照 2019-03-27 下午4.26.20"/></p></li>
+<li><p>Github</p>
+
+<p>这个工具开发作者是John Holdsworth，作者已经开源了这个工具，地址是<a href="https://github.com/johnno1962/InjectionIII">https://github.com/johnno1962/InjectionIII</a></p></li>
+</ol>
+
+<p>我使用的是在Mac App Store安装的方式，这样比较方便一些，如果你想专研源码，可以去到 GitHub 去研究。</p>
+
+<h5 id="toc_3">使用指南</h5>
+
+<ol>
+<li><p>打开工程</p>
+
+<p>安装之后打开会出现在 mac 的 menubar 点击打开你目标的工程文件的根目录。</p>
+
+<p><img src="media/15536750345410/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-03-27%20%E4%B8%8B%E5%8D%885.57.39.png" alt="屏幕快照 2019-03-27 下午5.57.39"/></p></li>
+<li><p>在 applicationDidFinishLaunching加载Injection包</p>
+
+<p>Xcode 10.1:</p>
+
+<pre><code>#if DEBUG
+Bundle(path: &quot;/Applications/InjectionIII.app/Contents/Resources/iOSInjection10.bundle&quot;)?.load()
+//for tvOS:
+Bundle(path: &quot;/Applications/InjectionIII.app/Contents/Resources/tvOSInjection10.bundle&quot;)?.load()
+//Or for macOS:
+Bundle(path: &quot;/Applications/InjectionIII.app/Contents/Resources/macOSInjection10.bundle&quot;)?.load()
+#endif
 </code></pre>
 
-<h4 id="toc_0">问题来了</h4>
+<p>Xcode 10.2 and later:</p>
 
-<p>我的界面UITableview上面有一个固定不动的区域，如果单纯的照上面写的话，就会出现tableview盖住上面的问题 <br/>
-其实就是因为clipsToBounds = false 不对超出边框的部分进行切割。<br/><br/>
-因为UIScrollview默认clipsToBounds = true,所以你可能之前没有见过超出部分依然还显示在界面。 </p>
+<pre><code>#if DEBUG
+Bundle(path: &quot;/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle&quot;)?.load()
+//for tvOS:
+Bundle(path: &quot;/Applications/InjectionIII.app/Contents/Resources/tvOSInjection.bundle&quot;)?.load()
+//Or for macOS:
+Bundle(path: &quot;/Applications/InjectionIII.app/Contents/Resources/macOSInjection.bundle&quot;)?.load()
+#endif
+</code></pre></li>
+<li><p>运行工程 </p>
 
-<p>我的界面如下图所示<br/>
-<img src="https://lh3.googleusercontent.com/-Zq0sRfLUSQA/W_Jq6QFUYnI/AAAAAAAAlSU/JFoyTporhCgZafmew7cHT7yWGo2fn1ATQCHMYCw/I/15426133929938.jpg" alt=""/></p>
+<p>选择模拟器，cmd+R启动编译</p></li>
+<li><p>修改文件注入代码</p>
 
-<p>如果父视图的clipsToBounds = true那么在上面的子控件的clipsToBounds 也是true<br/><br/>
-所以必须要在UITableview下面添加一个UIView，可以使用下面的代码<br/><br/>
-必须要使UITableView的clipsToBounds = true，下面的父视图的clipsToBounds = false</p>
+<p>每当对代码进行修改之后，一定要cmd+S保存（不然Injection不会分析变动以及替换符号）实现快速编译。不用重新 cmd+R。</p></li>
+</ol>
 
-<ul>
-<li>方法二</li>
-</ul>
+<h4 id="toc_4">注意事项</h4>
 
-<pre><code>    self.backView = [[UIView alloc]initWithFrame:CGRectMake(originX, originY, Width,  height)];
-    self.backView.layer.shadowColor = [UIColor gh_colorFromHexString:@&quot;#002F81&quot;].CGColor;
-    self.backView.layer.shadowOffset = CGSizeMake(0, 2);
-    self.backView.layer.shadowOpacity = 0.1;
-    self.backView.layer.shadowRadius=8;//设置阴影半径
-    self.backView.clipsToBounds = false;
-    [self.view addSubview:self.backView];
-    
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,0, Width, height) style:UITableViewStylePlain];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    self.tableView.layer.cornerRadius = KScreenWidth/375 *4;
-    self.tableView.layer.masksToBounds = YES;
-    self.tableView.tableFooterView = [UIView new];
-    [self.backView addSubview:self.tableView];
+<p><img src="media/15536750345410/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-03-27%20%E4%B8%8B%E5%8D%885.56.38.png" alt="屏幕快照 2019-03-27 下午5.56.38"/></p>
 
-
-</code></pre>
+<p>还有一点就是如果你在 menubar 打开了这个程式的File Watcher那么就只需要cmd+S 如果你没有开启这个功能，还要多一步命令<code>control</code>+<code>=</code>(同时按住 control 和 =）。</p>
 
 
 
@@ -212,14 +227,12 @@ tableView.clipsToBounds = false //这句最重要了，不然就显示不出来
         <div class="large-6 columns">
           <p class="text-left" style="padding:15px 0px;">
             
-            <a href="15427834491315.html" title="Previous Post: 通讯录排序">&laquo; 通讯录排序</a>
-            
           </p>
         </div>
         <div class="large-6 columns">
           <p class="text-right" style="padding:15px 0px;">
             
-            <a href="15427834491441.html" title="Next Post: 设置图片拉伸范围">设置图片拉伸范围
+            <a href="15506484558583.html" title="Next Post: OC以及Swift中的闭包">OC以及Swift中的闭包
               &raquo;</a>
             
           </p>
