@@ -1,0 +1,16 @@
+{
+  "categories": [
+    {
+      "name": "best apps",
+      "apps": [
+        {
+          "id": "1",
+          "Name": "Disney build it ",
+          "category": "entermaint",
+          "price": "$12.0",
+          "ImageName": "Frozen"
+        }
+      ]
+    }
+  ]
+}
