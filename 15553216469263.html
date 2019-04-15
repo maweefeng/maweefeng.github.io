@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>
     
-    sizeThatFits和sizeToFit - Code Log 👨‍💻‍ 
+    Swift中的字典转模型方法的迭代 - Code Log 👨‍💻‍ 
     
   </title>
   
@@ -128,10 +128,10 @@
     <div class="markdown-body article-wrap">
       <div class="article">
         
-        <h1>sizeThatFits和sizeToFit</h1>
+        <h1>Swift中的字典转模型方法的迭代</h1>
 
         <div class="read-more clearfix">
-          <span class="date">2018/11/27</span>
+          <span class="date">2019/4/15</span>
 
           <span>posted in&nbsp;</span> 
           
@@ -150,68 +150,96 @@
       </div><!-- article -->
 
       <div class="article-content">
-        <p>今天帮同事看一个布局约束的问题，（代码也是从别人手中接过来的，所以并不清楚怎么布局的）<br/>
-view是用xib画的，约束设置很多，本以为是约束的问题，设置了约束还是不能更改整个view的高度。</p>
+        <p>模型可以是结构体也可以是继承自NSObject的类  </p>
 
-<p>最后找了一会，我发现了一个方法 sizeThatFit 在sizeThatFit内部返回了size，所以刚才尽管指定的约束改了，但是还是不影响下面的方法返回size。</p>
+<pre><code>class App: NSObject {
+    var name:String = &quot;&quot;
+    var age:Int = 0
+    var boxDescription:String = &quot;&quot;
+}
 
-<p>所以就写了这个东西给不了解的同学一点点经验。</p>
 
-<pre><code>- (void)sizeToFit;                       // calls sizeThatFits: with current view bounds and changes bounds size.
-- (CGSize)sizeThatFits:(CGSize)size;     // return &#39;best&#39; size to fit given size. does not actually resize view. Default is return existing view size
-
-</code></pre>
-
-<p>上面是苹果的方法说明。</p>
-
-<p>sizeToFit 方法会返回一个苹果自带方法计算出的合适的宽高，即使你初始化的时候的宽和高设置错误，苹果也会给你算出一个合适的size让你填充你的内容。</p>
-
-<pre><code>-(void)addSizeToFitHelloLable{
+struct App :Decodable{
+    var name:String
+    var age:Int
+    var description:String
     
-    UILabel * hello = [[UILabel alloc]initWithFrame:CGRectMake(20, 20, 20, 100)];
-    hello.text = @&quot;hello world&quot;;
-    hello.backgroundColor = [UIColor redColor];
-    [self.view addSubview:hello];
-    [hello sizeToFit];
+    init(dic:[String:AnyObject]) {
+        name = dic[&quot;name&quot;] as! String
+        age = dic[&quot;age&quot;] as! Int
+        description = dic[&quot;description&quot;] as! String
+    }
     
 }
 
 </code></pre>
 
-<p>我这里设置的宽度和高度明显是不对的，但是当我调用sizeToFit之后就好多了，下面是调用前和调用之后的对比效果。</p>
+<p>网络请求</p>
+
+<pre><code> func fetchData(){
+        let url = &quot;https://maweefeng.github.io/appfeauterd.json&quot;
+        
+        let session: URLSession = URLSession.shared
+        
+        let dataTask: URLSessionDataTask = session.dataTask(with: URL(string: url)!) { (data, response, error) in
+            if(error == nil){
+                var dict:NSDictionary? = nil
+                do {
+                    guard let jsondata = data else{return}
+                    let app = try JSONDecoder().decode(App.self, from: jsondata)
+                    print(app)
+                    
+//dict = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
+//
+//                    let app = App(dic: dict)
+//                    print(app)
+
+                    
+                } catch {
+                }
+                print(dict!)
+            }
+        }
+        dataTask.resume()
+        
+    }
+</code></pre>
+
+<h3 id="toc_0">JSONSerialization</h3>
+
+<p>之前我们字典转模型可能使用的方法可能是使用</p>
 
 <ul>
-<li><p>调用之前<br/>
-<img src="media/15433027949667/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-27%20%E4%B8%8B%E5%8D%883.23.49.png" alt="屏幕快照 2018-11-27 下午3.23.49 "/></p></li>
-<li><p>调用之后<br/>
-<img src="media/15433027949667/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-27%20%E4%B8%8B%E5%8D%883.23.06.png" alt="屏幕快照 2018-11-27 下午3.23.06"/></p></li>
+<li><p>model为结构体</p>
+
+<pre><code>dict = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
+let app = App(dic: dict)
+print(app)
+</code></pre></li>
+<li><p>model为NSObject子类</p>
+
+<pre><code>dict = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
+let app = App()
+app.setValuesForKeys(dict as! [String : Any])
+</code></pre></li>
 </ul>
 
-<p>因为sizeToFit之后内部会调用调用sizeThatFits，所以还可以在自定义view当中重写sizeThatFits方法，去调整sizeToFit之后的size。</p>
+<h3 id="toc_1">JSONDecode</h3>
 
-<pre><code>----------customLable.m-------------
--(CGSize)sizeThatFits:(CGSize)size{
-    
-    [super sizeThatFits:size];
-    size.height = 40;
-    return size;
-    
-}
+<p>现在使用swift4新增了一种更方法的方法，就是JSONDecode</p>
+
+<pre><code>let app = try JSONDecoder().decode(App.self, from: jsondata)`
+
 </code></pre>
 
-<h4 id="toc_0">注意</h4>
+<p>如果返回的data数据是一个object的字典，那么可以用上面的代码 </p>
 
-<p>添加自定义的lable到view上最后千万不能忘记调用sizeToFit方法，要不然内部重写的sizeThatFits不生效。</p>
+<p>如果data是一个包含app对象的数组，则可以简单的使用</p>
 
-<pre><code>-(void)addCustomeSizeThatFitLable{
-    
-    CustomLable * hello = [[CustomLable alloc]initWithFrame:CGRectMake(20, 20, 200, 100)];
-    hello.text = @&quot;hello world&quot;;
-    hello.backgroundColor = [UIColor redColor];
-    [self.view addSubview:hello];
-    [hello sizeToFit]; 
-}
+<pre><code>let app = try JSONDecoder().decode([App].self, from: jsondata)`
 </code></pre>
+
+<p>另外一些情况，可能数组当中并不是每个键值对都一一对应，可能存在部分键值对缺失的情况，这样的话就会报错，有一个解决办法便是使那些可以为空的属性为optional，这样就可以解决错误问题。</p>
 
 
 
@@ -222,14 +250,12 @@ view是用xib画的，约束设置很多，本以为是约束的问题，设置�
         <div class="large-6 columns">
           <p class="text-left" style="padding:15px 0px;">
             
-            <a href="15433701207076.html" title="Previous Post: _cmd 与 runtime 的结合">&laquo; _cmd 与 runtime 的结合</a>
-            
           </p>
         </div>
         <div class="large-6 columns">
           <p class="text-right" style="padding:15px 0px;">
             
-            <a href="15428536881209.html" title="Next Post: 被神化的MVVM和被错误认识的Model层">被神化的MVVM和被错误认识的Model层
+            <a href="15536750345410.html" title="Next Post: Swift 和 OC 实现“热加载”">Swift 和 OC 实现“热加载”
               &raquo;</a>
             
           </p>
