@@ -128,6 +128,103 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15554977521883.html">
+                
+                  <h1>Swift单例写法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>介绍swift的单例类写法之前，可以先回顾一下oc中单例的写法如下。</p>
+
+<pre><code class="language-//首先.h文件里声明">//单例类
+@interface Manger : NSObject
++ (instancetype)sharedManger;
+@end
+
+//然后.m文件里写实现
+@implementation Manger
++ (instancetype)sharedManger {
+    static Manger *sharedManger = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&amp;onceToken, ^{
+        sharedManger = [self new];
+    });
+    return sharedManger;
+}
+
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15554977521883.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2019/4/17</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15554962348970.html">
+                
+                  <h1>Filter, Map, Reduce  Functions</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">Filter</h3>
+
+<p>Filter 函数是过滤出所有符合过滤条件的元素 </p>
+
+<p>比如下面的方法过滤出数组所有元素等于3的元素</p>
+
+<pre><code>func filter() {
+        let numbers = [1,2,3,3,3,4]
+        //过滤出所有元素为3的元素 并返回过滤之后的数据
+        let filtedNumbers = numbers.filter({return $0 == 3})
+        print(filtedNumbers)//[3,3,3]
+    }
+
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15554962348970.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2019/4/17</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15553216469263.html">
                 
                   <h1>Swift中的字典转模型方法的迭代</h1>
@@ -414,88 +511,6 @@ print(x,y)
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15451226434486.html">
-                
-                  <h1>UICollectionView入门篇</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">1. 设计数据源和代理</h2>
-
-<p>每个集合视图都必须具有数据源对象。该数据源对象是内容，你的应用程序显示。它可以是应用程序数据模型中的对象，也可以是管理集合视图的视图控制器。数据源的唯一要求是它必须能够提供集合视图所需的信息，例如有多少项以及在显示这些项时要使用的视图。</p>
-
-<p>UICollectionViewDelegate是一个可选的（但建议）对象管理有关的介绍，并与您的内容互动方面。虽然代表的主要工作是管理单元格突出显示和选择，但可以扩展它以提供其他信息。例如，流布局扩展了基本委托行为以自定义布局指标，例如单元格的大小和它们之间的间距</p>
-
-<p><strong>For example:</strong></p>
-
-<pre><code> self.collectionView.delegate = self;
- self.collectionView.dataSource = self;
-</code></pre>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15451226434486.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/12/18</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15450120295637.html">
-                
-                  <h1>What's New in Storyboards</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h6 id="toc_0">故事板是在iOS和OS X上构建用户界面和应用程序流的好方法。了解如何有效地组织故事板，为接口定义segue，以及轻松地展开转换。深入讨论新的api，并听取关于如何创建优秀用户界面的技巧，并附带一些自定义的转场动画介绍和使用。</h6>
-
-<h2 id="toc_1">1. Refactor to Storyboard</h2>
-
-<p>在 storyboard 中选中对应的 xib 文件，然后点击Editor-&gt;Refactor to Storyboard</p>
-
-<p>可以把整个Storyboard文件中独立的部分重构出来。</p>
-
-<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.13.35.png" alt="屏幕快照 2018-12-17 上午10.13.35"/></p>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15450120295637.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/12/17</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -573,6 +588,18 @@ print(x,y)
 	      
 		      
 			      <li class="post">
+			        <a href="15554977521883.html">Swift单例写法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15554962348970.html">Filter, Map, Reduce  Functions</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15553216469263.html">Swift中的字典转模型方法的迭代</a>
 			      </li>
 		     
@@ -586,18 +613,6 @@ print(x,y)
 		      
 			      <li class="post">
 			        <a href="15506484558583.html">OC以及Swift中的闭包</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15474609644602.html">Localization Issue Warning Storyboard</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15471123133942.html">Value and Reference Collections</a>
 			      </li>
 		     
 		  

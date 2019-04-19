@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>
     
-    终端命令 - Code Log 👨‍💻‍ 
+    Filter, Map, Reduce  Functions - Code Log 👨‍💻‍ 
     
   </title>
   
@@ -128,14 +128,14 @@
     <div class="markdown-body article-wrap">
       <div class="article">
         
-        <h1>终端命令</h1>
+        <h1>Filter, Map, Reduce  Functions</h1>
 
         <div class="read-more clearfix">
-          <span class="date">2018/11/21</span>
+          <span class="date">2019/4/17</span>
 
           <span>posted in&nbsp;</span> 
           
-          <span class="posted-in"><a href='Git.html'>Git</a></span>
+          <span class="posted-in"><a href='iOS.html'>iOS</a></span>
           
 
           <span class="comments">
@@ -150,63 +150,47 @@
       </div><!-- article -->
 
       <div class="article-content">
-        <p>我们可以在 terminal 用 system profiler 命令来获取连接 mac 的 usb 设备：<br/>
-system_profiler SPUSBDataType</p>
+        <h3 id="toc_0">Filter</h3>
 
-<ul>
-<li>ls 查看当前路径下的文件以及文件夹的名字</li>
-<li>ls /bin 表示查看根目录下的bin文件夹的东西</li>
-<li>ls docments 查看当前路径下documents文件夹下的所有东西</li>
-<li>cd .. 跳转到当前路径的上一层</li>
-<li>pwd 显示当前操作的路径 (绝对路径)</li>
-<li>clear 清屏</li>
-<li>touch 生成文件</li>
-<li>ifconfig 查看设备的ip地址</li>
-<li>netstat -an </li>
-</ul>
+<p>Filter 函数是过滤出所有符合过滤条件的元素 </p>
 
-<h3 id="toc_0">查看内存占用情况</h3>
+<p>比如下面的方法过滤出数组所有元素等于3的元素</p>
 
-<p>sudo du -sh * <br/>
-<img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fuch6fzertj30iy0da0ur.jpg" alt=""/></p>
+<pre><code>func filter() {
+        let numbers = [1,2,3,3,3,4]
+        //过滤出所有元素为3的元素 并返回过滤之后的数据
+        let filtedNumbers = numbers.filter({return $0 == 3})
+        print(filtedNumbers)//[3,3,3]
+    }
 
-<h3 id="toc_1">Command line instructions</h3>
+</code></pre>
 
-<h3 id="toc_2">Git global setup</h3>
+<h3 id="toc_1">Map</h3>
 
-<p>git config --global user.name &quot;mawf09&quot;<br/>
-git config --global <a href="mailto:user.maweefeng@gmail.com">user.maweefeng@gmail.com</a> &quot;<a href="mailto:mawf09@xxx.com">mawf09@xxx.com</a>&quot;</p>
+<p>使用map函数把数组中的所有元素使用同一个规则，并返回一个相同数量的数组</p>
 
-<h3 id="toc_3">Create a new repository</h3>
+<pre><code>func map() {
+        let numbers = [1,2,3,3,3,4]
+        //过滤出所有元素为3的元素 并返回过滤之后的数据
+        let filtedNumbers = numbers.map({return $0 * 2})
+        print(filtedNumbers)//[2,4,6,6,6,8]
+    }
 
-<ul>
-<li>git clone git地址</li>
-<li>cd 制定文件夹</li>
-<li>touch README.md</li>
-<li>git add README.md</li>
-<li>git commit -m &quot;add README&quot;</li>
-<li>git push -u origin master</li>
-</ul>
+</code></pre>
 
-<h3 id="toc_4">Existing folder</h3>
+<h3 id="toc_2">Reduce</h3>
 
-<ul>
-<li>cd existing_folder</li>
-<li>git init</li>
-<li>git remote add origin git地址</li>
-<li>git add .</li>
-<li>git commit -m &quot;Initial commit&quot;</li>
-<li>git push -u origin master</li>
-</ul>
+<p>使用reduce函数实现函数的前后累加，并返回一个元素</p>
 
-<h3 id="toc_5">Existing Git repository</h3>
+<pre><code>func reduce(){
+        let numbers = [1,2,3,3,3,4]
+      
+        let sum = numbers.reduce(0, {sum,number in sum + number})
 
-<ul>
-<li>cd existing_repo</li>
-<li>git remote add origin git地址</li>
-<li>git push -u origin --all</li>
-<li>git push -u origin --tags</li>
-</ul>
+        print(sum)
+        
+    }
+</code></pre>
 
 
 
@@ -217,14 +201,14 @@ git config --global <a href="mailto:user.maweefeng@gmail.com">user.maweefeng@gma
         <div class="large-6 columns">
           <p class="text-left" style="padding:15px 0px;">
             
-            <a href="15427834491690.html" title="Previous Post: Runtime运行时">&laquo; Runtime运行时</a>
+            <a href="15554977521883.html" title="Previous Post: Swift单例写法">&laquo; Swift单例写法</a>
             
           </p>
         </div>
         <div class="large-6 columns">
           <p class="text-right" style="padding:15px 0px;">
             
-            <a href="15427834491808.html" title="Next Post: 终端命令设置代理">终端命令设置代理
+            <a href="15553216469263.html" title="Next Post: Swift中的字典转模型方法的迭代">Swift中的字典转模型方法的迭代
               &raquo;</a>
             
           </p>

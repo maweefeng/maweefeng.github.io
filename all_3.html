@@ -128,6 +128,112 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15427834491108.html">
+                
+                  <h1>You don’t have write permissions</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">终端运行sudo gem update出现如下错误</h3>
+
+<blockquote>
+<p>ERROR: While executing gem … (Gem::FilePermissionError) <br/>
+You don’t have write permissions for the /usr/bin directory.</p>
+</blockquote>
+
+<p>试一下这一段代码</p>
+
+<blockquote>
+<p>sudo gem install -n /usr/local/bin cocoapods</p>
+</blockquote>
+
+<p>这表示是在本地环境</p>...
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15427834491108.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='CocoaPods.html'>CocoaPods</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834491194.html">
+                
+                  <h1>隐藏导航栏底部的线条</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>有时候遇到一些特殊的要求，需要隐藏导航栏底部的线条。<br/>
+两行代码就可以做到。</p>
+
+<ul>
+<li><p>方法一:<br/><br/>
+设置导航栏的背景图（setBackgroundImage方法）<br/><br/>
+设置导航栏的shadowImage (setShadowImage方法)<br/><br/>
+<code>UINavigationBar *navigationBar = self.navigationController.navigationBar;</code><br/>
+//设置透明的背景图，便于识别底部线条有没有被隐藏<br/><br/>
+<code>[navigationBar setBackgroundImage:[[UIImage alloc] init]<br/>
+                   forBarPosition:UIBarPositionAny<br/>
+                       barMetrics:UIBarMetricsDefault];</code> <br/>
+//此处使底部线条失效<br/>
+<code>[navigationBar setShadowImage:[UIImage new]];</code></p></li>
+<li><p>方法二：<br/>
+<code>self.navigationController.navigationBar.clipsToBounds = YES;</code></p></li>
+</ul>
+
+<h3 id="toc_0">导航栏全局属性设置</h3>
+
+<p>//全局设置导航栏主题</p>
+
+<pre><code>- (void)setNavigationControllerAppearance {
+    [UINavigationBar appearance].barStyle  = UIBarStyleBlack;
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithWhite:0.1 alpha:0.5]];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+}
+
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15427834491253.html">
                 
                   <h1>堆栈的一点区别</h1>
@@ -380,110 +486,6 @@ cd到你的本地项目根目录下，执行git命令 </p>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15427834491628.html">
-                
-                  <h1>设置Cell分割线顶头</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h6 id="toc_0">UITableView设置系统cell的分割线顶头</h6>
-
-<pre><code>- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    cell.layoutMargins = UIEdgeInsetsZero;
-    cell.separatorInset = UIEdgeInsetsZero;
-    cell.preservesSuperviewLayoutMargins = NO;
-}
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834491690.html">
-                
-                  <h1>Runtime运行时</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ol>
-<li><p>runtime调用方法</p>
-
-<pre><code>- (void)test {
-TestModel *objct = [[TestModel alloc] init];
-((void (*) (id, SEL)) objc_msgSend) (objct, sel_registerName(&quot;country&quot;));
-((void (*) (id, SEL, NSString *)) objc_msgSend) (objct, sel_registerName(&quot;getProvince:&quot;), @&quot;广东省&quot;)；
-((void (*) (id, SEL, NSString *, NSString *)) objc_msgSend) (objct, sel_registerName(&quot;getCity:station:&quot;), @&quot;深圳市&quot;, @&quot;世界之窗&quot;)；
-NSString *weather = ((NSString* (*) (id, SEL)) objc_msgSend) (objct, sel_registerName(&quot;getWeather&quot;));
-NSLog(@&quot;%@&quot;, weather);
-}
-</code></pre></li>
-<li><p>给分类添加属性</p>
-
-<pre><code class="language-#import">#import &lt;objc/runtime.h&gt;
-static void *TestStringKey = &amp;TestStringKey;
-@implementation TestModel (String)
-- (void)setTestString:(NSString *)testString {
-objc_setAssociatedObject(self, TestStringKey, testString, OBJC_ASSOCIATION_COPY);
-}
-- (NSString *)testString {
-return objc_getAssociatedObject(self, TestStringKey);
-}
-@end
-</code></pre></li>
-<li><p>获取属性</p>
-
-<pre><code>使用class_copyIvarList获得的属性数组是Ivar类型 
-可以使用ivar_getName将ivar类型转换为char
-再使用NSString 的stringWithUTF8String方法转化为NSString类型。
-</code></pre></li>
-</ol>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -561,6 +563,18 @@ return objc_getAssociatedObject(self, TestStringKey);
 	      
 		      
 			      <li class="post">
+			        <a href="15554977521883.html">Swift单例写法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15554962348970.html">Filter, Map, Reduce  Functions</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15553216469263.html">Swift中的字典转模型方法的迭代</a>
 			      </li>
 		     
@@ -574,18 +588,6 @@ return objc_getAssociatedObject(self, TestStringKey);
 		      
 			      <li class="post">
 			        <a href="15506484558583.html">OC以及Swift中的闭包</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15474609644602.html">Localization Issue Warning Storyboard</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15471123133942.html">Value and Reference Collections</a>
 			      </li>
 		     
 		  
