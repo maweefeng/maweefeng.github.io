@@ -128,6 +128,51 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15427834493029.html">
+                
+                  <h1>iOS导航条背景颜色</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h4 id="toc_0">Situation one</h4>
+
+<p><code>self.navigationBar.barTintColor= [UIColor redColor];</code><br/>
+这时候的效果就是纯色的<br/>
+类似下面这样<br/>
+<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fsbvzqlgesj309f01oglk.jpg" alt=""/></p>
+
+<h4 id="toc_1">Situation two</h4>
+
+<p><code>self.navigationBar.backgroundColor = [UIColor redColor];</code><br/>
+<img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fsbvypka0rj309e01p0so.jpg" alt=""/></p>
+
+<p>一种是有渐变的半透明效果，一种就是简单的纯色效果。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15427834493152.html">
                 
                   <h1>检测离屏渲染了</h1>
@@ -530,58 +575,6 @@ return self.photoCount &gt; 0
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15427834493281.html">
-                
-                  <h1>为什么NSString使用Copy修饰符</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h6 id="toc_0">NSString为什么要用copy关键字，用strong会有什么问题？</h6>
-
-<p>我们大部分的时候NSString的属性都是copy，那copy与strong的情况下到底有什么区别呢?我们以实例来说明：</p>
-
-<pre><code>@interface ViewController ()
-@property(nonatomic,copy)NSString * str1;
-@property(nonatomic,strong)NSString*str2;
-@end
-
--(void)test
-{
-    NSMutableString*str=[NSMutableString stringWithFormat:@&quot;helloworld&quot;];
-    self.str1=str;
-    self.str2=str;
-    NSLog(@&quot;str:%p--%p&quot;,str,&amp;str);
-    NSLog(@&quot;copy_str:%p--%p&quot;,_str1,&amp;_str1);
-    NSLog(@&quot;strong_str:%p--%p&quot;,_str2,&amp;_str2);
-}
-</code></pre>
-
-<p>最后我们运行看打印结...</p>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834493281.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2017/9/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -593,7 +586,7 @@ return self.photoCount &gt; 0
 			  </div>
 			  <div class="large-6 columns">
 			<p class="text-right" style="padding-top:25px;">
-			
+			 <a href="iOS_6.html">&raquo; Next Page</a> 
 			</p>
 			  </div>
 			</div>
@@ -659,6 +652,12 @@ return self.photoCount &gt; 0
 	      
 		      
 			      <li class="post">
+			        <a href="15572343607934.html">RunLoop</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15554977521883.html">Swift单例写法</a>
 			      </li>
 		     
@@ -678,12 +677,6 @@ return self.photoCount &gt; 0
 		      
 			      <li class="post">
 			        <a href="15536750345410.html">Swift 和 OC 实现“热加载”</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15506484558583.html">OC以及Swift中的闭包</a>
 			      </li>
 		     
 		  

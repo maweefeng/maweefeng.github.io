@@ -128,6 +128,42 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15427834491002.html">
+                
+                  <h1>代理修饰符</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">为什么代理修饰要用weak而不是assgin</h3>
+
+<p>weak 一旦不被引用的时候就不会再使用了，就会被置位nil，oc中使用nil执行操作不会引起崩溃，所以即使再次使用也不会产生野指针。<br/><br/>
+但是如果是用assgin修饰，一旦不被引用不会自动置nil,当再次操作这个对象的代理方法的时候就会产生野指针引起程序崩溃。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15427834491108.html">
                 
                   <h1>You don’t have write permissions</h1>
@@ -453,39 +489,6 @@ cd到你的本地项目根目录下，执行git命令 </p>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15427834491567.html">
-                
-                  <h1>视图的绘制周期</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>当view第一次在屏幕上显示的时候，系统会绘制它的内容，然后系统会截取内容的快照，并且将快照作为视图的可见外观，如果你永远不改变视图的内容，那么视图的绘制代码永远不会改变。如果更改了视图的内容，不用直接重新绘制，而是使用<code>setNeedsDisplay</code>或者<code>setNeedsDisplayInRect</code>方法是视图无效。这些方法会告知视图内容以及改变并且需要在下一次进行重绘。如果需要立马重绘，那么需要使用<code>layoutIfNeeded</code>方法。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -563,6 +566,12 @@ cd到你的本地项目根目录下，执行git命令 </p>
 	      
 		      
 			      <li class="post">
+			        <a href="15572343607934.html">RunLoop</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15554977521883.html">Swift单例写法</a>
 			      </li>
 		     
@@ -582,12 +591,6 @@ cd到你的本地项目根目录下，执行git命令 </p>
 		      
 			      <li class="post">
 			        <a href="15536750345410.html">Swift 和 OC 实现“热加载”</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15506484558583.html">OC以及Swift中的闭包</a>
 			      </li>
 		     
 		  

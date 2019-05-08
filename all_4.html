@@ -128,6 +128,39 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15427834491567.html">
+                
+                  <h1>视图的绘制周期</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>当view第一次在屏幕上显示的时候，系统会绘制它的内容，然后系统会截取内容的快照，并且将快照作为视图的可见外观，如果你永远不改变视图的内容，那么视图的绘制代码永远不会改变。如果更改了视图的内容，不用直接重新绘制，而是使用<code>setNeedsDisplay</code>或者<code>setNeedsDisplayInRect</code>方法是视图无效。这些方法会告知视图内容以及改变并且需要在下一次进行重绘。如果需要立马重绘，那么需要使用<code>layoutIfNeeded</code>方法。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15427834491628.html">
                 
                   <h1>设置Cell分割线顶头</h1>
@@ -452,49 +485,6 @@ ASButtonNode * buttonnode = [ASButtonNode new];
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15427834492143.html">
-                
-                  <h1>pod install速度过慢</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ul>
-<li>①代理VPN方式</li>
-</ul>
-
-<p>相信大家已经感受到<code>pod install</code>速度越来越慢了，网上提供了几种解决方案，但是都没有完全解决速度慢的问题。</p>
-
-<p>使用国内镜像的<code>Specs</code><br/>
-在<code>pod install</code>时使用命令<code>pod install --no-repo-update</code><br/>
-使用<code>proxychains</code>使终端命令走代理<br/>
-下面就来说明一下这几种方法为何没有完全解决问题</p>
-
-<p>使用国内镜像的<code>Specs</code> 极大地加快了<code>Specs</code>下载更新速度，而且如果使用国内</p>...
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834492143.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='CocoaPods.html'>CocoaPods</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -572,6 +562,12 @@ ASButtonNode * buttonnode = [ASButtonNode new];
 	      
 		      
 			      <li class="post">
+			        <a href="15572343607934.html">RunLoop</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15554977521883.html">Swift单例写法</a>
 			      </li>
 		     
@@ -591,12 +587,6 @@ ASButtonNode * buttonnode = [ASButtonNode new];
 		      
 			      <li class="post">
 			        <a href="15536750345410.html">Swift 和 OC 实现“热加载”</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15506484558583.html">OC以及Swift中的闭包</a>
 			      </li>
 		     
 		  

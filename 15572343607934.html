@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>
     
-    Xcode编译找不到头文件 - Code Log 👨‍💻‍ 
+    RunLoop - Code Log 👨‍💻‍ 
     
   </title>
   
@@ -128,10 +128,10 @@
     <div class="markdown-body article-wrap">
       <div class="article">
         
-        <h1>Xcode编译找不到头文件</h1>
+        <h1>RunLoop</h1>
 
         <div class="read-more clearfix">
-          <span class="date">2018/11/21</span>
+          <span class="date">2019/5/7</span>
 
           <span>posted in&nbsp;</span> 
           
@@ -150,10 +150,232 @@
       </div><!-- article -->
 
       <div class="article-content">
-        <p>开发中遇到之前成功导入没有报错的头文件，后来打开工程之后报错说找不到头文件，这就很奇怪了。<br/>
-之前还是好好的，怎么睡了一觉代码还出现了问题呢。<br/><br/>
-然后就去搜索解决方法，发现是要到<code>buildsettings</code>下的<code>Search Paths</code>下面的<code>User Header Search Paths</code> 大概意思就是这个东西是头文件的搜索路径。<br/><br/>
-进去之后添加<code>${SRCROOT}</code>然后回车搞定就完成了。</p>
+        <p>Fundation 框架是对Core Fundation的封装。</p>
+
+<h2 id="toc_0">Fundation</h2>
+
+<p><code>[NSRunLoop currentRunLoop];</code>//返回当前线程的RunLoop  如果不存在就会创建一个RunLoop并返回。<br/>
+//If a run loop does not yet exist for the thread, one is created and returned.</p>
+
+<p><code>[NSRunLoop mainRunLoop]</code>//获取主线程的RunLoop对象。</p>
+
+<p>基础知识:每个线程上都对应有一个RunLoop对象，主线程RunLoop默认开启，子线程RunLoop要手动开启。<br/>
+RunLoop在线程结束的时候退出循环。</p>
+
+<h2 id="toc_1">Core Fundation</h2>
+
+<p><code>CFRunLoopGetCurrent()</code>//<br/>
+获取当前线程的RunLoop对象</p>
+
+<p><code>CFRunloopGetMain()</code>//获取主线程的RunLoop对象</p>
+
+<h4 id="toc_2">CFRunLoopModeRef</h4>
+
+<p><img src="media/15572343607934/runloop@3x.png" alt="runloop@3x"/><br/>
+每个 RunLoop其实都是一个对象，可以包含多个不同的mode，每个mode又由source、observer、 timer组成，而且mode中source 、observer、timer都不存在的话，这个RunLoop也不存在。</p>
+
+<p>系统默认注册了5个mode</p>
+
+<ul>
+<li><p>kCFRunLoopDeafultMode:App的默认mode。通常主线程是在这个mode下运行。</p></li>
+<li><p>UITrakingRunLoopMode:界面跟踪mode 用于scrollview追踪触摸滑动，保证界面滑动时不受其他mode的影响。</p></li>
+<li><p>UIInitalizeationRunloopMode:在刚启动app时进入的第一个mode 启动完成后就不再使用。</p></li>
+<li><p>GSEventReceiveRunLoopMode:接受系统时间的内部mode 通常用不到</p></li>
+<li><p>kCFRunLoopCommonModes:这是一个占位用的mode 不是一种真正的mode</p></li>
+</ul>
+
+<h4 id="toc_3">CFRunLoopSourceRef</h4>
+
+<p>事件源（输入源）</p>
+
+<ul>
+<li><p>source0 非基于port的</p>
+
+<ul>
+<li>custom input sources</li>
+<li>cocoa perform selector sources</li>
+</ul></li>
+<li><p>source1 基于port的</p>
+
+<ul>
+<li>port-based sources </li>
+</ul></li>
+</ul>
+
+<h4 id="toc_4">CFRunLoopTimerRef</h4>
+
+<blockquote>
+<p>基于时间的触发器</p>
+</blockquote>
+
+<p>基本上说的就是NSTimer<br/>
+默认加到kCFRunLoopDeafultMode 但是滑动的时候定时器所在的mode会暂停，所以应该把定时器加到kCFRunLoopCommonModes中去。</p>
+
+<pre><code>//创建定时器并开启定时任务
++ (NSTimer *)scheduledTimerWithTimeInterval:(NSTimeInterval)ti target:(id)aTarget selector:(SEL)aSelector userInfo:(nullable id)userInfo repeats:(BOOL)yesOrNo;
+//创建定时器但不开启定时任务
++ (NSTimer *)timerWithTimeInterval:(NSTimeInterval)ti target:(id)aTarget selector:(SEL)aSelector userInfo:(nullable id)userInfo repeats:(BOOL)yesOrNo;
+</code></pre>
+
+<p>NSTimer中<code>scheduledTimerWithTimeInterval</code>方法创建的默认加到<code>kCFRunLoopDeafultMode</code>并开启，但是其他方法创建的定时器并没有开启，要去手动开启，或者直接指定一个mode，那么就会开启执行定时器任务。</p>
+
+<h4 id="toc_5">CFRunLoopObserverRef</h4>
+
+<blockquote>
+<p>观察者，能够监听runloop的状态改变。</p>
+</blockquote>
+
+<p>可以监听的时间点有以下几个。</p>
+
+<pre><code>/* Run Loop Observer Activities */
+typedef CF_OPTIONS(CFOptionFlags, CFRunLoopActivity) {
+    kCFRunLoopEntry = (1UL &lt;&lt; 0),即将进入runloop
+    kCFRunLoopBeforeTimers = (1UL &lt;&lt; 1),即将处理timer
+    kCFRunLoopBeforeSources = (1UL &lt;&lt; 2),即将处理source
+    kCFRunLoopBeforeWaiting = (1UL &lt;&lt; 5),即将进入休眠
+    kCFRunLoopAfterWaiting = (1UL &lt;&lt; 6),刚从休眠中唤醒
+    kCFRunLoopExit = (1UL &lt;&lt; 7),即将退出runloop
+    kCFRunLoopAllActivities = 0x0FFFFFFFU监听runloop所有的情况
+};
+</code></pre>
+
+<pre><code>//添加runloop状态的监听
+-(void)addobserver{
+    
+    CFRunLoopObserverRef observe = CFRunLoopObserverCreateWithHandler(CFAllocatorGetDefault(), kCFRunLoopAllActivities, YES, 0, ^(CFRunLoopObserverRef observer, CFRunLoopActivity activity) {
+        
+        NSLog(@&quot;%lu&quot;,activity);
+    });
+    CFRunLoopAddObserver(CFRunLoopGetCurrent(), observe, kCFRunLoopDefaultMode);
+}
+
+CFRelease(observe);//记得要释放c中的对象
+
+
+</code></pre>
+
+<h2 id="toc_6">实战场景</h2>
+
+<p>Q:当滑动的时候对imageview设置图片并不会显示。</p>
+
+<p>A:所以可以使设置image的操作在commonmode中执行。</p>
+
+<p>比如使用方法</p>
+
+<pre><code>UIImageView * imageView = [[UIImageView alloc]init];
+
+[imageView performSelector:@selector(setImage:) withObject:[UIImage imageNamed:@&quot;logo&quot;] afterDelay:3 inModes:@[NSRunLoopCommonModes]];
+</code></pre>
+
+<hr/>
+
+<p>Q:当滑动的时候Timer的定时任务不会执行。</p>
+
+<p>A:把Timer放到commonmode中执行。</p>
+
+<p>比如使用方法</p>
+
+<pre><code> NSTimer * timer =   [NSTimer scheduledTimerWithTimeInterval:2 repeats:YES block:^(NSTimer * _Nonnull timer) {
+    }];
+    
+[[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+</code></pre>
+
+<hr/>
+
+<p>创建子线程并执行事件，任务做完之后线程就销毁了。</p>
+
+<pre><code>-(void)creatThread{
+    
+    NSThread * thread = [[NSThread alloc]initWithTarget:self selector:@selector(testThread) object:nil];
+    
+    [thread start];
+}
+
+-(void)testThread{
+      
+    NSLog(@&quot;%@&quot;,[NSThread currentThread]);
+    
+}
+</code></pre>
+
+<hr/>
+
+<p>Q:如果想要让这个线程常驻的话应该怎么操作呢</p>
+
+<p>A:创建一个带有mode的runloop并开启，runloop如果不指定mode的话就不能开启循环。</p>
+
+<p>比如使用方法</p>
+
+<pre><code>-(void)creatThread{
+    
+    NSThread * thread = [[NSThread alloc]initWithTarget:self selector:@selector(testThread) object:nil];
+    [thread start];
+}
+
+-(void)testThread{
+    
+    NSLog(@&quot;%@&quot;,[NSThread currentThread]);
+    [[NSRunLoop currentRunLoop] addPort:[NSPort port] forMode:NSRunLoopCommonModes];
+    [[NSRunLoop currentRunLoop] run];
+    //这个代码不会往下执行，所以这个任务不会结束。
+}
+</code></pre>
+
+<hr/>
+
+<p>Q:如果子线程加一个定时器任务，定时器任务不执行</p>
+
+<p>A:在主线程开启的定时器默认开启了runloop，但是子线程开启的定时器没有runloop需要手动开启。</p>
+
+<pre><code>-(void)creatThread{
+    
+    self.thread = [[NSThread alloc]initWithTarget:self selector:@selector(testTimer) object:nil];
+    [_thread start];
+  
+}
+//修改前
+-(void)testTimer{
+    
+    [NSTimer scheduledTimerWithTimeInterval:2 repeats:YES block:^(NSTimer * _Nonnull timer) {
+       
+        //code
+    }];
+}
+//修改后
+-(void)testTimer{
+    
+    [NSTimer scheduledTimerWithTimeInterval:2 repeats:YES block:^(NSTimer * _Nonnull timer) {
+       
+        //code
+    }];
+    1.[[NSRunLoop currentRunLoop] addPort:[NSPort port] forMode:NSRunLoopCommonModes];
+    //还可以使用下面这个方法，但是注意到如果是使用的schedue创建的方法默认是把timer加到runloop的只需要把当前的runloop run就可以了不需要再加1和2的方法，但是其他创建timer的方法没有默认把timer加到runloop就必须使用下面的这个方法把timer加到runloop当中。    
+    2.[[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+    //必须的方法，因为子线程创建的runloop需要手动开启。
+    [[NSRunLoop currentRunLoop] run];
+}
+</code></pre>
+
+<p>没有开启runloop线程被销毁了，定时器也没有被加到runloop执行，所以解决办法就是把定时器加到runloop当中的mode中并执行run方法。</p>
+
+<hr/>
+
+<p>自动释放池</p>
+
+<pre><code>//当runloop在休眠之前会释放自动释放池，当runloop再启动时就会再创建池子
+@autoreleasepool {
+        [NSTimer scheduledTimerWithTimeInterval:2 repeats:YES block:^(NSTimer * _Nonnull timer) {
+            //code
+        }];
+        
+        [[NSRunLoop currentRunLoop] addPort:[NSPort port] forMode:NSRunLoopCommonModes];
+        [[NSRunLoop currentRunLoop] run];
+    }
+
+</code></pre>
+
+<p>runloop休眠的时候自动释放池销毁，在启动的时候再次生成自动释放池。</p>
 
 
 
@@ -164,14 +386,12 @@
         <div class="large-6 columns">
           <p class="text-left" style="padding:15px 0px;">
             
-            <a href="15427834492390.html" title="Previous Post: Xcode打包遇到的坑">&laquo; Xcode打包遇到的坑</a>
-            
           </p>
         </div>
         <div class="large-6 columns">
           <p class="text-right" style="padding:15px 0px;">
             
-            <a href="15427834492512.html" title="Next Post: Flutter && Python && OC">Flutter && Python && OC
+            <a href="15554977521883.html" title="Next Post: Swift单例写法">Swift单例写法
               &raquo;</a>
             
           </p>
