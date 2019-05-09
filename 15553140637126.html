@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>
     
-    Localization Issue Warning Storyboard - Code Log 👨‍💻‍ 
+    Speed Up Development with Xcode File Templates - Code Log 👨‍💻‍ 
     
   </title>
   
@@ -128,10 +128,10 @@
     <div class="markdown-body article-wrap">
       <div class="article">
         
-        <h1>Localization Issue Warning Storyboard</h1>
+        <h1>Speed Up Development with Xcode File Templates</h1>
 
         <div class="read-more clearfix">
-          <span class="date">2019/1/14</span>
+          <span class="date">2019/4/15</span>
 
           <span>posted in&nbsp;</span> 
           
@@ -150,30 +150,19 @@
       </div><!-- article -->
 
       <div class="article-content">
-        <p>当我使用 xib 设置自动布局的时候出现了下面的警告</p>
+        <h4 id="toc_0">Custom Templates Directory</h4>
 
-<p><img src="media/15474609644602/15474616779035.png" alt=""/></p>
+<ul>
+<li><p>~/Library/Developer/Xcode/Templates<br/>
+进入到指定的模版路径</p></li>
+<li><p>mkdir -p ~/Library/Developer/Xcode/Templates/File\ Templates/Custom 创建一个Custom 的文件夹</p></li>
+</ul>
 
-<blockquote>
-<p>Certain autolayout constraint combinations may result in an appropriate layout in the current development language but will pose issues in other languages and regions.</p>
-</blockquote>
+<h5 id="toc_1">Xcode Default Templates Directory</h5>
 
-<p>然后看了苹果官方的文档，说是使用“自动布局”相对于彼此布置视图而没有固定的原点，宽度和高度，以便在语言或区域设置更改时视图重新定位和调整大小。自动布局使得可以为所有语言提供一组.storyboard和.xib文件，并且main.Storyboard默认进行本地化</p>
+<p>/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/File Templates</p>
 
-<p>对国际化应用程序使用自动布局时，请遵循以下提示。</p>
-
-<ol>
-<li><p>删除固定宽度约束。允许显示要调整大小的本地化文本的视图。如果使用固定宽度约束，则本地化文本可能会在某些语言中出现裁剪。</p></li>
-<li><p>使用内在内容大小。文本字段和标签的默认行为是自动调整大小。如果视图未调整为本地化文本的大小，请选择视图并选择“Editor”&gt;“size To Fit”。</p></li>
-<li><p>使用leading和trailing属性。添加约束时，请使用属性leading和trailing水平约束。对于从左到右的语言，例如英语，属性leading和trailing等同于left和right。对于从右到左的语言，如希伯来语或阿拉伯语，leading并trailing等同于right和left。的leading和trailing属性是用于水平约束的默认值。</p></li>
-<li><p>将视图固定到相邻视图。这个操作会导致多米诺骨牌效应。当一个视图调整大小以适合本地化文本时，其他视图也会这样做。否则，某些语言的视图可能会重叠。</p></li>
-<li><p>不断测试您的布局更改。使用不同的语言设置测试您的应用，如测试国际化应用中所述。</p></li>
-<li><p>不要设置window的最小大小或最大大小。让window及其内容视图调整为包含视图的大小，这可能会在语言更改时更改。</p></li>
-</ol>
-
-<h2 id="toc_0">解决问题</h2>
-
-<p>在这里不作过多国际化 xib 约束的讨论，针对我遇到的问题，我可以把宽度的约束删除，改成 leading 和 trailing 结合的方式。</p>
+<p>进入之后复制一些其他的模版到自己的custom模版 然后进入模版之后编辑自己经常使用的模版，可以极大的提升开发的效率。</p>
 
 
 
@@ -184,14 +173,14 @@
         <div class="large-6 columns">
           <p class="text-left" style="padding:15px 0px;">
             
-            <a href="15506484558583.html" title="Previous Post: OC以及Swift中的闭包">&laquo; OC以及Swift中的闭包</a>
+            <a href="15553216469263.html" title="Previous Post: Swift中的字典转模型方法的迭代">&laquo; Swift中的字典转模型方法的迭代</a>
             
           </p>
         </div>
         <div class="large-6 columns">
           <p class="text-right" style="padding:15px 0px;">
             
-            <a href="15471123133942.html" title="Next Post: Value and Reference Collections">Value and Reference Collections
+            <a href="15536750345410.html" title="Next Post: Swift 和 OC 实现“热加载”">Swift 和 OC 实现“热加载”
               &raquo;</a>
             
           </p>
