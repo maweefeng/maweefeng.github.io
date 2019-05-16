@@ -128,6 +128,63 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15578899295258.html">
+                
+                  <h1>PromiseKit</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">then and done</h2>
+
+<p>一个典型的链条⛓️</p>
+
+<pre><code>firstly {
+    login()
+}.then { creds in
+    fetch(avatar: creds.user)
+}.done { image in
+    self.imageView = image
+}
+</code></pre>
+
+<p>如果这段代码使用之前的方式可能会是这样</p>
+
+<pre><code>login { creds, error in
+    if let creds = creds {
+        fetch(avatar: creds.user) { image, error in
+            if let image = image {
+                self.imageView = image
+            }
+        }
+    }
+}
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15578899295258.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2019/5/15</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15572343607934.html">
                 
                   <h1>RunLoop</h1>
@@ -454,46 +511,6 @@ struct App :Decodable{
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15474609644602.html">
-                
-                  <h1>Localization Issue Warning Storyboard</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>当我使用 xib 设置自动布局的时候出现了下面的警告</p>
-
-<p><img src="media/15474609644602/15474616779035.png" alt=""/>￼</p>
-
-<blockquote>
-<p>Certain autolayout constraint combinations may result in an appropriate layout in the current development language but will pose issues in other languages and regions.</p>
-</blockquote>
-
-<p>然后看了苹果官方的文档，说是使用“自动布局”相对于彼此布置视图而没有固定的原点，宽度和高度，以便在语言或区域设置更改时视图重新定位和调整大小。自动布局使得可以为所有语言提供一组.storyboard和.xib文件，并且main.Storyboard默认进行本地化</p>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15474609644602.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2019/1/14</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -571,6 +588,12 @@ struct App :Decodable{
 	      
 		      
 			      <li class="post">
+			        <a href="15578899295258.html">PromiseKit</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15572343607934.html">RunLoop</a>
 			      </li>
 		     
@@ -590,12 +613,6 @@ struct App :Decodable{
 		      
 			      <li class="post">
 			        <a href="15553216469263.html">Swift中的字典转模型方法的迭代</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15553140637126.html">Speed Up Development with Xcode File Templates</a>
 			      </li>
 		     
 		  

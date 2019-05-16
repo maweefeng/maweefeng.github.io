@@ -128,6 +128,56 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15444306104604.html">
+                
+                  <h1>Advanced Debugging with Xcode and LLDB</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ol>
+<li><p>expression语句 </p>
+
+<p>不用重新运行程序直接实现代码效果</p>
+
+<p><img src="media/15444306104604/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%884.29.55.png" alt="屏幕快照 2018-12-10 下午4.29.55"/>￼</p>
+
+<ol>
+<li><p>描述</p>
+
+<p>可以动态的改变条件，语法是<code>expression xxx = &quot;xxx&quot;</code> 后面是语句代码,类似程序中的代码并且支持加{}的判断等等语句。</p></li>
+<li><p>使用方法：</p>
+
+<ul>
+<li>调试台去写这个语句</li>
+<li>加断点去添加...<code>action</code>。</li>
+</ul></li>
+</ol></li>
+</ol>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15444306104604.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/12/10</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15439873228318.html">
                 
                   <h1>UINavigationItem</h1>
@@ -433,56 +483,6 @@ M层-&gt;C层: 通知
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15427945343440.html">
-                
-                  <h1>消除CocoaPods引入第三方SDK的警告</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>有些强迫症不能看到xcode编译报出的警告⚠️，所以在podfile中添加一行<br/>
-<code>inhibit_all_warnings!</code><br/>
-如果没有多个<code>target</code>或者需要所有都隐藏这个黄色警告就在最外层写</p>
-
-<pre><code class="language-#"># platform :ios, &#39;9.0&#39;
-inhibit_all_warnings!
-
-target &#39;MVVM&#39; do
-  # Uncomment the next line if you&#39;re using Swift or would like to use dynamic frameworks
-  # use_frameworks!
-   pod &#39;ReactiveObjC&#39;, &#39;~&gt; 3.1.0&#39;
-   pod &#39;MBProgressHUD&#39;, &#39;~&gt; 1.1.0&#39;
-   pod &#39;MJRefresh&#39;, &#39;~&gt; 3.1.15.7&#39;
-  # Pods for MVVM
-
-end
-</code></pre>
-
-<p>如果有多个target的话就可以在各个需要隐藏的target当中写上这句话</p>...
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427945343440.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='CocoaPods.html'>CocoaPods</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -560,6 +560,12 @@ end
 	      
 		      
 			      <li class="post">
+			        <a href="15578899295258.html">PromiseKit</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15572343607934.html">RunLoop</a>
 			      </li>
 		     
@@ -579,12 +585,6 @@ end
 		      
 			      <li class="post">
 			        <a href="15553216469263.html">Swift中的字典转模型方法的迭代</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15553140637126.html">Speed Up Development with Xcode File Templates</a>
 			      </li>
 		     
 		  
