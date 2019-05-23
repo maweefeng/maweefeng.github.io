@@ -109,6 +109,8 @@
           
           <li id="CocoaPods"><a href="CocoaPods.html">CocoaPods</a></li>
           
+          <li id="Django"><a href="Django.html">Django</a></li>
+          
           <li id="about"><a href="about.html">about</a></li>
           
 
@@ -127,6 +129,58 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15427834491377.html">
+                
+                  <h1>给UITableView边框加阴影</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>项目中有个需求要在UITableView加边框阴影  </p>
+
+<p>如果你的界面的UITableView是充满整个屏幕的话那么就可以使用这个简单的方法。   </p>
+
+<ul>
+<li>方法一</li>
+</ul>
+
+<pre><code>tableView.layer.shadowColor = UIColor(white: 000000, alpha: 0.3).CGColor
+
+tableView.layer.shadowOffset = CGSize(width: -6, height: 6)
+
+tableView.layer.shadowOpacity = 1
+
+tableView.clipsToBounds = false //这句最重要了，不然就显示不出来
+</code></pre>
+
+<h4 id="toc_0">问题来了</h4>
+
+<p>我的界面UITableview上面有一个固定不动的区域，如果单纯的照上面写的话，就会出现tableview盖住上面的问题</p>
+...
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15427834491377.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15427834491441.html">
                 
@@ -453,41 +507,6 @@ export ALL_PROXY=socks5://127.0.0.1:1080</p></li>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15427834491890.html">
-                
-                  <h1>Block防止内存泄漏问题</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">关于block的一点注意 特别是网络请求这块</h3>
-
-<p>Block捕获外界变量销毁<br/>
-我们再进一步想想，Block有个最大的特点是可以访问当前的作用域，我们随便创建一个数组，重复上面操作，是否能够销毁...</p>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834491890.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -548,6 +567,8 @@ export ALL_PROXY=socks5://127.0.0.1:1080</p></li>
         
             <a href="CocoaPods.html"><strong>CocoaPods</strong></a>
         
+            <a href="Django.html"><strong>Django</strong></a>
+        
             <a href="about.html"><strong>about</strong></a>
          
         </p>
@@ -563,6 +584,12 @@ export ALL_PROXY=socks5://127.0.0.1:1080</p></li>
                 <div class="side-content">
                 <ul class="posts-list">
 	      
+		      
+			      <li class="post">
+			        <a href="15583189073141.html">Django</a>
+			      </li>
+		     
+		  
 		      
 			      <li class="post">
 			        <a href="15578899295258.html">PromiseKit</a>
@@ -584,12 +611,6 @@ export ALL_PROXY=socks5://127.0.0.1:1080</p></li>
 		      
 			      <li class="post">
 			        <a href="15554962348970.html">Filter, Map, Reduce  Functions</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15553216469263.html">Swift中的字典转模型方法的迭代</a>
 			      </li>
 		     
 		  

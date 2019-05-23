@@ -109,6 +109,8 @@
           
           <li id="CocoaPods"><a href="CocoaPods.html">CocoaPods</a></li>
           
+          <li id="Django"><a href="Django.html">Django</a></li>
+          
           <li id="about"><a href="about.html">about</a></li>
           
 
@@ -127,6 +129,48 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15426952413956.html">
+                
+                  <h1>Masonry布局“Unable to simultaneously satisfy constraints”</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>出现这个问题是设置约束优先级错误，设置一下约束的优先级就行。</p>
+
+<pre><code>[self.doctorTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.title.mas_left);
+            make.right.equalTo(self.title.mas_right);
+            make.top.equalTo(self.topline.mas_bottom).offset(10).priorityHigh();
+            make.height.mas_equalTo(@14);
+}];
+
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2017/11/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15446033549417.html">
                 
@@ -444,6 +488,8 @@ return self.photoCount &gt; 0
         
             <a href="CocoaPods.html"><strong>CocoaPods</strong></a>
         
+            <a href="Django.html"><strong>Django</strong></a>
+        
             <a href="about.html"><strong>about</strong></a>
          
         </p>
@@ -459,6 +505,12 @@ return self.photoCount &gt; 0
                 <div class="side-content">
                 <ul class="posts-list">
 	      
+		      
+			      <li class="post">
+			        <a href="15583189073141.html">Django</a>
+			      </li>
+		     
+		  
 		      
 			      <li class="post">
 			        <a href="15578899295258.html">PromiseKit</a>
@@ -480,12 +532,6 @@ return self.photoCount &gt; 0
 		      
 			      <li class="post">
 			        <a href="15554962348970.html">Filter, Map, Reduce  Functions</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15553216469263.html">Swift中的字典转模型方法的迭代</a>
 			      </li>
 		     
 		  

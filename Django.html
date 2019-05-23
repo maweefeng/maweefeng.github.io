@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>
     
-    Git基础流 - Code Log 👨‍💻‍ 
+    Django - Code Log 👨‍💻‍ 
     
   </title>
   
@@ -121,171 +121,99 @@
 
 
       <section id="main-content" role="main" class="scroll-container"> <script type="text/javascript">
-  $(function () {
-    $('#menu_item_index').addClass('is_active');
-  });
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
 </script>
 <div class="row">
-  <div class="large-8 medium-8 columns">
-    <div class="markdown-body article-wrap">
-      <div class="article">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="15583189073141.html">
+                
+                  <h1>Django</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ul>
+<li>开源的Python Web框架</li>
+<li>MVC模式</li>
+</ul>
+
+<blockquote>
+<p>要想使用Django 必须先安装Python，推荐安装3.0版本以上的Python3<br/>
+然后再用pip安装工具安装Django<br/>
+由于我要安装在python3 所以我的pip工具也是pip3<br/>
+安装命令<code>pip3 install django==2.0</code><br/>
+最后选择适合自己的IDE<br/>
+我使用的是VSCode</p>
+</blockquote>
+
+<h2 id="toc_0">优点</h2>
+
+<ul>
+<li>开发效率高</li>
+<li>功能强大，丰富的第三方插件</li>
+<li>重视安全，避免安全漏洞</li>
+</ul>
+
+<p>命令语句django-admin 检查django是否成功安装。</p>
+
+<p><img src="media/15583189073141/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-20%20%E4%B8%8A%E5%8D%8811.19.16.png" alt="屏幕快照 2019-05-20 上午11.19.16"/>￼</p>
+
+<ul>
+<li>startproject # 创建一个django项目</li>
+<li>startapp # 创建一个django应用</li>
+<li>check # 检验项目完整性</li>
+<li>runserver # 本地简易运行django项目</li>
+<li>shell # 进入django项目的python shell环境</li>
+<li>test # 执行django用例测试</li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15583189073141.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2019/5/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Django.html'>Django</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
         
-        <h1>Git基础流</h1>
-
-        <div class="read-more clearfix">
-          <span class="date">2018/11/21</span>
-
-          <span>posted in&nbsp;</span> 
-          
-          <span class="posted-in"><a href='Git.html'>Git</a></span>
-          
-
-          <span class="comments">
-            
-
-            
-          </span>
-
-        </div>
-        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-        <div class="addthis_inline_share_toolbox"></div>
-      </div><!-- article -->
-
-      <div class="article-content">
-        <h3 id="toc_0">如何将本地代码提交到远程git仓库</h3>
-
-<ul>
-<li><p>第一步：建立git仓库 <br/>
-cd到你的本地项目根目录下，执行git命令 </p>
-
-<blockquote>
-<p>git init</p>
-</blockquote></li>
-<li><p>第二步：将项目的所有文件添加到仓库中   </p>
-
-<blockquote>
-<p>git add .  </p>
-</blockquote></li>
-<li><p>第三步：将add的文件commit到仓库</p>
-
-<blockquote>
-<p>git commit -m &quot;注释语句&quot;</p>
-</blockquote></li>
-<li><p>第四步：去github上创建自己的Repository</p></li>
-<li><p>第五步：重点来了，将本地的仓库关联到github上    </p>
-
-<blockquote>
-<p>git remote add origin 仓库url</p>
-</blockquote>
-
-<p>后面的https链接地址换成你自己的仓库url地址，也就是上面红框中标出来的地址</p></li>
-<li><p>第六步：上传github之前，要先pull一下，执行如下命令：</p>
-
-<blockquote>
-<p>git pull origin master</p>
-</blockquote>
-
-<p>遇到refusing to merge unrelated histories 使用以下代码  </p>
-
-<blockquote>
-<p>git pull origin master --allow-unrelated-histories</p>
-</blockquote></li>
-<li><p>第七步，也就是最后一步，上传代码到github远程仓库</p>
-
-<blockquote>
-<p>git push -u origin master  </p>
-</blockquote>
-
-<p>遇到提示fatal: refusing to merge unrelated histories可以试一下下面的强制push</p>
-
-<blockquote>
-<p>git push -u origin master -f //强制push</p>
-</blockquote></li>
-</ul>
-
-<h3 id="toc_1">列出分支的方法</h3>
-
-<p>列出所有远程分支<br/>
-$ git branch -r</p>
-
-<p>列出所有本地分支和远程分支<br/>
-$ git branch -a</p>
-
-<h3 id="toc_2">新建分支</h3>
-
-<ul>
-<li><p>新建一个分支，但依然停留在当前分支<br/><br/>
-$ git branch [branch-name]<br/><br/>
-如果想要切换到新建的分支，可以使用git checkout  [branch-name]</p></li>
-<li><p>新建一个分支，并切换到该分支<br/><br/>
-$ git checkout -b [branch]</p></li>
-<li><p>新建一个分支，指向指定commit<br/><br/>
-$ git branch [branch] [commit]</p></li>
-</ul>
-
-<p>之前是提交到主分支 所以使用的是git push -u origin master<br/><br/>
-现在的话不是主分支所以要改变一下分支的名称如下<br/><br/>
-最后提交的时候 可以使用git push -u origin [branch-name]</p>
-
-<blockquote>
-<p>前提:只有项目中关联一份远程git仓库的时候才可以使用以下方法去新建分支 如果没关联任何分支也查不到任何远程分支</p>
-</blockquote>
+              
 
 
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
 
-
-      </div>
-
-      <div class="row">
-        <div class="large-6 columns">
-          <p class="text-left" style="padding:15px 0px;">
-            
-            <a href="15427834491441.html" title="Previous Post: 设置图片拉伸范围">&laquo; 设置图片拉伸范围</a>
-            
-          </p>
-        </div>
-        <div class="large-6 columns">
-          <p class="text-right" style="padding:15px 0px;">
-            
-            <a href="15427834491567.html" title="Next Post: 视图的绘制周期">视图的绘制周期
-              &raquo;</a>
-            
-          </p>
-        </div>
-      </div>
-      <div class="comments-wrap">
-        <div class="share-comments">
-          <!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5bfe6ae3f692f811"></script>
-<div id="disqus_thread"></div>
-<script>
-
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://maweefeng.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<script id="dsq-count-scr" src="//maweefeng.disqus.com/count.js" async></script>
-
-          
-
-          
-        </div>
-      </div>
-    </div><!-- article-wrap -->
-  </div><!-- large 8 --> <div class="large-4 medium-4 columns">
+ <div class="large-4 medium-4 columns">
   <div class="hide-for-small">
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">

@@ -1,0 +1,1209 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    
+    Django - Code Log 👨‍💻‍ 
+    
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="Code Log 👨‍💻‍ " type="application/atom+xml">
+  <link rel="stylesheet" href="asset/css/foundation.min.css" />
+  <link rel="stylesheet" href="asset/css/docs.css" />
+  <script src="asset/js/vendor/modernizr.js"></script>
+  <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>
+    hljs.initHighlightingOnLoad();
+
+    window.onload = function () {
+
+      var footerPath = window.location.pathname.split('/')[window.location.pathname.split('/').length - 1];
+      if (footerPath == 'archives.html') {
+        // alert('分类');
+        document.getElementById('main-menu').getElementsByTagName("li")[1].className = "is_active";
+
+      } else if (footerPath == 'about.html') {
+        document.getElementById('main-menu').getElementsByTagName("li")[2].className = "is_active";
+
+        // alert('关于我');
+  
+      } else {
+        // alert('首页');
+        document.getElementById('main-menu').getElementsByTagName("li")[0].className = "is_active";
+      }
+
+
+    }
+  </script>
+  <script type="text/javascript">
+    function before_search() {
+      var searchVal = 'site: ' + document.getElementById('search_input').value;
+      document.getElementById('search_q').value = searchVal;
+      return true;
+    }
+  </script>
+</head>
+
+<body class="antialiased hide-extras">
+
+  <div class="marketing off-canvas-wrap" data-offcanvas>
+    <div class="inner-wrap">
+
+
+      <nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+        <section class="top-bar-section">
+          <div class="row">
+            <div style="position: relative;width:100%;">
+              <div style="position: absolute; width:100%;">
+                <ul id="main-menu" class="left">
+                  
+                  <li id=""><a id="" target="_self" href="index.html">Home</a></li>
+                  
+                  <li id=""><a id="" target="_self" href="archives.html">Archives</a></li>
+                  
+                  <li id=""><a id="" target="_self" href="about.html">About</a></li>
+                  
+                </ul>
+
+                <ul class="right" id="search-wrap">
+                  <li>
+                    <form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+                      <input type="hidden" id="search_q" name="q" value="" />
+                      <input tabindex="1" type="search" id="search_input" placeholder="Search" />
+                    </form>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </nav>
+
+      <nav class="tab-bar show-for-small">
+        <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+          <span> &nbsp; Code Log 👨‍💻‍ </span>
+        </a>
+      </nav>
+
+      <aside class="left-off-canvas-menu">
+        <ul class="off-canvas-list">
+
+          <li><a href="index.html">Home</a></li>
+          <li><a href="archives.html">Archives</a></li>
+          
+          <li><label>Categories</label></li>
+
+          
+          <li id="iOS"><a href="iOS.html">iOS</a></li>
+          
+          <li id="Git"><a href="Git.html">Git</a></li>
+          
+          <li id="CocoaPods"><a href="CocoaPods.html">CocoaPods</a></li>
+          
+          <li id="Django"><a href="Django.html">Django</a></li>
+          
+          <li id="about"><a href="about.html">about</a></li>
+          
+
+        </ul>
+      </aside>
+
+      <a class="exit-off-canvas" href="#"></a>
+
+
+      <section id="main-content" role="main" class="scroll-container"> <script type="text/javascript">
+  $(function () {
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+    <div class="markdown-body article-wrap">
+      <div class="article">
+        
+        <h1>Django</h1>
+
+        <div class="read-more clearfix">
+          <span class="date">2019/5/20</span>
+
+          <span>posted in&nbsp;</span> 
+          
+          <span class="posted-in"><a href='Django.html'>Django</a></span>
+          
+
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <div class="addthis_inline_share_toolbox"></div>
+      </div><!-- article -->
+
+      <div class="article-content">
+        <ul>
+<li>开源的Python Web框架</li>
+<li>MVC模式</li>
+</ul>
+
+<blockquote>
+<p>要想使用Django 必须先安装Python，推荐安装3.0版本以上的Python3<br/>
+然后再用pip安装工具安装Django<br/>
+由于我要安装在python3 所以我的pip工具也是pip3<br/>
+安装命令<code>pip3 install django==2.0</code><br/>
+最后选择适合自己的IDE<br/>
+我使用的是VSCode</p>
+</blockquote>
+
+<h2 id="toc_0">优点</h2>
+
+<ul>
+<li>开发效率高</li>
+<li>功能强大，丰富的第三方插件</li>
+<li>重视安全，避免安全漏洞</li>
+</ul>
+
+<p>命令语句django-admin 检查django是否成功安装。</p>
+
+<p><img src="media/15583189073141/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-20%20%E4%B8%8A%E5%8D%8811.19.16.png" alt="屏幕快照 2019-05-20 上午11.19.16"/></p>
+
+<ul>
+<li>startproject # 创建一个django项目</li>
+<li>startapp # 创建一个django应用</li>
+<li>check # 检验项目完整性</li>
+<li>runserver # 本地简易运行django项目</li>
+<li>shell # 进入django项目的python shell环境</li>
+<li>test # 执行django用例测试</li>
+</ul>
+
+<p>数据库相关</p>
+
+<ul>
+<li>makemigrations # 创建模型变更的迁移文件</li>
+<li>migrate # 执行上一个命令创建的迁移文件</li>
+<li>dumpdata # 把数据库数据导出到文件</li>
+<li>loaddata # 把文件数据导入到数据库</li>
+</ul>
+
+<h2 id="toc_1">Django 应用 VS Django项目</h2>
+
+<p>首先要明白Django项目和应用的区别</p>
+
+<ul>
+<li>1个Django项目就是一个基于Django的web应用</li>
+<li>1个Django应用就是一个可重用的python软件包</li>
+<li>1个Django应用可以自己管理模型视图模版路由和静态文件</li>
+<li>1个Django项目可以包含一组配置和若干个Django应用。</li>
+</ul>
+
+<hr/>
+
+<h3 id="toc_2">创建一个Django项目</h3>
+
+<ol>
+<li><p>创建一个项目</p>
+
+<pre><code>django-admin startproject django_intrduction
+</code></pre></li>
+<li><p>用VSCode打开项目文件夹</p>
+
+<p>结构目录如下</p>
+
+<p>Django_instrduction</p>
+
+<ul>
+<li><p>Django_instrduction</p>
+
+<ul>
+<li>__init__.py//项目初始化</li>
+<li>setting.py//项目配置文件</li>
+<li>urls.py//项目路由配置文件</li>
+<li>wsgi.py</li>
+</ul></li>
+<li><p>manage.py//项目管理文件 </p></li>
+</ul></li>
+<li><p>运行项目 终端命令<code>python3 manage.py runserver</code></p></li>
+</ol>
+
+<h3 id="toc_3">创建一个Django应用</h3>
+
+<ol>
+<li><p>创建一个应用</p>
+
+<p>运行项目 终端命令<code>python3 manage.py startapp 应用名</code></p></li>
+<li><p>用VSCode打开项目文件夹</p>
+
+<p>结构目录如下</p>
+
+<p>Django_instrduction</p>
+
+<ul>
+<li><p>应用名</p>
+
+<ul>
+<li>views.py//视图处理的地方</li>
+<li>models.py//定义应用模型的地方</li>
+<li>apps.py //声明应用的地方</li>
+<li>admin.py //定义admin模块管理的地方</li>
+<li>tests.py //编写测试用例的地方</li>
+<li>urls.py //（自行创建）管理应用路由的地方</li>
+</ul></li>
+<li><p>Django_instrduction</p>
+
+<ul>
+<li>__init__.py//项目初始化</li>
+<li>setting.py//项目配置文件</li>
+<li>urls.py//项目路由配置文件</li>
+<li>wsgi.py</li>
+</ul></li>
+<li><p>manage.py//项目管理文件 </p></li>
+</ul></li>
+</ol>
+
+<h2 id="toc_4">Django HelloWorld</h2>
+
+<h3 id="toc_5">Django 视图</h3>
+
+<pre><code>//views.py
+from django.shortcuts import render
+from django.http import HttpResponse
+# Create your views here.
+def hello_world(request):
+    return HttpResponse(&quot;hello world&quot;)
+</code></pre>
+
+<h3 id="toc_6">Django 路由</h3>
+
+<pre><code>应用路由
+from django.urls import path,include
+
+import blog.views
+
+
+urlpatterns = [
+    path(&quot;hello_world&quot;,blog.views.hello_world)
+]
+</code></pre>
+
+<pre><code>项目路由
+from django.contrib import admin
+from django.urls import path,include
+
+urlpatterns = [
+    path(&#39;admin/&#39;, admin.site.urls),
+    path(&#39;blog/&#39;, include(&quot;blog.urls&quot;)),
+]
+
+</code></pre>
+
+<h2 id="toc_7">概念介绍及实战</h2>
+
+<h4 id="toc_8">Django 模型</h4>
+
+<h5 id="toc_9">模型层简介</h5>
+
+<h6 id="toc_10">模型层是什么</h6>
+
+<ul>
+<li>位于视图层和数据库之间</li>
+<li>python对象和数据表之间转换</li>
+</ul>
+
+<h6 id="toc_11">为什么需要模型层</h6>
+
+<ul>
+<li>屏蔽不同的数据库之间的差异</li>
+<li>开发者更加专注于业务逻辑的开发</li>
+<li>提供很多便捷工具有助开发</li>
+</ul>
+
+<h5 id="toc_12">创建博客文章模型</h5>
+
+<h6 id="toc_13">设计播客文章模型</h6>
+
+<ul>
+<li>文章标题——文本类型</li>
+<li>文章摘要——文本类型</li>
+<li>文章内容——文本类型</li>
+<li>唯一id标记——int类型（自增、主键）</li>
+<li>发布日期——日期类型</li>
+</ul>
+
+<h6 id="toc_14">模型层常用字段</h6>
+
+<ul>
+<li>数字类型：
+
+<ul>
+<li>IntegerField()#整数 11个字节</li>
+<li>BigIntegerField()#整数 20个字节</li>
+<li>PositiveIntegerField()#正整数 10个字节</li>
+<li>SmallIntegerField()#整数 6个字节</li>
+<li>PositiveSmallIntegerField()#正整数 5个字节</li>
+</ul></li>
+<li>文本类型：
+
+<ul>
+<li>TextField()#longtext</li>
+<li>CharField()#varchar</li>
+<li>布尔类型<br/></li>
+<li>BooleanField()#允许为空</li>
+<li>NullBooleanField()#不允许为空</li>
+</ul></li>
+<li>浮点型
+
+<ul>
+<li>FloatField()</li>
+<li>DecimalField()#指定整数和小数各多少位</li>
+</ul></li>
+<li>日期类型：
+
+<ul>
+<li>DateTimeField()#年月日时分秒</li>
+<li>DateField()# 年月日</li>
+<li>DurationField()#一段时间 int类型</li>
+</ul></li>
+<li>自增ID： 
+
+<ul>
+<li>AutoField()</li>
+<li>BigAutoField()//接受更大的值</li>
+</ul></li>
+<li>主键定义：primary_key属性</li>
+<li><p>二进制数据</p>
+
+<ul>
+<li>BinaryField()</li>
+</ul></li>
+<li><p>其他类型</p>
+
+<ul>
+<li>EmailField()#邮箱</li>
+<li>ImageField()#图片</li>
+<li>FileField()#文件</li>
+<li>FilePathField()#文件路径</li>
+<li>UrlField()</li>
+<li>UUIDField()</li>
+<li>GenericIPAddressField()#ip地址</li>
+</ul></li>
+</ul>
+
+<h6 id="toc_15">模型层关系型字段</h6>
+
+<ul>
+<li>一对一（OneToOneField）</li>
+<li>多对一(ForeignKey)</li>
+<li>多对多(ManyToManyField)</li>
+</ul>
+
+<h6 id="toc_16">Demo</h6>
+
+<ol>
+<li>在应用的 models.py 定义模型</li>
+</ol>
+
+<pre><code>from django.db import models
+# Create your models here.
+class Aritcle(models.Model):
+    
+    aritcle_id = models.AutoField(primary_key=True)
+    title = models.TextField()
+    brief_content = models.TextField()
+    content = models.TextField()
+    publish_date = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return self.title
+
+# 演示关系型model      
+class A(models.Model):
+    onetoone = models.OneToOneField(Aritcle)
+
+class B(models.Model):
+    foreign = models.ForeignKey(A)
+
+class C(models.Model):
+    manytomany = models.ManyToManyField(B)
+       
+</code></pre>
+
+<ol>
+<li><p>然后迁移模型定义到数据库当中</p>
+
+<ul>
+<li>python3 manage.py makemigrations appname</li>
+</ul>
+
+<pre><code>Alexs-MacBook-Air:django_intrduction alexwee$ python3 manage.py makemigrations blog
+Migrations for &#39;blog&#39;:
+  blog/migrations/0001_initial.py
+    - Create model Aritcle
+</code></pre></li>
+<li><p>运行迁移文件 把迁移文件的内容同步到数据库中</p>
+
+<ul>
+<li>python3 manage.py migrate appname</li>
+</ul>
+
+<pre><code>Alexs-MacBook-Air:django_intrduction alexwee$ python3 manage.py migrate  blog
+Operations to perform:
+Apply all migrations: blog
+Running migrations:
+Applying blog.0001_initial... OK
+</code></pre></li>
+</ol>
+
+<h5 id="toc_17">Django shell</h5>
+
+<p>Python shell 用于交互式的python编程<br/>
+Django shell 也类似继承django项目环境</p>
+
+<h6 id="toc_18">为什么要使用django shell</h6>
+
+<ul>
+<li>临时性操作使用django shell更加方便</li>
+<li>小范围的debug更简单，不需要运行整个项目来测试</li>
+</ul>
+
+<h6 id="toc_19">优点</h6>
+
+<p>方便开发 方便调试 方便debug</p>
+
+<h6 id="toc_20">demo</h6>
+
+<p>使用django shell 新建文章</p>
+
+<ol>
+<li><p><code>python3 manage.py shell</code>进入shell 环境</p>
+
+<pre><code>Python 3.7.1 (v3.7.1:260ec2c36a, Oct 20 2018, 03:13:28) 
+[Clang 6.0 (clang-600.0.57)] on darwin
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+(InteractiveConsole)
+&gt;&gt;&gt; 
+</code></pre></li>
+<li><p>在shell环境新建文章并保存到数据库</p>
+
+<pre><code class="language-&gt;&gt;&gt;">from blog.models import Aritcle
+&gt;&gt;&gt; a = Aritcle()
+&gt;&gt;&gt; a.title = &quot;test django shell&quot;
+&gt;&gt;&gt; a.brief_content = &quot;test django shell by maweefeng&quot;
+&gt;&gt;&gt; a.content = &quot;test django shell new ariticle main content&quot;
+&gt;&gt;&gt; 
+&gt;&gt;&gt; 
+&gt;&gt;&gt; 
+&gt;&gt;&gt; print(a)
+Aritcle object (None)
+&gt;&gt;&gt; a.save()//保存到数据库
+&gt;&gt;&gt; 
+</code></pre></li>
+<li><p>验证文章是否保存到数据库</p>
+
+<pre><code>&gt;&gt;&gt; ariticle = Aritcle.objects.all()//取出所有文章
+&gt;&gt;&gt; aricle = ariticle[0]//取到第一篇文章
+&gt;&gt;&gt; print(aricle.title)
+&lt;class &#39;django.db.models.fields.TextField&#39;&gt;
+&gt;&gt;&gt; 
+&gt;&gt;&gt; print(aricle)
+Aritcle object (1)
+&gt;&gt;&gt; print(aricle.content)
+&lt;class &#39;django.db.models.fields.TextField&#39;&gt;
+&gt;&gt;&gt; 
+</code></pre></li>
+</ol>
+
+<h5 id="toc_21">django admin模块</h5>
+
+<h6 id="toc_22">django admin模块是什么</h6>
+
+<ul>
+<li>是一个后台管理工具，不需要用户开发后台管理工具</li>
+<li>可以读取定义的模型元数据，提供强大的管理使用页面</li>
+</ul>
+
+<h6 id="toc_23">为什么要使用django admin模块</h6>
+
+<ul>
+<li>django shell 新建文章太复杂了</li>
+<li>管理页面是基础设施中重要的部分</li>
+<li>认证用户，显示管理模型，校验输入等功能类似</li>
+</ul>
+
+<h6 id="toc_24">使用方法</h6>
+
+<ul>
+<li>创建管理员用户
+<code>python3 manage.py createsuperuser</code></li>
+</ul>
+
+<pre><code>* Alexs-MacBook-Air:django_intrduction alexwee$ python3 manage.py createsuperuser
+Username (leave blank to use &#39;alexwee&#39;): maweefeng
+address: 
+Password: 
+Password (again): 
+Superuser created successfully.
+Alexs-MacBook-Air:django_intrduction alexwee$ 
+</code></pre>
+
+<ul>
+<li><p>登陆页面进行管理</p>
+
+<ul>
+<li>项目跑起来<code>python3 manage.py runserver</code></li>
+<li>浏览器输入 <a href="http://127.0.0.1:8000/admin">http://127.0.0.1:8000/admin</a> 进入登陆页面</li>
+</ul>
+
+<p><img src="media/15583189073141/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-21%20%E4%B8%8A%E5%8D%8811.13.25.png" alt="屏幕快照 2019-05-21 上午11.13.25  " style="width:400px;"/></p>
+
+<p><img src="media/15583189073141/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-21%20%E4%B8%8A%E5%8D%8811.13.55.png" alt="屏幕快照 2019-05-21 上午11.13.55 " style="width:400px;"/></p></li>
+</ul>
+
+<p>但是没有看到刚才新建的文章模型，是因为我们还没有把模型注册到admin中，进入IDE中的应用目录下的admin.py </p>
+
+<pre><code>from django.contrib import admin
+
+# Register your models here.
+
+from .models import Aritcle
+
+admin.site.register(Aritcle)  
+</code></pre>
+
+<p>回到浏览器刷新 就有了新的分组</p>
+
+<p><img src="media/15583189073141/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-21%20%E4%B8%8A%E5%8D%8811.20.06.png" alt="屏幕快照 2019-05-21 上午11.20.06"/></p>
+
+<h5 id="toc_25">实现播客数据返回页面</h5>
+
+<p>类似于之前返回的helloworld项目</p>
+
+<p>应用视图 views.py</p>
+
+<pre><code>from django.shortcuts import render
+from django.http import HttpResponse
+from blog.models import Summary
+# Create your views here.
+def hello_world(request):
+    return HttpResponse(&quot;hello world&quot;)
+
+def ariticle_content(request):
+    summary = Summary.objects.all()[0]
+    title = summary.summary_title
+    content = summary.summary_content
+    summary_id = summary.summary_id
+    pubdate = summary.publish_date
+    return_str = &#39;title:%s summary_content:%s summary_id:%s publicdate:%s&#39;%(title,content,summary_id,pubdate)
+    
+    return HttpResponse(return_str)
+</code></pre>
+
+<p>应用路由 urls.py</p>
+
+<pre><code>from django.urls import path,include
+import blog.views
+
+urlpatterns = [
+    path(&quot;hello_world&quot;,blog.views.hello_world),
+    path(&quot;content&quot;,blog.views.ariticle_content)
+]
+</code></pre>
+
+<p>项目路由 urls.py</p>
+
+<pre><code>from django.contrib import admin
+from django.urls import path,include
+
+urlpatterns = [
+    path(&#39;admin/&#39;, admin.site.urls),
+    path(&#39;blog/&#39;, include(&quot;blog.urls&quot;)),
+    
+]
+</code></pre>
+
+<h2 id="toc_26">Django视图与模板</h2>
+
+<h3 id="toc_27">使用Bootstrap实现静态博客页面</h3>
+
+<h4 id="toc_28">页面布局设计</h4>
+
+<ul>
+<li>博客首页</li>
+<li>文章详情页</li>
+</ul>
+
+<h4 id="toc_29">Bootstrap 以及 Bootstrap的栅格系统</h4>
+
+<p>Bootstrap是来自美国twitter的前端框架，提供非常多的控件以及源码，栅格系统就是把web页面分成几等份排列的方式。</p>
+
+<h4 id="toc_30">实现静态页面</h4>
+
+<p>在应用文件夹内部新建文件夹template，然后在里面新建html文件</p>
+
+<h3 id="toc_31">认识Django的模版系统</h3>
+
+<p>python的视图文件不适合编码html，因为页面设计改变需要修改python代码，比较复杂。另外网页的逻辑和视图应该分开设计。</p>
+
+<p>模版系统的表现形式是文本，分离文档的表现形式和表现内容，模版系统定义了特有的标签占位符。</p>
+
+<p>学习模版系统的基本语法</p>
+
+<ol>
+<li>变量标签：{{变量}}</li>
+<li><p>for循环标签：{% for x in list %},{% endfor %}     </p>
+
+<pre><code>  &lt;ul&gt;
+    {% for item in list%}
+    &lt;li&gt;{{item}}&lt;/li&gt;
+    {% endfor%}
+    &lt;/ul&gt;
+</code></pre></li>
+<li><p>if-else标签：{% if %},{% else %},{%endif%}</p>
+
+<pre><code> {% if true %}
+        &lt;p&gt;it is true part&lt;/p&gt;
+    {%else%}
+        &lt;p&gt;it is false part&lt;/p&gt;
+    {% endif %}
+</code></pre></li>
+</ol>
+
+<h3 id="toc_32">使用模版系统渲染博客页面</h3>
+
+<p>django应用的views.py </p>
+
+<pre><code>from django.shortcuts import render
+from django.http import HttpResponse
+from blog.models import Summary,Articledef get_index_page(request):
+    all_ariticle = Summary.objects.all()
+    return render(request,&#39;blog/index.html&#39;,{&#39;aritcle_list&#39;:all_ariticle})
+</code></pre>
+
+<p>使用render函数进行渲染</p>
+
+<pre><code>def render(request, template_name, context=None, content_type=None, status=None, using=None)
+
+Return a HttpResponse whose content is filled with the result of calling django.template.loader.render_to_string() with the passed arguments.
+</code></pre>
+
+<h3 id="toc_33">实现文章详情页面跳转</h3>
+
+<p>django应用的urls.py </p>
+
+<pre><code>from django.urls import path,include
+import blog.views
+
+urlpatterns = [
+    path(&quot;hello_world&quot;,blog.views.hello_world),
+    path(&quot;content&quot;,blog.views.ariticle_content),
+    path(&quot;index&quot;,blog.views.get_index_page),
+    path(&quot;detail/&lt;int:article_id&gt;&quot;,blog.views.get_detail_page)
+
+]
+
+
+</code></pre>
+
+<p>django应用的views.py </p>
+
+<pre><code>aritcle_id 参数
+def get_detail_page(request,aritcle_id):
+
+    all_ariticle = Summary.objects.all()
+    cur_article = None
+    for aritcle in all_ariticle:
+        if aritcle.aritcle_id == aritcle_id:
+            cur_article = aritcle
+            break
+
+    return render(request,&#39;blog/detail.html&#39;,{&#39;current_aritcle&#39;:cur_article})
+
+</code></pre>
+
+<h3 id="toc_34">实现分页功能</h3>
+
+<p>参数request包含了一些get以及post的信息<br/>
+django应用的views.py </p>
+
+<pre><code>def get_index_page(request):
+    # 适用与/index?page=1之类的网络请求
+    page = request.GET.get(&#39;page&#39;)
+    if page:
+        page = int(page)
+    else:
+        page = 1
+        
+    all_ariticle = Summary.objects.all()
+    return render(request,&#39;blog/index.html&#39;,{&#39;aritcle_list&#39;:all_ariticle})
+
+
+</code></pre>
+
+<h4 id="toc_35">django分页组件Paginator</h4>
+
+<p>在views.py中引入分页组件</p>
+
+<pre><code>from django.core.paginator import Paginator
+def get_index_page(request):
+    # 适用与/index?page=1之类的网络请求
+    page = request.GET.get(&#39;page&#39;)
+    if page:
+        page = int(page)
+    else:
+        page = 1
+
+        
+    all_ariticle = Summary.objects.all()
+    paginator = paginator(all_ariticle,3)
+    page_aritcle_list = paginator.page(page)
+    page_num = paginator.num_pages
+    if page_aritcle_list.has_next():
+        next_page = page + 1
+    else:
+        next_page = page
+    
+    if page_aritcle_list.has_previous():
+        previous_page = page - 1
+    else:
+        previous_page = page
+
+    return render(request,&#39;blog/index.html&#39;,{
+        &#39;aritcle_list&#39;:page_aritcle_list,
+        &#39;page_num&#39;:range(1,page_num+1),
+        &quot;curr_page&quot;:page,
+        &#39;next_page&#39;:next_page,
+        &#39;previous_page&#39;:previous_page
+        }
+        )
+
+</code></pre>
+
+<h2 id="toc_36">补充部分 ORM</h2>
+
+<h3 id="toc_37">如何删除一个模型类</h3>
+
+<ol>
+<li>首先删除models.py中模型类的代码</li>
+<li>删除模型类在migrations文件夹中对应的文件</li>
+<li>删除django_migrations中对应的生成记录</li>
+<li>再删除模型对应的数据表 </li>
+</ol>
+
+<p>切记不要直接把数据库整个删掉再生成，尤其是当数据库中有数据的时候。</p>
+
+<h3 id="toc_38">如何导入数据</h3>
+
+<ol>
+<li><p>django shell</p>
+
+<pre><code class="language-&gt;&gt;&gt;">from blog.models import Aritcle
+&gt;&gt;&gt; a = Aritcle()
+&gt;&gt;&gt; a.title = &quot;test django shell&quot;
+&gt;&gt;&gt; a.brief_content = &quot;test django shell by maweefeng&quot;
+&gt;&gt;&gt; a.content = &quot;test django shell new ariticle main content&quot;
+&gt;&gt;&gt; a.save()//保存到数据库
+</code></pre></li>
+<li><p>脚本批量导入</p>
+
+<pre><code>import os
+import sys
+import random
+import django
+from datetime import date
+
+# 在当前项目中运行该python脚本
+project_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(project_path)
+os.environ[&#39;DJANGO_SETTINGS_MODULE&#39;] = &#39;Django_ORM.settings&#39;
+django.setup() 
+
+from orm.models import Aritcle
+#上面这行必须在django.setup()之后
+
+def import_data():
+
+    for i in [1,2,3,4,5,6,7,8,9,10]:
+         Aritcle.objects.create(title = &#39;这个是标题%s&#39;%(i),brief_content=&#39;这个是简介&#39;,content=&#39;这个是内容我们都有一个家名字叫中国&#39;)
+    return True
+
+if __name__ == &quot;__main__&quot;:
+    if import_data():
+        print(&#39;插入数据成功&#39;)
+
+</code></pre></li>
+<li><p>fixtures <br/>
+使用django serialization 生成 model</p>
+
+<ul>
+<li><p>终端命令导出数据<code>python3 manage.py dumpdata &gt;  orm.json</code>生成了一个json文件</p></li>
+<li><p>然后从数据库中删除部分数据  </p></li>
+<li><p>执行命令从json中导入数据 <code>python3 manage.py loaddata  orm.json</code>  </p></li>
+<li><p>数据库中重新出现了刚才删除的数据（因为从json中重新导入了数据） </p></li>
+</ul></li>
+<li><p>数据库层面的导入数据</p></li>
+</ol>
+
+<h3 id="toc_39">如何导出数据</h3>
+
+<ol>
+<li><p>导出fixtures能识别的json文件</p>
+
+<ul>
+<li>终端命令导出数据<code>python3 manage.py dumpdata &gt;  orm.json</code>生成了一个json文件</li>
+</ul></li>
+<li><p>导出其他格式的文件<br/>
+pcharm自带的数据库工具，单选某个表右键dump data to file<br/>
+nivacate datum等数据库工具导出数据<br/>
+<img src="https://ws3.sinaimg.cn/large/006tNc79gy1g3b37uxg9aj31740p945u.jpg" alt=""/></p></li>
+<li><p>数据库层面的导出数据</p></li>
+</ol>
+
+<h3 id="toc_40">ModelsAPI</h3>
+
+<h4 id="toc_41">查询集介绍</h4>
+
+<ol>
+<li><p>查询 过滤 检索</p>
+
+<pre><code>Aritcle.objects.all()#返回所有结果
+Aritcle.objects.get(title=&#39;这是一个标题&#39;)#返回一个结果 多条则会报错
+Aritcle.objects.filter(star__gte = 500)#queryset可以是多条结果 fans &gt;=500的结果
+</code></pre></li>
+<li><p>字段数据匹配 大小写敏感</p>
+
+<pre><code>teacher = Aritcle.objects.filter(star__in=[555,1231])
+teacher = Aritcle.objects.filter(title__contains=&#39;a&#39;)
+</code></pre></li>
+<li><p>结果切片 排序 链式查询</p>
+
+<pre><code>Aritcle.objects.all()[:1]
+Aritcle.objects.all().order_by(&#39;star&#39;)#升序排序
+Aritcle.objects.all().order_by(&#39;-star&#39;)#降序排序
+Aritcle.objects.filter(star__gte = 500).order_by(&#39;-star&#39;)#链式查询
+</code></pre></li>
+<li><p>查看执行的原生SQL xxx.query</p>
+
+<pre><code>print(str(Aritcle.objects.filter(star__gte = 500).order_by(&#39;-star&#39;).query))
+</code></pre></li>
+</ol>
+
+<h4 id="toc_42">返回新的QuerySet的API</h4>
+
+<ol>
+<li><p>all() filter() order_by() exclude()去掉某个model reverse()反转 distinct()去重</p>
+
+<pre><code>Aritcle.objects.all().exclude(title = &#39;title&#39;)
+Aritcle.objects.all().exclude(title = &#39;title&#39;).reverse()
+</code></pre></li>
+<li><p>extra() defer() only() 实现字段别名 排除一些字段 选择一些字段</p>
+
+<pre><code>Aritcle.objects.all().extra(select={&#39;article_title&#39;=&#39;title&#39;})
+Aritcle.objects.all().only(&#39;title&#39;,&#39;star&#39;).query()
+</code></pre></li>
+<li><p>dates() datetimes() 根据时间日期获取查询集</p>
+
+<pre><code>Aritcle.objects.dates(&#39;publish_date&#39;,&#39;month&#39;,order =&#39;DESC&#39;)
+</code></pre></li>
+<li><p>union() intersection() difference() 并集 交集 差集</p>
+
+<pre><code>a_500 = Aritcle.objects.filter(star__gte = 500)
+a_200 = Aritcle.objects.filter(star__lte = 200)
+print(a_500.union(a_200))
+print(a_500.intersection(a_200))
+print(a_500.difference(a_200))
+
+</code></pre></li>
+<li><p>select_related() 一对一 多对一查询优化 prefetch_related() 一对多 多对多查询优化 反向查询</p>
+
+<pre><code>Aritcle.objects.all().select_related(&#39;author&#39;)
+Audiences.objects.filter(star__gte = 500).prefetch_related(&#39;article&#39;)
+
+</code></pre></li>
+<li><p>annotate() 使用聚合计数 求和 平均数 raw()执行原声sql</p>
+
+<pre><code># 对每个文章关联的作者的评🌟进行统计
+Aritcle.objects.values(&#39;author&#39;).annotate(vol=Sum(&#39;star&#39;))
+# vol star 总和 
+Aritcle.objects.values(&#39;author&#39;).annotate(ave=Avg(&#39;star&#39;))
+# ave star 求平均值 
+</code></pre></li>
+<li><p>values() values_list() 获取字典或者元祖形式的queryset</p>
+
+<pre><code>Aritcle.objects.values(&#39;title&#39;,&#39;star&#39;)
+Aritcle.objects.values_list(&#39;title&#39;,&#39;star&#39;)
+</code></pre></li>
+</ol>
+
+<h4 id="toc_43">不返回QuerySet的API</h4>
+
+<ol>
+<li><p>获取对象 get()获取单个对象 get_or_create()获取或者创建 first() last() latest() earliest() in_bulk()</p></li>
+<li><p>创建对象 create() bulk_create() create_or_update() 创建 批量创建 创建或更新</p></li>
+<li><p>更新对象 update()  update_or_create()更新 更新或创建</p>
+
+<pre><code>Aritcle.objects.filter(star__gte = 500).update(star=20)
+</code></pre></li>
+<li><p>删除对象delete() 使用filter过滤</p>
+
+<pre><code>Aritcle.objects.filter(star__gte = 500).delete()
+</code></pre></li>
+<li><p>其他操作exists() count() aggregate()判断是否存在 统计个数 聚合 </p>
+
+<pre><code>Aritcle.objects.filter(star = 500).exists()
+Aritcle.objects.count()
+Aritcle.objects.aggregate(Max(&#39;star&#39;,Min(&#39;star&#39;),Avg(&#39;star&#39;)))
+</code></pre></li>
+</ol>
+
+<h4 id="toc_44">自定义聚合查询 实现group_concat</h4>
+
+<p>在models.py 中自定义继承自models.Aggregate 的类GroupConcat</p>
+
+<pre><code>class GroupConcat(models.Aggregate):
+    function = &#39;Group_Concat&#39;
+    template = &#39;%(fuction)s(%(distinct)s%(expressions)s%(ordering)s%(separator)s)&#39;
+
+    def __init__(self,expression,distinct=False,ordering=None,separator=&#39;,&#39;,**extra):
+        super(GroupConcat,self).__init__(expression,
+        distinct=&#39;DISTINCT&#39; if distinct else &#39;&#39;,
+        ordering = &#39;ORDER BY %s&#39; % ordering if ordering is not None else &#39;&#39;,
+        separator = &#39;SEPARATOR &quot;%s&quot;&#39;%separator,
+        output_field=models.CharField(),**extra)
+
+
+</code></pre>
+
+<p>views.py</p>
+
+<pre><code>Aritcle.objects.values(&#39;author&#39;).annotate(title=GroupConcat(&#39;title&#39;,distinct=True,ordering=&#39;title ASC&#39;,separator=&#39;-&#39;))
+</code></pre>
+
+
+
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+          <p class="text-left" style="padding:15px 0px;">
+            
+          </p>
+        </div>
+        <div class="large-6 columns">
+          <p class="text-right" style="padding:15px 0px;">
+            
+            <a href="15578899295258.html" title="Next Post: PromiseKit">PromiseKit
+              &raquo;</a>
+            
+          </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5bfe6ae3f692f811"></script>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://maweefeng.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<script id="dsq-count-scr" src="//maweefeng.disqus.com/count.js" async></script>
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 --> <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <div class="site-a-logo"><img src="/asset/img/logo.png" /></div>
+            
+                <h1>Code Log 👨‍💻‍ </h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="github" target="_blank" href="https://github.com/maweefeng" title="GitHub">GitHub</a>
+<a target="_blank" class="email" href="mailto:maweefeng@gmail.com" title="Email">Email</a>
+  <!-- <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a> -->
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="iOS.html"><strong>iOS</strong></a>
+        
+            <a href="Git.html"><strong>Git</strong></a>
+        
+            <a href="CocoaPods.html"><strong>CocoaPods</strong></a>
+        
+            <a href="Django.html"><strong>Django</strong></a>
+        
+            <a href="about.html"><strong>about</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15583189073141.html">Django</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15578899295258.html">PromiseKit</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15572343607934.html">RunLoop</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15554977521883.html">Swift单例写法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15554962348970.html">Filter, Map, Reduce  Functions</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <!-- <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p> -->
+<p class="copyright">日光之下 永无新事</p>
+</div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    <script src="asset/chart/all-min.js"></script><script type="text/javascript">$(function(){    var mwebii=0;    var mwebChartEleId = 'mweb-chart-ele-';    $('pre>code').each(function(){        mwebii++;        var eleiid = mwebChartEleId+mwebii;        if($(this).hasClass('language-sequence')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = Diagram.parse($(this).text());            diagram.drawSVG(eleiid,{theme: 'simple'});        }else if($(this).hasClass('language-flow')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = flowchart.parse($(this).text());            diagram.drawSVG(eleiid);        }    });});</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+
+  </body>
+</html>
