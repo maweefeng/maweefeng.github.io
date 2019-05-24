@@ -158,9 +158,9 @@
 </ul>
 
 <blockquote>
-<p>要想使用Django 必须先安装Python，推荐安装3.0版本以上的Python3<br/>
+<p>使用Django 必须先安装Python，推荐安装3.0版本以上的Python3<br/>
 然后再用pip安装工具安装Django<br/>
-由于我要安装在python3 所以我的pip工具也是pip3<br/>
+由于我安装的是python3 所以我的pip工具是pip3<br/>
 安装命令<code>pip3 install django==2.0</code><br/>
 最后选择适合自己的IDE<br/>
 我使用的是VSCode</p>
@@ -227,16 +227,83 @@
 
 <ul>
 <li>__init__.py//项目初始化</li>
-<li>setting.py//项目配置文件</li>
+<li>setting.py//🌟项目配置文件</li>
 <li>urls.py//项目路由配置文件</li>
-<li>wsgi.py</li>
+<li>wsgi.py//python服务器网关接口</li>
 </ul></li>
 <li><p>manage.py//项目管理文件 </p></li>
 </ul></li>
 <li><p>运行项目 终端命令<code>python3 manage.py runserver</code></p></li>
 </ol>
 
-<h3 id="toc_3">创建一个Django应用</h3>
+<h4 id="toc_3">Django项目重要文件介绍</h4>
+
+<h5 id="toc_4">setting.py</h5>
+
+<pre><code>import os
+
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))#项目根目录
+
+
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = &#39;7bet#*gq%**^7*)5m%)avx&amp;sg6yv_^&amp;t5b!@8+$(&amp;of&amp;_^1wv)&#39;#项目安全码
+
+# SECURITY WARNING: don&#39;t run with debug turned on in production!
+DEBUG = True #不要在正式环境中打开 如果打开的话异常会抛到前端
+
+ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = [&#39;localhost&#39;] 只允许host是数组中的内容的地址访问我们的网站 其他地址都屏蔽了
+
+
+# Application definition
+
+INSTALLED_APPS = [
+    &#39;django.contrib.admin&#39;,
+    &#39;django.contrib.auth&#39;,
+    &#39;django.contrib.contenttypes&#39;,
+    &#39;django.contrib.sessions&#39;,
+    &#39;django.contrib.messages&#39;,
+    &#39;django.contrib.staticfiles&#39;,
+    &#39;blog.apps.BlogConfig&#39;,#自己创建的应用要写在这里面 才能被识别
+]
+
+MIDDLEWARE = [
+    &#39;django.middleware.security.SecurityMiddleware&#39;,
+    &#39;django.contrib.sessions.middleware.SessionMiddleware&#39;,
+    &#39;django.middleware.common.CommonMiddleware&#39;,
+    &#39;django.middleware.csrf.CsrfViewMiddleware&#39;,
+    &#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;,
+    &#39;django.contrib.messages.middleware.MessageMiddleware&#39;,
+    &#39;django.middleware.clickjacking.XFrameOptionsMiddleware&#39;,
+]
+
+ROOT_URLCONF = &#39;django_intrduction.urls&#39;
+
+#django中的模板就是一个个的html文件
+TEMPLATES = [
+    {
+        &#39;BACKEND&#39;: &#39;django.template.backends.django.DjangoTemplates&#39;,
+        &#39;DIRS&#39;: [],
+        &#39;APP_DIRS&#39;: True,
+        &#39;OPTIONS&#39;: {
+            &#39;context_processors&#39;: [
+                &#39;django.template.context_processors.debug&#39;,
+                &#39;django.template.context_processors.request&#39;,
+                &#39;django.contrib.auth.context_processors.auth&#39;,
+                &#39;django.contrib.messages.context_processors.messages&#39;,
+            ],
+        },
+    },
+]
+
+
+</code></pre>
+
+<h3 id="toc_5">创建一个Django应用</h3>
 
 <ol>
 <li><p>创建一个应用</p>
@@ -252,11 +319,11 @@
 <li><p>应用名</p>
 
 <ul>
-<li>views.py//视图处理的地方</li>
-<li>models.py//定义应用模型的地方</li>
+<li>views.py//🌟执行响应的代码所在模块，大部分代码都在这里</li>
+<li>models.py//定义应用模型、使用orm框架</li>
 <li>apps.py //声明应用的地方</li>
-<li>admin.py //定义admin模块管理的地方</li>
-<li>tests.py //编写测试用例的地方</li>
+<li>admin.py //定义admin模块管理的地方、后台管理配置</li>
+<li>tests.py //自动化测试模块，编写测试用例的地方 </li>
 <li>urls.py //（自行创建）管理应用路由的地方</li>
 </ul></li>
 <li><p>Django_instrduction</p>
@@ -271,9 +338,19 @@
 </ul></li>
 </ol>
 
-<h2 id="toc_4">Django HelloWorld</h2>
+<h2 id="toc_6">Django HelloWorld</h2>
 
-<h3 id="toc_5">Django 视图</h3>
+<h3 id="toc_7">Django 视图</h3>
+
+<blockquote>
+<p>大部分代码都写在views.py当中，所以编辑views是非常重要的，</p>
+</blockquote>
+
+<ul>
+<li>每个响应对应一个函数，函数必须返回一个响应。</li>
+<li>函数必须存在一个参数，一般约定为request</li>
+<li>每个响应函数对应一个url</li>
+</ul>
 
 <pre><code>//views.py
 from django.shortcuts import render
@@ -283,7 +360,12 @@ def hello_world(request):
     return HttpResponse(&quot;hello world&quot;)
 </code></pre>
 
-<h3 id="toc_6">Django 路由</h3>
+<h3 id="toc_8">Django 路由</h3>
+
+<ul>
+<li>每个URL都以url的形式写出来</li>
+<li>url函数放在urlpatterns列表中</li>
+</ul>
 
 <pre><code>应用路由
 from django.urls import path,include
@@ -307,20 +389,20 @@ urlpatterns = [
 
 </code></pre>
 
-<h2 id="toc_7">概念介绍及实战</h2>
+<h2 id="toc_9">概念介绍及实战</h2>
 
-<h4 id="toc_8">Django 模型</h4>
+<h4 id="toc_10">Django 模型</h4>
 
-<h5 id="toc_9">模型层简介</h5>
+<h5 id="toc_11">模型层简介</h5>
 
-<h6 id="toc_10">模型层是什么</h6>
+<h6 id="toc_12">模型层是什么</h6>
 
 <ul>
 <li>位于视图层和数据库之间</li>
 <li>python对象和数据表之间转换</li>
 </ul>
 
-<h6 id="toc_11">为什么需要模型层</h6>
+<h6 id="toc_13">为什么需要模型层</h6>
 
 <ul>
 <li>屏蔽不同的数据库之间的差异</li>
@@ -328,9 +410,9 @@ urlpatterns = [
 <li>提供很多便捷工具有助开发</li>
 </ul>
 
-<h5 id="toc_12">创建博客文章模型</h5>
+<h5 id="toc_14">创建博客文章模型</h5>
 
-<h6 id="toc_13">设计播客文章模型</h6>
+<h6 id="toc_15">设计播客文章模型</h6>
 
 <ul>
 <li>文章标题——文本类型</li>
@@ -340,7 +422,7 @@ urlpatterns = [
 <li>发布日期——日期类型</li>
 </ul>
 
-<h6 id="toc_14">模型层常用字段</h6>
+<h6 id="toc_16">模型层常用字段</h6>
 
 <ul>
 <li>数字类型：
@@ -399,7 +481,7 @@ urlpatterns = [
 </ul></li>
 </ul>
 
-<h6 id="toc_15">模型层关系型字段</h6>
+<h6 id="toc_17">模型层关系型字段</h6>
 
 <ul>
 <li>一对一（OneToOneField）</li>
@@ -407,7 +489,7 @@ urlpatterns = [
 <li>多对多(ManyToManyField)</li>
 </ul>
 
-<h6 id="toc_16">Demo</h6>
+<h6 id="toc_18">Demo</h6>
 
 <ol>
 <li>在应用的 models.py 定义模型</li>
@@ -464,23 +546,20 @@ Applying blog.0001_initial... OK
 </code></pre></li>
 </ol>
 
-<h5 id="toc_17">Django shell</h5>
+<h5 id="toc_19">Django shell</h5>
 
 <p>Python shell 用于交互式的python编程<br/>
 Django shell 也类似继承django项目环境</p>
 
-<h6 id="toc_18">为什么要使用django shell</h6>
+<h6 id="toc_20">为什么要使用django shell</h6>
 
 <ul>
 <li>临时性操作使用django shell更加方便</li>
 <li>小范围的debug更简单，不需要运行整个项目来测试</li>
+<li>方便开发 方便调试 方便debug</li>
 </ul>
 
-<h6 id="toc_19">优点</h6>
-
-<p>方便开发 方便调试 方便debug</p>
-
-<h6 id="toc_20">demo</h6>
+<h6 id="toc_21">demo</h6>
 
 <p>使用django shell 新建文章</p>
 
@@ -523,16 +602,16 @@ Aritcle object (1)
 </code></pre></li>
 </ol>
 
-<h5 id="toc_21">django admin模块</h5>
+<h5 id="toc_22">django admin模块</h5>
 
-<h6 id="toc_22">django admin模块是什么</h6>
+<h6 id="toc_23">django admin模块是什么</h6>
 
 <ul>
 <li>是一个后台管理工具，不需要用户开发后台管理工具</li>
 <li>可以读取定义的模型元数据，提供强大的管理使用页面</li>
 </ul>
 
-<h6 id="toc_23">为什么要使用django admin模块</h6>
+<h6 id="toc_24">为什么要使用django admin模块</h6>
 
 <ul>
 <li>django shell 新建文章太复杂了</li>
@@ -540,7 +619,7 @@ Aritcle object (1)
 <li>认证用户，显示管理模型，校验输入等功能类似</li>
 </ul>
 
-<h6 id="toc_24">使用方法</h6>
+<h6 id="toc_25">使用方法</h6>
 
 <ul>
 <li>创建管理员用户
@@ -584,11 +663,12 @@ admin.site.register(Aritcle)
 
 <p><img src="media/15583189073141/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-21%20%E4%B8%8A%E5%8D%8811.20.06.png" alt="屏幕快照 2019-05-21 上午11.20.06"/></p>
 
-<h5 id="toc_25">实现播客数据返回页面</h5>
+<h5 id="toc_26">实现播客数据返回页面</h5>
 
 <p>类似于之前返回的helloworld项目</p>
 
-<p>应用视图 views.py</p>
+<ol>
+<li><p>应用视图 views.py</p>
 
 <pre><code>from django.shortcuts import render
 from django.http import HttpResponse
@@ -604,11 +684,10 @@ def ariticle_content(request):
     summary_id = summary.summary_id
     pubdate = summary.publish_date
     return_str = &#39;title:%s summary_content:%s summary_id:%s publicdate:%s&#39;%(title,content,summary_id,pubdate)
-    
-    return HttpResponse(return_str)
-</code></pre>
 
-<p>应用路由 urls.py</p>
+    return HttpResponse(return_str)
+</code></pre></li>
+<li><p>应用路由 urls.py</p>
 
 <pre><code>from django.urls import path,include
 import blog.views
@@ -617,9 +696,8 @@ urlpatterns = [
     path(&quot;hello_world&quot;,blog.views.hello_world),
     path(&quot;content&quot;,blog.views.ariticle_content)
 ]
-</code></pre>
-
-<p>项目路由 urls.py</p>
+</code></pre></li>
+<li><p>项目路由 urls.py</p>
 
 <pre><code>from django.contrib import admin
 from django.urls import path,include
@@ -627,36 +705,37 @@ from django.urls import path,include
 urlpatterns = [
     path(&#39;admin/&#39;, admin.site.urls),
     path(&#39;blog/&#39;, include(&quot;blog.urls&quot;)),
-    
+
 ]
-</code></pre>
+</code></pre></li>
+</ol>
 
-<h2 id="toc_26">Django视图与模板</h2>
+<h2 id="toc_27">Django视图与模板</h2>
 
-<h3 id="toc_27">使用Bootstrap实现静态博客页面</h3>
+<h3 id="toc_28">使用Bootstrap实现静态博客页面</h3>
 
-<h4 id="toc_28">页面布局设计</h4>
+<h4 id="toc_29">页面布局设计</h4>
 
 <ul>
 <li>博客首页</li>
 <li>文章详情页</li>
 </ul>
 
-<h4 id="toc_29">Bootstrap 以及 Bootstrap的栅格系统</h4>
+<h4 id="toc_30">Bootstrap 以及 Bootstrap的栅格系统</h4>
 
 <p>Bootstrap是来自美国twitter的前端框架，提供非常多的控件以及源码，栅格系统就是把web页面分成几等份排列的方式。</p>
 
-<h4 id="toc_30">实现静态页面</h4>
+<h4 id="toc_31">创建模板文件夹并实现静态页面</h4>
 
-<p>在应用文件夹内部新建文件夹template，然后在里面新建html文件</p>
+<p><strong>在应用文件夹内部新建文件夹templates，然后在里面新建html文件,这是很关键的一步</strong></p>
 
-<h3 id="toc_31">认识Django的模版系统</h3>
+<h3 id="toc_32">认识Django的模版系统</h3>
 
 <p>python的视图文件不适合编码html，因为页面设计改变需要修改python代码，比较复杂。另外网页的逻辑和视图应该分开设计。</p>
 
 <p>模版系统的表现形式是文本，分离文档的表现形式和表现内容，模版系统定义了特有的标签占位符。</p>
 
-<p>学习模版系统的基本语法</p>
+<p><strong>学习模版系统的基本语法</strong></p>
 
 <ol>
 <li>变量标签：{{变量}}</li>
@@ -678,27 +757,37 @@ urlpatterns = [
 </code></pre></li>
 </ol>
 
-<h3 id="toc_32">使用模版系统渲染博客页面</h3>
+<h3 id="toc_33">使用模版系统渲染博客页面</h3>
 
-<p>django应用的views.py </p>
+<p>render渲染函数</p>
 
-<pre><code>from django.shortcuts import render
-from django.http import HttpResponse
-from blog.models import Summary,Articledef get_index_page(request):
-    all_ariticle = Summary.objects.all()
-    return render(request,&#39;blog/index.html&#39;,{&#39;aritcle_list&#39;:all_ariticle})
-</code></pre>
-
-<p>使用render函数进行渲染</p>
+<ul>
+<li>render() 函数中支持一个dict类型的参数</li>
+<li>该字典是后台传递到模板的参数，键为参数名</li>
+<li><p>在模板中使用{{参数名}}来直接使用</p>
 
 <pre><code>def render(request, template_name, context=None, content_type=None, status=None, using=None)
 
 Return a HttpResponse whose content is filled with the result of calling django.template.loader.render_to_string() with the passed arguments.
+</code></pre></li>
+</ul>
+
+<p>编写django应用的views.py </p>
+
+<pre><code>from django.shortcuts import render
+from django.http import HttpResponse
+from blog.models import Summary,Article
+    
+def get_index_page(request):
+    all_ariticle = Summary.objects.all()
+    return render(request,&#39;blog/index.html&#39;,{&#39;aritcle_list&#39;:all_ariticle})
+
 </code></pre>
 
-<h3 id="toc_33">实现文章详情页面跳转</h3>
+<h3 id="toc_34">实现文章详情页面跳转</h3>
 
-<p>django应用的urls.py </p>
+<ul>
+<li><p>django应用的urls.py </p>
 
 <pre><code>from django.urls import path,include
 import blog.views
@@ -710,11 +799,8 @@ urlpatterns = [
     path(&quot;detail/&lt;int:article_id&gt;&quot;,blog.views.get_detail_page)
 
 ]
-
-
-</code></pre>
-
-<p>django应用的views.py </p>
+</code></pre></li>
+<li><p>django应用的views.py </p>
 
 <pre><code>aritcle_id 参数
 def get_detail_page(request,aritcle_id):
@@ -728,12 +814,15 @@ def get_detail_page(request,aritcle_id):
 
     return render(request,&#39;blog/detail.html&#39;,{&#39;current_aritcle&#39;:cur_article})
 
-</code></pre>
+</code></pre></li>
+</ul>
 
-<h3 id="toc_34">实现分页功能</h3>
+<h3 id="toc_35">实现分页功能</h3>
 
-<p>参数request包含了一些get以及post的信息<br/>
-django应用的views.py </p>
+<p>参数request包含了一些get以及post的信息。</p>
+
+<ul>
+<li><p>django应用的views.py </p>
 
 <pre><code>def get_index_page(request):
     # 适用与/index?page=1之类的网络请求
@@ -742,16 +831,16 @@ django应用的views.py </p>
         page = int(page)
     else:
         page = 1
-        
+
     all_ariticle = Summary.objects.all()
     return render(request,&#39;blog/index.html&#39;,{&#39;aritcle_list&#39;:all_ariticle})
+</code></pre></li>
+</ul>
 
+<h4 id="toc_36">django分页组件Paginator</h4>
 
-</code></pre>
-
-<h4 id="toc_35">django分页组件Paginator</h4>
-
-<p>在views.py中引入分页组件</p>
+<ul>
+<li><p>在views.py中引入分页组件</p>
 
 <pre><code>from django.core.paginator import Paginator
 def get_index_page(request):
@@ -762,7 +851,6 @@ def get_index_page(request):
     else:
         page = 1
 
-        
     all_ariticle = Summary.objects.all()
     paginator = paginator(all_ariticle,3)
     page_aritcle_list = paginator.page(page)
@@ -771,7 +859,7 @@ def get_index_page(request):
         next_page = page + 1
     else:
         next_page = page
-    
+
     if page_aritcle_list.has_previous():
         previous_page = page - 1
     else:
@@ -786,11 +874,12 @@ def get_index_page(request):
         }
         )
 
-</code></pre>
+</code></pre></li>
+</ul>
 
-<h2 id="toc_36">补充部分 ORM</h2>
+<h2 id="toc_37">补充部分 ORM</h2>
 
-<h3 id="toc_37">如何删除一个模型类</h3>
+<h3 id="toc_38">如何删除一个模型类</h3>
 
 <ol>
 <li>首先删除models.py中模型类的代码</li>
@@ -801,7 +890,7 @@ def get_index_page(request):
 
 <p>切记不要直接把数据库整个删掉再生成，尤其是当数据库中有数据的时候。</p>
 
-<h3 id="toc_38">如何导入数据</h3>
+<h3 id="toc_39">如何导入数据</h3>
 
 <ol>
 <li><p>django shell</p>
@@ -853,7 +942,7 @@ if __name__ == &quot;__main__&quot;:
 <li><p>数据库层面的导入数据</p></li>
 </ol>
 
-<h3 id="toc_39">如何导出数据</h3>
+<h3 id="toc_40">如何导出数据</h3>
 
 <ol>
 <li><p>导出fixtures能识别的json文件</p>
@@ -868,9 +957,9 @@ nivacate datum等数据库工具导出数据<br/>
 <li><p>数据库层面的导出数据</p></li>
 </ol>
 
-<h3 id="toc_40">ModelsAPI</h3>
+<h3 id="toc_41">ModelsAPI</h3>
 
-<h4 id="toc_41">查询集介绍</h4>
+<h4 id="toc_42">查询集介绍</h4>
 
 <ol>
 <li><p>查询 过滤 检索</p>
@@ -897,7 +986,7 @@ Aritcle.objects.filter(star__gte = 500).order_by(&#39;-star&#39;)#链式查询
 </code></pre></li>
 </ol>
 
-<h4 id="toc_42">返回新的QuerySet的API</h4>
+<h4 id="toc_43">返回新的QuerySet的API</h4>
 
 <ol>
 <li><p>all() filter() order_by() exclude()去掉某个model reverse()反转 distinct()去重</p>
@@ -944,7 +1033,7 @@ Aritcle.objects.values_list(&#39;title&#39;,&#39;star&#39;)
 </code></pre></li>
 </ol>
 
-<h4 id="toc_43">不返回QuerySet的API</h4>
+<h4 id="toc_44">不返回QuerySet的API</h4>
 
 <ol>
 <li><p>获取对象 get()获取单个对象 get_or_create()获取或者创建 first() last() latest() earliest() in_bulk()</p></li>
@@ -965,7 +1054,7 @@ Aritcle.objects.aggregate(Max(&#39;star&#39;,Min(&#39;star&#39;),Avg(&#39;star&#
 </code></pre></li>
 </ol>
 
-<h4 id="toc_44">自定义聚合查询 实现group_concat</h4>
+<h4 id="toc_45">自定义聚合查询 实现group_concat</h4>
 
 <p>在models.py 中自定义继承自models.Aggregate 的类GroupConcat</p>
 
