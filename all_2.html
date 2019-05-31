@@ -10,6 +10,7 @@
     
   </title>
   
+  <meta name="keywords" content="_cmd" />
   
   <link href="atom.xml" rel="alternate" title="Code Log 👨‍💻‍ " type="application/atom+xml">
   <link rel="stylesheet" href="asset/css/foundation.min.css" />
@@ -111,6 +112,8 @@
           
           <li id="Django"><a href="Django.html">Django</a></li>
           
+          <li id="Spiders"><a href="Spiders.html">Spiders</a></li>
+          
           <li id="about"><a href="about.html">about</a></li>
           
 
@@ -129,6 +132,57 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15445109745059.html">
+                
+                  <h1>Love at First Launch</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ul>
+<li>直接显示内容而不是弹出需要注册登录的页面</li>
+<li>通过交互引导用户，而不是一些文字引导</li>
+<li>延迟请求授权，而不是一下登录之后就开始要权限（定位，相机，图片）。</li>
+</ul>
+
+<p>针对延迟请求，想到一个好主意，就是新建一个类，可以是单例，负责管理这些请求。</p>
+
+<h1 id="toc_0">App Startup Time: Past, Present, and Future</h1>
+
+<p>了解在苹果平台上使用的dyld动态链接器，它是如何在这些年来发生变化的，以及它下一步的发展方向。了解改进的工具如何使优化应用程序的启动时间变得更容易，并了解dyld中的新更改如何进一步改善启动时间。</p>
+
+<ul>
+<li><p>startup time 启动时间</p>
+
+<p>main函数执行之前所用的时间</p></li>
+<li><p>launch closure启动收尾</p>
+
+<p>启动你的程序所需要的全部信息，比如使用什么dylib，他们的哪些偏移位置用于不同的符号，代码签名是什么，</p></li>
+</ul>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15445109745059.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/12/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15445081328797.html">
                 
@@ -448,54 +502,6 @@
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15433027949667.html">
-                
-                  <h1>sizeThatFits和sizeToFit</h1>
-                  <div class="a-content">
-                      
-		                  <div class="a-content-img">
-                      		<img src="media/15433027949667/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-27%20%E4%B8%8B%E5%8D%883.23.06.png" />
-                      	  </div>
-		              
-                      <div class="a-content-text">
-                        
-                        	<p>今天帮同事看一个布局约束的问题，（代码也是从别人手中接过来的，所以并不清楚怎么布局的）<br/>
-view是用xib画的，约束设置很多，本以为是约束的问题，设置了约束还是不能更改整个view的高度。</p>
-
-<p>最后找了一会，我发现了一个方法 sizeThatFit 在sizeThatFit内部返回了size，所以刚才尽管指定的约束改了，但是还是不影响下面的方法返回size。</p>
-
-<p>所以就写了这个东西给不了解的同学一点点经验。</p>
-
-<pre><code>- (void)sizeToFit;                       // calls sizeThatFits: with current view bounds and changes bounds size.
-- (CGSize)sizeThatFits:(CGSize)size;     // return &#39;best&#39; size to fit given size. does not actually resize view. Default is return existing view size
-
-</code></pre>
-
-<p>上面是苹果的方法说明。</p>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15433027949667.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/27</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -558,6 +564,8 @@ view是用xib画的，约束设置很多，本以为是约束的问题，设置�
         
             <a href="Django.html"><strong>Django</strong></a>
         
+            <a href="Spiders.html"><strong>Spiders</strong></a>
+        
             <a href="about.html"><strong>about</strong></a>
          
         </p>
@@ -573,6 +581,12 @@ view是用xib画的，约束设置很多，本以为是约束的问题，设置�
                 <div class="side-content">
                 <ul class="posts-list">
 	      
+		      
+			      <li class="post">
+			        <a href="15590976892074.html">Scrapy 抓取网页数据</a>
+			      </li>
+		     
+		  
 		      
 			      <li class="post">
 			        <a href="15583189073141.html">Django入门 — 建立简易博客以及ORM关系介绍</a>
@@ -594,12 +608,6 @@ view是用xib画的，约束设置很多，本以为是约束的问题，设置�
 		      
 			      <li class="post">
 			        <a href="15554977521883.html">Swift单例写法</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15554962348970.html">Filter, Map, Reduce  Functions</a>
 			      </li>
 		     
 		  

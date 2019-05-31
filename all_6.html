@@ -111,6 +111,8 @@
           
           <li id="Django"><a href="Django.html">Django</a></li>
           
+          <li id="Spiders"><a href="Spiders.html">Spiders</a></li>
+          
           <li id="about"><a href="about.html">about</a></li>
           
 
@@ -129,6 +131,42 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15427834492451.html">
+                
+                  <h1>Xcode编译找不到头文件</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>开发中遇到之前成功导入没有报错的头文件，后来打开工程之后报错说找不到头文件，这就很奇怪了。<br/>
+之前还是好好的，怎么睡了一觉代码还出现了问题呢。<br/><br/>
+然后就去搜索解决方法，发现是要到<code>buildsettings</code>下的<code>Search Paths</code>下面的<code>User Header Search Paths</code> 大概意思就是这个东西是头文件的搜索路径。<br/><br/>
+进去之后添加<code>${SRCROOT}</code>然后回车搞定就完成了。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15427834492512.html">
                 
@@ -496,39 +534,6 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15426943817961.html">
-                
-                  <h1>Xcode10报错libstdc</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>由于<code>Xcode10</code> 已经禁用<code>libstdc++</code>、<code>libstdc++.6</code>、<code>libstdc++6.0.9</code>这三个库的使用,所以老项目中有用到这三个库的，会编译出错。<br/>
-我就遇到了这个问题，之前的项目引入的sdk依赖了libstdc++，所以当我升级到<code>xcode10</code>之后就编译不通过，于是在网上找到了解决方法。</p>...
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15426943817961.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/20</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -591,6 +596,8 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
         
             <a href="Django.html"><strong>Django</strong></a>
         
+            <a href="Spiders.html"><strong>Spiders</strong></a>
+        
             <a href="about.html"><strong>about</strong></a>
          
         </p>
@@ -606,6 +613,12 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
                 <div class="side-content">
                 <ul class="posts-list">
 	      
+		      
+			      <li class="post">
+			        <a href="15590976892074.html">Scrapy 抓取网页数据</a>
+			      </li>
+		     
+		  
 		      
 			      <li class="post">
 			        <a href="15583189073141.html">Django入门 — 建立简易博客以及ORM关系介绍</a>
@@ -627,12 +640,6 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
 		      
 			      <li class="post">
 			        <a href="15554977521883.html">Swift单例写法</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15554962348970.html">Filter, Map, Reduce  Functions</a>
 			      </li>
 		     
 		  

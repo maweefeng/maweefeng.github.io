@@ -111,6 +111,8 @@
           
           <li id="Django"><a href="Django.html">Django</a></li>
           
+          <li id="Spiders"><a href="Spiders.html">Spiders</a></li>
+          
           <li id="about"><a href="about.html">about</a></li>
           
 
@@ -129,6 +131,54 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15433027949667.html">
+                
+                  <h1>sizeThatFits和sizeToFit</h1>
+                  <div class="a-content">
+                      
+		                  <div class="a-content-img">
+                      		<img src="media/15433027949667/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-27%20%E4%B8%8B%E5%8D%883.23.06.png" />
+                      	  </div>
+		              
+                      <div class="a-content-text">
+                        
+                        	<p>今天帮同事看一个布局约束的问题，（代码也是从别人手中接过来的，所以并不清楚怎么布局的）<br/>
+view是用xib画的，约束设置很多，本以为是约束的问题，设置了约束还是不能更改整个view的高度。</p>
+
+<p>最后找了一会，我发现了一个方法 sizeThatFit 在sizeThatFit内部返回了size，所以刚才尽管指定的约束改了，但是还是不影响下面的方法返回size。</p>
+
+<p>所以就写了这个东西给不了解的同学一点点经验。</p>
+
+<pre><code>- (void)sizeToFit;                       // calls sizeThatFits: with current view bounds and changes bounds size.
+- (CGSize)sizeThatFits:(CGSize)size;     // return &#39;best&#39; size to fit given size. does not actually resize view. Default is return existing view size
+
+</code></pre>
+
+<p>上面是苹果的方法说明。</p>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15433027949667.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/11/27</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15428536881209.html">
                 
@@ -454,42 +504,6 @@ You don’t have write permissions for the /usr/bin directory.</p>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15427834491315.html">
-                
-                  <h1>通讯录排序</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">苹果提供的排序方法</h3>
-
-<p>NSArray *stringArr = @[@&quot;我们&quot;,@&quot;我的&quot;, @&quot;重点&quot;, @&quot;重庆&quot;,  @&quot;三&quot;]; NSArray *result = [stringArr sortedArrayUsingSelector:@selector(localizedCompare:)];</p>
-
-<p>字典当中的keyvalue 可以一个键对应一个数组。</p>...
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834491315.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -552,6 +566,8 @@ You don’t have write permissions for the /usr/bin directory.</p>
         
             <a href="Django.html"><strong>Django</strong></a>
         
+            <a href="Spiders.html"><strong>Spiders</strong></a>
+        
             <a href="about.html"><strong>about</strong></a>
          
         </p>
@@ -567,6 +583,12 @@ You don’t have write permissions for the /usr/bin directory.</p>
                 <div class="side-content">
                 <ul class="posts-list">
 	      
+		      
+			      <li class="post">
+			        <a href="15590976892074.html">Scrapy 抓取网页数据</a>
+			      </li>
+		     
+		  
 		      
 			      <li class="post">
 			        <a href="15583189073141.html">Django入门 — 建立简易博客以及ORM关系介绍</a>
@@ -588,12 +610,6 @@ You don’t have write permissions for the /usr/bin directory.</p>
 		      
 			      <li class="post">
 			        <a href="15554977521883.html">Swift单例写法</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15554962348970.html">Filter, Map, Reduce  Functions</a>
 			      </li>
 		     
 		  
