@@ -132,357 +132,81 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15427834492451.html">
+                <a class="clearlink" href="15427834491504.html">
                 
-                  <h1>Xcode编译找不到头文件</h1>
+                  <h1>Git基础流</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>开发中遇到之前成功导入没有报错的头文件，后来打开工程之后报错说找不到头文件，这就很奇怪了。<br/>
-之前还是好好的，怎么睡了一觉代码还出现了问题呢。<br/><br/>
-然后就去搜索解决方法，发现是要到<code>buildsettings</code>下的<code>Search Paths</code>下面的<code>User Header Search Paths</code> 大概意思就是这个东西是头文件的搜索路径。<br/><br/>
-进去之后添加<code>${SRCROOT}</code>然后回车搞定就完成了。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834492512.html">
-                
-                  <h1>Flutter && Python && OC</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">dart的函数定义如下所示</h3>
-
-<pre><code>// Define a function.
-printInteger(int aNumber) {
-  print(&#39;The number is $aNumber.&#39;); // Print to console.
-}
-
-// This is where the app starts executing.
-main() {
-  var number = 42; // Declare and initialize a variable.
-  printInteger(number); // Call a function.
-}
-
-isNoble(atomicNumber) {
-  return _nobleGases[atomicNumber] != null;
-}
-
-如果函数只有单个语句，可以采用简略的形式：
-
-bool isNoble(int atomicNumber) =&gt; _nobleGases[atomicNumber] != null;
-
-
-</code></pre>
-
-<h3 id="toc_1">$dart取地址</h3>
-
-<pre><code>String say(String from, String msg, [String device]) {
-  var result = &#39;$from says $msg&#39;;
-  if (device != null) {
-    result = &#39;$result with a $device&#39;;
-  }
-  return result;
-}
-
-</code></pre>
-
-<p>以分号结尾 参数类型要指定也可以不指定<br/><br/>
-=&gt; 是{ return expr;} 的缩写</p>
-
-<h3 id="toc_2">oc的函数定义</h3>
-
-<pre><code>-(void)hello{
-
-print(@&quot;hello world&quot;);
-
-}
--(void)hello(int a,int b){
-
-print(@&quot;hello world %d %d&quot;,a,b);
-
-}
-
-
-</code></pre>
-
-<p>无需注意缩进 但是返回值类型一定要明确</p>
-
-<h3 id="toc_3">python函数定义</h3>
-
-<pre><code>def xxxx:
-    print &#39;hello world&#39;
-    
-def xxx(a,b):
-   print(a,b)
-   
-def xxx(self,a,b)
-   print a,b
-   
-</code></pre>
-
-<p>由于没有分号和大括号所以一定要注意缩进，</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834492767.html">
-                
-                  <h1>UISearchbar 自定义搜索图标失真</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	关于Searchbar设置搜索图标的问题
-因为这个大小在iOS中是固定的14*14
-如果UI给的切图不是这个尺寸就会出现失真的情况（ps：因为视图的默认contentMode是UIViewContentModeScaleToFill）
-网上有的方法一般是设置一个继承自UITextfield的searchBar
-去修改SearchBar的leftView。
-...
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834492767.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834492830.html">
-                
-                  <h1>CAMediaTimingFunction获取控制点：</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<pre><code>//create timing function
-CAMediaTimingFunction *function = [CAMediaTimingFunction functionWithControlPoints:1 :0 :0.75 :1];
-</code></pre>
-
-<p>我得到的controlPoint值似乎是错误的：</p>
-
-<pre><code>CGPoint controlPoint1, controlPoint2;
-[function getControlPointAtIndex:1 values:(float *)&amp;controlPoint1]; 
-[function getControlPointAtIndex:2 values:(float *)&amp;controlPoint2];
-The controlPoint value that I get seems to be wrong:
-
-controlPoint1   CGPoint (x = 5.2635442471208903E-315, y = 4.9406564584124654E-324)  
-controlPoint2   CGPoint (x = 0.0078125018408172764, y = 2.8421186829703262E-314)    
-</code></pre>
-
-<p>但是，如果我使用float数组作为参数的类型values，我得到controlPoint的正确值：</p>
-
-<pre><code>float c1p[2], c2p[2];
-[function getControlPointAtIndex:1 values:c1p];
-[function getControlPointAtIndex:2 values:c2p];
-The values are:
-
-controlPoint1   CGPoint (x = 1, y = 0)  
-controlPoint2   CGPoint (x = 0.75, y = 1) 
-</code></pre>
-
-<p>32位设备可以使用第一种方法 但是在64位设备就行不通了 </p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834493029.html">
-                
-                  <h1>iOS导航条背景颜色</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h4 id="toc_0">Situation one</h4>
-
-<p><code>self.navigationBar.barTintColor= [UIColor redColor];</code><br/>
-这时候的效果就是纯色的<br/>
-类似下面这样<br/>
-<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fsbvzqlgesj309f01oglk.jpg" alt=""/></p>
-
-<h4 id="toc_1">Situation two</h4>
-
-<p><code>self.navigationBar.backgroundColor = [UIColor redColor];</code><br/>
-<img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fsbvypka0rj309e01p0so.jpg" alt=""/></p>
-
-<p>一种是有渐变的半透明效果，一种就是简单的纯色效果。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834493152.html">
-                
-                  <h1>检测离屏渲染了</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><code>instrumets</code> 已经取消了<code>debug options</code></p>
-
-<p>可以在xcode的<code>debug</code> - <code>view debugging</code> 找到</p>
-
-<p>“核心动画工具和模板已在工具中弃用。之前在”调试选项“下的功能已移至Xcode，位于”<code>Debug&gt; View Debugging</code>“下。</p>
-
-<p><img src="http://upload-images.jianshu.io/upload_images/1315383-752efaac717c3947.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="BB55F33F-97CC-4C28-B3F1-22456A2A7BD8.png"/></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834493152.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834493214.html">
-                
-                  <h1>iOS开发一些小技巧</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ul>
-<li>去掉xcode黄色警告的方法</li>
-</ul>
-
-<pre><code>#pragma clang diagnostic push
-#pragma clang diagnostic ignored &quot;-Wdeprecated-declarations&quot;
- your code with warning
-#pragma clang diagnostic pop
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored &quot;-Wunused-variable&quot;
- your code with warning
-#pragma clang diagnostic pop
-</code></pre>
+                        	<h3 id="toc_0">如何将本地代码提交到远程git仓库</h3>
 
 <ul>
-<li>控制器init方法执...</li>
-</ul>
+<li><p>第一步：建立git仓库 <br/>
+cd到你的本地项目根目录下，执行git命令 </p>
+
+<blockquote>
+<p>git init</p>
+</blockquote></li>
+<li><p>第二步：将项目的所有文件添加到仓库中   </p>
+
+<blockquote>
+<p>git add .  </p>
+</blockquote></li>
+<li><p>第三步：将add的文件commit到仓库</p>
+
+<blockquote>
+<p>git commit -m &quot;注释语句&quot;</p>
+</blockquote></li>
+<li><p>第四步：去github上创建自己的Repository</p></li>
+<li><p>第五步：重点来了，将本地的仓库关联到github上    </p>
+
+<blockquote>
+<p>git remote add origin 仓库url</p>
+</blockquote>
+
+<p>后面的https链接地址换成你自</p></li>
+</ul>...
                         
                       </div>
                   </div>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15427834493214.html">Read more</a>&nbsp;&nbsp; 
+                   <a href="15427834491504.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Git.html'>Git</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834491567.html">
+                
+                  <h1>视图的绘制周期</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>当view第一次在屏幕上显示的时候，系统会绘制它的内容，然后系统会截取内容的快照，并且将快照作为视图的可见外观，如果你永远不改变视图的内容，那么视图的绘制代码永远不会改变。如果更改了视图的内容，不用直接重新绘制，而是使用<code>setNeedsDisplay</code>或者<code>setNeedsDisplayInRect</code>方法是视图无效。这些方法会告知视图内容以及改变并且需要在下一次进行重绘。如果需要立马重绘，那么需要使用<code>layoutIfNeeded</code>方法。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
                     <span class="date">2018/11/21</span>
                     <span>posted in&nbsp;</span> 
           				  
@@ -500,28 +224,268 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427815427067.html">
+                <a class="clearlink" href="15427834491628.html">
                 
-                  <h1>RACCommand</h1>
+                  <h1>设置Cell分割线顶头</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	RACCommand是ReactiveCocoa的基本组件之一，能节省开发的大部分时间，同时使得iOS/OS X 应用更健壮。
+                        	<h6 id="toc_0">UITableView设置系统cell的分割线顶头</h6>
 
-我看到一部分ReactiveCocoa（以下简单RAC）新人并没有完全理解RACCommand，自然也就不知道怎么用它。所以我写了这个小小介绍性文章，希望能对你的理解有所帮助。RACCommand源文件里的注释写得很不错，不过它并没有给任何例子来说说具体怎么用它，对于RAC的新人来说，只看这些注释还是比较难以理解的。
-...
+<pre><code>- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    cell.layoutMargins = UIEdgeInsetsZero;
+    cell.separatorInset = UIEdgeInsetsZero;
+    cell.preservesSuperviewLayoutMargins = NO;
+}
+</code></pre>
+
                         
                       </div>
                   </div>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15427815427067.html">Read more</a>&nbsp;&nbsp; 
+                  
                     <span class="date">2018/11/21</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834491690.html">
+                
+                  <h1>Runtime运行时</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ol>
+<li><p>runtime调用方法</p>
+
+<pre><code>- (void)test {
+TestModel *objct = [[TestModel alloc] init];
+((void (*) (id, SEL)) objc_msgSend) (objct, sel_registerName(&quot;country&quot;));
+((void (*) (id, SEL, NSString *)) objc_msgSend) (objct, sel_registerName(&quot;getProvince:&quot;), @&quot;广东省&quot;)；
+((void (*) (id, SEL, NSString *, NSString *)) objc_msgSend) (objct, sel_registerName(&quot;getCity:station:&quot;), @&quot;深圳市&quot;, @&quot;世界之窗&quot;)；
+NSString *weather = ((NSString* (*) (id, SEL)) objc_msgSend) (objct, sel_registerName(&quot;getWeather&quot;));
+NSLog(@&quot;%@&quot;, weather);
+}
+</code></pre></li>
+<li><p>给分类添加属性</p>
+
+<pre><code class="language-#import">#import &lt;objc/runtime.h&gt;
+static void *TestStringKey = &amp;TestStringKey;
+@implementation TestModel (String)
+- (void)setTestString:(NSString *)testString {
+objc_setAssociatedObject(self, TestStringKey, testString, OBJC_ASSOCIATION_COPY);
+}
+- (NSString *)testString {
+return objc_getAssociatedObject(self, TestStringKey);
+}
+@end
+</code></pre></li>
+<li><p>获取属性</p>
+
+<pre><code>使用class_copyIvarList获得的属性数组是Ivar类型 
+可以使用ivar_getName将ivar类型转换为char
+再使用NSString 的stringWithUTF8String方法转化为NSString类型。
+</code></pre></li>
+</ol>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834491747.html">
+                
+                  <h1>终端命令</h1>
+                  <div class="a-content">
+                      
+		                  <div class="a-content-img">
+                      		<img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fuch6fzertj30iy0da0ur.jpg" />
+                      	  </div>
+		              
+                      <div class="a-content-text">
+                        
+                        	<p>我们可以在 terminal 用 system profiler 命令来获取连接 mac 的 usb 设备：<br/>
+system_profiler SPUSBDataType</p>
+
+<ul>
+<li>ls 查看当前路径下的文件以及文件夹的名字</li>
+<li>ls /bin 表示查看根目录下的bin文件夹的东西</li>
+<li>ls docments 查看当前路径下documents文件夹下的所有东西</li>
+<li>cd .. 跳转到当前路</li>
+</ul>...
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15427834491747.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Git.html'>Git</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834491808.html">
+                
+                  <h1>终端命令设置代理</h1>
+                  <div class="a-content">
+                      
+		                  <div class="a-content-img">
+                      		<img src="media/15427834491808/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-04%20%E4%B8%8B%E5%8D%881.09.57.png" />
+                      	  </div>
+		              
+                      <div class="a-content-text">
+                        
+                        	<h4 id="toc_0">让终端走代理的几种方法</h4>
+
+<p><code>Macproxyterminal</code></p>
+
+<ul>
+<li><p>方法1:<br/>
+在终端中直接运行命令<br/>
+export http_proxy=<a href="http://proxyAddress:port">http://proxyAddress:port</a><br/>
+这个办法的好处是简单直接，并且影响面很小（只对当前终端有效，退出就不行了）。<br/>
+如果你用的是ss代理，在当前终端运行以下命令，那么wget curl 这类网络命令都会经过ss代理<br/>
+export ALL_PROXY=socks5://127.0.0.1:1080</p></li>
+<li><p>方法2:<br/>
+比如我现在使用的shadowsocks工具可以直接设置全局代理，勾选就行了，一般使用</p></li>
+</ul>...
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15427834491808.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Git.html'>Git</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834491890.html">
+                
+                  <h1>Block防止内存泄漏问题</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">关于block的一点注意 特别是网络请求这块</h3>
+
+<p>Block捕获外界变量销毁<br/>
+我们再进一步想想，Block有个最大的特点是可以访问当前的作用域，我们随便创建一个数组，重复上面操作，是否能够销毁...</p>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15427834491890.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834491963.html">
+                
+                  <h1>Git提交代码issue</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">问题①:</h3>
+
+<pre><code>fatal:unable to access &#39;https://github.com/xxx/xxx.git&#39; OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com 443
+</code></pre>
+
+<h5 id="toc_1">解决方法：</h5>
+
+<pre><code>env命令设置GIT_SSL_NO_VERIFY环境变量为”ture”，并同时调用正常的git clone命令 env GIT_SSL_NO_VERIFY=true git clone https://github.com/xxx/xxx.git     
+当你通过HTTPS访问Git远程仓库，如果服务器的SSL证书未经过第三方机构签署，那么Git就会报错。在克隆完毕的仓库中还需要将http.sslVerify设置为”false”。完整的命令如下：    
+git config http.sslVerify &quot;false&quot;、
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15427834491963.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Git.html'>Git</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -615,31 +579,31 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
 	      
 		      
 			      <li class="post">
-			        <a href="15590976892074.html">Scrapy 抓取网页数据</a>
+			        <a href="15638450239357.html">判断bundle中存不存在某个文件</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15583189073141.html">Django入门 — 建立简易博客以及ORM关系介绍</a>
+			        <a href="15638515424059.html">去除tableview sectionheaderview的粘连效果</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15578899295258.html">PromiseKit</a>
+			        <a href="15641370883413.html">快速的扩展类的初始化方法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15572343607934.html">RunLoop</a>
+			        <a href="15644628854335.html">切部分圆角</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15554977521883.html">Swift单例写法</a>
+			        <a href="15646490459131.html">didSet 和 willSet</a>
 			      </li>
 		     
 		  

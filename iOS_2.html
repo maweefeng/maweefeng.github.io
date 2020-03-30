@@ -132,30 +132,358 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15444306104604.html">
+                <a class="clearlink" href="15554962348970.html">
                 
-                  <h1>Advanced Debugging with Xcode and LLDB</h1>
+                  <h1>Filter, Map, Reduce  Functions</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<ol>
-<li><p>expression语句 </p>
+                        	<h3 id="toc_0">Filter</h3>
 
-<p>不用重新运行程序直接实现代码效果</p>
+<p>Filter 函数是过滤出所有符合过滤条件的元素 </p>
 
-<p><img src="media/15444306104604/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%884.29.55.png" alt="屏幕快照 2018-12-10 下午4.29.55"/>￼</p>
+<p>比如下面的方法过滤出数组所有元素等于3的元素</p>
 
-<ol>
-<li><p>描述</p>
+<pre><code>func filter() {
+        let numbers = [1,2,3,3,3,4]
+        //过滤出所有元素为3的元素 并返回过滤之后的数据
+        let filtedNumbers = numbers.filter({return $0 == 3})
+        print(filtedNumbers)//[3,3,3]
+    }
 
-<p>可以动态的改变条件，语法是<code>expression xxx = &quot;xxx&quot;</code> 后面是语句代码,类似程序中的代码并且支持加{}的判断等等语句。</p></li>
-<li><p>使用方法：</p>
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15554962348970.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2019/4/17</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15553216469263.html">
+                
+                  <h1>Swift中的字典转模型方法的迭代</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>模型可以是结构体也可以是继承自NSObject的类  </p>
+
+<pre><code>class App: NSObject {
+    var name:String = &quot;&quot;
+    var age:Int = 0
+    var boxDescription:String = &quot;&quot;
+}
+
+
+struct App :Decodable{
+    var name:String
+    var age:Int
+    var description:String
+    
+    init(dic:[String:AnyObject]) {
+        name = dic[&quot;name&quot;] as! String
+        age = dic[&quot;age&quot;] as! Int
+        description = dic[&quot;description&quot;] as! String
+    }
+    
+}
+
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15553216469263.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2019/4/15</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15553140637126.html">
+                
+                  <h1>Speed Up Development with Xcode File Templates</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h4 id="toc_0">Custom Templates Directory</h4>
 
 <ul>
-<li>调试台去写这个语句</li>
-<li>加断点去添加...<code>action</code>。</li>
+<li><p>~/Library/Developer/Xcode/Templates<br/>
+进入到指定的模版路径</p></li>
+<li><p>mkdir -p ~/Library/Developer/Xcode/Templates/File\ Templates/Custom 创建一个Custom 的文件夹</p></li>
+</ul>
+
+<h5 id="toc_1">Xcode Default Templates Directory</h5>
+
+<p>/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/File Templates</p>
+
+<p>进入之后复制一些其他的模版到自己的custom模版 然后进入模版之后编辑自己经常使用的模版，可以极大的提升开发的效率。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/4/15</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15536750345410.html">
+                
+                  <h1>Swift 和 OC 实现“热加载”</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>众所周知，Google 推出的跨平台框架Flutter 有着很好的编译优势<code>Flutter Hot Reload</code>，每次改变之后，点击 <code>reload</code> 就会实现实时编译。那么其实我们也可以实现<code>Swift</code>和<code>OC</code>的实时编译。</p>
+
+<h4 id="toc_0">InjectionIII</h4>
+
+<p>通过这个工具可以实现类似Flutter 的快速编译。</p>
+
+<h6 id="toc_1">实现思路：</h6>
+
+<p>Injection 会监听源代码文件的变化，如果文件被改动了，Injection Server 就会执行 rebuildClass 重新进行编译、打包成动态库，也就是 .dylib 文件。编译、打包成动态库后使用 writeSting 方法通过 Socket 通知运行的 App。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15536750345410.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2019/3/27</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15506484558583.html">
+                
+                  <h1>OC以及Swift中的闭包</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>因为在实际开发中闭包会经常用到，几乎和代理实现同样的功能，所以我们来探究一下OC和 swift中的闭包。</p>
+
+<h3 id="toc_0">Objecticve-C</h3>
+
+<h4 id="toc_1">①声明Block</h4>
+
+<p>OC中有两种声明方式</p>
+
+<ol>
+<li><p>方式一 </p>
+
+<pre><code>typedef void(^BlockName)(NSString * name);
+
+@property(nonatomic,copy)BlockName hello;
+</code></pre></li>
+</ol>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15506484558583.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2019/2/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15474609644602.html">
+                
+                  <h1>Localization Issue Warning Storyboard</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>当我使用 xib 设置自动布局的时候出现了下面的警告</p>
+
+<p><img src="media/15474609644602/15474616779035.png" alt=""/>￼</p>
+
+<blockquote>
+<p>Certain autolayout constraint combinations may result in an appropriate layout in the current development language but will pose issues in other languages and regions.</p>
+</blockquote>
+
+<p>然后看了苹果官方的文档，说是使用“自动布局”相对于彼此布置视图而没有固定的原点，宽度和高度，以便在语言或区域设置更改时视图重新定位和调整大小。自动布局使得可以为所有语言提供一组.storyboard和.xib文件，并且main.Storyboard默认进行本地化</p>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15474609644602.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2019/1/14</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15471123133942.html">
+                
+                  <h1>Value and Reference Collections</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>值类型和引用类型的集合有所不同,看下图可知。</p>
+
+<p><img src="media/15471123133942/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-01-10%20%E4%B8%8B%E5%8D%885.25.48.png" alt="屏幕快照 2019-01-10 下午5.25.48"/>￼</p>
+
+<pre><code>示例1      
+let x = NSMutableArray()
+x.add(&quot;🐵&quot;)
+let y = x
+y.add(&quot;🐶&quot;)    
+print(x,y)
+//结果
+(
+    &quot;🐵&quot;,
+    &quot;🐶&quot;
+) (
+    &quot;🐵&quot;,
+    &quot;🐶&quot;
+)  
+</code></pre>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15471123133942.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2019/1/10</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15452016090680.html">
+                
+                  <h1>UICollectionView 进阶篇</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">1. 加入手势支持</h2>
+
+<ol>
+<li><p>为什么要加入手势</p>
+
+<p>场景</p>
+
+<ul>
+<li>触发对集合视图的布局信息的更改。</li>
+<li><p>直接操作单元格和视图。</p>
+
+<p>应该始终将手势识别器附加到UICollectionView本身 而不是特定的单元格或视图。该UICollectionView是UIScrollView的子类，所以你的附加手势识别到集合的看法是不太可能，必须跟踪的其他手势干扰。此外，由于集合视图可以访问您的数据源和布局对象，因此您仍然可以访问适当操作单元格和视图所需的所有信息。</p></li>
 </ul></li>
+<li><p>怎么通过手势改变布局信息</p>
+
+<p>手势识别器提供了一种动态修改布局参数的简便方法。例如，您可以使用捏合手势识别器来更改自定义布局中项目之间的间距。用于配置这种手势识别器的过程相对简单。</p>
+
+<ol>
+<li>创建手势识别器。</li>
+<li>将手势识别器附加到集合视图。</li>
+<li>使用手势识别器的处理程序方法更新布局参数并使布局对象无效。</li>
 </ol></li>
 </ol>
                         
@@ -164,314 +492,8 @@
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15444306104604.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/12/10</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15439873228318.html">
-                
-                  <h1>UINavigationItem</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>纵观Apple的官方应用程式的导航栏你就会发现在iOS11之后导航栏的高度会自动变化，文字的大小以及位置也会随之变化。<br/>
-这是iOS11之后的新特性，苹果是使用给UINavigationItem添加扩展的方法增加的新功能，这也给了我们新的一种思路，为了不去修改之前代码的原则上添加新的功能的方式。</p>
-
-<pre><code>extension UINavigationItem {
-    public enum LargeTitleDisplayMode : Int {
-        /// Automatically use the large out-of-line title based on the state of the previous item in the navigation bar. An item with largeTitleDisplayMode=Automatic will show or hide the large title based on the request of the previous navigation item. If the first item pushed is set to Automatic, then it will show the large title if the navigation bar has prefersLargeTitles=YES.
-        case automatic
-
-        
-        /// Always use a larger title when this item is top most.
-        case always
-
-        
-        /// Never use a larger title when this item is top most.
-        case never
-    }
-}
-</code></pre>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15439873228318.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/12/5</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15439179971062.html">
-                
-                  <h1>iOS开发代码规范</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>针对我的开发经验ViewController应该是这样的。</p>
-
-<pre><code>#pragma mark - Life Cycle|生命周期
-#pragma mark - UITableViewDataSource and UITableViewDelegate|主要是一些代理的方法
-#pragma mark - Private Method|私有方法（内部可调用）
-#pragma mark - Public  Method|公有方法
-#pragma mark - Set &amp; Get|getter 和 setter方法
-#pragma mark - Notification|接收通知之后执行的方法
-#pragma mark - Event|一些视图的点击事件 比如button
-#pragma mark - DelegeteHandler|代理的实现时间
-</code></pre>
-
-<h2 id="toc_0">1️⃣代码命名基础</h2>
-
-<h3 id="toc_1">①一般原则</h3>
-
-<ul>
-<li><p>明晰</p>
-
-<ul>
-<li><p>尽可能保持清晰和简洁是件好事，但由于简洁，清晰度不应受到影响：</p>
-
-<p>比如<code>insertObject:atIndex:</code>比较清晰，而<code>insert:at:</code>却不知道发生了什么...</p></li>
-</ul></li>
-</ul>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15439179971062.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/12/4</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15438021304374.html">
-                
-                  <h1>Swift & Objective-C & C++之间的混编</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">①Objective-C 调用 C++</h3>
-
-<p>OC本身可以直接调用C的代码 比如直接可以调用printf方法。<br/>
-但是OC中的.m直接编译C++的代码就会出现编译错误<br/>
-需要把OC.m改成OC.mm之后（objective-c变成了objective-c++）引入iostream(<code>#include&lt;iostream&gt;</code>)就可以直接编译了。<br/>
-这可以在.mm文件当中直接使用c++的代码。<br/>
-也可以另外新建一个c++的文件，并且创建.h文件...</p>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15438021304374.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/12/3</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15433939231870.html">
-                
-                  <h1>dispatch_semaphore_t 信号量</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><code>dispatch_semaphore_t</code> 一种计算的信号量<br/>
-<code>dispatch_semaphore_create</code> 创建一个数值的信号量<br/>
-<code>dispatch_semaphore_signal</code> 对指定的信号量进行增加1</p>
-
-<p><code>dispatch_semaphore_wait</code> 会使传入的信号量减1，如果返回的值为0说明有任务进行中就阻碍当前的线程，如果返回的值大于0，就代表当前的线程当中没有任务再执行，就接着执行下面的任务。</p>
-
-<p>用这个可以起到顺序执行异步任务的功效。<br/>
-如果后一步的执行需要前一...</p>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15433939231870.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/28</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15433701207076.html">
-                
-                  <h1>_cmd 与 runtime 的结合</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	_cmd 是隐藏的参数，表示当前方法的selector，另外隐藏参数self表示当前方法调用的对象实例。
-这个参数是唯一的参数，在一个文件中方法名不会重复。
-所以可以让它代替运行时当中的属性的键名。...
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15433701207076.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/28</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15433027949667.html">
-                
-                  <h1>sizeThatFits和sizeToFit</h1>
-                  <div class="a-content">
-                      
-		                  <div class="a-content-img">
-                      		<img src="media/15433027949667/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-27%20%E4%B8%8B%E5%8D%883.23.06.png" />
-                      	  </div>
-		              
-                      <div class="a-content-text">
-                        
-                        	<p>今天帮同事看一个布局约束的问题，（代码也是从别人手中接过来的，所以并不清楚怎么布局的）<br/>
-view是用xib画的，约束设置很多，本以为是约束的问题，设置了约束还是不能更改整个view的高度。</p>
-
-<p>最后找了一会，我发现了一个方法 sizeThatFit 在sizeThatFit内部返回了size，所以刚才尽管指定的约束改了，但是还是不影响下面的方法返回size。</p>
-
-<p>所以就写了这个东西给不了解的同学一点点经验。</p>
-
-<pre><code>- (void)sizeToFit;                       // calls sizeThatFits: with current view bounds and changes bounds size.
-- (CGSize)sizeThatFits:(CGSize)size;     // return &#39;best&#39; size to fit given size. does not actually resize view. Default is return existing view size
-
-</code></pre>
-
-<p>上面是苹果的方法说明。</p>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15433027949667.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/27</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15428536881209.html">
-                
-                  <h1>被神化的MVVM和被错误认识的Model层</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>MVVM是一种双向绑定技术，使用VM实现数据的变化更新视图，视图的变化更新数据的处理，整个过程是一种数据绑定的过程。<br/>
-网络上可以看到大多数人吹捧MVVM，但是千奇百怪的，并没有人能很好的理解MVVM，反而使代码变得异常复杂。<br/>
-<code>MVC的关系图</code></p>
-
-<pre><code class="language-sequence">V层-&gt;C层:事件
-Note right of V层:特殊情况下可以持有M层
-C层-&gt;V层:创建/更新
-C层-&gt;M层: 调用
-M层-&gt;C层: 通知
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15428536881209.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/22</span>
+                   <a href="15452016090680.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/12/19</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -568,31 +590,31 @@ M层-&gt;C层: 通知
 	      
 		      
 			      <li class="post">
-			        <a href="15590976892074.html">Scrapy 抓取网页数据</a>
+			        <a href="15638450239357.html">判断bundle中存不存在某个文件</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15583189073141.html">Django入门 — 建立简易博客以及ORM关系介绍</a>
+			        <a href="15638515424059.html">去除tableview sectionheaderview的粘连效果</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15578899295258.html">PromiseKit</a>
+			        <a href="15641370883413.html">快速的扩展类的初始化方法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15572343607934.html">RunLoop</a>
+			        <a href="15644628854335.html">切部分圆角</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15554977521883.html">Swift单例写法</a>
+			        <a href="15646490459131.html">didSet 和 willSet</a>
 			      </li>
 		     
 		  

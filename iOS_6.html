@@ -132,127 +132,241 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15446033549417.html">
+                <a class="clearlink" href="15427834492260.html">
                 
-                  <h1>What's New in LLVM（2017）</h1>
+                  <h1>SDWebImageview 不能加载HTTPS图片</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>Xcode 9中的Apple LLVM编译器具有新的语言特性、改进的诊断和更强大的优化。了解Objective-C和c++的最新添加，了解新的和改进的警告和静态分析器检查，了解LLVM编译器技术如何为应用程序提供更快的构建时间和更好的运行时性能。</p>
+                        	<p>这个问题是因为图片地址所在的服务器没有有效的SSL证书文件<br/>
+只需要在Options参数中设置SDWebImaweefenggeAllowInvalidSSLCertificates枚举就可</p>
 
-<h2 id="toc_0">1.不同语言的api检查</h2>
-
-<pre><code>@available(iOS 11,*)--oc
-#available  --swift
+<pre><code>[self.avatarImageView sd_setImageWithURL: [NSURL URLWithString: famousStarObject.avatar] placeholderImage: [UIImage imageNamed: @&quot;icon_default_avator&quot;] options: SDWebImageAllowInvalidSSLCertificates];
 </code></pre>
 
-<p>便捷的方法检查（检查可用性，如果你要给某个新的系统加入新功能）</p>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
-<pre><code>@interface MyAblumController : UIViewController
-
--(void)showFaces API_AVALABILITY(ios(11.0));
-
-@end
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834492322.html">
+                
+                  <h1>UIImageView 动画的属性animationImages</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code class="language-beginImageArray.append(UIImage(named:">
+    let imageView = UIImageView(image: UIImage(named: &quot;switch 1.png&quot;))
+    imageView.center = view.center
+    imageView.animationImages = beginImageArray
+    // 动画持续时间 每一帧0.025秒，总共22帧
+    imageView.animationDuration = 0.025 * 22
+    imageView.animationRepeatCount = 1
+    // 动画结束后要把imageView的image属性设置成动画最后的一帧
+    imageView.image = UIImage(named: &quot;switch 22.png&quot;)
+    imageView.startAnimating()
+    view.addSubview(imageView)
 </code></pre>
 
-<p>还可以移动整个类的范围</p>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
-<pre><code>API_AVALABILITY(ios(11.0))
-@interface MyAblumController : UIViewController
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834492390.html">
+                
+                  <h1>Xcode打包遇到的坑</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>由于是接手别人做的项目，所以当把程序打包的时候出现了问题，证书和描述文件的问题 </p>
 
--(void)showFaces ;
+<p>最开始尝试打开xcode的账户下载所有证书，结果发现并不能成功</p>
 
-@end
-</code></pre>
+<p>后来手动管理证书就可以看到之前在开发者中心创建的开发和发布证书，如下图所示<br/>
+<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fnczazu4irj30pd0iejte.jpg" alt=""/><br/>
+然后会到证书管理界面，会把你选中账号的所有相关证书列下来</p>
 
-<h2 id="toc_1">2.不要把Number元素和标量进行比较</h2>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fnczelaqz6j30pd0iedi6.jpg" alt=""/></p>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15427834492390.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
-<pre><code>@property NSNumber * photoCount;
--(BOOL)hasPhotos{
-return self.photoCount &gt; 0
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834492451.html">
+                
+                  <h1>Xcode编译找不到头文件</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>开发中遇到之前成功导入没有报错的头文件，后来打开工程之后报错说找不到头文件，这就很奇怪了。<br/>
+之前还是好好的，怎么睡了一觉代码还出现了问题呢。<br/><br/>
+然后就去搜索解决方法，发现是要到<code>buildsettings</code>下的<code>Search Paths</code>下面的<code>User Header Search Paths</code> 大概意思就是这个东西是头文件的搜索路径。<br/><br/>
+进去之后添加<code>${SRCROOT}</code>然后回车搞定就完成了。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834492512.html">
+                
+                  <h1>Flutter && Python && OC</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">dart的函数定义如下所示</h3>
+
+<pre><code>// Define a function.
+printInteger(int aNumber) {
+  print(&#39;The number is $aNumber.&#39;); // Print to console.
 }
+
+// This is where the app starts executing.
+main() {
+  var number = 42; // Declare and initialize a variable.
+  printInteger(number); // Call a function.
+}
+
+isNoble(atomicNumber) {
+  return _nobleGases[atomicNumber] != null;
+}
+
+如果函数只有单个语句，可以采用简略的形式：
+
+bool isNoble(int atomicNumber) =&gt; _nobleGases[atomicNumber] != null;
+
+
 </code></pre>
 
-<p>因为这个比较相当于是把photoCount和指针nil相比，返回为YES,所以这个错误很严重。</p>
+<h3 id="toc_1">$dart取地址</h3>
 
-<p><img src="media/15445814733953/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%884.26.59.png" alt="屏幕快照 2018-12-12 下午4.26.59"/></p>
+<pre><code>String say(String from, String msg, [String device]) {
+  var result = &#39;$from says $msg&#39;;
+  if (device != null) {
+    result = &#39;$result with a $device&#39;;
+  }
+  return result;
+}
 
-<p>编译器会报错，提醒你出现了问题，你可以把NSNumber转成interger之后再做判断。</p>
+</code></pre>
 
-<p><img src="media/15445814733953/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%884.28.18.png" alt="屏幕快照 2018-12-12 下午4.28.18"/></p>
+<p>以分号结尾 参数类型要指定也可以不指定<br/><br/>
+=&gt; 是{ return expr;} 的缩写</p>
 
-<h6 id="toc_2">Control Check in Build Setting</h6>
+<h3 id="toc_2">oc的函数定义</h3>
 
-<p>设置Suspicious Conversions 为YES(aggressive)当编译器不确定的时候会弹出如上提示。<br/>
-<img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%885.06.22.png" alt="屏幕快照 2018-12-12 下午5.06.22"/></p>
+<pre><code>-(void)hello{
 
-<h2 id="toc_3">3. copy修饰NSMutableArray</h2>
+print(@&quot;hello world&quot;);
 
-<p>赋值的时候等于是复制了一个不可变对象，所以以后运行时的时候会报错(如果你对这个数组进行修改)</p>
+}
+-(void)hello(int a,int b){
 
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%886.45.36.png" alt="屏幕快照 2018-12-12 下午6.45.36"/></p>
+print(@&quot;hello world %d %d&quot;,a,b);
 
-<p>这个时候就会报错，因为给self.titieArr赋值之后变成了不可变的，所以接下来的操作会导致错误。</p>
+}
 
-<h6 id="toc_4">解决方法:</h6>
 
-<pre><code>//添加setter方法
--(void)setTitleArr:(NSMutableArray *)titleArr{
+</code></pre>
+
+<p>无需注意缩进 但是返回值类型一定要明确</p>
+
+<h3 id="toc_3">python函数定义</h3>
+
+<pre><code>def xxxx:
+    print &#39;hello world&#39;
     
-    self.titleArr= [titleArr mutableCopy];
-}
+def xxx(a,b):
+   print(a,b)
+   
+def xxx(self,a,b)
+   print a,b
+   
 </code></pre>
 
-<p>每次赋值的时候给数组赋值可变对象。</p>
-
-<p>另外为了及时发现bug可以开启每次build的时候analyze而不是每次都要去手动analyze（如果不开启的话上面的错误不会提示）</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%886.48.45.png" alt="屏幕快照 2018-12-12 下午6.48.45"/><br/>
-设置Analyze During Build 的值为Yes.</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%886.43.05.png" alt="屏幕快照 2018-12-12 下午6.43.05"/></p>
-
-<h2 id="toc_5">4. 声明无参数的函数</h2>
-
-<h5 id="toc_6">Non-prototype declarations in C and Objective-C</h5>
-
-<p>非原型声明</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.47.06.png" alt="屏幕快照 2018-12-13 下午3.47.06"/></p>
-
-<p>在C和OC中意味着foo可以跟任何参数调用，这个行为可以追溯到1977年C语言，不匹配类型的调用会导致运行时的崩溃。<br/>
-在Xcode9 中编译器带有一个新的警告加强严格原型，会报出警告。</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.50.45.png" alt="屏幕快照 2018-12-13 下午3.50.45"/></p>
-
-<p>通常只需要在括号中添加void表示不接收任何参数传递。</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.51.41.png" alt="屏幕快照 2018-12-13 下午3.51.41"/></p>
-
-<p>任何带有参数的调用都会直接报错。</p>
-
-<p>另外block中不接收参数的时候也会出现同样的警告，如下所示。</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.52.47.png" alt="屏幕快照 2018-12-13 下午3.52.47"/></p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.53.57.png" alt="屏幕快照 2018-12-13 下午3.53.57"/></p>
-
-<h3 id="toc_7">升级验证警告设置</h3>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%884.08.45.png" alt="屏幕快照 2018-12-13 下午4.08.45"/></p>
-
-<p>勾选Yes(Error)</p>
-
-<h6 id="toc_8">Strict Prototypes 勾选Yes(Error)之前 and 勾选之后</h6>
-
-<p><img src="media/15446033549417/Artboard%202@2x.png" alt="Artboard 2@2x"/></p>
-
-<p>勾选之后就不只是警告了，直接是错误提醒，让你开发的时候不得不注意，也是为了代码的安全性。</p>
-
-<h3 id="toc_9">结尾</h3>
-
-<p>WWDC2017剩余部分是关于C++的优化，如果感兴趣的话可以移步<a href="https://developer.apple.com/videos/play/wwdc2017/411">开发者网站</a>观看。</p>
+<p>由于没有分号和大括号所以一定要注意缩进，</p>
 
                         
                       </div>
@@ -261,7 +375,7 @@ return self.photoCount &gt; 0
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2017/11/12</span>
+                    <span class="date">2018/11/21</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -278,49 +392,27 @@ return self.photoCount &gt; 0
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834493345.html">
+                <a class="clearlink" href="15427834492767.html">
                 
-                  <h1>高效的画线</h1>
+                  <h1>UISearchbar 自定义搜索图标失真</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>先创建一个UIBeizerPath 的对象path</p>
-
-<pre><code>UIBezierPath *path = [[UIBezierPath alloc] init];
-  [path moveToPoint:CGPointMake(175, 100)];
-  
-  [path addArcWithCenter:CGPointMake(150, 100) radius:25 startAngle:0 endAngle:2*M_PI clockwise:YES];
-  [path moveToPoint:CGPointMake(150, 125)];
-  [path addLineToPoint:CGPointMake(150, 175)];
-  [path addLineToPoint:CGPointMake(125, 225)];
-  [path moveToPoint:CGPointMake(150, 175)];
-  [path addLineToPoint:CGPointMake(175, 225)];
-  [path moveToPoint:CGPointMake(100, 150)];
-  [path addLineToPoint:CGPointMake(200, 150)];
-</code></pre>
-
-<p>然后创建CAShapeLayer添加到视图的layer上 </p>
-
-<pre><code>CAShapeLayer *shapeLayer = [CAShapeLayer layer];
-  shapeLayer.strokeColor = [UIColor redColor].CGColor;
-  shapeLayer.fillColor = [UIColor clearColor].CGColor;
-  shapeLayer.lineWidth = 5;
-  shapeLayer.lineJoin = kCALineJoinRound;
-  shapeLayer.lineCap = kCALineCapRound;
-  shapeLayer.path = path.CGPath;
-  //add it to our view
-  [self.containerView.layer addSublayer:shapeLayer];
-</code></pre>
-
+                        	关于Searchbar设置搜索图标的问题
+因为这个大小在iOS中是固定的14*14
+如果UI给的切图不是这个尺寸就会出现失真的情况（ps：因为视图的默认contentMode是UIViewContentModeScaleToFill）
+网上有的方法一般是设置一个继承自UITextfield的searchBar
+去修改SearchBar的leftView。
+...
                         
                       </div>
                   </div>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                  
-                    <span class="date">2017/10/21</span>
+                   <a href="15427834492767.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/11/21</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -337,42 +429,94 @@ return self.photoCount &gt; 0
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834493281.html">
+                <a class="clearlink" href="15427834492830.html">
                 
-                  <h1>为什么NSString使用Copy修饰符</h1>
+                  <h1>CAMediaTimingFunction获取控制点：</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h6 id="toc_0">NSString为什么要用copy关键字，用strong会有什么问题？</h6>
-
-<p>我们大部分的时候NSString的属性都是copy，那copy与strong的情况下到底有什么区别呢?我们以实例来说明：</p>
-
-<pre><code>@interface ViewController ()
-@property(nonatomic,copy)NSString * str1;
-@property(nonatomic,strong)NSString*str2;
-@end
-
--(void)test
-{
-    NSMutableString*str=[NSMutableString stringWithFormat:@&quot;helloworld&quot;];
-    self.str1=str;
-    self.str2=str;
-    NSLog(@&quot;str:%p--%p&quot;,str,&amp;str);
-    NSLog(@&quot;copy_str:%p--%p&quot;,_str1,&amp;_str1);
-    NSLog(@&quot;strong_str:%p--%p&quot;,_str2,&amp;_str2);
-}
+                        	<pre><code>//create timing function
+CAMediaTimingFunction *function = [CAMediaTimingFunction functionWithControlPoints:1 :0 :0.75 :1];
 </code></pre>
 
-<p>最后我们运行看打印结...</p>
+<p>我得到的controlPoint值似乎是错误的：</p>
+
+<pre><code>CGPoint controlPoint1, controlPoint2;
+[function getControlPointAtIndex:1 values:(float *)&amp;controlPoint1]; 
+[function getControlPointAtIndex:2 values:(float *)&amp;controlPoint2];
+The controlPoint value that I get seems to be wrong:
+
+controlPoint1   CGPoint (x = 5.2635442471208903E-315, y = 4.9406564584124654E-324)  
+controlPoint2   CGPoint (x = 0.0078125018408172764, y = 2.8421186829703262E-314)    
+</code></pre>
+
+<p>但是，如果我使用float数组作为参数的类型values，我得到controlPoint的正确值：</p>
+
+<pre><code>float c1p[2], c2p[2];
+[function getControlPointAtIndex:1 values:c1p];
+[function getControlPointAtIndex:2 values:c2p];
+The values are:
+
+controlPoint1   CGPoint (x = 1, y = 0)  
+controlPoint2   CGPoint (x = 0.75, y = 1) 
+</code></pre>
+
+<p>32位设备可以使用第一种方法 但是在64位设备就行不通了 </p>
+
                         
                       </div>
                   </div>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15427834493281.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2017/9/21</span>
+                  
+                    <span class="date">2018/11/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15427834493029.html">
+                
+                  <h1>iOS导航条背景颜色</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h4 id="toc_0">Situation one</h4>
+
+<p><code>self.navigationBar.barTintColor= [UIColor redColor];</code><br/>
+这时候的效果就是纯色的<br/>
+类似下面这样<br/>
+<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fsbvzqlgesj309f01oglk.jpg" alt=""/></p>
+
+<h4 id="toc_1">Situation two</h4>
+
+<p><code>self.navigationBar.backgroundColor = [UIColor redColor];</code><br/>
+<img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fsbvypka0rj309e01p0so.jpg" alt=""/></p>
+
+<p>一种是有渐变的半透明效果，一种就是简单的纯色效果。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/21</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -399,7 +543,7 @@ return self.photoCount &gt; 0
 			  </div>
 			  <div class="large-6 columns">
 			<p class="text-right" style="padding-top:25px;">
-			
+			 <a href="iOS_7.html">&raquo; Next Page</a> 
 			</p>
 			  </div>
 			</div>
@@ -469,31 +613,31 @@ return self.photoCount &gt; 0
 	      
 		      
 			      <li class="post">
-			        <a href="15590976892074.html">Scrapy 抓取网页数据</a>
+			        <a href="15638450239357.html">判断bundle中存不存在某个文件</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15583189073141.html">Django入门 — 建立简易博客以及ORM关系介绍</a>
+			        <a href="15638515424059.html">去除tableview sectionheaderview的粘连效果</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15578899295258.html">PromiseKit</a>
+			        <a href="15641370883413.html">快速的扩展类的初始化方法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15572343607934.html">RunLoop</a>
+			        <a href="15644628854335.html">切部分圆角</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15554977521883.html">Swift单例写法</a>
+			        <a href="15646490459131.html">didSet 和 willSet</a>
 			      </li>
 		     
 		  

@@ -132,87 +132,32 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15427834491002.html">
+                <a class="clearlink" href="15451226434486.html">
                 
-                  <h1>代理修饰符</h1>
+                  <h1>UICollectionView入门篇</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h3 id="toc_0">为什么代理修饰要用weak而不是assgin</h3>
+                        	<h2 id="toc_0">1. 设计数据源和代理</h2>
 
-<p>weak 一旦不被引用的时候就不会再使用了，就会被置位nil，oc中使用nil执行操作不会引起崩溃，所以即使再次使用也不会产生野指针。<br/><br/>
-但是如果是用assgin修饰，一旦不被引用不会自动置nil,当再次操作这个对象的代理方法的时候就会产生野指针引起程序崩溃。</p>
+<p>每个集合视图都必须具有数据源对象。该数据源对象是内容，你的应用程序显示。它可以是应用程序数据模型中的对象，也可以是管理集合视图的视图控制器。数据源的唯一要求是它必须能够提供集合视图所需的信息，例如有多少项以及在显示这些项时要使用的视图。</p>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<p>UICollectionViewDelegate是一个可选的（但建议）对象管理有关的介绍，并与您的内容互动方面。虽然代表的主要工作是管理单元格突出显示和选择，但可以扩展它以提供其他信息。例如，流布局扩展了基本委托行为以自定义布局指标，例如单元格的大小和它们之间的间距</p>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834491194.html">
-                
-                  <h1>隐藏导航栏底部的线条</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>有时候遇到一些特殊的要求，需要隐藏导航栏底部的线条。<br/>
-两行代码就可以做到。</p>
+<p><strong>For example:</strong></p>
 
-<ul>
-<li><p>方法一:<br/><br/>
-设置导航栏的背景图（setBackgroundImage方法）<br/><br/>
-设置导航栏的shadowImage (setShadowImage方法)<br/><br/>
-<code>UINavigationBar *navigationBar = self.navigationController.navigationBar;</code><br/>
-//设置透明的背景图，便于识别底部线条有没有被隐藏<br/><br/>
-<code>[navigationBar setBackgroundImage:[[UIImage alloc] init]<br/>
-                   forBarPosition:UIBarPositionAny<br/>
-                       barMetrics:UIBarMetricsDefault];</code> <br/>
-//此处使底部线条失效<br/>
-<code>[navigationBar setShadowImage:[UIImage new]];</code></p></li>
-<li><p>方法二：<br/>
-<code>self.navigationController.navigationBar.clipsToBounds = YES;</code></p></li>
-</ul>
-
-<h3 id="toc_0">导航栏全局属性设置</h3>
-
-<p>//全局设置导航栏主题</p>
-
-<pre><code>- (void)setNavigationControllerAppearance {
-    [UINavigationBar appearance].barStyle  = UIBarStyleBlack;
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithWhite:0.1 alpha:0.5]];
-    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-}
-
+<pre><code> self.collectionView.delegate = self;
+ self.collectionView.dataSource = self;
 </code></pre>
-
                         
                       </div>
                   </div>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
+                   <a href="15451226434486.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/12/18</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -229,114 +174,121 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834491253.html">
+                <a class="clearlink" href="15450120295637.html">
                 
-                  <h1>堆栈的一点区别</h1>
+                  <h1>What's New in Storyboards</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h6 id="toc_0">故事板是在iOS和OS X上构建用户界面和应用程序流的好方法。了解如何有效地组织故事板，为接口定义segue，以及轻松地展开转换。深入讨论新的api，并听取关于如何创建优秀用户界面的技巧，并附带一些自定义的转场动画介绍和使用。</h6>
+
+<h2 id="toc_1">1. Refactor to Storyboard</h2>
+
+<p>在 storyboard 中选中对应的 xib 文件，然后点击Editor-&gt;Refactor to Storyboard</p>
+
+<p>可以把整个Storyboard文件中独立的部分重构出来。</p>
+
+<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.13.35.png" alt="屏幕快照 2018-12-17 上午10.13.35"/></p>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15450120295637.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/12/17</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15446970341146.html">
+                
+                  <h1>Building Apps with Dynamic Type</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>使用动态类型，人们可以选择自己喜欢的文本大小，iOS会根据需要自动切换字体。理解为什么动态类型很重要，以及在显示文本时如何支持它。了解iOS 11的新特性，掌握支持应用程序动态类型的框架和工具。</p>
+
+<h2 id="toc_0">1.What is Dynamic Type?</h2>
+
+<p>Dynamic Type是一个允许用户在屏幕上自定义字体大小的功能。</p>
+
+<p><img src="media/15446970341146/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%886.37.58.png" alt="屏幕快照 2018-12-13 下午6.37.58"/>￼</p>
+
+<p>对于视力有障碍的人来说区别很大，字体大之后就可以看到内容了。</p>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15446970341146.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/12/13</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15445109745059.html">
+                
+                  <h1>Love at First Launch</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<ul>
-<li>栈是后进先出的顺序<br/></li>
-<li>而堆是根据优先级的顺序 </li>
+<li>直接显示内容而不是弹出需要注册登录的页面</li>
+<li>通过交互引导用户，而不是一些文字引导</li>
+<li>延迟请求授权，而不是一下登录之后就开始要权限（定位，相机，图片）。</li>
 </ul>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<p>针对延迟请求，想到一个好主意，就是新建一个类，可以是单例，负责管理这些请求。</p>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834491315.html">
-                
-                  <h1>通讯录排序</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">苹果提供的排序方法</h3>
+<h1 id="toc_0">App Startup Time: Past, Present, and Future</h1>
 
-<p>NSArray *stringArr = @[@&quot;我们&quot;,@&quot;我的&quot;, @&quot;重点&quot;, @&quot;重庆&quot;,  @&quot;三&quot;]; NSArray *result = [stringArr sortedArrayUsingSelector:@selector(localizedCompare:)];</p>
-
-<p>字典当中的keyvalue 可以一个键对应一个数组。</p>...
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834491315.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834491377.html">
-                
-                  <h1>给UITableView边框加阴影</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>项目中有个需求要在UITableView加边框阴影  </p>
-
-<p>如果你的界面的UITableView是充满整个屏幕的话那么就可以使用这个简单的方法。   </p>
+<p>了解在苹果平台上使用的dyld动态链接器，它是如何在这些年来发生变化的，以及它下一步的发展方向。了解改进的工具如何使优化应用程序的启动时间变得更容易，并了解dyld中的新更改如何进一步改善启动时间。</p>
 
 <ul>
-<li>方法一</li>
+<li><p>startup time 启动时间</p>
+
+<p>main函数执行之前所用的时间</p></li>
+<li><p>launch closure启动收尾</p>
+
+<p>启动你的程序所需要的全部信息，比如使用什么dylib，他们的哪些偏移位置用于不同的符号，代码签名是什么，</p></li>
 </ul>
-
-<pre><code>tableView.layer.shadowColor = UIColor(white: 000000, alpha: 0.3).CGColor
-
-tableView.layer.shadowOffset = CGSize(width: -6, height: 6)
-
-tableView.layer.shadowOpacity = 1
-
-tableView.clipsToBounds = false //这句最重要了，不然就显示不出来
-</code></pre>
-
-<h4 id="toc_0">问题来了</h4>
-
-<p>我的界面UITableview上面有一个固定不动的区域，如果单纯的照上面写的话，就会出现tableview盖住上面的问题</p>
-...
                         
                       </div>
                   </div>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15427834491377.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
+                   <a href="15445109745059.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/12/11</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -353,27 +305,43 @@ tableView.clipsToBounds = false //这句最重要了，不然就显示不出来
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834491441.html">
+                <a class="clearlink" href="15445081328797.html">
                 
-                  <h1>设置图片拉伸范围</h1>
+                  <h1>App Icon Design</h1>
                   <div class="a-content">
                       
+		                  <div class="a-content-img">
+                      		<img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.16.00.png" />
+                      	  </div>
+		              
                       <div class="a-content-text">
                         
-                        	<pre><code>- (UIImage *)stretchableImageWithLeftCapWidth:(NSInteger)leftCapWidth topCapHeight:(NSInteger)topCapHeight 
-</code></pre>
+                        	<h2 id="toc_0">Design</h2>
 
-<p>这个函数是UIImage的一个实例函数，它的功能是创建一个内容可拉伸，而边角不拉伸的图片，需要两个参数，第一个是左边不拉伸区域的宽度，第二个参数是上面不拉伸的高度。</p>
+<p>我们对符号的应用可以追溯到很久很久之前，总所周知我们现在使用的文字就是从象形文字发展过来的。</p>
 
-<p>根据设置的宽度和</p>...
+<ul>
+<li><p>象征化</p>
+
+<p>找到一个简单易懂的象征，物体、图形标注或者符号。</p></li>
+<li><p>简单性</p>
+
+<p>设计要简单，不要杂乱无章，太过复杂。如果设计的好，人们一眼就能看懂。</p></li>
+<li><p>关联性</p>
+
+<p>创建与用户之间的感情连接，跟UI一样，图标是应用的脸面，一定要有趣并且引人注目</p></li>
+<li><p>传统性</p>
+
+<p>对图标的修改要有意义而且谨慎，不建议经常更改应用图标尤其是每次升级的时候，要与时俱进。...</p></li>
+</ul>
                         
                       </div>
                   </div>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15427834491441.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
+                   <a href="15445081328797.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/12/11</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -390,23 +358,40 @@ tableView.clipsToBounds = false //这句最重要了，不然就显示不出来
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834491567.html">
+                <a class="clearlink" href="15444306104604.html">
                 
-                  <h1>视图的绘制周期</h1>
+                  <h1>Advanced Debugging with Xcode and LLDB</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>当view第一次在屏幕上显示的时候，系统会绘制它的内容，然后系统会截取内容的快照，并且将快照作为视图的可见外观，如果你永远不改变视图的内容，那么视图的绘制代码永远不会改变。如果更改了视图的内容，不用直接重新绘制，而是使用<code>setNeedsDisplay</code>或者<code>setNeedsDisplayInRect</code>方法是视图无效。这些方法会告知视图内容以及改变并且需要在下一次进行重绘。如果需要立马重绘，那么需要使用<code>layoutIfNeeded</code>方法。</p>
+                        	<ol>
+<li><p>expression语句 </p>
 
+<p>不用重新运行程序直接实现代码效果</p>
+
+<p><img src="media/15444306104604/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%884.29.55.png" alt="屏幕快照 2018-12-10 下午4.29.55"/>￼</p>
+
+<ol>
+<li><p>描述</p>
+
+<p>可以动态的改变条件，语法是<code>expression xxx = &quot;xxx&quot;</code> 后面是语句代码,类似程序中的代码并且支持加{}的判断等等语句。</p></li>
+<li><p>使用方法：</p>
+
+<ul>
+<li>调试台去写这个语句</li>
+<li>加断点去添加...<code>action</code>。</li>
+</ul></li>
+</ol></li>
+</ol>
                         
                       </div>
                   </div>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
+                   <a href="15444306104604.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/12/10</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -423,30 +408,95 @@ tableView.clipsToBounds = false //这句最重要了，不然就显示不出来
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834491628.html">
+                <a class="clearlink" href="15439873228318.html">
                 
-                  <h1>设置Cell分割线顶头</h1>
+                  <h1>UINavigationItem</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h6 id="toc_0">UITableView设置系统cell的分割线顶头</h6>
+                        	<p>纵观Apple的官方应用程式的导航栏你就会发现在iOS11之后导航栏的高度会自动变化，文字的大小以及位置也会随之变化。<br/>
+这是iOS11之后的新特性，苹果是使用给UINavigationItem添加扩展的方法增加的新功能，这也给了我们新的一种思路，为了不去修改之前代码的原则上添加新的功能的方式。</p>
 
-<pre><code>- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    cell.layoutMargins = UIEdgeInsetsZero;
-    cell.separatorInset = UIEdgeInsetsZero;
-    cell.preservesSuperviewLayoutMargins = NO;
+<pre><code>extension UINavigationItem {
+    public enum LargeTitleDisplayMode : Int {
+        /// Automatically use the large out-of-line title based on the state of the previous item in the navigation bar. An item with largeTitleDisplayMode=Automatic will show or hide the large title based on the request of the previous navigation item. If the first item pushed is set to Automatic, then it will show the large title if the navigation bar has prefersLargeTitles=YES.
+        case automatic
+
+        
+        /// Always use a larger title when this item is top most.
+        case always
+
+        
+        /// Never use a larger title when this item is top most.
+        case never
+    }
 }
 </code></pre>
-
                         
                       </div>
                   </div>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
+                   <a href="15439873228318.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/12/5</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15439179971062.html">
+                
+                  <h1>iOS开发代码规范</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>针对我的开发经验ViewController应该是这样的。</p>
+
+<pre><code>#pragma mark - Life Cycle|生命周期
+#pragma mark - UITableViewDataSource and UITableViewDelegate|主要是一些代理的方法
+#pragma mark - Private Method|私有方法（内部可调用）
+#pragma mark - Public  Method|公有方法
+#pragma mark - Set &amp; Get|getter 和 setter方法
+#pragma mark - Notification|接收通知之后执行的方法
+#pragma mark - Event|一些视图的点击事件 比如button
+#pragma mark - DelegeteHandler|代理的实现时间
+</code></pre>
+
+<h2 id="toc_0">1️⃣代码命名基础</h2>
+
+<h3 id="toc_1">①一般原则</h3>
+
+<ul>
+<li><p>明晰</p>
+
+<ul>
+<li><p>尽可能保持清晰和简洁是件好事，但由于简洁，清晰度不应受到影响：</p>
+
+<p>比如<code>insertObject:atIndex:</code>比较清晰，而<code>insert:at:</code>却不知道发生了什么...</p></li>
+</ul></li>
+</ul>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15439179971062.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/12/4</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -543,31 +593,31 @@ tableView.clipsToBounds = false //这句最重要了，不然就显示不出来
 	      
 		      
 			      <li class="post">
-			        <a href="15590976892074.html">Scrapy 抓取网页数据</a>
+			        <a href="15638450239357.html">判断bundle中存不存在某个文件</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15583189073141.html">Django入门 — 建立简易博客以及ORM关系介绍</a>
+			        <a href="15638515424059.html">去除tableview sectionheaderview的粘连效果</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15578899295258.html">PromiseKit</a>
+			        <a href="15641370883413.html">快速的扩展类的初始化方法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15572343607934.html">RunLoop</a>
+			        <a href="15644628854335.html">切部分圆角</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15554977521883.html">Swift单例写法</a>
+			        <a href="15646490459131.html">didSet 和 willSet</a>
 			      </li>
 		     
 		  

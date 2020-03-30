@@ -132,386 +132,20 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15590976892074.html">
+                <a class="clearlink" href="15638450239357.html">
                 
-                  <h1>Scrapy 抓取网页数据</h1>
+                  <h1>判断bundle中存不存在某个文件</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">Scrapy 介绍</h2>
+                        	<p>1.xib最终会变成nib文件2.NSBundle实例方法- <code>(NSString*)pathForResource:(NSString*)name ofType:(NSString*)ext;</code></p>
 
-<p>Scrapy，Python开发的一个快速、高层次的屏幕抓取和web抓取框架，用于抓取web站点并从页面中提取结构化的数据。Scrapy用途广泛，可以用于数据挖掘、监测和自动化测试。<br/>
-Scrapy吸引人的地方在于它是一个框架，任何人都可以根据需求方便的修改。它也提供了多种类型爬虫的基类，如BaseSpider、sitemap爬虫等，最新版本又提供了web2.0爬虫的支持。<br/>
-Scrap，是碎片的意思，这个Python的爬虫框架叫Scrapy。</p>
+<p>如果bundle中不存在某个文件，则返回的path为nil，如果存在 则会返回该文件的路径因此运行时判断xib是否存在某个xib文件（eg:TestXibController.xib）<br/>
+方法：</p>
 
-<p>首先必须有python的环境，如果没有的话需要安装，目前python2.x已经不再更新，我使用的是python3的环境。</p>
-
-<p>如果你已经有了python3的环境并且已经安装了pip3，那么安装scrapy只需要一行命令即可。</p>
-
-<pre><code>pip3 install scrapy
+<pre><code>NSString*nibPath = [[NSBundlemainBundle]pathForResource:@&quot;TestXibController&quot;ofType:@&quot;nib&quot;];
 </code></pre>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15590976892074.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2019/5/29</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Spiders.html'>Spiders</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15583189073141.html">
-                
-                  <h1>Django入门 — 建立简易博客以及ORM关系介绍</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ul>
-<li>开源的Python Web框架</li>
-<li>MVC模式</li>
-</ul>
-
-<blockquote>
-<p>要想使用Django 必须先安装Python，推荐安装3.0版本以上的Python3<br/>
-然后再用pip安装工具安装Django<br/>
-由于我要安装在python3 所以我的pip工具也是pip3<br/>
-安装命令<code>pip3 install django==2.0</code><br/>
-最后选择适合自己的IDE<br/>
-我使用的是VSCode</p>
-</blockquote>
-
-<h2 id="toc_0">优点</h2>
-
-<ul>
-<li>开发效率高</li>
-<li>功能强大，丰富的第三方插件</li>
-<li>重视安全，避免安全漏洞</li>
-</ul>
-
-<p>命令语句django-admin 检查django是否成功安装。</p>
-
-<p><img src="media/15583189073141/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-20%20%E4%B8%8A%E5%8D%8811.19.16.png" alt="屏幕快照 2019-05-20 上午11.19.16"/>￼</p>
-
-<ul>
-<li>startproject # 创建一个django项目</li>
-<li>startapp # 创建一个django应用</li>
-<li>check # 检验项目完整性</li>
-<li>runserver # 本地简易运行django项目</li>
-<li>shell # 进入django项目的python shell环境</li>
-<li>test # 执行django用例测试</li>
-</ul>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15583189073141.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2019/5/20</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Django.html'>Django</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15578899295258.html">
-                
-                  <h1>PromiseKit</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">then and done</h2>
-
-<p>一个典型的链条⛓️</p>
-
-<pre><code>firstly {
-    login()
-}.then { creds in
-    fetch(avatar: creds.user)
-}.done { image in
-    self.imageView = image
-}
-</code></pre>
-
-<p>如果这段代码使用之前的方式可能会是这样</p>
-
-<pre><code>login { creds, error in
-    if let creds = creds {
-        fetch(avatar: creds.user) { image, error in
-            if let image = image {
-                self.imageView = image
-            }
-        }
-    }
-}
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15578899295258.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2019/5/15</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15572343607934.html">
-                
-                  <h1>RunLoop</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>Fundation 框架是对Core Fundation的封装。</p>
-
-<h2 id="toc_0">Fundation</h2>
-
-<p><code>[NSRunLoop currentRunLoop];</code>//返回当前线程的RunLoop  如果不存在就会创建一个RunLoop并返回。<br/>
-//If a run loop does not yet exist for the thread, one is created and returned.</p>
-
-<p><code>[NSRunLoop mainRunLoop]</code>//获取主线程的RunLoop对象。</p>
-
-<p>基础知识:每个线程上都对应有一个RunLoop对象，主线程RunLoop默认开启，子线程RunLoop要手动开启。<br/>
-RunLoop在线程结束的时候退出循环。</p>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15572343607934.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2019/5/7</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15554977521883.html">
-                
-                  <h1>Swift单例写法</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>介绍swift的单例类写法之前，可以先回顾一下oc中单例的写法如下。</p>
-
-<pre><code class="language-//首先.h文件里声明">//单例类
-@interface Manger : NSObject
-+ (instancetype)sharedManger;
-@end
-
-//然后.m文件里写实现
-@implementation Manger
-+ (instancetype)sharedManger {
-    static Manger *sharedManger = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&amp;onceToken, ^{
-        sharedManger = [self new];
-    });
-    return sharedManger;
-}
-
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15554977521883.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2019/4/17</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15554962348970.html">
-                
-                  <h1>Filter, Map, Reduce  Functions</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">Filter</h3>
-
-<p>Filter 函数是过滤出所有符合过滤条件的元素 </p>
-
-<p>比如下面的方法过滤出数组所有元素等于3的元素</p>
-
-<pre><code>func filter() {
-        let numbers = [1,2,3,3,3,4]
-        //过滤出所有元素为3的元素 并返回过滤之后的数据
-        let filtedNumbers = numbers.filter({return $0 == 3})
-        print(filtedNumbers)//[3,3,3]
-    }
-
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15554962348970.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2019/4/17</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15553216469263.html">
-                
-                  <h1>Swift中的字典转模型方法的迭代</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>模型可以是结构体也可以是继承自NSObject的类  </p>
-
-<pre><code>class App: NSObject {
-    var name:String = &quot;&quot;
-    var age:Int = 0
-    var boxDescription:String = &quot;&quot;
-}
-
-
-struct App :Decodable{
-    var name:String
-    var age:Int
-    var description:String
-    
-    init(dic:[String:AnyObject]) {
-        name = dic[&quot;name&quot;] as! String
-        age = dic[&quot;age&quot;] as! Int
-        description = dic[&quot;description&quot;] as! String
-    }
-    
-}
-
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15553216469263.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2019/4/15</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15553140637126.html">
-                
-                  <h1>Speed Up Development with Xcode File Templates</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h4 id="toc_0">Custom Templates Directory</h4>
-
-<ul>
-<li><p>~/Library/Developer/Xcode/Templates<br/>
-进入到指定的模版路径</p></li>
-<li><p>mkdir -p ~/Library/Developer/Xcode/Templates/File\ Templates/Custom 创建一个Custom 的文件夹</p></li>
-</ul>
-
-<h5 id="toc_1">Xcode Default Templates Directory</h5>
-
-<p>/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/File Templates</p>
-
-<p>进入之后复制一些其他的模版到自己的custom模版 然后进入模版之后编辑自己经常使用的模版，可以极大的提升开发的效率。</p>
 
                         
                       </div>
@@ -520,7 +154,371 @@ struct App :Decodable{
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/4/15</span>
+                    <span class="date">2020/3/30</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15638515424059.html">
+                
+                  <h1>去除tableview sectionheaderview的粘连效果</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code>override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        if (scrollView == self.tableView)
+        {
+            let sectionHeaderHeight: CGFloat = 49.0
+            if (scrollView.contentOffset.y &lt;= sectionHeaderHeight &amp;&amp; scrollView.contentOffset.y &gt;= 0) {
+                scrollView.contentInset = UIEdgeInsets(top: -scrollView.contentOffset.y, left: 0, bottom: 0, right: 0);
+            } else if (scrollView.contentOffset.y&gt;=sectionHeaderHeight) {
+                scrollView.contentInset = UIEdgeInsets(top: -sectionHeaderHeight, left: 0, bottom: 0, right: 0);
+            }
+        }
+    }
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/3/30</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15641370883413.html">
+                
+                  <h1>快速的扩展类的初始化方法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code>extension UIBarButtonItem{
+    
+    convenience init(title: String?, style: UIBarButtonItem.Style, target: Any?, action: Selector?,titleColor: UIColor) {
+        self.init(title: title, style: style, target: target, action: action)
+        self.setTitleTextAttributes([NSAttributedString.Key.foregroundColor:titleColor], for: .normal)
+
+    }
+}
+</code></pre>
+
+<p>如果构造方法前面没有convenience单词,代表是一个初始化构造方法(指定构造方法).</p>
+
+<p>如果构造方法前面有convenience单词,代表是一个便利构造方法(方便构造方法).</p>
+
+<h3 id="toc_0">指定构造方法与便利构造方法的区别:</h3>
+
+<ul>
+<li>指定构造方法中必须对所有的属性进行初始化.</li>
+<li>便利构造方法不用对所有属性进行初始化,因为便利构造方法依赖于指定构造方法(内部要调用self.init())</li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/3/30</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15644628854335.html">
+                
+                  <h1>切部分圆角</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>其实就是添加mask遮罩效果</p>
+
+<pre><code>let v = UIView(frame: CGRect(x: 0, y: kScreenHeight - 300, width: kScreenWidth, height: 300))
+v.backgroundColor = .lightGray
+let path = UIBezierPath.init(roundedRect: v.bounds, byRoundingCorners: [.topLeft,.topRight], cornerRadii: CGSize(width: 5, height: 5))
+let maskLayer = CAShapeLayer()
+maskLayer.path = path.cgPath
+v.layer.mask = maskLayer
+</code></pre>
+
+<p>但是会导致离屏渲染问题，耗费资源较多。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/3/30</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15646490459131.html">
+                
+                  <h1>didSet 和 willSet</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>swift中并不像OC中有着一样的观察者模式，好在swift也可以实现属性观察，可以通过didSet和willSet实现。</p>
+
+<p>Example<br/>
+<code><br/>
+var headerTitles: [String] = [&quot;成员&quot;,&quot;魅力值&quot;,&quot;任务完成率&quot;,&quot;学习时长&quot;,&quot;素材数量&quot;]{<br/>
+        didSet{<br/>
+            self.changeFrame()<br/>
+        }<br/>
+    }<br/>
+</code></p>
+
+<p>但是有一点需要记住，didSet证明已经赋值成功，此时打印headerTitles就会是自己设置的值。</p>
+
+<p>但是willSet的调用时机是在赋值之前，此时打印headerTitles依然是旧值。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/3/30</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15647331928504.html">
+                
+                  <h1>initWithCoder和initWithFrame的区别</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>如果xib中的某个view继承自自定义View<br/>
+那么自定义view当中要实现的方法不是initWithFrame，而是initWithCoder。</p>
+
+<p>initWithoder 是当从nib文件中加载对象的时候会调用，比如你的view来自nib那么就会调用这个view的这个函数。(由框架调用) <br/>
+initWithFrame (是由用户调用，来初始化对象的) </p>
+
+<p>比如我自定义MsgChatGroupMemberView继承自UICollectionView。</p>
+
+<p>执行的时机是<br/>
+* init?(coder aDecoder: NSCoder)<br/>
+* awakeFromNib()<br/>
+如下所示</p>
+
+<pre><code>class MsgChatGroupMemberView: UICollectionView { 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.register(UINib(nibName: &quot;MsgChatBgCell&quot;, bundle: nil), forCellWithReuseIdentifier: &quot;MsgChatBgCell&quot;)
+        self.delegate = self
+        self.dataSource = self
+
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+}
+
+</code></pre>
+
+<p>同样也可以直接把awakeFromNib()中的初始化移到init?(coder aDecoder: NSCoder)方法当中。</p>
+
+<pre><code>class MsgChatGroupMemberView: UICollectionView {
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.register(UINib(nibName: &quot;MsgChatBgCell&quot;, bundle: nil), forCellWithReuseIdentifier: &quot;MsgChatBgCell&quot;)
+        self.delegate = self
+        self.dataSource = self
+    }
+}
+
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/3/30</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15649763036889.html">
+                
+                  <h1>设置UITableView的分割线间距以及颜色</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code>    tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    tableView.separatorColor = CNColorWithHex(0xf8f8f8)
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/3/30</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15650558092231.html">
+                
+                  <h1>Apple Developer Team</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>已经被添加到开发组当中，但是却一直在Xcode-&gt;Preferences-&gt;accounts 找不到自己已经添加的开发组。<br/>
+<img src="media/15650558092231/xcode_Account.jpg" alt="xcode_Account"/></p>
+
+<p>在百度搜了很久一直没有找到解决问题的答案，于是去了Google搜索，在stackoverflow发现了解决问题的答案。</p>
+
+<p>链接在此 <a href="https://stackoverflow.com/questions/35674208/development-team-not-showing-in-xcode/35696844">Development team not showing in Xcode</a> </p>
+
+<h2 id="toc_0">问题分析</h2>
+
+<p>首先博主声明苹果有两个系统<br/>
+* Developer.apple.com system<br/>
+* App Store connect system</p>
+
+<p>这是两个不同的系统，必须要保证同时加入了两个系统中的Team，如果对方要加入一个成员到开发组，从Developer开发者中心添加。</p>
+
+<p>看到这里依然没有解决我的答案，而且苹果已经在2018年修复了上面的问题。</p>
+
+<p>往下我看到了一个很重要的答案，就是权限问题，如果有足够的权限在开发者中心看到的页面如下。</p>
+
+<p><img src="media/15650558092231/15650583671343.jpg" alt="" style="width:1431px;"/></p>
+
+<p>如果没有足够的权限红色部分是不存在的，所以在xcode中无法查看自己所在的team，也是是无法管理描述文件，证书等等的，所以如果你没有看到红框部分，那么就需要找到管理员加入相应的权限。</p>
+
+<p><strong>答案</strong>:</p>
+
+<p>管理员去到AppStoreConnect，点击人员，划到最底下的 Developer Resources 勾选。</p>
+
+<p><img src="media/15650558092231/15650567168773.jpg" alt=""/></p>
+
+<p>这个就代表你就可以访问证书，标识，描述文件了，去到开发者中心也就发现了变化。</p>
+
+<p>此时重新打开Xcode-&gt;Preferences-&gt;accounts会发现自己加入的开发组已经出现。</p>
+
+<h2 id="toc_1">总结：</h2>
+
+<p>当你邀请某个开发人员加入开发组的时候一定要勾选允许资源访问，要不然也会遇到和我一样的问题。</p>
+
+<p>还有就是已经添加过了，但是没有足够的权限，就像我上面说的去AppStoreConnect修改权限。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/3/30</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -617,31 +615,31 @@ struct App :Decodable{
 	      
 		      
 			      <li class="post">
-			        <a href="15590976892074.html">Scrapy 抓取网页数据</a>
+			        <a href="15638450239357.html">判断bundle中存不存在某个文件</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15583189073141.html">Django入门 — 建立简易博客以及ORM关系介绍</a>
+			        <a href="15638515424059.html">去除tableview sectionheaderview的粘连效果</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15578899295258.html">PromiseKit</a>
+			        <a href="15641370883413.html">快速的扩展类的初始化方法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15572343607934.html">RunLoop</a>
+			        <a href="15644628854335.html">切部分圆角</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15554977521883.html">Swift单例写法</a>
+			        <a href="15646490459131.html">didSet 和 willSet</a>
 			      </li>
 		     
 		  

@@ -132,30 +132,31 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15474609644602.html">
+                <a class="clearlink" href="15678331627614.html">
                 
-                  <h1>Localization Issue Warning Storyboard</h1>
+                  <h1>swift方法怎么让参数可变</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>当我使用 xib 设置自动布局的时候出现了下面的警告</p>
+                        	<p>func reduceToZero(x: inout Int) {<br/>
+    while (x != 0) {<br/>
+        x = x-1<br/><br/>
+    }<br/>
+}</p>
 
-<p><img src="media/15474609644602/15474616779035.png" alt=""/>￼</p>
+<p>var a = 3<br/>
+reduceToZero(&amp;a)<br/>
+print(a) // will print &#39;0&#39;</p>
 
-<blockquote>
-<p>Certain autolayout constraint combinations may result in an appropriate layout in the current development language but will pose issues in other languages and regions.</p>
-</blockquote>
-
-<p>然后看了苹果官方的文档，说是使用“自动布局”相对于彼此布置视图而没有固定的原点，宽度和高度，以便在语言或区域设置更改时视图重新定位和调整大小。自动布局使得可以为所有语言提供一组.storyboard和.xib文件，并且main.Storyboard默认进行本地化</p>
                         
                       </div>
                   </div>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15474609644602.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2019/1/14</span>
+                  
+                    <span class="date">2020/3/30</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -172,40 +173,24 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15471123133942.html">
+                <a class="clearlink" href="15710336317674.html">
                 
-                  <h1>Value and Reference Collections</h1>
+                  <h1>从xib中取出view的方法</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>值类型和引用类型的集合有所不同,看下图可知。</p>
-
-<p><img src="media/15471123133942/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-01-10%20%E4%B8%8B%E5%8D%885.25.48.png" alt="屏幕快照 2019-01-10 下午5.25.48"/>￼</p>
-
-<pre><code>示例1      
-let x = NSMutableArray()
-x.add(&quot;🐵&quot;)
-let y = x
-y.add(&quot;🐶&quot;)    
-print(x,y)
-//结果
-(
-    &quot;🐵&quot;,
-    &quot;🐶&quot;
-) (
-    &quot;🐵&quot;,
-    &quot;🐶&quot;
-)  
+                        	<pre><code>    if let addressPickerView = R.nib.cnAddressPickerView.firstView(owner: nil) {
 </code></pre>
+
                         
                       </div>
                   </div>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15471123133942.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2019/1/10</span>
+                  
+                    <span class="date">2020/3/30</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -222,86 +207,124 @@ print(x,y)
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15452016090680.html">
+                <a class="clearlink" href="15714583161074.html">
                 
-                  <h1>UICollectionView 进阶篇</h1>
+                  <h1>iOS多继承的实现</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">1. 加入手势支持</h2>
+                        	<p>一般iOS开发不支持多继承，一个类只能继承一种类型，但是可以通过NSProxy实现多继承。</p>
 
-<ol>
-<li><p>为什么要加入手势</p>
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+#include &lt;stdio.h&gt;
 
-<p>场景</p>
+@interface TargetProxy : NSProxy {
+    id realObject1;
+    id realObject2;
+}
 
-<ul>
-<li>触发对集合视图的布局信息的更改。</li>
-<li><p>直接操作单元格和视图。</p>
+- (id)initWithTarget1:(id)t1 target2:(id)t2;
 
-<p>应该始终将手势识别器附加到UICollectionView本身 而不是特定的单元格或视图。该UICollectionView是UIScrollView的子类，所以你的附加手势识别到集合的看法是不太可能，必须跟踪的其他手势干扰。此外，由于集合视图可以访问您的数据源和布局对象，因此您仍然可以访问适当操作单元格和视图所需的所有信息。</p></li>
-</ul></li>
-<li><p>怎么通过手势改变布局信息</p>
+@end
 
-<p>手势识别器提供了一种动态修改布局参数的简便方法。例如，您可以使用捏合手势识别器来更改自定义布局中项目之间的间距。用于配置这种手势识别器的过程相对简单。</p>
+int main(int argc, const char *argv[]) {
+//    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    
+    // Create an empty mutable string, which will be one of the
+    // real objects for the proxy.
+    NSMutableString *string = [[NSMutableString alloc] init];
 
-<ol>
-<li>创建手势识别器。</li>
-<li>将手势识别器附加到集合视图。</li>
-<li>使用手势识别器的处理程序方法更新布局参数并使布局对象无效。</li>
-</ol></li>
-</ol>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15452016090680.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/12/19</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+    // Create an empty mutable array, which will be the other
+    // real object for the proxy.
+    NSMutableArray *array = [[NSMutableArray alloc] init];
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15451226434486.html">
-                
-                  <h1>UICollectionView入门篇</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">1. 设计数据源和代理</h2>
+    // Create a proxy to wrap the real objects.  This is rather
+    // artificial for the purposes of this example -- you&#39;d rarely
+    // have a single proxy covering two objects.  But it is possible.
+    id proxy = [[TargetProxy alloc] initWithTarget1:string target2:array];
 
-<p>每个集合视图都必须具有数据源对象。该数据源对象是内容，你的应用程序显示。它可以是应用程序数据模型中的对象，也可以是管理集合视图的视图控制器。数据源的唯一要求是它必须能够提供集合视图所需的信息，例如有多少项以及在显示这些项时要使用的视图。</p>
+    // Note that we can&#39;t use appendFormat:, because vararg methods
+    // cannot be forwarded!
+    [proxy appendString:@&quot;This &quot;];
+    [proxy appendString:@&quot;is &quot;];
+    [proxy addObject:string];
+    [proxy appendString:@&quot;a &quot;];
+    [proxy appendString:@&quot;test!&quot;];
 
-<p>UICollectionViewDelegate是一个可选的（但建议）对象管理有关的介绍，并与您的内容互动方面。虽然代表的主要工作是管理单元格突出显示和选择，但可以扩展它以提供其他信息。例如，流布局扩展了基本委托行为以自定义布局指标，例如单元格的大小和它们之间的间距</p>
+    NSLog(@&quot;count should be 1, it is: %d&quot;, [proxy count]);
+    
+    if ([[proxy objectAtIndex:0] isEqualToString:@&quot;This is a test!&quot;]) {
+        NSLog(@&quot;Appending successful.&quot;, proxy);
+    } else {
+        NSLog(@&quot;Appending failed, got: &#39;%@&#39;&quot;, proxy);
+    }
 
-<p><strong>For example:</strong></p>
+    NSLog(@&quot;Example finished without errors.&quot;);
+//    [pool release];
+    return 0;
+}
 
-<pre><code> self.collectionView.delegate = self;
- self.collectionView.dataSource = self;
+
+@implementation TargetProxy
+
+- (id)initWithTarget1:(id)t1 target2:(id)t2 {
+    realObject1 = [t1 retain];
+    realObject2 = [t2 retain];
+    return self;
+}
+
+- (void)dealloc {
+    [realObject1 release];
+    [realObject2 release];
+    [super dealloc];
+}
+
+// The compiler knows the types at the call site but unfortunately doesn&#39;t
+// leave them around for us to use, so we must poke around and find the types
+// so that the invocation can be initialized from the stack frame.
+
+// Here, we ask the two real objects, realObject1 first, for their method
+// signatures, since we&#39;ll be forwarding the message to one or the other
+// of them in -forwardInvocation:.  If realObject1 returns a non-nil
+// method signature, we use that, so in effect it has priority.
+// 生成方法签名
+- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
+    NSMethodSignature *sig;
+    sig = [realObject1 methodSignatureForSelector:aSelector];
+    if (sig) return sig;
+    sig = [realObject2 methodSignatureForSelector:aSelector];
+    return sig;
+}
+
+// Invoke the invocation on whichever real object had a signature for it.
+// 方法的签名配发
+- (void)forwardInvocation:(NSInvocation *)invocation {
+    id target = [realObject1 methodSignatureForSelector:[invocation selector]] ? realObject1 : realObject2;
+    [invocation invokeWithTarget:target];
+}
+
+// Override some of NSProxy&#39;s implementations to forward them...
+- (BOOL)respondsToSelector:(SEL)aSelector {
+    if ([realObject1 respondsToSelector:aSelector]) return YES;
+    if ([realObject2 respondsToSelector:aSelector]) return YES;
+    return NO;
+}
+
+@end
+
 </code></pre>
+
+<p>取自开发文档的代码示例，他其实是通过消息传递机制实现了多重继承功能，使proxy拥有了NSSting与NSArray俩个类的方法属性</p>
+
                         
                       </div>
                   </div>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15451226434486.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/12/18</span>
+                  
+                    <span class="date">2020/3/30</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -318,121 +341,69 @@ print(x,y)
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15450120295637.html">
+                <a class="clearlink" href="15766567217978.html">
                 
-                  <h1>What's New in Storyboards</h1>
+                  <h1>iOS UICollectionView刷新时闪屏的解决方法</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h6 id="toc_0">故事板是在iOS和OS X上构建用户界面和应用程序流的好方法。了解如何有效地组织故事板，为接口定义segue，以及轻松地展开转换。深入讨论新的api，并听取关于如何创建优秀用户界面的技巧，并附带一些自定义的转场动画介绍和使用。</h6>
+                        	<p>在做相册的时候遇到了一个问题，就是UICollectionView刷新的时候会闪屏，网上搜了搜，解决的方法也是挺多，并没有一一尝试，只是存下来做个笔记，来看看遇到的几种方法。</p>
 
-<h2 id="toc_1">1. Refactor to Storyboard</h2>
+<p>方法一：</p>
 
-<p>在 storyboard 中选中对应的 xib 文件，然后点击Editor-&gt;Refactor to Storyboard</p>
+<p>[UIView performWithoutAnimation:<sup>{</sup> <br/>
+   //刷新界面 <br/>
+    [self.collectionView reloadData]; <br/>
+ }];<br/>
+把刷新界面的事件放在这个BLock里就可以了！</p>
 
-<p>可以把整个Storyboard文件中独立的部分重构出来。</p>
+<p>方法二</p>
 
-<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.13.35.png" alt="屏幕快照 2018-12-17 上午10.13.35"/></p>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15450120295637.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/12/17</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<p>[UIView animateWithDuration:0 animations:<sup>{</sup> <br/>
+  [collectionView performBatchUpdates:<sup>{</sup> <br/>
+    [collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]]; <br/>
+  } completion:nil]; <br/>
+}];<br/>
+方法三</p>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15446970341146.html">
-                
-                  <h1>Building Apps with Dynamic Type</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>使用动态类型，人们可以选择自己喜欢的文本大小，iOS会根据需要自动切换字体。理解为什么动态类型很重要，以及在显示文本时如何支持它。了解iOS 11的新特性，掌握支持应用程序动态类型的框架和工具。</p>
+<p>[UIView setAnimationsEnabled:NO]; <br/>
+[self.trackPanel performBatchUpdates:<sup>{</sup> <br/>
+  [collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]]; <br/>
+} completion:<sup>BOOL finished</sup> { <br/>
+  [UIView setAnimationsEnabled:YES]; <br/>
+}];<br/>
+如果你的APP只支持iOS7+，推荐使用第一种方式performWithoutAnimation简单方便。</p>
 
-<h2 id="toc_0">1.What is Dynamic Type?</h2>
-
-<p>Dynamic Type是一个允许用户在屏幕上自定义字体大小的功能。</p>
-
-<p><img src="media/15446970341146/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%886.37.58.png" alt="屏幕快照 2018-12-13 下午6.37.58"/>￼</p>
-
-<p>对于视力有障碍的人来说区别很大，字体大之后就可以看到内容了。</p>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15446970341146.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/12/13</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15445109745059.html">
-                
-                  <h1>Love at First Launch</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ul>
-<li>直接显示内容而不是弹出需要注册登录的页面</li>
-<li>通过交互引导用户，而不是一些文字引导</li>
-<li>延迟请求授权，而不是一下登录之后就开始要权限（定位，相机，图片）。</li>
-</ul>
-
-<p>针对延迟请求，想到一个好主意，就是新建一个类，可以是单例，负责管理这些请求。</p>
-
-<h1 id="toc_0">App Startup Time: Past, Present, and Future</h1>
-
-<p>了解在苹果平台上使用的dyld动态链接器，它是如何在这些年来发生变化的，以及它下一步的发展方向。了解改进的工具如何使优化应用程序的启动时间变得更容易，并了解dyld中的新更改如何进一步改善启动时间。</p>
+<p>上面说的方法只能解决UIView的Animation，但是如果你的cell中还包含有CALayer的动画，比如这样：</p>
 
 <ul>
-<li><p>startup time 启动时间</p>
+<li><p>(void)layoutSubviews{<br/>
+[super layoutSubviews];</p>
 
-<p>main函数执行之前所用的时间</p></li>
-<li><p>launch closure启动收尾</p>
+<p>self.frameLayer.frame = self.frameView.bounds;<br/>
+}<br/>
+上述情况多用于自定义控件使用了layer.mask的情况，如果有这种情况，上面提到的方法是无法取消CALayer的动画的，但是解决办法也很简单：</p></li>
+<li><p>(void)layoutSubviews{<br/>
+[super layoutSubviews];</p>
 
-<p>启动你的程序所需要的全部信息，比如使用什么dylib，他们的哪些偏移位置用于不同的符号，代码签名是什么，</p></li>
+<p>[CATransaction begin];<br/>
+[CATransaction setDisableActions:YES];</p>
+
+<p>self.frameLayer.frame = self.frameView.bounds;</p>
+
+<p>[CATransaction commit];<br/><br/>
+}</p></li>
 </ul>
+
                         
                       </div>
                   </div>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15445109745059.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/12/11</span>
+                  
+                    <span class="date">2020/3/30</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -449,43 +420,222 @@ print(x,y)
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15445081328797.html">
+                <a class="clearlink" href="15790023471048.html">
                 
-                  <h1>App Icon Design</h1>
+                  <h1>How to simply make a dynimic UITableViewHeader animation</h1>
                   <div class="a-content">
                       
-		                  <div class="a-content-img">
-                      		<img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.16.00.png" />
-                      	  </div>
-		              
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">Design</h2>
+                        	<p><img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gawzxhqpjbg30lk16ob2c.gif" alt="" style="width:220px;"/></p>
 
-<p>我们对符号的应用可以追溯到很久很久之前，总所周知我们现在使用的文字就是从象形文字发展过来的。</p>
+<p>1.add a imageView to a headerView<br/>
+2.set headerView as UITableView`s tableHeaderView<br/>
+3.observer scrollViewDidScroll Method</p>
 
-<ul>
-<li><p>象征化</p>
+<pre><code>
 
-<p>找到一个简单易懂的象征，物体、图形标注或者符号。</p></li>
-<li><p>简单性</p>
+class Demo: UITableViewController {
 
-<p>设计要简单，不要杂乱无章，太过复杂。如果设计的好，人们一眼就能看懂。</p></li>
-<li><p>关联性</p>
+    let header = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: headerViewH))
+    let imageV = UIImageView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: headerViewH))
 
-<p>创建与用户之间的感情连接，跟UI一样，图标是应用的脸面，一定要有趣并且引人注目</p></li>
-<li><p>传统性</p>
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        header.backgroundColor = .white
+        header.addSubview(imageV)
+        tableView.contentInsetAdjustmentBehavior = .never
+        imageV.image = UIImage(named: &quot;logo&quot;)
+        imageV.contentMode = .scaleAspectFit
+        imageV.topAnchor.constraint(equalTo: header.topAnchor).isActive = true
+        imageV.bottomAnchor.constraint(equalTo: header.bottomAnchor).isActive = true
+        imageV.leadingAnchor.constraint(equalTo: header.leadingAnchor).isActive = true
+        imageV.bottomAnchor.constraint(equalTo: header.bottomAnchor).isActive = true
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: &quot;cell&quot;)
+        tableView.tableHeaderView = header
+   
+    }
+    
 
-<p>对图标的修改要有意义而且谨慎，不建议经常更改应用图标尤其是每次升级的时候，要与时俱进。...</p></li>
-</ul>
+....
+
+   override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // 1. get scrollView`s y-axis offset
+        let yOffset = scrollView.contentOffset.y;
+        // 2. condition 
+        if (yOffset &lt; 0) {
+            //3. caculate current imageView`s height when scrolling
+            let totalOffset = headerViewH - (yOffset);
+            //4. caculate  the ratio
+            let f = totalOffset / headerViewH;
+            //5 .set imageV`s frame again
+            imageV.frame =  CGRect(x: screenWidth*(1-f)*0.5, y: yOffset, width: screenWidth*f , height: totalOffset)
+        }
+    }
+
+}
+</code></pre>
+
+<p>This tip will enhance user experience a little,i recommand you to use this in your developing apps.</p>
+
                         
                       </div>
                   </div>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15445081328797.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/12/11</span>
+                  
+                    <span class="date">2020/3/30</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15578899295258.html">
+                
+                  <h1>PromiseKit</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">then and done</h2>
+
+<p>一个典型的链条⛓️</p>
+
+<pre><code>firstly {
+    login()
+}.then { creds in
+    fetch(avatar: creds.user)
+}.done { image in
+    self.imageView = image
+}
+</code></pre>
+
+<p>如果这段代码使用之前的方式可能会是这样</p>
+
+<pre><code>login { creds, error in
+    if let creds = creds {
+        fetch(avatar: creds.user) { image, error in
+            if let image = image {
+                self.imageView = image
+            }
+        }
+    }
+}
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15578899295258.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2019/5/15</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15572343607934.html">
+                
+                  <h1>RunLoop</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>Fundation 框架是对Core Fundation的封装。</p>
+
+<h2 id="toc_0">Fundation</h2>
+
+<p><code>[NSRunLoop currentRunLoop];</code>//返回当前线程的RunLoop  如果不存在就会创建一个RunLoop并返回。<br/>
+//If a run loop does not yet exist for the thread, one is created and returned.</p>
+
+<p><code>[NSRunLoop mainRunLoop]</code>//获取主线程的RunLoop对象。</p>
+
+<p>基础知识:每个线程上都对应有一个RunLoop对象，主线程RunLoop默认开启，子线程RunLoop要手动开启。<br/>
+RunLoop在线程结束的时候退出循环。</p>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15572343607934.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2019/5/7</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15554977521883.html">
+                
+                  <h1>Swift单例写法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>介绍swift的单例类写法之前，可以先回顾一下oc中单例的写法如下。</p>
+
+<pre><code class="language-//首先.h文件里声明">//单例类
+@interface Manger : NSObject
++ (instancetype)sharedManger;
+@end
+
+//然后.m文件里写实现
+@implementation Manger
++ (instancetype)sharedManger {
+    static Manger *sharedManger = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&amp;onceToken, ^{
+        sharedManger = [self new];
+    });
+    return sharedManger;
+}
+
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15554977521883.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2019/4/17</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -582,31 +732,31 @@ print(x,y)
 	      
 		      
 			      <li class="post">
-			        <a href="15590976892074.html">Scrapy 抓取网页数据</a>
+			        <a href="15638450239357.html">判断bundle中存不存在某个文件</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15583189073141.html">Django入门 — 建立简易博客以及ORM关系介绍</a>
+			        <a href="15638515424059.html">去除tableview sectionheaderview的粘连效果</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15578899295258.html">PromiseKit</a>
+			        <a href="15641370883413.html">快速的扩展类的初始化方法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15572343607934.html">RunLoop</a>
+			        <a href="15644628854335.html">切部分圆角</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15554977521883.html">Swift单例写法</a>
+			        <a href="15646490459131.html">didSet 和 willSet</a>
 			      </li>
 		     
 		  
