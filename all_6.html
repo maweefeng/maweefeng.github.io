@@ -1,128 +1,98 @@
 <!doctype html>
 <html class="no-js" lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>
-    
-    Code Log 👨‍💻‍ 
-    
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+  
+  
+  
   </title>
   
   
-  <link href="atom.xml" rel="alternate" title="Code Log 👨‍💻‍ " type="application/atom+xml">
-  <link rel="stylesheet" href="asset/css/foundation.min.css" />
-  <link rel="stylesheet" href="asset/css/docs.css" />
-  <script src="asset/js/vendor/modernizr.js"></script>
-  <script src="asset/js/vendor/jquery.js"></script>
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
   <script src="asset/highlightjs/highlight.pack.js"></script>
   <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script>
-    hljs.initHighlightingOnLoad();
-
-    window.onload = function () {
-
-      var footerPath = window.location.pathname.split('/')[window.location.pathname.split('/').length - 1];
-      if (footerPath == 'archives.html') {
-        // alert('分类');
-        document.getElementById('main-menu').getElementsByTagName("li")[1].className = "is_active";
-
-      } else if (footerPath == 'about.html') {
-        document.getElementById('main-menu').getElementsByTagName("li")[2].className = "is_active";
-
-        // alert('关于我');
-  
-      } else {
-        // alert('首页');
-        document.getElementById('main-menu').getElementsByTagName("li")[0].className = "is_active";
-      }
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
 
 
-    }
-  </script>
-  <script type="text/javascript">
-    function before_search() {
-      var searchVal = 'site: ' + document.getElementById('search_input').value;
-      document.getElementById('search_q').value = searchVal;
-      return true;
-    }
-  </script>
-</head>
-
-<body class="antialiased hide-extras">
-
-  <div class="marketing off-canvas-wrap" data-offcanvas>
-    <div class="inner-wrap">
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
 
 
-      <nav class="top-bar docs-bar hide-for-small" data-topbar>
-
-
-        <section class="top-bar-section">
-          <div class="row">
-            <div style="position: relative;width:100%;">
-              <div style="position: absolute; width:100%;">
-                <ul id="main-menu" class="left">
-                  
-                  <li id=""><a id="" target="_self" href="index.html">Home</a></li>
-                  
-                  <li id=""><a id="" target="_self" href="archives.html">Archives</a></li>
-                  
-                  <li id=""><a id="" target="_self" href="about.html">About</a></li>
-                  
-                </ul>
-
-                <ul class="right" id="search-wrap">
-                  <li>
-                    <form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
-                      <input type="hidden" id="search_q" name="q" value="" />
-                      <input tabindex="1" type="search" id="search_input" placeholder="Search" />
-                    </form>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-      </nav>
-
-      <nav class="tab-bar show-for-small">
-        <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-          <span> &nbsp; Code Log 👨‍💻‍ </span>
-        </a>
-      </nav>
-
-      <aside class="left-off-canvas-menu">
-        <ul class="off-canvas-list">
-
-          <li><a href="index.html">Home</a></li>
-          <li><a href="archives.html">Archives</a></li>
-          
-          <li><label>Categories</label></li>
-
-          
-          <li id="iOS"><a href="iOS.html">iOS</a></li>
-          
-          <li id="Git"><a href="Git.html">Git</a></li>
-          
-          <li id="CocoaPods"><a href="CocoaPods.html">CocoaPods</a></li>
-          
-          <li id="Django"><a href="Django.html">Django</a></li>
-          
-          <li id="Spiders"><a href="Spiders.html">Spiders</a></li>
-          
-          <li id="about"><a href="about.html">about</a></li>
-          
-
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
         </ul>
-      </aside>
 
-      <a class="exit-off-canvas" href="#"></a>
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E7%94%B5%E5%BD%B1.html">电影</a></li>
+        
+            <li><a href="%E5%85%B6%E5%AE%83.html">其它</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
 
 
-      <section id="main-content" role="main" class="scroll-container"> <script type="text/javascript">
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
 	$(function(){
 		$('#menu_item_index').addClass('is_active');
 	});
@@ -132,73 +102,112 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15427834491504.html">
+                <a class="clearlink" href="16076509805905.html">
                 
-                  <h1>Git基础流</h1>
+                  <h1>@dynamic与@synthesize的区别</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h3 id="toc_0">如何将本地代码提交到远程git仓库</h3>
+                        	<p>@property有两个对应的词，一个是@synthesize，一个是@dynamic。如果@synthesize和@dynamic都没写，那么默认的就是@syntheszie var = _var;<br/>
+@synthesize的语义是如果你没有手动实现setter方法和getter方法，那么编译器会自动为你加上这两个方法。</p>
 
-<ul>
-<li><p>第一步：建立git仓库 <br/>
-cd到你的本地项目根目录下，执行git命令 </p>
+<p>@dynamic告诉编译器,属性的setter与getter方法由用户自己实现，不自动生成。</p>
 
-<blockquote>
-<p>git init</p>
-</blockquote></li>
-<li><p>第二步：将项目的所有文件添加到仓库中   </p>
+<p>假如一个属性被声明为@dynamic var，然后你没有提供@setter方法和@getter方法，编译的时候没问题，但是当程序运行到instance.var =someVar，由于缺setter方法会导致程序崩溃；或者当运行到 someVar = var时，由于缺getter方法同样会导致崩溃。编译时没问题，运行时才执行相应的方法，这就是所谓的动态绑定。</p>
 
-<blockquote>
-<p>git add .  </p>
-</blockquote></li>
-<li><p>第三步：将add的文件commit到仓库</p>
+<h1 id="toc_0">观察者模式？</h1>
 
-<blockquote>
-<p>git commit -m &quot;注释语句&quot;</p>
-</blockquote></li>
-<li><p>第四步：去github上创建自己的Repository</p></li>
-<li><p>第五步：重点来了，将本地的仓库关联到github上    </p>
+<p>在Observer模式中，一个对象通知其他对象任何状态更改。</p>
 
-<blockquote>
-<p>git remote add origin 仓库url</p>
-</blockquote>
+<p>Cocoa以两种方式实现观察者模式：通知和键值观察（KVO）。</p>
 
-<p>后面的https链接地址换成你自</p></li>
-</ul>...
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834491504.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Git.html'>Git</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<h1 id="toc_1">解释MVC</h1>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834491567.html">
-                
-                  <h1>视图的绘制周期</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>当view第一次在屏幕上显示的时候，系统会绘制它的内容，然后系统会截取内容的快照，并且将快照作为视图的可见外观，如果你永远不改变视图的内容，那么视图的绘制代码永远不会改变。如果更改了视图的内容，不用直接重新绘制，而是使用<code>setNeedsDisplay</code>或者<code>setNeedsDisplayInRect</code>方法是视图无效。这些方法会告知视图内容以及改变并且需要在下一次进行重绘。如果需要立马重绘，那么需要使用<code>layoutIfNeeded</code>方法。</p>
+<p>模型  - 负责域数据或操作数据的数据访问层，考虑&#39;Person&#39;或&#39;PersonDataProvider&#39;类。<br/>
+视图  - 负责表示层（GUI），对于iOS环境，可以考虑以“UI”前缀开头的所有内容。<br/>
+Controller / Presenter / ViewModel - 模型和视图之间的粘合剂 或介体，通常负责通过响应用户在View上执行的操作以及使用模型更改更新视图来更改模型。</p>
+
+<h1 id="toc_2">解释MVVM</h1>
+
+<p>UIKit独立表示您的View及其状态。视图模型调用模型中的更改并使用更新的模型更新自身，并且由于我们在视图和视图模型之间有绑定，因此第一个更新。</p>
+
+<p>您的视图模型实际上会接收您的模型，它可以格式化将在您的视图上显示的信息。</p>
+
+<p>有一个更着名的框架叫做RxSwift。它包含RxCocoa，它是Cocoa和CocoaTouch的反应式扩展。</p>
+
+<h1 id="toc_3">Objective-C中有多少种不同的注释？</h1>
+
+<p>_Null_unspecified，它连接到Swift隐式解包的可选项。这是默认值。<br/>
+_Nonnull，值不会是nil它与常规引用的桥接。<br/>
+_Nullable值可以为nil，它桥接到可选。<br/>
+_Null_resettable该值永远不能为nil，读取时可以将其设置为知道重置它。这只适用于属性。</p>
+
+<h1 id="toc_4">什么是JSON / PLIST限制？</h1>
+
+<p>我们创建您的对象，然后将它们序列化为磁盘..<br/>
+这是非常有限的用例。<br/>
+我们显然无法使用复杂查询来过滤您的结果。<br/>
+这很慢。<br/>
+每次我们需要的东西，我们需要序列化或反序列化它。<br/>
+它不是线程安全的。</p>
+
+<h1 id="toc_5">什么是SQLite限制？</h1>
+
+<p>我们需要定义表之间的关系。定义所有表的模式。<br/>
+我们必须手动编写查询来获取数据。<br/>
+我们需要查询结果，然后将它们映射到模型。<br/>
+查询非常快。</p>
+
+<h1 id="toc_6">Swift的主要优势是什么？</h1>
+
+<p>提到Swift的一些主要优点：</p>
+
+<p>可选类型，使应用程序可以防止崩溃<br/>
+内置错误处理<br/>
+关闭<br/>
+与其他语言相比要快得多<br/>
+类型安全的语言<br/>
+支持模式匹配</p>
+
+<h1 id="toc_7">解释Swift中的泛型？</h1>
+
+<p>泛型创建的代码没有特定于底层数据类型。不要抓住这篇文章。泛型允许我们知道它将包含哪种类型。泛型还为我们的代码提供优化。</p>
+
+<h1 id="toc_8">在Swift中解释懒惰？</h1>
+
+<p>lazy仅在首次调用属性时才计算存储属性的初始值。有些情况下，lazy属性对开发人员来说非常方便。</p>
+
+<h1 id="toc_9">如何将变量作为参考传递？</h1>
+
+<p>我们需要提到的是有两种类型的变量：引用和值类型。这两种类型之间的区别在于，通过传递值类型，变量将创建其数据的副本，而引用类型变量将仅指向内存中的原始数据。</p>
+
+<h1 id="toc_10">如何在视图控制器之间传递数据？</h1>
+
+<p>有三种方法可以在视图控制器之间传递数据。</p>
+
+<p>Segue，在prepareForSegue方法中（转发）<br/>
+代理（后退）<br/>
+直接设置变量（转发）</p>
+
+<h1 id="toc_11">什么是并发？</h1>
+
+<p>并发性正在划分程序的执行路径，以便它们可能同时运行。常用术语：进程，线程，多线程等。术语;</p>
+
+<p>进程，执行应用程序的实例<br/>
+线程，代码执行路径<br/>
+多线程，多线程或多个执行路径同时运行。<br/>
+并发，以可伸缩的方式同时执行多个任务。<br/>
+队列，队列是轻量级数据结构，按先进先出（FIFO）的顺序管理对象。<br/>
+同步与异步任务</p>
+
+<p>Grand Central Dispatch（GCD）<br/>
+GCD是一个库，它提供了一个低级和基于对象的API，可以在后台管理线程的同时运行任务。术语;</p>
+
+<p>调度队列，调度队列负责以先进先出顺序执行任务。<br/>
+Serial Dispatch Queue串行调度队列一次运行一个任务。<br/>
+并发调度队列并发调度队列可以运行尽可能多的任务，而无需等待已启动的任务完成。<br/>
+Main Dispatch Queue一个全局可用的串行队列，用于在应用程序的主线程上执行任务。</p>
 
                         
                       </div>
@@ -207,10 +216,8 @@ cd到你的本地项目根目录下，执行git命令 </p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+                    <span class="date">2020/12/11</span>
+                    
           				   
                   </div>
                   <div class="more-right right">
@@ -224,22 +231,128 @@ cd到你的本地项目根目录下，执行git命令 </p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834491628.html">
+                <a class="clearlink" href="16076509805947.html">
                 
-                  <h1>设置Cell分割线顶头</h1>
+                  <h1>What's New in LLVM（2017）</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h6 id="toc_0">UITableView设置系统cell的分割线顶头</h6>
+                        	<p>Xcode 9中的Apple LLVM编译器具有新的语言特性、改进的诊断和更强大的优化。了解Objective-C和c++的最新添加，了解新的和改进的警告和静态分析器检查，了解LLVM编译器技术如何为应用程序提供更快的构建时间和更好的运行时性能。</p>
 
-<pre><code>- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    cell.layoutMargins = UIEdgeInsetsZero;
-    cell.separatorInset = UIEdgeInsetsZero;
-    cell.preservesSuperviewLayoutMargins = NO;
+<h2 id="toc_0">1.不同语言的api检查</h2>
+
+<pre><code class="language-text">@available(iOS 11,*)--oc
+#available  --swift
+</code></pre>
+
+<p>便捷的方法检查（检查可用性，如果你要给某个新的系统加入新功能）</p>
+
+<pre><code class="language-text">@interface MyAblumController : UIViewController
+
+-(void)showFaces API_AVALABILITY(ios(11.0));
+
+@end
+</code></pre>
+
+<p>还可以移动整个类的范围</p>
+
+<pre><code class="language-text">API_AVALABILITY(ios(11.0))
+@interface MyAblumController : UIViewController
+
+-(void)showFaces ;
+
+@end
+</code></pre>
+
+<h2 id="toc_1">2.不要把Number元素和标量进行比较</h2>
+
+<pre><code class="language-text">@property NSNumber * photoCount;
+-(BOOL)hasPhotos{
+return self.photoCount &gt; 0
 }
 </code></pre>
 
+<p>因为这个比较相当于是把photoCount和指针nil相比，返回为YES,所以这个错误很严重。</p>
+
+<p><img src="media/15445814733953/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%884.26.59.png" alt="屏幕快照 2018-12-12 下午4.26.59"/></p>
+
+<p>编译器会报错，提醒你出现了问题，你可以把NSNumber转成interger之后再做判断。</p>
+
+<p><img src="media/15445814733953/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%884.28.18.png" alt="屏幕快照 2018-12-12 下午4.28.18"/></p>
+
+<h6 id="toc_2">Control Check in Build Setting</h6>
+
+<p>设置Suspicious Conversions 为YES(aggressive)当编译器不确定的时候会弹出如上提示。<br/>
+<img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%885.06.22.png" alt="屏幕快照 2018-12-12 下午5.06.22"/></p>
+
+<h2 id="toc_3">3. copy修饰NSMutableArray</h2>
+
+<p>赋值的时候等于是复制了一个不可变对象，所以以后运行时的时候会报错(如果你对这个数组进行修改)</p>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%886.45.36.png" alt="屏幕快照 2018-12-12 下午6.45.36"/></p>
+
+<p>这个时候就会报错，因为给self.titieArr赋值之后变成了不可变的，所以接下来的操作会导致错误。</p>
+
+<h6 id="toc_4">解决方法:</h6>
+
+<pre><code class="language-text">//添加setter方法
+-(void)setTitleArr:(NSMutableArray *)titleArr{
+    
+    self.titleArr= [titleArr mutableCopy];
+}
+</code></pre>
+
+<p>每次赋值的时候给数组赋值可变对象。</p>
+
+<p>另外为了及时发现bug可以开启每次build的时候analyze而不是每次都要去手动analyze（如果不开启的话上面的错误不会提示）</p>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%886.48.45.png" alt="屏幕快照 2018-12-12 下午6.48.45"/><br/>
+设置Analyze During Build 的值为Yes.</p>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%886.43.05.png" alt="屏幕快照 2018-12-12 下午6.43.05"/></p>
+
+<h2 id="toc_5">4. 声明无参数的函数</h2>
+
+<h5 id="toc_6">Non-prototype declarations in C and Objective-C</h5>
+
+<p>非原型声明</p>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.47.06.png" alt="屏幕快照 2018-12-13 下午3.47.06"/></p>
+
+<p>在C和OC中意味着foo可以跟任何参数调用，这个行为可以追溯到1977年C语言，不匹配类型的调用会导致运行时的崩溃。<br/>
+在Xcode9 中编译器带有一个新的警告加强严格原型，会报出警告。</p>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.50.45.png" alt="屏幕快照 2018-12-13 下午3.50.45"/></p>
+
+<p>通常只需要在括号中添加void表示不接收任何参数传递。</p>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.51.41.png" alt="屏幕快照 2018-12-13 下午3.51.41"/></p>
+
+<p>任何带有参数的调用都会直接报错。</p>
+
+<p>另外block中不接收参数的时候也会出现同样的警告，如下所示。</p>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.52.47.png" alt="屏幕快照 2018-12-13 下午3.52.47"/></p>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.53.57.png" alt="屏幕快照 2018-12-13 下午3.53.57"/></p>
+
+<h3 id="toc_7">升级验证警告设置</h3>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%884.08.45.png" alt="屏幕快照 2018-12-13 下午4.08.45"/></p>
+
+<p>勾选Yes(Error)</p>
+
+<h6 id="toc_8">Strict Prototypes 勾选Yes(Error)之前 and 勾选之后</h6>
+
+<p><img src="media/15446033549417/Artboard%202@2x.png" alt="Artboard 2@2x"/></p>
+
+<p>勾选之后就不只是警告了，直接是错误提醒，让你开发的时候不得不注意，也是为了代码的安全性。</p>
+
+<h3 id="toc_9">结尾</h3>
+
+<p>WWDC2017剩余部分是关于C++的优化，如果感兴趣的话可以移步<a href="https://developer.apple.com/videos/play/wwdc2017/411">开发者网站</a>观看。</p>
+
                         
                       </div>
                   </div>
@@ -247,10 +360,8 @@ cd到你的本地项目根目录下，执行git命令 </p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+                    <span class="date">2020/12/11</span>
+                    
           				   
                   </div>
                   <div class="more-right right">
@@ -264,46 +375,169 @@ cd到你的本地项目根目录下，执行git命令 </p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834491690.html">
+                <a class="clearlink" href="16076509806058.html">
                 
-                  <h1>Runtime运行时</h1>
+                  <h1>Building Apps with Dynamic Type</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<ol>
-<li><p>runtime调用方法</p>
+                        	<p>使用动态类型，人们可以选择自己喜欢的文本大小，iOS会根据需要自动切换字体。理解为什么动态类型很重要，以及在显示文本时如何支持它。了解iOS 11的新特性，掌握支持应用程序动态类型的框架和工具。</p>
 
-<pre><code>- (void)test {
-TestModel *objct = [[TestModel alloc] init];
-((void (*) (id, SEL)) objc_msgSend) (objct, sel_registerName(&quot;country&quot;));
-((void (*) (id, SEL, NSString *)) objc_msgSend) (objct, sel_registerName(&quot;getProvince:&quot;), @&quot;广东省&quot;)；
-((void (*) (id, SEL, NSString *, NSString *)) objc_msgSend) (objct, sel_registerName(&quot;getCity:station:&quot;), @&quot;深圳市&quot;, @&quot;世界之窗&quot;)；
-NSString *weather = ((NSString* (*) (id, SEL)) objc_msgSend) (objct, sel_registerName(&quot;getWeather&quot;));
-NSLog(@&quot;%@&quot;, weather);
-}
-</code></pre></li>
-<li><p>给分类添加属性</p>
+<h2 id="toc_0">1.What is Dynamic Type?</h2>
 
-<pre><code class="language-#import">#import &lt;objc/runtime.h&gt;
-static void *TestStringKey = &amp;TestStringKey;
-@implementation TestModel (String)
-- (void)setTestString:(NSString *)testString {
-objc_setAssociatedObject(self, TestStringKey, testString, OBJC_ASSOCIATION_COPY);
-}
-- (NSString *)testString {
-return objc_getAssociatedObject(self, TestStringKey);
-}
-@end
-</code></pre></li>
-<li><p>获取属性</p>
+<p>Dynamic Type是一个允许用户在屏幕上自定义字体大小的功能。</p>
 
-<pre><code>使用class_copyIvarList获得的属性数组是Ivar类型 
-可以使用ivar_getName将ivar类型转换为char
-再使用NSString 的stringWithUTF8String方法转化为NSString类型。
-</code></pre></li>
+<p><img src="media/15446970341146/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%886.37.58.png" alt="屏幕快照 2018-12-13 下午6.37.58"/></p>
+
+<p>对于视力有障碍的人来说区别很大，字体大之后就可以看到内容了。</p>
+
+<h2 id="toc_1">2.What&#39;s New in iOS 11?</h2>
+
+<h3 id="toc_2">目标</h3>
+
+<ol>
+<li>字体要足够大</li>
+<li>文字要完全，不允许截断</li>
+<li>UI还要依然美丽</li>
 </ol>
 
+<h3 id="toc_3">使用说明和一些 API</h3>
+
+<ul>
+<li>如何将字体和Dynamic type 一致</li>
+<li>适应更大的字体</li>
+<li>Table views </li>
+<li>Images</li>
+</ul>
+
+<h4 id="toc_4">2.1如何将字体和Dynamic type 一致</h4>
+
+<p>通过文字样式TextStyle</p>
+
+<ul>
+<li><p>系统字体</p>
+<ul>
+<li>xib 设置 </li>
+</ul>
+<p><img src="media/15446970341146/Artboard%202@3x.png" alt="Artboard 2@3x"/></p>
+<ul>
+<li>代码设置</li>
+</ul>
+<pre><code class="language-text">UILabel * tip = [[UILabel alloc]init];
+[tip setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];<br/>
+[tip setAdjustsFontForContentSizeCategory:YES];
+</code></pre></li>
+<li><p>自定义字体<br/>
+上面说的是系统字体的时候可以跟随系统设置变大缩小，同样其他的自定义字体也可以通过UIFontMetrics达到一样的效果。</p>
+<pre><code class="language-text">UILabel * tip = [[UILabel alloc]init];
+[tip setFont:[[UIFontMetrics metricsForTextStyle:UIFontTextStyleBody] scaledFontForFont:customeFont]]<br/>
+[tip setAdjustsFontForContentSizeCategory:YES];
+</code></pre>
+<p>Web Views实现跟随字体改变</p>
+<p><img src="media/15446970341146/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%887.10.45.png" alt="屏幕快照 2018-12-13 下午7.10.45"/></p>
+<p>当然这个只能适应于苹果设备，其他设备使用 rem</p></li>
+</ul>
+
+<h4 id="toc_5">2.2 怎么适应大字体在屏幕上</h4>
+
+<ul>
+<li><p>2.2.1 问题解答</p>
+<p>Q:如何解决文字变大后超出屏幕或者简单截断之后用户无法识别呢<br/>
+A:分为多行显示<br/>
+S:设置Label的 numberOflines = 0</p>
+<p>Q:之前设置的固定间距(比如设置LabelB的底部距离LabelA的底部40px)，随着字体变大之后文本内容发生重叠</p>
+<p><img src="media/15446970341146/Artboard%203@2x.png" alt="Artboard 3@2x"/></p>
+<p>A1:设置LabelA的底部距离LabelB 的底部40px <br/>
+间距不变 但是是往不同方向方法<br/>
+<img src="media/15446970341146/%E4%BF%AE%E6%94%B9%E5%90%8E@2x.png" alt="修改后@2x"/></p>
+<p>A2:设置动态间距（iOS11以后可用）<br/>
+间距会随之变大<br/>
+<img src="media/15446970341146/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-14%20%E4%B8%8A%E5%8D%8811.06.14.png" alt="屏幕快照 2018-12-14 上午11.06.14"/></p>
+<p>两种方案实现的效果不一样，如下所示。</p>
+<p><img src="media/15446970341146/%E5%89%8D%E5%90%8E%E5%AF%B9%E6%AF%94%E5%9B%BE@2x.png" alt="前后对比图@2x"/></p></li>
+<li><p>2.2.2 缩放值 Scaled Values</p>
+<p>缩放某个值，对于整体UI随着 large Text 来说有很重要的效果，会使整个UI看起来更协调。</p>
+<p>比如你之前是这么改变 y 值<br/>
+<code>frame.origin.y +=40;</code></p>
+<p>现在你可以这么设置，constantVaule：40会根据系统设置而动态改变大小。</p>
+<p><code>frame.y += [[UIFontMetrics defaultMetrics] scaledValueForValue:40];</code></p></li>
+<li><p>2.2.3 并排文字的处理</p>
+<p><img src="media/15446970341146/%E5%B8%83%E5%B1%80%E5%AF%B9%E6%AF%94.png" alt="布局对比"/></p>
+<p>由上图可见，如果出现了文字变大的情况，如果不作任何处理会出现文字被截断的情况，直接影响了体验，如果只是简单的换行处理，会影响到美观，那么就可以垂直布置，横向沾满整个视图空间。</p>
+<p>通过函数<code>[[UIApplication sharedApplication] preferredContentSizeCategory]</code>or<code>self.view.traitCollection.preferredContentSizeCategory</code>获取用户的字体设置从<code>UIContentSizeCategoryExtraSmall</code>到<code>UIContentSizeCategoryExtraExtraLarge</code></p>
+<p>辅助设置的 largetext 的范围会有所区分会加上Accessibility比如<code>UIContentSizeCategoryAccessibilityMedium</code></p>
+<p>所以在代码中就可以加上类似判断，判断当前的值是否大于某个界面改变的值，不同情形下布局结构不同。</p>
+<pre><code class="language-text">if (self.view.traitCollection.preferredContentSizeCategory &gt; UIContentSizeCategoryLarge ) {
+    //垂直布局<br/>
+}else{<br/>
+    //并排布局<br/>
+}
+</code></pre></li>
+</ul>
+
+<h4 id="toc_6">2.3 Table views</h4>
+
+<p>如果你使用自带的 tableViewCell 那么就会自动布局，换行什么的完全不用你去担心。但是自定义 cell 的情况要自己去适配。</p>
+
+<ul>
+<li><p>2.3.1 Self-Sizing Table View Cells</p>
+<ul>
+<li><p>使用苹果默认设置的cell 样式</p>
+<ul>
+<li>tableview 问每个 cell 提供高度</li>
+<li>提供一个预估的高度给那些在屏幕外的 cell</li>
+</ul>
+<p>如果必要就打开 self-sizing </p>
+<pre><code class="language-text">tableView.rowHeight = UITableViewAutomaticDimension
+tableView.estimatedRowHeight = 一个预估值
+</code></pre>
+<p>如果有 sectionhead 或 sectionfooter</p>
+<pre><code class="language-text">self.tableView.estimatedSectionHeaderHeight = 20;
+self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension;<br/>
+self.tableView.estimatedSectionFooterHeight = 20;<br/>
+self.tableView.sectionFooterHeight = UITableViewAutomaticDimension;
+</code></pre></li>
+<li><p>使用自定义cell 样式并使用 autolayout</p>
+<p>如果你使用自定义 cell 并使用 autolayout 很容易就可以使用 self-sizing，你只要设置好约束条件，使他们来定义单元的大小，然后 autolayout 会给你找到合适的大小。</p></li>
+<li><p>使用自定义cell 样式不使用 autolayout</p>
+<ul>
+<li>重写 sizeThatFits 的方法返回正确的高度</li>
+<li>使用 contentView.bounds.size.width 限定宽度</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h4 id="toc_7">2.4 Images</h4>
+
+<p>在放大文字内容的同时也要保证图片的可辨识度，而不是只是布局改变了，但是非常小不易于观察。</p>
+
+<h5 id="toc_8">2.4.1 imageView</h5>
+
+<ul>
+<li>使用 PDF 图片并且在 asset catalog 勾选Perserve Vector Data 或者不使用PDF图像，提供更大的版本@1x@2x@3x</li>
+<li>  imageView.adjustImageSizeForAceeseeibilityContentSizeCategory = Yes</li>
+<li>xib勾选 imageview放大图片 Adjusts Image Size </li>
+</ul>
+
+<h5 id="toc_9">2.4.2 长按放大 tabbarItem 的图片</h5>
+
+<p><img src="media/15446970341146/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-14%20%E4%B8%8B%E5%8D%883.47.06.png" alt="屏幕快照 2018-12-14 下午3.47.06"/></p>
+
+<ul>
+<li><p>使用 PDF 图片并且在 asset catalog 勾选Perserve Vector Data并选择 single scale</p>
+<p><img src="media/15446970341146/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-14%20%E4%B8%8B%E5%8D%884.57.58.png" alt="屏幕快照 2018-12-14 下午4.57.58"/></p></li>
+<li><p>如果不使用PDF图像，提供更大的版本并在xib 为bar Item设置 aceessibility 图片或者在代码设置barItem.largeContentSizeImage = largeImage;</p></li>
+</ul>
+
+<h6 id="toc_10">Tips</h6>
+
+<ul>
+<li><p>使用 PDF 图像可以保证@1x @2x @3x 使用同一个图像进行缩放。</p></li>
+<li><p>Xcode -&gt; Accessbility inspector（方便进行字体大小的调整）<br/>
+<img src="media/15446970341146/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-14%20%E4%B8%8B%E5%8D%885.12.49.png" alt="屏幕快照 2018-12-14 下午5.12.49"/></p></li>
+</ul>
+
                         
                       </div>
                   </div>
@@ -311,10 +545,8 @@ return objc_getAssociatedObject(self, TestStringKey);
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+                    <span class="date">2020/12/11</span>
+                    
           				   
                   </div>
                   <div class="more-right right">
@@ -328,151 +560,126 @@ return objc_getAssociatedObject(self, TestStringKey);
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834491747.html">
+                <a class="clearlink" href="16076509806102.html">
                 
-                  <h1>终端命令</h1>
+                  <h1>What's New in Storyboards</h1>
                   <div class="a-content">
                       
-		                  <div class="a-content-img">
-                      		<img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fuch6fzertj30iy0da0ur.jpg" />
-                      	  </div>
-		              
                       <div class="a-content-text">
                         
-                        	<p>我们可以在 terminal 用 system profiler 命令来获取连接 mac 的 usb 设备：<br/>
-system_profiler SPUSBDataType</p>
+                        	<h6 id="toc_0">故事板是在iOS和OS X上构建用户界面和应用程序流的好方法。了解如何有效地组织故事板，为接口定义segue，以及轻松地展开转换。深入讨论新的api，并听取关于如何创建优秀用户界面的技巧，并附带一些自定义的转场动画介绍和使用。</h6>
+
+<h2 id="toc_1">1. Refactor to Storyboard</h2>
+
+<p>在 storyboard 中选中对应的 xib 文件，然后点击Editor-&gt;Refactor to Storyboard</p>
+
+<p>可以把整个Storyboard文件中独立的部分重构出来。</p>
+
+<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.13.35.png" alt="屏幕快照 2018-12-17 上午10.13.35"/></p>
+
+<h2 id="toc_2">2. Storyboard Refrence</h2>
+
+<p>拖动Storyboard Refrence到故事版中</p>
+
+<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.42.11.png" alt="屏幕快照 2018-12-17 上午10.42.11"/></p>
+
+<p>对Storyboard Refrence进行设置，选择引用的故事版，以及故事版的引用id(必须和故事版中控制器的 Storyboard ID对应)bundle 可以为空，因为我这里是单项目工程，如果多个 bundle 的话就需要指定不同的 bundle。</p>
+
+<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.41.40.png" alt="屏幕快照 2018-12-17 上午10.41.40"/> </p>
+
+<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.44.49.png" alt="屏幕快照 2018-12-17 上午10.44.49"/></p>
+
+<h2 id="toc_3">3. Storyboard Segue</h2>
 
 <ul>
-<li>ls 查看当前路径下的文件以及文件夹的名字</li>
-<li>ls /bin 表示查看根目录下的bin文件夹的东西</li>
-<li>ls docments 查看当前路径下documents文件夹下的所有东西</li>
-<li>cd .. 跳转到当前路</li>
-</ul>...
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834491747.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Git.html'>Git</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834491808.html">
-                
-                  <h1>终端命令设置代理</h1>
-                  <div class="a-content">
-                      
-		                  <div class="a-content-img">
-                      		<img src="media/15427834491808/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-04%20%E4%B8%8B%E5%8D%881.09.57.png" />
-                      	  </div>
-		              
-                      <div class="a-content-text">
-                        
-                        	<h4 id="toc_0">让终端走代理的几种方法</h4>
-
-<p><code>Macproxyterminal</code></p>
-
+<li><p>点击 segue 右侧Utilities -&gt; show the<br/>
+attributes inspector 可以设置自带的转场动画效果。<br/>
+<img src="media/15450120295637/15450155820528.jpg" alt=""/></p></li>
+<li><p>还可以指定Segue Class 在内部重写 perform 方法，记得要调用 [super perform]</p>
+<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8811.37.11.png" alt="屏幕快照 2018-12-17 上午11.37.11"/></p>
 <ul>
-<li><p>方法1:<br/>
-在终端中直接运行命令<br/>
-export http_proxy=<a href="http://proxyAddress:port">http://proxyAddress:port</a><br/>
-这个办法的好处是简单直接，并且影响面很小（只对当前终端有效，退出就不行了）。<br/>
-如果你用的是ss代理，在当前终端运行以下命令，那么wget curl 这类网络命令都会经过ss代理<br/>
-export ALL_PROXY=socks5://127.0.0.1:1080</p></li>
-<li><p>方法2:<br/>
-比如我现在使用的shadowsocks工具可以直接设置全局代理，勾选就行了，一般使用</p></li>
-</ul>...
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834491808.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Git.html'>Git</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<li><p>user modal presentation</p>
+<ul>
+<li>赋值转换代理对象 transitioning delegate</li>
+<li>调用 [super perform] 开始    modal presentation</li>
+<li>提交动画用于 presentation</li>
+<li>展示动画效果给目标控制器</li>
+</ul></li>
+<li><p>user dismisses presentation</p></li>
+<li><p>提交动画用于 dismissal</p></li>
+<li><p>展示dissmissal动画效果（动画控制器）</p></li>
+</ul></li>
+</ul>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834491890.html">
-                
-                  <h1>Block防止内存泄漏问题</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">关于block的一点注意 特别是网络请求这块</h3>
+<h2 id="toc_4">注意⚠️</h2>
 
-<p>Block捕获外界变量销毁<br/>
-我们再进一步想想，Block有个最大的特点是可以访问当前的作用域，我们随便创建一个数组，重复上面操作，是否能够销毁...</p>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834491890.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<h5 id="toc_5">1️⃣设置转场动画的代理要在视图加载之前设置，比如在 presentViewController 之前 还有在 viewDidAppear 里面（试了在 viewDidLoad）当中不成功。</h5>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834491963.html">
-                
-                  <h1>Git提交代码issue</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">问题①:</h3>
+<pre><code class="language-text">#import &quot;PhotoViewController.h&quot;
+#import &quot;ScalingDismissAnimator.h&quot;
 
-<pre><code>fatal:unable to access &#39;https://github.com/xxx/xxx.git&#39; OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com 443
+@interface PhotoViewController ()&lt;UIViewControllerTransitioningDelegate&gt;
+
+@end
+
+@implementation PhotoViewController
+-(void)viewDidAppear:(BOOL)animated{
+self.transitioningDelegate = self;
+[super viewDidAppear:animated];
+}
+- (void)viewDidLoad {
+[super viewDidLoad];
+// Do any additional setup after loading the view.
+}
+
+- (IBAction)dismiss:(UIButton *)sender {
+[self dismissViewControllerAnimated:YES
+                         completion:nil];
+}
+
+-(id&lt;UIViewControllerAnimatedTransitioning&gt;)animationControllerForDismissedController:(UIViewController *)dismissed{
+return   [[ScalingDismissAnimator alloc]init];
+
+}
+
 </code></pre>
 
-<h5 id="toc_1">解决方法：</h5>
+<p>在UIViewControllerAnimatedTransitioning类中除了实现 init 方法之外一定要实现这两个重要方法</p>
 
-<pre><code>env命令设置GIT_SSL_NO_VERIFY环境变量为”ture”，并同时调用正常的git clone命令 env GIT_SSL_NO_VERIFY=true git clone https://github.com/xxx/xxx.git     
-当你通过HTTPS访问Git远程仓库，如果服务器的SSL证书未经过第三方机构签署，那么Git就会报错。在克隆完毕的仓库中还需要将http.sslVerify设置为”false”。完整的命令如下：    
-git config http.sslVerify &quot;false&quot;、
+<pre><code class="language-text">- (NSTimeInterval)transitionDuration:(id &lt;UIViewControllerContextTransitioning&gt;)transitionContext {
+    
+return 动画持续时间;
+}
+
+
+-(void)animateTransition:(id&lt;UIViewControllerContextTransitioning&gt;)transitionContext{
+
+在这个方法里面做动画事件
+
+}
+
+</code></pre>
+
+<h5 id="toc_6">2️⃣fromViewController和toViewController</h5>
+
+<p>要注意fromViewController和toViewController 比如A-&gt;B（present）<br/>
+那么A是fromViewController B 是toViewController<br/>
+然后如果 dissmissViewController 的时候B是fromViewController A是toViewController</p>
+
+<h5 id="toc_7">3️⃣转场动画背景为黑色</h5>
+
+<p>可以先把目标控制器的 view 加到[transitionContext containerView]效果会好很多，然后再加入要发生动画的控制器的 view 比如</p>
+
+<pre><code class="language-text">-(void)animateTransitionEvent{
+    
+[self.containerView addSubview:self.toViewController.view];
+[self.containerView addSubview:self.fromViewController.view];
+[UIView animateWithDuration:self.transitionDuration delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+    self.fromViewController.view.transform = CGAffineTransformMakeScale(0.1, 0.1);
+} completion:^(BOOL finished) {
+    [self completeTransition];
+}];
+}
 </code></pre>
 
                         
@@ -481,11 +688,799 @@ git config http.sslVerify &quot;false&quot;、
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15427834491963.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Git.html'>Git</a></span>
+                  
+                    <span class="date">2020/12/11</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509806148.html">
+                
+                  <h1>UICollectionView入门篇</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">1. 设计数据源和代理</h2>
+
+<p>每个集合视图都必须具有数据源对象。该数据源对象是内容，你的应用程序显示。它可以是应用程序数据模型中的对象，也可以是管理集合视图的视图控制器。数据源的唯一要求是它必须能够提供集合视图所需的信息，例如有多少项以及在显示这些项时要使用的视图。</p>
+
+<p>UICollectionViewDelegate是一个可选的（但建议）对象管理有关的介绍，并与您的内容互动方面。虽然代表的主要工作是管理单元格突出显示和选择，但可以扩展它以提供其他信息。例如，流布局扩展了基本委托行为以自定义布局指标，例如单元格的大小和它们之间的间距</p>
+
+<p><strong>For example:</strong></p>
+
+<pre><code class="language-text"> self.collectionView.delegate = self;
+ self.collectionView.dataSource = self;
+</code></pre>
+
+<h2 id="toc_1">2. 注册 cells 和 suppelementary Views</h2>
+
+<ul>
+<li>配置cell
+<ul>
+<li>registerClass:forCellWithReuseIdentifier:</li>
+<li>registerNib:forCellWithReuseIdentifier:</li>
+</ul></li>
+<li><p>配置suppelementary Views</p>
+<ul>
+<li>registerClass:forSupplementaryViewOfKind:withReuseIdentifier:</li>
+<li>registerNib:forSupplementaryViewOfKind:withReuseIdentifier:</li>
+</ul></li>
+</ul>
+
+<p><strong>For example:</strong></p>
+
+<pre><code class="language-text"> [self.collectionView registerNib:[UINib nibWithNibName:@&quot;MyCustomCell&quot; bundle:nil] forCellWithReuseIdentifier:@&quot;cell&quot;];
+</code></pre>
+
+<h2 id="toc_2">3. 数据源管理您的内容</h2>
+
+<ul>
+<li>集合视图包含多少个部分？</li>
+<li>对于给定的部分，部分包含多少项？</li>
+<li>对于给定的部分或项目，应使用哪些视图来显示相应的内容？</li>
+</ul>
+
+<p><strong>For example:</strong></p>
+
+<pre><code class="language-text">-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView*)collectionView {
+        // _data is a class member variable that contains one array per section.
+        return [_data count];
+    }
+    
+-(NSInteger)collectionView:(UICollectionView*)collectionView numberOfItemsInSection:(NSInteger)section {
+        NSArray* sectionArray = [_data objectAtIndex:section];
+        return [sectionArray count];
+    }
+    
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    MyCustomCell * newCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@&quot;cell&quot;
+                              forIndexPath:indexPath];
+    
+   newCell.cellLabel.text = [NSString stringWithFormat：@“Section：％d，Item：％d”，indexPath.section，indexPath.item];
+    return newCell;
+}
+    
+</code></pre>
+
+<h2 id="toc_3">4. 设计数据对象</h2>
+
+<p>高效的数据源使用节和项来帮助组织其底层数据对象。将数据组织成部分和项目可以使以后更轻松地实现数据源方法。而且由于您经常调用数据源方法，因此您需要确保这些方法的实现能够尽快检索数据。</p>
+
+<p>比如下面这个结构</p>
+
+<p><img src="media/15451226434486/15451228663086.png" alt=""/></p>
+
+<h2 id="toc_4">5. 插入，删除和移动部分和项目</h2>
+
+<p>在通知集合视图任何更改之前更新数据源至关重要，要插入，删除或移动单个部分或项目，请按照下列步骤操作：</p>
+
+<ul>
+<li>更新数据源对象中的数据</li>
+<li>调用集合视图的相应方法以插入或删除节或项。</li>
+</ul>
+
+<p>以编程方式添加，删除或移动单个项目时，集合视图的方法会自动创建动画以反映更改。但是，如果要同时为多个更改设置动画，则必须在块内执行所有插入，删除或移动调用，并将该块传递给该performBatchUpdates:completion:方法。然后，批量更新过程会同时为所有更改设置动画，您可以自由地混合调用以插入，删除或移动同一块中的项目。</p>
+
+<p><strong>For example:</strong></p>
+
+<pre><code class="language-text">[self.collectionView performBatchUpdates:^{
+   NSArray* itemPaths = [self.collectionView indexPathsForSelectedItems];
+ 
+   // Delete the items from the data source.
+   [self deleteItemsFromDataSourceAtIndexPaths:itemPaths];
+ 
+   // Now delete the items from the collection view.
+   [self.collectionView deleteItemsAtIndexPaths:itemPaths];
+} completion:nil];
+</code></pre>
+
+<h2 id="toc_5">6. 管理选择和亮点的可视状态</h2>
+
+<p>backgroundView当单元格第一次加载以及单元格未突出显示或未选中时，单元格的属性将始终为默认视图。selectedBackgroundView每当突出显示或选择单元格时，该属性都会替换默认的背景视图。在这种情况下，当选择或突出显示时，单元格的背景颜色将从红色变为白色。</p>
+
+<p><strong>For example:</strong></p>
+
+<pre><code class="language-text">#import &quot;MyCustomCell.h&quot;
+    
+@implementation MyCustomCell
+    
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    UIView * backgroundView = [[UIView alloc] initWithFrame:self.bounds];
+    backgroundView.backgroundColor = [UIColor redColor];
+    self.backgroundView = backgroundView;
+    
+    UIView * selectedBGView = [[UIView alloc] initWithFrame:self.bounds];
+    selectedBGView.backgroundColor = [UIColor whiteColor];
+    self.selectedBackgroundView = selectedBGView;
+    // Initialization code
+}
+    
+@end
+</code></pre>
+
+<h2 id="toc_6">7. 显示单元格的编辑菜单</h2>
+
+<p><img src="media/15451226434486/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-18%20%E4%B8%8B%E5%8D%886.05.55.png" alt="屏幕快照 2018-12-18 下午6.05.55" style="width:257px;"/></p>
+
+<ul>
+<li>委托必须实现与处理操作相关的所有三种方法：
+<ul>
+<li>collectionView:shouldShowMenuForItemAtIndexPath:</li>
+<li>collectionView:canPerformAction:forItemAtIndexPath:withSender:</li>
+<li>collectionView:performAction:forItemAtIndexPath:withSender:</li>
+</ul></li>
+</ul>
+
+<p>collectionView:shouldShowMenuForItemAtIndexPath:方法必须返回YES。<br/>
+collectionView:canPerformAction:forItemAtIndexPath:withSender:方法必须返回YES至少一个所需的动作。集合视图支持以下操作：<br/>
+cut:copy:paste:</p>
+
+<p><strong>For example:</strong></p>
+
+<pre><code class="language-text">-(BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return YES;
+}
+    
+- (BOOL)collectionView:(UICollectionView *)collectionView
+      canPerformAction:(SEL)action
+    forItemAtIndexPath:(NSIndexPath *)indexPath
+            withSender:(id)sender {
+    // Support only copying and pasting of cells.
+    if ([NSStringFromSelector(action) isEqualToString:@&quot;copy:&quot;]
+        || [NSStringFromSelector(action) isEqualToString:@&quot;paste:&quot;])
+        return YES;
+    
+    // Prevent all other actions.
+    return NO;
+}
+-(void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender{
+    
+    if ([NSStringFromSelector(action) isEqualToString:@&quot;copy:&quot;]){
+        if(_selectCopyArray.count) [_selectCopyArray removeAllObjects];
+        [_selectCopyArray addObject:@[@&quot;1&quot;,@&quot;2&quot;]];
+    }
+    
+    if ([NSStringFromSelector(action) isEqualToString:@&quot;paste:&quot;]){
+        
+        [self.dataSource addObjectsFromArray:_selectCopyArray];
+        [self.collectionView reloadData];
+    
+    }
+        
+    
+    
+    
+}
+</code></pre>
+
+<h2 id="toc_7">8. 流式布局<code>UICollectionViewFlowLayout</code></h2>
+
+<ul>
+<li><p>描述</p>
+<p>您可以使用具体的布局对象（UICollectionViewFlowLayout类）在集合视图中排列项目。流布局实现了基于行的分解布局，这意味着布局对象将单元放置在线性路径上，并尽可能多地沿着该行拟合单元。<strong>当布局对象在当前行上没有空间时，它会创建一个新行并在那里继续布局过程</strong></p>
+<p>可以通过编程方式或使用Xcode中的Interface Builder来配置流布局。配置流布局的步骤如下：</p>
+<ul>
+<li>创建流布局对象并将其分配给集合视图</li>
+<li>配置单元格的宽度和高度。</li>
+<li>为线条和项目设置间距选项（根据需要）。</li>
+<li>如果需要节标题或节页脚，请指定其大小。</li>
+<li>设置布局的滚动方向。</li>
+</ul></li>
+</ul>
+
+<p><strong>自定义流布局属性</strong></p>
+
+<ul>
+<li><p>①指定流布局中的项目大小</p>
+<ul>
+<li><p>xib 实现</p>
+<ul>
+<li>滚动方向</li>
+</ul>
+<p><img src="media/15451226434486/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-19%20%E4%B8%8A%E5%8D%8810.06.44.png" alt="屏幕快照 2018-12-19 上午10.06.44"/> </p>
+<ul>
+<li>大小间距等属性设置</li>
+</ul>
+<p><img src="media/15451226434486/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-19%20%E4%B8%8A%E5%8D%8810.06.30.png" alt="屏幕快照 2018-12-19 上午10.06.30"/></p></li>
+</ul>
+<p><strong>注意</strong>：您必须至少指定单元格的宽度和高度，如果不这样做，则会为您的项目指定宽度和高度为0，并且永远不会显示。</p>
+<ul>
+<li><p>代码实现</p>
+<ul>
+<li><p>单元格相同的大小直接设置<code>self.flowLayout.itemSize</code></p></li>
+<li><p>单元格指定不同的大小实现<br/>
+<code>collectionView:layout:sizeForItemAtIndexPath:</code>。可以使用提供的索引路径信息来返回相应项的大小。</p>
+<p><img src="media/15451226434486/15451873998702.png" alt=""/><br/>
+如果要动态改变项目的间距或大小，可以使用UICollectionViewDelegateFlowLayout 协议的方法。</p>
+<pre><code class="language-text">//UICollectionViewDelegateFlowLayout 代理方法
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath;<br/>
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section;<br/>
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section;<br/>
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section;<br/>
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section;<br/>
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section;
+</code></pre>
+<p><strong>如果存在给定方法，则流布局对象将调用该方法，而不是使用它具有的固定值。</strong><br/>
+实现必须为集合视图中的所有项返回适当的值。</p>
+<p><strong>注意</strong>:为单元格指定不同的大小时，单行上的项目数可能因行而异。</p></li>
+</ul></li>
+</ul></li>
+<li><p>②指定项目和行之间的空间</p>
+<p>使用流布局，您可以指定同一行上的项目之间的最小间距以及连续行之间的最小间距。提供的间距仅为最小间距。由于它如何布置内容，流布局对象可能会将项之间的间距增加到大于您指定的值的值。当布置的项目具有不同的尺寸时，布局对象可以类似地增加实际的行间距。</p>
+<ul>
+<li><p>项目之间的实际间距可能大于最小值</p>
+<p><img src="media/15451226434486/15451882901753.png" alt=""/></p></li>
+<li><p>如果项目大小不同，行间距会有所不同</p>
+<p><img src="media/15451226434486/15451883323733.png" alt=""/></p>
+<ul>
+<li>xib 实现见上面的图</li>
+<li>代码实现
+<ul>
+<li>固定间距 self.flowLayout.minimumLineSpacing和 self.flowLayout.minimumInteritemSpacing属性静态设置间距</li>
+<li>collectionView:layout:minimumLineSpacingForSectionAtIndex:和collectionView:layout:minimumInteritemSpacingForSectionAtIndex:方法。</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><p>③使用Section Insets来调整内容的边距</p>
+<p>使用insets在节的标题视图之后和页脚视图之前插入空格或者使用insets在内容的两侧插入空</p>
+<p><img src="media/15451226434486/15451888644969.png" alt=""/><br/>
+格。</p>
+<p>部分插入更改了布置单元格的可用空间，可以限制给定行中单元格的数量。</p></li>
+</ul>
+
+<h2 id="toc_8">总结</h2>
+
+<p>这篇文章包含了一个初学者刚开始接触UICollecctionView 所需要了解的内容，也一步步教你怎么使用一个最基础的视图。包含代理方法，itemSize，itemInset sectionInset 等等。<br/>
+基本上这些已经能满足一个初学者的要求了，如果需要进阶教程，后续会有进阶教程。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/12/11</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509806196.html">
+                
+                  <h1>UICollectionView 进阶篇</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">1. 加入手势支持</h2>
+
+<ol>
+<li><p>为什么要加入手势</p>
+<p>场景</p>
+<ul>
+<li>触发对集合视图的布局信息的更改。</li>
+<li><p>直接操作单元格和视图。</p>
+<p>应该始终将手势识别器附加到UICollectionView本身 而不是特定的单元格或视图。该UICollectionView是UIScrollView的子类，所以你的附加手势识别到集合的看法是不太可能，必须跟踪的其他手势干扰。此外，由于集合视图可以访问您的数据源和布局对象，因此您仍然可以访问适当操作单元格和视图所需的所有信息。</p></li>
+</ul></li>
+<li><p>怎么通过手势改变布局信息</p>
+<p>手势识别器提供了一种动态修改布局参数的简便方法。例如，您可以使用捏合手势识别器来更改自定义布局中项目之间的间距。用于配置这种手势识别器的过程相对简单。</p>
+<ol>
+<li>创建手势识别器。</li>
+<li>将手势识别器附加到集合视图。</li>
+<li>使用手势识别器的处理程序方法更新布局参数并使布局对象无效。</li>
+</ol>
+<p>动态修改 itemSize</p>
+<pre><code class="language-text">-(void)viewDidLoad {
+    [super viewDidLoad];<br/>
+ UIPinchGestureRecognizer * pinch = [[UIPinchGestureRecognizer alloc]initWithTarget:self action:@selector(handlePinchGesture:)];<br/>
+[self.collectionView addGestureRecognizer:pinch];<br/>
+} <br/>
+-(void)handlePinchGesture:(UIPinchGestureRecognizer*)sender{<br/>
+    if ([sender numberOfTouches] != 2)<br/>
+        return;<br/>
+    // Update the custom layout parameter and invalidate.<br/>
+    CGSize initSize = self.flowLayout.itemSize;<br/>
+    CGFloat maxWidth = 200;<br/>
+    CGFloat maxHeight = 200;<br/>
+    CGFloat minWidth = 20;<br/>
+    CGFloat minHeight = 20;<br/>
+    CGFloat width;<br/>
+    CGFloat height;<br/>
+    if (initSize.width*sender.scale&gt;maxWidth) {<br/>
+        width = maxWidth;<br/>
+    }else if(initSize.width*sender.scale&lt;minWidth){<br/>
+        width = minWidth;<br/>
+    }else{<br/>
+        width =initSize.width*sender.scale;<br/>
+    }<br/>
+    if (initSize.height*sender.scale&gt;maxHeight) {<br/>
+        height = maxHeight;<br/>
+    }else if(initSize.height*sender.scale&lt;minHeight){<br/>
+        height = minHeight;<br/>
+    }else{<br/>
+        height = initSize.height*sender.scale;<br/>
+    }<br/>
+    self.flowLayout.itemSize = CGSizeMake(width, height);<br/>
+}
+</code></pre>
+<p>注意:如果实现了长按显示 menu 的代理方法，那么长按 cell 的手势就会失灵，如果想要长按 cell 手势生效的话就不要实现-collectionView: shouldShowMenuForItemAtIndexPath:这个方法，或者让其返回NO。</p></li>
+</ol>
+
+<h2 id="toc_1">2. 创建自定义布局UICollectionViewLayout</h2>
+
+<h3 id="toc_2">2.1 什么场景会使用自定义布局</h3>
+
+<ul>
+<li><p>布局看起来不像网格或基于行的破坏布局（将项目放入一行直到它已满的布局，然后继续到下一行，直到放置所有项目）或者需要滚动超过一个方向。</p></li>
+<li><p>经常更改所有单元格位置，创建自定义布局要比修改现有流程布局更少工作量。</p></li>
+</ul>
+
+<p>对于自定义布局，您需要子类UICollectionViewLayout，这为您的设计提供了一个全新的起点。只有少数方法为您的布局对象提供核心行为，并且在您的实现中是必需的。其余的方法可供您根据需要覆盖以调整布局行为。核心方法处理以下关键任务：</p>
+
+<ul>
+<li>指定可滚动内容区域的大小。</li>
+<li>为构成布局的单元格和视图提供属性对象，以便集合视图可以定位每个单元格和视图。</li>
+</ul>
+
+<p>虽然您可以创建仅实现核心方法的功能布局对象，但如果您实现了几个可选方法，则布局可能会更具吸引力。</p>
+
+<h3 id="toc_3">2.2 了解核心布局过程</h3>
+
+<p>集合视图直接与您的自定义布局对象一起使用，以管理整个布局过程。当集合视图确定它需要布局信息时，它会要求您的布局对象提供它。例如，集合视图在首次显示或调整大小时会询问布局信息。您还可以通过调用invalidateLayout布局对象的方法告诉集合视图显式更新其布局。该方法抛弃现有布局信息并强制布局对象生成新的布局信息。</p>
+
+<p><strong>注意</strong>：不要将布局对象的invalidateLayout方法与集合视图的reloadData方法混淆。调用该invalidateLayout方法不一定会导致集合视图丢弃其现有的单元格和子视图。相反，它会强制布局对象在移动和添加或删除项目时根据需要重新计算其所有布局属性。如果数据源中的数据已更改，则该reloadData方法合适。无论您如何启动布局更新，实际布局过程都是相同的。<br/>
+另外invalidateLayout不会立马更新，而是会标记需要更新，在下一个视图更新周期开始更新。</p>
+
+<p>在布局过程中始终按以下顺序调用这些方法：</p>
+
+<ol>
+<li>使用该prepareLayout方法执行提供布局信息所需的前期计算。</li>
+<li>使用此collectionViewContentSize方法可根据初始计算返回整个内容区域的整体大小。</li>
+<li><p>使用此layoutAttributesForElementsInRect:方法返回指定矩形中的单元格和视图的属性。</p>
+<p><img src="media/15452016090680/15452078979227.png" alt=""/></p></li>
+</ol>
+
+<h3 id="toc_4">2.3 准备布局 prepareLayout</h3>
+
+<p>该prepareLayout方法用于为集合视图中的每个视图实例化所有布局属性对象，然后将这些属性缓存在我们的layoutInformation字典中供以后使用。</p>
+
+<h4 id="toc_5">2.3.1 创建布局属性&amp;&amp;存储布局属性</h4>
+
+<p>布局负责的属性对象是UICollectionViewLayoutAttributes类的实例。可以在应用程序中以各种不同的方法创建这些实例。<br/>
+在创建UICollectionViewLayoutAttributes类的新实例时，使用以下类方法之一：</p>
+
+<ul>
+<li>layoutAttributesForCellWithIndexPath:</li>
+<li>layoutAttributesForSupplementaryViewOfKind:withIndexPath:</li>
+<li>layoutAttributesForDecorationViewOfKind:withIndexPath:</li>
+</ul>
+
+<p>创建每个属性对象后，为相应的视图设置相关属性。至少，在布局中设置视图的大小和位置。如果布局的视图重叠，请为zIndex属性指定值以确保重叠视图的一致排序。其他属性可让您控制单元格或视图的可见性或外观，并可根据需要进行更改。如果标准属性类不适合您的应用程序需求，则可以对其进行子类化和扩展，以存储有关每个视图的其他信息。子类化布局属性时，需要实现isEqual:比较自定义属性的方法，因为集合视图对其某些操作使用此方法。</p>
+
+<p><img src="media/15452016090680/15452123837139.png" alt=""/></p>
+
+<p>在自定义的UICollectionViewLayout子类中实现 prepareLayout 方法</p>
+
+<pre><code class="language-text">- (void)prepareLayout {
+//初始化存储布局属性的字典
+    NSMutableDictionary *layoutInformation = [NSMutableDictionary dictionary];
+    NSMutableDictionary *cellInformation = [NSMutableDictionary dictionary];
+    NSIndexPath *indexPath;
+    NSInteger numSections = [self.collectionView numberOfSections;]
+    for(NSInteger section = 0; section &lt; numSections; section++){
+        NSInteger numItems = [self.collectionView numberOfItemsInSection:section];
+        for(NSInteger item = 0; item &lt; numItems; item++){
+            indexPath = [NSIndexPath indexPathForItem:item inSection:section];
+            MyCustomAttributes *attributes =
+            [self attributesWithChildrenAtIndexPath:indexPath];
+            [cellInformation setObject:attributes forKey:indexPath];
+        }
+    }
+    //end of first section
+    //continuation of prepareLayout implementation
+    for(NSInteger section = numSections - 1; section &gt;= 0; section—-){
+        NSInteger numItems = [self.collectionView numberOfItemsInSection:section];
+        NSInteger totalHeight = 0;
+        for(NSInteger item = 0; item &lt; numItems; item++){
+            indexPath = [NSIndexPath indexPathForItem:item inSection:section];
+            MyCustomAttributes *attributes = [cellInfo objectForKey:indexPath]; // 1
+            attributes.frame = [self frameForCellAtIndexPath:indexPath
+                                withHeight:totalHeight];
+            [self adjustFramesOfChildrenAndConnectorsForClassAtIndexPath:indexPath]; // 2
+            cellInfo[indexPath] = attributes;
+            totalHeight += [self.customDataSource
+                            numRowsForClassAndChildrenAtIndexPath:indexPath]; // 3
+        }
+        if(section == 0){
+            self.maxNumRows = totalHeight; // 4
+        }
+    }
+    [layoutInformation setObject:cellInformation forKey:@&quot;MyCellKind&quot;]; // 5
+    self.layoutInformation = layoutInformation
+}
+</code></pre>
+
+<p>代码中序号部分的解释</p>
+
+<ol>
+<li>在设置单元框架之前，从本地字典中检索在第一次传递数据时创建的布局属性。</li>
+<li>自定义adjustFramesOfChildrenAndConnectorsForClassAtIndexPath:方法递归调整所有单元格的子孙的帧等，以匹配单元格的帧。</li>
+<li>将调整后的属性放回字典后，totalHeight调整变量以反映下一个项目的框架需要的位置。这是代码利用自定义协议的地方。无论什么对象实现该协议需要实现该numRowsForClassAndChildrenAtIndexPath:方法，该方法返回每个类需要占用多少行，因为它具有多少个子节点。</li>
+<li>maxNumRows属性（以后需要来设置内容的大小）被设置为第0部分的总高度。具有最长高度的列始终为0部分，其高度已针对树中的所有子项进行调整，因为此实现不包括智能空间调整。</li>
+<li>该方法通过将具有所有单元属性的layoutInformation字典插入到本地字典中并以唯一字符串标识符作为其键来结束。</li>
+</ol>
+
+<p>用于在最后一步中插入字典的字符串标识符用于整个自定义布局的其余部分，以检索单元格的正确属性。当补充观点在示例中进一步发挥作用时变得更加重要。</p>
+
+<pre><code class="language-text">//预布局方法 所有的布局应该写在这里面
+- (void)prepareLayout
+//此方法应该返回当前屏幕正在显示的视图（cell 头尾视图）的布局属性集合（UICollectionViewLayoutAttributes 对象集合）
+- (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
+//根据indexPath去对应的UICollectionViewLayoutAttributes  这个是取值的，要重写，在移动删除的时候系统会调用改方法重新去UICollectionViewLayoutAttributes然后布局
+- (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
+- (UICollectionViewLayoutAttributes *)layoutAttributesForSupplementaryViewOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath
+- //返回当前的ContentSize
+- (CGSize)collectionViewContentSize
+//是否重新布局 
+-(BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds
+//这4个方法用来处理插入、删除和移动cell时的一些动画 瀑布流代码详解
+- (void)prepareForCollectionViewUpdates:(NSArray *)updateItems
+- (UICollectionViewLayoutAttributes*)initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath *)itemIndexPath
+- (nullable UICollectionViewLayoutAttributes *)finalLayoutAttributesForDisappearingItemAtIndexPath:(NSIndexPath *)itemIndexPath
+- (void)finalizeCollectionViewUpdates
+//9.0之后处理移动相关
+- (UICollectionViewLayoutInvalidationContext *)invalidationContextForInteractivelyMovingItems:(NSArray&lt;NSIndexPath *&gt; *)targetIndexPaths withTargetPosition:(CGPoint)targetPosition previousIndexPaths:(NSArray&lt;NSIndexPath *&gt; *)previousIndexPaths previousPosition:(CGPoint)previousPosition NS_AVAILABLE_IOS(9_0)
+- (UICollectionViewLayoutInvalidationContext *)invalidationContextForEndingInteractiveMovementOfItemsToFinalIndexPaths:(NSArray&lt;NSIndexPath *&gt; *)indexPaths previousIndexPaths:(NSArray&lt;NSIndexPath *&gt; *)previousIndexPaths movementCancelled:(BOOL)movementCancelled NS_AVAILABLE_IOS(9_0)
+</code></pre>
+
+<h4 id="toc_6">2.3.2 添加补充视图</h4>
+
+<ol>
+<li><p>向布局添加补充视图的步骤如下：</p>
+<ul>
+<li>使用registerClass:forSupplementaryViewOfKind:withReuseIdentifier:或registerNib:forSupplementaryViewOfKind:withReuseIdentifier:方法将补充视图注册到集合视图的布局对象。</li>
+<li>在您的数据源中，实现collectionView:viewForSupplementaryElementOfKind:atIndexPath:。因为这些视图是可重用的，可以先dequeueReusableSupplementaryViewOfKind:withReuseIdentifier:forIndexPath:去获取</li>
+<li>在 prepareLayout 中为您的补充视图创建布局属性对象，就像对单元格一样。</li>
+<li>在layoutAttributesForElementsInRect:方法报道查看的属性数组中所有游戏这些布局属性对象。</li>
+<li><p>实现layoutAttributesForSupplementaryViewOfKind:atIndexPath:方法以在查询时报道查看指定补充视图的属性对象。</p>
+<p><strong>For example</strong>   </p>
+<pre><code class="language-text">- (void)viewDidLoad {
+    [super viewDidLoad];<br/>
+[self.collectionView registerNib:[UINib nibWithNibName:@&quot;headerView&quot; bundle:nil] forSupplementaryViewOfKind:AC_UICollectionElementKindSectionHeader  withReuseIdentifier:@&quot;header&quot;];<br/>
+}<br/>
+-(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{<br/>
+    UICollectionReusableView*header ;<br/>
+    if (kind == AC_UICollectionElementKindSectionHeader)<br/>
+    {<br/>
+        header = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@&quot;header&quot; forIndexPath:indexPath];<br/>
+        return header;<br/>
+    }<br/>
+    return header;<br/>
+}
+</code></pre>
+<p>在自定义的UICollectionViewLayout 实现以下方法</p>
+<pre><code class="language-text">
+//返回补充视图的布局属性<br/>
+- (UICollectionViewLayoutAttributes *)layoutAttributesForSupplementaryViewOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath<br/>
+{<br/>
+    UICollectionViewLayoutAttributes *attribute = nil;<br/>
+    if ([elementKind isEqualToString:AC_UICollectionElementKindSectionHeader]) {<br/>
+        attribute = self.headLayoutInfo[indexPath];<br/>
+    }else if ([elementKind isEqualToString:AC_UICollectionElementKindSectionFooter]){<br/>
+        attribute = self.footLayoutInfo[indexPath];<br/>
+    }<br/>
+    return attribute;<br/>
+}
+</code></pre></li>
+</ul></li>
+<li><p>注意</p>
+<p>另外需要注意的是注册xib headerview的时候要选择指定的UICollectionReusableView 然后在上面添加其他控件。</p>
+<p><img src="media/15452016090680/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-24%20%E4%B8%8A%E5%8D%8811.28.22.png" alt="屏幕快照 2018-12-24 上午11.28.22"/></p></li>
+</ol>
+
+<h4 id="toc_7">2.3.3 使插入和删除动画更有趣</h4>
+
+<p>要想触发自定义 uicollectionviewlayout 的这个方面，必须使用    [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.dataSource.count-1 inSection:0]]];这类语句，而不能只是简单的 reloadData。</p>
+
+<pre><code class="language-text">- (void)prepareForCollectionViewUpdates:(NSArray *)updateItems
+{
+    [super prepareForCollectionViewUpdates:updateItems];
+    NSMutableArray *indexPaths = [NSMutableArray array];
+    for (UICollectionViewUpdateItem *updateItem in updateItems) {
+        switch (updateItem.updateAction) {
+            case UICollectionUpdateActionInsert:
+                [indexPaths addObject:updateItem.indexPathAfterUpdate];
+                break;
+            case UICollectionUpdateActionDelete:
+                [indexPaths addObject:updateItem.indexPathBeforeUpdate];
+                break;
+            case UICollectionUpdateActionMove:
+                //[indexPaths addObject:updateItem.indexPathBeforeUpdate];
+                //[indexPaths addObject:updateItem.indexPathAfterUpdate];
+                break;
+            default:
+                NSLog(@&quot;unhandled case: %@&quot;, updateItem);
+                break;
+        }
+    }
+    self.shouldanimationArr = indexPaths;
+}
+
+</code></pre>
+
+<p>还要指定插入单元格的初始属性和最终属性,代码中不是对每个单元格都进行了动画渲染，只是对特定数组中的单元格渲染，上面的代码是筛选匹配。</p>
+
+<pre><code class="language-//指定插入单元格的初始属性">- (UICollectionViewLayoutAttributes*)initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath *)itemIndexPath
+{
+    
+    if ([self.shouldanimationArr containsObject:itemIndexPath]) {
+        UICollectionViewLayoutAttributes *attr = self.cellLayoutInfo[itemIndexPath];
+        
+        attr.transform = CGAffineTransformRotate(CGAffineTransformMakeScale(0.2, 0.2), M_PI);
+        attr.center = CGPointMake(CGRectGetMidX(self.collectionView.bounds), CGRectGetMaxY(self.collectionView.bounds));
+        attr.alpha = 1;
+        [self.shouldanimationArr removeObject:itemIndexPath];
+        return attr;
+    }
+    return nil;
+}
+
+//对应UICollectionViewUpdateItem 的indexPathAfterUpdate 设置调用
+- (nullable UICollectionViewLayoutAttributes *)finalLayoutAttributesForDisappearingItemAtIndexPath:(NSIndexPath *)itemIndexPath
+{
+    if ([self.shouldanimationArr containsObject:itemIndexPath]) {
+        UICollectionViewLayoutAttributes *attr = self.cellLayoutInfo[itemIndexPath];
+        
+        attr.transform = CGAffineTransformRotate(CGAffineTransformMakeScale(2, 2), 0);
+        attr.center = CGPointMake(CGRectGetMidX(self.collectionView.bounds), CGRectGetMaxY(self.collectionView.bounds));
+        attr.alpha = 0;
+        [self.shouldanimationArr removeObject:itemIndexPath];
+        return attr;
+    }
+    return nil;
+}
+
+</code></pre>
+
+<h4 id="toc_8">2.3.4 改善布局的滚动体验</h4>
+
+<p>自定义布局对象可以影响集合视图的滚动行为，以创建更好的用户体验。当滚动相关的触摸事件结束时，滚动视图基于当前有效的速度和减速率确定滚动内容的最终静止位置。当集合视图知道该位置时，它会询问其布局对象是否应通过调用其targetContentOffsetForProposedContentOffset:withScrollingVelocity:方法来修改位置。因为它在底层内容仍在移动时调用此方法，所以您的自定义布局可能会影响滚动内容的最终静止点。</p>
+
+<p>图2-4演示了如何使用布局对象来更改集合视图的滚动行为。假设集合视图偏移从（0,0）开始，用户向左滑动。集合视图计算滚动自然停止的位置，并将该值作为“建议的”内容偏移值提供。您的布局对象可能会更改建议的值，以确保滚动停止时，项目在集合视图的可见边界中精确居中。此新值将成为目标内容偏移量，并且是从targetContentOffsetForProposedContentOffset:withScrollingVelocity:方法返回的值。</p>
+
+<p>图2-4   将建议的内容偏移更改为更合适的值<br/>
+<img src="media/15452016090680/15456428519882.png" alt=""/></p>
+
+<p>在自定义的UICollectionViewLayout 中实现</p>
+
+<pre><code class="language-text">-(CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity{
+    
+    
+    计算最终的位置并返回
+    
+    return proposedContentOffset;
+    
+    
+}
+</code></pre>
+
+<h2 id="toc_9">3. 总结</h2>
+
+<ul>
+<li><p>考虑使用该prepareLayout方法创建和存储以后需要的UICollectionViewLayoutAttributes对象。集合视图将在某个时刻要求布局属性对象，如果您拥有相对较少的项目（数百个）或这些项目的实际布局属性不经常更改，则更应该预先创建和存储它们。</p>
+<p>但是，如果您的布局需要管理数千个项目，则需要权衡缓存与重新计算的好处。对于布局不经常更改的可变大小的项目，缓存通常无需定期重新计算复杂的布局信息。</p>
+<p>对于大量固定大小的项目，按需计算属性可能更简单。对于属性经常变化的项目，您可能无论如何都会重新计算，因此缓存可能会占用内存中的额外空间。</p></li>
+<li><p>避免继承UICollectionView。集合视图很少或没有自己的外观。相反，它从数据源对象中提取其所有视图，并从布局对象中提取所有与布局相关的信息。如果您尝试以三维方式布置项目，那么正确的方法是实现自定义布局，该布局设置每个单元格的3D变换并适当地查看。</p></li>
+<li><p>不要从自定义布局对象的方法中调用visibleCells方法。除了布局对象告诉它之外，集合视图不知道单元格的位置，因此，询问可见单元格只是将请求转发给布局对象。UICollectionViewlayoutAttributesForElementsInRect:</p>
+<p>您的布局对象应始终知道内容区域中项目的位置，并且应该能够随时返回这些项目的属性。</p></li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/12/11</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509806241.html">
+                
+                  <h1>Python</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">另类创建字典的方法</h2>
+
+<ul>
+<li><p>zip函数</p>
+<pre><code class="language-text">names = [&#39;name&#39;,&#39;age&#39;,&#39;pay&#39;,&#39;job&#39;]
+values = [&#39;sam smith&#39;,40,3000,&#39;software&#39;]<br/>
+print(list(zip(names,values)))
+</code></pre></li>
+<li><p>创建空字典</p>
+<pre><code class="language-text">names = [&#39;name&#39;,&#39;age&#39;,&#39;pay&#39;,&#39;job&#39;]
+record = dict.fromkeys(names,&quot;?&quot;)<br/>
+print(record)
+</code></pre></li>
+</ul>
+
+<h2 id="toc_1">路径</h2>
+
+<p>os.sys.path[0]获取当前 path 文件所在的文件夹<br/>
+os.sys.argv[0]获取当前 path 文件的绝对路径</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/12/11</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509806365.html">
+                
+                  <h1>Value and Reference Collections</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>值类型和引用类型的集合有所不同,看下图可知。</p>
+
+<p><img src="media/15471123133942/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-01-10%20%E4%B8%8B%E5%8D%885.25.48.png" alt="屏幕快照 2019-01-10 下午5.25.48" style="width:601px;"/></p>
+
+<pre><code class="language-text">示例1      
+let x = NSMutableArray()
+x.add(&quot;🐵&quot;)
+let y = x
+y.add(&quot;🐶&quot;)    
+print(x,y)
+//结果
+(
+    &quot;🐵&quot;,
+    &quot;🐶&quot;
+) (
+    &quot;🐵&quot;,
+    &quot;🐶&quot;
+)  
+</code></pre>
+
+<pre><code class="language-text">示例2     
+var x:[String] = []
+x.append(&quot;🐵&quot;)
+var y = x
+y.append(&quot;🐶&quot;)
+    
+print(x,y)
+//结果  
+[&quot;🐵&quot;] [&quot;🐵&quot;, &quot;🐶&quot;]
+</code></pre>
+
+<p>打印内存地址，探究 x 和 y 内存指向空间的关系。</p>
+
+<pre><code class="language-text">示例3  
+var x:[String] = []
+x.append(&quot;🐵&quot;)
+let xaddress = String(format: &quot;%p&quot;, x)
+print(&quot;xaddress===\(xaddress)&quot;)
+var y = x
+let yaddress = String(format: &quot;%p&quot;, y)
+print(&quot;yaddress===\(yaddress)&quot;)
+y.append(&quot;🐶&quot;)
+print(&quot;yaddress===\(yaddress)&quot;)
+
+//结果
+xaddress===0x600000434640
+yaddress===0x6000004346a0
+yaddress===0x6000004346a0
+</code></pre>
+
+<pre><code class="language-text">示例4  
+let x = NSMutableArray()
+x.add(&quot;🐵&quot;)
+let xaddress = String(format: &quot;%p&quot;, x)
+print(&quot;xaddress===\(xaddress)&quot;)
+let y = x
+let yaddress = String(format: &quot;%p&quot;, y)
+print(&quot;yaddress===\(yaddress)&quot;)
+y.add(&quot;🐶&quot;)
+print(&quot;yaddress===\(yaddress)&quot;)
+
+//结果
+xaddress===0x6000004508c0
+yaddress===0x6000004508c0
+yaddress===0x6000004508c0
+</code></pre>
+
+<p>示例3中的  <code>var y = x</code>会使y开辟一个新的内存空间，内容是复制x的内容，y添加元素，从而不会影响到 x。</p>
+
+<p>但是示例4对于 <code>let y = x</code> 没有开辟新的内存空间 还是指向同一块区域，所以当 y 发生改变的时候 x 的值也发生了改变。</p>
+
+<h3 id="toc_0">结语</h3>
+
+<p>NS前缀的是引用类型，引用类型只存在一份内存，因此改变一个值就会引起另一个值的改变，这个需要引起注意。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/12/11</span>
+                    
           				   
                   </div>
                   <div class="more-right right">
@@ -521,9 +1516,7 @@ git config http.sslVerify &quot;false&quot;、
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
             
-                <div class="site-a-logo"><img src="/asset/img/logo.png" /></div>
-            
-                <h1>Code Log 👨‍💻‍ </h1>
+                <h1></h1>
                 <div class="site-des"></div>
                 <div class="social">
 
@@ -535,9 +1528,9 @@ git config http.sslVerify &quot;false&quot;、
 
 
 
-<a target="_blank" class="github" target="_blank" href="https://github.com/maweefeng" title="GitHub">GitHub</a>
-<a target="_blank" class="email" href="mailto:maweefeng@gmail.com" title="Email">Email</a>
-  <!-- <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a> -->
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
                 
               	 </div>
           	</div>
@@ -552,17 +1545,9 @@ git config http.sslVerify &quot;false&quot;、
 
       	<p class="cat-list">
         
-            <a href="iOS.html"><strong>iOS</strong></a>
+            <a href="%E7%94%B5%E5%BD%B1.html"><strong>电影</strong></a>
         
-            <a href="Git.html"><strong>Git</strong></a>
-        
-            <a href="CocoaPods.html"><strong>CocoaPods</strong></a>
-        
-            <a href="Django.html"><strong>Django</strong></a>
-        
-            <a href="Spiders.html"><strong>Spiders</strong></a>
-        
-            <a href="about.html"><strong>about</strong></a>
+            <a href="%E5%85%B6%E5%AE%83.html"><strong>其它</strong></a>
          
         </p>
 
@@ -579,31 +1564,31 @@ git config http.sslVerify &quot;false&quot;、
 	      
 		      
 			      <li class="post">
-			        <a href="15638450239357.html">判断bundle中存不存在某个文件</a>
+			        <a href="16076509803956.html">Xcode10报错libstdc</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15638515424059.html">去除tableview sectionheaderview的粘连效果</a>
+			        <a href="16076509804011.html">Masonry布局“Unable to simultaneously satisfy constraints”</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15641370883413.html">快速的扩展类的初始化方法</a>
+			        <a href="16076509804045.html">RACCommand</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15644628854335.html">切部分圆角</a>
+			        <a href="16076509804076.html">代理修饰符</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15646490459131.html">didSet 和 willSet</a>
+			        <a href="16076509804110.html">You don’t have write permissions</a>
 			      </li>
 		     
 		  
@@ -648,11 +1633,10 @@ git config http.sslVerify &quot;false&quot;、
 
  <div class="page-bottom clearfix">
   <div class="row">
-   <!-- <p class="copyright">Copyright &copy; 2015
+   <p class="copyright">Copyright &copy; 2015
 Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
-Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p> -->
-<p class="copyright">日光之下 永无新事</p>
-</div>
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
 </div>
 
         </section>
@@ -679,7 +1663,7 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p> -->
      
     </script>
 
-    <script src="asset/chart/all-min.js"></script><script type="text/javascript">$(function(){    var mwebii=0;    var mwebChartEleId = 'mweb-chart-ele-';    $('pre>code').each(function(){        mwebii++;        var eleiid = mwebChartEleId+mwebii;        if($(this).hasClass('language-sequence')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = Diagram.parse($(this).text());            diagram.drawSVG(eleiid,{theme: 'simple'});        }else if($(this).hasClass('language-flow')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = flowchart.parse($(this).text());            diagram.drawSVG(eleiid);        }    });});</script>
+    
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
 
 

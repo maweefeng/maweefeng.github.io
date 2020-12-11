@@ -1,0 +1,855 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+  
+  
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E7%94%B5%E5%BD%B1.html">电影</a></li>
+        
+            <li><a href="%E5%85%B6%E5%AE%83.html">其它</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
+</script>
+<div class="row">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="16076509807659.html">
+                
+                  <h1>点击事件发生在视图边界之外的时候</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>这里有两个方法，每次有touch动作时，都会走这两个方法</p>
+
+<ul>
+<li>(UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event；</li>
+<li>(BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event；</li>
+</ul>
+
+<p>重写方法 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event</p>
+
+<p>这是View里的一个方法，处理流程如下</p>
+
+<ul>
+<li>首先调用当前视图的pointInside:withEvent:方法判断触摸点是否在当前视图内；</li>
+<li>若返回NO,则hitTest:withEvent:返回nil;</li>
+<li>若返回YES,则向当前视图的所有子视图(subviews)发送hitTest:withEvent:消息，所有子视图的遍历顺序是从top到bottom，即从subviews数组的末尾向前遍历,直到有子视图返回非空对象或者全部子视图遍历完毕；</li>
+<li>若第一次有子视图返回非空对象,则hitTest:withEvent:方法返回此对象，处理结束；</li>
+<li>如所有子视图都返回非，则hitTest:withEvent:方法返回自身(self)。</li>
+<li>最后，这个触摸事件交给主窗口的hitTest:withEvent:方法返回的视图对象去处理。</li>
+</ul>
+
+<pre><code class="language-text">//返回一个view来响应事件
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
+ UIView *view = [super hitTest:point withEvent:event];
+ if (view == nil){
+  //转换坐标
+  CGPoint tempPoint = [self.testBtn convertPoint:point fromView:self];
+  //判断点击的点是否在按钮区域内
+  if (CGRectContainsPoint(self.testBtn.bounds, tempPoint)){
+   //返回按钮
+   return _testBtn;
+  }
+ }
+ return view;
+}
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/12/11</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509807752.html">
+                
+                  <h1>Speed Up Development with Xcode File Templates</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h4 id="toc_0">Custom Templates Directory</h4>
+
+<ul>
+<li><p>~/Library/Developer/Xcode/Templates<br/>
+进入到指定的模版路径</p></li>
+<li><p>mkdir -p ~/Library/Developer/Xcode/Templates/File\ Templates/Custom 创建一个Custom 的文件夹</p></li>
+</ul>
+
+<h5 id="toc_1">Xcode Default Templates Directory</h5>
+
+<p>/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/File Templates</p>
+
+<p>进入之后复制一些其他的模版到自己的custom模版 然后进入模版之后编辑自己经常使用的模版，可以极大的提升开发的效率。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/12/11</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509807797.html">
+                
+                  <h1>Swift中的字典转模型方法的迭代</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>模型可以是结构体也可以是继承自NSObject的类  </p>
+
+<pre><code class="language-text">class App: NSObject {
+    var name:String = &quot;&quot;
+    var age:Int = 0
+    var boxDescription:String = &quot;&quot;
+}
+
+
+struct App :Decodable{
+    var name:String
+    var age:Int
+    var description:String
+    
+    init(dic:[String:AnyObject]) {
+        name = dic[&quot;name&quot;] as! String
+        age = dic[&quot;age&quot;] as! Int
+        description = dic[&quot;description&quot;] as! String
+    }
+    
+}
+
+</code></pre>
+
+<p>网络请求</p>
+
+<pre><code class="language-text"> func fetchData(){
+        let url = &quot;https://maweefeng.github.io/appfeauterd.json&quot;
+        
+        let session: URLSession = URLSession.shared
+        
+        let dataTask: URLSessionDataTask = session.dataTask(with: URL(string: url)!) { (data, response, error) in
+            if(error == nil){
+                var dict:NSDictionary? = nil
+                do {
+                    guard let jsondata = data else{return}
+                    let app = try JSONDecoder().decode(App.self, from: jsondata)
+                    print(app)
+                    
+//dict = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
+//
+//                    let app = App(dic: dict)
+//                    print(app)
+
+                    
+                } catch {
+                }
+                print(dict!)
+            }
+        }
+        dataTask.resume()
+        
+    }
+</code></pre>
+
+<h3 id="toc_0">JSONSerialization</h3>
+
+<p>之前我们字典转模型可能使用的方法可能是使用</p>
+
+<ul>
+<li><p>model为结构体</p>
+<pre><code class="language-text">dict = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
+let app = App(dic: dict)<br/>
+print(app)
+</code></pre></li>
+<li><p>model为NSObject子类</p>
+<pre><code class="language-text">dict = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
+let app = App()<br/>
+app.setValuesForKeys(dict as! [String : Any])
+</code></pre></li>
+</ul>
+
+<h3 id="toc_1">JSONDecode</h3>
+
+<p>现在使用swift4新增了一种更方法的方法，就是JSONDecode</p>
+
+<pre><code class="language-text">let app = try JSONDecoder().decode(App.self, from: jsondata)`
+
+</code></pre>
+
+<p>如果返回的data数据是一个object的字典，那么可以用上面的代码 </p>
+
+<p>如果data是一个包含app对象的数组，则可以简单的使用</p>
+
+<pre><code class="language-text">let app = try JSONDecoder().decode([App].self, from: jsondata)`
+</code></pre>
+
+<p>另外一些情况，可能数组当中并不是每个键值对都一一对应，可能存在部分键值对缺失的情况，这样的话就会报错，有一个解决办法便是使那些可以为空的属性为optional，这样就可以解决错误问题。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/12/11</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509807837.html">
+                
+                  <h1>accessoryView</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code class="language-text">open var accessoryView: UIView? // if set, use custom view. ignore accessoryType. tracks if enabled can calls accessory action
+</code></pre>
+
+<p><img src="media/15553377156905/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-04-15%20%E4%B8%8B%E5%8D%8810.55.00.png" alt="屏幕快照 2019-04-15 下午10.55.00"/></p>
+
+<p>如果要实现上面类似的效果，可以不使用自定义的cell去添加subview可以试着使用自带的方法给UITableViewCell的accessoryView赋值。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/12/11</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509807915.html">
+                
+                  <h1>Unit testing</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>添加单元测试到项目当中，然后如果想要调用项目中的方法，需要在顶部加 <code>@testable import 工程名</code></p>
+
+<p>一个简单的单元测试如下代码所示</p>
+
+<pre><code class="language-text">import XCTest
+@testable import  Appstore
+class AppstoreTests: XCTestCase {
+    
+    func testSqure() {
+        let value = 7
+        let squredvalue = value.squreInt()
+        XCTAssertEqual(squredvalue, 49)
+    }
+
+    func sum() {
+        let a = 5
+        let b = 6
+        let c = a + b
+        XCTAssertEqual(c, 11)
+    }
+}
+
+</code></pre>
+
+<p>那么如果一开始创建项目没有勾选单元测试，后期如何加单元测试到项目当中呢？</p>
+
+<h3 id="toc_0">添加单元测试到项目</h3>
+
+<ul>
+<li><p>第一步选择项目，按左下角加号添加target</p>
+<p><img src="media/15554198134411/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-04-16%20%E4%B8%8B%E5%8D%889.10.05.png" alt="屏幕快照 2019-04-16 下午9.10.05"/></p></li>
+<li><p>第二步，选择iOS Unit Testing Bundle</p>
+<p><img src="media/15554198134411/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-04-16%20%E4%B8%8B%E5%8D%889.10.24.png" alt="屏幕快照 2019-04-16 下午9.10.24"/></p></li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/12/11</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509807952.html">
+                
+                  <h1>Filter, Map, Reduce  Functions</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">Filter</h3>
+
+<p>Filter 函数是过滤出所有符合过滤条件的元素 </p>
+
+<p>比如下面的方法过滤出数组所有元素等于3的元素</p>
+
+<pre><code class="language-text">func filter() {
+        let numbers = [1,2,3,3,3,4]
+        //过滤出所有元素为3的元素 并返回过滤之后的数据
+        let filtedNumbers = numbers.filter({return $0 == 3})
+        print(filtedNumbers)//[3,3,3]
+    }
+
+</code></pre>
+
+<h3 id="toc_1">Map</h3>
+
+<p>使用map函数把数组中的所有元素使用同一个规则，并返回一个相同数量的数组</p>
+
+<pre><code class="language-text">func map() {
+        let numbers = [1,2,3,3,3,4]
+        //过滤出所有元素为3的元素 并返回过滤之后的数据
+        let filtedNumbers = numbers.map({return $0 * 2})
+        print(filtedNumbers)//[2,4,6,6,6,8]
+    }
+
+</code></pre>
+
+<h3 id="toc_2">Reduce</h3>
+
+<p>使用reduce函数实现函数的前后累加，并返回一个元素</p>
+
+<pre><code class="language-text">func reduce(){
+        let numbers = [1,2,3,3,3,4]
+      
+        let sum = numbers.reduce(0, {sum,number in sum + number})
+
+        print(sum)
+        
+    }
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/12/11</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509807984.html">
+                
+                  <h1>Swift单例写法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>介绍swift的单例类写法之前，可以先回顾一下oc中单例的写法如下。</p>
+
+<pre><code class="language-//首先.h文件里声明">//单例类
+@interface Manger : NSObject
++ (instancetype)sharedManger;
+@end
+
+//然后.m文件里写实现
+@implementation Manger
++ (instancetype)sharedManger {
+    static Manger *sharedManger = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&amp;onceToken, ^{
+        sharedManger = [self new];
+    });
+    return sharedManger;
+}
+
+</code></pre>
+
+<h4 id="toc_0">swift单例写法</h4>
+
+<ul>
+<li>简单写法</li>
+</ul>
+
+<pre><code class="language-text">import UIKit
+//仿OC写法
+class Manger: NSObject {
+    static let instance: Manger = Manger()
+    class func shared() -&gt; Manger {
+        return instance
+    }
+}
+//简便写法
+class Manger {
+    static let shared = Manger()
+}
+</code></pre>
+
+<p>这样对比下来swift真的是极大的减少了代码量，所有也会有一些人推荐如果开发新项目，建议使用swift开发，毫无疑问。</p>
+
+<p>另外swift 还有一种类似oc的写法如下。</p>
+
+<ul>
+<li>复杂写法</li>
+</ul>
+
+<pre><code class="language-text">class Singleton {
+    class var sharedInstance: Singleton {
+        struct Static {
+            static var oncetoken: String? = NSUUID().uuidString
+
+            static var instance: Singleton? = nil
+        }
+        DispatchQueue.once(token: Static.oncetoken) {
+            Static.instance = Singleton()
+
+        }
+        return Static.instance!
+    }
+}
+
+extension DispatchQueue {
+    private static var _onceTracker = [String]()
+    public class func once(token: String, block: () -&gt; ()) {
+        objc_sync_enter(self)
+        defer {
+            objc_sync_exit(self)
+        }
+        if _onceTracker.contains(token) {
+            return
+        }
+        _onceTracker.append(token)
+        block()
+    }
+    
+    func async(block: @escaping ()-&gt;()) {
+        self.async(execute: block)
+    }
+
+    func after(time: DispatchTime, block: @escaping ()-&gt;()) {
+        self.asyncAfter(deadline: time, execute: block)
+    }
+}
+
+</code></pre>
+
+<p>之所以写DispatchQueue的扩展是因为swift3中取消了dispatch_once_t的使用<br/>
+<code>&#39;dispatch_once&#39; is unavailable in Swift: Use lazily initialized globals instead</code></p>
+
+<p>建议使用懒加载的初始化全局替代。</p>
+
+<p>因为原来自从swift 1.x开始swift就已经开始用dispatch_one机制在后台支持线程安全的全局lazy初始化和静态属性.所以static var背后已经在使用dispatch_once了.</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/12/11</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509808030.html">
+                
+                  <h1>枚举遍历数组</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code class="language-text">let arr: NSArray = [1,2,3,4,5]
+var result = 0
+arr.enumerateObjectsUsingBlock { (num, idx, stop) -&gt; Void in
+    result += num as! Int
+    if idx == 2 {
+        stop.memory = true
+    }
+}
+print(result)
+// 输出：6
+</code></pre>
+
+<p>虽然说使用 enumerateObjectsUsingBlock: 非常方便，但是其实从性能上来说这个方法并不理想 (这里有一篇四年前的星期五问答阐述了这个问题，而且一直以来情况都没什么变化)。另外这个方法要求作用在 NSArray 上，这显然已经不符合 Swift 的编码方式了。在 Swift 中，我们在遇到这样的需求的时候，有一个效率，安全性和可读性都很好的替代，那就是快速枚举某个数组的 EnumerateGenerator，它的元素是同时包含了元素下标索引以及元素本身的多元组：</p>
+
+<pre><code class="language-text">var result = 0
+for (idx, num) in [1,2,3,4,5].enumerate() {
+    result += num
+    if idx == 2 {
+        break
+    }
+}
+print(result)
+</code></pre>
+
+<p>基本上来说，是时候可以和 enumerateObjectsUsingBlock: 说再见了。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/12/11</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
+
+
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   <a href="all_9.html">&laquo; Prev Page</a>  
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			 <a href="all_11.html">&raquo; Next Page</a> 
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1></h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E7%94%B5%E5%BD%B1.html"><strong>电影</strong></a>
+        
+            <a href="%E5%85%B6%E5%AE%83.html"><strong>其它</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="16076509803956.html">Xcode10报错libstdc</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804011.html">Masonry布局“Unable to simultaneously satisfy constraints”</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804045.html">RACCommand</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804076.html">代理修饰符</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804110.html">You don’t have write permissions</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+
+  </body>
+</html>

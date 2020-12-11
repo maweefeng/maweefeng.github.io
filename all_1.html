@@ -1,128 +1,98 @@
 <!doctype html>
 <html class="no-js" lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>
-    
-    Code Log 👨‍💻‍ 
-    
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+  
+  
+  
   </title>
   
   
-  <link href="atom.xml" rel="alternate" title="Code Log 👨‍💻‍ " type="application/atom+xml">
-  <link rel="stylesheet" href="asset/css/foundation.min.css" />
-  <link rel="stylesheet" href="asset/css/docs.css" />
-  <script src="asset/js/vendor/modernizr.js"></script>
-  <script src="asset/js/vendor/jquery.js"></script>
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
   <script src="asset/highlightjs/highlight.pack.js"></script>
   <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script>
-    hljs.initHighlightingOnLoad();
-
-    window.onload = function () {
-
-      var footerPath = window.location.pathname.split('/')[window.location.pathname.split('/').length - 1];
-      if (footerPath == 'archives.html') {
-        // alert('分类');
-        document.getElementById('main-menu').getElementsByTagName("li")[1].className = "is_active";
-
-      } else if (footerPath == 'about.html') {
-        document.getElementById('main-menu').getElementsByTagName("li")[2].className = "is_active";
-
-        // alert('关于我');
-  
-      } else {
-        // alert('首页');
-        document.getElementById('main-menu').getElementsByTagName("li")[0].className = "is_active";
-      }
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
 
 
-    }
-  </script>
-  <script type="text/javascript">
-    function before_search() {
-      var searchVal = 'site: ' + document.getElementById('search_input').value;
-      document.getElementById('search_q').value = searchVal;
-      return true;
-    }
-  </script>
-</head>
-
-<body class="antialiased hide-extras">
-
-  <div class="marketing off-canvas-wrap" data-offcanvas>
-    <div class="inner-wrap">
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
 
 
-      <nav class="top-bar docs-bar hide-for-small" data-topbar>
-
-
-        <section class="top-bar-section">
-          <div class="row">
-            <div style="position: relative;width:100%;">
-              <div style="position: absolute; width:100%;">
-                <ul id="main-menu" class="left">
-                  
-                  <li id=""><a id="" target="_self" href="index.html">Home</a></li>
-                  
-                  <li id=""><a id="" target="_self" href="archives.html">Archives</a></li>
-                  
-                  <li id=""><a id="" target="_self" href="about.html">About</a></li>
-                  
-                </ul>
-
-                <ul class="right" id="search-wrap">
-                  <li>
-                    <form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
-                      <input type="hidden" id="search_q" name="q" value="" />
-                      <input tabindex="1" type="search" id="search_input" placeholder="Search" />
-                    </form>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-      </nav>
-
-      <nav class="tab-bar show-for-small">
-        <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-          <span> &nbsp; Code Log 👨‍💻‍ </span>
-        </a>
-      </nav>
-
-      <aside class="left-off-canvas-menu">
-        <ul class="off-canvas-list">
-
-          <li><a href="index.html">Home</a></li>
-          <li><a href="archives.html">Archives</a></li>
-          
-          <li><label>Categories</label></li>
-
-          
-          <li id="iOS"><a href="iOS.html">iOS</a></li>
-          
-          <li id="Git"><a href="Git.html">Git</a></li>
-          
-          <li id="CocoaPods"><a href="CocoaPods.html">CocoaPods</a></li>
-          
-          <li id="Django"><a href="Django.html">Django</a></li>
-          
-          <li id="Spiders"><a href="Spiders.html">Spiders</a></li>
-          
-          <li id="about"><a href="about.html">about</a></li>
-          
-
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
         </ul>
-      </aside>
 
-      <a class="exit-off-canvas" href="#"></a>
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E7%94%B5%E5%BD%B1.html">电影</a></li>
+        
+            <li><a href="%E5%85%B6%E5%AE%83.html">其它</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
 
 
-      <section id="main-content" role="main" class="scroll-container"> <script type="text/javascript">
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
 	$(function(){
 		$('#menu_item_index').addClass('is_active');
 	});
@@ -132,460 +102,34 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15678331627614.html">
+                <a class="clearlink" href="16076509804270.html">
                 
-                  <h1>swift方法怎么让参数可变</h1>
+                  <h1>设置图片拉伸范围</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>func reduceToZero(x: inout Int) {<br/>
-    while (x != 0) {<br/>
-        x = x-1<br/><br/>
-    }<br/>
-}</p>
-
-<p>var a = 3<br/>
-reduceToZero(&amp;a)<br/>
-print(a) // will print &#39;0&#39;</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/3/30</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15710336317674.html">
-                
-                  <h1>从xib中取出view的方法</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<pre><code>    if let addressPickerView = R.nib.cnAddressPickerView.firstView(owner: nil) {
+                        	<pre><code class="language-text">- (UIImage *)stretchableImageWithLeftCapWidth:(NSInteger)leftCapWidth topCapHeight:(NSInteger)topCapHeight 
 </code></pre>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/3/30</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<p>这个函数是UIImage的一个实例函数，它的功能是创建一个内容可拉伸，而边角不拉伸的图片，需要两个参数，第一个是左边不拉伸区域的宽度，第二个参数是上面不拉伸的高度。</p>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15714583161074.html">
-                
-                  <h1>iOS多继承的实现</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>一般iOS开发不支持多继承，一个类只能继承一种类型，但是可以通过NSProxy实现多继承。</p>
+<p>根据设置的宽度和高度，将接下来的一个像素进行左右扩展和上下拉伸。</p>
 
-<pre><code>#import &lt;Foundation/Foundation.h&gt;
-#include &lt;stdio.h&gt;
+<p>注意：可拉伸的范围都是距离leftCapWidth后的1竖排像素，和距离topCapHeight后的1横排像素。</p>
 
-@interface TargetProxy : NSProxy {
-    id realObject1;
-    id realObject2;
-}
-
-- (id)initWithTarget1:(id)t1 target2:(id)t2;
-
-@end
-
-int main(int argc, const char *argv[]) {
-//    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    
-    // Create an empty mutable string, which will be one of the
-    // real objects for the proxy.
-    NSMutableString *string = [[NSMutableString alloc] init];
-
-    // Create an empty mutable array, which will be the other
-    // real object for the proxy.
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-
-    // Create a proxy to wrap the real objects.  This is rather
-    // artificial for the purposes of this example -- you&#39;d rarely
-    // have a single proxy covering two objects.  But it is possible.
-    id proxy = [[TargetProxy alloc] initWithTarget1:string target2:array];
-
-    // Note that we can&#39;t use appendFormat:, because vararg methods
-    // cannot be forwarded!
-    [proxy appendString:@&quot;This &quot;];
-    [proxy appendString:@&quot;is &quot;];
-    [proxy addObject:string];
-    [proxy appendString:@&quot;a &quot;];
-    [proxy appendString:@&quot;test!&quot;];
-
-    NSLog(@&quot;count should be 1, it is: %d&quot;, [proxy count]);
-    
-    if ([[proxy objectAtIndex:0] isEqualToString:@&quot;This is a test!&quot;]) {
-        NSLog(@&quot;Appending successful.&quot;, proxy);
-    } else {
-        NSLog(@&quot;Appending failed, got: &#39;%@&#39;&quot;, proxy);
-    }
-
-    NSLog(@&quot;Example finished without errors.&quot;);
-//    [pool release];
-    return 0;
-}
-
-
-@implementation TargetProxy
-
-- (id)initWithTarget1:(id)t1 target2:(id)t2 {
-    realObject1 = [t1 retain];
-    realObject2 = [t2 retain];
-    return self;
-}
-
-- (void)dealloc {
-    [realObject1 release];
-    [realObject2 release];
-    [super dealloc];
-}
-
-// The compiler knows the types at the call site but unfortunately doesn&#39;t
-// leave them around for us to use, so we must poke around and find the types
-// so that the invocation can be initialized from the stack frame.
-
-// Here, we ask the two real objects, realObject1 first, for their method
-// signatures, since we&#39;ll be forwarding the message to one or the other
-// of them in -forwardInvocation:.  If realObject1 returns a non-nil
-// method signature, we use that, so in effect it has priority.
-// 生成方法签名
-- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
-    NSMethodSignature *sig;
-    sig = [realObject1 methodSignatureForSelector:aSelector];
-    if (sig) return sig;
-    sig = [realObject2 methodSignatureForSelector:aSelector];
-    return sig;
-}
-
-// Invoke the invocation on whichever real object had a signature for it.
-// 方法的签名配发
-- (void)forwardInvocation:(NSInvocation *)invocation {
-    id target = [realObject1 methodSignatureForSelector:[invocation selector]] ? realObject1 : realObject2;
-    [invocation invokeWithTarget:target];
-}
-
-// Override some of NSProxy&#39;s implementations to forward them...
-- (BOOL)respondsToSelector:(SEL)aSelector {
-    if ([realObject1 respondsToSelector:aSelector]) return YES;
-    if ([realObject2 respondsToSelector:aSelector]) return YES;
-    return NO;
-}
-
-@end
-
-</code></pre>
-
-<p>取自开发文档的代码示例，他其实是通过消息传递机制实现了多重继承功能，使proxy拥有了NSSting与NSArray俩个类的方法属性</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/3/30</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15766567217978.html">
-                
-                  <h1>iOS UICollectionView刷新时闪屏的解决方法</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>在做相册的时候遇到了一个问题，就是UICollectionView刷新的时候会闪屏，网上搜了搜，解决的方法也是挺多，并没有一一尝试，只是存下来做个笔记，来看看遇到的几种方法。</p>
-
-<p>方法一：</p>
-
-<p>[UIView performWithoutAnimation:<sup>{</sup> <br/>
-   //刷新界面 <br/>
-    [self.collectionView reloadData]; <br/>
- }];<br/>
-把刷新界面的事件放在这个BLock里就可以了！</p>
-
-<p>方法二</p>
-
-<p>[UIView animateWithDuration:0 animations:<sup>{</sup> <br/>
-  [collectionView performBatchUpdates:<sup>{</sup> <br/>
-    [collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]]; <br/>
-  } completion:nil]; <br/>
-}];<br/>
-方法三</p>
-
-<p>[UIView setAnimationsEnabled:NO]; <br/>
-[self.trackPanel performBatchUpdates:<sup>{</sup> <br/>
-  [collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]]; <br/>
-} completion:<sup>BOOL finished</sup> { <br/>
-  [UIView setAnimationsEnabled:YES]; <br/>
-}];<br/>
-如果你的APP只支持iOS7+，推荐使用第一种方式performWithoutAnimation简单方便。</p>
-
-<p>上面说的方法只能解决UIView的Animation，但是如果你的cell中还包含有CALayer的动画，比如这样：</p>
-
-<ul>
-<li><p>(void)layoutSubviews{<br/>
-[super layoutSubviews];</p>
-
-<p>self.frameLayer.frame = self.frameView.bounds;<br/>
-}<br/>
-上述情况多用于自定义控件使用了layer.mask的情况，如果有这种情况，上面提到的方法是无法取消CALayer的动画的，但是解决办法也很简单：</p></li>
-<li><p>(void)layoutSubviews{<br/>
-[super layoutSubviews];</p>
-
-<p>[CATransaction begin];<br/>
-[CATransaction setDisableActions:YES];</p>
-
-<p>self.frameLayer.frame = self.frameView.bounds;</p>
-
-<p>[CATransaction commit];<br/><br/>
-}</p></li>
-</ul>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/3/30</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15790023471048.html">
-                
-                  <h1>How to simply make a dynimic UITableViewHeader animation</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gawzxhqpjbg30lk16ob2c.gif" alt="" style="width:220px;"/></p>
-
-<p>1.add a imageView to a headerView<br/>
-2.set headerView as UITableView`s tableHeaderView<br/>
-3.observer scrollViewDidScroll Method</p>
-
-<pre><code>
-
-class Demo: UITableViewController {
-
-    let header = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: headerViewH))
-    let imageV = UIImageView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: headerViewH))
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        header.backgroundColor = .white
-        header.addSubview(imageV)
-        tableView.contentInsetAdjustmentBehavior = .never
-        imageV.image = UIImage(named: &quot;logo&quot;)
-        imageV.contentMode = .scaleAspectFit
-        imageV.topAnchor.constraint(equalTo: header.topAnchor).isActive = true
-        imageV.bottomAnchor.constraint(equalTo: header.bottomAnchor).isActive = true
-        imageV.leadingAnchor.constraint(equalTo: header.leadingAnchor).isActive = true
-        imageV.bottomAnchor.constraint(equalTo: header.bottomAnchor).isActive = true
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: &quot;cell&quot;)
-        tableView.tableHeaderView = header
-   
-    }
-    
-
-....
-
-   override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        // 1. get scrollView`s y-axis offset
-        let yOffset = scrollView.contentOffset.y;
-        // 2. condition 
-        if (yOffset &lt; 0) {
-            //3. caculate current imageView`s height when scrolling
-            let totalOffset = headerViewH - (yOffset);
-            //4. caculate  the ratio
-            let f = totalOffset / headerViewH;
-            //5 .set imageV`s frame again
-            imageV.frame =  CGRect(x: screenWidth*(1-f)*0.5, y: yOffset, width: screenWidth*f , height: totalOffset)
-        }
-    }
-
-}
-</code></pre>
-
-<p>This tip will enhance user experience a little,i recommand you to use this in your developing apps.</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/3/30</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15590976892074.html">
-                
-                  <h1>Scrapy 抓取网页数据</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">Scrapy 介绍</h2>
-
-<p>Scrapy，Python开发的一个快速、高层次的屏幕抓取和web抓取框架，用于抓取web站点并从页面中提取结构化的数据。Scrapy用途广泛，可以用于数据挖掘、监测和自动化测试。<br/>
-Scrapy吸引人的地方在于它是一个框架，任何人都可以根据需求方便的修改。它也提供了多种类型爬虫的基类，如BaseSpider、sitemap爬虫等，最新版本又提供了web2.0爬虫的支持。<br/>
-Scrap，是碎片的意思，这个Python的爬虫框架叫Scrapy。</p>
-
-<p>首先必须有python的环境，如果没有的话需要安装，目前python2.x已经不再更新，我使用的是python3的环境。</p>
-
-<p>如果你已经有了python3的环境并且已经安装了pip3，那么安装scrapy只需要一行命令即可。</p>
-
-<pre><code>pip3 install scrapy
-</code></pre>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15590976892074.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2019/5/29</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Spiders.html'>Spiders</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15583189073141.html">
-                
-                  <h1>Django入门 — 建立简易博客以及ORM关系介绍</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ul>
-<li>开源的Python Web框架</li>
-<li>MVC模式</li>
-</ul>
+<p>参数的意义是，如果参数指定10，5。那么，图片左边10个像素，上边5个像素。不会被拉伸，x坐标为11和一个像素会被横向复制，y坐标为6的一个像素会被纵向复制。</p>
 
 <blockquote>
-<p>要想使用Django 必须先安装Python，推荐安装3.0版本以上的Python3<br/>
-然后再用pip安装工具安装Django<br/>
-由于我要安装在python3 所以我的pip工具也是pip3<br/>
-安装命令<code>pip3 install django==2.0</code><br/>
-最后选择适合自己的IDE<br/>
-我使用的是VSCode</p>
+<p>注意：只是对一个像素进行复制到一定宽度。而图像后面的剩余像素也不会被拉伸。</p>
 </blockquote>
 
-<h2 id="toc_0">优点</h2>
-
-<ul>
-<li>开发效率高</li>
-<li>功能强大，丰富的第三方插件</li>
-<li>重视安全，避免安全漏洞</li>
-</ul>
-
-<p>命令语句django-admin 检查django是否成功安装。</p>
-
-<p><img src="media/15583189073141/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-20%20%E4%B8%8A%E5%8D%8811.19.16.png" alt="屏幕快照 2019-05-20 上午11.19.16"/>￼</p>
-
-<ul>
-<li>startproject # 创建一个django项目</li>
-<li>startapp # 创建一个django应用</li>
-<li>check # 检验项目完整性</li>
-<li>runserver # 本地简易运行django项目</li>
-<li>shell # 进入django项目的python shell环境</li>
-<li>test # 执行django用例测试</li>
-</ul>
+<pre><code class="language-text">UIImage *img=[UIImage imageNamed:@&quot;bubbleSelf.png&quot;];
+img=[img stretchableImageWithLeftCapWidth:15 topCapHeight:12];
+UIImageView *imgView=[[UIImageView alloc]initWithImage:img];
+[imgView setFrame:CGRectMake(10, 10, 200, 200)];
+[self. view addSubview:imgView];
+</code></pre>
 
                         
                       </div>
@@ -593,11 +137,9 @@ Scrap，是碎片的意思，这个Python的爬虫框架叫Scrapy。</p>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15583189073141.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2019/5/20</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Django.html'>Django</a></span>
+                  
+                    <span class="date">2020/12/11</span>
+                    
           				   
                   </div>
                   <div class="more-right right">
@@ -611,36 +153,147 @@ Scrap，是碎片的意思，这个Python的爬虫框架叫Scrapy。</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15578899295258.html">
+                <a class="clearlink" href="16076509804301.html">
                 
-                  <h1>PromiseKit</h1>
+                  <h1>Git基础流</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">then and done</h2>
+                        	<h3 id="toc_0">如何将本地代码提交到远程git仓库</h3>
 
-<p>一个典型的链条⛓️</p>
+<ul>
+<li><p>第一步：建立git仓库 <br/>
+cd到你的本地项目根目录下，执行git命令 </p>
+<blockquote>
+<p>git init</p>
+</blockquote></li>
+<li><p>第二步：将项目的所有文件添加到仓库中   </p>
+<blockquote>
+<p>git add .  </p>
+</blockquote></li>
+<li><p>第三步：将add的文件commit到仓库</p>
+<blockquote>
+<p>git commit -m &quot;注释语句&quot;</p>
+</blockquote></li>
+<li><p>第四步：去github上创建自己的Repository</p></li>
+<li><p>第五步：重点来了，将本地的仓库关联到github上    </p>
+<blockquote>
+<p>git remote add origin 仓库url</p>
+</blockquote>
+<p>后面的https链接地址换成你自己的仓库url地址，也就是上面红框中标出来的地址</p></li>
+<li><p>第六步：上传github之前，要先pull一下，执行如下命令：</p>
+<blockquote>
+<p>git pull origin master</p>
+</blockquote>
+<p>遇到refusing to merge unrelated histories 使用以下代码  </p>
+<blockquote>
+<p>git pull origin master --allow-unrelated-histories</p>
+</blockquote></li>
+<li><p>第七步，也就是最后一步，上传代码到github远程仓库</p>
+<blockquote>
+<p>git push -u origin master  </p>
+</blockquote>
+<p>遇到提示fatal: refusing to merge unrelated histories可以试一下下面的强制push</p>
+<blockquote>
+<p>git push -u origin master -f //强制push</p>
+</blockquote></li>
+</ul>
 
-<pre><code>firstly {
-    login()
-}.then { creds in
-    fetch(avatar: creds.user)
-}.done { image in
-    self.imageView = image
-}
-</code></pre>
+<h3 id="toc_1">列出分支的方法</h3>
 
-<p>如果这段代码使用之前的方式可能会是这样</p>
+<p>列出所有远程分支<br/>
+$ git branch -r</p>
 
-<pre><code>login { creds, error in
-    if let creds = creds {
-        fetch(avatar: creds.user) { image, error in
-            if let image = image {
-                self.imageView = image
-            }
-        }
-    }
+<p>列出所有本地分支和远程分支<br/>
+$ git branch -a</p>
+
+<h3 id="toc_2">新建分支</h3>
+
+<ul>
+<li><p>新建一个分支，但依然停留在当前分支<br/><br/>
+$ git branch [branch-name]<br/><br/>
+如果想要切换到新建的分支，可以使用git checkout  [branch-name]</p></li>
+<li><p>新建一个分支，并切换到该分支<br/><br/>
+$ git checkout -b [branch]</p></li>
+<li><p>新建一个分支，指向指定commit<br/><br/>
+$ git branch [branch] [commit]</p></li>
+</ul>
+
+<p>之前是提交到主分支 所以使用的是git push -u origin master<br/><br/>
+现在的话不是主分支所以要改变一下分支的名称如下<br/><br/>
+最后提交的时候 可以使用git push -u origin [branch-name]</p>
+
+<blockquote>
+<p>前提:只有项目中关联一份远程git仓库的时候才可以使用以下方法去新建分支 如果没关联任何分支也查不到任何远程分支</p>
+</blockquote>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/12/11</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509804341.html">
+                
+                  <h1>视图的绘制周期</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>当view第一次在屏幕上显示的时候，系统会绘制它的内容，然后系统会截取内容的快照，并且将快照作为视图的可见外观，如果你永远不改变视图的内容，那么视图的绘制代码永远不会改变。如果更改了视图的内容，不用直接重新绘制，而是使用<code>setNeedsDisplay</code>或者<code>setNeedsDisplayInRect</code>方法是视图无效。这些方法会告知视图内容以及改变并且需要在下一次进行重绘。如果需要立马重绘，那么需要使用<code>layoutIfNeeded</code>方法。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/12/11</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509804371.html">
+                
+                  <h1>设置Cell分割线顶头</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h6 id="toc_0">UITableView设置系统cell的分割线顶头</h6>
+
+<pre><code class="language-text">- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    cell.layoutMargins = UIEdgeInsetsZero;
+    cell.separatorInset = UIEdgeInsetsZero;
+    cell.preservesSuperviewLayoutMargins = NO;
 }
 </code></pre>
 
@@ -650,11 +303,263 @@ Scrap，是碎片的意思，这个Python的爬虫框架叫Scrapy。</p>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15578899295258.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2019/5/15</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+                  
+                    <span class="date">2020/12/11</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509804401.html">
+                
+                  <h1>Runtime运行时</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ol>
+<li><p>runtime调用方法</p>
+<pre><code class="language-text">- (void)test {
+TestModel *objct = [[TestModel alloc] init];<br/>
+((void (*) (id, SEL)) objc_msgSend) (objct, sel_registerName(&quot;country&quot;));<br/>
+((void (*) (id, SEL, NSString *)) objc_msgSend) (objct, sel_registerName(&quot;getProvince:&quot;), @&quot;广东省&quot;)；<br/>
+((void (*) (id, SEL, NSString *, NSString *)) objc_msgSend) (objct, sel_registerName(&quot;getCity:station:&quot;), @&quot;深圳市&quot;, @&quot;世界之窗&quot;)；<br/>
+NSString *weather = ((NSString* (*) (id, SEL)) objc_msgSend) (objct, sel_registerName(&quot;getWeather&quot;));<br/>
+NSLog(@&quot;%@&quot;, weather);<br/>
+}
+</code></pre></li>
+<li><p>给分类添加属性</p>
+<pre><code class="language-#import">#import &lt;objc/runtime.h&gt;
+static void *TestStringKey = &amp;TestStringKey;<br/>
+@implementation TestModel (String)<br/>
+- (void)setTestString:(NSString *)testString {<br/>
+objc_setAssociatedObject(self, TestStringKey, testString, OBJC_ASSOCIATION_COPY);<br/>
+}<br/>
+- (NSString *)testString {<br/>
+return objc_getAssociatedObject(self, TestStringKey);<br/>
+}<br/>
+@end
+</code></pre></li>
+<li><p>获取属性</p>
+<pre><code class="language-text">使用class_copyIvarList获得的属性数组是Ivar类型 
+可以使用ivar_getName将ivar类型转换为char<br/>
+再使用NSString 的stringWithUTF8String方法转化为NSString类型。
+</code></pre></li>
+</ol>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/12/11</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509804434.html">
+                
+                  <h1>终端命令</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>我们可以在 terminal 用 system profiler 命令来获取连接 mac 的 usb 设备：<br/>
+system_profiler SPUSBDataType</p>
+
+<ul>
+<li>ls 查看当前路径下的文件以及文件夹的名字</li>
+<li>ls /bin 表示查看根目录下的bin文件夹的东西</li>
+<li>ls docments 查看当前路径下documents文件夹下的所有东西</li>
+<li>cd .. 跳转到当前路径的上一层</li>
+<li>pwd 显示当前操作的路径 (绝对路径)</li>
+<li>clear 清屏</li>
+<li>touch 生成文件</li>
+<li>ifconfig 查看设备的ip地址</li>
+<li>netstat -an </li>
+</ul>
+
+<h3 id="toc_0">查看内存占用情况</h3>
+
+<p>sudo du -sh * <br/>
+<img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fuch6fzertj30iy0da0ur.jpg" alt=""/></p>
+
+<h3 id="toc_1">Command line instructions</h3>
+
+<h3 id="toc_2">Git global setup</h3>
+
+<p>git config --global user.name &quot;mawf09&quot;<br/>
+git config --global <a href="mailto:user.maweefeng@gmail.com">user.maweefeng@gmail.com</a> &quot;<a href="mailto:mawf09@xxx.com">mawf09@xxx.com</a>&quot;</p>
+
+<h3 id="toc_3">Create a new repository</h3>
+
+<ul>
+<li>git clone git地址</li>
+<li>cd 制定文件夹</li>
+<li>touch README.md</li>
+<li>git add README.md</li>
+<li>git commit -m &quot;add README&quot;</li>
+<li>git push -u origin master</li>
+</ul>
+
+<h3 id="toc_4">Existing folder</h3>
+
+<ul>
+<li>cd existing_folder</li>
+<li>git init</li>
+<li>git remote add origin git地址</li>
+<li>git add .</li>
+<li>git commit -m &quot;Initial commit&quot;</li>
+<li>git push -u origin master</li>
+</ul>
+
+<h3 id="toc_5">Existing Git repository</h3>
+
+<ul>
+<li>cd existing_repo</li>
+<li>git remote add origin git地址</li>
+<li>git push -u origin --all</li>
+<li>git push -u origin --tags</li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/12/11</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509804464.html">
+                
+                  <h1>终端命令设置代理</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h4 id="toc_0">让终端走代理的几种方法</h4>
+
+<p><code>Macproxyterminal</code></p>
+
+<ul>
+<li><p>方法1:<br/>
+在终端中直接运行命令<br/>
+export http_proxy=<a href="http://proxyAddress:port">http://proxyAddress:port</a><br/>
+这个办法的好处是简单直接，并且影响面很小（只对当前终端有效，退出就不行了）。<br/>
+如果你用的是ss代理，在当前终端运行以下命令，那么wget curl 这类网络命令都会经过ss代理<br/>
+export ALL_PROXY=socks5://127.0.0.1:1080</p></li>
+<li><p>方法2:<br/>
+比如我现在使用的shadowsocks工具可以直接设置全局代理，勾选就行了，一般使用的是PAC自动模式，这样可以根据条件选择代理or直连，保证速度和网站的可达性。</p></li>
+</ul>
+
+<p><img src="media/15427834491808/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-04%20%E4%B8%8B%E5%8D%881.09.57.png" alt="屏幕快照 2018-12-04 下午1.09.57"/><br/>
+shadowSocks软件的Git地址为<a href=""><code>https://github.com/shadowsocks/ShadowsocksX-NG</code></a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/12/11</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509804499.html">
+                
+                  <h1>Block防止内存泄漏问题</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">关于block的一点注意 特别是网络请求这块</h3>
+
+<p>Block捕获外界变量销毁<br/>
+我们再进一步想想，Block有个最大的特点是可以访问当前的作用域，我们随便创建一个数组，重复上面操作，是否能够销毁...</p>
+
+<pre><code class="language-text">- (void)blockDemo {
+    NSArray *outsideArray = @[@1, @2, @3];
+    
+    [self.service requestWithParms:nil WithResult:^(id data, NSError *error) {
+        // 处理业务逻辑
+        // ...
+        
+        NSLog(@&quot;Result from block:%@&quot;, data);
+        NSLog(@&quot;outsideArray :%@&quot;, outsideArray);
+    }];
+}
+
+打印结果：
+2018-03-25 19:55:40.997535+0800 NetworkCallback[4970:3641450] NextPageViewController has been dealloc!
+2018-03-25 19:55:44.831721+0800 NetworkCallback[4970:3641450] outsideArray :(
+    1,
+    2,
+    3
+)
+</code></pre>
+
+<p>注意，vc先销毁了，但是5s后，这个临时变量竟然还没有销毁。那么这个变量存储在哪里呢？留个悬念<br/>
+考虑一下，如果你在Block代码里访问了一个超大的文件，这个文件必然是保存内存的，然后此时你遇上了网络慢，接口好久没有返回，那么这个超大的文件就会一直占用内存<br/>
+内存小结<br/>
+使用Block无论是否有循环引用的可能，都要使用weakself，来防止vc被持有，而延迟释放<br/>
+Block会导致对象的生命周期被延长，特别是当某些大文件被Block访问时，有几率导致内存不足</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/12/11</span>
+                    
           				   
                   </div>
                   <div class="more-right right">
@@ -690,9 +595,7 @@ Scrap，是碎片的意思，这个Python的爬虫框架叫Scrapy。</p>
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
             
-                <div class="site-a-logo"><img src="/asset/img/logo.png" /></div>
-            
-                <h1>Code Log 👨‍💻‍ </h1>
+                <h1></h1>
                 <div class="site-des"></div>
                 <div class="social">
 
@@ -704,9 +607,9 @@ Scrap，是碎片的意思，这个Python的爬虫框架叫Scrapy。</p>
 
 
 
-<a target="_blank" class="github" target="_blank" href="https://github.com/maweefeng" title="GitHub">GitHub</a>
-<a target="_blank" class="email" href="mailto:maweefeng@gmail.com" title="Email">Email</a>
-  <!-- <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a> -->
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
                 
               	 </div>
           	</div>
@@ -721,17 +624,9 @@ Scrap，是碎片的意思，这个Python的爬虫框架叫Scrapy。</p>
 
       	<p class="cat-list">
         
-            <a href="iOS.html"><strong>iOS</strong></a>
+            <a href="%E7%94%B5%E5%BD%B1.html"><strong>电影</strong></a>
         
-            <a href="Git.html"><strong>Git</strong></a>
-        
-            <a href="CocoaPods.html"><strong>CocoaPods</strong></a>
-        
-            <a href="Django.html"><strong>Django</strong></a>
-        
-            <a href="Spiders.html"><strong>Spiders</strong></a>
-        
-            <a href="about.html"><strong>about</strong></a>
+            <a href="%E5%85%B6%E5%AE%83.html"><strong>其它</strong></a>
          
         </p>
 
@@ -748,31 +643,31 @@ Scrap，是碎片的意思，这个Python的爬虫框架叫Scrapy。</p>
 	      
 		      
 			      <li class="post">
-			        <a href="15638450239357.html">判断bundle中存不存在某个文件</a>
+			        <a href="16076509803956.html">Xcode10报错libstdc</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15638515424059.html">去除tableview sectionheaderview的粘连效果</a>
+			        <a href="16076509804011.html">Masonry布局“Unable to simultaneously satisfy constraints”</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15641370883413.html">快速的扩展类的初始化方法</a>
+			        <a href="16076509804045.html">RACCommand</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15644628854335.html">切部分圆角</a>
+			        <a href="16076509804076.html">代理修饰符</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15646490459131.html">didSet 和 willSet</a>
+			        <a href="16076509804110.html">You don’t have write permissions</a>
 			      </li>
 		     
 		  
@@ -817,11 +712,10 @@ Scrap，是碎片的意思，这个Python的爬虫框架叫Scrapy。</p>
 
  <div class="page-bottom clearfix">
   <div class="row">
-   <!-- <p class="copyright">Copyright &copy; 2015
+   <p class="copyright">Copyright &copy; 2015
 Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
-Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p> -->
-<p class="copyright">日光之下 永无新事</p>
-</div>
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
 </div>
 
         </section>
@@ -848,7 +742,7 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p> -->
      
     </script>
 
-    <script src="asset/chart/all-min.js"></script><script type="text/javascript">$(function(){    var mwebii=0;    var mwebChartEleId = 'mweb-chart-ele-';    $('pre>code').each(function(){        mwebii++;        var eleiid = mwebChartEleId+mwebii;        if($(this).hasClass('language-sequence')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = Diagram.parse($(this).text());            diagram.drawSVG(eleiid,{theme: 'simple'});        }else if($(this).hasClass('language-flow')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = flowchart.parse($(this).text());            diagram.drawSVG(eleiid);        }    });});</script>
+    
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
 
 

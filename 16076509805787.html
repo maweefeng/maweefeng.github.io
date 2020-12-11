@@ -1,0 +1,410 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  Advanced Debugging with Xcode and LLDB - 
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E7%94%B5%E5%BD%B1.html">电影</a></li>
+        
+            <li><a href="%E5%85%B6%E5%AE%83.html">其它</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>Advanced Debugging with Xcode and LLDB</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2020/12/11</span>
+
+          
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <ol>
+<li><p>expression语句 </p>
+<p>不用重新运行程序直接实现代码效果</p>
+<p><img src="media/15444306104604/15445067738160.jpg" alt=""/></p>
+<ol>
+<li><p>描述</p>
+<p>可以动态的改变条件，语法是<code>expression xxx = &quot;xxx&quot;</code> 后面是语句代码,类似程序中的代码并且支持加{}的判断等等语句。</p></li>
+<li><p>使用方法：</p>
+<ul>
+<li>调试台去写这个语句</li>
+<li>加断点去添加<code>action</code>。</li>
+</ul></li>
+</ol></li>
+<li><p>Symbolic Breakpoint</p>
+<ol>
+<li><p>描述</p>
+<p>符号断点，可以针对某一个方法(函数)设置断点并暂停执行；有时候，我们并不清楚会在什么情况下调用某一个函数，那我们可以通过符号断点来跟踪获取调用该函数的程序堆栈。</p>
+<p><img src="media/15444306104604/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%885.04.43.png" alt="屏幕快照 2018-12-10 下午5.04.43"/></p></li>
+<li><p>使用方法</p>
+<ul>
+<li> 方法一</li>
+</ul>
+<p>添加符号断点，比如如下所述-[UILabel setText:]</p>
+<p><img src="media/15444306104604/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%885.05.33.png" alt="屏幕快照 2018-12-10 下午5.05.33"/></p>
+<p>还可以添加condition语句 类似如上所述</p>
+<ul>
+<li>方法二</li>
+</ul>
+<p>直接在指定的语句添加断点加入<code>action</code>语句，如图所示</p>
+<p><img src="media/15444306104604/15445068230815.jpg" alt=""/></p>
+<p><code>breakpoint set --one-shot true --name &quot;-[UILabel setText:]&quot;</code>    </p>
+<p><code>one-shot</code> 是一个临时断点，一旦触发后就自动删除</p></li>
+</ol></li>
+<li><p>跳过断点所指向的代码</p>
+<ol>
+<li><p>方式一</p>
+<p><img src="media/15444306104604/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%885.40.21.png" alt="屏幕快照 2018-12-10 下午5.40.21"/></p>
+<p>移动手柄实现 接下来就可以在控制台中写expression语句 <br/>
+<code>expression jumpAstronaut(animated:false)<br/>
+</code></p></li>
+<li><p>方式二</p>
+<p>直接编辑断点添加action语句 <br/>
+<img src="media/15444306104604/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%885.47.11.png" alt="屏幕快照 2018-12-10 下午5.47.11"/></p>
+<p><code>thread jump --by 1</code> 是跳过一句代码的意思。</p></li>
+</ol></li>
+<li><p>watchPoint </p>
+<p>观察指针，值发生改变的时候自动暂停。</p>
+<p><img src="media/15444306104604/15445000921722.jpg" alt=""/></p>
+<p>右键某个属性，添加watchPoint，然后左侧会出现观察指针断点监测_tableView的变化，如下所示<br/><br/>
+    <img src="media/15444306104604/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8A%E5%8D%8811.46.38.png" alt="屏幕快照 2018-12-11 上午11.46.38"/></p></li>
+<li><p>创建别名</p>
+<p><code>command alias poc expression - l objc -O --</code><br/>
+poc 就可以直接代替后面的语句，可以简化常用的命令行语句。</p></li>
+<li><p>可以通过内存地址去获取对象 </p>
+<ol>
+<li><p>Objective-C</p>
+<p><code>po 指针</code> 可以直接打印出对象<br/>
+<img src="media/15444306104604/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8A%E5%8D%8811.12.11.png" alt="屏幕快照 2018-12-11 上午11.12.11"/></p></li>
+<li><p>Swift</p>
+<p>不能把数字当成指针去像OC一样打印出对象，要使用<code>expression - l objc -O -- 0x7fa967d781191548b60</code>转换为OC语言。 如果觉得这个语句太臃肿，可以为语句创建别名比如<code>command alias poc expression - l objc -O --</code>之后就可以直接<code>poc 指针</code>就可以达到oc当中同样的效果。</p></li>
+</ol></li>
+<li><p>获取图层树</p>
+<ol>
+<li><p>Objective-C</p>
+<p>调用<code>po [self.view recursiveDescription]</code>打印出类似于这样的图层树。<br/>
+<img src="media/15444306104604/15444967235409.jpg" alt=""/></p></li>
+<li><p>Swift </p>
+<p>不能这么直接打印出图层树（swift不允许去调用未定义的函数），如果要让swift去像OC一样打印出类似于这样的图层树。<br/>
+调用语句</p>
+<pre><code class="language-expression">```一定要加入反括号(反括号就像预处理器一样，它表示先评估其在当前帧中的内容，并插入结果，然后我们可以评估其余部分) 才能编译通过。
+</code></pre></li>
+</ol></li>
+<li><p>unsafeBitCast查询对象的调试描述</p>
+<p>当只有指针，查看对象描述的时候在swift中可以使用 unsafeBitCast函数，给他一个内存地址，他不安全是因为它依赖你来提供正确的类型。</p>
+<p>po unsafeBitCast(指针,to:ScoreBoardView.self)<br/>
+还可以可以直接查看view的frame<br/>
+po unsafeBitCast(指针,to:ScoreBoardView.self).frame</p>
+<p>同理OC中可以更方便的实现根据指针对对象进行相应的调试，比如更改 label 的内容</p>
+<pre><code class="language-text">(lldb) expression [(UILabel*)0x7fb2c5f0fd70 setText:@&quot;hello&quot;];
+但是内存地址前面要跟相应的类型要不然会执行失败报错<br/>
+error: warning: receiver type &#39;long&#39; is not &#39;id&#39; or interface pointer, consider casting it to &#39;id&#39;
+</code></pre></li>
+<li><p>刷新屏幕的帧缓存区<br/>
+如果写了expression语句之后界面没有及时刷新，但是又不想去重新运行代码，那么可以使用表达式<br/>
+Swift<code>expression CATransaction.flush()</code><br/>
+OC<code>expression [CATransaction flush]</code>刷新屏幕帧缓存区。</p></li>
+</ol>
+
+<h3 id="toc_0">参考</h3>
+
+<p>[1]<a href="https://developer.apple.com/videos/play/wwdc2018/412/">https://developer.apple.com/videos/play/wwdc2018/412/</a></p>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="16076509805667.html" 
+          title="Previous Post: 疑问">&laquo; 疑问</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="16076509805828.html" 
+          title="Next Post: App Icon Design">App Icon Design &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1></h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E7%94%B5%E5%BD%B1.html"><strong>电影</strong></a>
+        
+            <a href="%E5%85%B6%E5%AE%83.html"><strong>其它</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="16076509803956.html">Xcode10报错libstdc</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804011.html">Masonry布局“Unable to simultaneously satisfy constraints”</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804045.html">RACCommand</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804076.html">代理修饰符</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804110.html">You don’t have write permissions</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+
+  </body>
+</html>

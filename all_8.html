@@ -1,128 +1,98 @@
 <!doctype html>
 <html class="no-js" lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>
-    
-    Code Log 👨‍💻‍ 
-    
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+  
+  
+  
   </title>
   
   
-  <link href="atom.xml" rel="alternate" title="Code Log 👨‍💻‍ " type="application/atom+xml">
-  <link rel="stylesheet" href="asset/css/foundation.min.css" />
-  <link rel="stylesheet" href="asset/css/docs.css" />
-  <script src="asset/js/vendor/modernizr.js"></script>
-  <script src="asset/js/vendor/jquery.js"></script>
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
   <script src="asset/highlightjs/highlight.pack.js"></script>
   <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script>
-    hljs.initHighlightingOnLoad();
-
-    window.onload = function () {
-
-      var footerPath = window.location.pathname.split('/')[window.location.pathname.split('/').length - 1];
-      if (footerPath == 'archives.html') {
-        // alert('分类');
-        document.getElementById('main-menu').getElementsByTagName("li")[1].className = "is_active";
-
-      } else if (footerPath == 'about.html') {
-        document.getElementById('main-menu').getElementsByTagName("li")[2].className = "is_active";
-
-        // alert('关于我');
-  
-      } else {
-        // alert('首页');
-        document.getElementById('main-menu').getElementsByTagName("li")[0].className = "is_active";
-      }
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
 
 
-    }
-  </script>
-  <script type="text/javascript">
-    function before_search() {
-      var searchVal = 'site: ' + document.getElementById('search_input').value;
-      document.getElementById('search_q').value = searchVal;
-      return true;
-    }
-  </script>
-</head>
-
-<body class="antialiased hide-extras">
-
-  <div class="marketing off-canvas-wrap" data-offcanvas>
-    <div class="inner-wrap">
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
 
 
-      <nav class="top-bar docs-bar hide-for-small" data-topbar>
-
-
-        <section class="top-bar-section">
-          <div class="row">
-            <div style="position: relative;width:100%;">
-              <div style="position: absolute; width:100%;">
-                <ul id="main-menu" class="left">
-                  
-                  <li id=""><a id="" target="_self" href="index.html">Home</a></li>
-                  
-                  <li id=""><a id="" target="_self" href="archives.html">Archives</a></li>
-                  
-                  <li id=""><a id="" target="_self" href="about.html">About</a></li>
-                  
-                </ul>
-
-                <ul class="right" id="search-wrap">
-                  <li>
-                    <form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
-                      <input type="hidden" id="search_q" name="q" value="" />
-                      <input tabindex="1" type="search" id="search_input" placeholder="Search" />
-                    </form>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-      </nav>
-
-      <nav class="tab-bar show-for-small">
-        <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-          <span> &nbsp; Code Log 👨‍💻‍ </span>
-        </a>
-      </nav>
-
-      <aside class="left-off-canvas-menu">
-        <ul class="off-canvas-list">
-
-          <li><a href="index.html">Home</a></li>
-          <li><a href="archives.html">Archives</a></li>
-          
-          <li><label>Categories</label></li>
-
-          
-          <li id="iOS"><a href="iOS.html">iOS</a></li>
-          
-          <li id="Git"><a href="Git.html">Git</a></li>
-          
-          <li id="CocoaPods"><a href="CocoaPods.html">CocoaPods</a></li>
-          
-          <li id="Django"><a href="Django.html">Django</a></li>
-          
-          <li id="Spiders"><a href="Spiders.html">Spiders</a></li>
-          
-          <li id="about"><a href="about.html">about</a></li>
-          
-
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
         </ul>
-      </aside>
 
-      <a class="exit-off-canvas" href="#"></a>
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E7%94%B5%E5%BD%B1.html">电影</a></li>
+        
+            <li><a href="%E5%85%B6%E5%AE%83.html">其它</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
 
 
-      <section id="main-content" role="main" class="scroll-container"> <script type="text/javascript">
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
 	$(function(){
 		$('#menu_item_index').addClass('is_active');
 	});
@@ -132,185 +102,56 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15427834492830.html">
+                <a class="clearlink" href="16076509806751.html">
                 
-                  <h1>CAMediaTimingFunction获取控制点：</h1>
+                  <h1>UICollectionViewFlowLayout</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<pre><code>//create timing function
-CAMediaTimingFunction *function = [CAMediaTimingFunction functionWithControlPoints:1 :0 :0.75 :1];
-</code></pre>
-
-<p>我得到的controlPoint值似乎是错误的：</p>
-
-<pre><code>CGPoint controlPoint1, controlPoint2;
-[function getControlPointAtIndex:1 values:(float *)&amp;controlPoint1]; 
-[function getControlPointAtIndex:2 values:(float *)&amp;controlPoint2];
-The controlPoint value that I get seems to be wrong:
-
-controlPoint1   CGPoint (x = 5.2635442471208903E-315, y = 4.9406564584124654E-324)  
-controlPoint2   CGPoint (x = 0.0078125018408172764, y = 2.8421186829703262E-314)    
-</code></pre>
-
-<p>但是，如果我使用float数组作为参数的类型values，我得到controlPoint的正确值：</p>
-
-<pre><code>float c1p[2], c2p[2];
-[function getControlPointAtIndex:1 values:c1p];
-[function getControlPointAtIndex:2 values:c2p];
-The values are:
-
-controlPoint1   CGPoint (x = 1, y = 0)  
-controlPoint2   CGPoint (x = 0.75, y = 1) 
-</code></pre>
-
-<p>32位设备可以使用第一种方法 但是在64位设备就行不通了 </p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834493029.html">
-                
-                  <h1>iOS导航条背景颜色</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h4 id="toc_0">Situation one</h4>
-
-<p><code>self.navigationBar.barTintColor= [UIColor redColor];</code><br/>
-这时候的效果就是纯色的<br/>
-类似下面这样<br/>
-<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fsbvzqlgesj309f01oglk.jpg" alt=""/></p>
-
-<h4 id="toc_1">Situation two</h4>
-
-<p><code>self.navigationBar.backgroundColor = [UIColor redColor];</code><br/>
-<img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fsbvypka0rj309e01p0so.jpg" alt=""/></p>
-
-<p>一种是有渐变的半透明效果，一种就是简单的纯色效果。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834493152.html">
-                
-                  <h1>检测离屏渲染了</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><code>instrumets</code> 已经取消了<code>debug options</code></p>
-
-<p>可以在xcode的<code>debug</code> - <code>view debugging</code> 找到</p>
-
-<p>“核心动画工具和模板已在工具中弃用。之前在”调试选项“下的功能已移至Xcode，位于”<code>Debug&gt; View Debugging</code>“下。</p>
-
-<p><img src="http://upload-images.jianshu.io/upload_images/1315383-752efaac717c3947.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="BB55F33F-97CC-4C28-B3F1-22456A2A7BD8.png"/></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834493152.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834493214.html">
-                
-                  <h1>iOS开发一些小技巧</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ul>
-<li>去掉xcode黄色警告的方法</li>
-</ul>
-
-<pre><code>#pragma clang diagnostic push
-#pragma clang diagnostic ignored &quot;-Wdeprecated-declarations&quot;
- your code with warning
-#pragma clang diagnostic pop
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored &quot;-Wunused-variable&quot;
- your code with warning
-#pragma clang diagnostic pop
-</code></pre>
+                        	<p>可以重写方法</p>
 
 <ul>
-<li>控制器init方法执...</li>
+<li>(nullable NSArray&lt;__kindof UICollectionViewLayoutAttributes *&gt; *)layoutAttributesForElementsInRect:(CGRect)rect;</li>
 </ul>
+
+<p>给每个 cell 重写布局 </p>
+
+<p>另外还有下面这个方法在 view 的位置改变的时候实时调用上一个方法</p>
+
+<ul>
+<li>(BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds; // return YES to cause the collection view to requery the layout for geometry information</li>
+</ul>
+
+<h2 id="toc_0">UIViewPropertyAnimator</h2>
+
+<p>动画除了[UIView animation...]<br/>
+还可以使用UIView中的这个属性实现 </p>
+
+<p>创建一个 animator跟一个 block 实现具体的动画效果<br/>
+然后启动 animator</p>
+
+<h3 id="toc_1">添加Blur</h3>
+
+<p>let blurEffect = UIBlurEffect(style:.regular)</p>
+
+<p>let visualEffectView = UIViewEffectView(effct:blurEffect)</p>
+
+<p>self.addSubview(visualEffectView)</p>
+
+<p>然后布局visualEffectView </p>
+
+<p>蒙版的效果就有了 </p>
+
                         
                       </div>
                   </div>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15427834493214.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+                  
+                    <span class="date">2020/12/11</span>
+                    
           				   
                   </div>
                   <div class="more-right right">
@@ -324,28 +165,30 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427815427067.html">
+                <a class="clearlink" href="16076509806846.html">
                 
-                  <h1>RACCommand</h1>
+                  <h1>Content Compression Resistance Priority</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	RACCommand是ReactiveCocoa的基本组件之一，能节省开发的大部分时间，同时使得iOS/OS X 应用更健壮。
+                        	<p>Autolayout 很重要的压缩比例 <br/>
+决定了当视图改变的时候压缩的优先级</p>
 
-我看到一部分ReactiveCocoa（以下简单RAC）新人并没有完全理解RACCommand，自然也就不知道怎么用它。所以我写了这个小小介绍性文章，希望能对你的理解有所帮助。RACCommand源文件里的注释写得很不错，不过它并没有给任何例子来说说具体怎么用它，对于RAC的新人来说，只看这些注释还是比较难以理解的。
-...
+<pre><code class="language-text">[_subRightLabel setContentCompressionResistancePriority:UILayoutPriorityDefaultLow forAxis:UILayoutConstraintAxisHorizontal];
+</code></pre>
+
+<p>演示Auto Layout的Content Compression Resistance Priority的例子，展示的是比较常见的视图元素对于屏幕或父视图的挤压做出的不同权重的显示，这个Compression特性和Hugging处理起来比以前算frame的方式要简洁太多，这个是我认为为什么要用Auto Layout的主要原因。</p>
+
                         
                       </div>
                   </div>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15427815427067.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+                  
+                    <span class="date">2020/12/11</span>
+                    
           				   
                   </div>
                   <div class="more-right right">
@@ -359,54 +202,16 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15426943817961.html">
+                <a class="clearlink" href="16076509806946.html">
                 
-                  <h1>Xcode10报错libstdc</h1>
+                  <h1>where语句两个并列条件的写法</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>由于<code>Xcode10</code> 已经禁用<code>libstdc++</code>、<code>libstdc++.6</code>、<code>libstdc++6.0.9</code>这三个库的使用,所以老项目中有用到这三个库的，会编译出错。<br/>
-我就遇到了这个问题，之前的项目引入的sdk依赖了libstdc++，所以当我升级到<code>xcode10</code>之后就编译不通过，于是在网上找到了解决方法。</p>...
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15426943817961.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/20</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15426952413956.html">
-                
-                  <h1>Masonry布局“Unable to simultaneously satisfy constraints”</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>出现这个问题是设置约束优先级错误，设置一下约束的优先级就行。</p>
-
-<pre><code>[self.doctorTitle mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.title.mas_left);
-            make.right.equalTo(self.title.mas_right);
-            make.top.equalTo(self.topline.mas_bottom).offset(10).priorityHigh();
-            make.height.mas_equalTo(@14);
-}];
+                        	<pre><code class="language-text">if let targetController = self.navigationController?.viewControllers.first(where: { ($0 is PoliceClueViewController) || ($0 is MyDraftsTableViewController)}) {
+                self.navigationController?.popToViewController(targetController, animated: true)
+            }
 
 </code></pre>
 
@@ -417,10 +222,8 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2017/11/20</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+                    <span class="date">2020/12/11</span>
+                    
           				   
                   </div>
                   <div class="more-right right">
@@ -434,127 +237,148 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15446033549417.html">
+                <a class="clearlink" href="16076509806983.html">
                 
-                  <h1>What's New in LLVM（2017）</h1>
+                  <h1>启动优化</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>Xcode 9中的Apple LLVM编译器具有新的语言特性、改进的诊断和更强大的优化。了解Objective-C和c++的最新添加，了解新的和改进的警告和静态分析器检查，了解LLVM编译器技术如何为应用程序提供更快的构建时间和更好的运行时性能。</p>
+                        	<p><code>main 函数</code>执行开始会进入到<code>appDelegate</code> 的 <code>didFinishLaunchingWithOptions</code>方法执行</p>
 
-<h2 id="toc_0">1.不同语言的api检查</h2>
+<p>很多人在一些第三方 SDK 初始化配置，各种初始化的工作都放在<code>appDelegate</code> 的 <code>didFinishLaunchingWithOptions</code> 这个阶段执行，其实是不合理的，正确的做法应该是弄清楚哪些是APP 启动时候真正需要的初始化功能，哪些是在其对应功能开始使用时才需要初始化的，梳理完之后把他们都放在对应的阶段进行。</p>
 
-<pre><code>@available(iOS 11,*)--oc
-#available  --swift
+<p>首屏渲染这部分的代码止于<code>didFinishLaunchingWithOptions</code> 方法作用于结束。因为这时候首屏已经完成了渲染，所以可以不着急立马对其优化，但是那些阻碍线程的操作还是要优先处理的。</p>
+
+<p>首屏渲染完成之后的阶段应该是非首屏其他业务模块的初始化，监听的注册，配置文件的读取等等。</p>
+
+<h3 id="toc_0">时间统计</h3>
+
+<p>可以在<code>Edit Scheme</code>中添加<code>Arguments</code>用来统计启动时间 </p>
+
+<p><img src="media/15535088659442/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-04-09%20%E4%B8%8A%E5%8D%8811.51.38.png" alt="屏幕快照 2019-04-09 上午11.51.38"/></p>
+
+<p>添加参数<code>DYLD_PRINT_STATISTICS</code> 并且 value 为1 </p>
+
+<p>这样启动app的时候就会有时间统计 </p>
+
+<pre><code class="language-text">Total pre-main time: 3.3 seconds (100.0%)
+         dylib loading time: 551.91 milliseconds (16.4%)
+        rebase/binding time: 1.8 seconds (54.5%)
+            ObjC setup time: 754.55 milliseconds (22.5%)
+           initializer time: 217.73 milliseconds (6.4%)
+           slowest intializers :
+             libSystem.B.dylib :  12.87 milliseconds (0.3%)
 </code></pre>
 
-<p>便捷的方法检查（检查可用性，如果你要给某个新的系统加入新功能）</p>
+<p>同时这个顺序也就代表了应用启动时的执行顺序。</p>
 
-<pre><code>@interface MyAblumController : UIViewController
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/12/11</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
--(void)showFaces API_AVALABILITY(ios(11.0));
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509807035.html">
+                
+                  <h1>objc_msgSend</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>objc_msgSend 方法执行的逻辑是：先获取对象对应类的信息，再获取方法的缓存，根据方法的 selector 查找函数指针，经过异常错误处理后，最后跳到对应函数的实现。</p>
 
-@end
-</code></pre>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/12/11</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
-<p>还可以移动整个类的范围</p>
-
-<pre><code>API_AVALABILITY(ios(11.0))
-@interface MyAblumController : UIViewController
-
--(void)showFaces ;
-
-@end
-</code></pre>
-
-<h2 id="toc_1">2.不要把Number元素和标量进行比较</h2>
-
-<pre><code>@property NSNumber * photoCount;
--(BOOL)hasPhotos{
-return self.photoCount &gt; 0
-}
-</code></pre>
-
-<p>因为这个比较相当于是把photoCount和指针nil相比，返回为YES,所以这个错误很严重。</p>
-
-<p><img src="media/15445814733953/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%884.26.59.png" alt="屏幕快照 2018-12-12 下午4.26.59"/></p>
-
-<p>编译器会报错，提醒你出现了问题，你可以把NSNumber转成interger之后再做判断。</p>
-
-<p><img src="media/15445814733953/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%884.28.18.png" alt="屏幕快照 2018-12-12 下午4.28.18"/></p>
-
-<h6 id="toc_2">Control Check in Build Setting</h6>
-
-<p>设置Suspicious Conversions 为YES(aggressive)当编译器不确定的时候会弹出如上提示。<br/>
-<img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%885.06.22.png" alt="屏幕快照 2018-12-12 下午5.06.22"/></p>
-
-<h2 id="toc_3">3. copy修饰NSMutableArray</h2>
-
-<p>赋值的时候等于是复制了一个不可变对象，所以以后运行时的时候会报错(如果你对这个数组进行修改)</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%886.45.36.png" alt="屏幕快照 2018-12-12 下午6.45.36"/></p>
-
-<p>这个时候就会报错，因为给self.titieArr赋值之后变成了不可变的，所以接下来的操作会导致错误。</p>
-
-<h6 id="toc_4">解决方法:</h6>
-
-<pre><code>//添加setter方法
--(void)setTitleArr:(NSMutableArray *)titleArr{
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509807071.html">
+                
+                  <h1>运行时交换方法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code class="language-text">+(void)load{
     
-    self.titleArr= [titleArr mutableCopy];
+    
+    Class class = self;
+    
+    SEL fromSelector = @selector(viewDidLoad);
+    
+    SEL toSelector = @selector(mwviewDidLoad);
+
+    Method fromMethod = class_getInstanceMethod(class, fromSelector);
+    Method toMethod = class_getInstanceMethod(class, toSelector);
+    
+    if(class_addMethod(class, fromSelector, method_getImplementation(toMethod), method_getTypeEncoding(toMethod))) {
+        class_replaceMethod(class, toSelector, method_getImplementation(fromMethod), method_getTypeEncoding(fromMethod));
+    } else {
+        method_exchangeImplementations(fromMethod, toMethod);
+    }
+
+    
 }
+
+-(void)mwviewDidLoad{
+    
+    NSLog(@&quot;hello world from mwviewDidLoad&quot;);
+    [self mwviewDidLoad];
+    
+}
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    NSLog(@&quot;hello world from viewDidLoad&quot;);
+
+    // Do any additional setup after loading the view, typically from a nib.
+}
+
 </code></pre>
 
-<p>每次赋值的时候给数组赋值可变对象。</p>
+<p>打印结果为</p>
 
-<p>另外为了及时发现bug可以开启每次build的时候analyze而不是每次都要去手动analyze（如果不开启的话上面的错误不会提示）</p>
+<pre><code class="language-text">2019-03-26 15:06:35.542596+0800 ExchangeMethod[48714:4112036] hello world from mwviewDidLoad
+2019-03-26 15:06:35.542847+0800 ExchangeMethod[48714:4112036] hello world from viewDidLoad
+</code></pre>
 
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%886.48.45.png" alt="屏幕快照 2018-12-12 下午6.48.45"/><br/>
-设置Analyze During Build 的值为Yes.</p>
+<p>注意千万不能手误<br/>
+千万不能把[self mwviewDidLoad];改成[self viewDidLoad];</p>
 
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%886.43.05.png" alt="屏幕快照 2018-12-12 下午6.43.05"/></p>
-
-<h2 id="toc_5">4. 声明无参数的函数</h2>
-
-<h5 id="toc_6">Non-prototype declarations in C and Objective-C</h5>
-
-<p>非原型声明</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.47.06.png" alt="屏幕快照 2018-12-13 下午3.47.06"/></p>
-
-<p>在C和OC中意味着foo可以跟任何参数调用，这个行为可以追溯到1977年C语言，不匹配类型的调用会导致运行时的崩溃。<br/>
-在Xcode9 中编译器带有一个新的警告加强严格原型，会报出警告。</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.50.45.png" alt="屏幕快照 2018-12-13 下午3.50.45"/></p>
-
-<p>通常只需要在括号中添加void表示不接收任何参数传递。</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.51.41.png" alt="屏幕快照 2018-12-13 下午3.51.41"/></p>
-
-<p>任何带有参数的调用都会直接报错。</p>
-
-<p>另外block中不接收参数的时候也会出现同样的警告，如下所示。</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.52.47.png" alt="屏幕快照 2018-12-13 下午3.52.47"/></p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.53.57.png" alt="屏幕快照 2018-12-13 下午3.53.57"/></p>
-
-<h3 id="toc_7">升级验证警告设置</h3>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%884.08.45.png" alt="屏幕快照 2018-12-13 下午4.08.45"/></p>
-
-<p>勾选Yes(Error)</p>
-
-<h6 id="toc_8">Strict Prototypes 勾选Yes(Error)之前 and 勾选之后</h6>
-
-<p><img src="media/15446033549417/Artboard%202@2x.png" alt="Artboard 2@2x"/></p>
-
-<p>勾选之后就不只是警告了，直接是错误提醒，让你开发的时候不得不注意，也是为了代码的安全性。</p>
-
-<h3 id="toc_9">结尾</h3>
-
-<p>WWDC2017剩余部分是关于C++的优化，如果感兴趣的话可以移步<a href="https://developer.apple.com/videos/play/wwdc2017/411">开发者网站</a>观看。</p>
+<p>因为交换方法只会交换一次，实现交换了方法，调用viewDidLoad的时候其实实际是调用的本身mwviewDidLoad，往下走就又会调用本身，造成死循环。</p>
 
                         
                       </div>
@@ -563,10 +387,139 @@ return self.photoCount &gt; 0
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2017/11/12</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+                    <span class="date">2020/12/11</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509807113.html">
+                
+                  <h1>在 App 运行时通过 dlopen 和 dlsym 链接加载 bundle 里的动态库。</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>我们一般引入某个 framework 可能是直接使用<code>#import &lt;AVFoundation/AVFoundation.h&gt;</code>其实还有另一种办法就是使用函数啊 dlopen</p>
+
+<pre><code class="language-text">函数定义： 
+　　void * dlopen( const char * pathname, int mode ); 
+　　函数描述： 
+　　在dlopen的（）函数以指定模式打开指定的动态连接库文件，并返回一个句柄给调用进程。使用dlclose（）来卸载打开的库。 
+　　mode：分为这两种 
+　　RTLD_LAZY 暂缓决定，等有需要时再解出符号 
+　　RTLD_NOW 立即决定，返回前解除所有未决定的符号。 
+　　RTLD_LOCAL 
+　　RTLD_GLOBAL 允许导出符号 
+　　RTLD_GROUP 
+　　RTLD_WORLD 
+
+　　返回值: 
+　　打开错误返回NULL 
+　　成功，返回库引用 
+　　编译时候要加入 -ldl (指定dl库) 
+
+</code></pre>
+
+<pre><code class="language-text">dlsym()
+
+ 
+　功能：
+
+根据动态链接库操作句柄与符号，返回符号对应的地址。
+包含头文件：
+#include &lt;dlfcn.h&gt;
+函数定义：
+void*dlsym(void* handle,const char* symbol)
+函数描述：
+dlsym根据动态链接库操作句柄(handle)与符号(symbol)，返回符号对应的地址。使用这个函数不但可以获取函数地址，也可以获取变量地址。
+handle是由dlopen打开动态链接库后返回的指针，symbol就是要求获取的函数或全局变量的名称。
+dlclose()
+
+ 
+
+dlclose用于关闭指定句柄的动态链接库，只有当此动态链接库的使用计数为0时,才会真正被系统卸载。
+ 
+</code></pre>
+
+<p>示例函数</p>
+
+<pre><code class="language-text">-(void)mwviewDidLoad{
+    //打开动态库
+    NSString *path = [[NSBundle mainBundle] pathForResource:@&quot;Kidswaste-Sans Toi&quot; ofType:@&quot;mp3&quot;];
+    // 加载库到当前运行程序
+    void *lib = dlopen(&quot;/System/Library/Frameworks/AVFoundation.framework/AVFoundation&quot;, RTLD_LAZY);
+    if (lib) {
+        // 获取类名称
+        Class playerClass = NSClassFromString(@&quot;AVAudioPlayer&quot;);
+        // 获取函数方法
+        SEL selector = NSSelectorFromString(@&quot;initWithData:error:&quot;);
+        // 调用实例化对象方法
+        _runtime_Player = [[playerClass alloc] performSelector:selector withObject:[NSData dataWithContentsOfFile:path] withObject:nil];
+        // 获取函数方法
+        selector = NSSelectorFromString(@&quot;play&quot;);
+        // 调用播放方法
+        [_runtime_Player performSelector:selector];
+        NSLog(@&quot;动态加载播放&quot;);
+    }
+    dlclose(lib);
+    NSLog(@&quot;hello world from mwviewDidLoad&quot;);
+    [self mwviewDidLoad];
+    
+}
+
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/12/11</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509807148.html">
+                
+                  <h1>打印函数名和所在行的信息使用下面代码</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code class="language-text">    printf(&quot;%s,%d, NULL == handle\n&quot;, __FUNCTION__, __LINE__);
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/12/11</span>
+                    
           				   
                   </div>
                   <div class="more-right right">
@@ -602,9 +555,7 @@ return self.photoCount &gt; 0
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
             
-                <div class="site-a-logo"><img src="/asset/img/logo.png" /></div>
-            
-                <h1>Code Log 👨‍💻‍ </h1>
+                <h1></h1>
                 <div class="site-des"></div>
                 <div class="social">
 
@@ -616,9 +567,9 @@ return self.photoCount &gt; 0
 
 
 
-<a target="_blank" class="github" target="_blank" href="https://github.com/maweefeng" title="GitHub">GitHub</a>
-<a target="_blank" class="email" href="mailto:maweefeng@gmail.com" title="Email">Email</a>
-  <!-- <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a> -->
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
                 
               	 </div>
           	</div>
@@ -633,17 +584,9 @@ return self.photoCount &gt; 0
 
       	<p class="cat-list">
         
-            <a href="iOS.html"><strong>iOS</strong></a>
+            <a href="%E7%94%B5%E5%BD%B1.html"><strong>电影</strong></a>
         
-            <a href="Git.html"><strong>Git</strong></a>
-        
-            <a href="CocoaPods.html"><strong>CocoaPods</strong></a>
-        
-            <a href="Django.html"><strong>Django</strong></a>
-        
-            <a href="Spiders.html"><strong>Spiders</strong></a>
-        
-            <a href="about.html"><strong>about</strong></a>
+            <a href="%E5%85%B6%E5%AE%83.html"><strong>其它</strong></a>
          
         </p>
 
@@ -660,31 +603,31 @@ return self.photoCount &gt; 0
 	      
 		      
 			      <li class="post">
-			        <a href="15638450239357.html">判断bundle中存不存在某个文件</a>
+			        <a href="16076509803956.html">Xcode10报错libstdc</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15638515424059.html">去除tableview sectionheaderview的粘连效果</a>
+			        <a href="16076509804011.html">Masonry布局“Unable to simultaneously satisfy constraints”</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15641370883413.html">快速的扩展类的初始化方法</a>
+			        <a href="16076509804045.html">RACCommand</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15644628854335.html">切部分圆角</a>
+			        <a href="16076509804076.html">代理修饰符</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15646490459131.html">didSet 和 willSet</a>
+			        <a href="16076509804110.html">You don’t have write permissions</a>
 			      </li>
 		     
 		  
@@ -729,11 +672,10 @@ return self.photoCount &gt; 0
 
  <div class="page-bottom clearfix">
   <div class="row">
-   <!-- <p class="copyright">Copyright &copy; 2015
+   <p class="copyright">Copyright &copy; 2015
 Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
-Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p> -->
-<p class="copyright">日光之下 永无新事</p>
-</div>
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
 </div>
 
         </section>
@@ -760,7 +702,7 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p> -->
      
     </script>
 
-    <script src="asset/chart/all-min.js"></script><script type="text/javascript">$(function(){    var mwebii=0;    var mwebChartEleId = 'mweb-chart-ele-';    $('pre>code').each(function(){        mwebii++;        var eleiid = mwebChartEleId+mwebii;        if($(this).hasClass('language-sequence')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = Diagram.parse($(this).text());            diagram.drawSVG(eleiid,{theme: 'simple'});        }else if($(this).hasClass('language-flow')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = flowchart.parse($(this).text());            diagram.drawSVG(eleiid);        }    });});</script>
+    
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
 
 

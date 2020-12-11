@@ -1,0 +1,727 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  PromiseKit - 
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E7%94%B5%E5%BD%B1.html">电影</a></li>
+        
+            <li><a href="%E5%85%B6%E5%AE%83.html">其它</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>PromiseKit</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2020/12/11</span>
+
+          
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <h2 id="toc_0">then and done</h2>
+
+<p>一个典型的链条⛓️</p>
+
+<pre><code class="language-text">firstly {
+    login()
+}.then { creds in
+    fetch(avatar: creds.user)
+}.done { image in
+    self.imageView = image
+}
+</code></pre>
+
+<p>如果这段代码使用之前的方式可能会是这样</p>
+
+<pre><code class="language-text">login { creds, error in
+    if let creds = creds {
+        fetch(avatar: creds.user) { image, error in
+            if let image = image {
+                self.imageView = image
+            }
+        }
+    }
+}
+</code></pre>
+
+<p>其中重要的语法有then 是另一种方式的回调方法，但是承诺链比较容易理解，一个异步操作之后接着去执行下一个操作。</p>
+
+<p>done是一样的，但是done不返回promise，它通常是链条成功部分的终结。</p>
+
+<p>还有就是错误捕捉，比如我们以前的方法会有成功和错误的两个回调，但是现在使用了promise只需要返回一个promise就行了。如下所示</p>
+
+<pre><code class="language-text">func login() -&gt; Promise&lt;Creds&gt;
+    
+// Compared with:
+
+func login(completion: (Creds?, Error?) -&gt; Void)
+                        // ^^ ugh. Optionals. Double optionals.
+</code></pre>
+
+<h2 id="toc_1">catch</h2>
+
+<p>那么错误是怎么捕捉到的呢，那么就需要用到promise的另一个重要的方法<code>catch</code></p>
+
+<pre><code class="language-text">firstly {
+    login()
+}.then { creds in
+    fetch(avatar: creds.user)
+}.done { image in
+    self.imageView = image
+}.catch {
+    // any errors in the whole chain land here
+}
+</code></pre>
+
+<p>每个<code>promise</code>都代表一个异步任务的对象，如果任务失败，诺言会失败，执行<code>reject</code>状态，如果诺言执行成功就是<code>fulfilled</code>状态，如果执行失败会跳过后面的所有then操作进入到<code>catch</code>当中。</p>
+
+<h2 id="toc_2">ensure and finally</h2>
+
+<p>有时候我们需要执行一些必须要执行的操作，比如无论网络请求失败还是成功都隐藏请求动画，那么就需要用到ensure语句了。<br/>
+无论你的promise执行结果如何，ensure当中的代码块都将被执行。</p>
+
+<pre><code class="language-text">firstly {
+    UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    return login()
+}.then {
+    fetch(avatar: $0.user)
+}.done {
+    self.imageView = $0
+}.ensure {
+    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+}.catch {
+    //…
+}
+</code></pre>
+
+<p>另外你也可以使用<code>finally</code>方法在链条的最底部执行，无须返回任何值。</p>
+
+<pre><code class="language-text">spinner(visible: true)
+
+firstly {
+    foo()
+}.done {
+    //…
+}.catch {
+    //…
+}.finally {
+    self.spinner(visible: false)
+}
+</code></pre>
+
+<h2 id="toc_3">when</h2>
+
+<p>使用完成处理程序，对多个异步操作的响应要么很慢，要么很难。慢意味着连续执行：</p>
+
+<p><code>when</code> 有点像<code>GCD</code>当中的<code>DispatchGroup</code> 做完之后再通知到接下来的操作。</p>
+
+<pre><code class="language-text">firstly {
+    when(fulfilled: operation1(), operation2())
+}.done { result1, result2 in
+    //…
+}
+</code></pre>
+
+<p><code>when</code> 接受承诺，等待他们解决并返回包含结果的承诺。</p>
+
+<p>与任何承诺链一样，如果任何组件承诺失败，链将调用下一个<code>catch</code>。</p>
+
+<h2 id="toc_4">Making Promises</h2>
+
+<p>那么如何使自己的项目支持promise？<br/>
+标准扩展程序将带您走很长的路，但有时您仍然需要启动自己的链。也许您正在使用不提供承诺的第三方API，或者您可能编写了自己的异步系统。无论哪种方式，添加承诺都很容易。如果您查看标准扩展的代码，您会看到它使用下面描述的相同方法。</p>
+
+<pre><code class="language-text">假设我们有以下方法：
+
+func fetch(completion: (String?, Error?) -&gt; Void){
+
+    }
+我们可以使用下面方法变成promise
+func fetch() -&gt; Promise&lt;String&gt; {
+        return Promise{
+            seal in
+            fetch(completion: seal.resolve)
+        }
+
+//      或者  return Promise { fetch(completion: $0.resolve) }
+}
+
+或者    
+func fetch() -&gt; Promise&lt;String&gt; {
+        return Promise&lt;String&gt;{ seal in
+            fetch{ (result, error) in
+                seal.resolve(result, error)
+            }
+        }
+}
+</code></pre>
+
+<p>Promise的初始化程序为您提供的seal对象定义了许多处理平常的完成处理程序的方法。它甚至涵盖了各种罕见的情况，因此您可以轻松地将promises添加到现有代码库中。</p>
+
+<p>注意：在PMK 4中，此初始化程序为闭包提供了两个参数： fulfill和reject。PMK 5和6为您提供了具有两种方法fulfill和 reject方法的对象，但也提供了该方法的许多变体resolve。您通常只需将完成处理程序参数传递给，resolve并让Swift找出适用于您的特定情况的变体（如上例所示）。</p>
+
+<p>还可以使用fulfill 和 reject方法，比如上面的代码可以改成下面的样子。</p>
+
+<pre><code class="language-text"> func fetch() -&gt; Promise&lt;String&gt; {
+
+        return Promise&lt;String&gt;{ seal in
+            
+            fetch{ (result, error) in
+                if let error = error {
+                    seal.reject(error)
+                }else if let success = result{
+                    seal.fulfill(success)
+                }else{
+                    seal.reject(PMKError.invalidCallingConvention)
+                }
+            }
+        }
+    }
+</code></pre>
+
+<h2 id="toc_5">Guarantee<T></h2>
+
+<p>自从PromiseKit 5，提供了Guarantee作为补充 Promise。这样做是为了补充Swift强大的错误处理系统。</p>
+
+<p>Guarantee永不失败，所以不能拒绝。一个很好的例子是after：</p>
+
+<pre><code class="language-text">firstly {
+    after(seconds: 0.1)
+}.done {
+    // there is no way to add a `catch` because after cannot fail.
+}
+
+</code></pre>
+
+<h2 id="toc_6">APIs That Use Promises</h2>
+
+<pre><code class="language-text">class MyRestAPI {
+    func user() -&gt; Promise&lt;User&gt; {
+        return firstly {
+            URLSession.shared.dataTask(.promise, with: url)
+        }.compactMap {
+            try JSONSerialization.jsonObject(with: $0.data) as? [String: Any]
+        }.map { dict in
+            User(dict: dict)
+        }
+    }
+
+    func avatar() -&gt; Promise&lt;UIImage&gt; {
+        return user().then { user in
+            URLSession.shared.dataTask(.promise, with: user.imageUrl)
+        }.compactMap {
+            UIImage(data: $0.data)
+        }
+    }
+}
+
+</code></pre>
+
+<p>通过这种方式，异步链可以干净地无缝地整合来自整个应用程序的代码，而不会违反架构边界。</p>
+
+<h2 id="toc_7">Background Work</h2>
+
+<pre><code class="language-text">class MyRestAPI {
+    func avatar() -&gt; Promise&lt;UIImage&gt; {
+        let bgq = DispatchQueue.global(qos: .userInitiated)
+
+        return firstly {
+            user()
+        }.then(on: bgq) { user in
+            URLSession.shared.dataTask(.promise, with: user.imageUrl)
+        }.compactMap(on: bgq) {
+            UIImage(data: $0)
+        }
+    }
+}
+</code></pre>
+
+<p>所有PromiseKit处理程序都带有一个on参数，允许您指定运行处理程序的调度队列。默认值始终是主队列。</p>
+
+<p>PromiseKit 完全是线程安全的。</p>
+
+<h2 id="toc_8">Failing Chains</h2>
+
+<p>如果错误发生在链条中间，只需抛出一个错误。</p>
+
+<pre><code class="language-text">firstly {
+    foo()
+}.then { baz in
+    bar(baz)
+}.then { result in
+    guard !result.isBad else { throw MyError.myIssue }
+    //…
+    return doOtherThing()
+}
+
+</code></pre>
+
+<p>错误将在下一个catch处理程序中显示。</p>
+
+<p>由于promises处理抛出的错误，除非你真的想在本地处理错误，否则你不必将调用函数包装到块中：</p>
+
+<pre><code class="language-text">foo().then { baz in
+    bar(baz)
+}.then { result in
+    try doOtherThing()
+}.catch { error in
+    // if doOtherThing() throws, we end up here
+}
+</code></pre>
+
+<h2 id="toc_9">抽象异步性 Abstracting Away Asynchronicity</h2>
+
+<pre><code class="language-text">var fetch = API.fetch()
+
+override func viewDidAppear() {
+    fetch.then { items in
+        //…
+    }
+}
+
+func buttonPressed() {
+    fetch.then { items in
+        //…
+    }
+}
+
+func refresh() -&gt; Promise {
+    // ensure only one fetch operation happens at a time
+
+    if fetch.isResolved {
+        startSpinner()
+        fetch = API.fetch().ensure {
+            stopSpinner()
+        }
+    }
+    return fetch
+}
+</code></pre>
+
+<p>使用promises，您无需担心异步操作何时完成。就像现在一样。</p>
+
+<p>在上面，我们看到您可以根据自己的喜好多次调用then。所有块将按添加顺序执行。</p>
+
+<h2 id="toc_10">Minimum Duration</h2>
+
+<p>有时您需要一项任务至少花费一定的时间。（例如，您希望显示进度条，但如果它显示的时间少于0.3秒，则UI对用户显示为断开。）</p>
+
+<pre><code class="language-text">let waitAtLeast = after(seconds: 0.3)
+
+firstly {
+    foo()
+}.then {
+    waitAtLeast
+}.done {
+    //…
+}
+</code></pre>
+
+<p>上面的代码有效，因为我们在工作之前创建了延迟foo()。当我们等待这个承诺时，要么它已经超时，要么我们将等待0.3秒的任何剩余时间，然后继续链。</p>
+
+<h2 id="toc_11">Cancellation</h2>
+
+<p>Promise没有cancel函数，但它们通过符合CancellableError协议的特殊错误类型支持取消。</p>
+
+<pre><code class="language-text">func foo() -&gt; (Promise&lt;Void&gt;, cancel: () -&gt; Void) {
+    let task = Task(…)
+    var cancelme = false
+
+    let promise = Promise&lt;Void&gt; { seal in
+        task.completion = { value in
+            guard !cancelme else { return reject(PMKError.cancelled) }
+            seal.fulfill(value)
+        }
+        task.start()
+    }
+
+    let cancel = {
+        cancelme = true
+        task.cancel()
+    }
+
+    return (promise, cancel)
+}
+
+</code></pre>
+
+<p>被取消的链条默认不会进入到catch方法，然后也可以接收取消中断，如下</p>
+
+<pre><code class="language-text">foo.then {
+    //…
+}.catch(policy: .allErrors) {
+    // cancelled errors are handled *as well*
+}
+</code></pre>
+
+<h2 id="toc_12">Saving Previous Results</h2>
+
+<p>举个例子</p>
+
+<pre><code class="language-text">login().then { username in
+    fetch(avatar: username)
+}.done { image in
+    //…
+}
+
+</code></pre>
+
+<p>如果想在done在同时访问username和image呢 <br/>
+可以使用下面的方法</p>
+
+<pre><code class="language-text">login().then { username in
+    fetch(avatar: username).done { image in
+        // we have access to both `image` and `username`
+    }
+}.done {
+    // the chain still continues as you&#39;d expect
+}
+</code></pre>
+
+<p>然而，这种嵌套降低了链条的清晰度。相反，我们可以使用Swift元组：</p>
+
+<pre><code class="language-text">//简化版
+login().then { username in
+    fetch(avatar: username).map { ($0, username) }
+}.then { image, username in
+    //…
+}
+</code></pre>
+
+<h2 id="toc_13">Chaining Sequences</h2>
+
+<p>当你在一个数组中有一系列的任务要反应的时候</p>
+
+<pre><code class="language-text">// fade all visible table cells one by one in a “cascading” effect
+
+var fade = Guarantee.value(Bool())
+
+for cell in tableView.visibleCells {
+
+    fade = fade.then {_ in
+        UIView.animate(.promise, duration: 1, animations: {
+            cell.alpha = 0
+
+        })
+
+    }
+}
+fade.done {_ in
+
+
+}
+        
+</code></pre>
+
+<p>或者你有一个包含promise的数组</p>
+
+<pre><code class="language-text">var foo = Promise()
+for nextPromise in arrayOfPromises {
+    foo = foo.then { nextPromise }
+}
+foo.done {
+    // finish
+}
+
+</code></pre>
+
+<p>之前我们知道可以使用when同时异步执行多个promise，这种方式完成的速度更快，但是有时候我们需要promise顺序一个一个的执行，比如上面的动画。</p>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="16076509808408.html" 
+          title="Previous Post: 同一开发商, 一个应用跳到另一个应用的免登方案">&laquo; 同一开发商, 一个应用跳到另一个应用的免登方案</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="16076509808533.html" 
+          title="Next Post: Promise采用关联对象进行保存对象">Promise采用关联对象进行保存对象 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1></h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E7%94%B5%E5%BD%B1.html"><strong>电影</strong></a>
+        
+            <a href="%E5%85%B6%E5%AE%83.html"><strong>其它</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="16076509803956.html">Xcode10报错libstdc</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804011.html">Masonry布局“Unable to simultaneously satisfy constraints”</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804045.html">RACCommand</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804076.html">代理修饰符</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804110.html">You don’t have write permissions</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+
+  </body>
+</html>

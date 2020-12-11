@@ -1,0 +1,474 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  Building Apps with Dynamic Type - 
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E7%94%B5%E5%BD%B1.html">电影</a></li>
+        
+            <li><a href="%E5%85%B6%E5%AE%83.html">其它</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>Building Apps with Dynamic Type</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2020/12/11</span>
+
+          
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <p>使用动态类型，人们可以选择自己喜欢的文本大小，iOS会根据需要自动切换字体。理解为什么动态类型很重要，以及在显示文本时如何支持它。了解iOS 11的新特性，掌握支持应用程序动态类型的框架和工具。</p>
+
+<h2 id="toc_0">1.What is Dynamic Type?</h2>
+
+<p>Dynamic Type是一个允许用户在屏幕上自定义字体大小的功能。</p>
+
+<p><img src="media/15446970341146/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%886.37.58.png" alt="屏幕快照 2018-12-13 下午6.37.58"/></p>
+
+<p>对于视力有障碍的人来说区别很大，字体大之后就可以看到内容了。</p>
+
+<h2 id="toc_1">2.What&#39;s New in iOS 11?</h2>
+
+<h3 id="toc_2">目标</h3>
+
+<ol>
+<li>字体要足够大</li>
+<li>文字要完全，不允许截断</li>
+<li>UI还要依然美丽</li>
+</ol>
+
+<h3 id="toc_3">使用说明和一些 API</h3>
+
+<ul>
+<li>如何将字体和Dynamic type 一致</li>
+<li>适应更大的字体</li>
+<li>Table views </li>
+<li>Images</li>
+</ul>
+
+<h4 id="toc_4">2.1如何将字体和Dynamic type 一致</h4>
+
+<p>通过文字样式TextStyle</p>
+
+<ul>
+<li><p>系统字体</p>
+<ul>
+<li>xib 设置 </li>
+</ul>
+<p><img src="media/15446970341146/Artboard%202@3x.png" alt="Artboard 2@3x"/></p>
+<ul>
+<li>代码设置</li>
+</ul>
+<pre><code class="language-text">UILabel * tip = [[UILabel alloc]init];
+[tip setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];<br/>
+[tip setAdjustsFontForContentSizeCategory:YES];
+</code></pre></li>
+<li><p>自定义字体<br/>
+上面说的是系统字体的时候可以跟随系统设置变大缩小，同样其他的自定义字体也可以通过UIFontMetrics达到一样的效果。</p>
+<pre><code class="language-text">UILabel * tip = [[UILabel alloc]init];
+[tip setFont:[[UIFontMetrics metricsForTextStyle:UIFontTextStyleBody] scaledFontForFont:customeFont]]<br/>
+[tip setAdjustsFontForContentSizeCategory:YES];
+</code></pre>
+<p>Web Views实现跟随字体改变</p>
+<p><img src="media/15446970341146/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%887.10.45.png" alt="屏幕快照 2018-12-13 下午7.10.45"/></p>
+<p>当然这个只能适应于苹果设备，其他设备使用 rem</p></li>
+</ul>
+
+<h4 id="toc_5">2.2 怎么适应大字体在屏幕上</h4>
+
+<ul>
+<li><p>2.2.1 问题解答</p>
+<p>Q:如何解决文字变大后超出屏幕或者简单截断之后用户无法识别呢<br/>
+A:分为多行显示<br/>
+S:设置Label的 numberOflines = 0</p>
+<p>Q:之前设置的固定间距(比如设置LabelB的底部距离LabelA的底部40px)，随着字体变大之后文本内容发生重叠</p>
+<p><img src="media/15446970341146/Artboard%203@2x.png" alt="Artboard 3@2x"/></p>
+<p>A1:设置LabelA的底部距离LabelB 的底部40px <br/>
+间距不变 但是是往不同方向方法<br/>
+<img src="media/15446970341146/%E4%BF%AE%E6%94%B9%E5%90%8E@2x.png" alt="修改后@2x"/></p>
+<p>A2:设置动态间距（iOS11以后可用）<br/>
+间距会随之变大<br/>
+<img src="media/15446970341146/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-14%20%E4%B8%8A%E5%8D%8811.06.14.png" alt="屏幕快照 2018-12-14 上午11.06.14"/></p>
+<p>两种方案实现的效果不一样，如下所示。</p>
+<p><img src="media/15446970341146/%E5%89%8D%E5%90%8E%E5%AF%B9%E6%AF%94%E5%9B%BE@2x.png" alt="前后对比图@2x"/></p></li>
+<li><p>2.2.2 缩放值 Scaled Values</p>
+<p>缩放某个值，对于整体UI随着 large Text 来说有很重要的效果，会使整个UI看起来更协调。</p>
+<p>比如你之前是这么改变 y 值<br/>
+<code>frame.origin.y +=40;</code></p>
+<p>现在你可以这么设置，constantVaule：40会根据系统设置而动态改变大小。</p>
+<p><code>frame.y += [[UIFontMetrics defaultMetrics] scaledValueForValue:40];</code></p></li>
+<li><p>2.2.3 并排文字的处理</p>
+<p><img src="media/15446970341146/%E5%B8%83%E5%B1%80%E5%AF%B9%E6%AF%94.png" alt="布局对比"/></p>
+<p>由上图可见，如果出现了文字变大的情况，如果不作任何处理会出现文字被截断的情况，直接影响了体验，如果只是简单的换行处理，会影响到美观，那么就可以垂直布置，横向沾满整个视图空间。</p>
+<p>通过函数<code>[[UIApplication sharedApplication] preferredContentSizeCategory]</code>or<code>self.view.traitCollection.preferredContentSizeCategory</code>获取用户的字体设置从<code>UIContentSizeCategoryExtraSmall</code>到<code>UIContentSizeCategoryExtraExtraLarge</code></p>
+<p>辅助设置的 largetext 的范围会有所区分会加上Accessibility比如<code>UIContentSizeCategoryAccessibilityMedium</code></p>
+<p>所以在代码中就可以加上类似判断，判断当前的值是否大于某个界面改变的值，不同情形下布局结构不同。</p>
+<pre><code class="language-text">if (self.view.traitCollection.preferredContentSizeCategory &gt; UIContentSizeCategoryLarge ) {
+    //垂直布局<br/>
+}else{<br/>
+    //并排布局<br/>
+}
+</code></pre></li>
+</ul>
+
+<h4 id="toc_6">2.3 Table views</h4>
+
+<p>如果你使用自带的 tableViewCell 那么就会自动布局，换行什么的完全不用你去担心。但是自定义 cell 的情况要自己去适配。</p>
+
+<ul>
+<li><p>2.3.1 Self-Sizing Table View Cells</p>
+<ul>
+<li><p>使用苹果默认设置的cell 样式</p>
+<ul>
+<li>tableview 问每个 cell 提供高度</li>
+<li>提供一个预估的高度给那些在屏幕外的 cell</li>
+</ul>
+<p>如果必要就打开 self-sizing </p>
+<pre><code class="language-text">tableView.rowHeight = UITableViewAutomaticDimension
+tableView.estimatedRowHeight = 一个预估值
+</code></pre>
+<p>如果有 sectionhead 或 sectionfooter</p>
+<pre><code class="language-text">self.tableView.estimatedSectionHeaderHeight = 20;
+self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension;<br/>
+self.tableView.estimatedSectionFooterHeight = 20;<br/>
+self.tableView.sectionFooterHeight = UITableViewAutomaticDimension;
+</code></pre></li>
+<li><p>使用自定义cell 样式并使用 autolayout</p>
+<p>如果你使用自定义 cell 并使用 autolayout 很容易就可以使用 self-sizing，你只要设置好约束条件，使他们来定义单元的大小，然后 autolayout 会给你找到合适的大小。</p></li>
+<li><p>使用自定义cell 样式不使用 autolayout</p>
+<ul>
+<li>重写 sizeThatFits 的方法返回正确的高度</li>
+<li>使用 contentView.bounds.size.width 限定宽度</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h4 id="toc_7">2.4 Images</h4>
+
+<p>在放大文字内容的同时也要保证图片的可辨识度，而不是只是布局改变了，但是非常小不易于观察。</p>
+
+<h5 id="toc_8">2.4.1 imageView</h5>
+
+<ul>
+<li>使用 PDF 图片并且在 asset catalog 勾选Perserve Vector Data 或者不使用PDF图像，提供更大的版本@1x@2x@3x</li>
+<li>  imageView.adjustImageSizeForAceeseeibilityContentSizeCategory = Yes</li>
+<li>xib勾选 imageview放大图片 Adjusts Image Size </li>
+</ul>
+
+<h5 id="toc_9">2.4.2 长按放大 tabbarItem 的图片</h5>
+
+<p><img src="media/15446970341146/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-14%20%E4%B8%8B%E5%8D%883.47.06.png" alt="屏幕快照 2018-12-14 下午3.47.06"/></p>
+
+<ul>
+<li><p>使用 PDF 图片并且在 asset catalog 勾选Perserve Vector Data并选择 single scale</p>
+<p><img src="media/15446970341146/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-14%20%E4%B8%8B%E5%8D%884.57.58.png" alt="屏幕快照 2018-12-14 下午4.57.58"/></p></li>
+<li><p>如果不使用PDF图像，提供更大的版本并在xib 为bar Item设置 aceessibility 图片或者在代码设置barItem.largeContentSizeImage = largeImage;</p></li>
+</ul>
+
+<h6 id="toc_10">Tips</h6>
+
+<ul>
+<li><p>使用 PDF 图像可以保证@1x @2x @3x 使用同一个图像进行缩放。</p></li>
+<li><p>Xcode -&gt; Accessbility inspector（方便进行字体大小的调整）<br/>
+<img src="media/15446970341146/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-14%20%E4%B8%8B%E5%8D%885.12.49.png" alt="屏幕快照 2018-12-14 下午5.12.49"/></p></li>
+</ul>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="16076509805947.html" 
+          title="Previous Post: What's New in LLVM（2017）">&laquo; What's New in LLVM（2017）</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="16076509806102.html" 
+          title="Next Post: What's New in Storyboards">What's New in Storyboards &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1></h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E7%94%B5%E5%BD%B1.html"><strong>电影</strong></a>
+        
+            <a href="%E5%85%B6%E5%AE%83.html"><strong>其它</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="16076509803956.html">Xcode10报错libstdc</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804011.html">Masonry布局“Unable to simultaneously satisfy constraints”</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804045.html">RACCommand</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804076.html">代理修饰符</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804110.html">You don’t have write permissions</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+
+  </body>
+</html>

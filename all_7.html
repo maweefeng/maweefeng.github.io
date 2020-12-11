@@ -1,128 +1,98 @@
 <!doctype html>
 <html class="no-js" lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>
-    
-    Code Log 👨‍💻‍ 
-    
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+  
+  
+  
   </title>
   
   
-  <link href="atom.xml" rel="alternate" title="Code Log 👨‍💻‍ " type="application/atom+xml">
-  <link rel="stylesheet" href="asset/css/foundation.min.css" />
-  <link rel="stylesheet" href="asset/css/docs.css" />
-  <script src="asset/js/vendor/modernizr.js"></script>
-  <script src="asset/js/vendor/jquery.js"></script>
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
   <script src="asset/highlightjs/highlight.pack.js"></script>
   <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script>
-    hljs.initHighlightingOnLoad();
-
-    window.onload = function () {
-
-      var footerPath = window.location.pathname.split('/')[window.location.pathname.split('/').length - 1];
-      if (footerPath == 'archives.html') {
-        // alert('分类');
-        document.getElementById('main-menu').getElementsByTagName("li")[1].className = "is_active";
-
-      } else if (footerPath == 'about.html') {
-        document.getElementById('main-menu').getElementsByTagName("li")[2].className = "is_active";
-
-        // alert('关于我');
-  
-      } else {
-        // alert('首页');
-        document.getElementById('main-menu').getElementsByTagName("li")[0].className = "is_active";
-      }
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
 
 
-    }
-  </script>
-  <script type="text/javascript">
-    function before_search() {
-      var searchVal = 'site: ' + document.getElementById('search_input').value;
-      document.getElementById('search_q').value = searchVal;
-      return true;
-    }
-  </script>
-</head>
-
-<body class="antialiased hide-extras">
-
-  <div class="marketing off-canvas-wrap" data-offcanvas>
-    <div class="inner-wrap">
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
 
 
-      <nav class="top-bar docs-bar hide-for-small" data-topbar>
-
-
-        <section class="top-bar-section">
-          <div class="row">
-            <div style="position: relative;width:100%;">
-              <div style="position: absolute; width:100%;">
-                <ul id="main-menu" class="left">
-                  
-                  <li id=""><a id="" target="_self" href="index.html">Home</a></li>
-                  
-                  <li id=""><a id="" target="_self" href="archives.html">Archives</a></li>
-                  
-                  <li id=""><a id="" target="_self" href="about.html">About</a></li>
-                  
-                </ul>
-
-                <ul class="right" id="search-wrap">
-                  <li>
-                    <form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
-                      <input type="hidden" id="search_q" name="q" value="" />
-                      <input tabindex="1" type="search" id="search_input" placeholder="Search" />
-                    </form>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-      </nav>
-
-      <nav class="tab-bar show-for-small">
-        <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-          <span> &nbsp; Code Log 👨‍💻‍ </span>
-        </a>
-      </nav>
-
-      <aside class="left-off-canvas-menu">
-        <ul class="off-canvas-list">
-
-          <li><a href="index.html">Home</a></li>
-          <li><a href="archives.html">Archives</a></li>
-          
-          <li><label>Categories</label></li>
-
-          
-          <li id="iOS"><a href="iOS.html">iOS</a></li>
-          
-          <li id="Git"><a href="Git.html">Git</a></li>
-          
-          <li id="CocoaPods"><a href="CocoaPods.html">CocoaPods</a></li>
-          
-          <li id="Django"><a href="Django.html">Django</a></li>
-          
-          <li id="Spiders"><a href="Spiders.html">Spiders</a></li>
-          
-          <li id="about"><a href="about.html">about</a></li>
-          
-
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
         </ul>
-      </aside>
 
-      <a class="exit-off-canvas" href="#"></a>
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E7%94%B5%E5%BD%B1.html">电影</a></li>
+        
+            <li><a href="%E5%85%B6%E5%AE%83.html">其它</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
 
 
-      <section id="main-content" role="main" class="scroll-container"> <script type="text/javascript">
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
 	$(function(){
 		$('#menu_item_index').addClass('is_active');
 	});
@@ -132,111 +102,37 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15427834492083.html">
+                <a class="clearlink" href="16076509806399.html">
                 
-                  <h1>对比Texture中Node和UIKit中View</h1>
+                  <h1>Localization Issue Warning Storyboard</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h3 id="toc_0">node.view和view的差别</h3>
+                        	<p>当我使用 xib 设置自动布局的时候出现了下面的警告</p>
 
-<p>再一次深刻的体会到了node.view和view的差别。<br/><br/>
-最开始一直以为node.view就类似于ASTableNode对应的UITableview<br/><br/>
-其实远远没有那么简单，并不是那么的一个对应的关系.<br/>
-必须要把一些subnode都包到一个node里面最后这个node的view对应的是这些subnode的集合。<br/><br/>
-如果只是</p>
+<p><img src="media/15474609644602/15474616779035.png" alt=""/></p>
 
-<pre><code>ASDisplayNode * node = [[ASDisplayNode alloc]init];
-ASDisplayNode * subnode = [ASDisplayNode new];
-ASTextNode * textnode = [ASTextNode new];                    
-ASButtonNode * buttonnode = [ASButtonNode new];
-[node addSubnode:subnode];
-[node addSubnode:textnode];
-[node addSubnode:buttonnode];
+<blockquote>
+<p>Certain autolayout constraint combinations may result in an appropriate layout in the current development language but will pose issues in other languages and regions.</p>
+</blockquote>
 
-</code></pre>
+<p>然后看了苹果官方的文档，说是使用“自动布局”相对于彼此布置视图而没有固定的原点，宽度和高度，以便在语言或区域设置更改时视图重新定位和调整大小。自动布局使得可以为所有语言提供一组.storyboard和.xib文件，并且main.Storyboard默认进行本地化</p>
 
-<p>我是在给tableview添加node为tableHeaderView发现的这</p>...
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834492083.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<p>对国际化应用程序使用自动布局时，请遵循以下提示。</p>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834492143.html">
-                
-                  <h1>pod install速度过慢</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ul>
-<li>①代理VPN方式</li>
-</ul>
+<ol>
+<li><p>删除固定宽度约束。允许显示要调整大小的本地化文本的视图。如果使用固定宽度约束，则本地化文本可能会在某些语言中出现裁剪。</p></li>
+<li><p>使用内在内容大小。文本字段和标签的默认行为是自动调整大小。如果视图未调整为本地化文本的大小，请选择视图并选择“Editor”&gt;“size To Fit”。</p></li>
+<li><p>使用leading和trailing属性。添加约束时，请使用属性leading和trailing水平约束。对于从左到右的语言，例如英语，属性leading和trailing等同于left和right。对于从右到左的语言，如希伯来语或阿拉伯语，leading并trailing等同于right和left。的leading和trailing属性是用于水平约束的默认值。</p></li>
+<li><p>将视图固定到相邻视图。这个操作会导致多米诺骨牌效应。当一个视图调整大小以适合本地化文本时，其他视图也会这样做。否则，某些语言的视图可能会重叠。</p></li>
+<li><p>不断测试您的布局更改。使用不同的语言设置测试您的应用，如测试国际化应用中所述。</p></li>
+<li><p>不要设置window的最小大小或最大大小。让window及其内容视图调整为包含视图的大小，这可能会在语言更改时更改。</p></li>
+</ol>
 
-<p>相信大家已经感受到<code>pod install</code>速度越来越慢了，网上提供了几种解决方案，但是都没有完全解决速度慢的问题。</p>
+<h2 id="toc_0">解决问题</h2>
 
-<p>使用国内镜像的<code>Specs</code><br/>
-在<code>pod install</code>时使用命令<code>pod install --no-repo-update</code><br/>
-使用<code>proxychains</code>使终端命令走代理<br/>
-下面就来说明一下这几种方法为何没有完全解决问题</p>
-
-<p>使用国内镜像的<code>Specs</code> 极大地加快了<code>Specs</code>下载更新速度，而且如果使用国内</p>...
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834492143.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='CocoaPods.html'>CocoaPods</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834492260.html">
-                
-                  <h1>SDWebImageview 不能加载HTTPS图片</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>这个问题是因为图片地址所在的服务器没有有效的SSL证书文件<br/>
-只需要在Options参数中设置SDWebImaweefenggeAllowInvalidSSLCertificates枚举就可</p>
-
-<pre><code>[self.avatarImageView sd_setImageWithURL: [NSURL URLWithString: famousStarObject.avatar] placeholderImage: [UIImage imageNamed: @&quot;icon_default_avator&quot;] options: SDWebImageAllowInvalidSSLCertificates];
-</code></pre>
+<p>在这里不作过多国际化 xib 约束的讨论，针对我遇到的问题，我可以把宽度的约束删除，改成 leading 和 trailing 结合的方式。</p>
 
                         
                       </div>
@@ -245,10 +141,8 @@ ASButtonNode * buttonnode = [ASButtonNode new];
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+                    <span class="date">2020/12/11</span>
+                    
           				   
                   </div>
                   <div class="more-right right">
@@ -262,25 +156,27 @@ ASButtonNode * buttonnode = [ASButtonNode new];
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834492322.html">
+                <a class="clearlink" href="16076509806428.html">
                 
-                  <h1>UIImageView 动画的属性animationImages</h1>
+                  <h1>怎么选购二手房</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<pre><code class="language-beginImageArray.append(UIImage(named:">
-    let imageView = UIImageView(image: UIImage(named: &quot;switch 1.png&quot;))
-    imageView.center = view.center
-    imageView.animationImages = beginImageArray
-    // 动画持续时间 每一帧0.025秒，总共22帧
-    imageView.animationDuration = 0.025 * 22
-    imageView.animationRepeatCount = 1
-    // 动画结束后要把imageView的image属性设置成动画最后的一帧
-    imageView.image = UIImage(named: &quot;switch 22.png&quot;)
-    imageView.startAnimating()
-    view.addSubview(imageView)
-</code></pre>
+                        	<ol>
+<li>选择一个靠谱的中介 </li>
+<li>调查房源所属人</li>
+<li>周边的配套是否完善</li>
+<li>还有房源是不是有抵押 </li>
+<li>调查小区的基本情况</li>
+<li>物业管理 水电 煤气 卫生 车位 安保 </li>
+<li>调查房子之前有没有发生过什么忌讳的事情</li>
+<li>观察水压 观察电线走线是否合理 煤气线路 </li>
+<li>不同的时间看看社区的人的人来人往</li>
+<li>房屋的内部结构（有没有改动过房屋的内部结构）</li>
+<li>户型是否合理 暗厅 采光不好的问题</li>
+<li>是否有漏水的现象 </li>
+</ol>
 
                         
                       </div>
@@ -289,10 +185,10 @@ ASButtonNode * buttonnode = [ASButtonNode new];
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/11/21</span>
+                    <span class="date">2020/12/11</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          					    <span class="posted-in"><a href='%E5%85%B6%E5%AE%83.html'>其它</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -306,57 +202,56 @@ ASButtonNode * buttonnode = [ASButtonNode new];
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834492390.html">
+                <a class="clearlink" href="16076509806471.html">
                 
-                  <h1>Xcode打包遇到的坑</h1>
+                  <h1>swift 中的 selector</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>由于是接手别人做的项目，所以当把程序打包的时候出现了问题，证书和描述文件的问题 </p>
+                        	<p>首先，@selector方法选择器是OC中很常用的一个关键字，无论是计时器相应方法，通知效应方法，按钮相应方法，自省判断是否能相应某个方法，都会用到@selector，OC中常用生成@selector的格式如下：</p>
 
-<p>最开始尝试打开xcode的账户下载所有证书，结果发现并不能成功</p>
+<pre><code class="language-text">- (void)func1{
+}
+ 
+- (void)func1With:(id )obj{
+}
+ 
+//生成选择器方法如下
+SEL selector1 = @selector(func1);
+SEL selector2 = NSSelectorFromString(@&quot;func1&quot;);
+SEL selector3 = @selector(func1With:);
+SEL selector4 = NSSelectorFromString(@&quot;func1With:&quot;);
 
-<p>后来手动管理证书就可以看到之前在开发者中心创建的开发和发布证书，如下图所示<br/>
-<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fnczazu4irj30pd0iejte.jpg" alt=""/><br/>
-然后会到证书管理界面，会把你选中账号的所有相关证书列下来</p>
+</code></pre>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fnczelaqz6j30pd0iedi6.jpg" alt=""/></p>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834492390.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<p>在swift中没有@selector了，从swift2.2开始，我们开始用#selector来从暴露给OC的代码中，获取一个选择器。类似的，swift中类似于SEL的是一个叫做Selector的结构体，上述生成SEL的代码，在Swift中类似的实现方式如下：</p>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834492451.html">
-                
-                  <h1>Xcode编译找不到头文件</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>开发中遇到之前成功导入没有报错的头文件，后来打开工程之后报错说找不到头文件，这就很奇怪了。<br/>
-之前还是好好的，怎么睡了一觉代码还出现了问题呢。<br/><br/>
-然后就去搜索解决方法，发现是要到<code>buildsettings</code>下的<code>Search Paths</code>下面的<code>User Header Search Paths</code> 大概意思就是这个东西是头文件的搜索路径。<br/><br/>
-进去之后添加<code>${SRCROOT}</code>然后回车搞定就完成了。</p>
+<pre><code class="language-text">@objc func func1() {
+}
+
+@objc func func2(with obj:Any ) {
+}
+
+let selector1 = #selector(func1)
+let selector2 = #selector(func2(with:))
+</code></pre>
+
+<p>在swift4.0中，所有的swift方法都默认是OC不可见得。如果想让OC调用某些swift方法，需要在方法前面添加@objc关键字，以此暴露给OC。swift3.0及其之前，只要是NSObject的子类，编译器都会在非private得方法前默认加上@objc，此举会恶化编译器编译速度。如果此对象中有大量的OC调用，可以在类型前加@objcMembers关键字，所有非private方法都默认暴露给OC</p>
+
+<p>最后，如果swift中两个相同命名，参数不同方法，直接生成Selector会产生二义性报错。遇此情况，添加上参数和返回值类型，强转即可。</p>
+
+<pre><code class="language-text">@objc func func1() {
+}
+
+@objc func func1(with obj:Any ) {
+}
+
+//如此生成即可
+let selector1 = #selector(func1 as ()-&gt;Void)
+</code></pre>
+
+<hr/>
 
                         
                       </div>
@@ -365,10 +260,8 @@ ASButtonNode * buttonnode = [ASButtonNode new];
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+                    <span class="date">2020/12/11</span>
+                    
           				   
                   </div>
                   <div class="more-right right">
@@ -382,84 +275,274 @@ ASButtonNode * buttonnode = [ASButtonNode new];
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834492512.html">
+                <a class="clearlink" href="16076509806513.html">
                 
-                  <h1>Flutter && Python && OC</h1>
+                  <h1>狗十三</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h3 id="toc_0">dart的函数定义如下所示</h3>
+                        	<p>没有所谓的彻底反省，每次以为大家都能反省的时候，接下来就是给观众们当头一棒。</p>
 
-<pre><code>// Define a function.
-printInteger(int aNumber) {
-  print(&#39;The number is $aNumber.&#39;); // Print to console.
-}
+<p>最后李玩问起自己父母当时怎么认识的，然后李玩的爸爸立马声泪俱下，用手盖住女儿的脸，不让女儿看到自己流下的眼泪。</p>
 
-// This is where the app starts executing.
-main() {
-  var number = 42; // Declare and initialize a variable.
-  printInteger(number); // Call a function.
-}
+<p>说，自己不是个好爸，大概是年轻的时候犯下了错误，导致离婚，可能很后悔，但是再也回不去了。</p>
 
-isNoble(atomicNumber) {
-  return _nobleGases[atomicNumber] != null;
-}
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/12/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%94%B5%E5%BD%B1.html'>电影</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
-如果函数只有单个语句，可以采用简略的形式：
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509806552.html">
+                
+                  <h1>七号房的礼物</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>要怎么才能好好的挥手道别呢，最后的时候爸爸觉得自己再也见不到自己女儿那一刻，害怕了。但是没有人能再救他回来，影片最后真的让人声泪俱下。</p>
 
-bool isNoble(int atomicNumber) =&gt; _nobleGases[atomicNumber] != null;
+<p>父女之间的爱情，狱友之间的帮助，可能多少美化了一部分，但是人的内心深处总留有那么一块正义时刻吧，由于匆忙结案酿成了一场冤假错案，如何对抗一个体制，看得实在揪心，总希望这样的事情不会发生，最后的结局可能是一种对于现实的妥协，给影片画上了一个句号，还了龙九的清白，其实如果放到现实中，恐怕这样接近圆满的结局会很困难吧。</p>
 
+<p>到底真相是什么我们不得而知，但是我们知道龙九是被冤枉的没错。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/12/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%94%B5%E5%BD%B1.html'>电影</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509806591.html">
+                
+                  <h1>Swifter4</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ol>
+<li><p>Curring（柯里化）</p>
+<p>把接受多个参数的方法变换成接受第一个参数的方法，并且返回接受余下的参数并返回结果的新方法。</p>
+<p>在Swift2中可以将方法进行Curring 但是在Swift4不再支持方法的柯里化</p>
+<p><img src="media/15499574789691/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-02-12%20%E4%B8%8B%E5%8D%883.48.34.png" alt="屏幕快照 2019-02-12 下午3.48.34"/></p></li>
+<li><p>@autoclosure</p>
+<pre><code class="language-text">func logIfTrue(predicate: () -&gt; Bool) {
+        if predicate() {<br/>
+            print(&quot;true&quot;)<br/>
+        }<br/>
+    }<br/>
+调用方式1       <br/>
+logIfTrue(predicate: {2 &gt; 1})<br/>
+调用方式2      <br/>
+logIfTrue{2 &gt; 1}
+</code></pre>
+<p>原来的闭包的书写方式如上面所写，但是看起来不是很容易理解，这时就出现了自动闭包。</p>
+<p>swift4 中的自动闭包书写和 swift2中不同 区别点在@autoclosure的位置，swift2中是在参数之前，在 swift4中是在参数之后。</p>
+<pre><code class="language-text">func logIfTrue(predicate:@autoclosure () -&gt; Bool) {
+        if predicate() {<br/>
+            print(&quot;true&quot;)<br/>
+        }<br/>
+    }<br/>
+logIfTrue(predicate: 2 &gt; 1)
+</code></pre>
+<p>另外需要注意@autoclosure 并不支持带有输入参数的写法，只有形如（）-&gt; T 的参数才能使用这个特性进行简化。</p></li>
+<li><p>Designated、Convenience 和Required</p>
+<p>只有在子类重写了父类的 designated 方法的时候才可以直接调用父类的 convenience 方法</p>
+<p>如果添加 required 关键字修饰初始化方法，则在子类中必须对该 required 方法进行实现。这样做的好处就是可以保证依赖于某个 designated 方法的 convenience 一直可以被使用。</p></li>
+<li><p>Swift 中的Array,Dictionary和Set在集合中只能存储同一个类型的元素，但是NSArray可以存储多种不同类型的数据，如果想要Array 存储不同类型的数据，可以使用Any AnyObject</p>
+<p><code>let store:[Any] = [1,&quot;1&quot;]</code></p></li>
+</ol>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/12/11</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509806634.html">
+                
+                  <h1>OC以及Swift中的闭包</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>因为在实际开发中闭包会经常用到，几乎和代理实现同样的功能，所以我们来探究一下OC和 swift中的闭包。</p>
+
+<h3 id="toc_0">Objecticve-C</h3>
+
+<h4 id="toc_1">①声明Block</h4>
+
+<p>OC中有两种声明方式</p>
+
+<ol>
+<li><p>方式一 </p>
+<pre><code class="language-text">typedef void(^BlockName)(NSString * name);
+@property(nonatomic,copy)BlockName hello;
+</code></pre></li>
+<li><p>方式一 </p>
+<pre><code class="language-text">@property(nonatomic,copy)void(^Test)(NSString * name);
+</code></pre></li>
+</ol>
+
+<h4 id="toc_2">②实现Block</h4>
+
+<pre><code class="language-text">self.Test = ^(NSString *name) {
+        NSLog(@&quot;%@&quot;,name);
+    };
+
+self.hello = ^(NSString *name) {
+        NSLog(@&quot;%@&quot;,name);
+    };
+</code></pre>
+
+<h4 id="toc_3">③调用Block</h4>
+
+<pre><code class="language-text">self.Test(@&quot;hello&quot;);
+self.hello(@&quot;hello&quot;);
+</code></pre>
+
+<h3 id="toc_4">One more thing</h3>
+
+<p>另外类似于AFN的网络请求，我们也可以在方法当中把 block 当成参数传递。</p>
+
+<pre><code class="language-text">.h文件
+#import &lt;UIKit/UIKit.h&gt;
+@interface ViewController : UIViewController
+
+-(void)sayHello:(void(^)(NSString * name))hello;
+
+@end
 
 </code></pre>
 
-<h3 id="toc_1">$dart取地址</h3>
+<pre><code class="language-text">.m 文件
+#import &quot;ViewController.h&quot;
 
-<pre><code>String say(String from, String msg, [String device]) {
-  var result = &#39;$from says $msg&#39;;
-  if (device != null) {
-    result = &#39;$result with a $device&#39;;
-  }
-  return result;
-}
+@implementation ViewController
 
-</code></pre>
-
-<p>以分号结尾 参数类型要指定也可以不指定<br/><br/>
-=&gt; 是{ return expr;} 的缩写</p>
-
-<h3 id="toc_2">oc的函数定义</h3>
-
-<pre><code>-(void)hello{
-
-print(@&quot;hello world&quot;);
-
-}
--(void)hello(int a,int b){
-
-print(@&quot;hello world %d %d&quot;,a,b);
-
-}
-
-
-</code></pre>
-
-<p>无需注意缩进 但是返回值类型一定要明确</p>
-
-<h3 id="toc_3">python函数定义</h3>
-
-<pre><code>def xxxx:
-    print &#39;hello world&#39;
+-(void)sayHello:(void (^)(NSString *))hello{
     
-def xxx(a,b):
-   print(a,b)
-   
-def xxx(self,a,b)
-   print a,b
-   
+    hello(@&quot;name&quot;);   
+}
 </code></pre>
 
-<p>由于没有分号和大括号所以一定要注意缩进，</p>
+<h3 id="toc_5">Swift</h3>
+
+<h4 id="toc_6">①使用别名声明 block</h4>
+
+<p>typealias HelloBlock = (_ str:String) -&gt; ()</p>
+
+<p>然后使其成为属性<br/>
+var block:HelloBlock?</p>
+
+<h4 id="toc_7">②实现block</h4>
+
+<pre><code class="language-text">self.block = {
+    str in
+    print(str)        
+}
+</code></pre>
+
+<h4 id="toc_8">③调用Block</h4>
+
+<pre><code class="language-text">block!(&quot;hello&quot;)
+</code></pre>
+
+<h3 id="toc_9">One more thing</h3>
+
+<p>和OC类似，我们在 swift 当中也可以在方法中传递闭包，把闭包当成是参数。</p>
+
+<p>声明方法</p>
+
+<pre><code class="language-text">func loadRequest(callBack : (_ str:String)-&gt;()){
+        callBack(&quot;hello&quot;)
+}
+</code></pre>
+
+<p>调用方法</p>
+
+<pre><code class="language-text">self.loadRequest { (str) in
+    print(str)
+}
+</code></pre>
+
+<h2 id="toc_10">避免循环引用的问题</h2>
+
+<p>另外还需要注意循环引用，有三种方法</p>
+
+<p>一、在闭包外写 weak var weakSelf = self<br/>
+在内部需要调用 self 的地方使用 weakSelf代替。<br/>
+二、在闭包内部写[weak self]</p>
+
+<pre><code class="language-text">self.loadRequest {[weak self] (str) in
+    
+    self.view.backgroundColor = UIColor.redColor()
+
+    print(str)
+}
+</code></pre>
+
+<p>三、在闭包中写 [unowned self]</p>
+
+<pre><code class="language-text">self.loadRequest {[unowned self] (str) in
+    
+    self.view.backgroundColor = UIColor.redColor()
+
+    print(str)
+}     
+</code></pre>
 
                         
                       </div>
@@ -468,10 +551,8 @@ def xxx(self,a,b)
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+                    <span class="date">2020/12/11</span>
+                    
           				   
                   </div>
                   <div class="more-right right">
@@ -485,30 +566,66 @@ def xxx(self,a,b)
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834492767.html">
+                <a class="clearlink" href="16076509806674.html">
                 
-                  <h1>UISearchbar 自定义搜索图标失真</h1>
+                  <h1>设置完约束之后一定要激活约束才生效</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	关于Searchbar设置搜索图标的问题
-因为这个大小在iOS中是固定的14*14
-如果UI给的切图不是这个尺寸就会出现失真的情况（ps：因为视图的默认contentMode是UIViewContentModeScaleToFill）
-网上有的方法一般是设置一个继承自UITextfield的searchBar
-去修改SearchBar的leftView。
-...
+                        	<pre><code class="language-text">-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        
+        UILabel * messageLabel = [[UILabel alloc]init];
+        messageLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        [self addSubview:messageLabel];
+        NSArray * constrains = @[
+        [messageLabel.topAnchor constraintEqualToAnchor:self.topAnchor],
+        [messageLabel.leadingAnchor constraintEqualToAnchor:self.leadingAnchor],
+        [messageLabel.trailingAnchor constraintEqualToAnchor:self.trailingAnchor],
+        [messageLabel.bottomAnchor constraintEqualToAnchor:self.bottomAnchor]];
+        
+        [NSLayoutConstraint activateConstraints:constrains];
+        
+        
+    }
+    
+    return self;
+    
+}
+</code></pre>
+
+<p>translatesAutoresizingMaskIntoConstraints属性要注意。</p>
+
+<p>官方注释</p>
+
+<p>/* By default, the autoresizing mask on a view gives rise to constraints that fully determine <br/>
+ the view&#39;s position. This allows the auto layout system to track the frames of views whose <br/>
+ layout is controlled manually (through -setFrame:, for example).<br/>
+ When you elect to position the view using auto layout by adding your own constraints, <br/>
+ you must set this property to NO. IB will do this for you.<br/>
+ */</p>
+
+<p>默认情况下，视图上的自动调整蒙版会产生完全确定的约束<br/>
+视图的位置。这允许自动布局系统跟踪视图的框架<br/>
+布局是手动控制的(例如，通过-setFrame:)。<br/>
+当您选择通过添加自己的约束来使用自动布局来定位视图时，<br/>
+必须将此属性设置为NO。IB会为你做这件事的。</p>
+
+<p>另外还有一个比较注意的属性就是intrinsicContentSize</p>
+
+<p>intrinsicContentSize，也就是控件的内置大小。比如UILabel，UIButton等控件，他们都有自己的内置大小。控件的内置大小往往是由控件本身的内容所决定的，比如一个UILabel的文字很长，那么该UILabel的内置大小自然会很长。控件的内置大小可以通过UIView的intrinsicContentSize属性来获取内置大小，也可以通过invalidateIntrinsicContentSize方法来在下次UI规划事件中重新计算intrinsicContentSize。如果直接创建一个原始的UIView对象，显然它的内置大小为0。</p>
+
                         
                       </div>
                   </div>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15427834492767.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+                  
+                    <span class="date">2020/12/11</span>
+                    
           				   
                   </div>
                   <div class="more-right right">
@@ -544,9 +661,7 @@ def xxx(self,a,b)
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
             
-                <div class="site-a-logo"><img src="/asset/img/logo.png" /></div>
-            
-                <h1>Code Log 👨‍💻‍ </h1>
+                <h1></h1>
                 <div class="site-des"></div>
                 <div class="social">
 
@@ -558,9 +673,9 @@ def xxx(self,a,b)
 
 
 
-<a target="_blank" class="github" target="_blank" href="https://github.com/maweefeng" title="GitHub">GitHub</a>
-<a target="_blank" class="email" href="mailto:maweefeng@gmail.com" title="Email">Email</a>
-  <!-- <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a> -->
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
                 
               	 </div>
           	</div>
@@ -575,17 +690,9 @@ def xxx(self,a,b)
 
       	<p class="cat-list">
         
-            <a href="iOS.html"><strong>iOS</strong></a>
+            <a href="%E7%94%B5%E5%BD%B1.html"><strong>电影</strong></a>
         
-            <a href="Git.html"><strong>Git</strong></a>
-        
-            <a href="CocoaPods.html"><strong>CocoaPods</strong></a>
-        
-            <a href="Django.html"><strong>Django</strong></a>
-        
-            <a href="Spiders.html"><strong>Spiders</strong></a>
-        
-            <a href="about.html"><strong>about</strong></a>
+            <a href="%E5%85%B6%E5%AE%83.html"><strong>其它</strong></a>
          
         </p>
 
@@ -602,31 +709,31 @@ def xxx(self,a,b)
 	      
 		      
 			      <li class="post">
-			        <a href="15638450239357.html">判断bundle中存不存在某个文件</a>
+			        <a href="16076509803956.html">Xcode10报错libstdc</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15638515424059.html">去除tableview sectionheaderview的粘连效果</a>
+			        <a href="16076509804011.html">Masonry布局“Unable to simultaneously satisfy constraints”</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15641370883413.html">快速的扩展类的初始化方法</a>
+			        <a href="16076509804045.html">RACCommand</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15644628854335.html">切部分圆角</a>
+			        <a href="16076509804076.html">代理修饰符</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15646490459131.html">didSet 和 willSet</a>
+			        <a href="16076509804110.html">You don’t have write permissions</a>
 			      </li>
 		     
 		  
@@ -671,11 +778,10 @@ def xxx(self,a,b)
 
  <div class="page-bottom clearfix">
   <div class="row">
-   <!-- <p class="copyright">Copyright &copy; 2015
+   <p class="copyright">Copyright &copy; 2015
 Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
-Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p> -->
-<p class="copyright">日光之下 永无新事</p>
-</div>
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
 </div>
 
         </section>
@@ -702,7 +808,7 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p> -->
      
     </script>
 
-    <script src="asset/chart/all-min.js"></script><script type="text/javascript">$(function(){    var mwebii=0;    var mwebChartEleId = 'mweb-chart-ele-';    $('pre>code').each(function(){        mwebii++;        var eleiid = mwebChartEleId+mwebii;        if($(this).hasClass('language-sequence')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = Diagram.parse($(this).text());            diagram.drawSVG(eleiid,{theme: 'simple'});        }else if($(this).hasClass('language-flow')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = flowchart.parse($(this).text());            diagram.drawSVG(eleiid);        }    });});</script>
+    
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
 
 

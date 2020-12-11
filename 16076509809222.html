@@ -1,0 +1,834 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  记录swift 当中超出以前认知的知识点 - 
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E7%94%B5%E5%BD%B1.html">电影</a></li>
+        
+            <li><a href="%E5%85%B6%E5%AE%83.html">其它</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>记录swift 当中超出以前认知的知识点</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2020/12/11</span>
+
+          
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <h2 id="toc_0">支持unicode编码的变量值</h2>
+
+<pre><code class="language-text">let a = [Int]()
+let 🐶🐮 = &quot;dogcow&quot;
+let 你好 = &quot;你好世界&quot;
+</code></pre>
+
+<h2 id="toc_1">错误处理</h2>
+
+<p>您使用错误处理来响应程序在执行期间可能遇到的错误情况。</p>
+
+<p>与可以使用值的存在或不存在来传递函数成功或失败的选项相比，错误处理允许您确定失败的根本原因，并在必要时将错误传播到程序的另一部分。</p>
+
+<p>当函数遇到错误条件时，它会抛出错误。然后该函数的调用者可以捕获错误并做出适当的响应。</p>
+
+<pre><code class="language-text">func canThrowAnError() throws {
+    // this function may or may not throw an error
+}
+</code></pre>
+
+<p>函数表示它可以通过throws在其声明中包含关键字来引发错误。当您调用可以抛出错误的函数时，您可以将try关键字添加到表达式中。</p>
+
+<p>Swift会自动将错误传播出当前作用域，直到它们被catch子句处理。</p>
+
+<pre><code class="language-text">do {
+    try canThrowAnError()
+    // no error was thrown
+} catch {
+    // an error was thrown
+}
+</code></pre>
+
+<p>一个do语句创建一个新的包含范围，允许误差传播到一个或多个catch条款。</p>
+
+<p>以下是如何使用错误处理来响应不同错误条件的示例：</p>
+
+<pre><code class="language-text">func makeASandwich() throws {
+    // ...
+}
+
+do {
+    try makeASandwich()
+    eatASandwich()
+} catch SandwichError.outOfCleanDishes {
+    washDishes()
+} catch SandwichError.missingIngredients(let ingredients) {
+    buyGroceries(ingredients)
+}
+</code></pre>
+
+<p>在此示例中，makeASandwich()如果没有可用的干净菜肴或缺少任何成分，该函数将抛出错误。因为makeASandwich()可以抛出错误，函数调用包含在try表达式中。通过将函数调用包装在do语句中，抛出的任何错误都将传播到提供的catch子句。</p>
+
+<p>如果没有抛出错误，eatASandwich()则调用该函数。如果抛出错误并且它与SandwichError.outOfCleanDishes大小写匹配，则将washDishes()调用该函数。如果抛出错误并且它与SandwichError.missingIngredients大小写匹配，则buyGroceries(_:)调用该函数，并使用模式[String]捕获的关联值catch。</p>
+
+<p>错误处理中更详细地介绍了抛出，捕获和传播错误。</p>
+
+<h2 id="toc_2">一元减号算子</h2>
+
+<p>可以使用前缀-（称为一元减号运算符）来切换数值的符号：</p>
+
+<pre><code class="language-text">let three = 3
+let minusThree = -three       // minusThree equals -3
+let plusThree = -minusThree   // plusThree equals 3, or &quot;minus minus three&quot;
+</code></pre>
+
+<p>一元减号运算符（-）直接位于它运行的值之前，没有任何空格。</p>
+
+<h2 id="toc_3">一元加运算符</h2>
+
+<p>在一元加运算（+）只返回其所操作的价值，没有任何变化：</p>
+
+<pre><code class="language-text">let minusSix = -6
+let alsoMinusSix = +minusSix  // alsoMinusSix equals -6
+</code></pre>
+
+<p>虽然一元加运算符实际上没有做任何事情，但是当使用一元减运算符作为负数时，您可以使用它来为代码提供正数的对称性。</p>
+
+<h2 id="toc_4">闭区域操作员</h2>
+
+<p>的封闭范围操作符（a...b）限定了从运行范围a来b，并且包括这些值a和b。值a不得大于b。</p>
+
+<p>当在您希望使用所有值的范围内进行迭代时，闭环范围运算符非常有用，例如使用for- in循环：</p>
+
+<pre><code class="language-text">for index in 1...5 {
+    print(&quot;\(index) times 5 is \(index * 5)&quot;)
+}
+// 1 times 5 is 5
+// 2 times 5 is 10
+// 3 times 5 is 15
+// 4 times 5 is 20
+// 5 times 5 is 25
+</code></pre>
+
+<p>有关for- in循环的更多信息，请参阅控制流。</p>
+
+<h2 id="toc_5">半开放式操作员</h2>
+
+<p>所述半开区间运算符（a..&lt;b）限定了从运行范围a到b，但不包括b。它被认为是半开放的，因为它包含它的第一个值，但不是它的最终值。与闭区域运算符一样，值a不得大于b。如果值a等于b，则结果范围将为空。</p>
+
+<p>当您使用基于零的列表（如数组）时，半开范围特别有用，其中计算列表的长度（但不包括）非常有用：</p>
+
+<pre><code class="language-text">let names = [&quot;Anna&quot;, &quot;Alex&quot;, &quot;Brian&quot;, &quot;Jack&quot;]
+let count = names.count
+for i in 0..&lt;count {
+    print(&quot;Person \(i + 1) is called \(names[i])&quot;)
+}
+// Person 1 is called Anna
+// Person 2 is called Alex
+// Person 3 is called Brian
+// Person 4 is called Jack
+</code></pre>
+
+<p>请注意，该数组包含四个项目，但0..&lt;count只计算3（数组中最后一项的索引），因为它是半开放范围。有关数组的更多信息，请参阅数组。</p>
+
+<h2 id="toc_6">单面范围</h2>
+
+<p>闭区域运算符有一个替代形式，用于在一个方向上尽可能继续的范围 - 例如，包括从索引2到数组末尾的数组的所有元素的范围。在这些情况下，您可以省略范围运算符一侧的值。这种范围称为单侧范围，因为操作员仅在一侧具有值。例如：</p>
+
+<pre><code class="language-text">for name in names[2...] {
+    print(name)
+}
+// Brian
+// Jack
+
+for name in names[...2] {
+    print(name)
+}
+// Anna
+// Alex
+// Brian
+</code></pre>
+
+<p>半开放范围操作符也具有单侧形式，仅使用其最终值编写。就像在两侧都包含值一样，最终值不是范围的一部分。例如：</p>
+
+<pre><code class="language-text">for name in names[..&lt;2] {
+    print(name)
+}
+// Anna
+// Alex
+</code></pre>
+
+<p>单边范围可以在其他上下文中使用，而不仅仅在下标中使用。您不能迭代忽略第一个值的单侧范围，因为不清楚迭代应该从哪里开始。您可以迭代忽略其最终值的单侧范围; 但是，因为范围无限期地继续，请确保为循环添加显式结束条件。您还可以检查单侧范围是否包含特定值，如下面的代码所示。</p>
+
+<pre><code class="language-text">let range = ...5
+range.contains(7)   // false
+range.contains(4)   // true
+range.contains(-1)  // true
+</code></pre>
+
+<h3 id="toc_7">数组元素下标和值的对应关系</h3>
+
+<p>如果需要每个项的整数索引及其值，请使用该enumerated()方法迭代数组。对于数组中的每个项，该enumerated()方法返回由整数和项组成的<code>元组</code>。整数从零开始，每个项目加1; 如果枚举整个数组，则这些整数与项目的索引相匹配。您可以将元组分解为临时常量或变量，作为迭代的一部分：</p>
+
+<pre><code class="language-text">for (index, value) in shoppingList.enumerated() {
+    print(&quot;Item \(index + 1): \(value)&quot;)
+}
+</code></pre>
+
+<h2 id="toc_8">布尔值类型不能比较大小，元祖也是可以比较大小的。</h2>
+
+<h2 id="toc_9">创建和初始化空集</h2>
+
+<p>您可以使用初始化程序语法创建某个类型的空集：</p>
+
+<pre><code class="language-text">var letters = Set&lt;Character&gt;()
+</code></pre>
+
+<p>Swift集的类型写为Set<Element>，Element允许集存储的类型在哪里。与数组不同，集合没有等效的简写形式</p>
+
+<h2 id="toc_10">Set是一个无序的不重复元素的集合</h2>
+
+<p>Swift的Set类型没有定义的顺序。要以特定顺序迭代集合的值，请使用该sorted()方法，该方法将集合的元素作为使用&lt;运算符排序的数组返回。</p>
+
+<pre><code class="language-text">for genre in favoriteGenres.sorted() {
+    print(&quot;\(genre)&quot;)
+}
+// Classical
+// Hip hop
+// Jazz
+</code></pre>
+
+<h2 id="toc_11">使用Array Literal创建集合</h2>
+
+<p>您还可以使用数组文字初始化集合，作为将一个或多个值写为集合集合的简写方式。</p>
+
+<p>下面的示例创建一个名为favoriteGenres存储String值的集合：</p>
+
+<pre><code class="language-text">var favoriteGenres: Set&lt;String&gt; = [&quot;Rock&quot;, &quot;Classical&quot;, &quot;Hip hop&quot;]
+// favoriteGenres has been initialized with three initial items
+</code></pre>
+
+<h2 id="toc_12">Set基本集合运算</h2>
+
+<p><img src="https://docs.swift.org/swift-book/_images/setVennDiagram_2x.png" alt=""/></p>
+
+<ul>
+<li>使用该intersection(_:)方法创建一个仅包含两个集合共有值的新集合。</li>
+<li>使用该symmetricDifference(_:)方法创建一个新集合，其中包含任一集合中的值，但不能同时创建两者。</li>
+<li>使用该union(_:)方法创建包含两个集中所有值的新集。</li>
+<li>使用此subtracting(_:)方法创建一个值不在指定集中的新集。</li>
+</ul>
+
+<pre><code class="language-text">let oddDigits: Set = [1, 3, 5, 7, 9]
+let evenDigits: Set = [0, 2, 4, 6, 8]
+let singleDigitPrimeNumbers: Set = [2, 3, 5, 7]
+
+oddDigits.union(evenDigits).sorted()
+// [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+oddDigits.intersection(evenDigits).sorted()
+// []
+oddDigits.subtracting(singleDigitPrimeNumbers).sorted()
+// [1, 9]
+oddDigits.symmetricDifference(singleDigitPrimeNumbers).sorted()
+// [1, 2, 9]
+</code></pre>
+
+<ul>
+<li>使用“is equal”运算符（==）来确定两个集合是否包含所有相同的值。</li>
+<li>使用此isSubset(of:)方法确定集合的所有值是否都包含在指定的集合中。</li>
+<li>使用此isSuperset(of:)方法确定集合是否包含指定集合中的所有值。</li>
+<li>使用isStrictSubset(of:)或isStrictSuperset(of:)方法确定集合是否是指定集合的​​子集或超集，但不等于。</li>
+<li>使用该isDisjoint(with:)方法确定两个集合是否没有共同的值。</li>
+</ul>
+
+<pre><code class="language-text">let houseAnimals: Set = [&quot;🐶&quot;, &quot;🐱&quot;]
+let farmAnimals: Set = [&quot;🐮&quot;, &quot;🐔&quot;, &quot;🐑&quot;, &quot;🐶&quot;, &quot;🐱&quot;]
+let cityAnimals: Set = [&quot;🐦&quot;, &quot;🐭&quot;]
+
+houseAnimals.isSubset(of: farmAnimals)
+// true
+farmAnimals.isSuperset(of: houseAnimals)
+// true
+farmAnimals.isDisjoint(with: cityAnimals)
+// true
+</code></pre>
+
+<h2 id="toc_13">创建一个空字典</h2>
+
+<p>与数组一样，您可以Dictionary使用初始化程序语法创建某个类型的空：</p>
+
+<pre><code class="language-text">var namesOfIntegers = [Int: String]()
+// namesOfIntegers is an empty [Int: String] dictionary
+</code></pre>
+
+<h2 id="toc_14">使用Dictionary Literal创建字典</h2>
+
+<pre><code class="language-text">var airports: [String: String] = [&quot;YYZ&quot;: &quot;Toronto Pearson&quot;, &quot;DUB&quot;: &quot;Dublin&quot;]
+</code></pre>
+
+<h2 id="toc_15">迭代字典</h2>
+
+<p>您可以用字典遍历键值对for- in环。字典中的每个项都作为元组返回，您可以将元组的成员分解为临时常量或变量，作为迭代的一部分：(key, value)</p>
+
+<pre><code class="language-text">for (airportCode, airportName) in airports {
+    print(&quot;\(airportCode): \(airportName)&quot;)
+}
+// LHR: London Heathrow
+// YYZ: Toronto Pearson
+</code></pre>
+
+<h2 id="toc_16">Switch区间匹配</h2>
+
+<p>switch可以检查案例中的值是否包含在间隔中。此示例使用数字间隔为任何大小的数字提供自然语言计数：</p>
+
+<pre><code class="language-text">let approximateCount = 62
+let countedThings = &quot;moons orbiting Saturn&quot;
+let naturalCount: String
+switch approximateCount {
+case 0:
+    naturalCount = &quot;no&quot;
+case 1..&lt;5:
+    naturalCount = &quot;a few&quot;
+case 5..&lt;12:
+    naturalCount = &quot;several&quot;
+case 12..&lt;100:
+    naturalCount = &quot;dozens of&quot;
+case 100..&lt;1000:
+    naturalCount = &quot;hundreds of&quot;
+default:
+    naturalCount = &quot;many&quot;
+}
+print(&quot;There are \(naturalCount) \(countedThings).&quot;)
+// Prints &quot;There are doze
+</code></pre>
+
+<h2 id="toc_17">元组</h2>
+
+<p>您可以使用元组在同一switch语句中测试多个值。可以针对不同的值或值的间隔来测试元组的每个元素。或者，使用下划线字符（_）（也称为通配符模式）来匹配任何可能的值。</p>
+
+<p>下面的示例采用（x，y）点，表示为类型的简单元组，并将其分类在示例后面的图表上。(Int, Int)</p>
+
+<pre><code class="language-text">let somePoint = (1, 1)
+switch somePoint {
+case (0, 0):
+    print(&quot;\(somePoint) is at the origin&quot;)
+case (_, 0):
+    print(&quot;\(somePoint) is on the x-axis&quot;)
+case (0, _):
+    print(&quot;\(somePoint) is on the y-axis&quot;)
+case (-2...2, -2...2):
+    print(&quot;\(somePoint) is inside the box&quot;)
+default:
+    print(&quot;\(somePoint) is outside of the box&quot;)
+}
+// Prints &quot;(1, 1) is inside the box&quot;
+
+</code></pre>
+
+<h2 id="toc_18">Switch价值绑定</h2>
+
+<p>一个switch情况下，可以将其命名为临时常量或变量，在案件的身体使用相匹配的一个或多个值。此行为称为值绑定，因为值绑定到案例正文中的临时常量或变量。</p>
+
+<p>下面的示例采用（x，y）点，表示为类型的元组，并将其分类在下面的图表上：(Int, Int)</p>
+
+<pre><code class="language-text">let anotherPoint = (2, 0)
+switch anotherPoint {
+case (let x, 0):
+    print(&quot;on the x-axis with an x value of \(x)&quot;)
+case (0, let y):
+    print(&quot;on the y-axis with a y value of \(y)&quot;)
+case let (x, y):
+    print(&quot;somewhere else at (\(x), \(y))&quot;)
+}
+// Prints &quot;on the x-axis with an x value of 2&quot;
+
+
+</code></pre>
+
+<h2 id="toc_19">Switch-where</h2>
+
+<p>一个switch情况下可以使用where子句来检查附加条件。</p>
+
+<p>以下示例对下图中的（x，y）点进行了分类：</p>
+
+<pre><code class="language-text">let yetAnotherPoint = (1, -1)
+switch yetAnotherPoint {
+case let (x, y) where x == y:
+    print(&quot;(\(x), \(y)) is on the line x == y&quot;)
+case let (x, y) where x == -y:
+    print(&quot;(\(x), \(y)) is on the line x == -y&quot;)
+case let (x, y):
+    print(&quot;(\(x), \(y)) is just some arbitrary point&quot;)
+}
+// Prints &quot;(1, -1) is on the line x == -y&quot;
+</code></pre>
+
+<h2 id="toc_20">Switch复合案例</h2>
+
+<p>共享相同主体的多个开关盒可以通过case在每个模式之间用逗号后写几个模式来组合。如果任何模式匹配，则认为该情况匹配。如果列表很长，则可以在多行上写入模式。例如：</p>
+
+<pre><code class="language-text">let someCharacter: Character = &quot;e&quot;
+switch someCharacter {
+case &quot;a&quot;, &quot;e&quot;, &quot;i&quot;, &quot;o&quot;, &quot;u&quot;:
+    print(&quot;\(someCharacter) is a vowel&quot;)
+case &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;f&quot;, &quot;g&quot;, &quot;h&quot;, &quot;j&quot;, &quot;k&quot;, &quot;l&quot;, &quot;m&quot;,
+     &quot;n&quot;, &quot;p&quot;, &quot;q&quot;, &quot;r&quot;, &quot;s&quot;, &quot;t&quot;, &quot;v&quot;, &quot;w&quot;, &quot;x&quot;, &quot;y&quot;, &quot;z&quot;:
+    print(&quot;\(someCharacter) is a consonant&quot;)
+default:
+    print(&quot;\(someCharacter) is not a vowel or a consonant&quot;)
+}
+// Prints &quot;e is a vowel&quot;
+
+</code></pre>
+
+<h2 id="toc_21">Switch复合案例包括值绑定</h2>
+
+<p>复合案例的所有模式都必须包含同一组值绑定，并且每个绑定必须从复合案例中的所有模式中获取相同类型的值。这确保了，无论复合案例的哪个部分匹配，案例正文中的代码总是可以访问绑定的值，并且值始终具有相同的类型。</p>
+
+<pre><code class="language-text">let stillAnotherPoint = (9, 0)
+switch stillAnotherPoint {
+case (let distance, 0), (0, let distance):
+    print(&quot;On an axis, \(distance) from the origin&quot;)
+default:
+    print(&quot;Not on an axis&quot;)
+}
+// Prints &quot;On an axis, 9 from the origin&quot;
+</code></pre>
+
+<h2 id="toc_22">Swift-fallthrough</h2>
+
+<p>在Swift中，switch语句不会落入每个案例的底部并进入下一个案例。也就是说，switch一旦第一个匹配的案例完成，整个语句就完成了它的执行。相反，C要求您break在每个switch案例的末尾插入一个明确的语句，以防止通过。避免默认的下降意味着Swift switch语句比C中的对应语句更简洁和可预测，因此它们避免switch错误地执行多个案例。</p>
+
+<p>如果您需要C样式的直通行为，则可以使用fallthrough关键字逐个选择加入此行为。以下示例fallthrough用于创建数字的文本描述。</p>
+
+<pre><code class="language-text">let integerToDescribe = 5
+var description = &quot;The number \(integerToDescribe) is&quot;
+switch integerToDescribe {
+case 2, 3, 5, 7, 11, 13, 17, 19:
+    description += &quot; a prime number, and also&quot;
+    fallthrough
+default:
+    description += &quot; an integer.&quot;
+}
+print(description)
+// Prints &quot;The number 5 is a prime number, and also an integer.&quot;
+
+</code></pre>
+
+<h2 id="toc_23">检查API可用性</h2>
+
+<p>Swift内置支持检查API可用性，这可确保您不会意外使用在给定部署目标上不可用的API。</p>
+
+<p>编译器使用SDK中的可用性信息来验证代码中使用的所有API是否在项目指定的部署目标上可用。如果您尝试使用不可用的API，Swift会在编译时报告错误。</p>
+
+<p>您可以在or 语句中使用可用性条件来有条件地执行代码块，具体取决于您要使用的API是否在运行时可用。当编译器验证该代码块中的API可用时，编译器将使用可用性条件中的信息。ifguard</p>
+
+<pre><code class="language-text">if #available(iOS 10, macOS 10.12, *) {
+    // Use iOS 10 APIs on iOS, and use macOS 10.12 APIs on macOS
+} else {
+    // Fall back to earlier iOS and macOS APIs
+}
+
+</code></pre>
+
+<h2 id="toc_24">具有隐含回报的函数</h2>
+
+<p>如果函数的整个主体是单个表达式，则该函数隐式返回该表达式。例如，下面的两个函数都具有相同的行为：</p>
+
+<pre><code class="language-text">func greeting(for person: String) -&gt; String {
+    &quot;Hello, &quot; + person + &quot;!&quot;
+}
+print(greeting(for: &quot;Dave&quot;))
+// Prints &quot;Hello, Dave!&quot;
+
+func anotherGreeting(for person: String) -&gt; String {
+    return &quot;Hello, &quot; + person + &quot;!&quot;
+}
+print(anotherGreeting(for: &quot;Dave&quot;))
+// Prints &quot;Hello, Dave!&quot;
+
+</code></pre>
+
+<h2 id="toc_25">可变参数</h2>
+
+<p>函数可以具有至多一个可变参数。</p>
+
+<p>可变参数参数接受具有指定类型的零倍或更多的值。您可以使用variadic参数指定在调用函数时可以向参数传递不同数量的输入值。通过...在参数的类型名称后面插入三个句点字符（）来编写可变参数。</p>
+
+<p>传递给可变参数的值在函数体内可用作适当类型的数组。例如，在函数体内可以使用名称numbers和类型的可变参数Double...作为名为numberstype 的常量数组[Double]。</p>
+
+<p>下面的示例计算任意长度的数字列表的算术平均值（也称为平均值）：</p>
+
+<pre><code class="language-text">func arithmeticMean(_ numbers: Double...) -&gt; Double {
+    var total: Double = 0
+    for number in numbers {
+        total += number
+    }
+    return total / Double(numbers.count)
+}
+arithmeticMean(1, 2, 3, 4, 5)
+// returns 3.0, which is the arithmetic mean of these five numbers
+arithmeticMean(3, 8.25, 18.75)
+// returns 10.0, which is the arithmetic mean of these three numbers
+</code></pre>
+
+<h2 id="toc_26">进出参数</h2>
+
+<p>默认情况下，函数参数是常量。尝试从该函数体内更改函数参数的值会导致编译时错误。这意味着您无法错误地更改参数的值。如果希望函数修改参数的值，并且希望在函数调用结束后这些更改仍然存在，请将该参数定义为输入输出参数。</p>
+
+<p>您只能将变量作为输入输出参数的参数传递。您不能传递常量或文字值作为参数，因为不能修改常量和文字。&amp;当您将变量名称作为参数传递给输入输出参数时，可以将变量名称直接放在变量名称之前，以指示它可以被函数修改。</p>
+
+<p>输入输出参数不能具有默认值，并且不可变参数不能标记为inout。</p>
+
+<p>这是一个名为的函数示例swapTwoInts(_:_:)，它有两个输入输出的整数参数，a并且b：</p>
+
+<pre><code class="language-text">func swapTwoInts(_ a: inout Int, _ b: inout Int) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+</code></pre>
+
+<p>该swapTwoInts(_:_:)函数简单地交换binto a的值和ainto 的值b。该函数通过将值存储a在一个被调用的临时常量temporaryA，指定bto 的值a，然后分配给它temporaryA来执行此交换b。</p>
+
+<p>您可以swapTwoInts(_:_:)使用两个类型的变量调用该函数Int来交换它们的值。请注意，传递给函数时，someInt和的名称anotherInt前缀为＆符号swapTwoInts(_:_:)：</p>
+
+<pre><code class="language-text">var someInt = 3
+var anotherInt = 107
+swapTwoInts(&amp;someInt, &amp;anotherInt)
+print(&quot;someInt is now \(someInt), and anotherInt is now \(anotherInt)&quot;)
+// Prints &quot;someInt is now 107, and anotherInt is now 3&quot;
+</code></pre>
+
+<p>上面的示例显示函数的原始值someInt和anotherInt由swapTwoInts(_:_:)函数修改，即使它们最初是在函数外部定义的。</p>
+
+<p>输入输出参数与从函数返回值不同。swapTwoInts上面的示例没有定义返回类型或返回值，但它仍然修改了someInt和的值anotherInt。输入输出参数是函数在其函数体范围之外产生效果的另一种方法。</p>
+
+<h2 id="toc_27">嵌套函数</h2>
+
+<p>到目前为止，您在本章中遇到的所有函数都是全局函数的示例，这些函数在全局范围内定义。您还可以在其他函数体内定义函数，称为嵌套函数。</p>
+
+<p>默认情况下，嵌套函数对外界是隐藏的，但它们的封闭函数仍然可以调用它们。封闭函数也可以返回其嵌套函数之一，以允许嵌套函数在另一个范围内使用。</p>
+
+<p>您可以重写chooseStepFunction(backward:)上面的示例以使用和返回嵌套函数：</p>
+
+<pre><code class="language-text">func chooseStepFunction(backward: Bool) -&gt; (Int) -&gt; Int {
+    func stepForward(input: Int) -&gt; Int { return input + 1 }
+    func stepBackward(input: Int) -&gt; Int { return input - 1 }
+    return backward ? stepBackward : stepForward
+}
+var currentValue = -4
+let moveNearerToZero = chooseStepFunction(backward: currentValue &gt; 0)
+// moveNearerToZero now refers to the nested stepForward() function
+while currentValue != 0 {
+    print(&quot;\(currentValue)... &quot;)
+    currentValue = moveNearerToZero(currentValue)
+}
+print(&quot;zero!&quot;)
+// -4...
+// -3...
+// -2...
+// -1...
+// zero!
+
+</code></pre>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="16076509808987.html" 
+          title="Previous Post: guard let">&laquo; guard let</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="16076509809415.html" 
+          title="Next Post: 一个实例对象可以通过4种方式调用其方法。">一个实例对象可以通过4种方式调用其方法。 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1></h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E7%94%B5%E5%BD%B1.html"><strong>电影</strong></a>
+        
+            <a href="%E5%85%B6%E5%AE%83.html"><strong>其它</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="16076509803956.html">Xcode10报错libstdc</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804011.html">Masonry布局“Unable to simultaneously satisfy constraints”</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804045.html">RACCommand</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804076.html">代理修饰符</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804110.html">You don’t have write permissions</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+
+  </body>
+</html>

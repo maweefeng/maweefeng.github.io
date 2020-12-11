@@ -1,0 +1,597 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  Scrapy 抓取网页数据 - 
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E7%94%B5%E5%BD%B1.html">电影</a></li>
+        
+            <li><a href="%E5%85%B6%E5%AE%83.html">其它</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>Scrapy 抓取网页数据</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2020/12/11</span>
+
+          
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <h2 id="toc_0">Scrapy 介绍</h2>
+
+<p>Scrapy，Python开发的一个快速、高层次的屏幕抓取和web抓取框架，用于抓取web站点并从页面中提取结构化的数据。Scrapy用途广泛，可以用于数据挖掘、监测和自动化测试。<br/>
+Scrapy吸引人的地方在于它是一个框架，任何人都可以根据需求方便的修改。它也提供了多种类型爬虫的基类，如BaseSpider、sitemap爬虫等，最新版本又提供了web2.0爬虫的支持。<br/>
+Scrap，是碎片的意思，这个Python的爬虫框架叫Scrapy。</p>
+
+<p>首先必须有python的环境，如果没有的话需要安装，目前python2.x已经不再更新，我使用的是python3的环境。</p>
+
+<p>如果你已经有了python3的环境并且已经安装了pip3，那么安装scrapy只需要一行命令即可。</p>
+
+<pre><code class="language-text">pip3 install scrapy
+</code></pre>
+
+<p>如果你还没有安装pip3的话，建议先安装pip3进行包管理。</p>
+
+<h2 id="toc_1">pip3</h2>
+
+<p>pip 是 Python 包管理工具，该工具提供了对Python 包的查找、下载、安装、卸载的功能。<br/>
+Python 2.7.9 + 或 Python 3.4+ 以上版本都自带 pip 工具。<br/>
+你可以通过以下命令来判断是否已安装：</p>
+
+<pre><code class="language-text">pip --version
+</code></pre>
+
+<p>如果你还未安装，则可以使用以下方法来安装：</p>
+
+<pre><code class="language-text">$ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py   # 下载安装脚本
+$ sudo python get-pip.py    # 运行安装脚本
+</code></pre>
+
+<p>注意：用哪个版本的 Python 运行安装脚本，pip 就被关联到哪个版本，如果是 Python3 则执行以下命令：</p>
+
+<pre><code class="language-text">$ sudo python3 get-pip.py    # 运行安装脚本。
+</code></pre>
+
+<p>一般情况 pip 对应的是 Python 2.7，pip3 对应的是 Python 3.x。</p>
+
+<pre><code class="language-text">&gt;&gt;&gt;pip3  -h#查看pip3的命令
+Commands:
+  install                     Install packages.
+  download                    Download packages.
+  uninstall                   Uninstall packages.
+  freeze                      Output installed packages in requirements format.
+  list                        List installed packages.
+  show                        Show information about installed packages.
+  check                       Verify installed packages have compatible dependencies.
+  config                      Manage local and global configuration.
+  search                      Search PyPI for packages.
+  wheel                       Build wheels from your requirements.
+  hash                        Compute hashes of package archives.
+  completion                  A helper command used for command completion.
+  help                        Show help for commands.
+</code></pre>
+
+<p>比较常用的就是install，list，一个是安装某个框架，另一个是列出所有安装的python框架。</p>
+
+<h2 id="toc_2">demo 抓取豆瓣前250名的电影</h2>
+
+<h3 id="toc_3">新建scrapy项目</h3>
+
+<ol>
+<li>scrapy startproject 项目名称</li>
+<li>cd 进入到项目名称 </li>
+<li>cd 进入到 spiders</li>
+<li>scrapy genspider xxx_spider 域名 #生成爬虫类
+<ul>
+<li>比如scrapy genspider douban_spider movie.douban.com</li>
+</ul></li>
+</ol>
+
+<p>项目目录如下</p>
+
+<ul>
+<li>douban
+<ul>
+<li>spiders
+<ul>
+<li>douban_spider.py #最重要的爬虫类</li>
+</ul></li>
+<li>items.py #爬取的model类</li>
+<li>middlewares.py #中间件 伪装useragent或者设置代理</li>
+<li>pipelines.py #管道类 数据同步 </li>
+<li>settings.py #设置类 里面有一些项目的配置</li>
+</ul></li>
+</ul>
+
+<h3 id="toc_4">运行项目</h3>
+
+<p>有两种方法</p>
+
+<ol>
+<li>打开命令行工具 <code>scrapy crawl xxx_spider</code></li>
+<li><p>建议使用scrapy的cmdline工具</p>
+<ul>
+<li><p>在spiders文件夹下新建入口main.py </p>
+<pre><code class="language-text">from scrapy import cmdline
+cmdline.execute(&#39;scrapy crawl baidubaike_spider&#39;.split())
+</code></pre>
+<p>每次从这里面运行.py就行了,不需要每次都进到特定目录运行termianl终端程序。</p></li>
+</ul></li>
+</ol>
+
+<h3 id="toc_5">主要爬虫类</h3>
+
+<p>douban_spider.py </p>
+
+<pre><code class="language-text"># -*- coding: utf-8 -*-
+import scrapy
+
+class DoubanSpiderSpider(scrapy.Spider):
+    name = &#39;douban_spider&#39;#爬虫名
+    allowed_domains = [&#39;movie.douban.com&#39;]
+    start_urls = [&#39;https://movie.douban.com/top250&#39;]#入口url 扔到调度器里面
+    #默认的解析方法
+    def parse(self, response):
+    #response就是网络请求之后的响应数据
+    #主要的代码解析都在这个类中进行
+       pass
+
+</code></pre>
+
+<h3 id="toc_6">HTML解析器</h3>
+
+<p>爬取之后的数据如果为html就需要用到html解析器，业界一般有三种方式进行解析</p>
+
+<ul>
+<li>Beautiifulsoup</li>
+<li>正则匹配式</li>
+<li>lxml中的xpath </li>
+</ul>
+
+<p>有人做过三个方法的比较，大致结果如下</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>lxml</th>
+<th>beautifulsoup</th>
+<th>re</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>语法难易度</td>
+<td>简单</td>
+<td>简单</td>
+<td>复杂</td>
+</tr>
+<tr>
+<td>查找速度</td>
+<td>较快</td>
+<td>慢</td>
+<td>最快</td>
+</tr>
+</tbody>
+</table>
+
+<p>所以这里我使用的是lxml的方式进行html解析，也推荐新手从这个方式开始入门。</p>
+
+<h4 id="toc_7">lxml</h4>
+
+<p>lxml是通过xpath来查找，使用前需使用调用ertee.HTML()方法(&#39;()&#39;内填HTML代码)生成一个可查找的对象。</p>
+
+<h5 id="toc_8">常用xpath语法如下</h5>
+
+<pre><code class="language-text">// 两个斜杠为向下查找孙子标签
+    
+/ 一个斜杠为查找直接儿子标签
+    
+[] 方括号内填标签属性,如查找class属性为name的a标签,格式为a[@class=&quot;name&quot;]
+    
+/text() 取出标签的内容,如查找网页中的 &lt;a class=&quot;name&quot;&gt;KAINHUCK&lt;/a&gt; 中的KAINHUCK,格式为//a[@class=&quot;name&quot;]/text()
+    
+/@attr 取出标签的属性,如查找网页中的 &lt;a class=&quot;name&quot;&gt;KAINHUCK&lt;/a&gt; 中的class属性值name,格式为//a[@class=&quot;name&quot;]/@class 
+
+</code></pre>
+
+<h5 id="toc_9">xpath 如何提取出div下面所有标签的文本内容</h5>
+
+<p>有时候一个div标签下会有不同的标签，如果只是单纯的使用上面的方法，并不能提取到div下面的所有文本内容，所以xpath提供了string(.)方法。</p>
+
+<pre><code class="language-text">title = html.xpath(&#39;//dd[@class=&quot;lemmaWgt-lemmaTitle-title&quot;]/h1/text()&#39;)[0]
+
+summary = html.xpath(&#39;//div[@class=&quot;lemma-summary&quot;]&#39;)[0].xpath(&#39;string(.)&#39;).strip()
+
+#strip方法返回移除字符串头尾指定的字符生成的新字符串。    
+</code></pre>
+
+<h4 id="toc_10">分析抓取网站的html标签</h4>
+
+<p>进入chrome打开开发者调试工具</p>
+
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1g3kate3mbuj30w00h3n21.jpg" alt=""/></p>
+
+<p>另外要使用lxml的方式进行解析，可以安装插件进行查找，到chrome的商城下载xpath，这样就可以直接看到结果了，以防抓取到的标签出错。</p>
+
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1g3kavur7ggj30vt0h0q8t.jpg" alt=""/></p>
+
+<pre><code class="language-text">//div[@class=&quot;article&quot;]//ol[@class=&quot;grid_view&quot;]/li
+</code></pre>
+
+<p>这段语法用于找到class为article的div标签下的class为grid_view的ol的子孙标签下的li标签。</p>
+
+<p>查找出来的结果是个包含25个元素的list</p>
+
+<h3 id="toc_11">代码编写</h3>
+
+<p>然后进入到我们的代码中，导入lxml工具，以及DoubanItem</p>
+
+<pre><code class="language-text"># -*- coding: utf-8 -*-
+import scrapy
+from lxml import etree
+from douban.items import DoubanItem
+
+
+class DoubanSpiderSpider(scrapy.Spider):
+    name = &#39;douban_spider&#39;#爬虫名
+    allowed_domains = [&#39;movie.douban.com&#39;]
+    start_urls = [&#39;https://movie.douban.com/top250&#39;]#入口url 扔到调度器里面
+    #默认的解析方法
+    def parse(self, response):
+        #循环电影的条目
+        html = etree.HTML(response.text)
+        movie_list = html.xpath(&#39;//div[@class=&quot;article&quot;]//ol[@class=&quot;grid_view&quot;]/li&#39;)
+        for item in movie_list:
+            #item文件导入
+            douban_item = DoubanItem()
+            #写详细的xpath 进行数据的解析
+            douban_item[&#39;serial_number&#39;] = item.xpath(&#39;.//div[@class=&quot;item&quot;]//em/text()&#39;)[0]
+            douban_item[&#39;movie_name&#39;] = item.xpath(&#39;.//div[@class=&quot;info&quot;]//a/span[1]/text()&#39;)[0]
+            content_list = item.xpath(&#39;.//div[@class=&quot;info&quot;]//div[@class=&quot;bd&quot;]/p[1]/text()&#39;)
+            for content in content_list:
+                content_s = &quot;&quot;.join(content.split())
+                douban_item[&#39;introduce&#39;] = content_s
+
+            douban_item[&#39;star&#39;]= item.xpath(&#39;.//div[@class=&quot;star&quot;]/span[@class=&quot;rating_num&quot;]/text()&#39;)[0]
+            douban_item[&#39;comment&#39;] = item.xpath(&#39;.//div[@class=&quot;star&quot;]/span[4]/text()&#39;)[0]
+            douban_item[&#39;description&#39;] = item.xpath(&#39;.//p[@class=&quot;quote&quot;]/span[1]/text()&#39;)[0]
+            print(douban_item)
+            yield douban_item #yeild到piplines里面 进行数据清洗 数据存储
+        
+        #解析下一页规则 获取后一页的xpath
+        next_link = html.xpath(&#39;//span[@class=&quot;next&quot;]/link/@href&#39;)
+
+        if next_link:
+            next_link = next_link[0]
+            #yeild到调度器当中 后面给了回调函数
+            yield scrapy.Request(&#39;https://movie.douban.com/top250&#39;+next_link,callback=self.parse)
+
+</code></pre>
+
+<p>其中重要的有yield方法，把我们生成的model类传输到piplines里面进行数据的存储。</p>
+
+<p>还有就是因为这只是一页的数据，想要抓取的250条数据，那就要进行多次抓取，进过分析发现只需要每次把后页的a标签的href拿到就可以了，通过xpath进行解析就是 </p>
+
+<pre><code class="language-text">#解析下一页规则 获取后一页的xpath
+        next_link = html.xpath(&#39;//span[@class=&quot;next&quot;]/link/@href&#39;)
+
+</code></pre>
+
+<p>最好需要yeild到调度器当中，因为是部分路径，所以要先进行路径的拼接，还要指定回调函数，就是请求之后进入的回调方法。</p>
+
+<h3 id="toc_12">数据导出</h3>
+
+<p>在spiders文件夹下新建outputdata.py </p>
+
+<pre><code class="language-text">#数据导出 也可以使用terminal 直接运行
+from scrapy import cmdline
+#数据导出到json
+# cmdline.execute(&#39;scrapy crawl douban_spider -o output.json&#39;.split())
+
+#数据导出到csv格式
+cmdline.execute(&#39;scrapy crawl douban_spider -o output.csv&#39;.split())
+</code></pre>
+
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1g3kbfcz850j30os0jf0y5.jpg" alt=""/></p>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="16076509808799.html" 
+          title="Previous Post: python3 urllib 访问https网站">&laquo; python3 urllib 访问https网站</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="16076509808874.html" 
+          title="Next Post: xpath 提取div标签所有文字信息">xpath 提取div标签所有文字信息 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1></h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E7%94%B5%E5%BD%B1.html"><strong>电影</strong></a>
+        
+            <a href="%E5%85%B6%E5%AE%83.html"><strong>其它</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="16076509803956.html">Xcode10报错libstdc</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804011.html">Masonry布局“Unable to simultaneously satisfy constraints”</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804045.html">RACCommand</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804076.html">代理修饰符</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804110.html">You don’t have write permissions</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+
+  </body>
+</html>

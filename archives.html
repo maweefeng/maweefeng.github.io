@@ -1,128 +1,98 @@
 <!doctype html>
 <html class="no-js" lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
     
-    Archives - Code Log 👨‍💻‍ 
-    
+  Archives - 
+  
   </title>
   
   
-  <link href="atom.xml" rel="alternate" title="Code Log 👨‍💻‍ " type="application/atom+xml">
-  <link rel="stylesheet" href="asset/css/foundation.min.css" />
-  <link rel="stylesheet" href="asset/css/docs.css" />
-  <script src="asset/js/vendor/modernizr.js"></script>
-  <script src="asset/js/vendor/jquery.js"></script>
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
   <script src="asset/highlightjs/highlight.pack.js"></script>
   <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script>
-    hljs.initHighlightingOnLoad();
-
-    window.onload = function () {
-
-      var footerPath = window.location.pathname.split('/')[window.location.pathname.split('/').length - 1];
-      if (footerPath == 'archives.html') {
-        // alert('分类');
-        document.getElementById('main-menu').getElementsByTagName("li")[1].className = "is_active";
-
-      } else if (footerPath == 'about.html') {
-        document.getElementById('main-menu').getElementsByTagName("li")[2].className = "is_active";
-
-        // alert('关于我');
-  
-      } else {
-        // alert('首页');
-        document.getElementById('main-menu').getElementsByTagName("li")[0].className = "is_active";
-      }
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
 
 
-    }
-  </script>
-  <script type="text/javascript">
-    function before_search() {
-      var searchVal = 'site: ' + document.getElementById('search_input').value;
-      document.getElementById('search_q').value = searchVal;
-      return true;
-    }
-  </script>
-</head>
-
-<body class="antialiased hide-extras">
-
-  <div class="marketing off-canvas-wrap" data-offcanvas>
-    <div class="inner-wrap">
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
 
 
-      <nav class="top-bar docs-bar hide-for-small" data-topbar>
-
-
-        <section class="top-bar-section">
-          <div class="row">
-            <div style="position: relative;width:100%;">
-              <div style="position: absolute; width:100%;">
-                <ul id="main-menu" class="left">
-                  
-                  <li id=""><a id="" target="_self" href="index.html">Home</a></li>
-                  
-                  <li id=""><a id="" target="_self" href="archives.html">Archives</a></li>
-                  
-                  <li id=""><a id="" target="_self" href="about.html">About</a></li>
-                  
-                </ul>
-
-                <ul class="right" id="search-wrap">
-                  <li>
-                    <form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
-                      <input type="hidden" id="search_q" name="q" value="" />
-                      <input tabindex="1" type="search" id="search_input" placeholder="Search" />
-                    </form>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-      </nav>
-
-      <nav class="tab-bar show-for-small">
-        <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-          <span> &nbsp; Code Log 👨‍💻‍ </span>
-        </a>
-      </nav>
-
-      <aside class="left-off-canvas-menu">
-        <ul class="off-canvas-list">
-
-          <li><a href="index.html">Home</a></li>
-          <li><a href="archives.html">Archives</a></li>
-          
-          <li><label>Categories</label></li>
-
-          
-          <li id="iOS"><a href="iOS.html">iOS</a></li>
-          
-          <li id="Git"><a href="Git.html">Git</a></li>
-          
-          <li id="CocoaPods"><a href="CocoaPods.html">CocoaPods</a></li>
-          
-          <li id="Django"><a href="Django.html">Django</a></li>
-          
-          <li id="Spiders"><a href="Spiders.html">Spiders</a></li>
-          
-          <li id="about"><a href="about.html">about</a></li>
-          
-
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
         </ul>
-      </aside>
 
-      <a class="exit-off-canvas" href="#"></a>
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E7%94%B5%E5%BD%B1.html">电影</a></li>
+        
+            <li><a href="%E5%85%B6%E5%AE%83.html">其它</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
 
 
-      <section id="main-content" role="main" class="scroll-container"> <script type="text/javascript">
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
   $(function(){
     $('#menu_item_archives').addClass('is_active');
   });
@@ -137,1070 +107,25 @@
                 <h1>2020</h1>
             
             <div class="article">
-              <a class="clearlink" href="15638450239357.html">
-                <h1>判断bundle中存不存在某个文件</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2020/3/30</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15638515424059.html">
-                <h1>去除tableview sectionheaderview的粘连效果</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2020/3/30</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15641370883413.html">
-                <h1>快速的扩展类的初始化方法</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2020/3/30</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15644628854335.html">
-                <h1>切部分圆角</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2020/3/30</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15646490459131.html">
-                <h1>didSet 和 willSet</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2020/3/30</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15647331928504.html">
-                <h1>initWithCoder和initWithFrame的区别</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2020/3/30</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15649763036889.html">
-                <h1>设置UITableView的分割线间距以及颜色</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2020/3/30</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15650558092231.html">
-                <h1>Apple Developer Team</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2020/3/30</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15678331627614.html">
-                <h1>swift方法怎么让参数可变</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2020/3/30</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15710336317674.html">
-                <h1>从xib中取出view的方法</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2020/3/30</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15714583161074.html">
-                <h1>iOS多继承的实现</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2020/3/30</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15766567217978.html">
-                <h1>iOS UICollectionView刷新时闪屏的解决方法</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2020/3/30</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15790023471048.html">
-                <h1>How to simply make a dynimic UITableViewHeader animation</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2020/3/30</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-             
-                <h1>2019</h1>
-            
-            <div class="article">
-              <a class="clearlink" href="15590976892074.html">
-                <h1>Scrapy 抓取网页数据</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/5/29</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='Spiders.html'>Spiders</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15583189073141.html">
-                <h1>Django入门 — 建立简易博客以及ORM关系介绍</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/5/20</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='Django.html'>Django</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15578899295258.html">
-                <h1>PromiseKit</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/5/15</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15572343607934.html">
-                <h1>RunLoop</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/5/7</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15554977521883.html">
-                <h1>Swift单例写法</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/4/17</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15554962348970.html">
-                <h1>Filter, Map, Reduce  Functions</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/4/17</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15553216469263.html">
-                <h1>Swift中的字典转模型方法的迭代</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/4/15</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15553140637126.html">
-                <h1>Speed Up Development with Xcode File Templates</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/4/15</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15536750345410.html">
-                <h1>Swift 和 OC 实现“热加载”</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/3/27</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15506484558583.html">
-                <h1>OC以及Swift中的闭包</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/2/20</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15474609644602.html">
-                <h1>Localization Issue Warning Storyboard</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/1/14</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15471123133942.html">
-                <h1>Value and Reference Collections</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/1/10</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-             
-                <h1>2018</h1>
-            
-            <div class="article">
-              <a class="clearlink" href="15452016090680.html">
-                <h1>UICollectionView 进阶篇</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/12/19</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15451226434486.html">
-                <h1>UICollectionView入门篇</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/12/18</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15450120295637.html">
-                <h1>What's New in Storyboards</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/12/17</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15446970341146.html">
-                <h1>Building Apps with Dynamic Type</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/12/13</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15445109745059.html">
-                <h1>Love at First Launch</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/12/11</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15445081328797.html">
-                <h1>App Icon Design</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/12/11</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15444306104604.html">
-                <h1>Advanced Debugging with Xcode and LLDB</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/12/10</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15439873228318.html">
-                <h1>UINavigationItem</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/12/5</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15439179971062.html">
-                <h1>iOS开发代码规范</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/12/4</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15438021304374.html">
-                <h1>Swift & Objective-C & C++之间的混编</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/12/3</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15433939231870.html">
-                <h1>dispatch_semaphore_t 信号量</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/28</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15433701207076.html">
-                <h1>_cmd 与 runtime 的结合</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/28</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15433027949667.html">
-                <h1>sizeThatFits和sizeToFit</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/27</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15428536881209.html">
-                <h1>被神化的MVVM和被错误认识的Model层</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/22</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15427945343440.html">
-                <h1>消除CocoaPods引入第三方SDK的警告</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/21</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='CocoaPods.html'>CocoaPods</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15427857390238.html">
-                <h1>关于我</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/21</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='about.html'>about</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15427834491002.html">
-                <h1>代理修饰符</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/21</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15427834491108.html">
-                <h1>You don’t have write permissions</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/21</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='CocoaPods.html'>CocoaPods</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15427834491194.html">
-                <h1>隐藏导航栏底部的线条</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/21</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15427834491253.html">
-                <h1>堆栈的一点区别</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/21</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15427834491315.html">
-                <h1>通讯录排序</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/21</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15427834491377.html">
-                <h1>给UITableView边框加阴影</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/21</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15427834491441.html">
-                <h1>设置图片拉伸范围</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/21</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15427834491504.html">
-                <h1>Git基础流</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/21</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='Git.html'>Git</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15427834491567.html">
-                <h1>视图的绘制周期</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/21</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15427834491628.html">
-                <h1>设置Cell分割线顶头</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/21</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15427834491690.html">
-                <h1>Runtime运行时</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/21</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15427834491747.html">
-                <h1>终端命令</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/21</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='Git.html'>Git</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15427834491808.html">
-                <h1>终端命令设置代理</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/21</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='Git.html'>Git</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15427834491890.html">
-                <h1>Block防止内存泄漏问题</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/21</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15427834491963.html">
-                <h1>Git提交代码issue</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/21</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='Git.html'>Git</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15427834492083.html">
-                <h1>对比Texture中Node和UIKit中View</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/21</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15427834492143.html">
-                <h1>pod install速度过慢</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/21</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='CocoaPods.html'>CocoaPods</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15427834492260.html">
-                <h1>SDWebImageview 不能加载HTTPS图片</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/21</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15427834492322.html">
-                <h1>UIImageView 动画的属性animationImages</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/21</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15427834492390.html">
-                <h1>Xcode打包遇到的坑</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/21</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15427834492451.html">
-                <h1>Xcode编译找不到头文件</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/21</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15427834492512.html">
-                <h1>Flutter && Python && OC</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/21</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15427834492767.html">
-                <h1>UISearchbar 自定义搜索图标失真</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/21</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15427834492830.html">
-                <h1>CAMediaTimingFunction获取控制点：</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/21</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15427834493029.html">
-                <h1>iOS导航条背景颜色</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/21</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15427834493152.html">
-                <h1>检测离屏渲染了</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/21</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15427834493214.html">
-                <h1>iOS开发一些小技巧</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/21</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15427815427067.html">
-                <h1>RACCommand</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2018/11/21</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15426943817961.html">
+              <a class="clearlink" href="16076509803956.html">
                 <h1>Xcode10报错libstdc</h1>
               </a>
               <div class="read-more clearfix">
-                <span class="date">2018/11/20</span>
-                <span>posted in&nbsp;</span> 
+                <span class="date">2020/12/11</span>
                 
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
                  
               </div>
             </div><!-- article -->
 
           
-             
-                <h1>2017</h1>
             
             <div class="article">
-              <a class="clearlink" href="15426952413956.html">
+              <a class="clearlink" href="16076509804011.html">
                 <h1>Masonry布局“Unable to simultaneously satisfy constraints”</h1>
               </a>
               <div class="read-more clearfix">
-                <span class="date">2017/11/20</span>
-                <span>posted in&nbsp;</span> 
+                <span class="date">2020/12/11</span>
                 
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
                  
               </div>
             </div><!-- article -->
@@ -1208,14 +133,12 @@
           
             
             <div class="article">
-              <a class="clearlink" href="15446033549417.html">
-                <h1>What's New in LLVM（2017）</h1>
+              <a class="clearlink" href="16076509804045.html">
+                <h1>RACCommand</h1>
               </a>
               <div class="read-more clearfix">
-                <span class="date">2017/11/12</span>
-                <span>posted in&nbsp;</span> 
+                <span class="date">2020/12/11</span>
                 
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
                  
               </div>
             </div><!-- article -->
@@ -1223,14 +146,12 @@
           
             
             <div class="article">
-              <a class="clearlink" href="15427834493345.html">
-                <h1>高效的画线</h1>
+              <a class="clearlink" href="16076509804076.html">
+                <h1>代理修饰符</h1>
               </a>
               <div class="read-more clearfix">
-                <span class="date">2017/10/21</span>
-                <span>posted in&nbsp;</span> 
+                <span class="date">2020/12/11</span>
                 
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
                  
               </div>
             </div><!-- article -->
@@ -1238,14 +159,1383 @@
           
             
             <div class="article">
-              <a class="clearlink" href="15427834493281.html">
+              <a class="clearlink" href="16076509804110.html">
+                <h1>You don’t have write permissions</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509804138.html">
+                <h1>隐藏导航栏底部的线条</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509804206.html">
+                <h1>通讯录排序</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509804237.html">
+                <h1>给UITableView边框加阴影</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509804270.html">
+                <h1>设置图片拉伸范围</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509804301.html">
+                <h1>Git基础流</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509804341.html">
+                <h1>视图的绘制周期</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509804371.html">
+                <h1>设置Cell分割线顶头</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509804401.html">
+                <h1>Runtime运行时</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509804434.html">
+                <h1>终端命令</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509804464.html">
+                <h1>终端命令设置代理</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509804499.html">
+                <h1>Block防止内存泄漏问题</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509804529.html">
+                <h1>Git提交代码issue</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509804558.html">
+                <h1>对比Texture中Node和UIKit中View</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509804590.html">
+                <h1>pod install速度过慢</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509804620.html">
+                <h1>SDWebImageview 不能加载HTTPS图片</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509804652.html">
+                <h1>UIImageView 动画的属性animationImages</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509804683.html">
+                <h1>Xcode打包遇到的坑</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509804714.html">
+                <h1>Xcode编译找不到头文件</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509804745.html">
+                <h1>Flutter && Python && OC</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509804775.html">
+                <h1>UISearchbar 自定义搜索图标失真</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509804807.html">
+                <h1>CAMediaTimingFunction获取控制点：</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509804860.html">
+                <h1>iOS导航条背景颜色</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509804892.html">
+                <h1>检测离屏渲染了</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509804922.html">
+                <h1>iOS开发一些小技巧</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509804960.html">
                 <h1>为什么NSString使用Copy修饰符</h1>
               </a>
               <div class="read-more clearfix">
-                <span class="date">2017/9/21</span>
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509804989.html">
+                <h1>高效的画线</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509805027.html">
+                <h1>关于我</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509805075.html">
+                <h1>消除CocoaPods引入第三方SDK的警告</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509805121.html">
+                <h1>被神化的MVVM和被错误认识的Model层</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509805209.html">
+                <h1>代理&回调&通知</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509805248.html">
+                <h1>sizeThatFits和sizeToFit</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509805290.html">
+                <h1>_cmd 与 runtime 的结合</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509805332.html">
+                <h1>Protocol</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509805420.html">
+                <h1>dispatch_semaphore_t 信号量</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509805463.html">
+                <h1>Swift & Objective-C & C++之间的混编</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509805505.html">
+                <h1>This package has installed:</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509805549.html">
+                <h1>hexo</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509805590.html">
+                <h1>iOS开发代码规范</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509805631.html">
+                <h1>UINavigationItem</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509805667.html">
+                <h1>疑问</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509805787.html">
+                <h1>Advanced Debugging with Xcode and LLDB</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509805828.html">
+                <h1>App Icon Design</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509805868.html">
+                <h1>Love at First Launch</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509805905.html">
+                <h1>@dynamic与@synthesize的区别</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509805947.html">
+                <h1>What's New in LLVM（2017）</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509806058.html">
+                <h1>Building Apps with Dynamic Type</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509806102.html">
+                <h1>What's New in Storyboards</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509806148.html">
+                <h1>UICollectionView入门篇</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509806196.html">
+                <h1>UICollectionView 进阶篇</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509806241.html">
+                <h1>Python</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509806365.html">
+                <h1>Value and Reference Collections</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509806399.html">
+                <h1>Localization Issue Warning Storyboard</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509806428.html">
+                <h1>怎么选购二手房</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
                 <span>posted in&nbsp;</span> 
                 
-                    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+                    <span class="posted-in"><a href='%E5%85%B6%E5%AE%83.html'>其它</a></span>
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509806471.html">
+                <h1>swift 中的 selector</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509806513.html">
+                <h1>狗十三</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                <span>posted in&nbsp;</span> 
+                
+                    <span class="posted-in"><a href='%E7%94%B5%E5%BD%B1.html'>电影</a></span>
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509806552.html">
+                <h1>七号房的礼物</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                <span>posted in&nbsp;</span> 
+                
+                    <span class="posted-in"><a href='%E7%94%B5%E5%BD%B1.html'>电影</a></span>
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509806591.html">
+                <h1>Swifter4</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509806634.html">
+                <h1>OC以及Swift中的闭包</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509806674.html">
+                <h1>设置完约束之后一定要激活约束才生效</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509806751.html">
+                <h1>UICollectionViewFlowLayout</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509806846.html">
+                <h1>Content Compression Resistance Priority</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509806946.html">
+                <h1>where语句两个并列条件的写法</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509806983.html">
+                <h1>启动优化</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509807035.html">
+                <h1>objc_msgSend</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509807071.html">
+                <h1>运行时交换方法</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509807113.html">
+                <h1>在 App 运行时通过 dlopen 和 dlsym 链接加载 bundle 里的动态库。</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509807148.html">
+                <h1>打印函数名和所在行的信息使用下面代码</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509807192.html">
+                <h1>Debug 技巧（汇编层面）</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509807234.html">
+                <h1>Swift 和 OC 实现“热加载”</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509807277.html">
+                <h1>静态分析</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509807321.html">
+                <h1>Homebrew赘余文件</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509807409.html">
+                <h1>运行时替换方法的类</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509807540.html">
+                <h1>图片压缩的建议</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509807580.html">
+                <h1>Mach-O</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509807617.html">
+                <h1>检查无用代码</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509807659.html">
+                <h1>点击事件发生在视图边界之外的时候</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509807752.html">
+                <h1>Speed Up Development with Xcode File Templates</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509807797.html">
+                <h1>Swift中的字典转模型方法的迭代</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509807837.html">
+                <h1>accessoryView</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509807915.html">
+                <h1>Unit testing</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509807952.html">
+                <h1>Filter, Map, Reduce  Functions</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509807984.html">
+                <h1>Swift单例写法</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509808030.html">
+                <h1>枚举遍历数组</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509808207.html">
+                <h1>APP 后台任务以及捕捉bugly无法捕捉的异常</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509808249.html">
+                <h1>打印调用堆栈信息</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509808285.html">
+                <h1>Instruments</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509808324.html">
+                <h1>OperationQueue</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509808368.html">
+                <h1>RunLoop</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509808408.html">
+                <h1>同一开发商, 一个应用跳到另一个应用的免登方案</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509808450.html">
+                <h1>PromiseKit</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509808533.html">
+                <h1>Promise采用关联对象进行保存对象</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509808576.html">
+                <h1>Django入门 — 建立简易博客以及ORM关系介绍</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509808613.html">
+                <h1>python开发 端口占用问题</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509808799.html">
+                <h1>python3 urllib 访问https网站</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509808836.html">
+                <h1>Scrapy 抓取网页数据</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509808874.html">
+                <h1>xpath 提取div标签所有文字信息</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509808917.html">
+                <h1></h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509808953.html">
+                <h1></h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509808987.html">
+                <h1>guard let</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509809222.html">
+                <h1>记录swift 当中超出以前认知的知识点</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509809415.html">
+                <h1>一个实例对象可以通过4种方式调用其方法。</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509809509.html">
+                <h1>block</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509809545.html">
+                <h1>Autorelease Pool 的用处</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509809587.html">
+                <h1>weak</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
+                 
+              </div>
+            </div><!-- article -->
+
+          
+            
+            <div class="article">
+              <a class="clearlink" href="16076509809634.html">
+                <h1>队列</h1>
+              </a>
+              <div class="read-more clearfix">
+                <span class="date">2020/12/11</span>
+                
                  
               </div>
             </div><!-- article -->
@@ -1260,9 +1550,7 @@
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
             
-                <div class="site-a-logo"><img src="/asset/img/logo.png" /></div>
-            
-                <h1>Code Log 👨‍💻‍ </h1>
+                <h1></h1>
                 <div class="site-des"></div>
                 <div class="social">
 
@@ -1274,9 +1562,9 @@
 
 
 
-<a target="_blank" class="github" target="_blank" href="https://github.com/maweefeng" title="GitHub">GitHub</a>
-<a target="_blank" class="email" href="mailto:maweefeng@gmail.com" title="Email">Email</a>
-  <!-- <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a> -->
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
                 
               	 </div>
           	</div>
@@ -1291,17 +1579,9 @@
 
       	<p class="cat-list">
         
-            <a href="iOS.html"><strong>iOS</strong></a>
+            <a href="%E7%94%B5%E5%BD%B1.html"><strong>电影</strong></a>
         
-            <a href="Git.html"><strong>Git</strong></a>
-        
-            <a href="CocoaPods.html"><strong>CocoaPods</strong></a>
-        
-            <a href="Django.html"><strong>Django</strong></a>
-        
-            <a href="Spiders.html"><strong>Spiders</strong></a>
-        
-            <a href="about.html"><strong>about</strong></a>
+            <a href="%E5%85%B6%E5%AE%83.html"><strong>其它</strong></a>
          
         </p>
 
@@ -1318,31 +1598,31 @@
 	      
 		      
 			      <li class="post">
-			        <a href="15638450239357.html">判断bundle中存不存在某个文件</a>
+			        <a href="16076509803956.html">Xcode10报错libstdc</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15638515424059.html">去除tableview sectionheaderview的粘连效果</a>
+			        <a href="16076509804011.html">Masonry布局“Unable to simultaneously satisfy constraints”</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15641370883413.html">快速的扩展类的初始化方法</a>
+			        <a href="16076509804045.html">RACCommand</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15644628854335.html">切部分圆角</a>
+			        <a href="16076509804076.html">代理修饰符</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15646490459131.html">didSet 和 willSet</a>
+			        <a href="16076509804110.html">You don’t have write permissions</a>
 			      </li>
 		     
 		  
@@ -1387,11 +1667,10 @@
 
  <div class="page-bottom clearfix">
   <div class="row">
-   <!-- <p class="copyright">Copyright &copy; 2015
+   <p class="copyright">Copyright &copy; 2015
 Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
-Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p> -->
-<p class="copyright">日光之下 永无新事</p>
-</div>
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
 </div>
 
         </section>
@@ -1418,7 +1697,7 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p> -->
      
     </script>
 
-    <script src="asset/chart/all-min.js"></script><script type="text/javascript">$(function(){    var mwebii=0;    var mwebChartEleId = 'mweb-chart-ele-';    $('pre>code').each(function(){        mwebii++;        var eleiid = mwebChartEleId+mwebii;        if($(this).hasClass('language-sequence')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = Diagram.parse($(this).text());            diagram.drawSVG(eleiid,{theme: 'simple'});        }else if($(this).hasClass('language-flow')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = flowchart.parse($(this).text());            diagram.drawSVG(eleiid);        }    });});</script>
+    
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
 
 
