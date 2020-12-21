@@ -84,8 +84,6 @@
             <li><a href="Python.html">Python</a></li>
         
             <li><a href="iOS.html">iOS</a></li>
-        
-            <li><a href="%E6%88%91.html">我</a></li>
          
 
       </ul>
@@ -107,6 +105,206 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="16076509807113.html">
+                
+                  <h1>在 App 运行时通过 dlopen 和 dlsym 链接加载 bundle 里的动态库。</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>我们一般引入某个 framework 可能是直接使用<code>#import &lt;AVFoundation/AVFoundation.h&gt;</code>其实还有另一种办法就是使用函数啊 dlopen</p>
+
+<pre><code class="language-text">函数定义： 
+　　void * dlopen( const char * pathname, int mode ); 
+　　函数描述： 
+　　在dlopen的（）函数以指定模式打开指定的动态连接库文件，并返回一个句柄给调用进程。使用dlclose（）来卸载打开的库。 
+　　mode：分为这两种 
+　　RTLD_LAZY 暂缓决定，等有需要时再解出符号 
+　　RTLD_NOW 立即决定，返回前解除所有未决定的符号。 
+　　RTLD_LOCAL 
+　　RTLD_GLOBAL 允许导出符号 
+　　RTLD_GROUP 
+　　RTLD_WORLD 
+
+　　返回值: 
+　　打开错误返回NULL 
+　　成功，返回库引用 
+　　编译时候要加入 -ldl (指定dl库) 
+
+</code></pre>
+
+<pre><code class="language-text">dlsym()
+
+ 
+　功能：
+
+根据动态链接库操作句柄与符号，返回符号对应的地址。
+包含头文件：
+#include &lt;dlfcn.h&gt;
+函数定义：
+void*dlsym(void* handle,const char* symbol)
+函数描述：
+dlsym根据动态链接库操作句柄(handle)与符号(symbol)，返回符号对应的地址。使用这个函数不但可以获取函数地址，也可以获取变量地址。
+handle是由dlopen打开动态链接库后返回的指针，symbol就是要求获取的函数或全局变量的名称。
+dlclose()
+
+ 
+
+dlclose用于关闭指定句柄的动态链接库，只有当此动态链接库的使用计数为0时,才会真正被系统卸载。
+ 
+</code></pre>
+
+<p>示例函数</p>
+
+<pre><code class="language-text">-(void)mwviewDidLoad{
+    //打开动态库
+    NSString *path = [[NSBundle mainBundle] pathForResource:@&quot;Kidswaste-Sans Toi&quot; ofType:@&quot;mp3&quot;];
+    // 加载库到当前运行程序
+    void *lib = dlopen(&quot;/System/Library/Frameworks/AVFoundation.framework/AVFoundation&quot;, RTLD_LAZY);
+    if (lib) {
+        // 获取类名称
+        Class playerClass = NSClassFromString(@&quot;AVAudioPlayer&quot;);
+        // 获取函数方法
+        SEL selector = NSSelectorFromString(@&quot;initWithData:error:&quot;);
+        // 调用实例化对象方法
+        _runtime_Player = [[playerClass alloc] performSelector:selector withObject:[NSData dataWithContentsOfFile:path] withObject:nil];
+        // 获取函数方法
+        selector = NSSelectorFromString(@&quot;play&quot;);
+        // 调用播放方法
+        [_runtime_Player performSelector:selector];
+        NSLog(@&quot;动态加载播放&quot;);
+    }
+    dlclose(lib);
+    NSLog(@&quot;hello world from mwviewDidLoad&quot;);
+    [self mwviewDidLoad];
+    
+}
+
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/7/5</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509807234.html">
+                
+                  <h1>Swift 和 OC 实现“热加载”</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>众所周知，Google 推出的跨平台框架Flutter 有着很好的编译优势<code>Flutter Hot Reload</code>，每次改变之后，点击 <code>reload</code> 就会实现实时编译。那么其实我们也可以实现<code>Swift</code>和<code>OC</code>的实时编译。</p>
+
+<h4 id="toc_0">InjectionIII</h4>
+
+<p>通过这个工具可以实现类似Flutter 的快速编译。</p>
+
+<h6 id="toc_1">实现思路：</h6>
+
+<p>Injection 会监听源代码文件的变化，如果文件被改动了，Injection Server 就会执行 rebuildClass 重新进行编译、打包成动态库，也就是 .dylib 文件。编译、打包成动态库后使用 writeSting 方法通过 Socket 通知运行的 App。</p>
+
+<h4 id="toc_2">安装方式</h4>
+
+<ol>
+<li><p>Mac App Store下载安装</p>
+<p><img src="media/15536750345410/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-03-27%20%E4%B8%8B%E5%8D%884.26.20.png" alt="屏幕快照 2019-03-27 下午4.26.20"/></p></li>
+<li><p>Github</p>
+<p>这个工具开发作者是John Holdsworth，作者已经开源了这个工具，地址是<a href="https://github.com/johnno1962/InjectionIII">https://github.com/johnno1962/InjectionIII</a></p></li>
+</ol>
+
+<p>我使用的是在Mac App Store安装的方式，这样比较方便一些，如果你想专研源码，可以去到 GitHub 去研究。</p>
+
+<h5 id="toc_3">使用指南</h5>
+
+<ol>
+<li><p>打开工程</p>
+<p>安装之后打开会出现在 mac 的 menubar 点击打开你目标的工程文件的根目录。</p>
+<p><img src="media/15536750345410/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-03-27%20%E4%B8%8B%E5%8D%885.57.39.png" alt="屏幕快照 2019-03-27 下午5.57.39"/></p></li>
+<li><p>在 applicationDidFinishLaunching加载Injection包</p>
+<p>Xcode 10.1:</p>
+<pre><code class="language-text">#if DEBUG
+Bundle(path: &quot;/Applications/InjectionIII.app/Contents/Resources/iOSInjection10.bundle&quot;)?.load()<br/>
+//for tvOS:<br/>
+Bundle(path: &quot;/Applications/InjectionIII.app/Contents/Resources/tvOSInjection10.bundle&quot;)?.load()<br/>
+//Or for macOS:<br/>
+Bundle(path: &quot;/Applications/InjectionIII.app/Contents/Resources/macOSInjection10.bundle&quot;)?.load()<br/>
+#endif
+</code></pre>
+<p>Xcode 10.2 and later:</p>
+<pre><code class="language-text">#if DEBUG
+Bundle(path: &quot;/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle&quot;)?.load()<br/>
+//for tvOS:<br/>
+Bundle(path: &quot;/Applications/InjectionIII.app/Contents/Resources/tvOSInjection.bundle&quot;)?.load()<br/>
+//Or for macOS:<br/>
+Bundle(path: &quot;/Applications/InjectionIII.app/Contents/Resources/macOSInjection.bundle&quot;)?.load()<br/>
+#endif
+</code></pre></li>
+</ol>
+
+<p>上面是swift版本的NSBundle加载包，下面的代码是oc的实现方法</p>
+
+<pre><code class="language-text">[[NSBundle bundleWithPath:@&quot;/Applications/InjectionIII.app/Contents/Resources/iOSInjection10.bundle&quot;] load];
+</code></pre>
+
+<ol>
+<li><p>运行工程 </p>
+<p>选择模拟器，cmd+R启动编译</p></li>
+<li><p>修改文件注入代码</p>
+<p>每当对代码进行修改之后，一定要cmd+S保存（不然Injection不会分析变动以及替换符号）实现快速编译。不用重新 cmd+R。</p></li>
+</ol>
+
+<h4 id="toc_4">注意事项</h4>
+
+<p><img src="media/15536750345410/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-03-27%20%E4%B8%8B%E5%8D%885.56.38.png" alt="屏幕快照 2019-03-27 下午5.56.38"/></p>
+
+<p>还有一点就是如果你在 menubar 打开了这个程式的File Watcher那么就只需要cmd+S 如果你没有开启这个功能，还要多一步命令<code>control</code>+<code>=</code>(同时按住 control 和 =）。</p>
+
+<p>还有就是由于沙盒机智，这个方法只能使用在模拟器上，对真机无效。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/6/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="16076509805947.html">
                 
@@ -276,8 +474,6 @@ return self.photoCount &gt; 0
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
             
-                <div class="site-a-logo"><img src="/Users/cnsunrun/Desktop/507369_large.png" /></div>
-            
                 <h1></h1>
                 <div class="site-des"></div>
                 <div class="social">
@@ -314,8 +510,6 @@ return self.photoCount &gt; 0
             <a href="Python.html"><strong>Python</strong></a>
         
             <a href="iOS.html"><strong>iOS</strong></a>
-        
-            <a href="%E6%88%91.html"><strong>我</strong></a>
          
         </p>
 
@@ -332,31 +526,31 @@ return self.photoCount &gt; 0
 	      
 		      
 			      <li class="post">
+			        <a href="16076509807659.html">点击事件发生在视图边界之外的时候</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16085259457329.html">MRC 时代的引用计数的现身</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16085257826419.html">自动释放池AutoreleasePool![内存管理-3 2](media/16085257826419/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86-3%202.jpg)</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="16076509804045.html">RACCommand</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509805027.html">关于我</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="16076509806591.html">Swifter4</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="16076509806846.html">Content Compression Resistance Priority</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="16076509807659.html">点击事件发生在视图边界之外的时候</a>
+			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
 			      </li>
 		     
 		  

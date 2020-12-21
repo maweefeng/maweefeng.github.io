@@ -84,8 +84,6 @@
             <li><a href="Python.html">Python</a></li>
         
             <li><a href="iOS.html">iOS</a></li>
-        
-            <li><a href="%E6%88%91.html">我</a></li>
          
 
       </ul>
@@ -107,6 +105,563 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15871981727532.html">
+                
+                  <h1>为什么已经存在Struct 还是需要用到Class?</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>Struct 可以理解为一个很大很大的值,只能是值传递，并不占用同一份内存。</p>
+
+<p>但是有时候需要引用同一个东西，（你的代码可以引用一个类的同一个实例）就需要用到Class，而且Class可以被继承，可以有子类，而且具有struct的所有特性，属性，方法，扩展，初始化initalize等等。</p>
+
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gdy03uxv8fj31c00u04qr.jpg" alt=""/></p>
+
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gdy043p0etj31c00u0hdu.jpg" alt=""/></p>
+
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gdy04bjjp0j31c00u04qq.jpg" alt=""/></p>
+
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gdy04jzdiej31c00u0hdu.jpg" alt=""/></p>
+
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gdy04uwatij31c00u0hdu.jpg" alt=""/></p>
+
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gdy052odeoj31c00u0u0y.jpg" alt=""/></p>
+
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gdy05at6roj31c00u0x6q.jpg" alt=""/></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/9/14</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509804807.html">
+                
+                  <h1>CAMediaTimingFunction获取控制点：</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code class="language-text">//create timing function
+CAMediaTimingFunction *function = [CAMediaTimingFunction functionWithControlPoints:1 :0 :0.75 :1];
+</code></pre>
+
+<p>我得到的controlPoint值似乎是错误的：</p>
+
+<pre><code class="language-text">CGPoint controlPoint1, controlPoint2;
+[function getControlPointAtIndex:1 values:(float *)&amp;controlPoint1]; 
+[function getControlPointAtIndex:2 values:(float *)&amp;controlPoint2];
+The controlPoint value that I get seems to be wrong:
+
+controlPoint1   CGPoint (x = 5.2635442471208903E-315, y = 4.9406564584124654E-324)  
+controlPoint2   CGPoint (x = 0.0078125018408172764, y = 2.8421186829703262E-314)    
+</code></pre>
+
+<p>但是，如果我使用float数组作为参数的类型values，我得到controlPoint的正确值：</p>
+
+<pre><code class="language-text">float c1p[2], c2p[2];
+[function getControlPointAtIndex:1 values:c1p];
+[function getControlPointAtIndex:2 values:c2p];
+The values are:
+
+controlPoint1   CGPoint (x = 1, y = 0)  
+controlPoint2   CGPoint (x = 0.75, y = 1) 
+</code></pre>
+
+<p>32位设备可以使用第一种方法 但是在64位设备就行不通了 </p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/9/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509808450.html">
+                
+                  <h1>PromiseKit</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">then and done</h2>
+
+<p>一个典型的链条⛓️</p>
+
+<pre><code class="language-text">firstly {
+    login()
+}.then { creds in
+    fetch(avatar: creds.user)
+}.done { image in
+    self.imageView = image
+}
+</code></pre>
+
+<p>如果这段代码使用之前的方式可能会是这样</p>
+
+<pre><code class="language-text">login { creds, error in
+    if let creds = creds {
+        fetch(avatar: creds.user) { image, error in
+            if let image = image {
+                self.imageView = image
+            }
+        }
+    }
+}
+</code></pre>
+
+<p>其中重要的语法有then 是另一种方式的回调方法，但是承诺链比较容易理解，一个异步操作之后接着去执行下一个操作。</p>
+
+<p>done是一样的，但是done不返回promise，它通常是链条成功部分的终结。</p>
+
+<p>还有就是错误捕捉，比如我们以前的方法会有成功和错误的两个回调，但是现在使用了promise只需要返回一个promise就行了。如下所示</p>
+
+<pre><code class="language-text">func login() -&gt; Promise&lt;Creds&gt;
+    
+// Compared with:
+
+func login(completion: (Creds?, Error?) -&gt; Void)
+                        // ^^ ugh. Optionals. Double optionals.
+</code></pre>
+
+<h2 id="toc_1">catch</h2>
+
+<p>那么错误是怎么捕捉到的呢，那么就需要用到promise的另一个重要的方法<code>catch</code></p>
+
+<pre><code class="language-text">firstly {
+    login()
+}.then { creds in
+    fetch(avatar: creds.user)
+}.done { image in
+    self.imageView = image
+}.catch {
+    // any errors in the whole chain land here
+}
+</code></pre>
+
+<p>每个<code>promise</code>都代表一个异步任务的对象，如果任务失败，诺言会失败，执行<code>reject</code>状态，如果诺言执行成功就是<code>fulfilled</code>状态，如果执行失败会跳过后面的所有then操作进入到<code>catch</code>当中。</p>
+
+<h2 id="toc_2">ensure and finally</h2>
+
+<p>有时候我们需要执行一些必须要执行的操作，比如无论网络请求失败还是成功都隐藏请求动画，那么就需要用到ensure语句了。<br/>
+无论你的promise执行结果如何，ensure当中的代码块都将被执行。</p>
+
+<pre><code class="language-text">firstly {
+    UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    return login()
+}.then {
+    fetch(avatar: $0.user)
+}.done {
+    self.imageView = $0
+}.ensure {
+    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+}.catch {
+    //…
+}
+</code></pre>
+
+<p>另外你也可以使用<code>finally</code>方法在链条的最底部执行，无须返回任何值。</p>
+
+<pre><code class="language-text">spinner(visible: true)
+
+firstly {
+    foo()
+}.done {
+    //…
+}.catch {
+    //…
+}.finally {
+    self.spinner(visible: false)
+}
+</code></pre>
+
+<h2 id="toc_3">when</h2>
+
+<p>使用完成处理程序，对多个异步操作的响应要么很慢，要么很难。慢意味着连续执行：</p>
+
+<p><code>when</code> 有点像<code>GCD</code>当中的<code>DispatchGroup</code> 做完之后再通知到接下来的操作。</p>
+
+<pre><code class="language-text">firstly {
+    when(fulfilled: operation1(), operation2())
+}.done { result1, result2 in
+    //…
+}
+</code></pre>
+
+<p><code>when</code> 接受承诺，等待他们解决并返回包含结果的承诺。</p>
+
+<p>与任何承诺链一样，如果任何组件承诺失败，链将调用下一个<code>catch</code>。</p>
+
+<h2 id="toc_4">Making Promises</h2>
+
+<p>那么如何使自己的项目支持promise？<br/>
+标准扩展程序将带您走很长的路，但有时您仍然需要启动自己的链。也许您正在使用不提供承诺的第三方API，或者您可能编写了自己的异步系统。无论哪种方式，添加承诺都很容易。如果您查看标准扩展的代码，您会看到它使用下面描述的相同方法。</p>
+
+<pre><code class="language-text">假设我们有以下方法：
+
+func fetch(completion: (String?, Error?) -&gt; Void){
+
+    }
+我们可以使用下面方法变成promise
+func fetch() -&gt; Promise&lt;String&gt; {
+        return Promise{
+            seal in
+            fetch(completion: seal.resolve)
+        }
+
+//      或者  return Promise { fetch(completion: $0.resolve) }
+}
+
+或者    
+func fetch() -&gt; Promise&lt;String&gt; {
+        return Promise&lt;String&gt;{ seal in
+            fetch{ (result, error) in
+                seal.resolve(result, error)
+            }
+        }
+}
+</code></pre>
+
+<p>Promise的初始化程序为您提供的seal对象定义了许多处理平常的完成处理程序的方法。它甚至涵盖了各种罕见的情况，因此您可以轻松地将promises添加到现有代码库中。</p>
+
+<p>注意：在PMK 4中，此初始化程序为闭包提供了两个参数： fulfill和reject。PMK 5和6为您提供了具有两种方法fulfill和 reject方法的对象，但也提供了该方法的许多变体resolve。您通常只需将完成处理程序参数传递给，resolve并让Swift找出适用于您的特定情况的变体（如上例所示）。</p>
+
+<p>还可以使用fulfill 和 reject方法，比如上面的代码可以改成下面的样子。</p>
+
+<pre><code class="language-text"> func fetch() -&gt; Promise&lt;String&gt; {
+
+        return Promise&lt;String&gt;{ seal in
+            
+            fetch{ (result, error) in
+                if let error = error {
+                    seal.reject(error)
+                }else if let success = result{
+                    seal.fulfill(success)
+                }else{
+                    seal.reject(PMKError.invalidCallingConvention)
+                }
+            }
+        }
+    }
+</code></pre>
+
+<h2 id="toc_5">Guarantee<T></h2>
+
+<p>自从PromiseKit 5，提供了Guarantee作为补充 Promise。这样做是为了补充Swift强大的错误处理系统。</p>
+
+<p>Guarantee永不失败，所以不能拒绝。一个很好的例子是after：</p>
+
+<pre><code class="language-text">firstly {
+    after(seconds: 0.1)
+}.done {
+    // there is no way to add a `catch` because after cannot fail.
+}
+
+</code></pre>
+
+<h2 id="toc_6">APIs That Use Promises</h2>
+
+<pre><code class="language-text">class MyRestAPI {
+    func user() -&gt; Promise&lt;User&gt; {
+        return firstly {
+            URLSession.shared.dataTask(.promise, with: url)
+        }.compactMap {
+            try JSONSerialization.jsonObject(with: $0.data) as? [String: Any]
+        }.map { dict in
+            User(dict: dict)
+        }
+    }
+
+    func avatar() -&gt; Promise&lt;UIImage&gt; {
+        return user().then { user in
+            URLSession.shared.dataTask(.promise, with: user.imageUrl)
+        }.compactMap {
+            UIImage(data: $0.data)
+        }
+    }
+}
+
+</code></pre>
+
+<p>通过这种方式，异步链可以干净地无缝地整合来自整个应用程序的代码，而不会违反架构边界。</p>
+
+<h2 id="toc_7">Background Work</h2>
+
+<pre><code class="language-text">class MyRestAPI {
+    func avatar() -&gt; Promise&lt;UIImage&gt; {
+        let bgq = DispatchQueue.global(qos: .userInitiated)
+
+        return firstly {
+            user()
+        }.then(on: bgq) { user in
+            URLSession.shared.dataTask(.promise, with: user.imageUrl)
+        }.compactMap(on: bgq) {
+            UIImage(data: $0)
+        }
+    }
+}
+</code></pre>
+
+<p>所有PromiseKit处理程序都带有一个on参数，允许您指定运行处理程序的调度队列。默认值始终是主队列。</p>
+
+<p>PromiseKit 完全是线程安全的。</p>
+
+<h2 id="toc_8">Failing Chains</h2>
+
+<p>如果错误发生在链条中间，只需抛出一个错误。</p>
+
+<pre><code class="language-text">firstly {
+    foo()
+}.then { baz in
+    bar(baz)
+}.then { result in
+    guard !result.isBad else { throw MyError.myIssue }
+    //…
+    return doOtherThing()
+}
+
+</code></pre>
+
+<p>错误将在下一个catch处理程序中显示。</p>
+
+<p>由于promises处理抛出的错误，除非你真的想在本地处理错误，否则你不必将调用函数包装到块中：</p>
+
+<pre><code class="language-text">foo().then { baz in
+    bar(baz)
+}.then { result in
+    try doOtherThing()
+}.catch { error in
+    // if doOtherThing() throws, we end up here
+}
+</code></pre>
+
+<h2 id="toc_9">抽象异步性 Abstracting Away Asynchronicity</h2>
+
+<pre><code class="language-text">var fetch = API.fetch()
+
+override func viewDidAppear() {
+    fetch.then { items in
+        //…
+    }
+}
+
+func buttonPressed() {
+    fetch.then { items in
+        //…
+    }
+}
+
+func refresh() -&gt; Promise {
+    // ensure only one fetch operation happens at a time
+
+    if fetch.isResolved {
+        startSpinner()
+        fetch = API.fetch().ensure {
+            stopSpinner()
+        }
+    }
+    return fetch
+}
+</code></pre>
+
+<p>使用promises，您无需担心异步操作何时完成。就像现在一样。</p>
+
+<p>在上面，我们看到您可以根据自己的喜好多次调用then。所有块将按添加顺序执行。</p>
+
+<h2 id="toc_10">Minimum Duration</h2>
+
+<p>有时您需要一项任务至少花费一定的时间。（例如，您希望显示进度条，但如果它显示的时间少于0.3秒，则UI对用户显示为断开。）</p>
+
+<pre><code class="language-text">let waitAtLeast = after(seconds: 0.3)
+
+firstly {
+    foo()
+}.then {
+    waitAtLeast
+}.done {
+    //…
+}
+</code></pre>
+
+<p>上面的代码有效，因为我们在工作之前创建了延迟foo()。当我们等待这个承诺时，要么它已经超时，要么我们将等待0.3秒的任何剩余时间，然后继续链。</p>
+
+<h2 id="toc_11">Cancellation</h2>
+
+<p>Promise没有cancel函数，但它们通过符合CancellableError协议的特殊错误类型支持取消。</p>
+
+<pre><code class="language-text">func foo() -&gt; (Promise&lt;Void&gt;, cancel: () -&gt; Void) {
+    let task = Task(…)
+    var cancelme = false
+
+    let promise = Promise&lt;Void&gt; { seal in
+        task.completion = { value in
+            guard !cancelme else { return reject(PMKError.cancelled) }
+            seal.fulfill(value)
+        }
+        task.start()
+    }
+
+    let cancel = {
+        cancelme = true
+        task.cancel()
+    }
+
+    return (promise, cancel)
+}
+
+</code></pre>
+
+<p>被取消的链条默认不会进入到catch方法，然后也可以接收取消中断，如下</p>
+
+<pre><code class="language-text">foo.then {
+    //…
+}.catch(policy: .allErrors) {
+    // cancelled errors are handled *as well*
+}
+</code></pre>
+
+<h2 id="toc_12">Saving Previous Results</h2>
+
+<p>举个例子</p>
+
+<pre><code class="language-text">login().then { username in
+    fetch(avatar: username)
+}.done { image in
+    //…
+}
+
+</code></pre>
+
+<p>如果想在done在同时访问username和image呢 <br/>
+可以使用下面的方法</p>
+
+<pre><code class="language-text">login().then { username in
+    fetch(avatar: username).done { image in
+        // we have access to both `image` and `username`
+    }
+}.done {
+    // the chain still continues as you&#39;d expect
+}
+</code></pre>
+
+<p>然而，这种嵌套降低了链条的清晰度。相反，我们可以使用Swift元组：</p>
+
+<pre><code class="language-text">//简化版
+login().then { username in
+    fetch(avatar: username).map { ($0, username) }
+}.then { image, username in
+    //…
+}
+</code></pre>
+
+<h2 id="toc_13">Chaining Sequences</h2>
+
+<p>当你在一个数组中有一系列的任务要反应的时候</p>
+
+<pre><code class="language-text">// fade all visible table cells one by one in a “cascading” effect
+
+var fade = Guarantee.value(Bool())
+
+for cell in tableView.visibleCells {
+
+    fade = fade.then {_ in
+        UIView.animate(.promise, duration: 1, animations: {
+            cell.alpha = 0
+
+        })
+
+    }
+}
+fade.done {_ in
+
+
+}
+        
+</code></pre>
+
+<p>或者你有一个包含promise的数组</p>
+
+<pre><code class="language-text">var foo = Promise()
+for nextPromise in arrayOfPromises {
+    foo = foo.then { nextPromise }
+}
+foo.done {
+    // finish
+}
+
+</code></pre>
+
+<p>之前我们知道可以使用when同时异步执行多个promise，这种方式完成的速度更快，但是有时候我们需要promise顺序一个一个的执行，比如上面的动画。</p>
+
+<h1 id="toc_14">Promise采用关联对象进行保存对象</h1>
+
+<p>oc中运行时关联对象 宏定义写法</p>
+
+<pre><code class="language-text">extern void *PMKManualReferenceAssociatedObject;
+#define PMKRetain(obj)  objc_setAssociatedObject(obj, PMKManualReferenceAssociatedObject, obj, OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+#define PMKRelease(obj) objc_setAssociatedObject(obj, PMKManualReferenceAssociatedObject, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/9/6</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="16076509806634.html">
                 
@@ -536,281 +1091,6 @@ struct Implementation: Example {
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="16076509806102.html">
-                
-                  <h1>What's New in Storyboards</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h6 id="toc_0">故事板是在iOS和OS X上构建用户界面和应用程序流的好方法。了解如何有效地组织故事板，为接口定义segue，以及轻松地展开转换。深入讨论新的api，并听取关于如何创建优秀用户界面的技巧，并附带一些自定义的转场动画介绍和使用。</h6>
-
-<h2 id="toc_1">1. Refactor to Storyboard</h2>
-
-<p>在 storyboard 中选中对应的 xib 文件，然后点击Editor-&gt;Refactor to Storyboard</p>
-
-<p>可以把整个Storyboard文件中独立的部分重构出来。</p>
-
-<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.13.35.png" alt="屏幕快照 2018-12-17 上午10.13.35"/></p>
-
-<h2 id="toc_2">2. Storyboard Refrence</h2>
-
-<p>拖动Storyboard Refrence到故事版中</p>
-
-<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.42.11.png" alt="屏幕快照 2018-12-17 上午10.42.11"/></p>
-
-<p>对Storyboard Refrence进行设置，选择引用的故事版，以及故事版的引用id(必须和故事版中控制器的 Storyboard ID对应)bundle 可以为空，因为我这里是单项目工程，如果多个 bundle 的话就需要指定不同的 bundle。</p>
-
-<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.41.40.png" alt="屏幕快照 2018-12-17 上午10.41.40"/> </p>
-
-<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.44.49.png" alt="屏幕快照 2018-12-17 上午10.44.49"/></p>
-
-<h2 id="toc_3">3. Storyboard Segue</h2>
-
-<ul>
-<li><p>点击 segue 右侧Utilities -&gt; show the<br/>
-attributes inspector 可以设置自带的转场动画效果。<br/>
-<img src="media/15450120295637/15450155820528.jpg" alt=""/></p></li>
-<li><p>还可以指定Segue Class 在内部重写 perform 方法，记得要调用 [super perform]</p>
-<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8811.37.11.png" alt="屏幕快照 2018-12-17 上午11.37.11"/></p>
-<ul>
-<li><p>user modal presentation</p>
-<ul>
-<li>赋值转换代理对象 transitioning delegate</li>
-<li>调用 [super perform] 开始    modal presentation</li>
-<li>提交动画用于 presentation</li>
-<li>展示动画效果给目标控制器</li>
-</ul></li>
-<li><p>user dismisses presentation</p></li>
-<li><p>提交动画用于 dismissal</p></li>
-<li><p>展示dissmissal动画效果（动画控制器）</p></li>
-</ul></li>
-</ul>
-
-<h2 id="toc_4">注意⚠️</h2>
-
-<h5 id="toc_5">1️⃣设置转场动画的代理要在视图加载之前设置，比如在 presentViewController 之前 还有在 viewDidAppear 里面（试了在 viewDidLoad）当中不成功。</h5>
-
-<pre><code class="language-text">#import &quot;PhotoViewController.h&quot;
-#import &quot;ScalingDismissAnimator.h&quot;
-
-@interface PhotoViewController ()&lt;UIViewControllerTransitioningDelegate&gt;
-
-@end
-
-@implementation PhotoViewController
--(void)viewDidAppear:(BOOL)animated{
-self.transitioningDelegate = self;
-[super viewDidAppear:animated];
-}
-- (void)viewDidLoad {
-[super viewDidLoad];
-// Do any additional setup after loading the view.
-}
-
-- (IBAction)dismiss:(UIButton *)sender {
-[self dismissViewControllerAnimated:YES
-                         completion:nil];
-}
-
--(id&lt;UIViewControllerAnimatedTransitioning&gt;)animationControllerForDismissedController:(UIViewController *)dismissed{
-return   [[ScalingDismissAnimator alloc]init];
-
-}
-
-</code></pre>
-
-<p>在UIViewControllerAnimatedTransitioning类中除了实现 init 方法之外一定要实现这两个重要方法</p>
-
-<pre><code class="language-text">- (NSTimeInterval)transitionDuration:(id &lt;UIViewControllerContextTransitioning&gt;)transitionContext {
-    
-return 动画持续时间;
-}
-
-
--(void)animateTransition:(id&lt;UIViewControllerContextTransitioning&gt;)transitionContext{
-
-在这个方法里面做动画事件
-
-}
-
-</code></pre>
-
-<h5 id="toc_6">2️⃣fromViewController和toViewController</h5>
-
-<p>要注意fromViewController和toViewController 比如A-&gt;B（present）<br/>
-那么A是fromViewController B 是toViewController<br/>
-然后如果 dissmissViewController 的时候B是fromViewController A是toViewController</p>
-
-<h5 id="toc_7">3️⃣转场动画背景为黑色</h5>
-
-<p>可以先把目标控制器的 view 加到[transitionContext containerView]效果会好很多，然后再加入要发生动画的控制器的 view 比如</p>
-
-<pre><code class="language-text">-(void)animateTransitionEvent{
-    
-[self.containerView addSubview:self.toViewController.view];
-[self.containerView addSubview:self.fromViewController.view];
-[UIView animateWithDuration:self.transitionDuration delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
-    self.fromViewController.view.transform = CGAffineTransformMakeScale(0.1, 0.1);
-} completion:^(BOOL finished) {
-    [self completeTransition];
-}];
-}
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/8/15</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509807752.html">
-                
-                  <h1>Speed Up Development with Xcode File Templates</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h4 id="toc_0">Custom Templates Directory</h4>
-
-<ul>
-<li><p>~/Library/Developer/Xcode/Templates<br/>
-进入到指定的模版路径</p></li>
-<li><p>mkdir -p ~/Library/Developer/Xcode/Templates/File\ Templates/Custom 创建一个Custom 的文件夹</p></li>
-</ul>
-
-<h5 id="toc_1">Xcode Default Templates Directory</h5>
-
-<p>/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/File Templates</p>
-
-<p>进入之后复制一些其他的模版到自己的custom模版 然后进入模版之后编辑自己经常使用的模版，可以极大的提升开发的效率。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/8/15</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509804237.html">
-                
-                  <h1>给UITableView边框加阴影</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>项目中有个需求要在UITableView加边框阴影  </p>
-
-<p>如果你的界面的UITableView是充满整个屏幕的话那么就可以使用这个简单的方法。   </p>
-
-<ul>
-<li>方法一</li>
-</ul>
-
-<pre><code class="language-text">tableView.layer.shadowColor = UIColor(white: 000000, alpha: 0.3).CGColor
-
-tableView.layer.shadowOffset = CGSize(width: -6, height: 6)
-
-tableView.layer.shadowOpacity = 1
-
-tableView.clipsToBounds = false //这句最重要了，不然就显示不出来
-</code></pre>
-
-<h4 id="toc_0">问题来了</h4>
-
-<p>我的界面UITableview上面有一个固定不动的区域，如果单纯的照上面写的话，就会出现tableview盖住上面的问题 <br/>
-其实就是因为clipsToBounds = false 不对超出边框的部分进行切割。<br/><br/>
-因为UIScrollview默认clipsToBounds = true,所以你可能之前没有见过超出部分依然还显示在界面。 </p>
-
-<p>我的界面如下图所示<br/>
-<img src="https://lh3.googleusercontent.com/-Zq0sRfLUSQA/W_Jq6QFUYnI/AAAAAAAAlSU/JFoyTporhCgZafmew7cHT7yWGo2fn1ATQCHMYCw/I/15426133929938.jpg" alt=""/></p>
-
-<p>如果父视图的clipsToBounds = true那么在上面的子控件的clipsToBounds 也是true<br/><br/>
-所以必须要在UITableview下面添加一个UIView，可以使用下面的代码<br/><br/>
-必须要使UITableView的clipsToBounds = true，下面的父视图的clipsToBounds = false</p>
-
-<ul>
-<li>方法二</li>
-</ul>
-
-<pre><code class="language-text">    self.backView = [[UIView alloc]initWithFrame:CGRectMake(originX, originY, Width,  height)];
-    self.backView.layer.shadowColor = [UIColor gh_colorFromHexString:@&quot;#002F81&quot;].CGColor;
-    self.backView.layer.shadowOffset = CGSizeMake(0, 2);
-    self.backView.layer.shadowOpacity = 0.1;
-    self.backView.layer.shadowRadius=8;//设置阴影半径
-    self.backView.clipsToBounds = false;
-    [self.view addSubview:self.backView];
-    
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,0, Width, height) style:UITableViewStylePlain];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    self.tableView.layer.cornerRadius = KScreenWidth/375 *4;
-    self.tableView.layer.masksToBounds = YES;
-    self.tableView.tableFooterView = [UIView new];
-    [self.backView addSubview:self.tableView];
-
-
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/8/11</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -870,8 +1150,6 @@ tableView.clipsToBounds = false //这句最重要了，不然就显示不出来
             <a href="Python.html"><strong>Python</strong></a>
         
             <a href="iOS.html"><strong>iOS</strong></a>
-        
-            <a href="%E6%88%91.html"><strong>我</strong></a>
          
         </p>
 
@@ -888,31 +1166,31 @@ tableView.clipsToBounds = false //这句最重要了，不然就显示不出来
 	      
 		      
 			      <li class="post">
-			        <a href="16076509804045.html">RACCommand</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="16076509805027.html">关于我</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
 			        <a href="16076509807659.html">点击事件发生在视图边界之外的时候</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
+			        <a href="16085259457329.html">MRC 时代的引用计数的现身</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509804683.html">Xcode打包遇到的坑</a>
+			        <a href="16085257826419.html">自动释放池AutoreleasePool![内存管理-3 2](media/16085257826419/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86-3%202.jpg)</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804045.html">RACCommand</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
 			      </li>
 		     
 		  

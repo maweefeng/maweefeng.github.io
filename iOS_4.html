@@ -84,8 +84,6 @@
             <li><a href="Python.html">Python</a></li>
         
             <li><a href="iOS.html">iOS</a></li>
-        
-            <li><a href="%E6%88%91.html">我</a></li>
          
 
       </ul>
@@ -107,6 +105,224 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="16076509806751.html">
+                
+                  <h1>UICollectionViewFlowLayout</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>可以重写方法</p>
+
+<ul>
+<li>(nullable NSArray&lt;__kindof UICollectionViewLayoutAttributes *&gt; *)layoutAttributesForElementsInRect:(CGRect)rect;</li>
+</ul>
+
+<p>给每个 cell 重写布局 </p>
+
+<p>另外还有下面这个方法在 view 的位置改变的时候实时调用上一个方法</p>
+
+<ul>
+<li>(BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds; // return YES to cause the collection view to requery the layout for geometry information</li>
+</ul>
+
+<h2 id="toc_0">UIViewPropertyAnimator</h2>
+
+<p>动画除了[UIView animation...]<br/>
+还可以使用UIView中的这个属性实现 </p>
+
+<p>创建一个 animator跟一个 block 实现具体的动画效果<br/>
+然后启动 animator</p>
+
+<h3 id="toc_1">添加Blur</h3>
+
+<p>let blurEffect = UIBlurEffect(style:.regular)</p>
+
+<p>let visualEffectView = UIViewEffectView(effct:blurEffect)</p>
+
+<p>self.addSubview(visualEffectView)</p>
+
+<p>然后布局visualEffectView </p>
+
+<p>蒙版的效果就有了 </p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509805332.html">
+                
+                  <h1>Protocol</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>注意协议只是个声明文件，并没有实现。<br/>
+谁声明，谁调用。</p>
+
+<p>协议可用定义在单独.h文件中，也可用定义在某个类中：</p>
+
+<p>（1） 如果这个协议只用在某个类中，应该把协议定义在该类中</p>
+
+<p>（2） 如果这个协议用在很多类中，就应该定义在单独文件中</p>
+
+<p>不过，如果子类自身又遵循了这个协议，但并没有实现，那么在运行时，系统会一级级往上查找，直到找到父类的方法实现。也就是说，只要知道苹果的私有方法名，并且确保自己的类是这个私有方法所属类的子类，就可以在子类中通过只声明不实现的方式执行父类中该私有方法的实现。</p>
+
+<h5 id="toc_0">category</h5>
+
+<p>category也是一种特殊的协议，内部可以调用，外部不能调用、子类不能重写实现和重写，相当于是私有方法。</p>
+
+<h4 id="toc_1">总结</h4>
+
+<p>协议就是定义公共接口的地方，只要遵守协议，就等于在头文件中定义了这些方法，只要实现就行了。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/16</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509804745.html">
+                
+                  <h1>Flutter && Python && OC</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">dart的函数定义如下所示</h3>
+
+<pre><code class="language-text">// Define a function.
+printInteger(int aNumber) {
+  print(&#39;The number is $aNumber.&#39;); // Print to console.
+}
+
+// This is where the app starts executing.
+main() {
+  var number = 42; // Declare and initialize a variable.
+  printInteger(number); // Call a function.
+}
+
+isNoble(atomicNumber) {
+  return _nobleGases[atomicNumber] != null;
+}
+
+如果函数只有单个语句，可以采用简略的形式：
+
+bool isNoble(int atomicNumber) =&gt; _nobleGases[atomicNumber] != null;
+
+
+</code></pre>
+
+<h3 id="toc_1">$dart取地址</h3>
+
+<pre><code class="language-text">String say(String from, String msg, [String device]) {
+  var result = &#39;$from says $msg&#39;;
+  if (device != null) {
+    result = &#39;$result with a $device&#39;;
+  }
+  return result;
+}
+
+</code></pre>
+
+<p>以分号结尾 参数类型要指定也可以不指定<br/><br/>
+=&gt; 是{ return expr;} 的缩写</p>
+
+<h3 id="toc_2">oc的函数定义</h3>
+
+<pre><code class="language-text">-(void)hello{
+
+print(@&quot;hello world&quot;);
+
+}
+-(void)hello(int a,int b){
+
+print(@&quot;hello world %d %d&quot;,a,b);
+
+}
+
+
+</code></pre>
+
+<p>无需注意缩进 但是返回值类型一定要明确</p>
+
+<h3 id="toc_3">python函数定义</h3>
+
+<pre><code class="language-text">def xxxx:
+    print &#39;hello world&#39;
+    
+def xxx(a,b):
+   print(a,b)
+   
+def xxx(self,a,b)
+   print a,b
+   
+</code></pre>
+
+<p>由于没有分号和大括号所以一定要注意缩进，</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="16076509807797.html">
                 
@@ -686,200 +902,6 @@ AudioServicesPlaySystemSound(kSystemSo undID_Vibrate);//上面是震动方法 �
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="16076509809545.html">
-                
-                  <h1>Autorelease Pool 的用处</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>在 ARC 下，我们并不需要手动调用 autorelease 有关的方法，甚至可以完全不知道 autorelease 的存在，就可以正确管理好内存。因为 Cocoa Touch 的 Runloop 中，每个 runloop circle 中系统都自动加入了 Autorelease Pool 的创建和释放。</p>
-
-<p>当我们需要创建和销毁大量的对象时，使用手动创建的 autoreleasepool 可以有效的避免内存峰值的出现。因为如果不手动创建的话，外层系统创建的 pool 会在整个 runloop circle 结束之后才进行 drain，手动创建的话，会在 block 结束之后就进行 drain 操作。详情请参考苹果官方文档。一个普遍被使用的例子如下：</p>
-
-<pre><code class="language-text">for (int i = 0; i &lt; 100000000; i++)
-{
-    @autoreleasepool
-    {
-        NSString* string = @&quot;ab c&quot;;
-        NSArray* array = [string componentsSeparatedByString:string];
-    }
-}
-</code></pre>
-
-<p>如果不使用 autoreleasepool ，需要在循环结束之后释放 100000000 个字符串，如果<br/>
-使用的话，则会在每次循环结束的时候都进行 release 操作。</p>
-
-<h2 id="toc_0">Autorelease Pool 进行 Drain 的时机</h2>
-
-<p>如上面所说，系统在 runloop 中创建的 autoreleaspool 会在 runloop 一个 event 结束时进行释放操作。我们手动创建的 autoreleasepool 会在 block 执行完成之后进行 drain 操作。需要注意的是：</p>
-
-<p>当 block 以异常（exception）结束时，pool 不会被 drain</p>
-
-<p>Pool 的 drain 操作会把所有标记为 autorelease 的对象的引用计数减一，但是并不意味着这个对象一定会被释放掉，我们可以在 autorelease pool 中手动 retain 对象，以延长它的生命周期（在 MRC 中）。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/10/11</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509804401.html">
-                
-                  <h1>Runtime运行时</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ol>
-<li><p>runtime调用方法</p>
-<pre><code class="language-text">- (void)test {
-TestModel *objct = [[TestModel alloc] init];<br/>
-((void (*) (id, SEL)) objc_msgSend) (objct, sel_registerName(&quot;country&quot;));<br/>
-((void (*) (id, SEL, NSString *)) objc_msgSend) (objct, sel_registerName(&quot;getProvince:&quot;), @&quot;广东省&quot;)；<br/>
-((void (*) (id, SEL, NSString *, NSString *)) objc_msgSend) (objct, sel_registerName(&quot;getCity:station:&quot;), @&quot;深圳市&quot;, @&quot;世界之窗&quot;)；<br/>
-NSString *weather = ((NSString* (*) (id, SEL)) objc_msgSend) (objct, sel_registerName(&quot;getWeather&quot;));<br/>
-NSLog(@&quot;%@&quot;, weather);<br/>
-}
-</code></pre></li>
-<li><p>给分类添加属性</p>
-<pre><code class="language-#import">#import &lt;objc/runtime.h&gt;
-static void *TestStringKey = &amp;TestStringKey;<br/>
-@implementation TestModel (String)<br/>
-- (void)setTestString:(NSString *)testString {<br/>
-objc_setAssociatedObject(self, TestStringKey, testString, OBJC_ASSOCIATION_COPY);<br/>
-}<br/>
-- (NSString *)testString {<br/>
-return objc_getAssociatedObject(self, TestStringKey);<br/>
-}<br/>
-@end
-</code></pre></li>
-<li><p>获取属性</p>
-<pre><code class="language-text">使用class_copyIvarList获得的属性数组是Ivar类型 
-可以使用ivar_getName将ivar类型转换为char<br/>
-再使用NSString 的stringWithUTF8String方法转化为NSString类型。
-</code></pre></li>
-</ol>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/10/10</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509809509.html">
-                
-                  <h1>对Block的一点点认识</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>如果使用weak修饰block，那么将有可能出现野指针的错误问题</p>
-
-<p>那么strong 和 copy 有什么区别呢？ </p>
-
-<p>block本身是像对象一样可以retain，和release。但是，block在创建的时候，它的内存是分配在栈上的，而不是在堆上。他本身的作于域是属于创建时候的作用域，一旦在创建时候的作用域外面调用block将导致程序崩溃。因为栈区的特点就是创建的对象随时可能被销毁,一旦被销毁后续再次调用空对象就可能会造成程序崩溃,在对block进行copy后,block存放在堆区.<br/>
-使用retain也可以，但是block的retain行为默认是用copy的行为实现的，<br/>
-因为block变量默认是声明为栈变量的，为了能够在block的声明域外使用，所以要把block拷贝（copy）到堆，所以说为了block属性声明和实际的操作一致，最好声明为copy。</p>
-
-<h2 id="toc_0">Block防止内存泄漏问题</h2>
-
-<p>另外还需要注意的是使用 block 的时候注意到内存泄露的情况，必要的时候要使用 weak 中断两个引用。</p>
-
-<h3 id="toc_1">关于Block的一点注意 特别是网络请求这块</h3>
-
-<p>Block捕获外界变量销毁<br/>
-我们再进一步想想，Block有个最大的特点是可以访问当前的作用域，我们随便创建一个数组，重复上面操作，是否能够销毁...</p>
-
-<pre><code class="language-text">- (void)blockDemo {
-    NSArray *outsideArray = @[@1, @2, @3];
-    
-    [self.service requestWithParms:nil WithResult:^(id data, NSError *error) {
-        // 处理业务逻辑
-        // ...
-        
-        NSLog(@&quot;Result from block:%@&quot;, data);
-        NSLog(@&quot;outsideArray :%@&quot;, outsideArray);
-    }];
-}
-
-打印结果：
-2018-03-25 19:55:40.997535+0800 NetworkCallback[4970:3641450] NextPageViewController has been dealloc!
-2018-03-25 19:55:44.831721+0800 NetworkCallback[4970:3641450] outsideArray :(
-    1,
-    2,
-    3
-)
-</code></pre>
-
-<p>注意，vc先销毁了，但是5s后，这个临时变量竟然还没有销毁。那么这个变量存储在哪里呢？<br/>
-考虑一下，如果你在Block代码里访问了一个超大的文件，这个文件必然是保存在内存的，然后此时你遇上了网络慢，接口好久没有返回，那么这个超大的文件就会一直占用内存</p>
-
-<h4 id="toc_2">小结</h4>
-
-<p>使用Block无论是否有循环引用的可能，都要使用weakself，来防止vc被持有，而延迟释放<br/>
-Block会导致对象的生命周期被延长，特别是当某些大文件被Block访问时，有几率导致内存不足</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/10/7</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -939,8 +961,6 @@ Block会导致对象的生命周期被延长，特别是当某些大文件被Blo
             <a href="Python.html"><strong>Python</strong></a>
         
             <a href="iOS.html"><strong>iOS</strong></a>
-        
-            <a href="%E6%88%91.html"><strong>我</strong></a>
          
         </p>
 
@@ -957,31 +977,31 @@ Block会导致对象的生命周期被延长，特别是当某些大文件被Blo
 	      
 		      
 			      <li class="post">
-			        <a href="16076509804045.html">RACCommand</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="16076509805027.html">关于我</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
 			        <a href="16076509807659.html">点击事件发生在视图边界之外的时候</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
+			        <a href="16085259457329.html">MRC 时代的引用计数的现身</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509804683.html">Xcode打包遇到的坑</a>
+			        <a href="16085257826419.html">自动释放池AutoreleasePool![内存管理-3 2](media/16085257826419/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86-3%202.jpg)</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804045.html">RACCommand</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
 			      </li>
 		     
 		  

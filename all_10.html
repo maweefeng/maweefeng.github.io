@@ -84,8 +84,6 @@
             <li><a href="Python.html">Python</a></li>
         
             <li><a href="iOS.html">iOS</a></li>
-        
-            <li><a href="%E6%88%91.html">我</a></li>
          
 
       </ul>
@@ -107,6 +105,142 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15766567217978.html">
+                
+                  <h1>iOS UICollectionView刷新时闪屏的解决方法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>在做相册的时候遇到了一个问题，就是UICollectionView刷新的时候会闪屏，网上搜了搜，解决的方法也是挺多，并没有一一尝试，只是存下来做个笔记，来看看遇到的几种方法。</p>
+
+<p>方法一：</p>
+
+<pre><code class="language-text">[UIView performWithoutAnimation:^{ 
+   //刷新界面 
+    [self.collectionView reloadData]; 
+ }];
+
+</code></pre>
+
+<p>把刷新界面的事件放在这个BLock里就可以了！</p>
+
+<p>方法二</p>
+
+<pre><code class="language-[uiview">  [collectionView performBatchUpdates:^{ 
+    [collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]]; 
+  } completion:nil]; 
+}];
+</code></pre>
+
+<p>方法三</p>
+
+<pre><code class="language-[uiview">[self.trackPanel performBatchUpdates:^{ 
+  [collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]]; 
+} completion:^(BOOL finished) { 
+  [UIView setAnimationsEnabled:YES]; 
+}];
+</code></pre>
+
+<p>如果你的APP只支持iOS7+，推荐使用第一种方式performWithoutAnimation简单方便。</p>
+
+<p>上面说的方法只能解决UIView的Animation，但是如果你的cell中还包含有CALayer的动画，比如这样：</p>
+
+<pre><code class="language-text">- (void)layoutSubviews{
+  [super layoutSubviews];
+   
+  self.frameLayer.frame = self.frameView.bounds;
+}
+</code></pre>
+
+<p>上述情况多用于自定义控件使用了layer.mask的情况，如果有这种情况，上面提到的方法是无法取消CALayer的动画的，但是解决办法也很简单：</p>
+
+<pre><code class="language--">  [super layoutSubviews];
+   
+  [CATransaction begin];
+  [CATransaction setDisableActions:YES];
+   
+  self.frameLayer.frame = self.frameView.bounds;
+   
+  [CATransaction commit];  
+}
+
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/7/14</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509804110.html">
+                
+                  <h1>You don’t have write permissions</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">终端运行sudo gem update出现如下错误</h3>
+
+<blockquote>
+<p>ERROR: While executing gem … (Gem::FilePermissionError) <br/>
+You don’t have write permissions for the /usr/bin directory.</p>
+</blockquote>
+
+<p>试一下这一段代码</p>
+
+<blockquote>
+<p>sudo gem install -n /usr/local/bin cocoapods</p>
+</blockquote>
+
+<p>这表示是在本地环境去安装cocoaPods,现在为了安全最好使用这种安装的方式。</p>
+
+<h3 id="toc_1">使用Homebrew安装cocoaPods的地址</h3>
+
+<p>最终安装的路径在<code>/usr/local/Cellar/</code></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/7/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%85%B6%E5%AE%83.html'>其它</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="16076509804558.html">
                 
@@ -823,297 +957,6 @@ cmdline.execute(&#39;scrapy crawl douban_spider -o output.csv&#39;.split())
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="16076509805947.html">
-                
-                  <h1>What's New in LLVM（2017）</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>Xcode 9中的Apple LLVM编译器具有新的语言特性、改进的诊断和更强大的优化。了解Objective-C和c++的最新添加，了解新的和改进的警告和静态分析器检查，了解LLVM编译器技术如何为应用程序提供更快的构建时间和更好的运行时性能。</p>
-
-<h2 id="toc_0">1.不同语言的api检查</h2>
-
-<pre><code class="language-text">@available(iOS 11,*)--oc
-#available  --swift
-</code></pre>
-
-<p>便捷的方法检查（检查可用性，如果你要给某个新的系统加入新功能）</p>
-
-<pre><code class="language-text">@interface MyAblumController : UIViewController
-
--(void)showFaces API_AVALABILITY(ios(11.0));
-
-@end
-</code></pre>
-
-<p>还可以移动整个类的范围</p>
-
-<pre><code class="language-text">API_AVALABILITY(ios(11.0))
-@interface MyAblumController : UIViewController
-
--(void)showFaces ;
-
-@end
-</code></pre>
-
-<h2 id="toc_1">2.不要把Number元素和标量进行比较</h2>
-
-<pre><code class="language-text">@property NSNumber * photoCount;
--(BOOL)hasPhotos{
-return self.photoCount &gt; 0
-}
-</code></pre>
-
-<p>因为这个比较相当于是把photoCount和指针nil相比，返回为YES,所以这个错误很严重。</p>
-
-<p><img src="media/15445814733953/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%884.26.59.png" alt="屏幕快照 2018-12-12 下午4.26.59"/></p>
-
-<p>编译器会报错，提醒你出现了问题，你可以把NSNumber转成interger之后再做判断。</p>
-
-<p><img src="media/15445814733953/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%884.28.18.png" alt="屏幕快照 2018-12-12 下午4.28.18"/></p>
-
-<h6 id="toc_2">Control Check in Build Setting</h6>
-
-<p>设置Suspicious Conversions 为YES(aggressive)当编译器不确定的时候会弹出如上提示。<br/>
-<img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%885.06.22.png" alt="屏幕快照 2018-12-12 下午5.06.22"/></p>
-
-<h2 id="toc_3">3. copy修饰NSMutableArray</h2>
-
-<p>赋值的时候等于是复制了一个不可变对象，所以以后运行时的时候会报错(如果你对这个数组进行修改)</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%886.45.36.png" alt="屏幕快照 2018-12-12 下午6.45.36"/></p>
-
-<p>这个时候就会报错，因为给self.titieArr赋值之后变成了不可变的，所以接下来的操作会导致错误。</p>
-
-<h6 id="toc_4">解决方法:</h6>
-
-<pre><code class="language-text">//添加setter方法
--(void)setTitleArr:(NSMutableArray *)titleArr{
-    
-    self.titleArr= [titleArr mutableCopy];
-}
-</code></pre>
-
-<p>每次赋值的时候给数组赋值可变对象。</p>
-
-<p>另外为了及时发现bug可以开启每次build的时候analyze而不是每次都要去手动analyze（如果不开启的话上面的错误不会提示）</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%886.48.45.png" alt="屏幕快照 2018-12-12 下午6.48.45"/><br/>
-设置Analyze During Build 的值为Yes.</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%886.43.05.png" alt="屏幕快照 2018-12-12 下午6.43.05"/></p>
-
-<h2 id="toc_5">4. 声明无参数的函数</h2>
-
-<h5 id="toc_6">Non-prototype declarations in C and Objective-C</h5>
-
-<p>非原型声明</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.47.06.png" alt="屏幕快照 2018-12-13 下午3.47.06"/></p>
-
-<p>在C和OC中意味着foo可以跟任何参数调用，这个行为可以追溯到1977年C语言，不匹配类型的调用会导致运行时的崩溃。<br/>
-在Xcode9 中编译器带有一个新的警告加强严格原型，会报出警告。</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.50.45.png" alt="屏幕快照 2018-12-13 下午3.50.45"/></p>
-
-<p>通常只需要在括号中添加void表示不接收任何参数传递。</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.51.41.png" alt="屏幕快照 2018-12-13 下午3.51.41"/></p>
-
-<p>任何带有参数的调用都会直接报错。</p>
-
-<p>另外block中不接收参数的时候也会出现同样的警告，如下所示。</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.52.47.png" alt="屏幕快照 2018-12-13 下午3.52.47"/></p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.53.57.png" alt="屏幕快照 2018-12-13 下午3.53.57"/></p>
-
-<h3 id="toc_7">升级验证警告设置</h3>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%884.08.45.png" alt="屏幕快照 2018-12-13 下午4.08.45"/></p>
-
-<p>勾选Yes(Error)</p>
-
-<h6 id="toc_8">Strict Prototypes 勾选Yes(Error)之前 and 勾选之后</h6>
-
-<p><img src="media/15446033549417/Artboard%202@2x.png" alt="Artboard 2@2x"/></p>
-
-<p>勾选之后就不只是警告了，直接是错误提醒，让你开发的时候不得不注意，也是为了代码的安全性。</p>
-
-<h3 id="toc_9">结尾</h3>
-
-<p>WWDC2017剩余部分是关于C++的优化，如果感兴趣的话可以移步<a href="https://developer.apple.com/videos/play/wwdc2017/411">开发者网站</a>观看。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/6/10</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509808799.html">
-                
-                  <h1>python3 urllib 访问https网站</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>ssl._create_default_https_context=ssl._create_unverified_context<br/>
-urllib  urllib2 urllib3并不是进化关系<br/>
-urllib和urllib2是相互独立的模版</p>
-
-<h2 id="toc_0">列表</h2>
-
-<ul>
-<li>列表添加新元素<br/>
-append()</li>
-<li><p>列表删除元素</p>
-<blockquote>
-<p>pop()方法总是删掉list的最后一个元素，并且它还返回这个元素</p>
-</blockquote>
-<p>pop()</p>
-<p>pop(2)删掉list中索引为2的元素</p></li>
-</ul>
-
-<h2 id="toc_1">元组</h2>
-
-<p>元组和列表不同的是创建方式用()替代了[]，而且元组一旦创建就不能改变。</p>
-
-<p>同样可以根据索引取到元组的内容。</p>
-
-<pre><code class="language-text">&gt;&gt;&gt; t = (1)
-&gt;&gt;&gt; print t
-1
-</code></pre>
-
-<p>创建单元组需要注意，因为创建元组的方式是（）和运算优先级冲突了，所以上面的结果是1。</p>
-
-<p>所以创建单元组要在第一个元素后自动添加一个&#39;,&#39;，就像下面的一样。</p>
-
-<pre><code class="language-text">&gt;&gt;&gt; t = (1,)
-&gt;&gt;&gt; print t
-(1,)
-</code></pre>
-
-<p>还有需要注意的是元组也可以&#39;可变‘，其实这种可变并不是真正的可变。比如下面的这个例子，元组中包括一个数组，数组就可以改变。</p>
-
-<pre><code class="language-text">&gt;&gt;&gt; t = (&#39;a&#39;, &#39;b&#39;, [&#39;A&#39;, &#39;B&#39;])
-&gt;&gt;&gt; L = t[2]
-&gt;&gt;&gt; L[0] = &#39;X&#39;
-&gt;&gt;&gt; L[1] = &#39;Y&#39;
-&gt;&gt;&gt; print t
-(&#39;a&#39;, &#39;b&#39;, [&#39;X&#39;, &#39;Y&#39;])
-</code></pre>
-
-<h2 id="toc_2">set</h2>
-
-<p>Python中什么是set<br/>
-dict的作用是建立一组 key 和一组 value 的映射关系，dict的key是不能重复的。</p>
-
-<p>有的时候，我们只想要 dict 的 key，不关心 key 对应的 value，目的就是保证这个集合的元素不会重复，这时，set就派上用场了。</p>
-
-<p>set 持有一系列元素，这一点和 list 很像，但是set的元素没有重复，而且是无序的，这点和 dict 的 key很像。</p>
-
-<p>创建 set 的方式是调用 set() 并传入一个 list，list的元素将作为set的元素：</p>
-
-<pre><code class="language-text">&gt;&gt;&gt; s = set([&#39;A&#39;, &#39;B&#39;, &#39;C&#39;])
-&gt;&gt;&gt; print s
-set([&#39;A&#39;, &#39;C&#39;, &#39;B&#39;])
-</code></pre>
-
-<h3 id="toc_3">Python之 访问set</h3>
-
-<p>由于set存储的是无序集合，所以我们没法通过索引来访问。</p>
-
-<p>访问 set中的某个元素实际上就是判断一个元素是否在set中。</p>
-
-<p>例如，存储了班里同学名字的set：</p>
-
-<p><code>&gt;&gt;&gt; s = set([&#39;Adam&#39;, &#39;Lisa&#39;, &#39;Bart&#39;, &#39;Paul&#39;])<br/>
-</code><br/>
-我们可以用 in 操作符判断：</p>
-
-<p>Bart是该班的同学吗？</p>
-
-<pre><code class="language-text">&gt;&gt;&gt; &#39;Bart&#39; in s
-True
-
-</code></pre>
-
-<h3 id="toc_4">Python之 遍历set</h3>
-
-<p>由于 set 也是一个集合，所以，遍历 set 和遍历 list 类似，都可以通过 for 循环实现。</p>
-
-<p>直接使用 for 循环可以遍历 set 的元素：</p>
-
-<pre><code class="language-text">&gt;&gt;&gt; s = set([&#39;Adam&#39;, &#39;Lisa&#39;, &#39;Bart&#39;])
-&gt;&gt;&gt; for name in s:
-...     print name
-... 
-Lisa
-Adam
-Bart
-</code></pre>
-
-<h3 id="toc_5">Python之 更新set</h3>
-
-<p>add()添加<br/>
-remove()删除</p>
-
-<h3 id="toc_6">Python之 unicode编码</h3>
-
-<pre><code class="language-text">在字符串前面加上u 比如
-&gt;&gt;&gt;a = u&quot;123&quot;
-&gt;&gt;&gt;type(a)
-&gt;&gt;&gt;unicode
-
-&gt;&gt;&gt;b = &quot;123&quot;
-&gt;&gt;&gt;type(b)
-&gt;&gt;&gt;str
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/5/10</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Python.html'>Python</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -1173,8 +1016,6 @@ remove()删除</p>
             <a href="Python.html"><strong>Python</strong></a>
         
             <a href="iOS.html"><strong>iOS</strong></a>
-        
-            <a href="%E6%88%91.html"><strong>我</strong></a>
          
         </p>
 
@@ -1191,31 +1032,31 @@ remove()删除</p>
 	      
 		      
 			      <li class="post">
-			        <a href="16076509804045.html">RACCommand</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="16076509805027.html">关于我</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
 			        <a href="16076509807659.html">点击事件发生在视图边界之外的时候</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
+			        <a href="16085259457329.html">MRC 时代的引用计数的现身</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509804683.html">Xcode打包遇到的坑</a>
+			        <a href="16085257826419.html">自动释放池AutoreleasePool![内存管理-3 2](media/16085257826419/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86-3%202.jpg)</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804045.html">RACCommand</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
 			      </li>
 		     
 		  

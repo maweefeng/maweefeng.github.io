@@ -84,8 +84,6 @@
             <li><a href="Python.html">Python</a></li>
         
             <li><a href="iOS.html">iOS</a></li>
-        
-            <li><a href="%E6%88%91.html">我</a></li>
          
 
       </ul>
@@ -107,6 +105,286 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="16076509806365.html">
+                
+                  <h1>Value and Reference Collections</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>值类型和引用类型的集合有所不同,看下图可知。</p>
+
+<p><img src="media/15471123133942/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-01-10%20%E4%B8%8B%E5%8D%885.25.48.png" alt="屏幕快照 2019-01-10 下午5.25.48" style="width:601px;"/></p>
+
+<pre><code class="language-text">示例1      
+let x = NSMutableArray()
+x.add(&quot;🐵&quot;)
+let y = x
+y.add(&quot;🐶&quot;)    
+print(x,y)
+//结果
+(
+    &quot;🐵&quot;,
+    &quot;🐶&quot;
+) (
+    &quot;🐵&quot;,
+    &quot;🐶&quot;
+)  
+</code></pre>
+
+<pre><code class="language-text">示例2     
+var x:[String] = []
+x.append(&quot;🐵&quot;)
+var y = x
+y.append(&quot;🐶&quot;)
+    
+print(x,y)
+//结果  
+[&quot;🐵&quot;] [&quot;🐵&quot;, &quot;🐶&quot;]
+</code></pre>
+
+<p>打印内存地址，探究 x 和 y 内存指向空间的关系。</p>
+
+<pre><code class="language-text">示例3  
+var x:[String] = []
+x.append(&quot;🐵&quot;)
+let xaddress = String(format: &quot;%p&quot;, x)
+print(&quot;xaddress===\(xaddress)&quot;)
+var y = x
+let yaddress = String(format: &quot;%p&quot;, y)
+print(&quot;yaddress===\(yaddress)&quot;)
+y.append(&quot;🐶&quot;)
+print(&quot;yaddress===\(yaddress)&quot;)
+
+//结果
+xaddress===0x600000434640
+yaddress===0x6000004346a0
+yaddress===0x6000004346a0
+</code></pre>
+
+<pre><code class="language-text">示例4  
+let x = NSMutableArray()
+x.add(&quot;🐵&quot;)
+let xaddress = String(format: &quot;%p&quot;, x)
+print(&quot;xaddress===\(xaddress)&quot;)
+let y = x
+let yaddress = String(format: &quot;%p&quot;, y)
+print(&quot;yaddress===\(yaddress)&quot;)
+y.add(&quot;🐶&quot;)
+print(&quot;yaddress===\(yaddress)&quot;)
+
+//结果
+xaddress===0x6000004508c0
+yaddress===0x6000004508c0
+yaddress===0x6000004508c0
+</code></pre>
+
+<p>示例3中的  <code>var y = x</code>会使y开辟一个新的内存空间，内容是复制x的内容，y添加元素，从而不会影响到 x。</p>
+
+<p>但是示例4对于 <code>let y = x</code> 没有开辟新的内存空间 还是指向同一块区域，所以当 y 发生改变的时候 x 的值也发生了改变。</p>
+
+<h3 id="toc_0">结语</h3>
+
+<p>NS前缀的是引用类型，引用类型只存在一份内存，因此改变一个值就会引起另一个值的改变，这个需要引起注意。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/10/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509804922.html">
+                
+                  <h1>iOS开发一些小技巧</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ul>
+<li><p>去掉xcode黄色警告的方法</p>
+<pre><code class="language-text">#pragma clang diagnostic push
+#pragma clang diagnostic ignored &quot;-Wdeprecated-declarations&quot;<br/>
+ your code with warning<br/>
+#pragma clang diagnostic pop<br/>
+#pragma clang diagnostic push<br/>
+#pragma clang diagnostic ignored &quot;-Wunused-variable&quot;<br/>
+ your code with warning<br/>
+#pragma clang diagnostic pop
+</code></pre></li>
+<li><p>控制器init方法执行时间</p>
+<pre><code class="language-text">_coverView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+在控制器init方法中初始化一个大小为self.view.bounds的uiview必须等待视图出来的时候才会进行，要不然一直在主线程等待。<br/>
+如果直接给CGRectmake设置的话不用等界面加载就会执行，应该是一个主线程问题。 <br/>
+这个时候如果直接去xib里面的控件，就会出现取不到的情况，取出来是nil。
+</code></pre></li>
+<li><p>判断字符串为空</p>
+<pre><code class="language-text">今天遇到个问题，后台用java写的，给我传回一个空字符串，类型是NSNull，用
+stringWithFormat:转出来居然是@&quot;&lt;null&gt;&quot;，<br/>
+注意，这不是空，NSNull和nil是不同的。需要用 xxx == [NSNull null]加以判断。
+</code></pre>
+<pre><code class="language-text">去掉UITableView多余的空白行分割线
+有一种简单的方法<br/>
+self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+</code></pre></li>
+<li><p>如何将本地代码提交到远程git仓库</p>
+<pre><code class="language-text">* 第一步：建立git仓库 
+cd到你的本地项目根目录下，执行git命令 <br/>
+ git init<br/>
+* 第二步：将项目的所有文件添加到仓库中   <br/>
+ git add .  <br/>
+* 第三步：将add的文件commit到仓库<br/>
+  git commit -m &quot;注释语句&quot;<br/>
+* 第四步：去github上创建自己的Repository<br/>
+* 第五步：重点来了，将本地的仓库关联到github上    <br/>
+  git remote add origin 仓库url<br/>
+ 后面的https链接地址换成你自己的仓库url地址，也就是上面红框中标出来的地址<br/>
+* 第六步：上传github之前，要先pull一下，执行如下命令：<br/>
+  git pull origin master<br/>
+* 第七步，也就是最后一步，上传代码到github远程仓库<br/>
+  git push -u origin master  <br/>
+  git push -u origin master -f //强制push<br/>
+  每次如果有代码需要提交必须要add一下 并且在本地commit 打下log 再去拉取remote代码，<br/>
+  然后push到remote的这样一个流程。
+</code></pre></li>
+<li><p>button 的文字显示不全</p>
+<pre><code class="language-text"> [label setAdjustsFontForContentSizeCategory:YES]调节字体大小.
+</code></pre></li>
+<li><p>从xib加载View</p>
+<pre><code class="language-text">// Instantiate the nib content without any reference to it.
+NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:@&quot;EPPZPlainView&quot; owner:nil options:nil];<br/>
+// Find the view among nib contents (not too hard assuming there is only one view in it).<br/>
+UIView *plainView = [nibContents lastObject];<br/>
+// Some hardcoded layout.<br/>
+CGSize padding = (CGSize){ 22.0, 22.0 };<br/>
+plainView.frame = (CGRect){padding.width, padding.height, plainView.frame.size};<br/>
+// Add to the view hierarchy (thus retain).<br/>
+[self.view addSubview:plainView];
+</code></pre></li>
+<li><p>修改导航条的颜色</p>
+<pre><code class="language-text">self.navigationController.navigationBar.barTintColor = [UIColor redColor];```
+</code></pre></li>
+</ul>
+
+<ul>
+<li><p>当某个UIView调用drawRect方法之后，它的默认背景就是黑色的</p>
+<p>解决办法有在初始化的时候设置backgroundColor</p>
+<pre><code class="language-text">- (void)awakeFromNib {
+    [super awakeFromNib];<br/>
+    self.backgroundColor = [UIColor clearColor];<br/>
+    // Initialization code<br/>
+}<br/>
+- (id)initWithFrame:(CGRect)frame<br/>
+{<br/>
+    self = [super initWithFrame:frame];<br/>
+    if (self) {<br/>
+        // Initialization code<br/>
+        self.backgroundColor = [UIColor blueColor]<br/>
+    }<br/>
+    return self;<br/>
+}
+</code></pre></li>
+<li><p>或者在drawRect里面写下如下代码 </p>
+<pre><code class="language-text">- (void)drawRect:(CGRect)rect
+{<br/>
+    // Drawing code<br/>
+    [[UIColor blueColor] setFill];  // changes are here<br/>
+    UIRectFill(rect);               // and here <br/>
+}
+</code></pre></li>
+<li><p>主线程死锁</p>
+<pre><code class="language-text">    NSLog(@&quot;1---%@&quot;,[NSThread currentThread]);
+    dispatch_sync(dispatch_get_main_queue(), ^{<br/>
+        NSLog(@&quot;2&quot;);<br/>
+    });<br/>
+    NSLog(@&quot;3&quot;);<br/>
+    NSLog(@&quot;1---%@&quot;,[NSThread currentThread]);<br/>
+    dispatch_async(dispatch_get_main_queue(), ^{<br/>
+        NSLog(@&quot;2&quot;);<br/>
+    });<br/>
+    NSLog(@&quot;3&quot;);<br/>
+    //打印顺序 1，3，2<br/>
+    先加入的通知先收到通知<br/>
+    先去执行通知的内容
+</code></pre></li>
+<li><p>解决tableviewsection悬浮的问题</p>
+<pre><code class="language-text">- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat sectionHeaderHeight = 50;<br/>
+    if (scrollView.contentOffset.y&lt;=sectionHeaderHeight&amp;&amp;scrollView.contentOffset.y&gt;=0) {<br/>
+        scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);<br/>
+    } else if (scrollView.contentOffset.y&gt;=sectionHeaderHeight) {<br/>
+        scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);<br/>
+    }<br/>
+}
+</code></pre></li>
+<li><p>NSURLSession请求</p>
+<pre><code class="language-text"> NSURLSession * session = [NSURLSession sharedSession];
+    NSURLSessionDataTask * task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {<br/>
+        NSDictionary * dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];<br/>
+        NSLog(@&quot;%@&quot;,dic);<br/>
+    }];<br/>
+    [task resume];
+</code></pre></li>
+<li><p>实现点击按钮出发一次震动，比如“即刻”app的点赞</p>
+<pre><code class="language-text">导入AudioToolBox.framework
+在按钮的点击方法中执行<br/>
+AudioServicesPlaySystemSound(kSystemSo undID_Vibrate);//上面是震动方法 不灵巧<br/>
+可以使用最新的<br/>
+ UIImpactFeedbackGenerator  * zhend = [[UIImpactFeedbackGenerator alloc]initWithStyle:UIImpactFeedbackStyleLight];<br/>
+[zhend impactOccurred];
+</code></pre></li>
+<li><p>getter方法中为何不能用self</p>
+<p>有经验的开发者应该都知道这一点，在getter方法中是不能使用self.的，比如：</p>
+<pre><code class="language-text">- (NSString *)name
+{<br/>
+    NSLog(@&quot;rewrite getter&quot;);<br/>
+    return self.name;  // 错误的写法，会造成死循环<br/>
+}
+</code></pre>
+<p>原因代码注释中已经写了，这样会造成死循环。这里需要注意的是：self.name实际上就是执行了属性name的getter方法，getter方法中又调用了self.name， 会一直递归调用，直到程序崩溃。</p></li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/10/15</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="16076509809545.html">
                 
@@ -488,154 +766,6 @@ Block会导致对象的生命周期被延长，特别是当某些大文件被Blo
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="16076509805075.html">
-                
-                  <h1>消除CocoaPods引入第三方SDK的警告</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>有些强迫症不能看到xcode编译报出的警告⚠️，所以在podfile中添加一行<br/>
-<code>inhibit_all_warnings!</code><br/>
-如果没有多个<code>target</code>或者需要所有都隐藏这个黄色警告就在最外层写</p>
-
-<pre><code class="language-#"># platform :ios, &#39;9.0&#39;
-inhibit_all_warnings!
-
-target &#39;MVVM&#39; do
-  # Uncomment the next line if you&#39;re using Swift or would like to use dynamic frameworks
-  # use_frameworks!
-   pod &#39;ReactiveObjC&#39;, &#39;~&gt; 3.1.0&#39;
-   pod &#39;MBProgressHUD&#39;, &#39;~&gt; 1.1.0&#39;
-   pod &#39;MJRefresh&#39;, &#39;~&gt; 3.1.15.7&#39;
-  # Pods for MVVM
-
-end
-</code></pre>
-
-<p>如果有多个target的话就可以在各个需要隐藏的target当中写上这句话</p>
-
-<pre><code class="language-#"># platform :ios, &#39;9.0&#39;
-
-target &#39;MVVM&#39; do
-  # Uncomment the next line if you&#39;re using Swift or would like to use dynamic frameworks
-  # use_frameworks!
-  inhibit_all_warnings!
-   pod &#39;ReactiveObjC&#39;, &#39;~&gt; 3.1.0&#39;
-   pod &#39;MBProgressHUD&#39;, &#39;~&gt; 1.1.0&#39;
-   pod &#39;MJRefresh&#39;, &#39;~&gt; 3.1.15.7&#39;
-  # Pods for MVVM
-
-end
-
-target &#39;RAC&#39; do
-  # Uncomment the next line if you&#39;re using Swift or would like to use dynamic frameworks
-  # use_frameworks!
-   pod &#39;Masonry&#39;, 
-   pod &#39;AFNetworking&#39;,   # Pods for RAC
-
-end
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/9/20</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509806471.html">
-                
-                  <h1>swift 中的 selector</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>首先，@selector方法选择器是OC中很常用的一个关键字，无论是计时器相应方法，通知效应方法，按钮相应方法，自省判断是否能相应某个方法，都会用到@selector，OC中常用生成@selector的格式如下：</p>
-
-<pre><code class="language-text">- (void)func1{
-}
- 
-- (void)func1With:(id )obj{
-}
- 
-//生成选择器方法如下
-SEL selector1 = @selector(func1);
-SEL selector2 = NSSelectorFromString(@&quot;func1&quot;);
-SEL selector3 = @selector(func1With:);
-SEL selector4 = NSSelectorFromString(@&quot;func1With:&quot;);
-
-</code></pre>
-
-<p>在swift中没有@selector了，从swift2.2开始，我们开始用#selector来从暴露给OC的代码中，获取一个选择器。类似的，swift中类似于SEL的是一个叫做Selector的结构体，上述生成SEL的代码，在Swift中类似的实现方式如下：</p>
-
-<pre><code class="language-text">@objc func func1() {
-}
-
-@objc func func2(with obj:Any ) {
-}
-
-let selector1 = #selector(func1)
-let selector2 = #selector(func2(with:))
-</code></pre>
-
-<p>在swift4.0中，所有的swift方法都默认是OC不可见得。如果想让OC调用某些swift方法，需要在方法前面添加@objc关键字，以此暴露给OC。swift3.0及其之前，只要是NSObject的子类，编译器都会在非private得方法前默认加上@objc，此举会恶化编译器编译速度。如果此对象中有大量的OC调用，可以在类型前加@objcMembers关键字，所有非private方法都默认暴露给OC</p>
-
-<p>最后，如果swift中两个相同命名，参数不同方法，直接生成Selector会产生二义性报错。遇此情况，添加上参数和返回值类型，强转即可。</p>
-
-<pre><code class="language-text">@objc func func1() {
-}
-
-@objc func func1(with obj:Any ) {
-}
-
-//如此生成即可
-let selector1 = #selector(func1 as ()-&gt;Void)
-</code></pre>
-
-<hr/>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/9/20</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -695,8 +825,6 @@ let selector1 = #selector(func1 as ()-&gt;Void)
             <a href="Python.html"><strong>Python</strong></a>
         
             <a href="iOS.html"><strong>iOS</strong></a>
-        
-            <a href="%E6%88%91.html"><strong>我</strong></a>
          
         </p>
 
@@ -713,31 +841,31 @@ let selector1 = #selector(func1 as ()-&gt;Void)
 	      
 		      
 			      <li class="post">
-			        <a href="16076509804045.html">RACCommand</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="16076509805027.html">关于我</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
 			        <a href="16076509807659.html">点击事件发生在视图边界之外的时候</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
+			        <a href="16085259457329.html">MRC 时代的引用计数的现身</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509804683.html">Xcode打包遇到的坑</a>
+			        <a href="16085257826419.html">自动释放池AutoreleasePool![内存管理-3 2](media/16085257826419/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86-3%202.jpg)</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804045.html">RACCommand</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
 			      </li>
 		     
 		  

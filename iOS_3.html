@@ -84,8 +84,6 @@
             <li><a href="Python.html">Python</a></li>
         
             <li><a href="iOS.html">iOS</a></li>
-        
-            <li><a href="%E6%88%91.html">我</a></li>
          
 
       </ul>
@@ -107,6 +105,209 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="16076509804775.html">
+                
+                  <h1>UISearchbar 自定义搜索图标失真</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>关于Searchbar设置搜索图标的问题<br/>
+因为这个大小在iOS中是固定的14*14<br/>
+如果UI给的切图不是这个尺寸就会出现失真的情况（ps：因为视图的默认contentMode是UIViewContentModeScaleToFill）<br/>
+网上有的方法一般是设置一个继承自UITextfield的searchBar<br/>
+去修改SearchBar的leftView。</p>
+
+<pre><code class="language-text">UIImageView *searchIcon = [[UIImageView alloc] init];
+searchIcon.image = [UIImage imageNamed:@&quot;searchbar_textfield_search_icon&quot;];
+searchIcon.contentMode = UIViewContentModeCenter;        searchIcon.size = CGSizeMake(14, 14);
+self.leftView = searchIcon;
+self.leftViewMode = UITextFieldViewModeAlways;
+
+</code></pre>
+
+<p>但是其实完全可以便利UISearchBar的子视图拿到textField<br/>
+再去设置textField.leftView.contendMode即可</p>
+
+<p>其实系统方法<br/>
+[xxxbar setImage:forSearchBarIcon:state];<br/>
+内部就是设置了textField的leftView</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509805420.html">
+                
+                  <h1>dispatch_semaphore_t 信号量</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><code>dispatch_semaphore_t</code> 一种计算的信号量<br/>
+<code>dispatch_semaphore_create</code> 创建一个数值的信号量<br/>
+<code>dispatch_semaphore_signal</code> 对指定的信号量进行增加1</p>
+
+<p><code>dispatch_semaphore_wait</code> 会使传入的信号量减1，如果返回的值为0说明有任务进行中就阻碍当前的线程，如果返回的值大于0，就代表当前的线程当中没有任务再执行，就接着执行下面的任务。</p>
+
+<p>用这个可以起到顺序执行异步任务的功效。<br/>
+如果后一步的执行需要前一步执行完拿到结果才行的话，这也是一种异步顺序执行的方案。</p>
+
+<pre><code class="language-text">- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self task:@&quot;task one starting&quot;];
+        dispatch_semaphore_signal(semaphore);
+    });
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self task:@&quot;task two starting&quot;];
+        dispatch_semaphore_signal(semaphore);
+    });
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self task:@&quot;task three starting&quot;];
+        dispatch_semaphore_signal(semaphore);
+    });
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    
+    // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)task:(NSString *)taskName{
+    NSLog(@&quot;%@&quot;,taskName);
+    sleep(1);
+}
+
+</code></pre>
+
+<p>先执行dispatch_semaphore_wait 然后发现线程任务还在进行，就开始堵塞当前任务的线程，等待dispatch_async内部执行完成信号量+1才会继续下面的执行。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/15</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509804138.html">
+                
+                  <h1>隐藏导航栏底部的线条</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>有时候遇到一些特殊的要求，需要隐藏导航栏底部的线条。<br/>
+两行代码就可以做到。</p>
+
+<ul>
+<li>方法一:<br/>
+设置导航栏的背景图（setBackgroundImage方法）<br/>
+设置导航栏的shadowImage (setShadowImage方法)<br/></li>
+</ul>
+
+<pre><code class="language-text">UINavigationBar *navigationBar = self.navigationController.navigationBar;    
+</code></pre>
+
+<p>//设置透明的背景图，便于识别底部线条有没有被隐藏    </p>
+
+<pre><code class="language-text">[navigationBar setBackgroundImage:[[UIImage alloc] init]
+                       forBarPosition:UIBarPositionAny
+                           barMetrics:UIBarMetricsDefault]; 
+</code></pre>
+
+<p>//此处使底部线条失效</p>
+
+<pre><code class="language-text">[navigationBar setShadowImage:[UIImage new]];
+</code></pre>
+
+<ul>
+<li>方法二：</li>
+</ul>
+
+<pre><code class="language-text">self.navigationController.navigationBar.clipsToBounds = YES; 
+</code></pre>
+
+<h3 id="toc_0">导航栏全局属性设置</h3>
+
+<p>//全局设置导航栏主题</p>
+
+<pre><code class="language-text">- (void)setNavigationControllerAppearance {
+    [UINavigationBar appearance].barStyle  = UIBarStyleBlack;
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithWhite:0.1 alpha:0.5]];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+}
+
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="16076509808368.html">
                 
@@ -1584,224 +1785,6 @@ print(result)
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="16076509806751.html">
-                
-                  <h1>UICollectionViewFlowLayout</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>可以重写方法</p>
-
-<ul>
-<li>(nullable NSArray&lt;__kindof UICollectionViewLayoutAttributes *&gt; *)layoutAttributesForElementsInRect:(CGRect)rect;</li>
-</ul>
-
-<p>给每个 cell 重写布局 </p>
-
-<p>另外还有下面这个方法在 view 的位置改变的时候实时调用上一个方法</p>
-
-<ul>
-<li>(BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds; // return YES to cause the collection view to requery the layout for geometry information</li>
-</ul>
-
-<h2 id="toc_0">UIViewPropertyAnimator</h2>
-
-<p>动画除了[UIView animation...]<br/>
-还可以使用UIView中的这个属性实现 </p>
-
-<p>创建一个 animator跟一个 block 实现具体的动画效果<br/>
-然后启动 animator</p>
-
-<h3 id="toc_1">添加Blur</h3>
-
-<p>let blurEffect = UIBlurEffect(style:.regular)</p>
-
-<p>let visualEffectView = UIViewEffectView(effct:blurEffect)</p>
-
-<p>self.addSubview(visualEffectView)</p>
-
-<p>然后布局visualEffectView </p>
-
-<p>蒙版的效果就有了 </p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/20</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509805332.html">
-                
-                  <h1>Protocol</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>注意协议只是个声明文件，并没有实现。<br/>
-谁声明，谁调用。</p>
-
-<p>协议可用定义在单独.h文件中，也可用定义在某个类中：</p>
-
-<p>（1） 如果这个协议只用在某个类中，应该把协议定义在该类中</p>
-
-<p>（2） 如果这个协议用在很多类中，就应该定义在单独文件中</p>
-
-<p>不过，如果子类自身又遵循了这个协议，但并没有实现，那么在运行时，系统会一级级往上查找，直到找到父类的方法实现。也就是说，只要知道苹果的私有方法名，并且确保自己的类是这个私有方法所属类的子类，就可以在子类中通过只声明不实现的方式执行父类中该私有方法的实现。</p>
-
-<h5 id="toc_0">category</h5>
-
-<p>category也是一种特殊的协议，内部可以调用，外部不能调用、子类不能重写实现和重写，相当于是私有方法。</p>
-
-<h4 id="toc_1">总结</h4>
-
-<p>协议就是定义公共接口的地方，只要遵守协议，就等于在头文件中定义了这些方法，只要实现就行了。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/16</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509804745.html">
-                
-                  <h1>Flutter && Python && OC</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">dart的函数定义如下所示</h3>
-
-<pre><code class="language-text">// Define a function.
-printInteger(int aNumber) {
-  print(&#39;The number is $aNumber.&#39;); // Print to console.
-}
-
-// This is where the app starts executing.
-main() {
-  var number = 42; // Declare and initialize a variable.
-  printInteger(number); // Call a function.
-}
-
-isNoble(atomicNumber) {
-  return _nobleGases[atomicNumber] != null;
-}
-
-如果函数只有单个语句，可以采用简略的形式：
-
-bool isNoble(int atomicNumber) =&gt; _nobleGases[atomicNumber] != null;
-
-
-</code></pre>
-
-<h3 id="toc_1">$dart取地址</h3>
-
-<pre><code class="language-text">String say(String from, String msg, [String device]) {
-  var result = &#39;$from says $msg&#39;;
-  if (device != null) {
-    result = &#39;$result with a $device&#39;;
-  }
-  return result;
-}
-
-</code></pre>
-
-<p>以分号结尾 参数类型要指定也可以不指定<br/><br/>
-=&gt; 是{ return expr;} 的缩写</p>
-
-<h3 id="toc_2">oc的函数定义</h3>
-
-<pre><code class="language-text">-(void)hello{
-
-print(@&quot;hello world&quot;);
-
-}
--(void)hello(int a,int b){
-
-print(@&quot;hello world %d %d&quot;,a,b);
-
-}
-
-
-</code></pre>
-
-<p>无需注意缩进 但是返回值类型一定要明确</p>
-
-<h3 id="toc_3">python函数定义</h3>
-
-<pre><code class="language-text">def xxxx:
-    print &#39;hello world&#39;
-    
-def xxx(a,b):
-   print(a,b)
-   
-def xxx(self,a,b)
-   print a,b
-   
-</code></pre>
-
-<p>由于没有分号和大括号所以一定要注意缩进，</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/11</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -1861,8 +1844,6 @@ def xxx(self,a,b)
             <a href="Python.html"><strong>Python</strong></a>
         
             <a href="iOS.html"><strong>iOS</strong></a>
-        
-            <a href="%E6%88%91.html"><strong>我</strong></a>
          
         </p>
 
@@ -1879,31 +1860,31 @@ def xxx(self,a,b)
 	      
 		      
 			      <li class="post">
-			        <a href="16076509804045.html">RACCommand</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="16076509805027.html">关于我</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
 			        <a href="16076509807659.html">点击事件发生在视图边界之外的时候</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
+			        <a href="16085259457329.html">MRC 时代的引用计数的现身</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509804683.html">Xcode打包遇到的坑</a>
+			        <a href="16085257826419.html">自动释放池AutoreleasePool![内存管理-3 2](media/16085257826419/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86-3%202.jpg)</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804045.html">RACCommand</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
 			      </li>
 		     
 		  

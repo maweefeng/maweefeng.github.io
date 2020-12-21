@@ -84,8 +84,6 @@
             <li><a href="Python.html">Python</a></li>
         
             <li><a href="iOS.html">iOS</a></li>
-        
-            <li><a href="%E6%88%91.html">我</a></li>
          
 
       </ul>
@@ -107,6 +105,150 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="16076509806591.html">
+                
+                  <h1>Swifter4</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ol>
+<li><p>Curring（柯里化）</p>
+<p>把接受多个参数的方法变换成接受第一个参数的方法，并且返回接受余下的参数并返回结果的新方法。</p>
+<p>在Swift2中可以将方法进行Curring 但是在Swift4不再支持方法的柯里化</p>
+<p><img src="media/15499574789691/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-02-12%20%E4%B8%8B%E5%8D%883.48.34.png" alt="屏幕快照 2019-02-12 下午3.48.34"/></p></li>
+<li><p>@autoclosure</p>
+<pre><code class="language-text">func logIfTrue(predicate: () -&gt; Bool) {
+        if predicate() {<br/>
+            print(&quot;true&quot;)<br/>
+        }<br/>
+    }<br/>
+调用方式1       <br/>
+logIfTrue(predicate: {2 &gt; 1})<br/>
+调用方式2      <br/>
+logIfTrue{2 &gt; 1}
+</code></pre>
+<p>原来的闭包的书写方式如上面所写，但是看起来不是很容易理解，这时就出现了自动闭包。</p>
+<p>swift4 中的自动闭包书写和 swift2中不同 区别点在@autoclosure的位置，swift2中是在参数之前，在 swift4中是在参数之后。</p>
+<pre><code class="language-text">func logIfTrue(predicate:@autoclosure () -&gt; Bool) {
+        if predicate() {<br/>
+            print(&quot;true&quot;)<br/>
+        }<br/>
+    }<br/>
+logIfTrue(predicate: 2 &gt; 1)
+</code></pre>
+<p>另外需要注意@autoclosure 并不支持带有输入参数的写法，只有形如（）-&gt; T 的参数才能使用这个特性进行简化。</p></li>
+<li><p>Designated、Convenience 和Required</p>
+<p>只有在子类重写了父类的 designated 方法的时候才可以直接调用父类的 convenience 方法</p>
+<p>如果添加 required 关键字修饰初始化方法，则在子类中必须对该 required 方法进行实现。这样做的好处就是可以保证依赖于某个 designated 方法的 convenience 一直可以被使用。</p></li>
+<li><p>Swift 中的Array,Dictionary和Set在集合中只能存储同一个类型的元素，但是NSArray可以存储多种不同类型的数据，如果想要Array 存储不同类型的数据，可以使用Any AnyObject</p>
+<p><code>let store:[Any] = [1,&quot;1&quot;]</code></p></li>
+</ol>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/10/10</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509805631.html">
+                
+                  <h1>UINavigationItem</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>纵观Apple的官方应用程式的导航栏你就会发现在iOS11之后导航栏的高度会自动变化，文字的大小以及位置也会随之变化。<br/>
+这是iOS11之后的新特性，苹果是使用给UINavigationItem添加扩展的方法增加的新功能，这也给了我们新的一种思路，为了不去修改之前代码的原则上添加新的功能的方式。</p>
+
+<pre><code class="language-text">extension UINavigationItem {
+    public enum LargeTitleDisplayMode : Int {
+        /// Automatically use the large out-of-line title based on the state of the previous item in the navigation bar. An item with largeTitleDisplayMode=Automatic will show or hide the large title based on the request of the previous navigation item. If the first item pushed is set to Automatic, then it will show the large title if the navigation bar has prefersLargeTitles=YES.
+        case automatic
+
+        
+        /// Always use a larger title when this item is top most.
+        case always
+
+        
+        /// Never use a larger title when this item is top most.
+        case never
+    }
+}
+</code></pre>
+
+<ul>
+<li>largeTitie的两种展现形式如下所示</li>
+</ul>
+
+<p><img src="media/15439873228318/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-05%20%E4%B8%8B%E5%8D%881.23.25.png" alt="屏幕快照 2018-12-05 下午1.23.25 " style="width:220px;"/><img src="media/15439873228318/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-05%20%E4%B8%8B%E5%8D%881.23.29.png" alt="屏幕快照 2018-12-05 下午1.23.29 " style="width:220px;"/></p>
+
+<h2 id="toc_0">设置方式</h2>
+
+<ul>
+<li><p>xib设置</p>
+<ul>
+<li>never 一直都是小标题</li>
+<li>automatic 自动切换</li>
+<li>always 一直都是大标题</li>
+</ul></li>
+</ul>
+
+<p><img src="media/15439873228318/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-05%20%E4%B8%8B%E5%8D%881.30.58.png" alt="屏幕快照 2018-12-05 下午1.30.58"/></p>
+
+<ul>
+<li><p>代码设置</p>
+<pre><code class="language-text">因为这是新增加的属性所以要做判断
+ if #available(iOS 11.0, *) {<br/>
+        self.navigationItem.largeTitleDisplayMode = .automatic<br/>
+        } else {<br/>
+            // Fallback on earlier versions<br/>
+};
+</code></pre></li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/9/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="16076509805868.html">
                 
@@ -607,158 +749,6 @@ UIButton 的 masksToBounds = YES下发生离屏渲染与 背景图存不存在�
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="16076509805549.html">
-                
-                  <h1>hexo</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>sudo -s 终端全部使用管理员的方式运行</p>
-
-<h3 id="toc_0">Init a new project</h3>
-
-<pre><code class="language-bash">$ hexo init
-</code></pre>
-
-<h3 id="toc_1">Create a new post</h3>
-
-<pre><code class="language-bash">$ hexo new &quot;My New Post&quot;
-</code></pre>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-
-<h3 id="toc_2">Create a new draft</h3>
-
-<pre><code class="language-bash">$ hexo new draft &quot;draft Post&quot;
-</code></pre>
-
-<h3 id="toc_3">Run server</h3>
-
-<pre><code class="language-bash">$ hexo server
-</code></pre>
-
-<p>如果端口被占用了 可以使用-p 重设端口</p>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-
-<h3 id="toc_4">Generate static files</h3>
-
-<pre><code class="language-bash">$ hexo generate
-</code></pre>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-
-<h3 id="toc_5">Deploy to remote sites</h3>
-
-<pre><code class="language-bash">$ hexo deploy
-</code></pre>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
-
-<h3 id="toc_6">生成纯页面</h3>
-
-<pre><code class="language-bash">$ hexo new page &quot;pageName&quot;
-</code></pre>
-
-<p>在yml配置文件中可以添加这行代码</p>
-
-<pre><code class="language-text">#包含和剔除
-include:
-  - .nojekyll
-exclude:
-  - .DS_Store
-
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/4/11</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%85%B6%E5%AE%83.html'>其它</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509807617.html">
-                
-                  <h1>检查无用代码</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>简便的方法是使用appcode进行分析 </p>
-
-<p>在appcode中打开代码，并选择code-&gt;inspect code就可以进行静态分析。</p>
-
-<p>分析完之后，我们可以在unused code里看到所有的无用代码。如下图所示。</p>
-
-<p><img src="media/15542632266483/15542633597716.jpg" alt=""/></p>
-
-<p>接下来，我和你说一下这些无用代码的主要类型。</p>
-
-<ul>
-<li>无用类：Unused class 是无用类，Unused import statement 是无用类引入声明，Unused property 是无用的属性；</li>
-<li>无用方法：Unused method 是无用的方法，Unused parameter 是无用参数，Unused instance variable 是无用的实例变量，Unused local variable 是无用的局部变量，Unused value 是无用的值；</li>
-<li>无用宏：Unused macro 是无用的宏。</li>
-<li>无用全局：Unused global declaration 是无用全局声明。</li>
-</ul>
-
-<p>看似 AppCode 已经把所有工作都完成了，其实不然。下面，我再和你列举下 AppCode 静态检查的问题：</p>
-
-<ul>
-<li>JSONModel 里定义了未使用的协议会被判定为无用协议；</li>
-<li>如果子类使用了父类的方法，父类的这个方法不会被认为使用了；</li>
-<li>通过点的方式使用属性，该属性会被认为没有使用；</li>
-<li>使用 performSelector 方式调用的方法也检查不出来，比如 self performSelector:@selector(arrivalRefreshTime)；</li>
-<li>运行时声明类的情况检查不出来。比如通过 NSClassFromString 方式调用的类会被查出为没有使用的类，比如 layerClass = NSClassFromString(@“SMFloatLayer”)。还有以 [[self class] accessToken] 这样不指定类名的方式使用的类，会被认为该类没有被使用。像 UITableView 的自定义的 Cell 使用 registerClass，这样的情况也会认为这个 Cell 没有被使用。</li>
-</ul>
-
-<h1 id="toc_0">define RW_INITIALIZED (1&lt;&lt;29)</h1>
-
-<p>bool isInitialized() {<br/>
-   return getMeta()-&gt;data()-&gt;flags &amp; RW_INITIALIZED;<br/>
-}</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/3/20</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -818,8 +808,6 @@ exclude:
             <a href="Python.html"><strong>Python</strong></a>
         
             <a href="iOS.html"><strong>iOS</strong></a>
-        
-            <a href="%E6%88%91.html"><strong>我</strong></a>
          
         </p>
 
@@ -836,31 +824,31 @@ exclude:
 	      
 		      
 			      <li class="post">
-			        <a href="16076509804045.html">RACCommand</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="16076509805027.html">关于我</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
 			        <a href="16076509807659.html">点击事件发生在视图边界之外的时候</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
+			        <a href="16085259457329.html">MRC 时代的引用计数的现身</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509804683.html">Xcode打包遇到的坑</a>
+			        <a href="16085257826419.html">自动释放池AutoreleasePool![内存管理-3 2](media/16085257826419/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86-3%202.jpg)</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804045.html">RACCommand</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
 			      </li>
 		     
 		  

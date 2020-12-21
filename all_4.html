@@ -84,8 +84,6 @@
             <li><a href="Python.html">Python</a></li>
         
             <li><a href="iOS.html">iOS</a></li>
-        
-            <li><a href="%E6%88%91.html">我</a></li>
          
 
       </ul>
@@ -107,6 +105,131 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="16076509806241.html">
+                
+                  <h1>Python</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">另类创建字典的方法</h2>
+
+<ul>
+<li><p>zip函数</p>
+<pre><code class="language-text">names = [&#39;name&#39;,&#39;age&#39;,&#39;pay&#39;,&#39;job&#39;]
+values = [&#39;sam smith&#39;,40,3000,&#39;software&#39;]<br/>
+print(list(zip(names,values)))
+</code></pre></li>
+<li><p>创建空字典</p>
+<pre><code class="language-text">names = [&#39;name&#39;,&#39;age&#39;,&#39;pay&#39;,&#39;job&#39;]
+record = dict.fromkeys(names,&quot;?&quot;)<br/>
+print(record)
+</code></pre></li>
+</ul>
+
+<h2 id="toc_1">路径</h2>
+
+<p>os.sys.path[0]获取当前 path 文件所在的文件夹<br/>
+os.sys.argv[0]获取当前 path 文件的绝对路径</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/12</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Python.html'>Python</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509804138.html">
+                
+                  <h1>隐藏导航栏底部的线条</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>有时候遇到一些特殊的要求，需要隐藏导航栏底部的线条。<br/>
+两行代码就可以做到。</p>
+
+<ul>
+<li>方法一:<br/>
+设置导航栏的背景图（setBackgroundImage方法）<br/>
+设置导航栏的shadowImage (setShadowImage方法)<br/></li>
+</ul>
+
+<pre><code class="language-text">UINavigationBar *navigationBar = self.navigationController.navigationBar;    
+</code></pre>
+
+<p>//设置透明的背景图，便于识别底部线条有没有被隐藏    </p>
+
+<pre><code class="language-text">[navigationBar setBackgroundImage:[[UIImage alloc] init]
+                       forBarPosition:UIBarPositionAny
+                           barMetrics:UIBarMetricsDefault]; 
+</code></pre>
+
+<p>//此处使底部线条失效</p>
+
+<pre><code class="language-text">[navigationBar setShadowImage:[UIImage new]];
+</code></pre>
+
+<ul>
+<li>方法二：</li>
+</ul>
+
+<pre><code class="language-text">self.navigationController.navigationBar.clipsToBounds = YES; 
+</code></pre>
+
+<h3 id="toc_0">导航栏全局属性设置</h3>
+
+<p>//全局设置导航栏主题</p>
+
+<pre><code class="language-text">- (void)setNavigationControllerAppearance {
+    [UINavigationBar appearance].barStyle  = UIBarStyleBlack;
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithWhite:0.1 alpha:0.5]];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+}
+
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="16076509804464.html">
                 
@@ -1106,638 +1229,6 @@ print(&quot;zero!&quot;)
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="16076509805590.html">
-                
-                  <h1>iOS开发代码规范</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>针对我的开发经验ViewController应该是这样的。</p>
-
-<pre><code class="language-text">#pragma mark - Life Cycle|生命周期
-#pragma mark - UITableViewDataSource and UITableViewDelegate|主要是一些代理的方法
-#pragma mark - Private Method|私有方法（内部可调用）
-#pragma mark - Public  Method|公有方法
-#pragma mark - Set &amp; Get|getter 和 setter方法
-#pragma mark - Notification|接收通知之后执行的方法
-#pragma mark - Event|一些视图的点击事件 比如button
-#pragma mark - DelegeteHandler|代理的实现时间
-</code></pre>
-
-<h2 id="toc_0">1️⃣代码命名基础</h2>
-
-<h3 id="toc_1">①一般原则</h3>
-
-<ul>
-<li><p>明晰</p>
-<ul>
-<li><p>尽可能保持清晰和简洁是件好事，但由于简洁，清晰度不应受到影响：</p>
-<p>比如<code>insertObject:atIndex:</code>比较清晰，而<code>insert:at:</code>却不知道发生了什么。</p></li>
-<li><p>一般来说，不要缩写事物的名称。把它们拼出来，即使它们很长：</p>
-<p>比如<code>setBackgroundColor:</code>和<code>setBkgdColor:</code><br/>
-有些缩写是很常见且取得了各方面的共识，所以你可以继续使用它们。<a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CodingGuidelines/Articles/APIAbbreviations.html#//apple_ref/doc/uid/20001285-BCIHCGAE">可接受的缩写和缩略语</a></p></li>
-</ul></li>
-<li><p>一致性</p>
-<ul>
-<li>尝试在整个Cocoa编程接口中使用一致的名称。如果您不确定，请浏览当前头文件或参考文档以获取先例。</li>
-<li><p>当你有一个方法应该利用多态性的类时，一致性尤为重要。在不同类中执行相同操作的方法应具有相同的名称。</p>
-<table>
-<thead>
-<tr>
-<th>code</th>
-<th>comment</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>- (NSInteger)tag</td>
-<td>定义中NSView，NSCell，NSControl。</td>
-</tr>
-<tr>
-<td>- (void)setStringValue:(NSString *)</td>
-<td>定义在许多Cocoa类中。</td>
-</tr>
-</tbody>
-</table></li>
-</ul></li>
-</ul>
-
-<h3 id="toc_2">②前缀</h3>
-
-<p>前缀是编程接口中名称的重要部分。它们区分了软件的功能区域。前缀可防止第三方开发人员定义的符号与Apple定义的符号（以及Apple自己的框架中的符号之间）发生冲突。</p>
-
-<ul>
-<li><p>前缀具有规定的格式。它由两个或三个大写字母组成，不使用下划线或“子前缀”。以下是一些示例：</p></li>
-<li><p>在命名类，协议，函数，常量和typedef结构时使用前缀。千要不能在命名方法时，使用前缀; 方法存在于由定义它们的类创建的名称空间中。另外，不要使用前缀来命名结构体的字段。</p></li>
-</ul>
-
-<h2 id="toc_3">2️⃣命名方法</h2>
-
-<h3 id="toc_4">①通用规则</h3>
-
-<p>在命名方法时，请记住以下几条一般准则：</p>
-
-<ul>
-<li>使用小写字母开始名称，并将嵌入单词的第一个字母大写。不要使用前缀。</li>
-<li>对于表示对象采取的操作的方法，使用动词开始名称(禁止使用“do”或“does”)。</li>
-<li><p>如果方法返回接收者的属性，则在属性后面命名方法。除非间接返回一个或多个值，否则不必使用<code>get</code>。</p>
-<table>
-<thead>
-<tr>
-<th>code</th>
-<th>comment</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>- (NSSize)cellSize;</td>
-<td>正确</td>
-</tr>
-<tr>
-<td>- (NSSize)getCellSize;</td>
-<td>错误</td>
-</tr>
-</tbody>
-</table></li>
-<li><p>在所有参数之前使用关键字</p>
-<table>
-<thead>
-<tr>
-<th>code</th>
-<th>comment</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>- (void)sendAction:(SEL)aSelector toObject:(id)anObject forAllCells:(BOOL)flag;</td>
-<td>正确</td>
-</tr>
-<tr>
-<td>- (void)sendAction:(SEL)aSelector :(id)anObject :(BOOL)flag;</td>
-<td>错误</td>
-</tr>
-</tbody>
-</table></li>
-<li><p>在参数之前创建单词描述参数。</p>
-<table>
-<thead>
-<tr>
-<th>code</th>
-<th>comment</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>- (id)viewWithTag:(NSInteger)aTag;</td>
-<td>正确</td>
-</tr>
-<tr>
-<td>- (id)taggedView:(int)aTag;</td>
-<td>错误</td>
-</tr>
-</tbody>
-</table></li>
-<li><p>在创建比继承方法更具体的方法时，在现有方法的末尾添加新关键字。</p>
-<table>
-<thead>
-<tr>
-<th>code</th>
-<th>comment</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>- (id)initWithFrame:(CGRect)frameRect;</td>
-<td>初始化方法</td>
-</tr>
-<tr>
-<td>- (id)initWithFrame:(CGRect)frameRect backgroundColor:(UIColor*)backgroundColor;</td>
-<td>自定义初始化方法</td>
-</tr>
-</tbody>
-</table></li>
-<li><p>不要使用“and”来链接作为接收者属性的关键字。</p>
-<table>
-<thead>
-<tr>
-<th>code</th>
-<th>comment</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>- (int)runModalForDirectory:(NSString *)path file:(NSString *) name types:(NSArray *)fileTypes;</td>
-<td>正确</td>
-</tr>
-<tr>
-<td>- (int)runModalForDirectory:(NSString *)path andFile:(NSString *)name andTypes:(NSArray *)fileTypes;</td>
-<td>错误</td>
-</tr>
-</tbody>
-</table></li>
-<li><p>如果该方法描述了两个单独的操作，请使用“和”链接它们。</p>
-<table>
-<thead>
-<tr>
-<th>- (BOOL)openFile:(NSString *)fullPath withApplication:(NSString *)appName andDeactivate:(BOOL)flag;</th>
-<th>NSWorkspace</th>
-</tr>
-</thead>
-<tbody>
-</tbody>
-</table></li>
-</ul>
-
-<h3 id="toc_5">②访问方法</h3>
-
-<p>访问器方法是设置和返回对象属性值的方法</p>
-
-<ul>
-<li><p>如果属性表示为名词，则格式为：</p>
-<pre><code class="language-text">- (type)noun;
-- (void)setNoun：(type)aNoun ;
-</code></pre></li>
-<li><p>如果属性表示为形容词，则格式为：</p>
-<p>在声明属性的时候可以这么写<br/>
-<code>@property(nonatomic,assign,getter=isAdjective)BOOL Adjective;</code></p>
-<pre><code class="language-text">- (BOOL)isAdjective;
-- (void)setAdjective:(BOOL)flag;
-</code></pre></li>
-<li><p>如果属性表示为动词，则格式为：</p>
-<pre><code class="language-text">- (BOOL)verbObject;
-- (void)setVerbObject:(BOOL)flag;
-</code></pre></li>
-<li><p>不要使用分词将动词转换为形容词：</p>
-<table>
-<thead>
-<tr>
-<th>- (void)setAcceptsGlyphInfo:(BOOL)flag;</th>
-<th>对</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>- (BOOL)acceptsGlyphInfo;</td>
-<td>对</td>
-</tr>
-<tr>
-<td>- (void)setGlyphInfoAccepted:(BOOL)flag;</td>
-<td>错</td>
-</tr>
-<tr>
-<td>- (BOOL)glyphInfoAccepted;</td>
-<td>错</td>
-</tr>
-</tbody>
-</table></li>
-<li><p>可以使用模态动词（动词前面加上“can”，“should”，“will”等）来澄清含义，但不要使用“do”或“does”。</p>
-<table>
-<thead>
-<tr>
-<th>- (void)setCanHide:(BOOL)flag;</th>
-<th>对</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>- (BOOL)canHide;</td>
-<td>对</td>
-</tr>
-<tr>
-<td>- (void)setShouldCloseDocument:(BOOL)flag;</td>
-<td>对</td>
-</tr>
-<tr>
-<td>- (BOOL)shouldCloseDocument;</td>
-<td>对</td>
-</tr>
-<tr>
-<td>- (void)setDoesAcceptGlyphInfo:(BOOL)flag;</td>
-<td>错</td>
-</tr>
-<tr>
-<td>- (BOOL)doesAcceptGlyphInfo;</td>
-<td>错</td>
-</tr>
-</tbody>
-</table></li>
-<li><p>仅对间接返回对象和值的方法使用“get”。并且当需要返回多个项目时，才应将此表单用于方法。</p>
-<table>
-<thead>
-<tr>
-<th>- (void)getLineDash:(float *)pattern count:(int *)count phase:(float *)phase;</th>
-<th>NSBezierPath</th>
-</tr>
-</thead>
-<tbody>
-</tbody>
-</table></li>
-</ul>
-
-<h3 id="toc_6">③代理方法</h3>
-
-<p>委托方法（或委托方法）是在某些事件发生时对象在其委托中调用的方法（如果委托实现它们）。它们具有独特的形式，同样适用于在对象的数据源中调用的方法：</p>
-
-<ul>
-<li><p>方法的开始使用通过标识发送消息的对象的类(类名省略前缀，第一个字母为小写)：</p>
-<pre><code class="language-text">- (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(int)row;
-- (BOOL)application:(NSApplication *)sender openFile:(NSString *)filename;
-</code></pre></li>
-<li><p>冒号追加到类名前（参数是对委托对象的引用），并且该方法只有一个参数，即发送者。</p>
-<pre><code class="language-text">- (BOOL)applicationOpenUntitledFile:(NSApplication *)sender;
-</code></pre></li>
-<li><p>对此的一个例外是由于发布通知而调用的方法。在这种情况下，唯一的参数是通知对象。</p>
-<pre><code class="language-text">- (void)windowDidChangeScreen:(NSNotification *)notification;
-</code></pre></li>
-<li><p>对于被调用以通知委托已发生或即将发生某些事情的方法，请使用“did”或“will”。</p>
-<pre><code class="language-text">- (void)browserDidScroll:(NSBrowser *)sender;
-- (NSUndoManager *)windowWillReturnUndoManager:(NSWindow *)window;
-</code></pre></li>
-<li><p>虽然您可以使用“did”或“will”来调用要求委托代表另一个对象执行某些操作的方法，但首选“should”。</p>
-<pre><code class="language-text">- (BOOL)windowShouldClose:(id)sender;
-</code></pre></li>
-</ul>
-
-<h3 id="toc_7">④集合方法</h3>
-
-<p>对于管理对象集合的对象（每个对象称为该集合的元素），约定是具有以下形式的方法：</p>
-
-<pre><code class="language-text">- (void)addElement:(elementType)anObj;
-
-- (void)insertElement:(elementType)anObj atIndex:(int)index;
-
-- (void)removeElement:(elementType)anObj atIndex:(int)index;
-
-- (void)removeElement:(elementType)anObj;
-
-- (NSArray *)elements;
-</code></pre>
-
-<p>有一点需要主要如果集合是真正无序的，那么返回NSSet而不是NSArray</p>
-
-<h3 id="toc_8">⑤方法参数</h3>
-
-<p>有一些关于方法参数名称的一般规则：</p>
-
-<ul>
-<li>与方法一样，参数以小写字母开头，连续单词的第一个字母大写（例如，removeObject:(id)anObject）。</li>
-<li>不要在名称中使用“pointer”或“ptr”。使用参数的类型而不是它的名称声明它是否是指针。</li>
-<li>避免使用单字母和双字母名称作为参数。</li>
-<li>避免只保存几个字母的缩写。</li>
-</ul>
-
-<p>常用的方法参数</p>
-
-<pre><code class="language-...action:(sel)aselector">...alignment:(int)mode
-...atIndex:(int)index
-...content:(NSRect)aRect
-...doubleValue:(double)aDouble
-...floatValue:(float)aFloat
-...font:(NSFont *)fontObj
-...frame:(NSRect)frameRect
-...intValue:(int)anInt
-...keyEquivalent:(NSString *)charCode
-...length:(int)numBytes
-...point:(NSPoint)aPoint
-...stringValue:(NSString *)aString
-...tag:(int)anInt
-...target:(id)anObject
-...title:(NSString *)aString
-</code></pre>
-
-<h3 id="toc_9">⑥私有方法</h3>
-
-<p>在大多数情况下，私有方法名称通常遵循与公共方法名称相同的规则。但是，常见的约定是为私有方法提供前缀，以便很容易将它们与公共方法区分开来。即使采用这种约定，私有方法的名称也可能导致一种特殊类型的问题。当您设计Cocoa框架类的子类时，您无法知道您的私有方法是否无意中覆盖了具有相同名称的私有框架方法。</p>
-
-<p>Cocoa框架中大多数私有方法的名称都有一个下划线前缀（例如_fooData），以将它们标记为私有。从这个事实可以看出两个建议。</p>
-
-<ul>
-<li>不要使用下划线字符作为私有方法的前缀。</li>
-<li>如果您是一个大型Cocoa框架类（如NSView或UIView）的子类，并且您希望绝对确定您的私有方法的名称与超类中的名称不同，则可以将自己的前缀添加到私有方法中。前缀应尽可能唯一，可能基于您的公司或项目以及“XX_”形式。因此，如果您的项目名为Byte Flogger，则前缀可能是 BF_addObject:</li>
-</ul>
-
-<p>虽然给私有方法名称加一个前缀的建议似乎与先前声称方法存在于其类的命名空间中的说法相矛盾，但这里的意图是不同的：防止无意覆盖超类私有方法。</p>
-
-<h2 id="toc_10">3️⃣命名函数</h2>
-
-<p>Objective-C允许您通过函数和方法表达行为。当底层对象总是单例或者处理明显功能的子系统时，你应该使用函数而不是类方法。</p>
-
-<p>函数有一些通用的命名规则，您应该遵循：</p>
-
-<ul>
-<li><p>函数名称与方法名称类似，但有几个例外：</p>
-<ul>
-<li>它们以您用于类和常量的相同前缀开头。</li>
-<li>前缀后面的单词的第一个字母是大写的。</li>
-</ul></li>
-<li><p>大多数函数名称以描述函数具有的效果的动词开头：</p>
-<pre><code class="language-text">NSHighlightRect
-NSDeallocateObject
-</code></pre></li>
-</ul>
-
-<p>查询属性的函数具有另一组命名规则：</p>
-
-<ul>
-<li><p>如果函数返回其第一个参数的属性，则省略动词。</p>
-<pre><code class="language-text">unsigned int NSEventMaskFromType(NSEventType type)
-float NSHeight(NSRect aRect)
-</code></pre></li>
-<li><p>如果通过引用返回值，请使用“get”。</p>
-<pre><code class="language-text">const char *NSGetSizeAndAlignment(const char *typePtr, unsigned int *sizep, unsigned int *alignp)
-</code></pre></li>
-<li><p>如果返回的值是布尔值，则该函数应以变形动词开头。</p>
-<pre><code class="language-text">BOOL NSDecimalIsNotANumber(const NSDecimal *decimal)
-</code></pre></li>
-</ul>
-
-<h2 id="toc_11">4️⃣命名属性和数据类型</h2>
-
-<h4 id="toc_12">①声明的属性和实例变量</h4>
-
-<p>一个属性声明有效地声明了访问器的属性方法，如果属性表示为名词或动词，则格式为：<code>@property (…) type nounOrVerb;</code></p>
-
-<pre><code class="language-text">@property (strong) NSString *title;
-@property (assign) BOOL showsAlpha;
-</code></pre>
-
-<p>但是，如果声明的属性的名称表示为形容词，则属性名称将省略“is”前缀，但指定get访问器的常规名称，例如：</p>
-
-<pre><code class="language-text">@property (assign, getter=isEditable) BOOL editable;
-</code></pre>
-
-<h4 id="toc_13">②常量</h4>
-
-<p>常量的规则根据常量的创建方式而有所不同。</p>
-
-<h5 id="toc_14">2.1 枚举常量</h5>
-
-<ul>
-<li>对具有整数值的相关常量组使用枚举。</li>
-<li><p>枚举常量和它们分组的typedef遵循函数的命名约定。以下示例来自NSMatrix.h：</p>
-<pre><code class="language-text">typedef enum _NSMatrixMode {
-    NSRadioModeMatrix           = 0,<br/>
-    NSHighlightModeMatrix       = 1,<br/>
-    NSListModeMatrix            = 2,<br/>
-    NSTrackModeMatrix           = 3<br/>
-} NSMatrixMode;
-</code></pre>
-<p>⚠️注意，typedef标签是不必要的。</p></li>
-<li><p>可以用位掩码等内容创建未命名的枚举，例如：</p>
-<pre><code class="language-text">enum {
-    NSBorderlessWindowMask      = 0,<br/>
-    NSTitledWindowMask          = 1 &lt;&lt; 0,<br/>
-    NSClosableWindowMask        = 1 &lt;&lt; 1,<br/>
-    NSMiniaturizableWindowMask  = 1 &lt;&lt; 2,<br/>
-    NSResizableWindowMask       = 1 &lt;&lt; 3<br/>
-};
-</code></pre></li>
-</ul>
-
-<h5 id="toc_15">2.2 用const创建的常量</h5>
-
-<ul>
-<li>const创建浮点值常量。如果常量与其他常量无关，则可以用来const创建整数常量; 否则，使用枚举。</li>
-<li><p>const常量的格式由以下声明举例说明：</p>
-<pre><code class="language-text">const float NSLightGray;
-</code></pre></li>
-</ul>
-
-<h5 id="toc_16">2.3其他类型的常量</h5>
-
-<ul>
-<li>通常，不要使用#define预处理器命令来创建常量。对于整数常量，使用枚举，对于浮点常量，使用const限定符，如上所述。</li>
-<li><p>对预处理器在确定是否将处理代码块时评估的符号使用大写字母。例如：<code>#ifdef DEBUG</code></p></li>
-<li><p>请注意，编译器定义的宏具有前导和尾随双下划线字符。例如：<code>__MACH__</code></p></li>
-<li><p>定义用于通知名称和字典键等用途的字符串的常量。通过使用字符串常量。如：<code>APPKIT_EXTERN NSString * NSPrintCopies;</code></p>
-<pre><code class="language-text">#import &lt;UIKit/UIKitDefines.h&gt;
-UIKIT_EXTERN  NSString * NSPrintCopies;
-</code></pre></li>
-</ul>
-
-<h4 id="toc_17">③通知和异常</h4>
-
-<p>通知和例外的名称遵循类似的规则。但两者都有自己推荐的使用模式。</p>
-
-<ul>
-<li>通知</li>
-</ul>
-
-<p>如果一个类有一个委托，那么它的大部分通知都可能由委托通过一个已定义的委托方法接收。这些通知的名称应反映相应的委托方法。例如，全局NSApplication对象的委托自动注册，以便applicationDidBecomeActive:在应用程序发布时接收消息NSApplicationDidBecomeActiveNotification。</p>
-
-<pre><code class="language-text">通知由全局NSString对象标识，其名称以这种方式组成：
-[关联类的名称] + [Did | will] + [UniquePartOfName] +通知
-NSApplicationDidBecomeActiveNotification
-NSWindowDidMiniaturizeNotification
-NSTextViewDidChangeSelectionNotification
-NSColorPanelColorDidChangeNotification
-
-</code></pre>
-
-<ul>
-<li>异常</li>
-</ul>
-
-<p>用来处理抛出的NSException使用异常。</p>
-
-<p>异常由全局NSString对象标识，其名称以这种方式组成：</p>
-
-<p><code>[Prefix] + [UniquePartOfName] + Exception<br/>
-</code>比如</p>
-
-<pre><code class="language-text">NSColorListIOException
-NSColorListNotEditableException
-NSDraggingException
-NSFontUnavailableException
-NSIllegalSelectorException
-</code></pre>
-
-<h2 id="toc_18">5️⃣框架开发人员的技巧和技巧</h2>
-
-<p>开发框架有他们如何编写自己的代码比其他开发商更加谨慎。许多客户端应用程序可以在其框架中链接，并且由于这种广泛的暴露，框架中的任何缺陷可能会在整个系统中被放大。以下各项讨论了可以采用的编程技术，以确保框架的效率和完整性。</p>
-
-<ul>
-<li>类初始化</li>
-</ul>
-
-<p>在调用类的任何其他方法之前，initialize  类方法为您提供了一个懒惰地执行一次代码的地方。</p>
-
-<p>运行时发送initialize到继承链中的每个类，即使它没有实现它; 因此它可能initialize不止一次地调用一个类的方法（例如，如果一个子类没有实现它）。通常，您希望初始化代码只执行一次。确保这种情况发生的一种方法是使用dispatch_once()：</p>
-
-<pre><code class="language-text">+ (void)initialize {
-    static dispatch_once_t onceToken = 0;
-    dispatch_once(&amp;onceToken, ^{
-        // the initializing code
-    }
-}
-</code></pre>
-
-<p>⚠️注意：  因为运行时将initialize发送到每个类，所以可能initialize会在子类的上下文中调用 - 如果子类没有实现initialize，那么调用将落入超类。如果您特别需要在相关类的上下文中执行初始化，则可以执行以下检查而不是使用dispatch_once()：</p>
-
-<pre><code class="language-text">if（self == [NSFoo class]）{
-    //初始化代码
-}
-</code></pre>
-
-<ul>
-<li>指定的初始化器</li>
-</ul>
-
-<p>指定的初始值设定init项是调用init超类方法的类的方法。（其他初始值设定项调用init类定义的方法。）每个公共类都应该有一个或多个指定的初始值设定项。</p>
-
-<p>当您实现一个框架类时，您通常还必须实现其归档方法：initWithCoder:和encodeWithCoder:。注意不要在初始化代码路径中执行在取消归档对象时不会发生的事情。实现这一目标的一个好方法是，initWithCoder:如果您的类实现了归档，则从您指定的初始化程序和（它本身是指定的初始化程序）调用一个公共例程。</p>
-
-<ul>
-<li><p>初始化期间的错误检测</p>
-<ul>
-<li>通过调用重新分配自我super的指定初始化。</li>
-<li>检查返回值nil，这表示超类初始化中发生了一些错误。</li>
-<li>如果在初始化当前类时发生错误，请释放该对象并返回nil。</li>
-</ul></li>
-</ul>
-
-<p>下面是🌰代码</p>
-
-<pre><code class="language-text">- (id)init {
-    self = [super init];  // Call a designated initializer here.
-    if (self != nil) {
-        // Initialize object  ...
-        if (someError) {
-            [self release];
-            self = nil;
-        }
-    }
-    return self;
-}
-</code></pre>
-
-<h4 id="toc_19">参考</h4>
-
-<p>[1]<a href="https://dwz.cn/oY1q9z0N">Apple Guideline</a><br/>
-[2]<a href="https://juejin.im/entry/5be2810e518825158c530d9b">iOS Coding Style Guide 代码规范</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/1</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509808030.html">
-                
-                  <h1>Enumerate枚举遍历数组</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<pre><code class="language-text">let arr: NSArray = [1,2,3,4,5]
-var result = 0
-arr.enumerateObjectsUsingBlock { (num, idx, stop) -&gt; Void in
-    result += num as! Int
-    if idx == 2 {
-        stop.memory = true
-    }
-}
-print(result)
-// 输出：6
-</code></pre>
-
-<p>虽然说使用 enumerateObjectsUsingBlock: 非常方便，但是其实从性能上来说这个方法并不理想 (这里有一篇四年前的星期五问答阐述了这个问题，而且一直以来情况都没什么变化)。另外这个方法要求作用在 NSArray 上，这显然已经不符合 Swift 的编码方式了。在 Swift 中，我们在遇到这样的需求的时候，有一个效率，安全性和可读性都很好的替代，那就是快速枚举某个数组的 EnumerateGenerator，它的元素是同时包含了元素下标索引以及元素本身的多元组：</p>
-
-<pre><code class="language-text">var result = 0
-for (idx, num) in [1,2,3,4,5].enumerate() {
-    result += num
-    if idx == 2 {
-        break
-    }
-}
-print(result)
-</code></pre>
-
-<p>基本上来说，是时候可以和 enumerateObjectsUsingBlock: 说再见了。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/1</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -1797,8 +1288,6 @@ print(result)
             <a href="Python.html"><strong>Python</strong></a>
         
             <a href="iOS.html"><strong>iOS</strong></a>
-        
-            <a href="%E6%88%91.html"><strong>我</strong></a>
          
         </p>
 
@@ -1815,31 +1304,31 @@ print(result)
 	      
 		      
 			      <li class="post">
-			        <a href="16076509804045.html">RACCommand</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="16076509805027.html">关于我</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
 			        <a href="16076509807659.html">点击事件发生在视图边界之外的时候</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
+			        <a href="16085259457329.html">MRC 时代的引用计数的现身</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509804683.html">Xcode打包遇到的坑</a>
+			        <a href="16085257826419.html">自动释放池AutoreleasePool![内存管理-3 2](media/16085257826419/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86-3%202.jpg)</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804045.html">RACCommand</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
 			      </li>
 		     
 		  

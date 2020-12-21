@@ -84,8 +84,6 @@
             <li><a href="Python.html">Python</a></li>
         
             <li><a href="iOS.html">iOS</a></li>
-        
-            <li><a href="%E6%88%91.html">我</a></li>
          
 
       </ul>
@@ -107,6 +105,158 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="16076509805549.html">
+                
+                  <h1>hexo</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>sudo -s 终端全部使用管理员的方式运行</p>
+
+<h3 id="toc_0">Init a new project</h3>
+
+<pre><code class="language-bash">$ hexo init
+</code></pre>
+
+<h3 id="toc_1">Create a new post</h3>
+
+<pre><code class="language-bash">$ hexo new &quot;My New Post&quot;
+</code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+
+<h3 id="toc_2">Create a new draft</h3>
+
+<pre><code class="language-bash">$ hexo new draft &quot;draft Post&quot;
+</code></pre>
+
+<h3 id="toc_3">Run server</h3>
+
+<pre><code class="language-bash">$ hexo server
+</code></pre>
+
+<p>如果端口被占用了 可以使用-p 重设端口</p>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+
+<h3 id="toc_4">Generate static files</h3>
+
+<pre><code class="language-bash">$ hexo generate
+</code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+
+<h3 id="toc_5">Deploy to remote sites</h3>
+
+<pre><code class="language-bash">$ hexo deploy
+</code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
+
+<h3 id="toc_6">生成纯页面</h3>
+
+<pre><code class="language-bash">$ hexo new page &quot;pageName&quot;
+</code></pre>
+
+<p>在yml配置文件中可以添加这行代码</p>
+
+<pre><code class="language-text">#包含和剔除
+include:
+  - .nojekyll
+exclude:
+  - .DS_Store
+
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/4/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%85%B6%E5%AE%83.html'>其它</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509807617.html">
+                
+                  <h1>检查无用代码</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>简便的方法是使用appcode进行分析 </p>
+
+<p>在appcode中打开代码，并选择code-&gt;inspect code就可以进行静态分析。</p>
+
+<p>分析完之后，我们可以在unused code里看到所有的无用代码。如下图所示。</p>
+
+<p><img src="media/15542632266483/15542633597716.jpg" alt=""/></p>
+
+<p>接下来，我和你说一下这些无用代码的主要类型。</p>
+
+<ul>
+<li>无用类：Unused class 是无用类，Unused import statement 是无用类引入声明，Unused property 是无用的属性；</li>
+<li>无用方法：Unused method 是无用的方法，Unused parameter 是无用参数，Unused instance variable 是无用的实例变量，Unused local variable 是无用的局部变量，Unused value 是无用的值；</li>
+<li>无用宏：Unused macro 是无用的宏。</li>
+<li>无用全局：Unused global declaration 是无用全局声明。</li>
+</ul>
+
+<p>看似 AppCode 已经把所有工作都完成了，其实不然。下面，我再和你列举下 AppCode 静态检查的问题：</p>
+
+<ul>
+<li>JSONModel 里定义了未使用的协议会被判定为无用协议；</li>
+<li>如果子类使用了父类的方法，父类的这个方法不会被认为使用了；</li>
+<li>通过点的方式使用属性，该属性会被认为没有使用；</li>
+<li>使用 performSelector 方式调用的方法也检查不出来，比如 self performSelector:@selector(arrivalRefreshTime)；</li>
+<li>运行时声明类的情况检查不出来。比如通过 NSClassFromString 方式调用的类会被查出为没有使用的类，比如 layerClass = NSClassFromString(@“SMFloatLayer”)。还有以 [[self class] accessToken] 这样不指定类名的方式使用的类，会被认为该类没有被使用。像 UITableView 的自定义的 Cell 使用 registerClass，这样的情况也会认为这个 Cell 没有被使用。</li>
+</ul>
+
+<h1 id="toc_0">define RW_INITIALIZED (1&lt;&lt;29)</h1>
+
+<p>bool isInitialized() {<br/>
+   return getMeta()-&gt;data()-&gt;flags &amp; RW_INITIALIZED;<br/>
+}</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/3/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="16076509807192.html">
                 
@@ -539,131 +689,6 @@ self.leftViewMode = UITextFieldViewModeAlways;
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="16076509806241.html">
-                
-                  <h1>Python</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">另类创建字典的方法</h2>
-
-<ul>
-<li><p>zip函数</p>
-<pre><code class="language-text">names = [&#39;name&#39;,&#39;age&#39;,&#39;pay&#39;,&#39;job&#39;]
-values = [&#39;sam smith&#39;,40,3000,&#39;software&#39;]<br/>
-print(list(zip(names,values)))
-</code></pre></li>
-<li><p>创建空字典</p>
-<pre><code class="language-text">names = [&#39;name&#39;,&#39;age&#39;,&#39;pay&#39;,&#39;job&#39;]
-record = dict.fromkeys(names,&quot;?&quot;)<br/>
-print(record)
-</code></pre></li>
-</ul>
-
-<h2 id="toc_1">路径</h2>
-
-<p>os.sys.path[0]获取当前 path 文件所在的文件夹<br/>
-os.sys.argv[0]获取当前 path 文件的绝对路径</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/12</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Python.html'>Python</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509804138.html">
-                
-                  <h1>隐藏导航栏底部的线条</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>有时候遇到一些特殊的要求，需要隐藏导航栏底部的线条。<br/>
-两行代码就可以做到。</p>
-
-<ul>
-<li>方法一:<br/>
-设置导航栏的背景图（setBackgroundImage方法）<br/>
-设置导航栏的shadowImage (setShadowImage方法)<br/></li>
-</ul>
-
-<pre><code class="language-text">UINavigationBar *navigationBar = self.navigationController.navigationBar;    
-</code></pre>
-
-<p>//设置透明的背景图，便于识别底部线条有没有被隐藏    </p>
-
-<pre><code class="language-text">[navigationBar setBackgroundImage:[[UIImage alloc] init]
-                       forBarPosition:UIBarPositionAny
-                           barMetrics:UIBarMetricsDefault]; 
-</code></pre>
-
-<p>//此处使底部线条失效</p>
-
-<pre><code class="language-text">[navigationBar setShadowImage:[UIImage new]];
-</code></pre>
-
-<ul>
-<li>方法二：</li>
-</ul>
-
-<pre><code class="language-text">self.navigationController.navigationBar.clipsToBounds = YES; 
-</code></pre>
-
-<h3 id="toc_0">导航栏全局属性设置</h3>
-
-<p>//全局设置导航栏主题</p>
-
-<pre><code class="language-text">- (void)setNavigationControllerAppearance {
-    [UINavigationBar appearance].barStyle  = UIBarStyleBlack;
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithWhite:0.1 alpha:0.5]];
-    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-}
-
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/11</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -723,8 +748,6 @@ os.sys.argv[0]获取当前 path 文件的绝对路径</p>
             <a href="Python.html"><strong>Python</strong></a>
         
             <a href="iOS.html"><strong>iOS</strong></a>
-        
-            <a href="%E6%88%91.html"><strong>我</strong></a>
          
         </p>
 
@@ -741,31 +764,31 @@ os.sys.argv[0]获取当前 path 文件的绝对路径</p>
 	      
 		      
 			      <li class="post">
-			        <a href="16076509804045.html">RACCommand</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="16076509805027.html">关于我</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
 			        <a href="16076509807659.html">点击事件发生在视图边界之外的时候</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
+			        <a href="16085259457329.html">MRC 时代的引用计数的现身</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509804683.html">Xcode打包遇到的坑</a>
+			        <a href="16085257826419.html">自动释放池AutoreleasePool![内存管理-3 2](media/16085257826419/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86-3%202.jpg)</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804045.html">RACCommand</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
 			      </li>
 		     
 		  

@@ -84,8 +84,6 @@
             <li><a href="Python.html">Python</a></li>
         
             <li><a href="iOS.html">iOS</a></li>
-        
-            <li><a href="%E6%88%91.html">我</a></li>
          
 
       </ul>
@@ -107,6 +105,147 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="16076509807659.html">
+                
+                  <h1>点击事件发生在视图边界之外的时候</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>这里有两个方法，每次有touch动作时，都会走这两个方法</p>
+
+<pre><code class="language-text">- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event；
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event；
+
+</code></pre>
+
+<p>重写方法</p>
+
+<pre><code class="language-text"> - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
+</code></pre>
+
+<p>这是View里的一个方法，处理流程如下</p>
+
+<ul>
+<li>首先调用当前视图的pointInside:withEvent:方法判断触摸点是否在当前视图内；</li>
+<li>若返回NO,则hitTest:withEvent:返回nil;</li>
+<li>若返回YES,则向当前视图的所有子视图(subviews)发送hitTest:withEvent:消息，所有子视图的遍历顺序是从top到bottom，即从subviews数组的末尾向前遍历,直到有子视图返回非空对象或者全部子视图遍历完毕；</li>
+<li>若第一次有子视图返回非空对象,则hitTest:withEvent:方法返回此对象，处理结束；</li>
+<li>如所有子视图都返回非，则hitTest:withEvent:方法返回自身(self)。</li>
+<li>最后，这个触摸事件交给主窗口的hitTest:withEvent:方法返回的视图对象去处理。</li>
+</ul>
+
+<pre><code class="language-text">//返回一个view来响应事件
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
+ UIView *view = [super hitTest:point withEvent:event];
+ if (view == nil){
+  //转换坐标
+  CGPoint tempPoint = [self.testBtn convertPoint:point fromView:self];
+  //判断点击的点是否在按钮区域内
+  if (CGRectContainsPoint(self.testBtn.bounds, tempPoint)){
+   //返回按钮
+   return _testBtn;
+  }
+ }
+ return view;
+}
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/12/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16085259457329.html">
+                
+                  <h1>MRC 时代的引用计数的现身</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>苹果早在iOS5时代已经推出了 ARC机制，之前内存管理都是程序员手动在代码当中添加 retain 或者 release，当时程序员需要对内存释放一定要十分警惕，一不小心就进会导致内存泄露。</p>
+
+<p>所以自从推出了 ARC 管理机制之后，苹果会帮我们自动完成插入 retain 和 release 的代码，很多时候都不需要程序员进行手动 retain 或者 release，但是使用 CoreFoundtion 框架还不支持自动内存管理，所以当使用 CF框架的时候需要插入 release 或 retain，程序不会报错。<br/>
+<img src="media/16085259457329/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86-7.jpg" alt="内存管理-7"/></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/9/30</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16085257826419.html">
+                
+                  <h1>自动释放池AutoreleasePool![内存管理-3 2](media/16085257826419/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86-3%202.jpg)</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><img src="media/16085257826419/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86-4.jpg" alt="内存管理-4"/><br/>
+<img src="media/16085257826419/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86-5.jpg" alt="内存管理-5"/><br/>
+<img src="media/16085257826419/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86-6.jpg" alt="内存管理-6"/></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/9/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="16076509804045.html">
                 
@@ -218,74 +357,7 @@ static NSString *const kSubscribeURL =@&quot;http://reactivetest.apiary.io/subsc
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/12/11</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509807659.html">
-                
-                  <h1>点击事件发生在视图边界之外的时候</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>这里有两个方法，每次有touch动作时，都会走这两个方法</p>
-
-<ul>
-<li>(UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event；</li>
-<li>(BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event；</li>
-</ul>
-
-<p>重写方法 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event</p>
-
-<p>这是View里的一个方法，处理流程如下</p>
-
-<ul>
-<li>首先调用当前视图的pointInside:withEvent:方法判断触摸点是否在当前视图内；</li>
-<li>若返回NO,则hitTest:withEvent:返回nil;</li>
-<li>若返回YES,则向当前视图的所有子视图(subviews)发送hitTest:withEvent:消息，所有子视图的遍历顺序是从top到bottom，即从subviews数组的末尾向前遍历,直到有子视图返回非空对象或者全部子视图遍历完毕；</li>
-<li>若第一次有子视图返回非空对象,则hitTest:withEvent:方法返回此对象，处理结束；</li>
-<li>如所有子视图都返回非，则hitTest:withEvent:方法返回自身(self)。</li>
-<li>最后，这个触摸事件交给主窗口的hitTest:withEvent:方法返回的视图对象去处理。</li>
-</ul>
-
-<pre><code class="language-text">//返回一个view来响应事件
-- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
- UIView *view = [super hitTest:point withEvent:event];
- if (view == nil){
-  //转换坐标
-  CGPoint tempPoint = [self.testBtn convertPoint:point fromView:self];
-  //判断点击的点是否在按钮区域内
-  if (CGRectContainsPoint(self.testBtn.bounds, tempPoint)){
-   //返回按钮
-   return _testBtn;
-  }
- }
- return view;
-}
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/12/11</span>
+                    <span class="date">2020/8/10</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -420,6 +492,39 @@ static NSString *const kSubscribeURL =@&quot;http://reactivetest.apiary.io/subsc
               </div><!-- article -->
         
 			<div class="article">
+                <a class="clearlink" href="16085265642213.html">
+                
+                  <h1>Socket 简单了解</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><img src="media/16085265642213/%E9%9D%A2%E8%AF%95%E9%A2%98-7.jpg" alt="7"/></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/5/10</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="16076509807540.html">
                 
                   <h1>图片压缩 WebP的小建议，权衡得失</h1>
@@ -439,215 +544,6 @@ static NSString *const kSubscribeURL =@&quot;http://reactivetest.apiary.io/subsc
                   <div class="more-left left">
                   
                     <span class="date">2020/4/20</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15865912038980.html">
-                
-                  <h1>Xcode Tips - Spelling and Grammarly</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>勾选 Check Spelling while typing</p>
-
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gdpvk4jsifj31hs0u0x6p.jpg" alt=""/></p>
-
-<p>如果代码中的英文拼写出现错误，将会出现只能提示，在拼写错误的地方下面加入红色波浪线。</p>
-
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gdpvmsopdij317m06ognr.jpg" alt=""/></p>
-
-<p>快捷方式 <strong>command + ；</strong><br/>
-将会一条条的小时语法出现错误的地方。</p>
-
-<p>另外一个快捷方式 <strong>command + shift + ；</strong>，可以帮你推荐正确的拼写。</p>
-
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gdpvoz48z5j30qi0gwgp8.jpg" alt=""/></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/4/11</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509805828.html">
-                
-                  <h1>App Icon Design</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">Design</h2>
-
-<p>我们对符号的应用可以追溯到很久很久之前，总所周知我们现在使用的文字就是从象形文字发展过来的。</p>
-
-<ul>
-<li><p>象征化</p>
-<p>找到一个简单易懂的象征，物体、图形标注或者符号。</p></li>
-<li><p>简单性</p>
-<p>设计要简单，不要杂乱无章，太过复杂。如果设计的好，人们一眼就能看懂。</p></li>
-<li><p>关联性</p>
-<p>创建与用户之间的感情连接，跟UI一样，图标是应用的脸面，一定要有趣并且引人注目</p></li>
-<li><p>传统性</p>
-<p>对图标的修改要有意义而且谨慎，不建议经常更改应用图标尤其是每次升级的时候，要与时俱进。</p></li>
-</ul>
-
-<p>比如最初的keynote的图标就是一张讲台，以后的每次迭代升级都是围绕着讲台进行的改变，是与时俱进的，风格不断变化。而且如果你注意到的话讲台上都有一个话筒，这个也是一直有延续的。</p>
-
-<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.16.00.png" alt="屏幕快照 2018-12-11 下午2.16.00"/></p>
-
-<p>iOS平台与macOS设计的不同又相同。</p>
-
-<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.19.41.png" alt="屏幕快照 2018-12-11 下午2.19.41"/></p>
-
-<p>配色，元素都是类似的，而且iOS的iwork图标更是保持了一致性，一致的地平面，一致的白色，没有多余复杂的元素。</p>
-
-<p>现在来看GarageBand和Music Memos的关系，有颜色和图标来看，明显有关系。圆圈代表了木吉他上的音孔，弦的振动很清晰很有趣，让人感到动感和创造力</p>
-
-<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.24.00.png" alt="屏幕快照 2018-12-11 下午2.24.00"/></p>
-
-<h5 id="toc_1">Q:怎么不显示名字，也能让人理解。</h5>
-
-<p>A:高对比度，颜色清晰可见，设计简单，构图独特。</p>
-
-<p>下面是News的图标的例子。</p>
-
-<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.32.55.png" alt="屏幕快照 2018-12-11 下午2.32.55"/></p>
-
-<p>进行了三次改变设计，才做到简单醒目，即使在文件夹的小图标也会一目了然，这点对于App Icon Design 十分重要。</p>
-
-<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.34.30.png" alt="屏幕快照 2018-12-11 下午2.34.30"/></p>
-
-<h2 id="toc_2">Process</h2>
-
-<p>设计是一个交互过程，设计时要去考虑这些环节。</p>
-
-<ul>
-<li><p>独特性 </p>
-<p>要做到有区分性，特别是对于一些类似功能的APP</p>
-<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.41.11.png" alt="屏幕快照 2018-12-11 下午2.41.11"/></p></li>
-<li><p>实践</p>
-<p>纸笔有时候比鼠标有用的多，绘画是激发灵感的好方法。</p>
-<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.40.50.png" alt="屏幕快照 2018-12-11 下午2.40.50"/></p></li>
-<li><p>测试</p>
-<p>要在主屏，在设置，在文件夹中测试不同情形的展示效果，要用图标展现界面的话要特别注意，Clear是一个很完美的典范，简单，多彩，高对比度。</p>
-<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.41.54.png" alt="屏幕快照 2018-12-11 下午2.41.54"/></p></li>
-<li><p>耐心</p>
-<p>答案不会立马就来，慢慢来，检查选项，保存好作品，有时候最简单的设计或者你放弃的设计师最好的选择。</p></li>
-</ul>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/4/11</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509808207.html">
-                
-                  <h1>APP 后台任务以及捕捉bugly无法捕捉的异常</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h4 id="toc_0">后台任务</h4>
-
-<p>iOS 后台保活的 5 种方式：Background Mode、Background Fetch、Silent Push、PushKit、Background Task。</p>
-
-<ul>
-<li>使用 Background Mode 方式的话，App Store 在审核时会提高对 App 的要求。通常情况下，只有那些地图、音乐播放、VoIP 类的 App 才能通过审核。</li>
-<li>Background Fetch 方式的唤醒时间不稳定，而且用户可以在系统里设置关闭这种方式，导致它的使用场景很少。</li>
-<li>Silent Push 是推送的一种，会在后台唤起 App 30 秒。它的优先级很低，会调用 application:didReceiveRemoteNotifiacation:fetchCompletionHandler: 这个 delegate，和普通的 remote push notification 推送调用的 delegate 是一样的。</li>
-<li>PushKit 后台唤醒 App 后能够保活 30 秒。它主要用于提升 VoIP 应用的体验。</li>
-<li>Background Task 方式，是使用最多的。App 退后台后，默认都会使用这种方式。</li>
-</ul>
-
-<p>接下来，我们就看一下，<strong>Background Task 方式为什么是使用最多的，它可以解决哪些问题？</strong></p>
-
-<p>在你的程序退到后台以后，只有几秒钟的时间可以执行代码，接下来就会被系统挂起。进程挂起后所有线程都会暂停，不管这个线程是文件读写还是内存读写都会被暂停。但是，数据读写过程无法暂停只能被中断，中断时数据读写异常而且容易损坏文件，所以系统会选择主动杀掉 App 进程。</p>
-
-<p>而 Background Task 这种方式，就是系统提供了 beginBackgroundTaskWithExpirationHandler 方法来延长后台执行时间，可以解决你退后台后还需要一些时间去处理一些任务的诉求。</p>
-
-<p>Background Task 方式的使用方法，如下面这段代码所示：</p>
-
-<pre><code class="language-text">- (void)applicationDidEnterBackground:(UIApplication *)application {
-    self.backgroundTaskIdentifier = [application beginBackgroundTaskWithExpirationHandler:^( void) {
-        [self yourTask];
-    }];
-}
-
-</code></pre>
-
-<p>在这段代码中，yourTask 任务最多执行 3 分钟，3 分钟内 yourTask 运行完成，你的 App 就会挂起。 如果 yourTask 在 3 分钟之内没有执行完的话，系统会强制杀掉进程，从而造成崩溃，这就是为什么 App 退后台容易出现崩溃的原因。</p>
-
-<h3 id="toc_1">捕捉被系统杀死的异常</h3>
-
-<p>系统杀死的app是无法捕捉到崩溃信号的，所以上面的方法也就无效了。</p>
-
-<p>因为app在后台执行任务只会保活三分钟，如果我们在[self yourTask];中的任务执行超过三分钟，那么我们就无法捕获这种崩溃。</p>
-
-<p>但是我们可以在应用被杀死之前先把堆栈信息保存到内存当中，这样当app下次启动联网的时候就可以上传这些堆栈信息到我们自身的服务器当中，分析崩溃日志以及找出异常原因。</p>
-
-<h3 id="toc_2">打印调用堆栈信息</h3>
-
-<p>NSLog(@&quot;%@&quot;,[NSThread callStackSymbols]);</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/4/10</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -722,8 +618,6 @@ static NSString *const kSubscribeURL =@&quot;http://reactivetest.apiary.io/subsc
             <a href="Python.html"><strong>Python</strong></a>
         
             <a href="iOS.html"><strong>iOS</strong></a>
-        
-            <a href="%E6%88%91.html"><strong>我</strong></a>
          
         </p>
 
@@ -740,31 +634,31 @@ static NSString *const kSubscribeURL =@&quot;http://reactivetest.apiary.io/subsc
 	      
 		      
 			      <li class="post">
-			        <a href="16076509804045.html">RACCommand</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="16076509805027.html">关于我</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
 			        <a href="16076509807659.html">点击事件发生在视图边界之外的时候</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
+			        <a href="16085259457329.html">MRC 时代的引用计数的现身</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509804683.html">Xcode打包遇到的坑</a>
+			        <a href="16085257826419.html">自动释放池AutoreleasePool![内存管理-3 2](media/16085257826419/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86-3%202.jpg)</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804045.html">RACCommand</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
 			      </li>
 		     
 		  

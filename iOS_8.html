@@ -84,8 +84,6 @@
             <li><a href="Python.html">Python</a></li>
         
             <li><a href="iOS.html">iOS</a></li>
-        
-            <li><a href="%E6%88%91.html">我</a></li>
          
 
       </ul>
@@ -107,6 +105,460 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="16076509806148.html">
+                
+                  <h1>UICollectionView入门篇</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">1. 设计数据源和代理</h2>
+
+<p>每个集合视图都必须具有数据源对象。该数据源对象是内容，你的应用程序显示。它可以是应用程序数据模型中的对象，也可以是管理集合视图的视图控制器。数据源的唯一要求是它必须能够提供集合视图所需的信息，例如有多少项以及在显示这些项时要使用的视图。</p>
+
+<p>UICollectionViewDelegate是一个可选的（但建议）对象管理有关的介绍，并与您的内容互动方面。虽然代表的主要工作是管理单元格突出显示和选择，但可以扩展它以提供其他信息。例如，流布局扩展了基本委托行为以自定义布局指标，例如单元格的大小和它们之间的间距</p>
+
+<p><strong>For example:</strong></p>
+
+<pre><code class="language-text"> self.collectionView.delegate = self;
+ self.collectionView.dataSource = self;
+</code></pre>
+
+<h2 id="toc_1">2. 注册 cells 和 suppelementary Views</h2>
+
+<ul>
+<li>配置cell
+<ul>
+<li>registerClass:forCellWithReuseIdentifier:</li>
+<li>registerNib:forCellWithReuseIdentifier:</li>
+</ul></li>
+<li><p>配置suppelementary Views</p>
+<ul>
+<li>registerClass:forSupplementaryViewOfKind:withReuseIdentifier:</li>
+<li>registerNib:forSupplementaryViewOfKind:withReuseIdentifier:</li>
+</ul></li>
+</ul>
+
+<p><strong>For example:</strong></p>
+
+<pre><code class="language-text"> [self.collectionView registerNib:[UINib nibWithNibName:@&quot;MyCustomCell&quot; bundle:nil] forCellWithReuseIdentifier:@&quot;cell&quot;];
+</code></pre>
+
+<h2 id="toc_2">3. 数据源管理您的内容</h2>
+
+<ul>
+<li>集合视图包含多少个部分？</li>
+<li>对于给定的部分，部分包含多少项？</li>
+<li>对于给定的部分或项目，应使用哪些视图来显示相应的内容？</li>
+</ul>
+
+<p><strong>For example:</strong></p>
+
+<pre><code class="language-text">-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView*)collectionView {
+        // _data is a class member variable that contains one array per section.
+        return [_data count];
+    }
+    
+-(NSInteger)collectionView:(UICollectionView*)collectionView numberOfItemsInSection:(NSInteger)section {
+        NSArray* sectionArray = [_data objectAtIndex:section];
+        return [sectionArray count];
+    }
+    
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    MyCustomCell * newCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@&quot;cell&quot;
+                              forIndexPath:indexPath];
+    
+   newCell.cellLabel.text = [NSString stringWithFormat：@“Section：％d，Item：％d”，indexPath.section，indexPath.item];
+    return newCell;
+}
+    
+</code></pre>
+
+<h2 id="toc_3">4. 设计数据对象</h2>
+
+<p>高效的数据源使用节和项来帮助组织其底层数据对象。将数据组织成部分和项目可以使以后更轻松地实现数据源方法。而且由于您经常调用数据源方法，因此您需要确保这些方法的实现能够尽快检索数据。</p>
+
+<p>比如下面这个结构</p>
+
+<p><img src="media/15451226434486/15451228663086.png" alt=""/></p>
+
+<h2 id="toc_4">5. 插入，删除和移动部分和项目</h2>
+
+<p>在通知集合视图任何更改之前更新数据源至关重要，要插入，删除或移动单个部分或项目，请按照下列步骤操作：</p>
+
+<ul>
+<li>更新数据源对象中的数据</li>
+<li>调用集合视图的相应方法以插入或删除节或项。</li>
+</ul>
+
+<p>以编程方式添加，删除或移动单个项目时，集合视图的方法会自动创建动画以反映更改。但是，如果要同时为多个更改设置动画，则必须在块内执行所有插入，删除或移动调用，并将该块传递给该performBatchUpdates:completion:方法。然后，批量更新过程会同时为所有更改设置动画，您可以自由地混合调用以插入，删除或移动同一块中的项目。</p>
+
+<p><strong>For example:</strong></p>
+
+<pre><code class="language-text">[self.collectionView performBatchUpdates:^{
+   NSArray* itemPaths = [self.collectionView indexPathsForSelectedItems];
+ 
+   // Delete the items from the data source.
+   [self deleteItemsFromDataSourceAtIndexPaths:itemPaths];
+ 
+   // Now delete the items from the collection view.
+   [self.collectionView deleteItemsAtIndexPaths:itemPaths];
+} completion:nil];
+</code></pre>
+
+<h2 id="toc_5">6. 管理选择和亮点的可视状态</h2>
+
+<p>backgroundView当单元格第一次加载以及单元格未突出显示或未选中时，单元格的属性将始终为默认视图。selectedBackgroundView每当突出显示或选择单元格时，该属性都会替换默认的背景视图。在这种情况下，当选择或突出显示时，单元格的背景颜色将从红色变为白色。</p>
+
+<p><strong>For example:</strong></p>
+
+<pre><code class="language-text">#import &quot;MyCustomCell.h&quot;
+    
+@implementation MyCustomCell
+    
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    UIView * backgroundView = [[UIView alloc] initWithFrame:self.bounds];
+    backgroundView.backgroundColor = [UIColor redColor];
+    self.backgroundView = backgroundView;
+    
+    UIView * selectedBGView = [[UIView alloc] initWithFrame:self.bounds];
+    selectedBGView.backgroundColor = [UIColor whiteColor];
+    self.selectedBackgroundView = selectedBGView;
+    // Initialization code
+}
+    
+@end
+</code></pre>
+
+<h2 id="toc_6">7. 显示单元格的编辑菜单</h2>
+
+<p><img src="media/15451226434486/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-18%20%E4%B8%8B%E5%8D%886.05.55.png" alt="屏幕快照 2018-12-18 下午6.05.55" style="width:257px;"/></p>
+
+<ul>
+<li>委托必须实现与处理操作相关的所有三种方法：
+<ul>
+<li>collectionView:shouldShowMenuForItemAtIndexPath:</li>
+<li>collectionView:canPerformAction:forItemAtIndexPath:withSender:</li>
+<li>collectionView:performAction:forItemAtIndexPath:withSender:</li>
+</ul></li>
+</ul>
+
+<p>collectionView:shouldShowMenuForItemAtIndexPath:方法必须返回YES。<br/>
+collectionView:canPerformAction:forItemAtIndexPath:withSender:方法必须返回YES至少一个所需的动作。集合视图支持以下操作：<br/>
+cut:copy:paste:</p>
+
+<p><strong>For example:</strong></p>
+
+<pre><code class="language-text">-(BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return YES;
+}
+    
+- (BOOL)collectionView:(UICollectionView *)collectionView
+      canPerformAction:(SEL)action
+    forItemAtIndexPath:(NSIndexPath *)indexPath
+            withSender:(id)sender {
+    // Support only copying and pasting of cells.
+    if ([NSStringFromSelector(action) isEqualToString:@&quot;copy:&quot;]
+        || [NSStringFromSelector(action) isEqualToString:@&quot;paste:&quot;])
+        return YES;
+    
+    // Prevent all other actions.
+    return NO;
+}
+-(void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender{
+    
+    if ([NSStringFromSelector(action) isEqualToString:@&quot;copy:&quot;]){
+        if(_selectCopyArray.count) [_selectCopyArray removeAllObjects];
+        [_selectCopyArray addObject:@[@&quot;1&quot;,@&quot;2&quot;]];
+    }
+    
+    if ([NSStringFromSelector(action) isEqualToString:@&quot;paste:&quot;]){
+        
+        [self.dataSource addObjectsFromArray:_selectCopyArray];
+        [self.collectionView reloadData];
+    
+    }
+        
+    
+    
+    
+}
+</code></pre>
+
+<h2 id="toc_7">8. 流式布局<code>UICollectionViewFlowLayout</code></h2>
+
+<ul>
+<li><p>描述</p>
+<p>您可以使用具体的布局对象（UICollectionViewFlowLayout类）在集合视图中排列项目。流布局实现了基于行的分解布局，这意味着布局对象将单元放置在线性路径上，并尽可能多地沿着该行拟合单元。<strong>当布局对象在当前行上没有空间时，它会创建一个新行并在那里继续布局过程</strong></p>
+<p>可以通过编程方式或使用Xcode中的Interface Builder来配置流布局。配置流布局的步骤如下：</p>
+<ul>
+<li>创建流布局对象并将其分配给集合视图</li>
+<li>配置单元格的宽度和高度。</li>
+<li>为线条和项目设置间距选项（根据需要）。</li>
+<li>如果需要节标题或节页脚，请指定其大小。</li>
+<li>设置布局的滚动方向。</li>
+</ul></li>
+</ul>
+
+<p><strong>自定义流布局属性</strong></p>
+
+<ul>
+<li><p>①指定流布局中的项目大小</p>
+<ul>
+<li><p>xib 实现</p>
+<ul>
+<li>滚动方向</li>
+</ul>
+<p><img src="media/15451226434486/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-19%20%E4%B8%8A%E5%8D%8810.06.44.png" alt="屏幕快照 2018-12-19 上午10.06.44"/> </p>
+<ul>
+<li>大小间距等属性设置</li>
+</ul>
+<p><img src="media/15451226434486/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-19%20%E4%B8%8A%E5%8D%8810.06.30.png" alt="屏幕快照 2018-12-19 上午10.06.30"/></p></li>
+</ul>
+<p><strong>注意</strong>：您必须至少指定单元格的宽度和高度，如果不这样做，则会为您的项目指定宽度和高度为0，并且永远不会显示。</p>
+<ul>
+<li><p>代码实现</p>
+<ul>
+<li><p>单元格相同的大小直接设置<code>self.flowLayout.itemSize</code></p></li>
+<li><p>单元格指定不同的大小实现<br/>
+<code>collectionView:layout:sizeForItemAtIndexPath:</code>。可以使用提供的索引路径信息来返回相应项的大小。</p>
+<p><img src="media/15451226434486/15451873998702.png" alt=""/><br/>
+如果要动态改变项目的间距或大小，可以使用UICollectionViewDelegateFlowLayout 协议的方法。</p>
+<pre><code class="language-text">//UICollectionViewDelegateFlowLayout 代理方法
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath;<br/>
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section;<br/>
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section;<br/>
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section;<br/>
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section;<br/>
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section;
+</code></pre>
+<p><strong>如果存在给定方法，则流布局对象将调用该方法，而不是使用它具有的固定值。</strong><br/>
+实现必须为集合视图中的所有项返回适当的值。</p>
+<p><strong>注意</strong>:为单元格指定不同的大小时，单行上的项目数可能因行而异。</p></li>
+</ul></li>
+</ul></li>
+<li><p>②指定项目和行之间的空间</p>
+<p>使用流布局，您可以指定同一行上的项目之间的最小间距以及连续行之间的最小间距。提供的间距仅为最小间距。由于它如何布置内容，流布局对象可能会将项之间的间距增加到大于您指定的值的值。当布置的项目具有不同的尺寸时，布局对象可以类似地增加实际的行间距。</p>
+<ul>
+<li><p>项目之间的实际间距可能大于最小值</p>
+<p><img src="media/15451226434486/15451882901753.png" alt=""/></p></li>
+<li><p>如果项目大小不同，行间距会有所不同</p>
+<p><img src="media/15451226434486/15451883323733.png" alt=""/></p>
+<ul>
+<li>xib 实现见上面的图</li>
+<li>代码实现
+<ul>
+<li>固定间距 self.flowLayout.minimumLineSpacing和 self.flowLayout.minimumInteritemSpacing属性静态设置间距</li>
+<li>collectionView:layout:minimumLineSpacingForSectionAtIndex:和collectionView:layout:minimumInteritemSpacingForSectionAtIndex:方法。</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><p>③使用Section Insets来调整内容的边距</p>
+<p>使用insets在节的标题视图之后和页脚视图之前插入空格或者使用insets在内容的两侧插入空</p>
+<p><img src="media/15451226434486/15451888644969.png" alt=""/><br/>
+格。</p>
+<p>部分插入更改了布置单元格的可用空间，可以限制给定行中单元格的数量。</p></li>
+</ul>
+
+<h2 id="toc_8">总结</h2>
+
+<p>这篇文章包含了一个初学者刚开始接触UICollecctionView 所需要了解的内容，也一步步教你怎么使用一个最基础的视图。包含代理方法，itemSize，itemInset sectionInset 等等。<br/>
+基本上这些已经能满足一个初学者的要求了，如果需要进阶教程，后续会有进阶教程。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/8/8</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15650558092231.html">
+                
+                  <h1>Apple Developer Team</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>已经被添加到开发组当中，但是却一直在Xcode-&gt;Preferences-&gt;accounts 找不到自己已经添加的开发组。<br/>
+<img src="media/15650558092231/xcode_Account.jpg" alt="xcode_Account"/></p>
+
+<p>在百度搜了很久一直没有找到解决问题的答案，于是去了Google搜索，在stackoverflow发现了解决问题的答案。</p>
+
+<p>链接在此 <a href="https://stackoverflow.com/questions/35674208/development-team-not-showing-in-xcode/35696844">Development team not showing in Xcode</a> </p>
+
+<h2 id="toc_0">问题分析</h2>
+
+<p>首先博主声明苹果有两个系统</p>
+
+<ul>
+<li>Developer.apple.com system</li>
+<li>App Store connect system</li>
+</ul>
+
+<p>这是两个不同的系统，必须要保证同时加入了两个系统中的Team，如果对方要加入一个成员到开发组，从Developer开发者中心添加。</p>
+
+<p>看到这里依然没有解决我的答案，而且苹果已经在2018年修复了上面的问题。</p>
+
+<p>往下我看到了一个很重要的答案，就是权限问题，如果有足够的权限在开发者中心看到的页面如下。</p>
+
+<p><img src="media/15650558092231/15650583671343.jpg" alt="" style="width:1431px;"/></p>
+
+<p>如果没有足够的权限红色部分是不存在的，所以在xcode中无法查看自己所在的team，也是是无法管理描述文件，证书等等的，所以如果你没有看到红框部分，那么就需要找到管理员加入相应的权限。</p>
+
+<p><strong>答案</strong>:</p>
+
+<p>管理员去到AppStoreConnect，点击人员，划到最底下的 Developer Resources 勾选。</p>
+
+<p><img src="media/15650558092231/15650567168773.jpg" alt=""/></p>
+
+<p>这个就代表你就可以访问证书，标识，描述文件了，去到开发者中心也就发现了变化。</p>
+
+<p>此时重新打开Xcode-&gt;Preferences-&gt;accounts会发现自己加入的开发组已经出现。</p>
+
+<h2 id="toc_1">总结：</h2>
+
+<p>当你邀请某个开发人员加入开发组的时候一定要勾选允许资源访问，要不然也会遇到和我一样的问题。</p>
+
+<p>还有就是已经添加过了，但是没有足够的权限，就像我上面说的去AppStoreConnect修改权限。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/8/6</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509805248.html">
+                
+                  <h1>sizeThatFits和sizeToFit</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>今天帮同事看一个布局约束的问题，（代码也是从别人手中接过来的，所以并不清楚怎么布局的）<br/>
+view是用xib画的，约束设置很多，本以为是约束的问题，设置了约束还是不能更改整个view的高度。</p>
+
+<p>最后找了一会，我发现了一个方法 sizeThatFit 在sizeThatFit内部返回了size，所以刚才尽管指定的约束改了，但是还是不影响下面的方法返回size。</p>
+
+<p>所以就写了这个东西给不了解的同学一点点经验。</p>
+
+<pre><code class="language-text">- (void)sizeToFit;                       // calls sizeThatFits: with current view bounds and changes bounds size.
+- (CGSize)sizeThatFits:(CGSize)size;     // return &#39;best&#39; size to fit given size. does not actually resize view. Default is return existing view size
+
+</code></pre>
+
+<p>上面是苹果的方法说明。</p>
+
+<p>sizeToFit 方法会返回一个苹果自带方法计算出的合适的宽高，即使你初始化的时候的宽和高设置错误，苹果也会给你算出一个合适的size让你填充你的内容。</p>
+
+<pre><code class="language-text">-(void)addSizeToFitHelloLable{
+    
+    UILabel * hello = [[UILabel alloc]initWithFrame:CGRectMake(20, 20, 20, 100)];
+    hello.text = @&quot;hello world&quot;;
+    hello.backgroundColor = [UIColor redColor];
+    [self.view addSubview:hello];
+    [hello sizeToFit];
+    
+}
+
+</code></pre>
+
+<p>我这里设置的宽度和高度明显是不对的，但是当我调用sizeToFit之后就好多了，下面是调用前和调用之后的对比效果。</p>
+
+<ul>
+<li><p>调用之前<br/>
+<img src="media/15433027949667/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-27%20%E4%B8%8B%E5%8D%883.23.49.png" alt="屏幕快照 2018-11-27 下午3.23.49 "/></p></li>
+<li><p>调用之后<br/>
+<img src="media/15433027949667/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-27%20%E4%B8%8B%E5%8D%883.23.06.png" alt="屏幕快照 2018-11-27 下午3.23.06"/></p></li>
+</ul>
+
+<p>因为sizeToFit之后内部会调用调用sizeThatFits，所以还可以在自定义view当中重写sizeThatFits方法，去调整sizeToFit之后的size。</p>
+
+<pre><code class="language-text">----------customLable.m-------------
+-(CGSize)sizeThatFits:(CGSize)size{
+    
+    [super sizeThatFits:size];
+    size.height = 40;
+    return size;
+    
+}
+</code></pre>
+
+<h4 id="toc_0">注意</h4>
+
+<p>添加自定义的lable到view上最后千万不能忘记调用sizeToFit方法，要不然内部重写的sizeThatFits不生效。</p>
+
+<pre><code class="language-text">-(void)addCustomeSizeThatFitLable{
+    
+    CustomLable * hello = [[CustomLable alloc]initWithFrame:CGRectMake(20, 20, 200, 100)];
+    hello.text = @&quot;hello world&quot;;
+    hello.backgroundColor = [UIColor redColor];
+    [self.view addSubview:hello];
+    [hello sizeToFit]; 
+}
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/7/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="16076509807071.html">
                 
@@ -615,352 +1067,6 @@ thread is  &lt;NSThread: 0x60000297aac0&gt;{number = 1, name = main}
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="16076509807113.html">
-                
-                  <h1>在 App 运行时通过 dlopen 和 dlsym 链接加载 bundle 里的动态库。</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>我们一般引入某个 framework 可能是直接使用<code>#import &lt;AVFoundation/AVFoundation.h&gt;</code>其实还有另一种办法就是使用函数啊 dlopen</p>
-
-<pre><code class="language-text">函数定义： 
-　　void * dlopen( const char * pathname, int mode ); 
-　　函数描述： 
-　　在dlopen的（）函数以指定模式打开指定的动态连接库文件，并返回一个句柄给调用进程。使用dlclose（）来卸载打开的库。 
-　　mode：分为这两种 
-　　RTLD_LAZY 暂缓决定，等有需要时再解出符号 
-　　RTLD_NOW 立即决定，返回前解除所有未决定的符号。 
-　　RTLD_LOCAL 
-　　RTLD_GLOBAL 允许导出符号 
-　　RTLD_GROUP 
-　　RTLD_WORLD 
-
-　　返回值: 
-　　打开错误返回NULL 
-　　成功，返回库引用 
-　　编译时候要加入 -ldl (指定dl库) 
-
-</code></pre>
-
-<pre><code class="language-text">dlsym()
-
- 
-　功能：
-
-根据动态链接库操作句柄与符号，返回符号对应的地址。
-包含头文件：
-#include &lt;dlfcn.h&gt;
-函数定义：
-void*dlsym(void* handle,const char* symbol)
-函数描述：
-dlsym根据动态链接库操作句柄(handle)与符号(symbol)，返回符号对应的地址。使用这个函数不但可以获取函数地址，也可以获取变量地址。
-handle是由dlopen打开动态链接库后返回的指针，symbol就是要求获取的函数或全局变量的名称。
-dlclose()
-
- 
-
-dlclose用于关闭指定句柄的动态链接库，只有当此动态链接库的使用计数为0时,才会真正被系统卸载。
- 
-</code></pre>
-
-<p>示例函数</p>
-
-<pre><code class="language-text">-(void)mwviewDidLoad{
-    //打开动态库
-    NSString *path = [[NSBundle mainBundle] pathForResource:@&quot;Kidswaste-Sans Toi&quot; ofType:@&quot;mp3&quot;];
-    // 加载库到当前运行程序
-    void *lib = dlopen(&quot;/System/Library/Frameworks/AVFoundation.framework/AVFoundation&quot;, RTLD_LAZY);
-    if (lib) {
-        // 获取类名称
-        Class playerClass = NSClassFromString(@&quot;AVAudioPlayer&quot;);
-        // 获取函数方法
-        SEL selector = NSSelectorFromString(@&quot;initWithData:error:&quot;);
-        // 调用实例化对象方法
-        _runtime_Player = [[playerClass alloc] performSelector:selector withObject:[NSData dataWithContentsOfFile:path] withObject:nil];
-        // 获取函数方法
-        selector = NSSelectorFromString(@&quot;play&quot;);
-        // 调用播放方法
-        [_runtime_Player performSelector:selector];
-        NSLog(@&quot;动态加载播放&quot;);
-    }
-    dlclose(lib);
-    NSLog(@&quot;hello world from mwviewDidLoad&quot;);
-    [self mwviewDidLoad];
-    
-}
-
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/7/5</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509807234.html">
-                
-                  <h1>Swift 和 OC 实现“热加载”</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>众所周知，Google 推出的跨平台框架Flutter 有着很好的编译优势<code>Flutter Hot Reload</code>，每次改变之后，点击 <code>reload</code> 就会实现实时编译。那么其实我们也可以实现<code>Swift</code>和<code>OC</code>的实时编译。</p>
-
-<h4 id="toc_0">InjectionIII</h4>
-
-<p>通过这个工具可以实现类似Flutter 的快速编译。</p>
-
-<h6 id="toc_1">实现思路：</h6>
-
-<p>Injection 会监听源代码文件的变化，如果文件被改动了，Injection Server 就会执行 rebuildClass 重新进行编译、打包成动态库，也就是 .dylib 文件。编译、打包成动态库后使用 writeSting 方法通过 Socket 通知运行的 App。</p>
-
-<h4 id="toc_2">安装方式</h4>
-
-<ol>
-<li><p>Mac App Store下载安装</p>
-<p><img src="media/15536750345410/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-03-27%20%E4%B8%8B%E5%8D%884.26.20.png" alt="屏幕快照 2019-03-27 下午4.26.20"/></p></li>
-<li><p>Github</p>
-<p>这个工具开发作者是John Holdsworth，作者已经开源了这个工具，地址是<a href="https://github.com/johnno1962/InjectionIII">https://github.com/johnno1962/InjectionIII</a></p></li>
-</ol>
-
-<p>我使用的是在Mac App Store安装的方式，这样比较方便一些，如果你想专研源码，可以去到 GitHub 去研究。</p>
-
-<h5 id="toc_3">使用指南</h5>
-
-<ol>
-<li><p>打开工程</p>
-<p>安装之后打开会出现在 mac 的 menubar 点击打开你目标的工程文件的根目录。</p>
-<p><img src="media/15536750345410/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-03-27%20%E4%B8%8B%E5%8D%885.57.39.png" alt="屏幕快照 2019-03-27 下午5.57.39"/></p></li>
-<li><p>在 applicationDidFinishLaunching加载Injection包</p>
-<p>Xcode 10.1:</p>
-<pre><code class="language-text">#if DEBUG
-Bundle(path: &quot;/Applications/InjectionIII.app/Contents/Resources/iOSInjection10.bundle&quot;)?.load()<br/>
-//for tvOS:<br/>
-Bundle(path: &quot;/Applications/InjectionIII.app/Contents/Resources/tvOSInjection10.bundle&quot;)?.load()<br/>
-//Or for macOS:<br/>
-Bundle(path: &quot;/Applications/InjectionIII.app/Contents/Resources/macOSInjection10.bundle&quot;)?.load()<br/>
-#endif
-</code></pre>
-<p>Xcode 10.2 and later:</p>
-<pre><code class="language-text">#if DEBUG
-Bundle(path: &quot;/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle&quot;)?.load()<br/>
-//for tvOS:<br/>
-Bundle(path: &quot;/Applications/InjectionIII.app/Contents/Resources/tvOSInjection.bundle&quot;)?.load()<br/>
-//Or for macOS:<br/>
-Bundle(path: &quot;/Applications/InjectionIII.app/Contents/Resources/macOSInjection.bundle&quot;)?.load()<br/>
-#endif
-</code></pre></li>
-</ol>
-
-<p>上面是swift版本的NSBundle加载包，下面的代码是oc的实现方法</p>
-
-<pre><code class="language-text">[[NSBundle bundleWithPath:@&quot;/Applications/InjectionIII.app/Contents/Resources/iOSInjection10.bundle&quot;] load];
-</code></pre>
-
-<ol>
-<li><p>运行工程 </p>
-<p>选择模拟器，cmd+R启动编译</p></li>
-<li><p>修改文件注入代码</p>
-<p>每当对代码进行修改之后，一定要cmd+S保存（不然Injection不会分析变动以及替换符号）实现快速编译。不用重新 cmd+R。</p></li>
-</ol>
-
-<h4 id="toc_4">注意事项</h4>
-
-<p><img src="media/15536750345410/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-03-27%20%E4%B8%8B%E5%8D%885.56.38.png" alt="屏幕快照 2019-03-27 下午5.56.38"/></p>
-
-<p>还有一点就是如果你在 menubar 打开了这个程式的File Watcher那么就只需要cmd+S 如果你没有开启这个功能，还要多一步命令<code>control</code>+<code>=</code>(同时按住 control 和 =）。</p>
-
-<p>还有就是由于沙盒机智，这个方法只能使用在模拟器上，对真机无效。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/6/20</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509805947.html">
-                
-                  <h1>What's New in LLVM（2017）</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>Xcode 9中的Apple LLVM编译器具有新的语言特性、改进的诊断和更强大的优化。了解Objective-C和c++的最新添加，了解新的和改进的警告和静态分析器检查，了解LLVM编译器技术如何为应用程序提供更快的构建时间和更好的运行时性能。</p>
-
-<h2 id="toc_0">1.不同语言的api检查</h2>
-
-<pre><code class="language-text">@available(iOS 11,*)--oc
-#available  --swift
-</code></pre>
-
-<p>便捷的方法检查（检查可用性，如果你要给某个新的系统加入新功能）</p>
-
-<pre><code class="language-text">@interface MyAblumController : UIViewController
-
--(void)showFaces API_AVALABILITY(ios(11.0));
-
-@end
-</code></pre>
-
-<p>还可以移动整个类的范围</p>
-
-<pre><code class="language-text">API_AVALABILITY(ios(11.0))
-@interface MyAblumController : UIViewController
-
--(void)showFaces ;
-
-@end
-</code></pre>
-
-<h2 id="toc_1">2.不要把Number元素和标量进行比较</h2>
-
-<pre><code class="language-text">@property NSNumber * photoCount;
--(BOOL)hasPhotos{
-return self.photoCount &gt; 0
-}
-</code></pre>
-
-<p>因为这个比较相当于是把photoCount和指针nil相比，返回为YES,所以这个错误很严重。</p>
-
-<p><img src="media/15445814733953/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%884.26.59.png" alt="屏幕快照 2018-12-12 下午4.26.59"/></p>
-
-<p>编译器会报错，提醒你出现了问题，你可以把NSNumber转成interger之后再做判断。</p>
-
-<p><img src="media/15445814733953/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%884.28.18.png" alt="屏幕快照 2018-12-12 下午4.28.18"/></p>
-
-<h6 id="toc_2">Control Check in Build Setting</h6>
-
-<p>设置Suspicious Conversions 为YES(aggressive)当编译器不确定的时候会弹出如上提示。<br/>
-<img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%885.06.22.png" alt="屏幕快照 2018-12-12 下午5.06.22"/></p>
-
-<h2 id="toc_3">3. copy修饰NSMutableArray</h2>
-
-<p>赋值的时候等于是复制了一个不可变对象，所以以后运行时的时候会报错(如果你对这个数组进行修改)</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%886.45.36.png" alt="屏幕快照 2018-12-12 下午6.45.36"/></p>
-
-<p>这个时候就会报错，因为给self.titieArr赋值之后变成了不可变的，所以接下来的操作会导致错误。</p>
-
-<h6 id="toc_4">解决方法:</h6>
-
-<pre><code class="language-text">//添加setter方法
--(void)setTitleArr:(NSMutableArray *)titleArr{
-    
-    self.titleArr= [titleArr mutableCopy];
-}
-</code></pre>
-
-<p>每次赋值的时候给数组赋值可变对象。</p>
-
-<p>另外为了及时发现bug可以开启每次build的时候analyze而不是每次都要去手动analyze（如果不开启的话上面的错误不会提示）</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%886.48.45.png" alt="屏幕快照 2018-12-12 下午6.48.45"/><br/>
-设置Analyze During Build 的值为Yes.</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%886.43.05.png" alt="屏幕快照 2018-12-12 下午6.43.05"/></p>
-
-<h2 id="toc_5">4. 声明无参数的函数</h2>
-
-<h5 id="toc_6">Non-prototype declarations in C and Objective-C</h5>
-
-<p>非原型声明</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.47.06.png" alt="屏幕快照 2018-12-13 下午3.47.06"/></p>
-
-<p>在C和OC中意味着foo可以跟任何参数调用，这个行为可以追溯到1977年C语言，不匹配类型的调用会导致运行时的崩溃。<br/>
-在Xcode9 中编译器带有一个新的警告加强严格原型，会报出警告。</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.50.45.png" alt="屏幕快照 2018-12-13 下午3.50.45"/></p>
-
-<p>通常只需要在括号中添加void表示不接收任何参数传递。</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.51.41.png" alt="屏幕快照 2018-12-13 下午3.51.41"/></p>
-
-<p>任何带有参数的调用都会直接报错。</p>
-
-<p>另外block中不接收参数的时候也会出现同样的警告，如下所示。</p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.52.47.png" alt="屏幕快照 2018-12-13 下午3.52.47"/></p>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.53.57.png" alt="屏幕快照 2018-12-13 下午3.53.57"/></p>
-
-<h3 id="toc_7">升级验证警告设置</h3>
-
-<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%884.08.45.png" alt="屏幕快照 2018-12-13 下午4.08.45"/></p>
-
-<p>勾选Yes(Error)</p>
-
-<h6 id="toc_8">Strict Prototypes 勾选Yes(Error)之前 and 勾选之后</h6>
-
-<p><img src="media/15446033549417/Artboard%202@2x.png" alt="Artboard 2@2x"/></p>
-
-<p>勾选之后就不只是警告了，直接是错误提醒，让你开发的时候不得不注意，也是为了代码的安全性。</p>
-
-<h3 id="toc_9">结尾</h3>
-
-<p>WWDC2017剩余部分是关于C++的优化，如果感兴趣的话可以移步<a href="https://developer.apple.com/videos/play/wwdc2017/411">开发者网站</a>观看。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/6/10</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -972,7 +1078,7 @@ return self.photoCount &gt; 0
 			  </div>
 			  <div class="large-6 columns">
 			<p class="text-right" style="padding-top:25px;">
-			
+			 <a href="iOS_9.html">&raquo; Next Page</a> 
 			</p>
 			  </div>
 			</div>
@@ -1020,8 +1126,6 @@ return self.photoCount &gt; 0
             <a href="Python.html"><strong>Python</strong></a>
         
             <a href="iOS.html"><strong>iOS</strong></a>
-        
-            <a href="%E6%88%91.html"><strong>我</strong></a>
          
         </p>
 
@@ -1038,31 +1142,31 @@ return self.photoCount &gt; 0
 	      
 		      
 			      <li class="post">
-			        <a href="16076509804045.html">RACCommand</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="16076509805027.html">关于我</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
 			        <a href="16076509807659.html">点击事件发生在视图边界之外的时候</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
+			        <a href="16085259457329.html">MRC 时代的引用计数的现身</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509804683.html">Xcode打包遇到的坑</a>
+			        <a href="16085257826419.html">自动释放池AutoreleasePool![内存管理-3 2](media/16085257826419/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86-3%202.jpg)</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804045.html">RACCommand</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
 			      </li>
 		     
 		  

@@ -84,8 +84,6 @@
             <li><a href="Python.html">Python</a></li>
         
             <li><a href="iOS.html">iOS</a></li>
-        
-            <li><a href="%E6%88%91.html">我</a></li>
          
 
       </ul>
@@ -107,6 +105,281 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="16076509806102.html">
+                
+                  <h1>What's New in Storyboards</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h6 id="toc_0">故事板是在iOS和OS X上构建用户界面和应用程序流的好方法。了解如何有效地组织故事板，为接口定义segue，以及轻松地展开转换。深入讨论新的api，并听取关于如何创建优秀用户界面的技巧，并附带一些自定义的转场动画介绍和使用。</h6>
+
+<h2 id="toc_1">1. Refactor to Storyboard</h2>
+
+<p>在 storyboard 中选中对应的 xib 文件，然后点击Editor-&gt;Refactor to Storyboard</p>
+
+<p>可以把整个Storyboard文件中独立的部分重构出来。</p>
+
+<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.13.35.png" alt="屏幕快照 2018-12-17 上午10.13.35"/></p>
+
+<h2 id="toc_2">2. Storyboard Refrence</h2>
+
+<p>拖动Storyboard Refrence到故事版中</p>
+
+<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.42.11.png" alt="屏幕快照 2018-12-17 上午10.42.11"/></p>
+
+<p>对Storyboard Refrence进行设置，选择引用的故事版，以及故事版的引用id(必须和故事版中控制器的 Storyboard ID对应)bundle 可以为空，因为我这里是单项目工程，如果多个 bundle 的话就需要指定不同的 bundle。</p>
+
+<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.41.40.png" alt="屏幕快照 2018-12-17 上午10.41.40"/> </p>
+
+<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.44.49.png" alt="屏幕快照 2018-12-17 上午10.44.49"/></p>
+
+<h2 id="toc_3">3. Storyboard Segue</h2>
+
+<ul>
+<li><p>点击 segue 右侧Utilities -&gt; show the<br/>
+attributes inspector 可以设置自带的转场动画效果。<br/>
+<img src="media/15450120295637/15450155820528.jpg" alt=""/></p></li>
+<li><p>还可以指定Segue Class 在内部重写 perform 方法，记得要调用 [super perform]</p>
+<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8811.37.11.png" alt="屏幕快照 2018-12-17 上午11.37.11"/></p>
+<ul>
+<li><p>user modal presentation</p>
+<ul>
+<li>赋值转换代理对象 transitioning delegate</li>
+<li>调用 [super perform] 开始    modal presentation</li>
+<li>提交动画用于 presentation</li>
+<li>展示动画效果给目标控制器</li>
+</ul></li>
+<li><p>user dismisses presentation</p></li>
+<li><p>提交动画用于 dismissal</p></li>
+<li><p>展示dissmissal动画效果（动画控制器）</p></li>
+</ul></li>
+</ul>
+
+<h2 id="toc_4">注意⚠️</h2>
+
+<h5 id="toc_5">1️⃣设置转场动画的代理要在视图加载之前设置，比如在 presentViewController 之前 还有在 viewDidAppear 里面（试了在 viewDidLoad）当中不成功。</h5>
+
+<pre><code class="language-text">#import &quot;PhotoViewController.h&quot;
+#import &quot;ScalingDismissAnimator.h&quot;
+
+@interface PhotoViewController ()&lt;UIViewControllerTransitioningDelegate&gt;
+
+@end
+
+@implementation PhotoViewController
+-(void)viewDidAppear:(BOOL)animated{
+self.transitioningDelegate = self;
+[super viewDidAppear:animated];
+}
+- (void)viewDidLoad {
+[super viewDidLoad];
+// Do any additional setup after loading the view.
+}
+
+- (IBAction)dismiss:(UIButton *)sender {
+[self dismissViewControllerAnimated:YES
+                         completion:nil];
+}
+
+-(id&lt;UIViewControllerAnimatedTransitioning&gt;)animationControllerForDismissedController:(UIViewController *)dismissed{
+return   [[ScalingDismissAnimator alloc]init];
+
+}
+
+</code></pre>
+
+<p>在UIViewControllerAnimatedTransitioning类中除了实现 init 方法之外一定要实现这两个重要方法</p>
+
+<pre><code class="language-text">- (NSTimeInterval)transitionDuration:(id &lt;UIViewControllerContextTransitioning&gt;)transitionContext {
+    
+return 动画持续时间;
+}
+
+
+-(void)animateTransition:(id&lt;UIViewControllerContextTransitioning&gt;)transitionContext{
+
+在这个方法里面做动画事件
+
+}
+
+</code></pre>
+
+<h5 id="toc_6">2️⃣fromViewController和toViewController</h5>
+
+<p>要注意fromViewController和toViewController 比如A-&gt;B（present）<br/>
+那么A是fromViewController B 是toViewController<br/>
+然后如果 dissmissViewController 的时候B是fromViewController A是toViewController</p>
+
+<h5 id="toc_7">3️⃣转场动画背景为黑色</h5>
+
+<p>可以先把目标控制器的 view 加到[transitionContext containerView]效果会好很多，然后再加入要发生动画的控制器的 view 比如</p>
+
+<pre><code class="language-text">-(void)animateTransitionEvent{
+    
+[self.containerView addSubview:self.toViewController.view];
+[self.containerView addSubview:self.fromViewController.view];
+[UIView animateWithDuration:self.transitionDuration delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+    self.fromViewController.view.transform = CGAffineTransformMakeScale(0.1, 0.1);
+} completion:^(BOOL finished) {
+    [self completeTransition];
+}];
+}
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/8/15</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509807752.html">
+                
+                  <h1>Speed Up Development with Xcode File Templates</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h4 id="toc_0">Custom Templates Directory</h4>
+
+<ul>
+<li><p>~/Library/Developer/Xcode/Templates<br/>
+进入到指定的模版路径</p></li>
+<li><p>mkdir -p ~/Library/Developer/Xcode/Templates/File\ Templates/Custom 创建一个Custom 的文件夹</p></li>
+</ul>
+
+<h5 id="toc_1">Xcode Default Templates Directory</h5>
+
+<p>/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/File Templates</p>
+
+<p>进入之后复制一些其他的模版到自己的custom模版 然后进入模版之后编辑自己经常使用的模版，可以极大的提升开发的效率。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/8/15</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509804237.html">
+                
+                  <h1>给UITableView边框加阴影</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>项目中有个需求要在UITableView加边框阴影  </p>
+
+<p>如果你的界面的UITableView是充满整个屏幕的话那么就可以使用这个简单的方法。   </p>
+
+<ul>
+<li>方法一</li>
+</ul>
+
+<pre><code class="language-text">tableView.layer.shadowColor = UIColor(white: 000000, alpha: 0.3).CGColor
+
+tableView.layer.shadowOffset = CGSize(width: -6, height: 6)
+
+tableView.layer.shadowOpacity = 1
+
+tableView.clipsToBounds = false //这句最重要了，不然就显示不出来
+</code></pre>
+
+<h4 id="toc_0">问题来了</h4>
+
+<p>我的界面UITableview上面有一个固定不动的区域，如果单纯的照上面写的话，就会出现tableview盖住上面的问题 <br/>
+其实就是因为clipsToBounds = false 不对超出边框的部分进行切割。<br/><br/>
+因为UIScrollview默认clipsToBounds = true,所以你可能之前没有见过超出部分依然还显示在界面。 </p>
+
+<p>我的界面如下图所示<br/>
+<img src="https://lh3.googleusercontent.com/-Zq0sRfLUSQA/W_Jq6QFUYnI/AAAAAAAAlSU/JFoyTporhCgZafmew7cHT7yWGo2fn1ATQCHMYCw/I/15426133929938.jpg" alt=""/></p>
+
+<p>如果父视图的clipsToBounds = true那么在上面的子控件的clipsToBounds 也是true<br/><br/>
+所以必须要在UITableview下面添加一个UIView，可以使用下面的代码<br/><br/>
+必须要使UITableView的clipsToBounds = true，下面的父视图的clipsToBounds = false</p>
+
+<ul>
+<li>方法二</li>
+</ul>
+
+<pre><code class="language-text">    self.backView = [[UIView alloc]initWithFrame:CGRectMake(originX, originY, Width,  height)];
+    self.backView.layer.shadowColor = [UIColor gh_colorFromHexString:@&quot;#002F81&quot;].CGColor;
+    self.backView.layer.shadowOffset = CGSizeMake(0, 2);
+    self.backView.layer.shadowOpacity = 0.1;
+    self.backView.layer.shadowRadius=8;//设置阴影半径
+    self.backView.clipsToBounds = false;
+    [self.view addSubview:self.backView];
+    
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,0, Width, height) style:UITableViewStylePlain];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.layer.cornerRadius = KScreenWidth/375 *4;
+    self.tableView.layer.masksToBounds = YES;
+    self.tableView.tableFooterView = [UIView new];
+    [self.backView addSubview:self.tableView];
+
+
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/8/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="16076509804714.html">
                 
@@ -794,460 +1067,6 @@ print(Date())<br/>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="16076509806148.html">
-                
-                  <h1>UICollectionView入门篇</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">1. 设计数据源和代理</h2>
-
-<p>每个集合视图都必须具有数据源对象。该数据源对象是内容，你的应用程序显示。它可以是应用程序数据模型中的对象，也可以是管理集合视图的视图控制器。数据源的唯一要求是它必须能够提供集合视图所需的信息，例如有多少项以及在显示这些项时要使用的视图。</p>
-
-<p>UICollectionViewDelegate是一个可选的（但建议）对象管理有关的介绍，并与您的内容互动方面。虽然代表的主要工作是管理单元格突出显示和选择，但可以扩展它以提供其他信息。例如，流布局扩展了基本委托行为以自定义布局指标，例如单元格的大小和它们之间的间距</p>
-
-<p><strong>For example:</strong></p>
-
-<pre><code class="language-text"> self.collectionView.delegate = self;
- self.collectionView.dataSource = self;
-</code></pre>
-
-<h2 id="toc_1">2. 注册 cells 和 suppelementary Views</h2>
-
-<ul>
-<li>配置cell
-<ul>
-<li>registerClass:forCellWithReuseIdentifier:</li>
-<li>registerNib:forCellWithReuseIdentifier:</li>
-</ul></li>
-<li><p>配置suppelementary Views</p>
-<ul>
-<li>registerClass:forSupplementaryViewOfKind:withReuseIdentifier:</li>
-<li>registerNib:forSupplementaryViewOfKind:withReuseIdentifier:</li>
-</ul></li>
-</ul>
-
-<p><strong>For example:</strong></p>
-
-<pre><code class="language-text"> [self.collectionView registerNib:[UINib nibWithNibName:@&quot;MyCustomCell&quot; bundle:nil] forCellWithReuseIdentifier:@&quot;cell&quot;];
-</code></pre>
-
-<h2 id="toc_2">3. 数据源管理您的内容</h2>
-
-<ul>
-<li>集合视图包含多少个部分？</li>
-<li>对于给定的部分，部分包含多少项？</li>
-<li>对于给定的部分或项目，应使用哪些视图来显示相应的内容？</li>
-</ul>
-
-<p><strong>For example:</strong></p>
-
-<pre><code class="language-text">-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView*)collectionView {
-        // _data is a class member variable that contains one array per section.
-        return [_data count];
-    }
-    
--(NSInteger)collectionView:(UICollectionView*)collectionView numberOfItemsInSection:(NSInteger)section {
-        NSArray* sectionArray = [_data objectAtIndex:section];
-        return [sectionArray count];
-    }
-    
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    MyCustomCell * newCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@&quot;cell&quot;
-                              forIndexPath:indexPath];
-    
-   newCell.cellLabel.text = [NSString stringWithFormat：@“Section：％d，Item：％d”，indexPath.section，indexPath.item];
-    return newCell;
-}
-    
-</code></pre>
-
-<h2 id="toc_3">4. 设计数据对象</h2>
-
-<p>高效的数据源使用节和项来帮助组织其底层数据对象。将数据组织成部分和项目可以使以后更轻松地实现数据源方法。而且由于您经常调用数据源方法，因此您需要确保这些方法的实现能够尽快检索数据。</p>
-
-<p>比如下面这个结构</p>
-
-<p><img src="media/15451226434486/15451228663086.png" alt=""/></p>
-
-<h2 id="toc_4">5. 插入，删除和移动部分和项目</h2>
-
-<p>在通知集合视图任何更改之前更新数据源至关重要，要插入，删除或移动单个部分或项目，请按照下列步骤操作：</p>
-
-<ul>
-<li>更新数据源对象中的数据</li>
-<li>调用集合视图的相应方法以插入或删除节或项。</li>
-</ul>
-
-<p>以编程方式添加，删除或移动单个项目时，集合视图的方法会自动创建动画以反映更改。但是，如果要同时为多个更改设置动画，则必须在块内执行所有插入，删除或移动调用，并将该块传递给该performBatchUpdates:completion:方法。然后，批量更新过程会同时为所有更改设置动画，您可以自由地混合调用以插入，删除或移动同一块中的项目。</p>
-
-<p><strong>For example:</strong></p>
-
-<pre><code class="language-text">[self.collectionView performBatchUpdates:^{
-   NSArray* itemPaths = [self.collectionView indexPathsForSelectedItems];
- 
-   // Delete the items from the data source.
-   [self deleteItemsFromDataSourceAtIndexPaths:itemPaths];
- 
-   // Now delete the items from the collection view.
-   [self.collectionView deleteItemsAtIndexPaths:itemPaths];
-} completion:nil];
-</code></pre>
-
-<h2 id="toc_5">6. 管理选择和亮点的可视状态</h2>
-
-<p>backgroundView当单元格第一次加载以及单元格未突出显示或未选中时，单元格的属性将始终为默认视图。selectedBackgroundView每当突出显示或选择单元格时，该属性都会替换默认的背景视图。在这种情况下，当选择或突出显示时，单元格的背景颜色将从红色变为白色。</p>
-
-<p><strong>For example:</strong></p>
-
-<pre><code class="language-text">#import &quot;MyCustomCell.h&quot;
-    
-@implementation MyCustomCell
-    
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    
-    UIView * backgroundView = [[UIView alloc] initWithFrame:self.bounds];
-    backgroundView.backgroundColor = [UIColor redColor];
-    self.backgroundView = backgroundView;
-    
-    UIView * selectedBGView = [[UIView alloc] initWithFrame:self.bounds];
-    selectedBGView.backgroundColor = [UIColor whiteColor];
-    self.selectedBackgroundView = selectedBGView;
-    // Initialization code
-}
-    
-@end
-</code></pre>
-
-<h2 id="toc_6">7. 显示单元格的编辑菜单</h2>
-
-<p><img src="media/15451226434486/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-18%20%E4%B8%8B%E5%8D%886.05.55.png" alt="屏幕快照 2018-12-18 下午6.05.55" style="width:257px;"/></p>
-
-<ul>
-<li>委托必须实现与处理操作相关的所有三种方法：
-<ul>
-<li>collectionView:shouldShowMenuForItemAtIndexPath:</li>
-<li>collectionView:canPerformAction:forItemAtIndexPath:withSender:</li>
-<li>collectionView:performAction:forItemAtIndexPath:withSender:</li>
-</ul></li>
-</ul>
-
-<p>collectionView:shouldShowMenuForItemAtIndexPath:方法必须返回YES。<br/>
-collectionView:canPerformAction:forItemAtIndexPath:withSender:方法必须返回YES至少一个所需的动作。集合视图支持以下操作：<br/>
-cut:copy:paste:</p>
-
-<p><strong>For example:</strong></p>
-
-<pre><code class="language-text">-(BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-    return YES;
-}
-    
-- (BOOL)collectionView:(UICollectionView *)collectionView
-      canPerformAction:(SEL)action
-    forItemAtIndexPath:(NSIndexPath *)indexPath
-            withSender:(id)sender {
-    // Support only copying and pasting of cells.
-    if ([NSStringFromSelector(action) isEqualToString:@&quot;copy:&quot;]
-        || [NSStringFromSelector(action) isEqualToString:@&quot;paste:&quot;])
-        return YES;
-    
-    // Prevent all other actions.
-    return NO;
-}
--(void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender{
-    
-    if ([NSStringFromSelector(action) isEqualToString:@&quot;copy:&quot;]){
-        if(_selectCopyArray.count) [_selectCopyArray removeAllObjects];
-        [_selectCopyArray addObject:@[@&quot;1&quot;,@&quot;2&quot;]];
-    }
-    
-    if ([NSStringFromSelector(action) isEqualToString:@&quot;paste:&quot;]){
-        
-        [self.dataSource addObjectsFromArray:_selectCopyArray];
-        [self.collectionView reloadData];
-    
-    }
-        
-    
-    
-    
-}
-</code></pre>
-
-<h2 id="toc_7">8. 流式布局<code>UICollectionViewFlowLayout</code></h2>
-
-<ul>
-<li><p>描述</p>
-<p>您可以使用具体的布局对象（UICollectionViewFlowLayout类）在集合视图中排列项目。流布局实现了基于行的分解布局，这意味着布局对象将单元放置在线性路径上，并尽可能多地沿着该行拟合单元。<strong>当布局对象在当前行上没有空间时，它会创建一个新行并在那里继续布局过程</strong></p>
-<p>可以通过编程方式或使用Xcode中的Interface Builder来配置流布局。配置流布局的步骤如下：</p>
-<ul>
-<li>创建流布局对象并将其分配给集合视图</li>
-<li>配置单元格的宽度和高度。</li>
-<li>为线条和项目设置间距选项（根据需要）。</li>
-<li>如果需要节标题或节页脚，请指定其大小。</li>
-<li>设置布局的滚动方向。</li>
-</ul></li>
-</ul>
-
-<p><strong>自定义流布局属性</strong></p>
-
-<ul>
-<li><p>①指定流布局中的项目大小</p>
-<ul>
-<li><p>xib 实现</p>
-<ul>
-<li>滚动方向</li>
-</ul>
-<p><img src="media/15451226434486/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-19%20%E4%B8%8A%E5%8D%8810.06.44.png" alt="屏幕快照 2018-12-19 上午10.06.44"/> </p>
-<ul>
-<li>大小间距等属性设置</li>
-</ul>
-<p><img src="media/15451226434486/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-19%20%E4%B8%8A%E5%8D%8810.06.30.png" alt="屏幕快照 2018-12-19 上午10.06.30"/></p></li>
-</ul>
-<p><strong>注意</strong>：您必须至少指定单元格的宽度和高度，如果不这样做，则会为您的项目指定宽度和高度为0，并且永远不会显示。</p>
-<ul>
-<li><p>代码实现</p>
-<ul>
-<li><p>单元格相同的大小直接设置<code>self.flowLayout.itemSize</code></p></li>
-<li><p>单元格指定不同的大小实现<br/>
-<code>collectionView:layout:sizeForItemAtIndexPath:</code>。可以使用提供的索引路径信息来返回相应项的大小。</p>
-<p><img src="media/15451226434486/15451873998702.png" alt=""/><br/>
-如果要动态改变项目的间距或大小，可以使用UICollectionViewDelegateFlowLayout 协议的方法。</p>
-<pre><code class="language-text">//UICollectionViewDelegateFlowLayout 代理方法
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath;<br/>
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section;<br/>
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section;<br/>
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section;<br/>
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section;<br/>
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section;
-</code></pre>
-<p><strong>如果存在给定方法，则流布局对象将调用该方法，而不是使用它具有的固定值。</strong><br/>
-实现必须为集合视图中的所有项返回适当的值。</p>
-<p><strong>注意</strong>:为单元格指定不同的大小时，单行上的项目数可能因行而异。</p></li>
-</ul></li>
-</ul></li>
-<li><p>②指定项目和行之间的空间</p>
-<p>使用流布局，您可以指定同一行上的项目之间的最小间距以及连续行之间的最小间距。提供的间距仅为最小间距。由于它如何布置内容，流布局对象可能会将项之间的间距增加到大于您指定的值的值。当布置的项目具有不同的尺寸时，布局对象可以类似地增加实际的行间距。</p>
-<ul>
-<li><p>项目之间的实际间距可能大于最小值</p>
-<p><img src="media/15451226434486/15451882901753.png" alt=""/></p></li>
-<li><p>如果项目大小不同，行间距会有所不同</p>
-<p><img src="media/15451226434486/15451883323733.png" alt=""/></p>
-<ul>
-<li>xib 实现见上面的图</li>
-<li>代码实现
-<ul>
-<li>固定间距 self.flowLayout.minimumLineSpacing和 self.flowLayout.minimumInteritemSpacing属性静态设置间距</li>
-<li>collectionView:layout:minimumLineSpacingForSectionAtIndex:和collectionView:layout:minimumInteritemSpacingForSectionAtIndex:方法。</li>
-</ul></li>
-</ul></li>
-</ul></li>
-<li><p>③使用Section Insets来调整内容的边距</p>
-<p>使用insets在节的标题视图之后和页脚视图之前插入空格或者使用insets在内容的两侧插入空</p>
-<p><img src="media/15451226434486/15451888644969.png" alt=""/><br/>
-格。</p>
-<p>部分插入更改了布置单元格的可用空间，可以限制给定行中单元格的数量。</p></li>
-</ul>
-
-<h2 id="toc_8">总结</h2>
-
-<p>这篇文章包含了一个初学者刚开始接触UICollecctionView 所需要了解的内容，也一步步教你怎么使用一个最基础的视图。包含代理方法，itemSize，itemInset sectionInset 等等。<br/>
-基本上这些已经能满足一个初学者的要求了，如果需要进阶教程，后续会有进阶教程。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/8/8</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15650558092231.html">
-                
-                  <h1>Apple Developer Team</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>已经被添加到开发组当中，但是却一直在Xcode-&gt;Preferences-&gt;accounts 找不到自己已经添加的开发组。<br/>
-<img src="media/15650558092231/xcode_Account.jpg" alt="xcode_Account"/></p>
-
-<p>在百度搜了很久一直没有找到解决问题的答案，于是去了Google搜索，在stackoverflow发现了解决问题的答案。</p>
-
-<p>链接在此 <a href="https://stackoverflow.com/questions/35674208/development-team-not-showing-in-xcode/35696844">Development team not showing in Xcode</a> </p>
-
-<h2 id="toc_0">问题分析</h2>
-
-<p>首先博主声明苹果有两个系统</p>
-
-<ul>
-<li>Developer.apple.com system</li>
-<li>App Store connect system</li>
-</ul>
-
-<p>这是两个不同的系统，必须要保证同时加入了两个系统中的Team，如果对方要加入一个成员到开发组，从Developer开发者中心添加。</p>
-
-<p>看到这里依然没有解决我的答案，而且苹果已经在2018年修复了上面的问题。</p>
-
-<p>往下我看到了一个很重要的答案，就是权限问题，如果有足够的权限在开发者中心看到的页面如下。</p>
-
-<p><img src="media/15650558092231/15650583671343.jpg" alt="" style="width:1431px;"/></p>
-
-<p>如果没有足够的权限红色部分是不存在的，所以在xcode中无法查看自己所在的team，也是是无法管理描述文件，证书等等的，所以如果你没有看到红框部分，那么就需要找到管理员加入相应的权限。</p>
-
-<p><strong>答案</strong>:</p>
-
-<p>管理员去到AppStoreConnect，点击人员，划到最底下的 Developer Resources 勾选。</p>
-
-<p><img src="media/15650558092231/15650567168773.jpg" alt=""/></p>
-
-<p>这个就代表你就可以访问证书，标识，描述文件了，去到开发者中心也就发现了变化。</p>
-
-<p>此时重新打开Xcode-&gt;Preferences-&gt;accounts会发现自己加入的开发组已经出现。</p>
-
-<h2 id="toc_1">总结：</h2>
-
-<p>当你邀请某个开发人员加入开发组的时候一定要勾选允许资源访问，要不然也会遇到和我一样的问题。</p>
-
-<p>还有就是已经添加过了，但是没有足够的权限，就像我上面说的去AppStoreConnect修改权限。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/8/6</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509805248.html">
-                
-                  <h1>sizeThatFits和sizeToFit</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>今天帮同事看一个布局约束的问题，（代码也是从别人手中接过来的，所以并不清楚怎么布局的）<br/>
-view是用xib画的，约束设置很多，本以为是约束的问题，设置了约束还是不能更改整个view的高度。</p>
-
-<p>最后找了一会，我发现了一个方法 sizeThatFit 在sizeThatFit内部返回了size，所以刚才尽管指定的约束改了，但是还是不影响下面的方法返回size。</p>
-
-<p>所以就写了这个东西给不了解的同学一点点经验。</p>
-
-<pre><code class="language-text">- (void)sizeToFit;                       // calls sizeThatFits: with current view bounds and changes bounds size.
-- (CGSize)sizeThatFits:(CGSize)size;     // return &#39;best&#39; size to fit given size. does not actually resize view. Default is return existing view size
-
-</code></pre>
-
-<p>上面是苹果的方法说明。</p>
-
-<p>sizeToFit 方法会返回一个苹果自带方法计算出的合适的宽高，即使你初始化的时候的宽和高设置错误，苹果也会给你算出一个合适的size让你填充你的内容。</p>
-
-<pre><code class="language-text">-(void)addSizeToFitHelloLable{
-    
-    UILabel * hello = [[UILabel alloc]initWithFrame:CGRectMake(20, 20, 20, 100)];
-    hello.text = @&quot;hello world&quot;;
-    hello.backgroundColor = [UIColor redColor];
-    [self.view addSubview:hello];
-    [hello sizeToFit];
-    
-}
-
-</code></pre>
-
-<p>我这里设置的宽度和高度明显是不对的，但是当我调用sizeToFit之后就好多了，下面是调用前和调用之后的对比效果。</p>
-
-<ul>
-<li><p>调用之前<br/>
-<img src="media/15433027949667/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-27%20%E4%B8%8B%E5%8D%883.23.49.png" alt="屏幕快照 2018-11-27 下午3.23.49 "/></p></li>
-<li><p>调用之后<br/>
-<img src="media/15433027949667/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-27%20%E4%B8%8B%E5%8D%883.23.06.png" alt="屏幕快照 2018-11-27 下午3.23.06"/></p></li>
-</ul>
-
-<p>因为sizeToFit之后内部会调用调用sizeThatFits，所以还可以在自定义view当中重写sizeThatFits方法，去调整sizeToFit之后的size。</p>
-
-<pre><code class="language-text">----------customLable.m-------------
--(CGSize)sizeThatFits:(CGSize)size{
-    
-    [super sizeThatFits:size];
-    size.height = 40;
-    return size;
-    
-}
-</code></pre>
-
-<h4 id="toc_0">注意</h4>
-
-<p>添加自定义的lable到view上最后千万不能忘记调用sizeToFit方法，要不然内部重写的sizeThatFits不生效。</p>
-
-<pre><code class="language-text">-(void)addCustomeSizeThatFitLable{
-    
-    CustomLable * hello = [[CustomLable alloc]initWithFrame:CGRectMake(20, 20, 200, 100)];
-    hello.text = @&quot;hello world&quot;;
-    hello.backgroundColor = [UIColor redColor];
-    [self.view addSubview:hello];
-    [hello sizeToFit]; 
-}
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/7/20</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -1307,8 +1126,6 @@ view是用xib画的，约束设置很多，本以为是约束的问题，设置�
             <a href="Python.html"><strong>Python</strong></a>
         
             <a href="iOS.html"><strong>iOS</strong></a>
-        
-            <a href="%E6%88%91.html"><strong>我</strong></a>
          
         </p>
 
@@ -1325,31 +1142,31 @@ view是用xib画的，约束设置很多，本以为是约束的问题，设置�
 	      
 		      
 			      <li class="post">
-			        <a href="16076509804045.html">RACCommand</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="16076509805027.html">关于我</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
 			        <a href="16076509807659.html">点击事件发生在视图边界之外的时候</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
+			        <a href="16085259457329.html">MRC 时代的引用计数的现身</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509804683.html">Xcode打包遇到的坑</a>
+			        <a href="16085257826419.html">自动释放池AutoreleasePool![内存管理-3 2](media/16085257826419/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86-3%202.jpg)</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804045.html">RACCommand</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
 			      </li>
 		     
 		  
