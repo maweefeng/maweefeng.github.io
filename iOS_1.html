@@ -1,128 +1,104 @@
 <!doctype html>
 <html class="no-js" lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
     
-    iOS - Code Log 👨‍💻‍ 
-    
+  iOS - 
+  
   </title>
   
   
-  <link href="atom.xml" rel="alternate" title="Code Log 👨‍💻‍ " type="application/atom+xml">
-  <link rel="stylesheet" href="asset/css/foundation.min.css" />
-  <link rel="stylesheet" href="asset/css/docs.css" />
-  <script src="asset/js/vendor/modernizr.js"></script>
-  <script src="asset/js/vendor/jquery.js"></script>
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
   <script src="asset/highlightjs/highlight.pack.js"></script>
   <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script>
-    hljs.initHighlightingOnLoad();
-
-    window.onload = function () {
-
-      var footerPath = window.location.pathname.split('/')[window.location.pathname.split('/').length - 1];
-      if (footerPath == 'archives.html') {
-        // alert('分类');
-        document.getElementById('main-menu').getElementsByTagName("li")[1].className = "is_active";
-
-      } else if (footerPath == 'about.html') {
-        document.getElementById('main-menu').getElementsByTagName("li")[2].className = "is_active";
-
-        // alert('关于我');
-  
-      } else {
-        // alert('首页');
-        document.getElementById('main-menu').getElementsByTagName("li")[0].className = "is_active";
-      }
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
 
 
-    }
-  </script>
-  <script type="text/javascript">
-    function before_search() {
-      var searchVal = 'site: ' + document.getElementById('search_input').value;
-      document.getElementById('search_q').value = searchVal;
-      return true;
-    }
-  </script>
-</head>
-
-<body class="antialiased hide-extras">
-
-  <div class="marketing off-canvas-wrap" data-offcanvas>
-    <div class="inner-wrap">
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
 
 
-      <nav class="top-bar docs-bar hide-for-small" data-topbar>
-
-
-        <section class="top-bar-section">
-          <div class="row">
-            <div style="position: relative;width:100%;">
-              <div style="position: absolute; width:100%;">
-                <ul id="main-menu" class="left">
-                  
-                  <li id=""><a id="" target="_self" href="index.html">Home</a></li>
-                  
-                  <li id=""><a id="" target="_self" href="archives.html">Archives</a></li>
-                  
-                  <li id=""><a id="" target="_self" href="about.html">About</a></li>
-                  
-                </ul>
-
-                <ul class="right" id="search-wrap">
-                  <li>
-                    <form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
-                      <input type="hidden" id="search_q" name="q" value="" />
-                      <input tabindex="1" type="search" id="search_input" placeholder="Search" />
-                    </form>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-      </nav>
-
-      <nav class="tab-bar show-for-small">
-        <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-          <span> &nbsp; Code Log 👨‍💻‍ </span>
-        </a>
-      </nav>
-
-      <aside class="left-off-canvas-menu">
-        <ul class="off-canvas-list">
-
-          <li><a href="index.html">Home</a></li>
-          <li><a href="archives.html">Archives</a></li>
-          
-          <li><label>Categories</label></li>
-
-          
-          <li id="iOS"><a href="iOS.html">iOS</a></li>
-          
-          <li id="Git"><a href="Git.html">Git</a></li>
-          
-          <li id="CocoaPods"><a href="CocoaPods.html">CocoaPods</a></li>
-          
-          <li id="Django"><a href="Django.html">Django</a></li>
-          
-          <li id="Spiders"><a href="Spiders.html">Spiders</a></li>
-          
-          <li id="about"><a href="about.html">about</a></li>
-          
-
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
         </ul>
-      </aside>
 
-      <a class="exit-off-canvas" href="#"></a>
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E7%94%B5%E5%BD%B1.html">电影</a></li>
+        
+            <li><a href="%E5%85%B6%E5%AE%83.html">其它</a></li>
+        
+            <li><a href="Python.html">Python</a></li>
+        
+            <li><a href="iOS.html">iOS</a></li>
+        
+            <li><a href="%E6%88%91.html">我</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
 
 
-      <section id="main-content" role="main" class="scroll-container"> <script type="text/javascript">
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
 	$(function(){
 		$('#menu_item_index').addClass('is_active');
 	});
@@ -132,190 +108,192 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15678331627614.html">
+                <a class="clearlink" href="16076509805463.html">
                 
-                  <h1>swift方法怎么让参数可变</h1>
+                  <h1>Swift & Objective-C & C++之间的混编</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>func reduceToZero(x: inout Int) {<br/>
-    while (x != 0) {<br/>
-        x = x-1<br/><br/>
-    }<br/>
-}</p>
+                        	<h3 id="toc_0">①Objective-C 调用 C++</h3>
 
-<p>var a = 3<br/>
-reduceToZero(&amp;a)<br/>
-print(a) // will print &#39;0&#39;</p>
+<p>OC本身可以直接调用C的代码 比如直接可以调用printf方法。<br/>
+但是OC中的.m直接编译C++的代码就会出现编译错误<br/>
+需要把OC.m改成OC.mm之后（objective-c变成了objective-c++）引入iostream(<code>#include&lt;iostream&gt;</code>)就可以直接编译了。<br/>
+这可以在.mm文件当中直接使用c++的代码。<br/>
+也可以另外新建一个c++的文件，并且创建.h文件。</p>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/3/30</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<pre><code class="language-text">********CPPHello.hpp声明文件********
+#ifndef CPPHello_hpp
+#define CPPHello_hpp
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15710336317674.html">
-                
-                  <h1>从xib中取出view的方法</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<pre><code>    if let addressPickerView = R.nib.cnAddressPickerView.firstView(owner: nil) {
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/3/30</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15714583161074.html">
-                
-                  <h1>iOS多继承的实现</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>一般iOS开发不支持多继承，一个类只能继承一种类型，但是可以通过NSProxy实现多继承。</p>
-
-<pre><code>#import &lt;Foundation/Foundation.h&gt;
 #include &lt;stdio.h&gt;
-
-@interface TargetProxy : NSProxy {
-    id realObject1;
-    id realObject2;
-}
-
-- (id)initWithTarget1:(id)t1 target2:(id)t2;
-
-@end
-
-int main(int argc, const char *argv[]) {
-//    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+class CPPHello{
     
-    // Create an empty mutable string, which will be one of the
-    // real objects for the proxy.
-    NSMutableString *string = [[NSMutableString alloc] init];
+public:
+    static void sayHello();
+};
 
-    // Create an empty mutable array, which will be the other
-    // real object for the proxy.
-    NSMutableArray *array = [[NSMutableArray alloc] init];
+#endif /* CPPHello_hpp */
+********CPPHello.cpp实现文件********
+#include &quot;CPPHello.hpp&quot;
 
-    // Create a proxy to wrap the real objects.  This is rather
-    // artificial for the purposes of this example -- you&#39;d rarely
-    // have a single proxy covering two objects.  But it is possible.
-    id proxy = [[TargetProxy alloc] initWithTarget1:string target2:array];
-
-    // Note that we can&#39;t use appendFormat:, because vararg methods
-    // cannot be forwarded!
-    [proxy appendString:@&quot;This &quot;];
-    [proxy appendString:@&quot;is &quot;];
-    [proxy addObject:string];
-    [proxy appendString:@&quot;a &quot;];
-    [proxy appendString:@&quot;test!&quot;];
-
-    NSLog(@&quot;count should be 1, it is: %d&quot;, [proxy count]);
+void CPPHello::sayHello(){
     
-    if ([[proxy objectAtIndex:0] isEqualToString:@&quot;This is a test!&quot;]) {
-        NSLog(@&quot;Appending successful.&quot;, proxy);
-    } else {
-        NSLog(@&quot;Appending failed, got: &#39;%@&#39;&quot;, proxy);
-    }
-
-    NSLog(@&quot;Example finished without errors.&quot;);
-//    [pool release];
-    return 0;
+    printf(&quot;hello world&quot;);
+    
 }
-
-
-@implementation TargetProxy
-
-- (id)initWithTarget1:(id)t1 target2:(id)t2 {
-    realObject1 = [t1 retain];
-    realObject2 = [t2 retain];
-    return self;
-}
-
-- (void)dealloc {
-    [realObject1 release];
-    [realObject2 release];
-    [super dealloc];
-}
-
-// The compiler knows the types at the call site but unfortunately doesn&#39;t
-// leave them around for us to use, so we must poke around and find the types
-// so that the invocation can be initialized from the stack frame.
-
-// Here, we ask the two real objects, realObject1 first, for their method
-// signatures, since we&#39;ll be forwarding the message to one or the other
-// of them in -forwardInvocation:.  If realObject1 returns a non-nil
-// method signature, we use that, so in effect it has priority.
-// 生成方法签名
-- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
-    NSMethodSignature *sig;
-    sig = [realObject1 methodSignatureForSelector:aSelector];
-    if (sig) return sig;
-    sig = [realObject2 methodSignatureForSelector:aSelector];
-    return sig;
-}
-
-// Invoke the invocation on whichever real object had a signature for it.
-// 方法的签名配发
-- (void)forwardInvocation:(NSInvocation *)invocation {
-    id target = [realObject1 methodSignatureForSelector:[invocation selector]] ? realObject1 : realObject2;
-    [invocation invokeWithTarget:target];
-}
-
-// Override some of NSProxy&#39;s implementations to forward them...
-- (BOOL)respondsToSelector:(SEL)aSelector {
-    if ([realObject1 respondsToSelector:aSelector]) return YES;
-    if ([realObject2 respondsToSelector:aSelector]) return YES;
-    return NO;
-}
-
-@end
-
 </code></pre>
 
-<p>取自开发文档的代码示例，他其实是通过消息传递机制实现了多重继承功能，使proxy拥有了NSSting与NSArray俩个类的方法属性</p>
+<p><strong>注意:</strong>oc调用c++必须要把.m改成.mm,要不然会报错。</p>
+
+<h3 id="toc_1">②C++ 调用 Objective-C</h3>
+
+<p>新建cocoaTouch中的类，语言选择Objective-C，比如<code>objcHello.h</code>和<code>objcHello.m</code>然后在刚才的c++文件(<code>CPPHello.cpp</code>)中import <code>objcHello.h</code>就会出现编译错误。<br/>
+所以c++语言不能直接import OC的头文件要对头文件进行修改，把头文件所有内容删除替换成c++能够识别的代码比如c或者c++的代码。</p>
+
+<pre><code class="language-text">//objcHello.h
+void objcSayHello();
+</code></pre>
+
+<p>另外<code>objcHello.m</code>文件要修改成<code>objcHello.mm</code>文件，然后<code>#import &lt;Foundation/Foundation.h&gt;</code>之后就可以在<code>objcHello.mm</code>文件调用oc的代码了。<br/>
+并且可以在<code>objcHello.mm</code>文件中写oc的类了，比如如下代码。</p>
+
+<pre><code class="language-text">#import &lt;Foundation/Foundation.h&gt;
+#import &quot;ObjcHello.h&quot;
+
+@interface ObjcHello:NSObject
+
+-(void)sayHello;
+
+@end
+
+@implementation ObjcHello
+
+-(void)sayHello{
+    
+    NSLog(@&quot;hello objc&quot;);
+}
+@end
+
+
+void objcSayHello(){
+    
+//  NSLog(@&quot;hello Objc&quot;);
+    ObjcHello * h = [ObjcHello new];
+    [h sayHello];
+}
+</code></pre>
+
+<p>然后修改完之后引入比如<code>#include &quot;ObjcHello.h&quot;</code>就可以在里面对.h文件的方法进行调用了。</p>
+
+<pre><code class="language-text">#include &quot;CPPHello.hpp&quot;
+#include &quot;ObjcHello.h&quot;
+void CPPHello::sayHello(){
+    
+//   printf(&quot;hello world&quot;);
+    objcSayHello();
+    
+}
+</code></pre>
+
+<h3 id="toc_2">③Swift调用C</h3>
+
+<p>新建<code>CHello.h</code>文件，然后创建头文件，然后选择创建桥接文件。<br/>
+在这个桥接文件中#import其他公开头文件用来暴露给swift文件。</p>
+
+<p>1.在.h文件中声明一个方法</p>
+
+<pre><code class="language-text">CHello.h
+#ifndef CHello_h
+#define CHello_h
+
+#include &lt;stdio.h&gt;
+void sayHello();
+#endif /* CHello_h */
+</code></pre>
+
+<p>2.在.c文件中实现一个方法</p>
+
+<pre><code class="language-text">Chello.c 
+#include &quot;CHello.h&quot;
+
+void sayHello(){
+    
+    printf(&quot;hello c&quot;);
+    
+}
+</code></pre>
+
+<p>3.在桥接文件中引入<code>CHello.h</code></p>
+
+<pre><code class="language-text">//  Use this file to import your target&#39;s public headers that you would like to expose to Swift.
+//
+
+#import &quot;CHello.h&quot;
+</code></pre>
+
+<p>4.在swift当中直接调用<code>sayHello()</code>方法</p>
+
+<h3 id="toc_3">④Swift &amp; Objective-C &amp; C++混编</h3>
+
+<p>新建OC的类比如OCHello.h和OCHello.m</p>
+
+<pre><code class="language-text">#import &lt;Foundation/Foundation.h&gt;
+
+@interface OCHello : NSObject
+-(void)hello;
+@end
+</code></pre>
+
+<pre><code class="language-text">#import &quot;OCHello.h&quot;
+
+@implementation OCHello
+-(void)hello{
+    
+    NSLog(@&quot;oc sayHello&quot;);
+}
+@end
+</code></pre>
+
+<p>然后在桥接文件中引入<code>OCHello.h</code><br/>
+在swift当中就可以直接调用,代码如下所示</p>
+
+<pre><code class="language-text">import UIKit
+class ViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        var h = OCHello();
+        h.hello()
+
+    }
+}
+</code></pre>
+
+<p>如果想要swift调用c++的话可以把<code>OCHello.m</code>改成<code>OCHello.mm</code><br/>
+在.mm文件中写c++的代码如下所示</p>
+
+<pre><code class="language-text">#include &lt;iostream&gt;
+#import &quot;OCHello.h&quot;
+
+@implementation OCHello
+-(void)hello{
+    
+//    NSLog(@&quot;oc sayHello&quot;);
+    std::cout&lt;&lt;&quot;hello cpp\n&quot;;
+}
+@end
+</code></pre>
+
+<p>swift当中的代码不做任何变化，这样就做到了三种语言的混编。</p>
+
+<h4 id="toc_4">提示</h4>
+
+<p>.mm文件当中可以写oc，c，c++的代码<br/>
+oc可以完全兼容c语言的代码<br/>
+swift不可以直接执行c语言的代码,要做一些声明比如上面的调用实现。<br/>
+swift不可以执行c++的代码，要用oc做中间层，一般要避免。</p>
 
                         
                       </div>
@@ -324,7 +302,7 @@ int main(int argc, const char *argv[]) {
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/3/30</span>
+                    <span class="date">2020/2/11</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -341,59 +319,220 @@ int main(int argc, const char *argv[]) {
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15766567217978.html">
+                <a class="clearlink" href="16076509804341.html">
                 
-                  <h1>iOS UICollectionView刷新时闪屏的解决方法</h1>
+                  <h1>视图的绘制周期</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>在做相册的时候遇到了一个问题，就是UICollectionView刷新的时候会闪屏，网上搜了搜，解决的方法也是挺多，并没有一一尝试，只是存下来做个笔记，来看看遇到的几种方法。</p>
+                        	<p>当view第一次在屏幕上显示的时候，系统会绘制它的内容，然后系统会截取内容的快照，并且将快照作为视图的可见外观，如果你永远不改变视图的内容，那么视图的绘制代码永远不会改变。如果更改了视图的内容，不用直接重新绘制，而是使用<code>setNeedsDisplay</code>或者<code>setNeedsDisplayInRect</code>方法是视图无效。这些方法会告知视图内容以及改变并且需要在下一次进行重绘。如果需要立马重绘，那么需要使用<code>layoutIfNeeded</code>方法。</p>
 
-<p>方法一：</p>
+<p><img src="media/16076509804341/iOS-4.jpg" alt="iOS-4"/><br/>
+<img src="media/16076509804341/iOS-5.jpg" alt="iOS-5"/></p>
 
-<p>[UIView performWithoutAnimation:<sup>{</sup> <br/>
-   //刷新界面 <br/>
-    [self.collectionView reloadData]; <br/>
- }];<br/>
-把刷新界面的事件放在这个BLock里就可以了！</p>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/10/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
-<p>方法二</p>
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509806983.html">
+                
+                  <h1>启动优化</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><code>main 函数</code>执行开始会进入到<code>appDelegate</code> 的 <code>didFinishLaunchingWithOptions</code>方法执行</p>
 
-<p>[UIView animateWithDuration:0 animations:<sup>{</sup> <br/>
-  [collectionView performBatchUpdates:<sup>{</sup> <br/>
-    [collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]]; <br/>
-  } completion:nil]; <br/>
-}];<br/>
-方法三</p>
+<p>很多人在一些第三方 SDK 初始化配置，各种初始化的工作都放在<code>appDelegate</code> 的 <code>didFinishLaunchingWithOptions</code> 这个阶段执行，其实是不合理的，正确的做法应该是弄清楚哪些是APP 启动时候真正需要的初始化功能，哪些是在其对应功能开始使用时才需要初始化的，梳理完之后把他们都放在对应的阶段进行。</p>
 
-<p>[UIView setAnimationsEnabled:NO]; <br/>
-[self.trackPanel performBatchUpdates:<sup>{</sup> <br/>
-  [collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]]; <br/>
-} completion:<sup>BOOL finished</sup> { <br/>
-  [UIView setAnimationsEnabled:YES]; <br/>
-}];<br/>
-如果你的APP只支持iOS7+，推荐使用第一种方式performWithoutAnimation简单方便。</p>
+<p>首屏渲染这部分的代码止于<code>didFinishLaunchingWithOptions</code> 方法作用于结束。因为这时候首屏已经完成了渲染，所以可以不着急立马对其优化，但是那些阻碍线程的操作还是要优先处理的。</p>
 
-<p>上面说的方法只能解决UIView的Animation，但是如果你的cell中还包含有CALayer的动画，比如这样：</p>
+<p>首屏渲染完成之后的阶段应该是非首屏其他业务模块的初始化，监听的注册，配置文件的读取等等。</p>
+
+<h3 id="toc_0">时间统计</h3>
+
+<p>可以在<code>Edit Scheme</code>中添加<code>Arguments</code>用来统计启动时间 </p>
+
+<p><img src="media/15535088659442/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-04-09%20%E4%B8%8A%E5%8D%8811.51.38.png" alt="屏幕快照 2019-04-09 上午11.51.38"/></p>
+
+<p>添加参数<code>DYLD_PRINT_STATISTICS</code> 并且 value 为1 </p>
+
+<p>这样启动app的时候就会有时间统计 </p>
+
+<pre><code class="language-text">Total pre-main time: 3.3 seconds (100.0%)
+         dylib loading time: 551.91 milliseconds (16.4%)
+        rebase/binding time: 1.8 seconds (54.5%)
+            ObjC setup time: 754.55 milliseconds (22.5%)
+           initializer time: 217.73 milliseconds (6.4%)
+           slowest intializers :
+             libSystem.B.dylib :  12.87 milliseconds (0.3%)
+</code></pre>
+
+<p>同时这个顺序也就代表了应用启动时的执行顺序。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/10/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509806591.html">
+                
+                  <h1>Swifter4</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ol>
+<li><p>Curring（柯里化）</p>
+<p>把接受多个参数的方法变换成接受第一个参数的方法，并且返回接受余下的参数并返回结果的新方法。</p>
+<p>在Swift2中可以将方法进行Curring 但是在Swift4不再支持方法的柯里化</p>
+<p><img src="media/15499574789691/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-02-12%20%E4%B8%8B%E5%8D%883.48.34.png" alt="屏幕快照 2019-02-12 下午3.48.34"/></p></li>
+<li><p>@autoclosure</p>
+<pre><code class="language-text">func logIfTrue(predicate: () -&gt; Bool) {
+        if predicate() {<br/>
+            print(&quot;true&quot;)<br/>
+        }<br/>
+    }<br/>
+调用方式1       <br/>
+logIfTrue(predicate: {2 &gt; 1})<br/>
+调用方式2      <br/>
+logIfTrue{2 &gt; 1}
+</code></pre>
+<p>原来的闭包的书写方式如上面所写，但是看起来不是很容易理解，这时就出现了自动闭包。</p>
+<p>swift4 中的自动闭包书写和 swift2中不同 区别点在@autoclosure的位置，swift2中是在参数之前，在 swift4中是在参数之后。</p>
+<pre><code class="language-text">func logIfTrue(predicate:@autoclosure () -&gt; Bool) {
+        if predicate() {<br/>
+            print(&quot;true&quot;)<br/>
+        }<br/>
+    }<br/>
+logIfTrue(predicate: 2 &gt; 1)
+</code></pre>
+<p>另外需要注意@autoclosure 并不支持带有输入参数的写法，只有形如（）-&gt; T 的参数才能使用这个特性进行简化。</p></li>
+<li><p>Designated、Convenience 和Required</p>
+<p>只有在子类重写了父类的 designated 方法的时候才可以直接调用父类的 convenience 方法</p>
+<p>如果添加 required 关键字修饰初始化方法，则在子类中必须对该 required 方法进行实现。这样做的好处就是可以保证依赖于某个 designated 方法的 convenience 一直可以被使用。</p></li>
+<li><p>Swift 中的Array,Dictionary和Set在集合中只能存储同一个类型的元素，但是NSArray可以存储多种不同类型的数据，如果想要Array 存储不同类型的数据，可以使用Any AnyObject</p>
+<p><code>let store:[Any] = [1,&quot;1&quot;]</code></p></li>
+</ol>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/10/10</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509805631.html">
+                
+                  <h1>UINavigationItem</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>纵观Apple的官方应用程式的导航栏你就会发现在iOS11之后导航栏的高度会自动变化，文字的大小以及位置也会随之变化。<br/>
+这是iOS11之后的新特性，苹果是使用给UINavigationItem添加扩展的方法增加的新功能，这也给了我们新的一种思路，为了不去修改之前代码的原则上添加新的功能的方式。</p>
+
+<pre><code class="language-text">extension UINavigationItem {
+    public enum LargeTitleDisplayMode : Int {
+        /// Automatically use the large out-of-line title based on the state of the previous item in the navigation bar. An item with largeTitleDisplayMode=Automatic will show or hide the large title based on the request of the previous navigation item. If the first item pushed is set to Automatic, then it will show the large title if the navigation bar has prefersLargeTitles=YES.
+        case automatic
+
+        
+        /// Always use a larger title when this item is top most.
+        case always
+
+        
+        /// Never use a larger title when this item is top most.
+        case never
+    }
+}
+</code></pre>
 
 <ul>
-<li><p>(void)layoutSubviews{<br/>
-[super layoutSubviews];</p>
+<li>largeTitie的两种展现形式如下所示</li>
+</ul>
 
-<p>self.frameLayer.frame = self.frameView.bounds;<br/>
-}<br/>
-上述情况多用于自定义控件使用了layer.mask的情况，如果有这种情况，上面提到的方法是无法取消CALayer的动画的，但是解决办法也很简单：</p></li>
-<li><p>(void)layoutSubviews{<br/>
-[super layoutSubviews];</p>
+<p><img src="media/15439873228318/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-05%20%E4%B8%8B%E5%8D%881.23.25.png" alt="屏幕快照 2018-12-05 下午1.23.25 " style="width:220px;"/><img src="media/15439873228318/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-05%20%E4%B8%8B%E5%8D%881.23.29.png" alt="屏幕快照 2018-12-05 下午1.23.29 " style="width:220px;"/></p>
 
-<p>[CATransaction begin];<br/>
-[CATransaction setDisableActions:YES];</p>
+<h2 id="toc_0">设置方式</h2>
 
-<p>self.frameLayer.frame = self.frameView.bounds;</p>
+<ul>
+<li><p>xib设置</p>
+<ul>
+<li>never 一直都是小标题</li>
+<li>automatic 自动切换</li>
+<li>always 一直都是大标题</li>
+</ul></li>
+</ul>
 
-<p>[CATransaction commit];<br/><br/>
-}</p></li>
+<p><img src="media/15439873228318/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-05%20%E4%B8%8B%E5%8D%881.30.58.png" alt="屏幕快照 2018-12-05 下午1.30.58"/></p>
+
+<ul>
+<li><p>代码设置</p>
+<pre><code class="language-text">因为这是新增加的属性所以要做判断
+ if #available(iOS 11.0, *) {<br/>
+        self.navigationItem.largeTitleDisplayMode = .automatic<br/>
+        } else {<br/>
+            // Fallback on earlier versions<br/>
+};
+</code></pre></li>
 </ul>
 
                         
@@ -403,7 +542,7 @@ int main(int argc, const char *argv[]) {
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/3/30</span>
+                    <span class="date">2019/9/11</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -420,63 +559,132 @@ int main(int argc, const char *argv[]) {
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15790023471048.html">
+                <a class="clearlink" href="16076509805868.html">
                 
-                  <h1>How to simply make a dynimic UITableViewHeader animation</h1>
+                  <h1>Love at First Launch</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gawzxhqpjbg30lk16ob2c.gif" alt="" style="width:220px;"/></p>
+                        	<ul>
+<li>直接显示内容而不是弹出需要注册登录的页面</li>
+<li>通过交互引导用户，而不是一些文字引导</li>
+<li>延迟请求授权，而不是一下登录之后就开始要权限（定位，相机，图片）。</li>
+</ul>
 
-<p>1.add a imageView to a headerView<br/>
-2.set headerView as UITableView`s tableHeaderView<br/>
-3.observer scrollViewDidScroll Method</p>
+<p>针对延迟请求，想到一个好主意，就是新建一个类，可以是单例，负责管理这些请求。</p>
 
-<pre><code>
+<h1 id="toc_0">App Startup Time: Past, Present, and Future</h1>
 
-class Demo: UITableViewController {
+<p>了解在苹果平台上使用的dyld动态链接器，它是如何在这些年来发生变化的，以及它下一步的发展方向。了解改进的工具如何使优化应用程序的启动时间变得更容易，并了解dyld中的新更改如何进一步改善启动时间。</p>
 
-    let header = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: headerViewH))
-    let imageV = UIImageView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: headerViewH))
+<ul>
+<li><p>startup time 启动时间</p>
+<p>main函数执行之前所用的时间</p></li>
+<li><p>launch closure启动收尾</p>
+<p>启动你的程序所需要的全部信息，比如使用什么dylib，他们的哪些偏移位置用于不同的符号，代码签名是什么，</p></li>
+</ul>
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        header.backgroundColor = .white
-        header.addSubview(imageV)
-        tableView.contentInsetAdjustmentBehavior = .never
-        imageV.image = UIImage(named: &quot;logo&quot;)
-        imageV.contentMode = .scaleAspectFit
-        imageV.topAnchor.constraint(equalTo: header.topAnchor).isActive = true
-        imageV.bottomAnchor.constraint(equalTo: header.bottomAnchor).isActive = true
-        imageV.leadingAnchor.constraint(equalTo: header.leadingAnchor).isActive = true
-        imageV.bottomAnchor.constraint(equalTo: header.bottomAnchor).isActive = true
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: &quot;cell&quot;)
-        tableView.tableHeaderView = header
-   
-    }
-    
+<h2 id="toc_1">Improving App Startup Time</h2>
 
-....
+<p>Do less！</p>
 
-   override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        // 1. get scrollView`s y-axis offset
-        let yOffset = scrollView.contentOffset.y;
-        // 2. condition 
-        if (yOffset &lt; 0) {
-            //3. caculate current imageView`s height when scrolling
-            let totalOffset = headerViewH - (yOffset);
-            //4. caculate  the ratio
-            let f = totalOffset / headerViewH;
-            //5 .set imageV`s frame again
-            imageV.frame =  CGRect(x: screenWidth*(1-f)*0.5, y: yOffset, width: screenWidth*f , height: totalOffset)
-        }
-    }
+<ul>
+<li>Ember fewer dylibs</li>
+<li>Declear fewer classes/methods</li>
+<li>Use fewer initializers</li>
+</ul>
 
-}
-</code></pre>
+<p>减少代码，代码越少，启动速度越快。使用更少的dylib，减少嵌入的dylib,使用系统库效果会更好。应该声明较少的库和方法，减少初始化函数( <u>初始化函数是在main函数执行之前执行</u> )。</p>
 
-<p>This tip will enhance user experience a little,i recommand you to use this in your developing apps.</p>
+<p>Use more Swift</p>
+
+<ul>
+<li>No initializers</li>
+<li>Swift size improvements</li>
+</ul>
+
+<p>因为Swift从设计上避免了许多的陷阱，在c、c+++、oc可能遇到这些陷阱。<br/>
+Swift没有初始化器，不允许特定类型的未对齐的数据结构。所以转向Swift可以让你更容易获得快速的程序启动(Apple says)。</p>
+
+<h2 id="toc_2">Static initilizer tracing</h2>
+
+<p>静态初始化追踪器，instrument提供每个静态初始化器的准确时间。方便知道初始化的过程花费了多久的时间。</p>
+
+<p><img src="media/15445109745059/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%883.33.52.png" alt="屏幕快照 2018-12-11 下午3.33.52"/></p>
+
+<h2 id="toc_3">dyld3</h2>
+
+<h4 id="toc_4">为什么推出dylb3</h4>
+
+<p>提升速度（启动应用的时候尽量多的减少工程量）<br/>
+增强安全（更积极的安全检查）<br/>
+可测试性和可靠性</p>
+
+<h4 id="toc_5">怎么做到上述目标</h4>
+
+<ul>
+<li><p>速度</p>
+<ul>
+<li><p>把复杂操作dylb移出进程</p>
+<ul>
+<li>现在大多数dylb只是普通的后台程序</li>
+</ul></li>
+<li><p>允许部分dylb驻留在进程之中</p>
+<ul>
+<li>减少受攻击面积（驻留部分要尽可能少）</li>
+<li>提高启动速度
+<ul>
+<li>最快的代码就是你不写代码</li>
+<li>关注那些你几乎不执行的代码</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><p>安全</p>
+<ul>
+<li><p>确定安全敏感性组件身份</p>
+<ul>
+<li>边界检查</li>
+<li>@rpath 攻击</li>
+</ul></li>
+<li><p>标识可占用缓存的组件</p>
+<ul>
+<li>依赖关系不会改变</li>
+<li>符号在库中的偏移位置不会发生改变 </li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p><img src="media/15445109745059/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%885.36.31.png" alt="屏幕快照 2018-12-11 下午5.36.31"/></p>
+
+<p>dylb3有三个部分</p>
+
+<ul>
+<li>一个进程外的macho 解析编译器</li>
+<li>一个进程内的处理闭包（launch closures）的引擎</li>
+<li>一个缓存服务的启动闭包（launch closures）</li>
+</ul>
+
+<p>大多数启动的时候使用缓存不会触发进程外的mach-o parser/compiler<br/>
+launch closures比mach-o更简单<br/>
+launch closures为速度而构建</p>
+
+<h3 id="toc_6">使用dylb3要注意什么</h3>
+
+<p>完全兼容dylb2.x</p>
+
+<ul>
+<li>一些apis关闭了dylb3的优化导致程序变慢或者会在dylb3中使用回退模式</li>
+<li>一些为dylb2.x的优化不再有任何影响</li>
+</ul>
+
+<p>严格的链接语义<br/>
+在加入新动态连接器后，很多的语义可能现在还无法使用，甚至是错误的。</p>
+
+<ul>
+<li>放入一个支持旧二进制数据的工作区</li>
+<li>新的二进制数据可能导致链接错误 </li>
+</ul>
 
                         
                       </div>
@@ -485,7 +693,7 @@ class Demo: UITableViewController {
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/3/30</span>
+                    <span class="date">2019/9/11</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -502,38 +710,104 @@ class Demo: UITableViewController {
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15578899295258.html">
+                <a class="clearlink" href="16076509805787.html">
                 
-                  <h1>PromiseKit</h1>
+                  <h1>Advanced Debugging with Xcode and LLDB</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">then and done</h2>
+                        	<ol>
+<li><p>expression语句 </p>
+<p>不用重新运行程序直接实现代码效果</p>
+<p><img src="media/15444306104604/15445067738160.jpg" alt=""/></p>
+<ol>
+<li><p>描述</p>
+<p>可以动态的改变条件，语法是<code>expression xxx = &quot;xxx&quot;</code> 后面是语句代码,类似程序中的代码并且支持加{}的判断等等语句。</p></li>
+<li><p>使用方法：</p>
+<ul>
+<li>调试台去写这个语句</li>
+<li>加断点去添加<code>action</code>。</li>
+</ul></li>
+</ol></li>
+<li><p>Symbolic Breakpoint</p>
+<ol>
+<li><p>描述</p>
+<p>符号断点，可以针对某一个方法(函数)设置断点并暂停执行；有时候，我们并不清楚会在什么情况下调用某一个函数，那我们可以通过符号断点来跟踪获取调用该函数的程序堆栈。</p>
+<p><img src="media/15444306104604/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%885.04.43.png" alt="屏幕快照 2018-12-10 下午5.04.43"/></p></li>
+<li><p>使用方法</p>
+<ul>
+<li> 方法一</li>
+</ul>
+<p>添加符号断点，比如如下所述-[UILabel setText:]</p>
+<p><img src="media/15444306104604/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%885.05.33.png" alt="屏幕快照 2018-12-10 下午5.05.33"/></p>
+<p>还可以添加condition语句 类似如上所述</p>
+<ul>
+<li>方法二</li>
+</ul>
+<p>直接在指定的语句添加断点加入<code>action</code>语句，如图所示</p>
+<p><img src="media/15444306104604/15445068230815.jpg" alt=""/></p>
+<p><code>breakpoint set --one-shot true --name &quot;-[UILabel setText:]&quot;</code>    </p>
+<p><code>one-shot</code> 是一个临时断点，一旦触发后就自动删除</p></li>
+</ol></li>
+<li><p>跳过断点所指向的代码</p>
+<ol>
+<li><p>方式一</p>
+<p><img src="media/15444306104604/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%885.40.21.png" alt="屏幕快照 2018-12-10 下午5.40.21"/></p>
+<p>移动手柄实现 接下来就可以在控制台中写expression语句 <br/>
+<code>expression jumpAstronaut(animated:false)<br/>
+</code></p></li>
+<li><p>方式二</p>
+<p>直接编辑断点添加action语句 <br/>
+<img src="media/15444306104604/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%885.47.11.png" alt="屏幕快照 2018-12-10 下午5.47.11"/></p>
+<p><code>thread jump --by 1</code> 是跳过一句代码的意思。</p></li>
+</ol></li>
+<li><p>watchPoint </p>
+<p>观察指针，值发生改变的时候自动暂停。</p>
+<p><img src="media/15444306104604/15445000921722.jpg" alt=""/></p>
+<p>右键某个属性，添加watchPoint，然后左侧会出现观察指针断点监测_tableView的变化，如下所示<br/><br/>
+    <img src="media/15444306104604/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8A%E5%8D%8811.46.38.png" alt="屏幕快照 2018-12-11 上午11.46.38"/></p></li>
+<li><p>创建别名</p>
+<p><code>command alias poc expression - l objc -O --</code><br/>
+poc 就可以直接代替后面的语句，可以简化常用的命令行语句。</p></li>
+<li><p>可以通过内存地址去获取对象 </p>
+<ol>
+<li><p>Objective-C</p>
+<p><code>po 指针</code> 可以直接打印出对象<br/>
+<img src="media/15444306104604/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8A%E5%8D%8811.12.11.png" alt="屏幕快照 2018-12-11 上午11.12.11"/></p></li>
+<li><p>Swift</p>
+<p>不能把数字当成指针去像OC一样打印出对象，要使用<code>expression - l objc -O -- 0x7fa967d781191548b60</code>转换为OC语言。 如果觉得这个语句太臃肿，可以为语句创建别名比如<code>command alias poc expression - l objc -O --</code>之后就可以直接<code>poc 指针</code>就可以达到oc当中同样的效果。</p></li>
+</ol></li>
+<li><p>获取图层树</p>
+<ol>
+<li><p>Objective-C</p>
+<p>调用<code>po [self.view recursiveDescription]</code>打印出类似于这样的图层树。<br/>
+<img src="media/15444306104604/15444967235409.jpg" alt=""/></p></li>
+<li><p>Swift </p>
+<p>不能这么直接打印出图层树（swift不允许去调用未定义的函数），如果要让swift去像OC一样打印出类似于这样的图层树。<br/>
+调用语句</p>
+<pre><code class="language-expression">```一定要加入反括号(反括号就像预处理器一样，它表示先评估其在当前帧中的内容，并插入结果，然后我们可以评估其余部分) 才能编译通过。
+</code></pre></li>
+</ol></li>
+<li><p>unsafeBitCast查询对象的调试描述</p>
+<p>当只有指针，查看对象描述的时候在swift中可以使用 unsafeBitCast函数，给他一个内存地址，他不安全是因为它依赖你来提供正确的类型。</p>
+<p>po unsafeBitCast(指针,to:ScoreBoardView.self)<br/>
+还可以可以直接查看view的frame<br/>
+po unsafeBitCast(指针,to:ScoreBoardView.self).frame</p>
+<p>同理OC中可以更方便的实现根据指针对对象进行相应的调试，比如更改 label 的内容</p>
+<pre><code class="language-text">(lldb) expression [(UILabel*)0x7fb2c5f0fd70 setText:@&quot;hello&quot;];
+但是内存地址前面要跟相应的类型要不然会执行失败报错<br/>
+error: warning: receiver type &#39;long&#39; is not &#39;id&#39; or interface pointer, consider casting it to &#39;id&#39;
+</code></pre></li>
+<li><p>刷新屏幕的帧缓存区<br/>
+如果写了expression语句之后界面没有及时刷新，但是又不想去重新运行代码，那么可以使用表达式<br/>
+Swift<code>expression CATransaction.flush()</code><br/>
+OC<code>expression [CATransaction flush]</code>刷新屏幕帧缓存区。</p></li>
+</ol>
 
-<p>一个典型的链条⛓️</p>
+<h3 id="toc_0">参考</h3>
 
-<pre><code>firstly {
-    login()
-}.then { creds in
-    fetch(avatar: creds.user)
-}.done { image in
-    self.imageView = image
-}
-</code></pre>
-
-<p>如果这段代码使用之前的方式可能会是这样</p>
-
-<pre><code>login { creds, error in
-    if let creds = creds {
-        fetch(avatar: creds.user) { image, error in
-            if let image = image {
-                self.imageView = image
-            }
-        }
-    }
-}
-</code></pre>
+<p>[1]<a href="https://developer.apple.com/videos/play/wwdc2018/412/">https://developer.apple.com/videos/play/wwdc2018/412/</a></p>
 
                         
                       </div>
@@ -541,8 +815,8 @@ class Demo: UITableViewController {
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15578899295258.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2019/5/15</span>
+                  
+                    <span class="date">2019/9/9</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -559,74 +833,58 @@ class Demo: UITableViewController {
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15572343607934.html">
+                <a class="clearlink" href="16076509804892.html">
                 
-                  <h1>RunLoop</h1>
+                  <h1>检测离屏渲染</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>Fundation 框架是对Core Fundation的封装。</p>
+                        	<p><code>instrumets</code> 已经取消了<code>debug options</code></p>
 
-<h2 id="toc_0">Fundation</h2>
+<p>可以在xcode的<code>debug</code> - <code>view debugging</code> 找到</p>
 
-<p><code>[NSRunLoop currentRunLoop];</code>//返回当前线程的RunLoop  如果不存在就会创建一个RunLoop并返回。<br/>
-//If a run loop does not yet exist for the thread, one is created and returned.</p>
+<p>“核心动画工具和模板已在工具中弃用。之前在”调试选项“下的功能已移至Xcode，位于”<code>Debug&gt; View Debugging</code>“下。</p>
 
-<p><code>[NSRunLoop mainRunLoop]</code>//获取主线程的RunLoop对象。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1315383-752efaac717c3947.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="BB55F33F-97CC-4C28-B3F1-22456A2A7BD8.png"/></p>
 
-<p>基础知识:每个线程上都对应有一个RunLoop对象，主线程RunLoop默认开启，子线程RunLoop要手动开启。<br/>
-RunLoop在线程结束的时候退出循环。</p>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15572343607934.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2019/5/7</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<p>开启后会把那些需要离屏渲染的图层高亮成黄色，这就意味着黄色图层可能存在性能问题。</p>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15554977521883.html">
-                
-                  <h1>Swift单例写法</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>介绍swift的单例类写法之前，可以先回顾一下oc中单例的写法如下。</p>
+<p>正常:是这样的<br/>
+ <img src="http://upload-images.jianshu.io/upload_images/1315383-de2aad921928fa7b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="正常渲染.png"/></p>
 
-<pre><code class="language-//首先.h文件里声明">//单例类
-@interface Manger : NSObject
-+ (instancetype)sharedManger;
-@end
+<p>有问题的图层:</p>
 
-//然后.m文件里写实现
-@implementation Manger
-+ (instancetype)sharedManger {
-    static Manger *sharedManger = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&amp;onceToken, ^{
-        sharedManger = [self new];
-    });
-    return sharedManger;
-}
+<p><img src="http://upload-images.jianshu.io/upload_images/1315383-61746e58c6057b02.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="调试.png"/><br/>
+可以看见我设置了圆角的imageView有问题.</p>
 
-</code></pre>
+<p>### 项目开发中怎么去处理?</p>
+
+<blockquote>
+<p>抛出一个问题:  需求就是有很多圆角那我们项目中应该怎么去处理圆角呢?</p>
+</blockquote>
+
+<ol>
+<li>使用<a href="http://www.jianshu.com/p/60cd5f8bb4cb">YYWebImage去处理</a> </li>
+<li><a href="http://www.jianshu.com/p/82e68984711f">iOS中圆角图片的处理</a></li>
+</ol>
+
+<p>相信看完两篇文章,多少都会能收获一点!</p>
+
+<blockquote>
+<p>有些人说:</p>
+
+<p>iOS 9.0 之后UIButton设置圆角会触发离屏渲染，而UIImageView里png图片设置圆角不会触发离屏渲染了，如果设置其他阴影效果之类的还是会触发离屏渲染的(这句话不知道谁说的.自己有没有去尝试呢???)</p>
+</blockquote>
+
+<p>结论: 经过测试</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1315383-a58dfe9543375e1d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="70915C7C-7523-4008-9A88-B5682407926D.png"/></p>
+
+<p>大家可以看到, <br/>
+UIButton 的 masksToBounds = YES下发生离屏渲染与 背景图存不存在有关系, 如果没有给按钮设置   <code>btn.image = [UIImage imageName:@&quot;xxxxx&quot;];</code> 是不会产生离屏渲染的 .</p>
+
+<p>关于 UIImageView,现在测试发现(现版本: iOS10),在性能的范围之内,给UIImageView设置圆角是不会触发离屏渲染的,但是同时给UIImageView设置背景色则肯定会触发.触发离屏渲染跟 png.jpg格式并无关联(可能采取的压缩格式不同,这里不做探讨,这里我给出结果是没有关系)</p>
 
                         
                       </div>
@@ -634,8 +892,8 @@ RunLoop在线程结束的时候退出循环。</p>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15554977521883.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2019/4/17</span>
+                  
+                    <span class="date">2019/8/15</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -674,9 +932,7 @@ RunLoop在线程结束的时候退出循环。</p>
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
             
-                <div class="site-a-logo"><img src="/asset/img/logo.png" /></div>
-            
-                <h1>Code Log 👨‍💻‍ </h1>
+                <h1></h1>
                 <div class="site-des"></div>
                 <div class="social">
 
@@ -688,9 +944,9 @@ RunLoop在线程结束的时候退出循环。</p>
 
 
 
-<a target="_blank" class="github" target="_blank" href="https://github.com/maweefeng" title="GitHub">GitHub</a>
+
 <a target="_blank" class="email" href="mailto:maweefeng@gmail.com" title="Email">Email</a>
-  <!-- <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a> -->
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
                 
               	 </div>
           	</div>
@@ -705,17 +961,15 @@ RunLoop在线程结束的时候退出循环。</p>
 
       	<p class="cat-list">
         
+            <a href="%E7%94%B5%E5%BD%B1.html"><strong>电影</strong></a>
+        
+            <a href="%E5%85%B6%E5%AE%83.html"><strong>其它</strong></a>
+        
+            <a href="Python.html"><strong>Python</strong></a>
+        
             <a href="iOS.html"><strong>iOS</strong></a>
         
-            <a href="Git.html"><strong>Git</strong></a>
-        
-            <a href="CocoaPods.html"><strong>CocoaPods</strong></a>
-        
-            <a href="Django.html"><strong>Django</strong></a>
-        
-            <a href="Spiders.html"><strong>Spiders</strong></a>
-        
-            <a href="about.html"><strong>about</strong></a>
+            <a href="%E6%88%91.html"><strong>我</strong></a>
          
         </p>
 
@@ -732,31 +986,31 @@ RunLoop在线程结束的时候退出循环。</p>
 	      
 		      
 			      <li class="post">
-			        <a href="15638450239357.html">判断bundle中存不存在某个文件</a>
+			        <a href="16076509804045.html">RACCommand</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15638515424059.html">去除tableview sectionheaderview的粘连效果</a>
+			        <a href="16076509805027.html">关于我</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15641370883413.html">快速的扩展类的初始化方法</a>
+			        <a href="16076509807659.html">点击事件发生在视图边界之外的时候</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15644628854335.html">切部分圆角</a>
+			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15646490459131.html">didSet 和 willSet</a>
+			        <a href="16076509804683.html">Xcode打包遇到的坑</a>
 			      </li>
 		     
 		  
@@ -801,11 +1055,10 @@ RunLoop在线程结束的时候退出循环。</p>
 
  <div class="page-bottom clearfix">
   <div class="row">
-   <!-- <p class="copyright">Copyright &copy; 2015
+   <p class="copyright">Copyright &copy; 2015
 Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
-Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p> -->
-<p class="copyright">日光之下 永无新事</p>
-</div>
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
 </div>
 
         </section>
@@ -832,7 +1085,7 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p> -->
      
     </script>
 
-    <script src="asset/chart/all-min.js"></script><script type="text/javascript">$(function(){    var mwebii=0;    var mwebChartEleId = 'mweb-chart-ele-';    $('pre>code').each(function(){        mwebii++;        var eleiid = mwebChartEleId+mwebii;        if($(this).hasClass('language-sequence')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = Diagram.parse($(this).text());            diagram.drawSVG(eleiid,{theme: 'simple'});        }else if($(this).hasClass('language-flow')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = flowchart.parse($(this).text());            diagram.drawSVG(eleiid);        }    });});</script>
+    
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
 
 

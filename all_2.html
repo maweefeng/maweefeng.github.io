@@ -40,7 +40,7 @@
       <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
         <ul id="main-menu" class="left">
         
-        <li id=""><a target="self" href="index.html">Home</a></li>
+        <li id=""><a target="_self" href="index.html">Home</a></li>
         
         <li id=""><a target="_self" href="archives.html">Archives</a></li>
         
@@ -69,7 +69,7 @@
 <aside class="left-off-canvas-menu">
       <ul class="off-canvas-list">
         
-        <li><a target="self" href="index.html">Home</a></li>
+        <li><a target="_self" href="index.html">Home</a></li>
         
         <li><a target="_self" href="archives.html">Archives</a></li>
         
@@ -80,6 +80,12 @@
             <li><a href="%E7%94%B5%E5%BD%B1.html">电影</a></li>
         
             <li><a href="%E5%85%B6%E5%AE%83.html">其它</a></li>
+        
+            <li><a href="Python.html">Python</a></li>
+        
+            <li><a href="iOS.html">iOS</a></li>
+        
+            <li><a href="%E6%88%91.html">我</a></li>
          
 
       </ul>
@@ -102,309 +108,132 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="16076509804529.html">
+                <a class="clearlink" href="16076509805868.html">
                 
-                  <h1>Git提交代码issue</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">问题①:</h3>
-
-<pre><code class="language-text">fatal:unable to access &#39;https://github.com/xxx/xxx.git&#39; OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com 443
-</code></pre>
-
-<h5 id="toc_1">解决方法：</h5>
-
-<pre><code class="language-text">env命令设置GIT_SSL_NO_VERIFY环境变量为”ture”，并同时调用正常的git clone命令 env GIT_SSL_NO_VERIFY=true git clone https://github.com/xxx/xxx.git     
-当你通过HTTPS访问Git远程仓库，如果服务器的SSL证书未经过第三方机构签署，那么Git就会报错。在克隆完毕的仓库中还需要将http.sslVerify设置为”false”。完整的命令如下：    
-git config http.sslVerify &quot;false&quot;、
-</code></pre>
-
-<h3 id="toc_2">问题②：</h3>
-
-<pre><code class="language-text">Failed to connect to 127.0.0.1 port 1080: Connection refused
-查询是否使用代理：git config --global http.proxy 
-取消代理：git config --global --unset http.proxy
-</code></pre>
-
-<h5 id="toc_3">解决方法：</h5>
-
-<pre><code class="language-text">终端走代理,在终端中直接运行命令
-export http_proxy=http://proxyAddress:port
-这个办法的好处是简单直接，并且影响面很小（只对当前终端有效，退出就不行了）。
-
-如果你用的是ss代理，在当前终端运行以下命令，那么wget curl 这类网络命令都会经过ss代理
-export ALL_PROXY=socks5://127.0.0.1:1080
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/12/11</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509804558.html">
-                
-                  <h1>对比Texture中Node和UIKit中View</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">node.view和view的差别</h3>
-
-<p>再一次深刻的体会到了node.view和view的差别。<br/><br/>
-最开始一直以为node.view就类似于ASTableNode对应的UITableview<br/><br/>
-其实远远没有那么简单，并不是那么的一个对应的关系.<br/>
-必须要把一些subnode都包到一个node里面最后这个node的view对应的是这些subnode的集合。<br/><br/>
-如果只是</p>
-
-<pre><code class="language-text">ASDisplayNode * node = [[ASDisplayNode alloc]init];
-ASDisplayNode * subnode = [ASDisplayNode new];
-ASTextNode * textnode = [ASTextNode new];                    
-ASButtonNode * buttonnode = [ASButtonNode new];
-[node addSubnode:subnode];
-[node addSubnode:textnode];
-[node addSubnode:buttonnode];
-
-</code></pre>
-
-<p>我是在给tableview添加node为tableHeaderView发现的这个问题 <br/>
-后面新建一个node 把这些subnode都包进去问题就解决了。</p>
-
-<p>这个时候把node.view 当成这三个subnode的集合就会出现问题</p>
-
-<h3 id="toc_1">阴影以及圆角的设置</h3>
-
-<p>在使用UIview添加阴影以及同时添加圆角的时候不能设.clipsToBounds = YES<br/>
-但是切圆角的时候就需要设置.clipsToBounds  = YES <br/>
-当时的做法也是最外层放置一个UIView的壳子，让外层的.clipsTobounds = NO 里面的.clipsTobounds = YES <br/>
-在外边的view添加阴影的效果。</p>
-
-<p>使用node的时候也是这样的原理。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/12/11</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509804590.html">
-                
-                  <h1>pod install速度过慢</h1>
+                  <h1>Love at First Launch</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<ul>
-<li>①代理VPN方式</li>
+<li>直接显示内容而不是弹出需要注册登录的页面</li>
+<li>通过交互引导用户，而不是一些文字引导</li>
+<li>延迟请求授权，而不是一下登录之后就开始要权限（定位，相机，图片）。</li>
 </ul>
 
-<p>相信大家已经感受到<code>pod install</code>速度越来越慢了，网上提供了几种解决方案，但是都没有完全解决速度慢的问题。</p>
+<p>针对延迟请求，想到一个好主意，就是新建一个类，可以是单例，负责管理这些请求。</p>
 
-<p>使用国内镜像的<code>Specs</code><br/>
-在<code>pod install</code>时使用命令<code>pod install --no-repo-update</code><br/>
-使用<code>proxychains</code>使终端命令走代理<br/>
-下面就来说明一下这几种方法为何没有完全解决问题</p>
+<h1 id="toc_0">App Startup Time: Past, Present, and Future</h1>
 
-<p>使用国内镜像的<code>Specs</code> 极大地加快了<code>Specs</code>下载更新速度，而且如果使用国内镜像<code>Specs</code>，那么<code>Podfile</code>中就必须指明使用这个<code>Specs</code>。<br/>
-在<code>pod install</code>时使用命令<code>pod install --no-repo-update</code>时不更新本地库，但如果第一次<code>install</code>还是要去<code>github clone</code>代码<br/>
-使用<code>proxychains</code>使终端命令走代理 <br/>
-这个只是使pod命令走代理，<code>git download</code>的时候不会走代理<br/>
-其实真正慢的原因并不在pod命令，而是在于github上的代码库访问速度慢，那么就知道真正的解决方案就是要加快git命令的速度。 <br/>
-我使用Shadowsocks代理，默认代理端口为1080，配置好代理之后去终端输入git配置命令，命令如下</p>
-
-<p><code>git config --global http.proxy socks5://127.0.0.1:1080</code></p>
-
-<p>上面的命令是给git设置全局代理，但是我们并不希望国内git库也走代理，而是只需要github上的代码库走代理，命令如下</p>
-
-<p><code>git config --global http.https://github.com.proxy socks5://127.0.0.1:1080</code></p>
-
-<p>ps：如果要恢复/移除上面设置的git代理，使用如下命令</p>
-
-<pre><code class="language-text">git config --global --unset http.proxy
-git config --global --unset http.https://github.com.proxy
-</code></pre>
+<p>了解在苹果平台上使用的dyld动态链接器，它是如何在这些年来发生变化的，以及它下一步的发展方向。了解改进的工具如何使优化应用程序的启动时间变得更容易，并了解dyld中的新更改如何进一步改善启动时间。</p>
 
 <ul>
-<li>②更改host</li>
+<li><p>startup time 启动时间</p>
+<p>main函数执行之前所用的时间</p></li>
+<li><p>launch closure启动收尾</p>
+<p>启动你的程序所需要的全部信息，比如使用什么dylib，他们的哪些偏移位置用于不同的符号，代码签名是什么，</p></li>
 </ul>
 
-<pre><code class="language-text">执行下面的操作会使整个过程更快一些
+<h2 id="toc_1">Improving App Startup Time</h2>
 
-* 进入网址https://www.ipaddress.com/
-* 输入 gitHub.com 找到GitHub的ip地址 
-* 然后打开hosts (打开hosts的操作是`sudo vim /etc/hosts`)添加 ip http://github.com
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/12/11</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509804620.html">
-                
-                  <h1>SDWebImageview 不能加载HTTPS图片</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>这个问题是因为图片地址所在的服务器没有有效的SSL证书文件<br/>
-只需要在Options参数中设置SDWebImaweefenggeAllowInvalidSSLCertificates枚举就可</p>
-
-<pre><code class="language-text">[self.avatarImageView sd_setImageWithURL: [NSURL URLWithString: famousStarObject.avatar] placeholderImage: [UIImage imageNamed: @&quot;icon_default_avator&quot;] options: SDWebImageAllowInvalidSSLCertificates];
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/12/11</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509804652.html">
-                
-                  <h1>UIImageView 动画的属性animationImages</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<pre><code class="language-beginimagearray.append(uiimage(named:">
-    let imageView = UIImageView(image: UIImage(named: &quot;switch 1.png&quot;))
-    imageView.center = view.center
-    imageView.animationImages = beginImageArray
-    // 动画持续时间 每一帧0.025秒，总共22帧
-    imageView.animationDuration = 0.025 * 22
-    imageView.animationRepeatCount = 1
-    // 动画结束后要把imageView的image属性设置成动画最后的一帧
-    imageView.image = UIImage(named: &quot;switch 22.png&quot;)
-    imageView.startAnimating()
-    view.addSubview(imageView)
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/12/11</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509804683.html">
-                
-                  <h1>Xcode打包遇到的坑</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>由于是接手别人做的项目，所以当把程序打包的时候出现了问题，证书和描述文件的问题 </p>
-
-<p>最开始尝试打开xcode的账户下载所有证书，结果发现并不能成功</p>
-
-<p>后来手动管理证书就可以看到之前在开发者中心创建的开发和发布证书，如下图所示<br/>
-<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fnczazu4irj30pd0iejte.jpg" alt=""/><br/>
-然后会到证书管理界面，会把你选中账号的所有相关证书列下来</p>
-
-<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fnczelaqz6j30pd0iedi6.jpg" alt=""/></p>
-
-<p>后面附带有状态，如果你的钥匙串keychain中没有的话，状态会是not in the keychain，顾名思义本地没有下载，这样的话要去开发者中心下载并且安装了.<br/><br/>
-下载完打包之前还要来看一下是不是已经在钥匙串中。  </p>
+<p>Do less！</p>
 
 <ul>
-<li>在钥匙串的话就可以跳过本文去愉快的打包了。<br/></li>
-<li>未在钥匙串接着看下面的操作</li>
+<li>Ember fewer dylibs</li>
+<li>Declear fewer classes/methods</li>
+<li>Use fewer initializers</li>
 </ul>
 
-<p>如果还是没有在钥匙串的话，那么就比较麻烦了，我百度了一下，要先把之前的证书invoke，也就是删除，然后再回来创建，按照如图所示指引<br/><br/>
-<img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fnczjgrp8hj30m80getb7.jpg" alt=""/></p>
+<p>减少代码，代码越少，启动速度越快。使用更少的dylib，减少嵌入的dylib,使用系统库效果会更好。应该声明较少的库和方法，减少初始化函数( <u>初始化函数是在main函数执行之前执行</u> )。</p>
 
-<p>然而还有可能出现下面的情况 <br/>
-<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fnczn8eitqj30pd0ie0v3.jpg" alt=""/></p>
+<p>Use more Swift</p>
 
-<h3 id="toc_0">这就尴尬了是不是？</h3>
+<ul>
+<li>No initializers</li>
+<li>Swift size improvements</li>
+</ul>
 
-<p>不用怕，把本地相关的钥匙串全部删除，并且把xcode关联的账户全部删除，最后再去添加账户，添加完账户之后继续按照手动管理证书，一步步操作生成证书就应该没有问题了。<br/><br/>
-另外还要去开发者中心找到指定的描述文件并且edit编辑，然后选中自己刚才创建的证书。<br/><br/>
-编辑完成之后下载描述文件以及证书接下来就可以进行打包了。<br/>
-<img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fnczxt1f66j30tx0imtam.jpg" alt=""/></p>
+<p>因为Swift从设计上避免了许多的陷阱，在c、c+++、oc可能遇到这些陷阱。<br/>
+Swift没有初始化器，不允许特定类型的未对齐的数据结构。所以转向Swift可以让你更容易获得快速的程序启动(Apple says)。</p>
+
+<h2 id="toc_2">Static initilizer tracing</h2>
+
+<p>静态初始化追踪器，instrument提供每个静态初始化器的准确时间。方便知道初始化的过程花费了多久的时间。</p>
+
+<p><img src="media/15445109745059/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%883.33.52.png" alt="屏幕快照 2018-12-11 下午3.33.52"/></p>
+
+<h2 id="toc_3">dyld3</h2>
+
+<h4 id="toc_4">为什么推出dylb3</h4>
+
+<p>提升速度（启动应用的时候尽量多的减少工程量）<br/>
+增强安全（更积极的安全检查）<br/>
+可测试性和可靠性</p>
+
+<h4 id="toc_5">怎么做到上述目标</h4>
+
+<ul>
+<li><p>速度</p>
+<ul>
+<li><p>把复杂操作dylb移出进程</p>
+<ul>
+<li>现在大多数dylb只是普通的后台程序</li>
+</ul></li>
+<li><p>允许部分dylb驻留在进程之中</p>
+<ul>
+<li>减少受攻击面积（驻留部分要尽可能少）</li>
+<li>提高启动速度
+<ul>
+<li>最快的代码就是你不写代码</li>
+<li>关注那些你几乎不执行的代码</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><p>安全</p>
+<ul>
+<li><p>确定安全敏感性组件身份</p>
+<ul>
+<li>边界检查</li>
+<li>@rpath 攻击</li>
+</ul></li>
+<li><p>标识可占用缓存的组件</p>
+<ul>
+<li>依赖关系不会改变</li>
+<li>符号在库中的偏移位置不会发生改变 </li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p><img src="media/15445109745059/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%885.36.31.png" alt="屏幕快照 2018-12-11 下午5.36.31"/></p>
+
+<p>dylb3有三个部分</p>
+
+<ul>
+<li>一个进程外的macho 解析编译器</li>
+<li>一个进程内的处理闭包（launch closures）的引擎</li>
+<li>一个缓存服务的启动闭包（launch closures）</li>
+</ul>
+
+<p>大多数启动的时候使用缓存不会触发进程外的mach-o parser/compiler<br/>
+launch closures比mach-o更简单<br/>
+launch closures为速度而构建</p>
+
+<h3 id="toc_6">使用dylb3要注意什么</h3>
+
+<p>完全兼容dylb2.x</p>
+
+<ul>
+<li>一些apis关闭了dylb3的优化导致程序变慢或者会在dylb3中使用回退模式</li>
+<li>一些为dylb2.x的优化不再有任何影响</li>
+</ul>
+
+<p>严格的链接语义<br/>
+在加入新动态连接器后，很多的语义可能现在还无法使用，甚至是错误的。</p>
+
+<ul>
+<li>放入一个支持旧二进制数据的工作区</li>
+<li>新的二进制数据可能导致链接错误 </li>
+</ul>
 
                         
                       </div>
@@ -413,8 +242,10 @@ git config --global --unset http.https://github.com.proxy
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/12/11</span>
-                    
+                    <span class="date">2019/9/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -428,17 +259,104 @@ git config --global --unset http.https://github.com.proxy
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="16076509804714.html">
+                <a class="clearlink" href="16076509805787.html">
                 
-                  <h1>Xcode编译找不到头文件</h1>
+                  <h1>Advanced Debugging with Xcode and LLDB</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>开发中遇到之前成功导入没有报错的头文件，后来打开工程之后报错说找不到头文件，这就很奇怪了。<br/>
-之前还是好好的，怎么睡了一觉代码还出现了问题呢。<br/><br/>
-然后就去搜索解决方法，发现是要到<code>buildsettings</code>下的<code>Search Paths</code>下面的<code>User Header Search Paths</code> 大概意思就是这个东西是头文件的搜索路径。<br/><br/>
-进去之后添加<code>${SRCROOT}</code>然后回车搞定就完成了。</p>
+                        	<ol>
+<li><p>expression语句 </p>
+<p>不用重新运行程序直接实现代码效果</p>
+<p><img src="media/15444306104604/15445067738160.jpg" alt=""/></p>
+<ol>
+<li><p>描述</p>
+<p>可以动态的改变条件，语法是<code>expression xxx = &quot;xxx&quot;</code> 后面是语句代码,类似程序中的代码并且支持加{}的判断等等语句。</p></li>
+<li><p>使用方法：</p>
+<ul>
+<li>调试台去写这个语句</li>
+<li>加断点去添加<code>action</code>。</li>
+</ul></li>
+</ol></li>
+<li><p>Symbolic Breakpoint</p>
+<ol>
+<li><p>描述</p>
+<p>符号断点，可以针对某一个方法(函数)设置断点并暂停执行；有时候，我们并不清楚会在什么情况下调用某一个函数，那我们可以通过符号断点来跟踪获取调用该函数的程序堆栈。</p>
+<p><img src="media/15444306104604/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%885.04.43.png" alt="屏幕快照 2018-12-10 下午5.04.43"/></p></li>
+<li><p>使用方法</p>
+<ul>
+<li> 方法一</li>
+</ul>
+<p>添加符号断点，比如如下所述-[UILabel setText:]</p>
+<p><img src="media/15444306104604/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%885.05.33.png" alt="屏幕快照 2018-12-10 下午5.05.33"/></p>
+<p>还可以添加condition语句 类似如上所述</p>
+<ul>
+<li>方法二</li>
+</ul>
+<p>直接在指定的语句添加断点加入<code>action</code>语句，如图所示</p>
+<p><img src="media/15444306104604/15445068230815.jpg" alt=""/></p>
+<p><code>breakpoint set --one-shot true --name &quot;-[UILabel setText:]&quot;</code>    </p>
+<p><code>one-shot</code> 是一个临时断点，一旦触发后就自动删除</p></li>
+</ol></li>
+<li><p>跳过断点所指向的代码</p>
+<ol>
+<li><p>方式一</p>
+<p><img src="media/15444306104604/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%885.40.21.png" alt="屏幕快照 2018-12-10 下午5.40.21"/></p>
+<p>移动手柄实现 接下来就可以在控制台中写expression语句 <br/>
+<code>expression jumpAstronaut(animated:false)<br/>
+</code></p></li>
+<li><p>方式二</p>
+<p>直接编辑断点添加action语句 <br/>
+<img src="media/15444306104604/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%885.47.11.png" alt="屏幕快照 2018-12-10 下午5.47.11"/></p>
+<p><code>thread jump --by 1</code> 是跳过一句代码的意思。</p></li>
+</ol></li>
+<li><p>watchPoint </p>
+<p>观察指针，值发生改变的时候自动暂停。</p>
+<p><img src="media/15444306104604/15445000921722.jpg" alt=""/></p>
+<p>右键某个属性，添加watchPoint，然后左侧会出现观察指针断点监测_tableView的变化，如下所示<br/><br/>
+    <img src="media/15444306104604/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8A%E5%8D%8811.46.38.png" alt="屏幕快照 2018-12-11 上午11.46.38"/></p></li>
+<li><p>创建别名</p>
+<p><code>command alias poc expression - l objc -O --</code><br/>
+poc 就可以直接代替后面的语句，可以简化常用的命令行语句。</p></li>
+<li><p>可以通过内存地址去获取对象 </p>
+<ol>
+<li><p>Objective-C</p>
+<p><code>po 指针</code> 可以直接打印出对象<br/>
+<img src="media/15444306104604/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8A%E5%8D%8811.12.11.png" alt="屏幕快照 2018-12-11 上午11.12.11"/></p></li>
+<li><p>Swift</p>
+<p>不能把数字当成指针去像OC一样打印出对象，要使用<code>expression - l objc -O -- 0x7fa967d781191548b60</code>转换为OC语言。 如果觉得这个语句太臃肿，可以为语句创建别名比如<code>command alias poc expression - l objc -O --</code>之后就可以直接<code>poc 指针</code>就可以达到oc当中同样的效果。</p></li>
+</ol></li>
+<li><p>获取图层树</p>
+<ol>
+<li><p>Objective-C</p>
+<p>调用<code>po [self.view recursiveDescription]</code>打印出类似于这样的图层树。<br/>
+<img src="media/15444306104604/15444967235409.jpg" alt=""/></p></li>
+<li><p>Swift </p>
+<p>不能这么直接打印出图层树（swift不允许去调用未定义的函数），如果要让swift去像OC一样打印出类似于这样的图层树。<br/>
+调用语句</p>
+<pre><code class="language-expression">```一定要加入反括号(反括号就像预处理器一样，它表示先评估其在当前帧中的内容，并插入结果，然后我们可以评估其余部分) 才能编译通过。
+</code></pre></li>
+</ol></li>
+<li><p>unsafeBitCast查询对象的调试描述</p>
+<p>当只有指针，查看对象描述的时候在swift中可以使用 unsafeBitCast函数，给他一个内存地址，他不安全是因为它依赖你来提供正确的类型。</p>
+<p>po unsafeBitCast(指针,to:ScoreBoardView.self)<br/>
+还可以可以直接查看view的frame<br/>
+po unsafeBitCast(指针,to:ScoreBoardView.self).frame</p>
+<p>同理OC中可以更方便的实现根据指针对对象进行相应的调试，比如更改 label 的内容</p>
+<pre><code class="language-text">(lldb) expression [(UILabel*)0x7fb2c5f0fd70 setText:@&quot;hello&quot;];
+但是内存地址前面要跟相应的类型要不然会执行失败报错<br/>
+error: warning: receiver type &#39;long&#39; is not &#39;id&#39; or interface pointer, consider casting it to &#39;id&#39;
+</code></pre></li>
+<li><p>刷新屏幕的帧缓存区<br/>
+如果写了expression语句之后界面没有及时刷新，但是又不想去重新运行代码，那么可以使用表达式<br/>
+Swift<code>expression CATransaction.flush()</code><br/>
+OC<code>expression [CATransaction flush]</code>刷新屏幕帧缓存区。</p></li>
+</ol>
+
+<h3 id="toc_0">参考</h3>
+
+<p>[1]<a href="https://developer.apple.com/videos/play/wwdc2018/412/">https://developer.apple.com/videos/play/wwdc2018/412/</a></p>
 
                         
                       </div>
@@ -447,8 +365,10 @@ git config --global --unset http.https://github.com.proxy
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/12/11</span>
-                    
+                    <span class="date">2019/9/9</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -462,84 +382,58 @@ git config --global --unset http.https://github.com.proxy
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="16076509804745.html">
+                <a class="clearlink" href="16076509804892.html">
                 
-                  <h1>Flutter && Python && OC</h1>
+                  <h1>检测离屏渲染</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h3 id="toc_0">dart的函数定义如下所示</h3>
+                        	<p><code>instrumets</code> 已经取消了<code>debug options</code></p>
 
-<pre><code class="language-text">// Define a function.
-printInteger(int aNumber) {
-  print(&#39;The number is $aNumber.&#39;); // Print to console.
-}
+<p>可以在xcode的<code>debug</code> - <code>view debugging</code> 找到</p>
 
-// This is where the app starts executing.
-main() {
-  var number = 42; // Declare and initialize a variable.
-  printInteger(number); // Call a function.
-}
+<p>“核心动画工具和模板已在工具中弃用。之前在”调试选项“下的功能已移至Xcode，位于”<code>Debug&gt; View Debugging</code>“下。</p>
 
-isNoble(atomicNumber) {
-  return _nobleGases[atomicNumber] != null;
-}
+<p><img src="http://upload-images.jianshu.io/upload_images/1315383-752efaac717c3947.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="BB55F33F-97CC-4C28-B3F1-22456A2A7BD8.png"/></p>
 
-如果函数只有单个语句，可以采用简略的形式：
+<p>开启后会把那些需要离屏渲染的图层高亮成黄色，这就意味着黄色图层可能存在性能问题。</p>
 
-bool isNoble(int atomicNumber) =&gt; _nobleGases[atomicNumber] != null;
+<p>正常:是这样的<br/>
+ <img src="http://upload-images.jianshu.io/upload_images/1315383-de2aad921928fa7b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="正常渲染.png"/></p>
 
+<p>有问题的图层:</p>
 
-</code></pre>
+<p><img src="http://upload-images.jianshu.io/upload_images/1315383-61746e58c6057b02.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="调试.png"/><br/>
+可以看见我设置了圆角的imageView有问题.</p>
 
-<h3 id="toc_1">$dart取地址</h3>
+<p>### 项目开发中怎么去处理?</p>
 
-<pre><code class="language-text">String say(String from, String msg, [String device]) {
-  var result = &#39;$from says $msg&#39;;
-  if (device != null) {
-    result = &#39;$result with a $device&#39;;
-  }
-  return result;
-}
+<blockquote>
+<p>抛出一个问题:  需求就是有很多圆角那我们项目中应该怎么去处理圆角呢?</p>
+</blockquote>
 
-</code></pre>
+<ol>
+<li>使用<a href="http://www.jianshu.com/p/60cd5f8bb4cb">YYWebImage去处理</a> </li>
+<li><a href="http://www.jianshu.com/p/82e68984711f">iOS中圆角图片的处理</a></li>
+</ol>
 
-<p>以分号结尾 参数类型要指定也可以不指定<br/><br/>
-=&gt; 是{ return expr;} 的缩写</p>
+<p>相信看完两篇文章,多少都会能收获一点!</p>
 
-<h3 id="toc_2">oc的函数定义</h3>
+<blockquote>
+<p>有些人说:</p>
 
-<pre><code class="language-text">-(void)hello{
+<p>iOS 9.0 之后UIButton设置圆角会触发离屏渲染，而UIImageView里png图片设置圆角不会触发离屏渲染了，如果设置其他阴影效果之类的还是会触发离屏渲染的(这句话不知道谁说的.自己有没有去尝试呢???)</p>
+</blockquote>
 
-print(@&quot;hello world&quot;);
+<p>结论: 经过测试</p>
 
-}
--(void)hello(int a,int b){
+<p><img src="http://upload-images.jianshu.io/upload_images/1315383-a58dfe9543375e1d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="70915C7C-7523-4008-9A88-B5682407926D.png"/></p>
 
-print(@&quot;hello world %d %d&quot;,a,b);
+<p>大家可以看到, <br/>
+UIButton 的 masksToBounds = YES下发生离屏渲染与 背景图存不存在有关系, 如果没有给按钮设置   <code>btn.image = [UIImage imageName:@&quot;xxxxx&quot;];</code> 是不会产生离屏渲染的 .</p>
 
-}
-
-
-</code></pre>
-
-<p>无需注意缩进 但是返回值类型一定要明确</p>
-
-<h3 id="toc_3">python函数定义</h3>
-
-<pre><code class="language-text">def xxxx:
-    print &#39;hello world&#39;
-    
-def xxx(a,b):
-   print(a,b)
-   
-def xxx(self,a,b)
-   print a,b
-   
-</code></pre>
-
-<p>由于没有分号和大括号所以一定要注意缩进，</p>
+<p>关于 UIImageView,现在测试发现(现版本: iOS10),在性能的范围之内,给UIImageView设置圆角是不会触发离屏渲染的,但是同时给UIImageView设置背景色则肯定会触发.触发离屏渲染跟 png.jpg格式并无关联(可能采取的压缩格式不同,这里不做探讨,这里我给出结果是没有关系)</p>
 
                         
                       </div>
@@ -548,8 +442,311 @@ def xxx(self,a,b)
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/12/11</span>
-                    
+                    <span class="date">2019/8/15</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509806552.html">
+                
+                  <h1>七号房的礼物</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>要怎么才能好好的挥手道别呢，最后的时候爸爸觉得自己再也见不到自己女儿那一刻，害怕了。但是没有人能再救他回来，影片最后真的让人声泪俱下。</p>
+
+<p>父女之间的爱情，狱友之间的帮助，可能多少美化了一部分，但是人的内心深处总留有那么一块正义时刻吧，由于匆忙结案酿成了一场冤假错案，如何对抗一个体制，看得实在揪心，总希望这样的事情不会发生，最后的结局可能是一种对于现实的妥协，给影片画上了一个句号，还了龙九的清白，其实如果放到现实中，恐怕这样接近圆满的结局会很困难吧。</p>
+
+<p>到底真相是什么我们不得而知，但是我们知道龙九是被冤枉的没错。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%94%B5%E5%BD%B1.html'>电影</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509805290.html">
+                
+                  <h1>_cmd 与 runtime 的结合</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>只有运行时给分类添加属性，大部分都是这样的</p>
+
+<pre><code class="language-static">- (NSString *)customName {
+　　　　 return objc_getAssociatedObject(self, &amp;kExtendVarKey);
+　　 }
+- (void)setCustomName:(NSString *)customName {
+　　　　objc_setAssociatedObject(self, &amp;kExtendVarKey,, customDelegate, OBJC_ASSOCIATION_RETAIN_COPY);
+　}
+</code></pre>
+
+<p>_cmd 是隐藏的参数，表示当前方法的selector，另外隐藏参数self表示当前方法调用的对象实例。<br/>
+这个参数是唯一的参数，在一个文件中方法名不会重复。<br/>
+所以可以让它代替运行时当中的属性的键名。</p>
+
+<pre><code class="language-　　">- (NSString *)customName {
+　　　　 return objc_getAssociatedObject(self, _cmd);
+　　 }
+- (void)setCustomName:(NSString *)customName {
+　　　　objc_setAssociatedObject(self, @selector(customName), customName, OBJC_ASSOCIATION_RETAIN_COPY);
+　　}
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/15</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509804989.html">
+                
+                  <h1>高效的画线</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>先创建一个UIBeizerPath 的对象path</p>
+
+<pre><code class="language-text">UIBezierPath *path = [[UIBezierPath alloc] init];
+  [path moveToPoint:CGPointMake(175, 100)];
+  
+  [path addArcWithCenter:CGPointMake(150, 100) radius:25 startAngle:0 endAngle:2*M_PI clockwise:YES];
+  [path moveToPoint:CGPointMake(150, 125)];
+  [path addLineToPoint:CGPointMake(150, 175)];
+  [path addLineToPoint:CGPointMake(125, 225)];
+  [path moveToPoint:CGPointMake(150, 175)];
+  [path addLineToPoint:CGPointMake(175, 225)];
+  [path moveToPoint:CGPointMake(100, 150)];
+  [path addLineToPoint:CGPointMake(200, 150)];
+</code></pre>
+
+<p>然后创建CAShapeLayer添加到视图的layer上 </p>
+
+<pre><code class="language-text">CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+  shapeLayer.strokeColor = [UIColor redColor].CGColor;
+  shapeLayer.fillColor = [UIColor clearColor].CGColor;
+  shapeLayer.lineWidth = 5;
+  shapeLayer.lineJoin = kCALineJoinRound;
+  shapeLayer.lineCap = kCALineCapRound;
+  shapeLayer.path = path.CGPath;
+  //add it to our view
+  [self.containerView.layer addSublayer:shapeLayer];
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/5/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509805549.html">
+                
+                  <h1>hexo</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>sudo -s 终端全部使用管理员的方式运行</p>
+
+<h3 id="toc_0">Init a new project</h3>
+
+<pre><code class="language-bash">$ hexo init
+</code></pre>
+
+<h3 id="toc_1">Create a new post</h3>
+
+<pre><code class="language-bash">$ hexo new &quot;My New Post&quot;
+</code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+
+<h3 id="toc_2">Create a new draft</h3>
+
+<pre><code class="language-bash">$ hexo new draft &quot;draft Post&quot;
+</code></pre>
+
+<h3 id="toc_3">Run server</h3>
+
+<pre><code class="language-bash">$ hexo server
+</code></pre>
+
+<p>如果端口被占用了 可以使用-p 重设端口</p>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+
+<h3 id="toc_4">Generate static files</h3>
+
+<pre><code class="language-bash">$ hexo generate
+</code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+
+<h3 id="toc_5">Deploy to remote sites</h3>
+
+<pre><code class="language-bash">$ hexo deploy
+</code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
+
+<h3 id="toc_6">生成纯页面</h3>
+
+<pre><code class="language-bash">$ hexo new page &quot;pageName&quot;
+</code></pre>
+
+<p>在yml配置文件中可以添加这行代码</p>
+
+<pre><code class="language-text">#包含和剔除
+include:
+  - .nojekyll
+exclude:
+  - .DS_Store
+
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/4/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%85%B6%E5%AE%83.html'>其它</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509807617.html">
+                
+                  <h1>检查无用代码</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>简便的方法是使用appcode进行分析 </p>
+
+<p>在appcode中打开代码，并选择code-&gt;inspect code就可以进行静态分析。</p>
+
+<p>分析完之后，我们可以在unused code里看到所有的无用代码。如下图所示。</p>
+
+<p><img src="media/15542632266483/15542633597716.jpg" alt=""/></p>
+
+<p>接下来，我和你说一下这些无用代码的主要类型。</p>
+
+<ul>
+<li>无用类：Unused class 是无用类，Unused import statement 是无用类引入声明，Unused property 是无用的属性；</li>
+<li>无用方法：Unused method 是无用的方法，Unused parameter 是无用参数，Unused instance variable 是无用的实例变量，Unused local variable 是无用的局部变量，Unused value 是无用的值；</li>
+<li>无用宏：Unused macro 是无用的宏。</li>
+<li>无用全局：Unused global declaration 是无用全局声明。</li>
+</ul>
+
+<p>看似 AppCode 已经把所有工作都完成了，其实不然。下面，我再和你列举下 AppCode 静态检查的问题：</p>
+
+<ul>
+<li>JSONModel 里定义了未使用的协议会被判定为无用协议；</li>
+<li>如果子类使用了父类的方法，父类的这个方法不会被认为使用了；</li>
+<li>通过点的方式使用属性，该属性会被认为没有使用；</li>
+<li>使用 performSelector 方式调用的方法也检查不出来，比如 self performSelector:@selector(arrivalRefreshTime)；</li>
+<li>运行时声明类的情况检查不出来。比如通过 NSClassFromString 方式调用的类会被查出为没有使用的类，比如 layerClass = NSClassFromString(@“SMFloatLayer”)。还有以 [[self class] accessToken] 这样不指定类名的方式使用的类，会被认为该类没有被使用。像 UITableView 的自定义的 Cell 使用 registerClass，这样的情况也会认为这个 Cell 没有被使用。</li>
+</ul>
+
+<h1 id="toc_0">define RW_INITIALIZED (1&lt;&lt;29)</h1>
+
+<p>bool isInitialized() {<br/>
+   return getMeta()-&gt;data()-&gt;flags &amp; RW_INITIALIZED;<br/>
+}</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/3/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -598,7 +795,7 @@ def xxx(self,a,b)
 
 
 
-
+<a target="_blank" class="email" href="mailto:maweefeng@gmail.com" title="Email">Email</a>
   <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
                 
               	 </div>
@@ -617,6 +814,12 @@ def xxx(self,a,b)
             <a href="%E7%94%B5%E5%BD%B1.html"><strong>电影</strong></a>
         
             <a href="%E5%85%B6%E5%AE%83.html"><strong>其它</strong></a>
+        
+            <a href="Python.html"><strong>Python</strong></a>
+        
+            <a href="iOS.html"><strong>iOS</strong></a>
+        
+            <a href="%E6%88%91.html"><strong>我</strong></a>
          
         </p>
 
@@ -633,31 +836,31 @@ def xxx(self,a,b)
 	      
 		      
 			      <li class="post">
-			        <a href="16076509803956.html">Xcode10报错libstdc</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="16076509804011.html">Masonry布局“Unable to simultaneously satisfy constraints”</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
 			        <a href="16076509804045.html">RACCommand</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509804076.html">代理修饰符</a>
+			        <a href="16076509805027.html">关于我</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509804110.html">You don’t have write permissions</a>
+			        <a href="16076509807659.html">点击事件发生在视图边界之外的时候</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804683.html">Xcode打包遇到的坑</a>
 			      </li>
 		     
 		  

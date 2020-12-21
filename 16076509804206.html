@@ -40,7 +40,7 @@
       <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
         <ul id="main-menu" class="left">
         
-        <li id=""><a target="self" href="index.html">Home</a></li>
+        <li id=""><a target="_self" href="index.html">Home</a></li>
         
         <li id=""><a target="_self" href="archives.html">Archives</a></li>
         
@@ -69,7 +69,7 @@
 <aside class="left-off-canvas-menu">
       <ul class="off-canvas-list">
         
-        <li><a target="self" href="index.html">Home</a></li>
+        <li><a target="_self" href="index.html">Home</a></li>
         
         <li><a target="_self" href="archives.html">Archives</a></li>
         
@@ -80,6 +80,12 @@
             <li><a href="%E7%94%B5%E5%BD%B1.html">电影</a></li>
         
             <li><a href="%E5%85%B6%E5%AE%83.html">其它</a></li>
+        
+            <li><a href="Python.html">Python</a></li>
+        
+            <li><a href="iOS.html">iOS</a></li>
+        
+            <li><a href="%E6%88%91.html">我</a></li>
          
 
       </ul>
@@ -105,9 +111,11 @@
           <h1>通讯录排序</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2020/12/11</span>
+          <span class="date">2019/1/10</span>
 
+          <span>posted in&nbsp;</span> 
           
+              <span class="posted-in"><a href='iOS.html'>iOS</a></span>
            
          
           <span class="comments">
@@ -122,15 +130,17 @@
       <div class="article-content">
       <h3 id="toc_0">苹果提供的排序方法</h3>
 
-<p>NSArray *stringArr = @[@&quot;我们&quot;,@&quot;我的&quot;, @&quot;重点&quot;, @&quot;重庆&quot;,  @&quot;三&quot;]; NSArray *result = [stringArr sortedArrayUsingSelector:@selector(localizedCompare:)];</p>
+<pre><code class="language-text">NSArray *stringArr = @[@&quot;我们&quot;,@&quot;我的&quot;, @&quot;重点&quot;, @&quot;重庆&quot;,  @&quot;三&quot;]; 
+NSArray *result = [stringArr sortedArrayUsingSelector:@selector(localizedCompare:)];
+</code></pre>
 
 <p>字典当中的keyvalue 可以一个键对应一个数组。</p>
 
 <h3 id="toc_1">对数据进行排列按首字母进行分组</h3>
 
-<pre><code class="language-text">这是苹果的方法
--(void)userSorting:(NSMutableArray *)modelArr{
-    
+<p>这是苹果的方法</p>
+
+<pre><code class="language--(void)usersorting:(nsmutablearray">    
     for ( modelAgreementCitizenItem *model in modelArr) {
         //获取汉子的首字母
         //把中文转拼音
@@ -155,9 +165,12 @@
     }
     
 }
-这个方法使用起来比较慢 耗时较长
--(NSMutableArray *)userSorting:(NSMutableArray *)modelArr{
-    
+
+</code></pre>
+
+<p>这个方法使用起来比较慢 耗时较长</p>
+
+<pre><code class="language--(nsmutablearray">    
     NSMutableArray *array = [[NSMutableArray alloc] init];
     if(self.indexArr.count){
         [self.indexArr removeAllObjects];
@@ -198,6 +211,7 @@
 }
 
 
+
 </code></pre>
 
 
@@ -209,16 +223,16 @@
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="16076509804138.html" 
-          title="Previous Post: 隐藏导航栏底部的线条">&laquo; 隐藏导航栏底部的线条</a>
+          <a href="16076509804529.html" 
+          title="Previous Post: Git提交代码issue">&laquo; Git提交代码issue</a>
       
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="16076509804237.html" 
-          title="Next Post: 给UITableView边框加阴影">给UITableView边框加阴影 &raquo;</a>
+          <a  href="16076509806428.html" 
+          title="Next Post: 怎么选购二手房">怎么选购二手房 &raquo;</a>
       
       </p>
         </div>
@@ -256,7 +270,7 @@
 
 
 
-
+<a target="_blank" class="email" href="mailto:maweefeng@gmail.com" title="Email">Email</a>
   <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
                 
               	 </div>
@@ -275,6 +289,12 @@
             <a href="%E7%94%B5%E5%BD%B1.html"><strong>电影</strong></a>
         
             <a href="%E5%85%B6%E5%AE%83.html"><strong>其它</strong></a>
+        
+            <a href="Python.html"><strong>Python</strong></a>
+        
+            <a href="iOS.html"><strong>iOS</strong></a>
+        
+            <a href="%E6%88%91.html"><strong>我</strong></a>
          
         </p>
 
@@ -291,31 +311,31 @@
 	      
 		      
 			      <li class="post">
-			        <a href="16076509803956.html">Xcode10报错libstdc</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="16076509804011.html">Masonry布局“Unable to simultaneously satisfy constraints”</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
 			        <a href="16076509804045.html">RACCommand</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509804076.html">代理修饰符</a>
+			        <a href="16076509805027.html">关于我</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509804110.html">You don’t have write permissions</a>
+			        <a href="16076509807659.html">点击事件发生在视图边界之外的时候</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804683.html">Xcode打包遇到的坑</a>
 			      </li>
 		     
 		  

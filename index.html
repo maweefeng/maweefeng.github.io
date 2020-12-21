@@ -40,7 +40,7 @@
       <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
         <ul id="main-menu" class="left">
         
-        <li id=""><a target="self" href="index.html">Home</a></li>
+        <li id=""><a target="_self" href="index.html">Home</a></li>
         
         <li id=""><a target="_self" href="archives.html">Archives</a></li>
         
@@ -69,7 +69,7 @@
 <aside class="left-off-canvas-menu">
       <ul class="off-canvas-list">
         
-        <li><a target="self" href="index.html">Home</a></li>
+        <li><a target="_self" href="index.html">Home</a></li>
         
         <li><a target="_self" href="archives.html">Archives</a></li>
         
@@ -80,6 +80,12 @@
             <li><a href="%E7%94%B5%E5%BD%B1.html">电影</a></li>
         
             <li><a href="%E5%85%B6%E5%AE%83.html">其它</a></li>
+        
+            <li><a href="Python.html">Python</a></li>
+        
+            <li><a href="iOS.html">iOS</a></li>
+        
+            <li><a href="%E6%88%91.html">我</a></li>
          
 
       </ul>
@@ -101,93 +107,6 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
-			<div class="article">
-                <a class="clearlink" href="16076509803956.html">
-                
-                  <h1>Xcode10报错libstdc</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>由于<code>Xcode10</code> 已经禁用<code>libstdc++</code>、<code>libstdc++.6</code>、<code>libstdc++6.0.9</code>这三个库的使用,所以老项目中有用到这三个库的，会编译出错。<br/>
-我就遇到了这个问题，之前的项目引入的sdk依赖了libstdc++，所以当我升级到<code>xcode10</code>之后就编译不通过，于是在网上找到了解决方法。</p>
-
-<h3 id="toc_0">解决方法</h3>
-
-<p>首先解压同级目录下的libstdc压缩包</p>
-
-<h4 id="toc_1">1.真机</h4>
-
-<p>将libstdc_iPhoneOS拷贝到/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/lib</p>
-
-<h4 id="toc_2">2.模拟器</h4>
-
-<ul>
-<li><p>将libstdc_iPhoneSimulator拷贝到/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/usr/lib/</p></li>
-<li><p>将libstdc_iPhoneSimulator_runtime拷贝到/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime/Contents/Resources/RuntimeRoot/usr/lib/</p></li>
-</ul>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/12/11</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509804011.html">
-                
-                  <h1>Masonry布局“Unable to simultaneously satisfy constraints”</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>出现这个问题是设置约束优先级错误，设置一下约束的优先级就行。</p>
-
-<pre><code class="language-text">[self.doctorTitle mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.title.mas_left);
-            make.right.equalTo(self.title.mas_right);
-            make.top.equalTo(self.topline.mas_bottom).offset(10).priorityHigh();
-            make.height.mas_equalTo(@14);
-}];
-
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/12/11</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
 			<div class="article">
                 <a class="clearlink" href="16076509804045.html">
                 
@@ -300,7 +219,9 @@ static NSString *const kSubscribeURL =@&quot;http://reactivetest.apiary.io/subsc
                   <div class="more-left left">
                   
                     <span class="date">2020/12/11</span>
-                    
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -314,17 +235,36 @@ static NSString *const kSubscribeURL =@&quot;http://reactivetest.apiary.io/subsc
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="16076509804076.html">
+                <a class="clearlink" href="16076509805027.html">
                 
-                  <h1>代理修饰符</h1>
+                  <h1>关于我</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h3 id="toc_0">为什么代理修饰要用weak而不是assgin</h3>
+                        	<p>简介：暂无介绍</p>
 
-<p>weak 一旦不被引用的时候就不会再使用了，就会被置位nil，oc中使用nil执行操作不会引起崩溃，所以即使再次使用也不会产生野指针。<br/><br/>
-但是如果是用assgin修饰，一旦不被引用不会自动置nil,当再次操作这个对象的代理方法的时候就会产生野指针引起程序崩溃。</p>
+<p>个人有着写日记的习惯，会写一些对待技术、文化、生活的看法，平时喜欢拍拍照，看看剧，看看书。  </p>
+
+<ul>
+<li>拍摄</li>
+</ul>
+
+<p>拍照用的是一款理光的相机GR2，这款相机比较小众，但是偶尔也会有路人看到我的机器后和我搭讪，这种感觉还是不错的，我个人很喜欢它的森山大道模式，（最开始也是因为这个购买它，不过后来这个模式用的其实不太多了）被别人安利了，又在网上看了看一些测评，街拍的好机器，就在淘宝下单买了，算是送给自己的生日礼物🎁，虽然功能不多，但是逼格对我来说够了。</p>
+
+<ul>
+<li>刷剧</li>
+</ul>
+
+<p>2018年追了「绝命律师」「权力的游戏」「行尸走肉」「年轻的谢尔顿」「白夜追凶」「四重奏」「去他妈的世界」「梅尔罗斯」「了不起的麦瑟尔夫人」「碧蓝之海」「我是大哥大」「深夜食堂」排名不分先后。</p>
+
+<ul>
+<li>阅读</li>
+</ul>
+
+<p>最开始在念大学的时候买了个kindle入门款，因为当时手头没有足够的💰，再加上背光对我来说并不是必要的，所以对我来说这款设备足够了，真是买完不后悔系列。当你想要看书的时候，在上面看书的感觉几乎接近于书籍，虽然我很喜欢传统纸质书籍，但是纸质书的翻页体验真的太差了，kindle的翻页要比传统书籍好过很多倍，便携性更不用说了。</p>
+
+<p>在手机里安装了<code>kindle for ios</code>，方便在我不方便使用<code>kindle</code>的时候看书，在我<code>MacBook</code>中我安装了<code>kindle for mac</code>，我一般会把它全屏为一个独立的窗口，不管是在代码编译等待的时候看，还是专门去看，那种体验很舒服，最起码比在5.5寸屏幕上的效果要好很多。</p>
 
                         
                       </div>
@@ -334,7 +274,11 @@ static NSString *const kSubscribeURL =@&quot;http://reactivetest.apiary.io/subsc
                   <div class="more-left left">
                   
                     <span class="date">2020/12/11</span>
-                    
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%85%B6%E5%AE%83.html'>其它</a></span>
+          				  
+          					    <span class="posted-in"><a href='%E6%88%91.html'>我</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -348,31 +292,104 @@ static NSString *const kSubscribeURL =@&quot;http://reactivetest.apiary.io/subsc
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="16076509804110.html">
+                <a class="clearlink" href="16076509807659.html">
                 
-                  <h1>You don’t have write permissions</h1>
+                  <h1>点击事件发生在视图边界之外的时候</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h3 id="toc_0">终端运行sudo gem update出现如下错误</h3>
+                        	<p>这里有两个方法，每次有touch动作时，都会走这两个方法</p>
+
+<ul>
+<li>(UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event；</li>
+<li>(BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event；</li>
+</ul>
+
+<p>重写方法 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event</p>
+
+<p>这是View里的一个方法，处理流程如下</p>
+
+<ul>
+<li>首先调用当前视图的pointInside:withEvent:方法判断触摸点是否在当前视图内；</li>
+<li>若返回NO,则hitTest:withEvent:返回nil;</li>
+<li>若返回YES,则向当前视图的所有子视图(subviews)发送hitTest:withEvent:消息，所有子视图的遍历顺序是从top到bottom，即从subviews数组的末尾向前遍历,直到有子视图返回非空对象或者全部子视图遍历完毕；</li>
+<li>若第一次有子视图返回非空对象,则hitTest:withEvent:方法返回此对象，处理结束；</li>
+<li>如所有子视图都返回非，则hitTest:withEvent:方法返回自身(self)。</li>
+<li>最后，这个触摸事件交给主窗口的hitTest:withEvent:方法返回的视图对象去处理。</li>
+</ul>
+
+<pre><code class="language-text">//返回一个view来响应事件
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
+ UIView *view = [super hitTest:point withEvent:event];
+ if (view == nil){
+  //转换坐标
+  CGPoint tempPoint = [self.testBtn convertPoint:point fromView:self];
+  //判断点击的点是否在按钮区域内
+  if (CGRectContainsPoint(self.testBtn.bounds, tempPoint)){
+   //返回按钮
+   return _testBtn;
+  }
+ }
+ return view;
+}
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/12/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509806399.html">
+                
+                  <h1>Localization Issue Warning Storyboard</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>当我使用 xib 设置自动布局的时候出现了下面的警告</p>
+
+<p><img src="media/15474609644602/15474616779035.png" alt=""/></p>
 
 <blockquote>
-<p>ERROR: While executing gem … (Gem::FilePermissionError) <br/>
-You don’t have write permissions for the /usr/bin directory.</p>
+<p>Certain autolayout constraint combinations may result in an appropriate layout in the current development language but will pose issues in other languages and regions.</p>
 </blockquote>
 
-<p>试一下这一段代码</p>
+<p>然后看了苹果官方的文档，说是使用“自动布局”相对于彼此布置视图而没有固定的原点，宽度和高度，以便在语言或区域设置更改时视图重新定位和调整大小。自动布局使得可以为所有语言提供一组.storyboard和.xib文件，并且main.Storyboard默认进行本地化</p>
 
-<blockquote>
-<p>sudo gem install -n /usr/local/bin cocoapods</p>
-</blockquote>
+<p>对国际化应用程序使用自动布局时，请遵循以下提示。</p>
 
-<p>这表示是在本地环境去安装cocoaPods,现在为了安全最好使用这种安装的方式。</p>
+<ol>
+<li><p>删除固定宽度约束。允许显示要调整大小的本地化文本的视图。如果使用固定宽度约束，则本地化文本可能会在某些语言中出现裁剪。</p></li>
+<li><p>使用内在内容大小。文本字段和标签的默认行为是自动调整大小。如果视图未调整为本地化文本的大小，请选择视图并选择“Editor”&gt;“size To Fit”。</p></li>
+<li><p>使用leading和trailing属性。添加约束时，请使用属性leading和trailing水平约束。对于从左到右的语言，例如英语，属性leading和trailing等同于left和right。对于从右到左的语言，如希伯来语或阿拉伯语，leading并trailing等同于right和left。的leading和trailing属性是用于水平约束的默认值。</p></li>
+<li><p>将视图固定到相邻视图。这个操作会导致多米诺骨牌效应。当一个视图调整大小以适合本地化文本时，其他视图也会这样做。否则，某些语言的视图可能会重叠。</p></li>
+<li><p>不断测试您的布局更改。使用不同的语言设置测试您的应用，如测试国际化应用中所述。</p></li>
+<li><p>不要设置window的最小大小或最大大小。让window及其内容视图调整为包含视图的大小，这可能会在语言更改时更改。</p></li>
+</ol>
 
-<h3 id="toc_1">使用Homebrew安装cocoaPods的地址</h3>
+<h2 id="toc_0">解决问题</h2>
 
-<p>最终安装的路径在<code>/usr/local/Cellar/</code></p>
+<p>在这里不作过多国际化 xib 约束的讨论，针对我遇到的问题，我可以把宽度的约束删除，改成 leading 和 trailing 结合的方式。</p>
 
                         
                       </div>
@@ -381,8 +398,10 @@ You don’t have write permissions for the /usr/bin directory.</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/12/11</span>
-                    
+                    <span class="date">2020/6/15</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -396,42 +415,43 @@ You don’t have write permissions for the /usr/bin directory.</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="16076509804138.html">
+                <a class="clearlink" href="16076509804683.html">
                 
-                  <h1>隐藏导航栏底部的线条</h1>
+                  <h1>Xcode打包遇到的坑</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>有时候遇到一些特殊的要求，需要隐藏导航栏底部的线条。<br/>
-两行代码就可以做到。</p>
+                        	<p>由于是接手别人做的项目，所以当把程序打包的时候出现了问题，证书和描述文件的问题 </p>
+
+<p>最开始尝试打开xcode的账户下载所有证书，结果发现并不能成功</p>
+
+<p>后来手动管理证书就可以看到之前在开发者中心创建的开发和发布证书，如下图所示<br/>
+<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fnczazu4irj30pd0iejte.jpg" alt=""/><br/>
+然后会到证书管理界面，会把你选中账号的所有相关证书列下来</p>
+
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fnczelaqz6j30pd0iedi6.jpg" alt=""/></p>
+
+<p>后面附带有状态，如果你的钥匙串keychain中没有的话，状态会是not in the keychain，顾名思义本地没有下载，这样的话要去开发者中心下载并且安装了.<br/><br/>
+下载完打包之前还要来看一下是不是已经在钥匙串中。  </p>
 
 <ul>
-<li><p>方法一:<br/><br/>
-设置导航栏的背景图（setBackgroundImage方法）<br/><br/>
-设置导航栏的shadowImage (setShadowImage方法)<br/><br/>
-<code>UINavigationBar *navigationBar = self.navigationController.navigationBar;</code><br/>
-//设置透明的背景图，便于识别底部线条有没有被隐藏<br/><br/>
-<code>[navigationBar setBackgroundImage:[[UIImage alloc] init]<br/>
-                   forBarPosition:UIBarPositionAny<br/>
-                       barMetrics:UIBarMetricsDefault];</code> <br/>
-//此处使底部线条失效<br/>
-<code>[navigationBar setShadowImage:[UIImage new]];</code></p></li>
-<li><p>方法二：<br/>
-<code>self.navigationController.navigationBar.clipsToBounds = YES;</code></p></li>
+<li>在钥匙串的话就可以跳过本文去愉快的打包了。<br/></li>
+<li>未在钥匙串接着看下面的操作</li>
 </ul>
 
-<h3 id="toc_0">导航栏全局属性设置</h3>
+<p>如果还是没有在钥匙串的话，那么就比较麻烦了，我百度了一下，要先把之前的证书invoke，也就是删除，然后再回来创建，按照如图所示指引<br/><br/>
+<img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fnczjgrp8hj30m80getb7.jpg" alt=""/></p>
 
-<p>//全局设置导航栏主题</p>
+<p>然而还有可能出现下面的情况 <br/>
+<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fnczn8eitqj30pd0ie0v3.jpg" alt=""/></p>
 
-<pre><code class="language-text">- (void)setNavigationControllerAppearance {
-    [UINavigationBar appearance].barStyle  = UIBarStyleBlack;
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithWhite:0.1 alpha:0.5]];
-    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-}
+<h3 id="toc_0">这就尴尬了是不是？</h3>
 
-</code></pre>
+<p>不用怕，把本地相关的钥匙串全部删除，并且把xcode关联的账户全部删除，最后再去添加账户，添加完账户之后继续按照手动管理证书，一步步操作生成证书就应该没有问题了。<br/><br/>
+另外还要去开发者中心找到指定的描述文件并且edit编辑，然后选中自己刚才创建的证书。<br/><br/>
+编辑完成之后下载描述文件以及证书接下来就可以进行打包了。<br/>
+<img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fnczxt1f66j30tx0imtam.jpg" alt=""/></p>
 
                         
                       </div>
@@ -440,8 +460,10 @@ You don’t have write permissions for the /usr/bin directory.</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/12/11</span>
-                    
+                    <span class="date">2020/5/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -455,92 +477,16 @@ You don’t have write permissions for the /usr/bin directory.</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="16076509804206.html">
+                <a class="clearlink" href="16076509807540.html">
                 
-                  <h1>通讯录排序</h1>
+                  <h1>图片压缩 WebP的小建议，权衡得失</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h3 id="toc_0">苹果提供的排序方法</h3>
+                        	<p>虽然WebP在占用内存方面比较占优势，在网络传输当中体积较小，但是WebP 在 CPU 消耗和解码时间上会比 PNG 高两倍。所以，我们有时候还需要在性能和体积上做取舍。</p>
 
-<p>NSArray *stringArr = @[@&quot;我们&quot;,@&quot;我的&quot;, @&quot;重点&quot;, @&quot;重庆&quot;,  @&quot;三&quot;]; NSArray *result = [stringArr sortedArrayUsingSelector:@selector(localizedCompare:)];</p>
-
-<p>字典当中的keyvalue 可以一个键对应一个数组。</p>
-
-<h3 id="toc_1">对数据进行排列按首字母进行分组</h3>
-
-<pre><code class="language-text">这是苹果的方法
--(void)userSorting:(NSMutableArray *)modelArr{
-    
-    for ( modelAgreementCitizenItem *model in modelArr) {
-        //获取汉子的首字母
-        //把中文转拼音
-        
-        NSMutableString *ms = [[NSMutableString alloc] initWithString:[model patientName]];
-        if (CFStringTransform((__bridge CFMutableStringRef)ms, 0, kCFStringTransformMandarinLatin, NO)) {
-            NSLog(@&quot;Pingying: %@&quot;, ms);
-        }
-        if (CFStringTransform((__bridge CFMutableStringRef)ms, 0, kCFStringTransformStripDiacritics, NO)) {
-            NSLog(@&quot;Pingying: %@&quot;, ms);
-        }
-        NSString *firstString = [[ms substringToIndex:1] uppercaseString];
-        
-        
-        NSMutableArray * arr = [self.nameDic objectForKey:firstString];
-        if (arr) {
-            [arr addObject:model];
-        }else{//如果没有 则需要创建一个添加到里面
-            [self.nameDic setObject:[@[model] mutableCopy] forKey:firstString];
-        }
-        
-    }
-    
-}
-这个方法使用起来比较慢 耗时较长
--(NSMutableArray *)userSorting:(NSMutableArray *)modelArr{
-    
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-    if(self.indexArr.count){
-        [self.indexArr removeAllObjects];
-    }
-    
-    for(int i=&#39;A&#39;;i&lt;=&#39;Z&#39;;i++)
-    {
-        NSMutableArray *rulesArray = [[NSMutableArray alloc] init];
-        
-        NSString *str1=[NSString stringWithFormat:@&quot;%c&quot;,i];
-        for(int j=0;j&lt;modelArr.count;j++)
-        {
-            modelAgreementCitizenItem *model = [modelArr objectAtIndex:j];  //这个model 是我自己创建的 里面包含用户的姓名 手机号 和 转化成功后的首字母
-            
-            if([[NSString getFirstLetter:model.patientName] isEqualToString:str1])
-            {
-                [rulesArray addObject:model];    //把首字母相同的人物model 放到同一个数组里面
-                [modelArr removeObject:model];   //model 放到 rulesArray 里面说明这个model 已经拍好序了 所以从总的modelArr里面删除
-                j--;
-                
-            }else{
-                
-            }
-        }
-        if (rulesArray.count !=0) {
-            [array addObject:rulesArray];
-            [self.indexArr addObject:[NSString stringWithFormat:@&quot;%c&quot;,i]]; //把大写字母也放到一个数组里面
-        }
-    }
-    
-    if (modelArr.count !=0) {
-        [array addObject:modelArr];
-        [self.indexArr addObject:@&quot;#&quot;];  //把首字母不是A~Z里的字符全部放到 array里面 然后返回
-    }
-    
-    return array;
-    
-}
-
-
-</code></pre>
+<p>我的建议是，如果图片大小超过了 100KB，你可以考虑使用 WebP；而小于 100KB 时，你可以使用网页工具<a href="https://tinypng.com">TinyPng</a> 或者<a href="https://imageoptim.com/mac">GUI</a> 工具进行图片压缩。这两个工具的压缩率没有 WebP 那么高，不会改变图片压缩方式，所以解析时对性能损耗也不会增加。</p>
 
                         
                       </div>
@@ -549,8 +495,10 @@ You don’t have write permissions for the /usr/bin directory.</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/12/11</span>
-                    
+                    <span class="date">2020/4/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -564,65 +512,27 @@ You don’t have write permissions for the /usr/bin directory.</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="16076509804237.html">
+                <a class="clearlink" href="15865912038980.html">
                 
-                  <h1>给UITableView边框加阴影</h1>
+                  <h1>Xcode Tips - Spelling and Grammarly</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>项目中有个需求要在UITableView加边框阴影  </p>
+                        	<p>勾选 Check Spelling while typing</p>
 
-<p>如果你的界面的UITableView是充满整个屏幕的话那么就可以使用这个简单的方法。   </p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gdpvk4jsifj31hs0u0x6p.jpg" alt=""/></p>
 
-<ul>
-<li>方法一</li>
-</ul>
+<p>如果代码中的英文拼写出现错误，将会出现只能提示，在拼写错误的地方下面加入红色波浪线。</p>
 
-<pre><code class="language-text">tableView.layer.shadowColor = UIColor(white: 000000, alpha: 0.3).CGColor
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gdpvmsopdij317m06ognr.jpg" alt=""/></p>
 
-tableView.layer.shadowOffset = CGSize(width: -6, height: 6)
+<p>快捷方式 <strong>command + ；</strong><br/>
+将会一条条的小时语法出现错误的地方。</p>
 
-tableView.layer.shadowOpacity = 1
+<p>另外一个快捷方式 <strong>command + shift + ；</strong>，可以帮你推荐正确的拼写。</p>
 
-tableView.clipsToBounds = false //这句最重要了，不然就显示不出来
-</code></pre>
-
-<h4 id="toc_0">问题来了</h4>
-
-<p>我的界面UITableview上面有一个固定不动的区域，如果单纯的照上面写的话，就会出现tableview盖住上面的问题 <br/>
-其实就是因为clipsToBounds = false 不对超出边框的部分进行切割。<br/><br/>
-因为UIScrollview默认clipsToBounds = true,所以你可能之前没有见过超出部分依然还显示在界面。 </p>
-
-<p>我的界面如下图所示<br/>
-<img src="https://lh3.googleusercontent.com/-Zq0sRfLUSQA/W_Jq6QFUYnI/AAAAAAAAlSU/JFoyTporhCgZafmew7cHT7yWGo2fn1ATQCHMYCw/I/15426133929938.jpg" alt=""/></p>
-
-<p>如果父视图的clipsToBounds = true那么在上面的子控件的clipsToBounds 也是true<br/><br/>
-所以必须要在UITableview下面添加一个UIView，可以使用下面的代码<br/><br/>
-必须要使UITableView的clipsToBounds = true，下面的父视图的clipsToBounds = false</p>
-
-<ul>
-<li>方法二</li>
-</ul>
-
-<pre><code class="language-text">    self.backView = [[UIView alloc]initWithFrame:CGRectMake(originX, originY, Width,  height)];
-    self.backView.layer.shadowColor = [UIColor gh_colorFromHexString:@&quot;#002F81&quot;].CGColor;
-    self.backView.layer.shadowOffset = CGSizeMake(0, 2);
-    self.backView.layer.shadowOpacity = 0.1;
-    self.backView.layer.shadowRadius=8;//设置阴影半径
-    self.backView.clipsToBounds = false;
-    [self.view addSubview:self.backView];
-    
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,0, Width, height) style:UITableViewStylePlain];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    self.tableView.layer.cornerRadius = KScreenWidth/375 *4;
-    self.tableView.layer.masksToBounds = YES;
-    self.tableView.tableFooterView = [UIView new];
-    [self.backView addSubview:self.tableView];
-
-
-</code></pre>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gdpvoz48z5j30qi0gwgp8.jpg" alt=""/></p>
 
                         
                       </div>
@@ -631,8 +541,100 @@ tableView.clipsToBounds = false //这句最重要了，不然就显示不出来
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/12/11</span>
-                    
+                    <span class="date">2020/4/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509805828.html">
+                
+                  <h1>App Icon Design</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">Design</h2>
+
+<p>我们对符号的应用可以追溯到很久很久之前，总所周知我们现在使用的文字就是从象形文字发展过来的。</p>
+
+<ul>
+<li><p>象征化</p>
+<p>找到一个简单易懂的象征，物体、图形标注或者符号。</p></li>
+<li><p>简单性</p>
+<p>设计要简单，不要杂乱无章，太过复杂。如果设计的好，人们一眼就能看懂。</p></li>
+<li><p>关联性</p>
+<p>创建与用户之间的感情连接，跟UI一样，图标是应用的脸面，一定要有趣并且引人注目</p></li>
+<li><p>传统性</p>
+<p>对图标的修改要有意义而且谨慎，不建议经常更改应用图标尤其是每次升级的时候，要与时俱进。</p></li>
+</ul>
+
+<p>比如最初的keynote的图标就是一张讲台，以后的每次迭代升级都是围绕着讲台进行的改变，是与时俱进的，风格不断变化。而且如果你注意到的话讲台上都有一个话筒，这个也是一直有延续的。</p>
+
+<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.16.00.png" alt="屏幕快照 2018-12-11 下午2.16.00"/></p>
+
+<p>iOS平台与macOS设计的不同又相同。</p>
+
+<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.19.41.png" alt="屏幕快照 2018-12-11 下午2.19.41"/></p>
+
+<p>配色，元素都是类似的，而且iOS的iwork图标更是保持了一致性，一致的地平面，一致的白色，没有多余复杂的元素。</p>
+
+<p>现在来看GarageBand和Music Memos的关系，有颜色和图标来看，明显有关系。圆圈代表了木吉他上的音孔，弦的振动很清晰很有趣，让人感到动感和创造力</p>
+
+<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.24.00.png" alt="屏幕快照 2018-12-11 下午2.24.00"/></p>
+
+<h5 id="toc_1">Q:怎么不显示名字，也能让人理解。</h5>
+
+<p>A:高对比度，颜色清晰可见，设计简单，构图独特。</p>
+
+<p>下面是News的图标的例子。</p>
+
+<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.32.55.png" alt="屏幕快照 2018-12-11 下午2.32.55"/></p>
+
+<p>进行了三次改变设计，才做到简单醒目，即使在文件夹的小图标也会一目了然，这点对于App Icon Design 十分重要。</p>
+
+<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.34.30.png" alt="屏幕快照 2018-12-11 下午2.34.30"/></p>
+
+<h2 id="toc_2">Process</h2>
+
+<p>设计是一个交互过程，设计时要去考虑这些环节。</p>
+
+<ul>
+<li><p>独特性 </p>
+<p>要做到有区分性，特别是对于一些类似功能的APP</p>
+<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.41.11.png" alt="屏幕快照 2018-12-11 下午2.41.11"/></p></li>
+<li><p>实践</p>
+<p>纸笔有时候比鼠标有用的多，绘画是激发灵感的好方法。</p>
+<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.40.50.png" alt="屏幕快照 2018-12-11 下午2.40.50"/></p></li>
+<li><p>测试</p>
+<p>要在主屏，在设置，在文件夹中测试不同情形的展示效果，要用图标展现界面的话要特别注意，Clear是一个很完美的典范，简单，多彩，高对比度。</p>
+<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.41.54.png" alt="屏幕快照 2018-12-11 下午2.41.54"/></p></li>
+<li><p>耐心</p>
+<p>答案不会立马就来，慢慢来，检查选项，保存好作品，有时候最简单的设计或者你放弃的设计师最好的选择。</p></li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/4/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -681,7 +683,7 @@ tableView.clipsToBounds = false //这句最重要了，不然就显示不出来
 
 
 
-
+<a target="_blank" class="email" href="mailto:maweefeng@gmail.com" title="Email">Email</a>
   <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
                 
               	 </div>
@@ -700,6 +702,12 @@ tableView.clipsToBounds = false //这句最重要了，不然就显示不出来
             <a href="%E7%94%B5%E5%BD%B1.html"><strong>电影</strong></a>
         
             <a href="%E5%85%B6%E5%AE%83.html"><strong>其它</strong></a>
+        
+            <a href="Python.html"><strong>Python</strong></a>
+        
+            <a href="iOS.html"><strong>iOS</strong></a>
+        
+            <a href="%E6%88%91.html"><strong>我</strong></a>
          
         </p>
 
@@ -716,31 +724,31 @@ tableView.clipsToBounds = false //这句最重要了，不然就显示不出来
 	      
 		      
 			      <li class="post">
-			        <a href="16076509803956.html">Xcode10报错libstdc</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="16076509804011.html">Masonry布局“Unable to simultaneously satisfy constraints”</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
 			        <a href="16076509804045.html">RACCommand</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509804076.html">代理修饰符</a>
+			        <a href="16076509805027.html">关于我</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509804110.html">You don’t have write permissions</a>
+			        <a href="16076509807659.html">点击事件发生在视图边界之外的时候</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804683.html">Xcode打包遇到的坑</a>
 			      </li>
 		     
 		  

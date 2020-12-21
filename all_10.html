@@ -40,7 +40,7 @@
       <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
         <ul id="main-menu" class="left">
         
-        <li id=""><a target="self" href="index.html">Home</a></li>
+        <li id=""><a target="_self" href="index.html">Home</a></li>
         
         <li id=""><a target="_self" href="archives.html">Archives</a></li>
         
@@ -69,7 +69,7 @@
 <aside class="left-off-canvas-menu">
       <ul class="off-canvas-list">
         
-        <li><a target="self" href="index.html">Home</a></li>
+        <li><a target="_self" href="index.html">Home</a></li>
         
         <li><a target="_self" href="archives.html">Archives</a></li>
         
@@ -80,6 +80,12 @@
             <li><a href="%E7%94%B5%E5%BD%B1.html">电影</a></li>
         
             <li><a href="%E5%85%B6%E5%AE%83.html">其它</a></li>
+        
+            <li><a href="Python.html">Python</a></li>
+        
+            <li><a href="iOS.html">iOS</a></li>
+        
+            <li><a href="%E6%88%91.html">我</a></li>
          
 
       </ul>
@@ -102,48 +108,44 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="16076509807659.html">
+                <a class="clearlink" href="16076509804558.html">
                 
-                  <h1>点击事件发生在视图边界之外的时候</h1>
+                  <h1>对比Texture中Node和UIKit中View</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>这里有两个方法，每次有touch动作时，都会走这两个方法</p>
+                        	<h3 id="toc_0">node.view和view的差别</h3>
 
-<ul>
-<li>(UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event；</li>
-<li>(BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event；</li>
-</ul>
+<p>再一次深刻的体会到了node.view和view的差别。<br/><br/>
+最开始一直以为node.view就类似于ASTableNode对应的UITableview<br/><br/>
+其实远远没有那么简单，并不是那么的一个对应的关系.<br/>
+必须要把一些subnode都包到一个node里面最后这个node的view对应的是这些subnode的集合。<br/><br/>
+如果只是</p>
 
-<p>重写方法 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event</p>
+<pre><code class="language-text">ASDisplayNode * node = [[ASDisplayNode alloc]init];
+ASDisplayNode * subnode = [ASDisplayNode new];
+ASTextNode * textnode = [ASTextNode new];                    
+ASButtonNode * buttonnode = [ASButtonNode new];
+[node addSubnode:subnode];
+[node addSubnode:textnode];
+[node addSubnode:buttonnode];
 
-<p>这是View里的一个方法，处理流程如下</p>
-
-<ul>
-<li>首先调用当前视图的pointInside:withEvent:方法判断触摸点是否在当前视图内；</li>
-<li>若返回NO,则hitTest:withEvent:返回nil;</li>
-<li>若返回YES,则向当前视图的所有子视图(subviews)发送hitTest:withEvent:消息，所有子视图的遍历顺序是从top到bottom，即从subviews数组的末尾向前遍历,直到有子视图返回非空对象或者全部子视图遍历完毕；</li>
-<li>若第一次有子视图返回非空对象,则hitTest:withEvent:方法返回此对象，处理结束；</li>
-<li>如所有子视图都返回非，则hitTest:withEvent:方法返回自身(self)。</li>
-<li>最后，这个触摸事件交给主窗口的hitTest:withEvent:方法返回的视图对象去处理。</li>
-</ul>
-
-<pre><code class="language-text">//返回一个view来响应事件
-- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
- UIView *view = [super hitTest:point withEvent:event];
- if (view == nil){
-  //转换坐标
-  CGPoint tempPoint = [self.testBtn convertPoint:point fromView:self];
-  //判断点击的点是否在按钮区域内
-  if (CGRectContainsPoint(self.testBtn.bounds, tempPoint)){
-   //返回按钮
-   return _testBtn;
-  }
- }
- return view;
-}
 </code></pre>
+
+<p>我是在给tableview添加node为tableHeaderView发现的这个问题 <br/>
+后面新建一个node 把这些subnode都包进去问题就解决了。</p>
+
+<p>这个时候把node.view 当成这三个subnode的集合就会出现问题</p>
+
+<h3 id="toc_1">阴影以及圆角的设置</h3>
+
+<p>在使用UIview添加阴影以及同时添加圆角的时候不能设.clipsToBounds = YES<br/>
+但是切圆角的时候就需要设置.clipsToBounds  = YES <br/>
+当时的做法也是最外层放置一个UIView的壳子，让外层的.clipsTobounds = NO 里面的.clipsTobounds = YES <br/>
+在外边的view添加阴影的效果。</p>
+
+<p>使用node的时候也是这样的原理。</p>
 
                         
                       </div>
@@ -152,8 +154,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/12/11</span>
-                    
+                    <span class="date">2018/7/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -167,144 +171,77 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="16076509807752.html">
+                <a class="clearlink" href="16076509809634.html">
                 
-                  <h1>Speed Up Development with Xcode File Templates</h1>
+                  <h1>如何理解多线程中的队列</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h4 id="toc_0">Custom Templates Directory</h4>
+                        	<pre><code class="language-text">func asyncmethod()  {
+        DispatchQueue.global().async {
+            
+            DispatchQueue.main.sync {
+                print(&quot;DispatchQueue.main.sync task \(Thread.current)&quot;)
 
-<ul>
-<li><p>~/Library/Developer/Xcode/Templates<br/>
-进入到指定的模版路径</p></li>
-<li><p>mkdir -p ~/Library/Developer/Xcode/Templates/File\ Templates/Custom 创建一个Custom 的文件夹</p></li>
-</ul>
-
-<h5 id="toc_1">Xcode Default Templates Directory</h5>
-
-<p>/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/File Templates</p>
-
-<p>进入之后复制一些其他的模版到自己的custom模版 然后进入模版之后编辑自己经常使用的模版，可以极大的提升开发的效率。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/12/11</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509807797.html">
-                
-                  <h1>Swift中的字典转模型方法的迭代</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>模型可以是结构体也可以是继承自NSObject的类  </p>
-
-<pre><code class="language-text">class App: NSObject {
-    var name:String = &quot;&quot;
-    var age:Int = 0
-    var boxDescription:String = &quot;&quot;
-}
-
-
-struct App :Decodable{
-    var name:String
-    var age:Int
-    var description:String
-    
-    init(dic:[String:AnyObject]) {
-        name = dic[&quot;name&quot;] as! String
-        age = dic[&quot;age&quot;] as! Int
-        description = dic[&quot;description&quot;] as! String
-    }
-    
-}
-
-</code></pre>
-
-<p>网络请求</p>
-
-<pre><code class="language-text"> func fetchData(){
-        let url = &quot;https://maweefeng.github.io/appfeauterd.json&quot;
-        
-        let session: URLSession = URLSession.shared
-        
-        let dataTask: URLSessionDataTask = session.dataTask(with: URL(string: url)!) { (data, response, error) in
-            if(error == nil){
-                var dict:NSDictionary? = nil
-                do {
-                    guard let jsondata = data else{return}
-                    let app = try JSONDecoder().decode(App.self, from: jsondata)
-                    print(app)
-                    
-//dict = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
-//
-//                    let app = App(dic: dict)
-//                    print(app)
-
-                    
-                } catch {
-                }
-                print(dict!)
             }
+
+            print(&quot;DispatchQueue.global().async task \(Thread.current)&quot;)
         }
-        dataTask.resume()
+    }
+
+</code></pre>
+
+<p>DispatchQueue.main.sync必须用于在全局队列当中，因为async执行是异步操作。不能单独使用，因为这步操作会阻塞当前线程 执行完线程中的操作之后才会继续向下执行。</p>
+
+<p>同步和异步在这里是线程概念，同步不会创建新的线程，会阻塞当前的线程在这个线程里执行任务。而异步则不会阻塞当前线程，会选择在恰当的时机在当前线程或者另开线程执行任务（看系统如何调度），开始任务和完成任务时间是不确定的。</p>
+
+<p>串行队列，后一个任务等待前一任务结束后再执行，按添加顺序一个一个执行。</p>
+
+<p>并行队列，后一个任务不会等待前一个任务，不等前一个任务完成就会分配新任务。</p>
+
+<p>串行和并行，这里对应的是队列的概念。队列负责管理多个任务，队列拥有一个线程池，池子里有一个或者多个线程，它按要求将每个任务调度到某一个线程执行。</p>
+
+<pre><code class="language-text">override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: &quot;show Red&quot;, style: .plain, target: self, action: #selector(pushToRed))
+        print(&quot;thread is  \(Thread.current)&quot;)
+
+        DispatchQueue.global().sync {
+            print(&quot;thread is  \(Thread.current)&quot;)
+
+            DispatchQueue.global().sync {
+                print(&quot;thread is  \(Thread.current)&quot;)
+
+                print(&quot;1&quot;)
+                print(&quot;2&quot;)
+                print(&quot;3&quot;)
+                print(&quot;4&quot;)
+                print(&quot;5&quot;)
+                print(&quot;6&quot;)
+                print(&quot;7&quot;)
+            }
+            
+        }
+//        asyncmethod()
         
+        // Do any additional setup after loading the view.
     }
 </code></pre>
 
-<h3 id="toc_0">JSONSerialization</h3>
-
-<p>之前我们字典转模型可能使用的方法可能是使用</p>
-
-<ul>
-<li><p>model为结构体</p>
-<pre><code class="language-text">dict = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
-let app = App(dic: dict)<br/>
-print(app)
-</code></pre></li>
-<li><p>model为NSObject子类</p>
-<pre><code class="language-text">dict = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
-let app = App()<br/>
-app.setValuesForKeys(dict as! [String : Any])
-</code></pre></li>
-</ul>
-
-<h3 id="toc_1">JSONDecode</h3>
-
-<p>现在使用swift4新增了一种更方法的方法，就是JSONDecode</p>
-
-<pre><code class="language-text">let app = try JSONDecoder().decode(App.self, from: jsondata)`
-
+<pre><code class="language-text">thread is  &lt;NSThread: 0x60000297aac0&gt;{number = 1, name = main}
+thread is  &lt;NSThread: 0x60000297aac0&gt;{number = 1, name = main}
+thread is  &lt;NSThread: 0x60000297aac0&gt;{number = 1, name = main}
+1
+2
+3
+4
+5
+6
+7
 </code></pre>
 
-<p>如果返回的data数据是一个object的字典，那么可以用上面的代码 </p>
-
-<p>如果data是一个包含app对象的数组，则可以简单的使用</p>
-
-<pre><code class="language-text">let app = try JSONDecoder().decode([App].self, from: jsondata)`
-</code></pre>
-
-<p>另外一些情况，可能数组当中并不是每个键值对都一一对应，可能存在部分键值对缺失的情况，这样的话就会报错，有一个解决办法便是使那些可以为空的属性为optional，这样就可以解决错误问题。</p>
+<p>所以并不是说全局队列中的任务就不能在主线程执行，事实证明还是可以的。</p>
 
                         
                       </div>
@@ -313,8 +250,10 @@ app.setValuesForKeys(dict as! [String : Any])
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/12/11</span>
-                    
+                    <span class="date">2018/7/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -328,82 +267,539 @@ app.setValuesForKeys(dict as! [String : Any])
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="16076509807837.html">
+                <a class="clearlink" href="16076509807113.html">
                 
-                  <h1>accessoryView</h1>
+                  <h1>在 App 运行时通过 dlopen 和 dlsym 链接加载 bundle 里的动态库。</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<pre><code class="language-text">open var accessoryView: UIView? // if set, use custom view. ignore accessoryType. tracks if enabled can calls accessory action
+                        	<p>我们一般引入某个 framework 可能是直接使用<code>#import &lt;AVFoundation/AVFoundation.h&gt;</code>其实还有另一种办法就是使用函数啊 dlopen</p>
+
+<pre><code class="language-text">函数定义： 
+　　void * dlopen( const char * pathname, int mode ); 
+　　函数描述： 
+　　在dlopen的（）函数以指定模式打开指定的动态连接库文件，并返回一个句柄给调用进程。使用dlclose（）来卸载打开的库。 
+　　mode：分为这两种 
+　　RTLD_LAZY 暂缓决定，等有需要时再解出符号 
+　　RTLD_NOW 立即决定，返回前解除所有未决定的符号。 
+　　RTLD_LOCAL 
+　　RTLD_GLOBAL 允许导出符号 
+　　RTLD_GROUP 
+　　RTLD_WORLD 
+
+　　返回值: 
+　　打开错误返回NULL 
+　　成功，返回库引用 
+　　编译时候要加入 -ldl (指定dl库) 
+
 </code></pre>
 
-<p><img src="media/15553377156905/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-04-15%20%E4%B8%8B%E5%8D%8810.55.00.png" alt="屏幕快照 2019-04-15 下午10.55.00"/></p>
+<pre><code class="language-text">dlsym()
 
-<p>如果要实现上面类似的效果，可以不使用自定义的cell去添加subview可以试着使用自带的方法给UITableViewCell的accessoryView赋值。</p>
+ 
+　功能：
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/12/11</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+根据动态链接库操作句柄与符号，返回符号对应的地址。
+包含头文件：
+#include &lt;dlfcn.h&gt;
+函数定义：
+void*dlsym(void* handle,const char* symbol)
+函数描述：
+dlsym根据动态链接库操作句柄(handle)与符号(symbol)，返回符号对应的地址。使用这个函数不但可以获取函数地址，也可以获取变量地址。
+handle是由dlopen打开动态链接库后返回的指针，symbol就是要求获取的函数或全局变量的名称。
+dlclose()
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509807915.html">
-                
-                  <h1>Unit testing</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>添加单元测试到项目当中，然后如果想要调用项目中的方法，需要在顶部加 <code>@testable import 工程名</code></p>
+ 
 
-<p>一个简单的单元测试如下代码所示</p>
+dlclose用于关闭指定句柄的动态链接库，只有当此动态链接库的使用计数为0时,才会真正被系统卸载。
+ 
+</code></pre>
 
-<pre><code class="language-text">import XCTest
-@testable import  Appstore
-class AppstoreTests: XCTestCase {
+<p>示例函数</p>
+
+<pre><code class="language-text">-(void)mwviewDidLoad{
+    //打开动态库
+    NSString *path = [[NSBundle mainBundle] pathForResource:@&quot;Kidswaste-Sans Toi&quot; ofType:@&quot;mp3&quot;];
+    // 加载库到当前运行程序
+    void *lib = dlopen(&quot;/System/Library/Frameworks/AVFoundation.framework/AVFoundation&quot;, RTLD_LAZY);
+    if (lib) {
+        // 获取类名称
+        Class playerClass = NSClassFromString(@&quot;AVAudioPlayer&quot;);
+        // 获取函数方法
+        SEL selector = NSSelectorFromString(@&quot;initWithData:error:&quot;);
+        // 调用实例化对象方法
+        _runtime_Player = [[playerClass alloc] performSelector:selector withObject:[NSData dataWithContentsOfFile:path] withObject:nil];
+        // 获取函数方法
+        selector = NSSelectorFromString(@&quot;play&quot;);
+        // 调用播放方法
+        [_runtime_Player performSelector:selector];
+        NSLog(@&quot;动态加载播放&quot;);
+    }
+    dlclose(lib);
+    NSLog(@&quot;hello world from mwviewDidLoad&quot;);
+    [self mwviewDidLoad];
     
-    func testSqure() {
-        let value = 7
-        let squredvalue = value.squreInt()
-        XCTAssertEqual(squredvalue, 49)
-    }
-
-    func sum() {
-        let a = 5
-        let b = 6
-        let c = a + b
-        XCTAssertEqual(c, 11)
-    }
 }
 
 </code></pre>
 
-<p>那么如果一开始创建项目没有勾选单元测试，后期如何加单元测试到项目当中呢？</p>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/7/5</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
-<h3 id="toc_0">添加单元测试到项目</h3>
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509807234.html">
+                
+                  <h1>Swift 和 OC 实现“热加载”</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>众所周知，Google 推出的跨平台框架Flutter 有着很好的编译优势<code>Flutter Hot Reload</code>，每次改变之后，点击 <code>reload</code> 就会实现实时编译。那么其实我们也可以实现<code>Swift</code>和<code>OC</code>的实时编译。</p>
+
+<h4 id="toc_0">InjectionIII</h4>
+
+<p>通过这个工具可以实现类似Flutter 的快速编译。</p>
+
+<h6 id="toc_1">实现思路：</h6>
+
+<p>Injection 会监听源代码文件的变化，如果文件被改动了，Injection Server 就会执行 rebuildClass 重新进行编译、打包成动态库，也就是 .dylib 文件。编译、打包成动态库后使用 writeSting 方法通过 Socket 通知运行的 App。</p>
+
+<h4 id="toc_2">安装方式</h4>
+
+<ol>
+<li><p>Mac App Store下载安装</p>
+<p><img src="media/15536750345410/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-03-27%20%E4%B8%8B%E5%8D%884.26.20.png" alt="屏幕快照 2019-03-27 下午4.26.20"/></p></li>
+<li><p>Github</p>
+<p>这个工具开发作者是John Holdsworth，作者已经开源了这个工具，地址是<a href="https://github.com/johnno1962/InjectionIII">https://github.com/johnno1962/InjectionIII</a></p></li>
+</ol>
+
+<p>我使用的是在Mac App Store安装的方式，这样比较方便一些，如果你想专研源码，可以去到 GitHub 去研究。</p>
+
+<h5 id="toc_3">使用指南</h5>
+
+<ol>
+<li><p>打开工程</p>
+<p>安装之后打开会出现在 mac 的 menubar 点击打开你目标的工程文件的根目录。</p>
+<p><img src="media/15536750345410/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-03-27%20%E4%B8%8B%E5%8D%885.57.39.png" alt="屏幕快照 2019-03-27 下午5.57.39"/></p></li>
+<li><p>在 applicationDidFinishLaunching加载Injection包</p>
+<p>Xcode 10.1:</p>
+<pre><code class="language-text">#if DEBUG
+Bundle(path: &quot;/Applications/InjectionIII.app/Contents/Resources/iOSInjection10.bundle&quot;)?.load()<br/>
+//for tvOS:<br/>
+Bundle(path: &quot;/Applications/InjectionIII.app/Contents/Resources/tvOSInjection10.bundle&quot;)?.load()<br/>
+//Or for macOS:<br/>
+Bundle(path: &quot;/Applications/InjectionIII.app/Contents/Resources/macOSInjection10.bundle&quot;)?.load()<br/>
+#endif
+</code></pre>
+<p>Xcode 10.2 and later:</p>
+<pre><code class="language-text">#if DEBUG
+Bundle(path: &quot;/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle&quot;)?.load()<br/>
+//for tvOS:<br/>
+Bundle(path: &quot;/Applications/InjectionIII.app/Contents/Resources/tvOSInjection.bundle&quot;)?.load()<br/>
+//Or for macOS:<br/>
+Bundle(path: &quot;/Applications/InjectionIII.app/Contents/Resources/macOSInjection.bundle&quot;)?.load()<br/>
+#endif
+</code></pre></li>
+</ol>
+
+<p>上面是swift版本的NSBundle加载包，下面的代码是oc的实现方法</p>
+
+<pre><code class="language-text">[[NSBundle bundleWithPath:@&quot;/Applications/InjectionIII.app/Contents/Resources/iOSInjection10.bundle&quot;] load];
+</code></pre>
+
+<ol>
+<li><p>运行工程 </p>
+<p>选择模拟器，cmd+R启动编译</p></li>
+<li><p>修改文件注入代码</p>
+<p>每当对代码进行修改之后，一定要cmd+S保存（不然Injection不会分析变动以及替换符号）实现快速编译。不用重新 cmd+R。</p></li>
+</ol>
+
+<h4 id="toc_4">注意事项</h4>
+
+<p><img src="media/15536750345410/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-03-27%20%E4%B8%8B%E5%8D%885.56.38.png" alt="屏幕快照 2019-03-27 下午5.56.38"/></p>
+
+<p>还有一点就是如果你在 menubar 打开了这个程式的File Watcher那么就只需要cmd+S 如果你没有开启这个功能，还要多一步命令<code>control</code>+<code>=</code>(同时按住 control 和 =）。</p>
+
+<p>还有就是由于沙盒机智，这个方法只能使用在模拟器上，对真机无效。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/6/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509808836.html">
+                
+                  <h1>Scrapy 抓取网页数据</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">Scrapy 介绍</h2>
+
+<p>Scrapy，Python开发的一个快速、高层次的屏幕抓取和web抓取框架，用于抓取web站点并从页面中提取结构化的数据。Scrapy用途广泛，可以用于数据挖掘、监测和自动化测试。<br/>
+Scrapy吸引人的地方在于它是一个框架，任何人都可以根据需求方便的修改。它也提供了多种类型爬虫的基类，如BaseSpider、sitemap爬虫等，最新版本又提供了web2.0爬虫的支持。<br/>
+Scrap，是碎片的意思，这个Python的爬虫框架叫Scrapy。</p>
+
+<p>首先必须有python的环境，如果没有的话需要安装，目前python2.x已经不再更新，我使用的是python3的环境。</p>
+
+<p>如果你已经有了python3的环境并且已经安装了pip3，那么安装scrapy只需要一行命令即可。</p>
+
+<pre><code class="language-text">pip3 install scrapy
+</code></pre>
+
+<p>如果你还没有安装pip3的话，建议先安装pip3进行包管理。</p>
+
+<h2 id="toc_1">pip3</h2>
+
+<p>pip 是 Python 包管理工具，该工具提供了对Python 包的查找、下载、安装、卸载的功能。<br/>
+Python 2.7.9 + 或 Python 3.4+ 以上版本都自带 pip 工具。<br/>
+你可以通过以下命令来判断是否已安装：</p>
+
+<pre><code class="language-text">pip --version
+</code></pre>
+
+<p>如果你还未安装，则可以使用以下方法来安装：</p>
+
+<pre><code class="language-text">$ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py   # 下载安装脚本
+$ sudo python get-pip.py    # 运行安装脚本
+</code></pre>
+
+<p>注意：用哪个版本的 Python 运行安装脚本，pip 就被关联到哪个版本，如果是 Python3 则执行以下命令：</p>
+
+<pre><code class="language-text">$ sudo python3 get-pip.py    # 运行安装脚本。
+</code></pre>
+
+<p>一般情况 pip 对应的是 Python 2.7，pip3 对应的是 Python 3.x。</p>
+
+<pre><code class="language-text">&gt;&gt;&gt;pip3  -h#查看pip3的命令
+Commands:
+  install                     Install packages.
+  download                    Download packages.
+  uninstall                   Uninstall packages.
+  freeze                      Output installed packages in requirements format.
+  list                        List installed packages.
+  show                        Show information about installed packages.
+  check                       Verify installed packages have compatible dependencies.
+  config                      Manage local and global configuration.
+  search                      Search PyPI for packages.
+  wheel                       Build wheels from your requirements.
+  hash                        Compute hashes of package archives.
+  completion                  A helper command used for command completion.
+  help                        Show help for commands.
+</code></pre>
+
+<p>比较常用的就是install，list，一个是安装某个框架，另一个是列出所有安装的python框架。</p>
+
+<h2 id="toc_2">demo 抓取豆瓣前250名的电影</h2>
+
+<h3 id="toc_3">新建scrapy项目</h3>
+
+<ol>
+<li>scrapy startproject 项目名称</li>
+<li>cd 进入到项目名称 </li>
+<li>cd 进入到 spiders</li>
+<li>scrapy genspider xxx_spider 域名 #生成爬虫类
+<ul>
+<li>比如scrapy genspider douban_spider movie.douban.com</li>
+</ul></li>
+</ol>
+
+<p>项目目录如下</p>
 
 <ul>
-<li><p>第一步选择项目，按左下角加号添加target</p>
-<p><img src="media/15554198134411/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-04-16%20%E4%B8%8B%E5%8D%889.10.05.png" alt="屏幕快照 2019-04-16 下午9.10.05"/></p></li>
-<li><p>第二步，选择iOS Unit Testing Bundle</p>
-<p><img src="media/15554198134411/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-04-16%20%E4%B8%8B%E5%8D%889.10.24.png" alt="屏幕快照 2019-04-16 下午9.10.24"/></p></li>
+<li>douban
+<ul>
+<li>spiders
+<ul>
+<li>douban_spider.py #最重要的爬虫类</li>
+</ul></li>
+<li>items.py #爬取的model类</li>
+<li>middlewares.py #中间件 伪装useragent或者设置代理</li>
+<li>pipelines.py #管道类 数据同步 </li>
+<li>settings.py #设置类 里面有一些项目的配置</li>
+</ul></li>
+</ul>
+
+<h3 id="toc_4">运行项目</h3>
+
+<p>有两种方法</p>
+
+<ol>
+<li>打开命令行工具 <code>scrapy crawl xxx_spider</code></li>
+<li><p>建议使用scrapy的cmdline工具</p>
+<ul>
+<li><p>在spiders文件夹下新建入口main.py </p>
+<pre><code class="language-text">from scrapy import cmdline
+cmdline.execute(&#39;scrapy crawl baidubaike_spider&#39;.split())
+</code></pre>
+<p>每次从这里面运行.py就行了,不需要每次都进到特定目录运行termianl终端程序。</p></li>
+</ul></li>
+</ol>
+
+<h3 id="toc_5">主要爬虫类</h3>
+
+<p>douban_spider.py </p>
+
+<pre><code class="language-text"># -*- coding: utf-8 -*-
+import scrapy
+
+class DoubanSpiderSpider(scrapy.Spider):
+    name = &#39;douban_spider&#39;#爬虫名
+    allowed_domains = [&#39;movie.douban.com&#39;]
+    start_urls = [&#39;https://movie.douban.com/top250&#39;]#入口url 扔到调度器里面
+    #默认的解析方法
+    def parse(self, response):
+    #response就是网络请求之后的响应数据
+    #主要的代码解析都在这个类中进行
+       pass
+
+</code></pre>
+
+<h3 id="toc_6">HTML解析器</h3>
+
+<p>爬取之后的数据如果为html就需要用到html解析器，业界一般有三种方式进行解析</p>
+
+<ul>
+<li>Beautiifulsoup</li>
+<li>正则匹配式</li>
+<li>lxml中的xpath </li>
+</ul>
+
+<p>有人做过三个方法的比较，大致结果如下</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>lxml</th>
+<th>beautifulsoup</th>
+<th>re</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>语法难易度</td>
+<td>简单</td>
+<td>简单</td>
+<td>复杂</td>
+</tr>
+<tr>
+<td>查找速度</td>
+<td>较快</td>
+<td>慢</td>
+<td>最快</td>
+</tr>
+</tbody>
+</table>
+
+<p>所以这里我使用的是lxml的方式进行html解析，也推荐新手从这个方式开始入门。</p>
+
+<h4 id="toc_7">lxml</h4>
+
+<p>lxml是通过xpath来查找，使用前需使用调用ertee.HTML()方法(&#39;()&#39;内填HTML代码)生成一个可查找的对象。</p>
+
+<h5 id="toc_8">常用xpath语法如下</h5>
+
+<pre><code class="language-text">// 两个斜杠为向下查找孙子标签
+    
+/ 一个斜杠为查找直接儿子标签
+    
+[] 方括号内填标签属性,如查找class属性为name的a标签,格式为a[@class=&quot;name&quot;]
+    
+/text() 取出标签的内容,如查找网页中的 &lt;a class=&quot;name&quot;&gt;KAINHUCK&lt;/a&gt; 中的KAINHUCK,格式为//a[@class=&quot;name&quot;]/text()
+    
+/@attr 取出标签的属性,如查找网页中的 &lt;a class=&quot;name&quot;&gt;KAINHUCK&lt;/a&gt; 中的class属性值name,格式为//a[@class=&quot;name&quot;]/@class 
+
+</code></pre>
+
+<h5 id="toc_9">xpath 如何提取出div下面所有标签的文本内容</h5>
+
+<p>有时候一个div标签下会有不同的标签，如果只是单纯的使用上面的方法，并不能提取到div下面的所有文本内容，所以xpath提供了string(.)方法。</p>
+
+<pre><code class="language-text">title = html.xpath(&#39;//dd[@class=&quot;lemmaWgt-lemmaTitle-title&quot;]/h1/text()&#39;)[0]
+
+summary = html.xpath(&#39;//div[@class=&quot;lemma-summary&quot;]&#39;)[0].xpath(&#39;string(.)&#39;).strip()
+
+#strip方法返回移除字符串头尾指定的字符生成的新字符串。    
+</code></pre>
+
+<h4 id="toc_10">分析抓取网站的html标签</h4>
+
+<p>进入chrome打开开发者调试工具</p>
+
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1g3kate3mbuj30w00h3n21.jpg" alt=""/></p>
+
+<p>另外要使用lxml的方式进行解析，可以安装插件进行查找，到chrome的商城下载xpath，这样就可以直接看到结果了，以防抓取到的标签出错。</p>
+
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1g3kavur7ggj30vt0h0q8t.jpg" alt=""/></p>
+
+<pre><code class="language-text">//div[@class=&quot;article&quot;]//ol[@class=&quot;grid_view&quot;]/li
+</code></pre>
+
+<p>这段语法用于找到class为article的div标签下的class为grid_view的ol的子孙标签下的li标签。</p>
+
+<p>查找出来的结果是个包含25个元素的list</p>
+
+<h3 id="toc_11">代码编写</h3>
+
+<p>然后进入到我们的代码中，导入lxml工具，以及DoubanItem</p>
+
+<pre><code class="language-text"># -*- coding: utf-8 -*-
+import scrapy
+from lxml import etree
+from douban.items import DoubanItem
+
+
+class DoubanSpiderSpider(scrapy.Spider):
+    name = &#39;douban_spider&#39;#爬虫名
+    allowed_domains = [&#39;movie.douban.com&#39;]
+    start_urls = [&#39;https://movie.douban.com/top250&#39;]#入口url 扔到调度器里面
+    #默认的解析方法
+    def parse(self, response):
+        #循环电影的条目
+        html = etree.HTML(response.text)
+        movie_list = html.xpath(&#39;//div[@class=&quot;article&quot;]//ol[@class=&quot;grid_view&quot;]/li&#39;)
+        for item in movie_list:
+            #item文件导入
+            douban_item = DoubanItem()
+            #写详细的xpath 进行数据的解析
+            douban_item[&#39;serial_number&#39;] = item.xpath(&#39;.//div[@class=&quot;item&quot;]//em/text()&#39;)[0]
+            douban_item[&#39;movie_name&#39;] = item.xpath(&#39;.//div[@class=&quot;info&quot;]//a/span[1]/text()&#39;)[0]
+            content_list = item.xpath(&#39;.//div[@class=&quot;info&quot;]//div[@class=&quot;bd&quot;]/p[1]/text()&#39;)
+            for content in content_list:
+                content_s = &quot;&quot;.join(content.split())
+                douban_item[&#39;introduce&#39;] = content_s
+
+            douban_item[&#39;star&#39;]= item.xpath(&#39;.//div[@class=&quot;star&quot;]/span[@class=&quot;rating_num&quot;]/text()&#39;)[0]
+            douban_item[&#39;comment&#39;] = item.xpath(&#39;.//div[@class=&quot;star&quot;]/span[4]/text()&#39;)[0]
+            douban_item[&#39;description&#39;] = item.xpath(&#39;.//p[@class=&quot;quote&quot;]/span[1]/text()&#39;)[0]
+            print(douban_item)
+            yield douban_item #yeild到piplines里面 进行数据清洗 数据存储
+        
+        #解析下一页规则 获取后一页的xpath
+        next_link = html.xpath(&#39;//span[@class=&quot;next&quot;]/link/@href&#39;)
+
+        if next_link:
+            next_link = next_link[0]
+            #yeild到调度器当中 后面给了回调函数
+            yield scrapy.Request(&#39;https://movie.douban.com/top250&#39;+next_link,callback=self.parse)
+
+</code></pre>
+
+<p>其中重要的有yield方法，把我们生成的model类传输到piplines里面进行数据的存储。</p>
+
+<p>还有就是因为这只是一页的数据，想要抓取的250条数据，那就要进行多次抓取，进过分析发现只需要每次把后页的a标签的href拿到就可以了，通过xpath进行解析就是 </p>
+
+<pre><code class="language-text">#解析下一页规则 获取后一页的xpath
+        next_link = html.xpath(&#39;//span[@class=&quot;next&quot;]/link/@href&#39;)
+
+</code></pre>
+
+<p>最好需要yeild到调度器当中，因为是部分路径，所以要先进行路径的拼接，还要指定回调函数，就是请求之后进入的回调方法。</p>
+
+<h3 id="toc_12">数据导出</h3>
+
+<p>在spiders文件夹下新建outputdata.py </p>
+
+<pre><code class="language-text">#数据导出 也可以使用terminal 直接运行
+from scrapy import cmdline
+#数据导出到json
+# cmdline.execute(&#39;scrapy crawl douban_spider -o output.json&#39;.split())
+
+#数据导出到csv格式
+cmdline.execute(&#39;scrapy crawl douban_spider -o output.csv&#39;.split())
+</code></pre>
+
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1g3kbfcz850j30os0jf0y5.jpg" alt=""/></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/6/15</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Python.html'>Python</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509803956.html">
+                
+                  <h1>Xcode10报错libstdc</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>由于<code>Xcode10</code> 已经禁用<code>libstdc++</code>、<code>libstdc++.6</code>、<code>libstdc++6.0.9</code>这三个库的使用,所以老项目中有用到这三个库的，会编译出错。<br/>
+我就遇到了这个问题，之前的项目引入的sdk依赖了libstdc++，所以当我升级到<code>xcode10</code>之后就编译不通过，于是在网上找到了解决方法。</p>
+
+<h3 id="toc_0">解决方法</h3>
+
+<p>首先解压同级目录下的libstdc压缩包</p>
+
+<h4 id="toc_1">1.真机</h4>
+
+<p>将libstdc_iPhoneOS拷贝到/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/lib</p>
+
+<h4 id="toc_2">2.模拟器</h4>
+
+<ul>
+<li><p>将libstdc_iPhoneSimulator拷贝到/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/usr/lib/</p></li>
+<li><p>将libstdc_iPhoneSimulator_runtime拷贝到/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime/Contents/Resources/RuntimeRoot/usr/lib/</p></li>
 </ul>
 
                         
@@ -413,7 +809,7 @@ class AppstoreTests: XCTestCase {
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/12/11</span>
+                    <span class="date">2018/6/11</span>
                     
           				   
                   </div>
@@ -428,178 +824,127 @@ class AppstoreTests: XCTestCase {
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="16076509807952.html">
+                <a class="clearlink" href="16076509805947.html">
                 
-                  <h1>Filter, Map, Reduce  Functions</h1>
+                  <h1>What's New in LLVM（2017）</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h3 id="toc_0">Filter</h3>
+                        	<p>Xcode 9中的Apple LLVM编译器具有新的语言特性、改进的诊断和更强大的优化。了解Objective-C和c++的最新添加，了解新的和改进的警告和静态分析器检查，了解LLVM编译器技术如何为应用程序提供更快的构建时间和更好的运行时性能。</p>
 
-<p>Filter 函数是过滤出所有符合过滤条件的元素 </p>
+<h2 id="toc_0">1.不同语言的api检查</h2>
 
-<p>比如下面的方法过滤出数组所有元素等于3的元素</p>
-
-<pre><code class="language-text">func filter() {
-        let numbers = [1,2,3,3,3,4]
-        //过滤出所有元素为3的元素 并返回过滤之后的数据
-        let filtedNumbers = numbers.filter({return $0 == 3})
-        print(filtedNumbers)//[3,3,3]
-    }
-
+<pre><code class="language-text">@available(iOS 11,*)--oc
+#available  --swift
 </code></pre>
 
-<h3 id="toc_1">Map</h3>
+<p>便捷的方法检查（检查可用性，如果你要给某个新的系统加入新功能）</p>
 
-<p>使用map函数把数组中的所有元素使用同一个规则，并返回一个相同数量的数组</p>
+<pre><code class="language-text">@interface MyAblumController : UIViewController
 
-<pre><code class="language-text">func map() {
-        let numbers = [1,2,3,3,3,4]
-        //过滤出所有元素为3的元素 并返回过滤之后的数据
-        let filtedNumbers = numbers.map({return $0 * 2})
-        print(filtedNumbers)//[2,4,6,6,6,8]
-    }
+-(void)showFaces API_AVALABILITY(ios(11.0));
 
-</code></pre>
-
-<h3 id="toc_2">Reduce</h3>
-
-<p>使用reduce函数实现函数的前后累加，并返回一个元素</p>
-
-<pre><code class="language-text">func reduce(){
-        let numbers = [1,2,3,3,3,4]
-      
-        let sum = numbers.reduce(0, {sum,number in sum + number})
-
-        print(sum)
-        
-    }
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/12/11</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509807984.html">
-                
-                  <h1>Swift单例写法</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>介绍swift的单例类写法之前，可以先回顾一下oc中单例的写法如下。</p>
-
-<pre><code class="language-//首先.h文件里声明">//单例类
-@interface Manger : NSObject
-+ (instancetype)sharedManger;
 @end
-
-//然后.m文件里写实现
-@implementation Manger
-+ (instancetype)sharedManger {
-    static Manger *sharedManger = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&amp;onceToken, ^{
-        sharedManger = [self new];
-    });
-    return sharedManger;
-}
-
 </code></pre>
 
-<h4 id="toc_0">swift单例写法</h4>
+<p>还可以移动整个类的范围</p>
 
-<ul>
-<li>简单写法</li>
-</ul>
+<pre><code class="language-text">API_AVALABILITY(ios(11.0))
+@interface MyAblumController : UIViewController
 
-<pre><code class="language-text">import UIKit
-//仿OC写法
-class Manger: NSObject {
-    static let instance: Manger = Manger()
-    class func shared() -&gt; Manger {
-        return instance
-    }
-}
-//简便写法
-class Manger {
-    static let shared = Manger()
+-(void)showFaces ;
+
+@end
+</code></pre>
+
+<h2 id="toc_1">2.不要把Number元素和标量进行比较</h2>
+
+<pre><code class="language-text">@property NSNumber * photoCount;
+-(BOOL)hasPhotos{
+return self.photoCount &gt; 0
 }
 </code></pre>
 
-<p>这样对比下来swift真的是极大的减少了代码量，所有也会有一些人推荐如果开发新项目，建议使用swift开发，毫无疑问。</p>
+<p>因为这个比较相当于是把photoCount和指针nil相比，返回为YES,所以这个错误很严重。</p>
 
-<p>另外swift 还有一种类似oc的写法如下。</p>
+<p><img src="media/15445814733953/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%884.26.59.png" alt="屏幕快照 2018-12-12 下午4.26.59"/></p>
 
-<ul>
-<li>复杂写法</li>
-</ul>
+<p>编译器会报错，提醒你出现了问题，你可以把NSNumber转成interger之后再做判断。</p>
 
-<pre><code class="language-text">class Singleton {
-    class var sharedInstance: Singleton {
-        struct Static {
-            static var oncetoken: String? = NSUUID().uuidString
+<p><img src="media/15445814733953/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%884.28.18.png" alt="屏幕快照 2018-12-12 下午4.28.18"/></p>
 
-            static var instance: Singleton? = nil
-        }
-        DispatchQueue.once(token: Static.oncetoken) {
-            Static.instance = Singleton()
+<h6 id="toc_2">Control Check in Build Setting</h6>
 
-        }
-        return Static.instance!
-    }
-}
+<p>设置Suspicious Conversions 为YES(aggressive)当编译器不确定的时候会弹出如上提示。<br/>
+<img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%885.06.22.png" alt="屏幕快照 2018-12-12 下午5.06.22"/></p>
 
-extension DispatchQueue {
-    private static var _onceTracker = [String]()
-    public class func once(token: String, block: () -&gt; ()) {
-        objc_sync_enter(self)
-        defer {
-            objc_sync_exit(self)
-        }
-        if _onceTracker.contains(token) {
-            return
-        }
-        _onceTracker.append(token)
-        block()
-    }
+<h2 id="toc_3">3. copy修饰NSMutableArray</h2>
+
+<p>赋值的时候等于是复制了一个不可变对象，所以以后运行时的时候会报错(如果你对这个数组进行修改)</p>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%886.45.36.png" alt="屏幕快照 2018-12-12 下午6.45.36"/></p>
+
+<p>这个时候就会报错，因为给self.titieArr赋值之后变成了不可变的，所以接下来的操作会导致错误。</p>
+
+<h6 id="toc_4">解决方法:</h6>
+
+<pre><code class="language-text">//添加setter方法
+-(void)setTitleArr:(NSMutableArray *)titleArr{
     
-    func async(block: @escaping ()-&gt;()) {
-        self.async(execute: block)
-    }
-
-    func after(time: DispatchTime, block: @escaping ()-&gt;()) {
-        self.asyncAfter(deadline: time, execute: block)
-    }
+    self.titleArr= [titleArr mutableCopy];
 }
-
 </code></pre>
 
-<p>之所以写DispatchQueue的扩展是因为swift3中取消了dispatch_once_t的使用<br/>
-<code>&#39;dispatch_once&#39; is unavailable in Swift: Use lazily initialized globals instead</code></p>
+<p>每次赋值的时候给数组赋值可变对象。</p>
 
-<p>建议使用懒加载的初始化全局替代。</p>
+<p>另外为了及时发现bug可以开启每次build的时候analyze而不是每次都要去手动analyze（如果不开启的话上面的错误不会提示）</p>
 
-<p>因为原来自从swift 1.x开始swift就已经开始用dispatch_one机制在后台支持线程安全的全局lazy初始化和静态属性.所以static var背后已经在使用dispatch_once了.</p>
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%886.48.45.png" alt="屏幕快照 2018-12-12 下午6.48.45"/><br/>
+设置Analyze During Build 的值为Yes.</p>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%886.43.05.png" alt="屏幕快照 2018-12-12 下午6.43.05"/></p>
+
+<h2 id="toc_5">4. 声明无参数的函数</h2>
+
+<h5 id="toc_6">Non-prototype declarations in C and Objective-C</h5>
+
+<p>非原型声明</p>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.47.06.png" alt="屏幕快照 2018-12-13 下午3.47.06"/></p>
+
+<p>在C和OC中意味着foo可以跟任何参数调用，这个行为可以追溯到1977年C语言，不匹配类型的调用会导致运行时的崩溃。<br/>
+在Xcode9 中编译器带有一个新的警告加强严格原型，会报出警告。</p>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.50.45.png" alt="屏幕快照 2018-12-13 下午3.50.45"/></p>
+
+<p>通常只需要在括号中添加void表示不接收任何参数传递。</p>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.51.41.png" alt="屏幕快照 2018-12-13 下午3.51.41"/></p>
+
+<p>任何带有参数的调用都会直接报错。</p>
+
+<p>另外block中不接收参数的时候也会出现同样的警告，如下所示。</p>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.52.47.png" alt="屏幕快照 2018-12-13 下午3.52.47"/></p>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.53.57.png" alt="屏幕快照 2018-12-13 下午3.53.57"/></p>
+
+<h3 id="toc_7">升级验证警告设置</h3>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%884.08.45.png" alt="屏幕快照 2018-12-13 下午4.08.45"/></p>
+
+<p>勾选Yes(Error)</p>
+
+<h6 id="toc_8">Strict Prototypes 勾选Yes(Error)之前 and 勾选之后</h6>
+
+<p><img src="media/15446033549417/Artboard%202@2x.png" alt="Artboard 2@2x"/></p>
+
+<p>勾选之后就不只是警告了，直接是错误提醒，让你开发的时候不得不注意，也是为了代码的安全性。</p>
+
+<h3 id="toc_9">结尾</h3>
+
+<p>WWDC2017剩余部分是关于C++的优化，如果感兴趣的话可以移步<a href="https://developer.apple.com/videos/play/wwdc2017/411">开发者网站</a>观看。</p>
 
                         
                       </div>
@@ -608,8 +953,10 @@ extension DispatchQueue {
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/12/11</span>
-                    
+                    <span class="date">2018/6/10</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -623,38 +970,126 @@ extension DispatchQueue {
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="16076509808030.html">
+                <a class="clearlink" href="16076509808799.html">
                 
-                  <h1>枚举遍历数组</h1>
+                  <h1>python3 urllib 访问https网站</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<pre><code class="language-text">let arr: NSArray = [1,2,3,4,5]
-var result = 0
-arr.enumerateObjectsUsingBlock { (num, idx, stop) -&gt; Void in
-    result += num as! Int
-    if idx == 2 {
-        stop.memory = true
-    }
-}
-print(result)
-// 输出：6
+                        	<p>ssl._create_default_https_context=ssl._create_unverified_context<br/>
+urllib  urllib2 urllib3并不是进化关系<br/>
+urllib和urllib2是相互独立的模版</p>
+
+<h2 id="toc_0">列表</h2>
+
+<ul>
+<li>列表添加新元素<br/>
+append()</li>
+<li><p>列表删除元素</p>
+<blockquote>
+<p>pop()方法总是删掉list的最后一个元素，并且它还返回这个元素</p>
+</blockquote>
+<p>pop()</p>
+<p>pop(2)删掉list中索引为2的元素</p></li>
+</ul>
+
+<h2 id="toc_1">元组</h2>
+
+<p>元组和列表不同的是创建方式用()替代了[]，而且元组一旦创建就不能改变。</p>
+
+<p>同样可以根据索引取到元组的内容。</p>
+
+<pre><code class="language-text">&gt;&gt;&gt; t = (1)
+&gt;&gt;&gt; print t
+1
 </code></pre>
 
-<p>虽然说使用 enumerateObjectsUsingBlock: 非常方便，但是其实从性能上来说这个方法并不理想 (这里有一篇四年前的星期五问答阐述了这个问题，而且一直以来情况都没什么变化)。另外这个方法要求作用在 NSArray 上，这显然已经不符合 Swift 的编码方式了。在 Swift 中，我们在遇到这样的需求的时候，有一个效率，安全性和可读性都很好的替代，那就是快速枚举某个数组的 EnumerateGenerator，它的元素是同时包含了元素下标索引以及元素本身的多元组：</p>
+<p>创建单元组需要注意，因为创建元组的方式是（）和运算优先级冲突了，所以上面的结果是1。</p>
 
-<pre><code class="language-text">var result = 0
-for (idx, num) in [1,2,3,4,5].enumerate() {
-    result += num
-    if idx == 2 {
-        break
-    }
-}
-print(result)
+<p>所以创建单元组要在第一个元素后自动添加一个&#39;,&#39;，就像下面的一样。</p>
+
+<pre><code class="language-text">&gt;&gt;&gt; t = (1,)
+&gt;&gt;&gt; print t
+(1,)
 </code></pre>
 
-<p>基本上来说，是时候可以和 enumerateObjectsUsingBlock: 说再见了。</p>
+<p>还有需要注意的是元组也可以&#39;可变‘，其实这种可变并不是真正的可变。比如下面的这个例子，元组中包括一个数组，数组就可以改变。</p>
+
+<pre><code class="language-text">&gt;&gt;&gt; t = (&#39;a&#39;, &#39;b&#39;, [&#39;A&#39;, &#39;B&#39;])
+&gt;&gt;&gt; L = t[2]
+&gt;&gt;&gt; L[0] = &#39;X&#39;
+&gt;&gt;&gt; L[1] = &#39;Y&#39;
+&gt;&gt;&gt; print t
+(&#39;a&#39;, &#39;b&#39;, [&#39;X&#39;, &#39;Y&#39;])
+</code></pre>
+
+<h2 id="toc_2">set</h2>
+
+<p>Python中什么是set<br/>
+dict的作用是建立一组 key 和一组 value 的映射关系，dict的key是不能重复的。</p>
+
+<p>有的时候，我们只想要 dict 的 key，不关心 key 对应的 value，目的就是保证这个集合的元素不会重复，这时，set就派上用场了。</p>
+
+<p>set 持有一系列元素，这一点和 list 很像，但是set的元素没有重复，而且是无序的，这点和 dict 的 key很像。</p>
+
+<p>创建 set 的方式是调用 set() 并传入一个 list，list的元素将作为set的元素：</p>
+
+<pre><code class="language-text">&gt;&gt;&gt; s = set([&#39;A&#39;, &#39;B&#39;, &#39;C&#39;])
+&gt;&gt;&gt; print s
+set([&#39;A&#39;, &#39;C&#39;, &#39;B&#39;])
+</code></pre>
+
+<h3 id="toc_3">Python之 访问set</h3>
+
+<p>由于set存储的是无序集合，所以我们没法通过索引来访问。</p>
+
+<p>访问 set中的某个元素实际上就是判断一个元素是否在set中。</p>
+
+<p>例如，存储了班里同学名字的set：</p>
+
+<p><code>&gt;&gt;&gt; s = set([&#39;Adam&#39;, &#39;Lisa&#39;, &#39;Bart&#39;, &#39;Paul&#39;])<br/>
+</code><br/>
+我们可以用 in 操作符判断：</p>
+
+<p>Bart是该班的同学吗？</p>
+
+<pre><code class="language-text">&gt;&gt;&gt; &#39;Bart&#39; in s
+True
+
+</code></pre>
+
+<h3 id="toc_4">Python之 遍历set</h3>
+
+<p>由于 set 也是一个集合，所以，遍历 set 和遍历 list 类似，都可以通过 for 循环实现。</p>
+
+<p>直接使用 for 循环可以遍历 set 的元素：</p>
+
+<pre><code class="language-text">&gt;&gt;&gt; s = set([&#39;Adam&#39;, &#39;Lisa&#39;, &#39;Bart&#39;])
+&gt;&gt;&gt; for name in s:
+...     print name
+... 
+Lisa
+Adam
+Bart
+</code></pre>
+
+<h3 id="toc_5">Python之 更新set</h3>
+
+<p>add()添加<br/>
+remove()删除</p>
+
+<h3 id="toc_6">Python之 unicode编码</h3>
+
+<pre><code class="language-text">在字符串前面加上u 比如
+&gt;&gt;&gt;a = u&quot;123&quot;
+&gt;&gt;&gt;type(a)
+&gt;&gt;&gt;unicode
+
+&gt;&gt;&gt;b = &quot;123&quot;
+&gt;&gt;&gt;type(b)
+&gt;&gt;&gt;str
+</code></pre>
 
                         
                       </div>
@@ -663,8 +1098,10 @@ print(result)
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/12/11</span>
-                    
+                    <span class="date">2018/5/10</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Python.html'>Python</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -713,7 +1150,7 @@ print(result)
 
 
 
-
+<a target="_blank" class="email" href="mailto:maweefeng@gmail.com" title="Email">Email</a>
   <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
                 
               	 </div>
@@ -732,6 +1169,12 @@ print(result)
             <a href="%E7%94%B5%E5%BD%B1.html"><strong>电影</strong></a>
         
             <a href="%E5%85%B6%E5%AE%83.html"><strong>其它</strong></a>
+        
+            <a href="Python.html"><strong>Python</strong></a>
+        
+            <a href="iOS.html"><strong>iOS</strong></a>
+        
+            <a href="%E6%88%91.html"><strong>我</strong></a>
          
         </p>
 
@@ -748,31 +1191,31 @@ print(result)
 	      
 		      
 			      <li class="post">
-			        <a href="16076509803956.html">Xcode10报错libstdc</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="16076509804011.html">Masonry布局“Unable to simultaneously satisfy constraints”</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
 			        <a href="16076509804045.html">RACCommand</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509804076.html">代理修饰符</a>
+			        <a href="16076509805027.html">关于我</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509804110.html">You don’t have write permissions</a>
+			        <a href="16076509807659.html">点击事件发生在视图边界之外的时候</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804683.html">Xcode打包遇到的坑</a>
 			      </li>
 		     
 		  

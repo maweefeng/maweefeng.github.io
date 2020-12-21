@@ -1,0 +1,1145 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  iOS - 
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E7%94%B5%E5%BD%B1.html">电影</a></li>
+        
+            <li><a href="%E5%85%B6%E5%AE%83.html">其它</a></li>
+        
+            <li><a href="Python.html">Python</a></li>
+        
+            <li><a href="iOS.html">iOS</a></li>
+        
+            <li><a href="%E6%88%91.html">我</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
+</script>
+<div class="row">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="16076509807071.html">
+                
+                  <h1>运行时交换方法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code class="language-text">+(void)load{
+    Class class = self;
+    
+    SEL fromSelector = @selector(viewDidLoad);
+    
+    SEL toSelector = @selector(mwviewDidLoad);
+
+    Method fromMethod = class_getInstanceMethod(class, fromSelector);
+    Method toMethod = class_getInstanceMethod(class, toSelector);
+    
+    if(class_addMethod(class, fromSelector, method_getImplementation(toMethod), method_getTypeEncoding(toMethod))) {
+        class_replaceMethod(class, toSelector, method_getImplementation(fromMethod), method_getTypeEncoding(fromMethod));
+    } else {
+        method_exchangeImplementations(fromMethod, toMethod);
+    }
+
+    
+}
+
+-(void)mwviewDidLoad{
+    
+    NSLog(@&quot;hello world from mwviewDidLoad&quot;);
+    [self mwviewDidLoad];
+    
+}
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    NSLog(@&quot;hello world from viewDidLoad&quot;);
+
+    // Do any additional setup after loading the view, typically from a nib.
+}
+
+</code></pre>
+
+<p>打印结果为</p>
+
+<pre><code class="language-text">2019-03-26 15:06:35.542596+0800 ExchangeMethod[48714:4112036] hello world from mwviewDidLoad
+2019-03-26 15:06:35.542847+0800 ExchangeMethod[48714:4112036] hello world from viewDidLoad
+</code></pre>
+
+<p>注意千万不能手误<br/>
+千万不能把[self mwviewDidLoad];改成[self viewDidLoad];</p>
+
+<p>因为交换方法只会交换一次，实现交换了方法，调用viewDidLoad的时候其实实际是调用的本身mwviewDidLoad，往下走就又会调用本身，造成死循环。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/7/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509806058.html">
+                
+                  <h1>Building Apps with Dynamic Type</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>使用动态类型，人们可以选择自己喜欢的文本大小，iOS会根据需要自动切换字体。理解为什么动态类型很重要，以及在显示文本时如何支持它。了解iOS 11的新特性，掌握支持应用程序动态类型的框架和工具。</p>
+
+<h2 id="toc_0">1.What is Dynamic Type?</h2>
+
+<p>Dynamic Type是一个允许用户在屏幕上自定义字体大小的功能。</p>
+
+<p><img src="media/15446970341146/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%886.37.58.png" alt="屏幕快照 2018-12-13 下午6.37.58"/></p>
+
+<p>对于视力有障碍的人来说区别很大，字体大之后就可以看到内容了。</p>
+
+<h2 id="toc_1">2.What&#39;s New in iOS 11?</h2>
+
+<h3 id="toc_2">目标</h3>
+
+<ol>
+<li>字体要足够大</li>
+<li>文字要完全，不允许截断</li>
+<li>UI还要依然美丽</li>
+</ol>
+
+<h3 id="toc_3">使用说明和一些 API</h3>
+
+<ul>
+<li>如何将字体和Dynamic type 一致</li>
+<li>适应更大的字体</li>
+<li>Table views </li>
+<li>Images</li>
+</ul>
+
+<h4 id="toc_4">2.1如何将字体和Dynamic type 一致</h4>
+
+<p>通过文字样式TextStyle</p>
+
+<ul>
+<li><p>系统字体</p>
+<ul>
+<li>xib 设置 </li>
+</ul>
+<p><img src="media/15446970341146/Artboard%202@3x.png" alt="Artboard 2@3x"/></p>
+<ul>
+<li>代码设置</li>
+</ul>
+<pre><code class="language-text">UILabel * tip = [[UILabel alloc]init];
+[tip setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];<br/>
+[tip setAdjustsFontForContentSizeCategory:YES];
+</code></pre></li>
+<li><p>自定义字体<br/>
+上面说的是系统字体的时候可以跟随系统设置变大缩小，同样其他的自定义字体也可以通过UIFontMetrics达到一样的效果。</p>
+<pre><code class="language-text">UILabel * tip = [[UILabel alloc]init];
+[tip setFont:[[UIFontMetrics metricsForTextStyle:UIFontTextStyleBody] scaledFontForFont:customeFont]]<br/>
+[tip setAdjustsFontForContentSizeCategory:YES];
+</code></pre>
+<p>Web Views实现跟随字体改变</p>
+<p><img src="media/15446970341146/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%887.10.45.png" alt="屏幕快照 2018-12-13 下午7.10.45"/></p>
+<p>当然这个只能适应于苹果设备，其他设备使用 rem</p></li>
+</ul>
+
+<h4 id="toc_5">2.2 怎么适应大字体在屏幕上</h4>
+
+<ul>
+<li><p>2.2.1 问题解答</p>
+<p>Q:如何解决文字变大后超出屏幕或者简单截断之后用户无法识别呢<br/>
+A:分为多行显示<br/>
+S:设置Label的 numberOflines = 0</p>
+<p>Q:之前设置的固定间距(比如设置LabelB的底部距离LabelA的底部40px)，随着字体变大之后文本内容发生重叠</p>
+<p><img src="media/15446970341146/Artboard%203@2x.png" alt="Artboard 3@2x"/></p>
+<p>A1:设置LabelA的底部距离LabelB 的底部40px <br/>
+间距不变 但是是往不同方向方法<br/>
+<img src="media/15446970341146/%E4%BF%AE%E6%94%B9%E5%90%8E@2x.png" alt="修改后@2x"/></p>
+<p>A2:设置动态间距（iOS11以后可用）<br/>
+间距会随之变大<br/>
+<img src="media/15446970341146/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-14%20%E4%B8%8A%E5%8D%8811.06.14.png" alt="屏幕快照 2018-12-14 上午11.06.14"/></p>
+<p>两种方案实现的效果不一样，如下所示。</p>
+<p><img src="media/15446970341146/%E5%89%8D%E5%90%8E%E5%AF%B9%E6%AF%94%E5%9B%BE@2x.png" alt="前后对比图@2x"/></p></li>
+<li><p>2.2.2 缩放值 Scaled Values</p>
+<p>缩放某个值，对于整体UI随着 large Text 来说有很重要的效果，会使整个UI看起来更协调。</p>
+<p>比如你之前是这么改变 y 值<br/>
+<code>frame.origin.y +=40;</code></p>
+<p>现在你可以这么设置，constantVaule：40会根据系统设置而动态改变大小。</p>
+<p><code>frame.y += [[UIFontMetrics defaultMetrics] scaledValueForValue:40];</code></p></li>
+<li><p>2.2.3 并排文字的处理</p>
+<p><img src="media/15446970341146/%E5%B8%83%E5%B1%80%E5%AF%B9%E6%AF%94.png" alt="布局对比"/></p>
+<p>由上图可见，如果出现了文字变大的情况，如果不作任何处理会出现文字被截断的情况，直接影响了体验，如果只是简单的换行处理，会影响到美观，那么就可以垂直布置，横向沾满整个视图空间。</p>
+<p>通过函数<code>[[UIApplication sharedApplication] preferredContentSizeCategory]</code>or<code>self.view.traitCollection.preferredContentSizeCategory</code>获取用户的字体设置从<code>UIContentSizeCategoryExtraSmall</code>到<code>UIContentSizeCategoryExtraExtraLarge</code></p>
+<p>辅助设置的 largetext 的范围会有所区分会加上Accessibility比如<code>UIContentSizeCategoryAccessibilityMedium</code></p>
+<p>所以在代码中就可以加上类似判断，判断当前的值是否大于某个界面改变的值，不同情形下布局结构不同。</p>
+<pre><code class="language-text">if (self.view.traitCollection.preferredContentSizeCategory &gt; UIContentSizeCategoryLarge ) {
+    //垂直布局<br/>
+}else{<br/>
+    //并排布局<br/>
+}
+</code></pre></li>
+</ul>
+
+<h4 id="toc_6">2.3 Table views</h4>
+
+<p>如果你使用自带的 tableViewCell 那么就会自动布局，换行什么的完全不用你去担心。但是自定义 cell 的情况要自己去适配。</p>
+
+<ul>
+<li><p>2.3.1 Self-Sizing Table View Cells</p>
+<ul>
+<li><p>使用苹果默认设置的cell 样式</p>
+<ul>
+<li>tableview 问每个 cell 提供高度</li>
+<li>提供一个预估的高度给那些在屏幕外的 cell</li>
+</ul>
+<p>如果必要就打开 self-sizing </p>
+<pre><code class="language-text">tableView.rowHeight = UITableViewAutomaticDimension
+tableView.estimatedRowHeight = 一个预估值
+</code></pre>
+<p>如果有 sectionhead 或 sectionfooter</p>
+<pre><code class="language-text">self.tableView.estimatedSectionHeaderHeight = 20;
+self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension;<br/>
+self.tableView.estimatedSectionFooterHeight = 20;<br/>
+self.tableView.sectionFooterHeight = UITableViewAutomaticDimension;
+</code></pre></li>
+<li><p>使用自定义cell 样式并使用 autolayout</p>
+<p>如果你使用自定义 cell 并使用 autolayout 很容易就可以使用 self-sizing，你只要设置好约束条件，使他们来定义单元的大小，然后 autolayout 会给你找到合适的大小。</p></li>
+<li><p>使用自定义cell 样式不使用 autolayout</p>
+<ul>
+<li>重写 sizeThatFits 的方法返回正确的高度</li>
+<li>使用 contentView.bounds.size.width 限定宽度</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h4 id="toc_7">2.4 Images</h4>
+
+<p>在放大文字内容的同时也要保证图片的可辨识度，而不是只是布局改变了，但是非常小不易于观察。</p>
+
+<h5 id="toc_8">2.4.1 imageView</h5>
+
+<ul>
+<li>使用 PDF 图片并且在 asset catalog 勾选Perserve Vector Data 或者不使用PDF图像，提供更大的版本@1x@2x@3x</li>
+<li>  imageView.adjustImageSizeForAceeseeibilityContentSizeCategory = Yes</li>
+<li>xib勾选 imageview放大图片 Adjusts Image Size </li>
+</ul>
+
+<h5 id="toc_9">2.4.2 长按放大 tabbarItem 的图片</h5>
+
+<p><img src="media/15446970341146/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-14%20%E4%B8%8B%E5%8D%883.47.06.png" alt="屏幕快照 2018-12-14 下午3.47.06"/></p>
+
+<ul>
+<li><p>使用 PDF 图片并且在 asset catalog 勾选Perserve Vector Data并选择 single scale</p>
+<p><img src="media/15446970341146/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-14%20%E4%B8%8B%E5%8D%884.57.58.png" alt="屏幕快照 2018-12-14 下午4.57.58"/></p></li>
+<li><p>如果不使用PDF图像，提供更大的版本并在xib 为bar Item设置 aceessibility 图片或者在代码设置barItem.largeContentSizeImage = largeImage;</p></li>
+</ul>
+
+<h6 id="toc_10">Tips</h6>
+
+<ul>
+<li><p>使用 PDF 图像可以保证@1x @2x @3x 使用同一个图像进行缩放。</p></li>
+<li><p>Xcode -&gt; Accessbility inspector（方便进行字体大小的调整）<br/>
+<img src="media/15446970341146/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-14%20%E4%B8%8B%E5%8D%885.12.49.png" alt="屏幕快照 2018-12-14 下午5.12.49"/></p></li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/7/15</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15766567217978.html">
+                
+                  <h1>iOS UICollectionView刷新时闪屏的解决方法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>在做相册的时候遇到了一个问题，就是UICollectionView刷新的时候会闪屏，网上搜了搜，解决的方法也是挺多，并没有一一尝试，只是存下来做个笔记，来看看遇到的几种方法。</p>
+
+<p>方法一：</p>
+
+<pre><code class="language-text">[UIView performWithoutAnimation:^{ 
+   //刷新界面 
+    [self.collectionView reloadData]; 
+ }];
+
+</code></pre>
+
+<p>把刷新界面的事件放在这个BLock里就可以了！</p>
+
+<p>方法二</p>
+
+<pre><code class="language-[uiview">  [collectionView performBatchUpdates:^{ 
+    [collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]]; 
+  } completion:nil]; 
+}];
+</code></pre>
+
+<p>方法三</p>
+
+<pre><code class="language-[uiview">[self.trackPanel performBatchUpdates:^{ 
+  [collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]]; 
+} completion:^(BOOL finished) { 
+  [UIView setAnimationsEnabled:YES]; 
+}];
+</code></pre>
+
+<p>如果你的APP只支持iOS7+，推荐使用第一种方式performWithoutAnimation简单方便。</p>
+
+<p>上面说的方法只能解决UIView的Animation，但是如果你的cell中还包含有CALayer的动画，比如这样：</p>
+
+<pre><code class="language-text">- (void)layoutSubviews{
+  [super layoutSubviews];
+   
+  self.frameLayer.frame = self.frameView.bounds;
+}
+</code></pre>
+
+<p>上述情况多用于自定义控件使用了layer.mask的情况，如果有这种情况，上面提到的方法是无法取消CALayer的动画的，但是解决办法也很简单：</p>
+
+<pre><code class="language--">  [super layoutSubviews];
+   
+  [CATransaction begin];
+  [CATransaction setDisableActions:YES];
+   
+  self.frameLayer.frame = self.frameView.bounds;
+   
+  [CATransaction commit];  
+}
+
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/7/14</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509804558.html">
+                
+                  <h1>对比Texture中Node和UIKit中View</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">node.view和view的差别</h3>
+
+<p>再一次深刻的体会到了node.view和view的差别。<br/><br/>
+最开始一直以为node.view就类似于ASTableNode对应的UITableview<br/><br/>
+其实远远没有那么简单，并不是那么的一个对应的关系.<br/>
+必须要把一些subnode都包到一个node里面最后这个node的view对应的是这些subnode的集合。<br/><br/>
+如果只是</p>
+
+<pre><code class="language-text">ASDisplayNode * node = [[ASDisplayNode alloc]init];
+ASDisplayNode * subnode = [ASDisplayNode new];
+ASTextNode * textnode = [ASTextNode new];                    
+ASButtonNode * buttonnode = [ASButtonNode new];
+[node addSubnode:subnode];
+[node addSubnode:textnode];
+[node addSubnode:buttonnode];
+
+</code></pre>
+
+<p>我是在给tableview添加node为tableHeaderView发现的这个问题 <br/>
+后面新建一个node 把这些subnode都包进去问题就解决了。</p>
+
+<p>这个时候把node.view 当成这三个subnode的集合就会出现问题</p>
+
+<h3 id="toc_1">阴影以及圆角的设置</h3>
+
+<p>在使用UIview添加阴影以及同时添加圆角的时候不能设.clipsToBounds = YES<br/>
+但是切圆角的时候就需要设置.clipsToBounds  = YES <br/>
+当时的做法也是最外层放置一个UIView的壳子，让外层的.clipsTobounds = NO 里面的.clipsTobounds = YES <br/>
+在外边的view添加阴影的效果。</p>
+
+<p>使用node的时候也是这样的原理。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/7/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509809634.html">
+                
+                  <h1>如何理解多线程中的队列</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code class="language-text">func asyncmethod()  {
+        DispatchQueue.global().async {
+            
+            DispatchQueue.main.sync {
+                print(&quot;DispatchQueue.main.sync task \(Thread.current)&quot;)
+
+            }
+
+            print(&quot;DispatchQueue.global().async task \(Thread.current)&quot;)
+        }
+    }
+
+</code></pre>
+
+<p>DispatchQueue.main.sync必须用于在全局队列当中，因为async执行是异步操作。不能单独使用，因为这步操作会阻塞当前线程 执行完线程中的操作之后才会继续向下执行。</p>
+
+<p>同步和异步在这里是线程概念，同步不会创建新的线程，会阻塞当前的线程在这个线程里执行任务。而异步则不会阻塞当前线程，会选择在恰当的时机在当前线程或者另开线程执行任务（看系统如何调度），开始任务和完成任务时间是不确定的。</p>
+
+<p>串行队列，后一个任务等待前一任务结束后再执行，按添加顺序一个一个执行。</p>
+
+<p>并行队列，后一个任务不会等待前一个任务，不等前一个任务完成就会分配新任务。</p>
+
+<p>串行和并行，这里对应的是队列的概念。队列负责管理多个任务，队列拥有一个线程池，池子里有一个或者多个线程，它按要求将每个任务调度到某一个线程执行。</p>
+
+<pre><code class="language-text">override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: &quot;show Red&quot;, style: .plain, target: self, action: #selector(pushToRed))
+        print(&quot;thread is  \(Thread.current)&quot;)
+
+        DispatchQueue.global().sync {
+            print(&quot;thread is  \(Thread.current)&quot;)
+
+            DispatchQueue.global().sync {
+                print(&quot;thread is  \(Thread.current)&quot;)
+
+                print(&quot;1&quot;)
+                print(&quot;2&quot;)
+                print(&quot;3&quot;)
+                print(&quot;4&quot;)
+                print(&quot;5&quot;)
+                print(&quot;6&quot;)
+                print(&quot;7&quot;)
+            }
+            
+        }
+//        asyncmethod()
+        
+        // Do any additional setup after loading the view.
+    }
+</code></pre>
+
+<pre><code class="language-text">thread is  &lt;NSThread: 0x60000297aac0&gt;{number = 1, name = main}
+thread is  &lt;NSThread: 0x60000297aac0&gt;{number = 1, name = main}
+thread is  &lt;NSThread: 0x60000297aac0&gt;{number = 1, name = main}
+1
+2
+3
+4
+5
+6
+7
+</code></pre>
+
+<p>所以并不是说全局队列中的任务就不能在主线程执行，事实证明还是可以的。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/7/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509807113.html">
+                
+                  <h1>在 App 运行时通过 dlopen 和 dlsym 链接加载 bundle 里的动态库。</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>我们一般引入某个 framework 可能是直接使用<code>#import &lt;AVFoundation/AVFoundation.h&gt;</code>其实还有另一种办法就是使用函数啊 dlopen</p>
+
+<pre><code class="language-text">函数定义： 
+　　void * dlopen( const char * pathname, int mode ); 
+　　函数描述： 
+　　在dlopen的（）函数以指定模式打开指定的动态连接库文件，并返回一个句柄给调用进程。使用dlclose（）来卸载打开的库。 
+　　mode：分为这两种 
+　　RTLD_LAZY 暂缓决定，等有需要时再解出符号 
+　　RTLD_NOW 立即决定，返回前解除所有未决定的符号。 
+　　RTLD_LOCAL 
+　　RTLD_GLOBAL 允许导出符号 
+　　RTLD_GROUP 
+　　RTLD_WORLD 
+
+　　返回值: 
+　　打开错误返回NULL 
+　　成功，返回库引用 
+　　编译时候要加入 -ldl (指定dl库) 
+
+</code></pre>
+
+<pre><code class="language-text">dlsym()
+
+ 
+　功能：
+
+根据动态链接库操作句柄与符号，返回符号对应的地址。
+包含头文件：
+#include &lt;dlfcn.h&gt;
+函数定义：
+void*dlsym(void* handle,const char* symbol)
+函数描述：
+dlsym根据动态链接库操作句柄(handle)与符号(symbol)，返回符号对应的地址。使用这个函数不但可以获取函数地址，也可以获取变量地址。
+handle是由dlopen打开动态链接库后返回的指针，symbol就是要求获取的函数或全局变量的名称。
+dlclose()
+
+ 
+
+dlclose用于关闭指定句柄的动态链接库，只有当此动态链接库的使用计数为0时,才会真正被系统卸载。
+ 
+</code></pre>
+
+<p>示例函数</p>
+
+<pre><code class="language-text">-(void)mwviewDidLoad{
+    //打开动态库
+    NSString *path = [[NSBundle mainBundle] pathForResource:@&quot;Kidswaste-Sans Toi&quot; ofType:@&quot;mp3&quot;];
+    // 加载库到当前运行程序
+    void *lib = dlopen(&quot;/System/Library/Frameworks/AVFoundation.framework/AVFoundation&quot;, RTLD_LAZY);
+    if (lib) {
+        // 获取类名称
+        Class playerClass = NSClassFromString(@&quot;AVAudioPlayer&quot;);
+        // 获取函数方法
+        SEL selector = NSSelectorFromString(@&quot;initWithData:error:&quot;);
+        // 调用实例化对象方法
+        _runtime_Player = [[playerClass alloc] performSelector:selector withObject:[NSData dataWithContentsOfFile:path] withObject:nil];
+        // 获取函数方法
+        selector = NSSelectorFromString(@&quot;play&quot;);
+        // 调用播放方法
+        [_runtime_Player performSelector:selector];
+        NSLog(@&quot;动态加载播放&quot;);
+    }
+    dlclose(lib);
+    NSLog(@&quot;hello world from mwviewDidLoad&quot;);
+    [self mwviewDidLoad];
+    
+}
+
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/7/5</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509807234.html">
+                
+                  <h1>Swift 和 OC 实现“热加载”</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>众所周知，Google 推出的跨平台框架Flutter 有着很好的编译优势<code>Flutter Hot Reload</code>，每次改变之后，点击 <code>reload</code> 就会实现实时编译。那么其实我们也可以实现<code>Swift</code>和<code>OC</code>的实时编译。</p>
+
+<h4 id="toc_0">InjectionIII</h4>
+
+<p>通过这个工具可以实现类似Flutter 的快速编译。</p>
+
+<h6 id="toc_1">实现思路：</h6>
+
+<p>Injection 会监听源代码文件的变化，如果文件被改动了，Injection Server 就会执行 rebuildClass 重新进行编译、打包成动态库，也就是 .dylib 文件。编译、打包成动态库后使用 writeSting 方法通过 Socket 通知运行的 App。</p>
+
+<h4 id="toc_2">安装方式</h4>
+
+<ol>
+<li><p>Mac App Store下载安装</p>
+<p><img src="media/15536750345410/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-03-27%20%E4%B8%8B%E5%8D%884.26.20.png" alt="屏幕快照 2019-03-27 下午4.26.20"/></p></li>
+<li><p>Github</p>
+<p>这个工具开发作者是John Holdsworth，作者已经开源了这个工具，地址是<a href="https://github.com/johnno1962/InjectionIII">https://github.com/johnno1962/InjectionIII</a></p></li>
+</ol>
+
+<p>我使用的是在Mac App Store安装的方式，这样比较方便一些，如果你想专研源码，可以去到 GitHub 去研究。</p>
+
+<h5 id="toc_3">使用指南</h5>
+
+<ol>
+<li><p>打开工程</p>
+<p>安装之后打开会出现在 mac 的 menubar 点击打开你目标的工程文件的根目录。</p>
+<p><img src="media/15536750345410/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-03-27%20%E4%B8%8B%E5%8D%885.57.39.png" alt="屏幕快照 2019-03-27 下午5.57.39"/></p></li>
+<li><p>在 applicationDidFinishLaunching加载Injection包</p>
+<p>Xcode 10.1:</p>
+<pre><code class="language-text">#if DEBUG
+Bundle(path: &quot;/Applications/InjectionIII.app/Contents/Resources/iOSInjection10.bundle&quot;)?.load()<br/>
+//for tvOS:<br/>
+Bundle(path: &quot;/Applications/InjectionIII.app/Contents/Resources/tvOSInjection10.bundle&quot;)?.load()<br/>
+//Or for macOS:<br/>
+Bundle(path: &quot;/Applications/InjectionIII.app/Contents/Resources/macOSInjection10.bundle&quot;)?.load()<br/>
+#endif
+</code></pre>
+<p>Xcode 10.2 and later:</p>
+<pre><code class="language-text">#if DEBUG
+Bundle(path: &quot;/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle&quot;)?.load()<br/>
+//for tvOS:<br/>
+Bundle(path: &quot;/Applications/InjectionIII.app/Contents/Resources/tvOSInjection.bundle&quot;)?.load()<br/>
+//Or for macOS:<br/>
+Bundle(path: &quot;/Applications/InjectionIII.app/Contents/Resources/macOSInjection.bundle&quot;)?.load()<br/>
+#endif
+</code></pre></li>
+</ol>
+
+<p>上面是swift版本的NSBundle加载包，下面的代码是oc的实现方法</p>
+
+<pre><code class="language-text">[[NSBundle bundleWithPath:@&quot;/Applications/InjectionIII.app/Contents/Resources/iOSInjection10.bundle&quot;] load];
+</code></pre>
+
+<ol>
+<li><p>运行工程 </p>
+<p>选择模拟器，cmd+R启动编译</p></li>
+<li><p>修改文件注入代码</p>
+<p>每当对代码进行修改之后，一定要cmd+S保存（不然Injection不会分析变动以及替换符号）实现快速编译。不用重新 cmd+R。</p></li>
+</ol>
+
+<h4 id="toc_4">注意事项</h4>
+
+<p><img src="media/15536750345410/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-03-27%20%E4%B8%8B%E5%8D%885.56.38.png" alt="屏幕快照 2019-03-27 下午5.56.38"/></p>
+
+<p>还有一点就是如果你在 menubar 打开了这个程式的File Watcher那么就只需要cmd+S 如果你没有开启这个功能，还要多一步命令<code>control</code>+<code>=</code>(同时按住 control 和 =）。</p>
+
+<p>还有就是由于沙盒机智，这个方法只能使用在模拟器上，对真机无效。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/6/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509805947.html">
+                
+                  <h1>What's New in LLVM（2017）</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>Xcode 9中的Apple LLVM编译器具有新的语言特性、改进的诊断和更强大的优化。了解Objective-C和c++的最新添加，了解新的和改进的警告和静态分析器检查，了解LLVM编译器技术如何为应用程序提供更快的构建时间和更好的运行时性能。</p>
+
+<h2 id="toc_0">1.不同语言的api检查</h2>
+
+<pre><code class="language-text">@available(iOS 11,*)--oc
+#available  --swift
+</code></pre>
+
+<p>便捷的方法检查（检查可用性，如果你要给某个新的系统加入新功能）</p>
+
+<pre><code class="language-text">@interface MyAblumController : UIViewController
+
+-(void)showFaces API_AVALABILITY(ios(11.0));
+
+@end
+</code></pre>
+
+<p>还可以移动整个类的范围</p>
+
+<pre><code class="language-text">API_AVALABILITY(ios(11.0))
+@interface MyAblumController : UIViewController
+
+-(void)showFaces ;
+
+@end
+</code></pre>
+
+<h2 id="toc_1">2.不要把Number元素和标量进行比较</h2>
+
+<pre><code class="language-text">@property NSNumber * photoCount;
+-(BOOL)hasPhotos{
+return self.photoCount &gt; 0
+}
+</code></pre>
+
+<p>因为这个比较相当于是把photoCount和指针nil相比，返回为YES,所以这个错误很严重。</p>
+
+<p><img src="media/15445814733953/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%884.26.59.png" alt="屏幕快照 2018-12-12 下午4.26.59"/></p>
+
+<p>编译器会报错，提醒你出现了问题，你可以把NSNumber转成interger之后再做判断。</p>
+
+<p><img src="media/15445814733953/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%884.28.18.png" alt="屏幕快照 2018-12-12 下午4.28.18"/></p>
+
+<h6 id="toc_2">Control Check in Build Setting</h6>
+
+<p>设置Suspicious Conversions 为YES(aggressive)当编译器不确定的时候会弹出如上提示。<br/>
+<img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%885.06.22.png" alt="屏幕快照 2018-12-12 下午5.06.22"/></p>
+
+<h2 id="toc_3">3. copy修饰NSMutableArray</h2>
+
+<p>赋值的时候等于是复制了一个不可变对象，所以以后运行时的时候会报错(如果你对这个数组进行修改)</p>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%886.45.36.png" alt="屏幕快照 2018-12-12 下午6.45.36"/></p>
+
+<p>这个时候就会报错，因为给self.titieArr赋值之后变成了不可变的，所以接下来的操作会导致错误。</p>
+
+<h6 id="toc_4">解决方法:</h6>
+
+<pre><code class="language-text">//添加setter方法
+-(void)setTitleArr:(NSMutableArray *)titleArr{
+    
+    self.titleArr= [titleArr mutableCopy];
+}
+</code></pre>
+
+<p>每次赋值的时候给数组赋值可变对象。</p>
+
+<p>另外为了及时发现bug可以开启每次build的时候analyze而不是每次都要去手动analyze（如果不开启的话上面的错误不会提示）</p>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%886.48.45.png" alt="屏幕快照 2018-12-12 下午6.48.45"/><br/>
+设置Analyze During Build 的值为Yes.</p>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-12%20%E4%B8%8B%E5%8D%886.43.05.png" alt="屏幕快照 2018-12-12 下午6.43.05"/></p>
+
+<h2 id="toc_5">4. 声明无参数的函数</h2>
+
+<h5 id="toc_6">Non-prototype declarations in C and Objective-C</h5>
+
+<p>非原型声明</p>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.47.06.png" alt="屏幕快照 2018-12-13 下午3.47.06"/></p>
+
+<p>在C和OC中意味着foo可以跟任何参数调用，这个行为可以追溯到1977年C语言，不匹配类型的调用会导致运行时的崩溃。<br/>
+在Xcode9 中编译器带有一个新的警告加强严格原型，会报出警告。</p>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.50.45.png" alt="屏幕快照 2018-12-13 下午3.50.45"/></p>
+
+<p>通常只需要在括号中添加void表示不接收任何参数传递。</p>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.51.41.png" alt="屏幕快照 2018-12-13 下午3.51.41"/></p>
+
+<p>任何带有参数的调用都会直接报错。</p>
+
+<p>另外block中不接收参数的时候也会出现同样的警告，如下所示。</p>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.52.47.png" alt="屏幕快照 2018-12-13 下午3.52.47"/></p>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%883.53.57.png" alt="屏幕快照 2018-12-13 下午3.53.57"/></p>
+
+<h3 id="toc_7">升级验证警告设置</h3>
+
+<p><img src="media/15446033549417/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-13%20%E4%B8%8B%E5%8D%884.08.45.png" alt="屏幕快照 2018-12-13 下午4.08.45"/></p>
+
+<p>勾选Yes(Error)</p>
+
+<h6 id="toc_8">Strict Prototypes 勾选Yes(Error)之前 and 勾选之后</h6>
+
+<p><img src="media/15446033549417/Artboard%202@2x.png" alt="Artboard 2@2x"/></p>
+
+<p>勾选之后就不只是警告了，直接是错误提醒，让你开发的时候不得不注意，也是为了代码的安全性。</p>
+
+<h3 id="toc_9">结尾</h3>
+
+<p>WWDC2017剩余部分是关于C++的优化，如果感兴趣的话可以移步<a href="https://developer.apple.com/videos/play/wwdc2017/411">开发者网站</a>观看。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/6/10</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
+
+
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   <a href="iOS_7.html">&laquo; Prev Page</a>  
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1></h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="email" href="mailto:maweefeng@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E7%94%B5%E5%BD%B1.html"><strong>电影</strong></a>
+        
+            <a href="%E5%85%B6%E5%AE%83.html"><strong>其它</strong></a>
+        
+            <a href="Python.html"><strong>Python</strong></a>
+        
+            <a href="iOS.html"><strong>iOS</strong></a>
+        
+            <a href="%E6%88%91.html"><strong>我</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="16076509804045.html">RACCommand</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509805027.html">关于我</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509807659.html">点击事件发生在视图边界之外的时候</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804683.html">Xcode打包遇到的坑</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+
+  </body>
+</html>

@@ -1,128 +1,104 @@
 <!doctype html>
 <html class="no-js" lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
     
-    iOS - Code Log 👨‍💻‍ 
-    
+  iOS - 
+  
   </title>
   
   
-  <link href="atom.xml" rel="alternate" title="Code Log 👨‍💻‍ " type="application/atom+xml">
-  <link rel="stylesheet" href="asset/css/foundation.min.css" />
-  <link rel="stylesheet" href="asset/css/docs.css" />
-  <script src="asset/js/vendor/modernizr.js"></script>
-  <script src="asset/js/vendor/jquery.js"></script>
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
   <script src="asset/highlightjs/highlight.pack.js"></script>
   <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script>
-    hljs.initHighlightingOnLoad();
-
-    window.onload = function () {
-
-      var footerPath = window.location.pathname.split('/')[window.location.pathname.split('/').length - 1];
-      if (footerPath == 'archives.html') {
-        // alert('分类');
-        document.getElementById('main-menu').getElementsByTagName("li")[1].className = "is_active";
-
-      } else if (footerPath == 'about.html') {
-        document.getElementById('main-menu').getElementsByTagName("li")[2].className = "is_active";
-
-        // alert('关于我');
-  
-      } else {
-        // alert('首页');
-        document.getElementById('main-menu').getElementsByTagName("li")[0].className = "is_active";
-      }
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
 
 
-    }
-  </script>
-  <script type="text/javascript">
-    function before_search() {
-      var searchVal = 'site: ' + document.getElementById('search_input').value;
-      document.getElementById('search_q').value = searchVal;
-      return true;
-    }
-  </script>
-</head>
-
-<body class="antialiased hide-extras">
-
-  <div class="marketing off-canvas-wrap" data-offcanvas>
-    <div class="inner-wrap">
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
 
 
-      <nav class="top-bar docs-bar hide-for-small" data-topbar>
-
-
-        <section class="top-bar-section">
-          <div class="row">
-            <div style="position: relative;width:100%;">
-              <div style="position: absolute; width:100%;">
-                <ul id="main-menu" class="left">
-                  
-                  <li id=""><a id="" target="_self" href="index.html">Home</a></li>
-                  
-                  <li id=""><a id="" target="_self" href="archives.html">Archives</a></li>
-                  
-                  <li id=""><a id="" target="_self" href="about.html">About</a></li>
-                  
-                </ul>
-
-                <ul class="right" id="search-wrap">
-                  <li>
-                    <form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
-                      <input type="hidden" id="search_q" name="q" value="" />
-                      <input tabindex="1" type="search" id="search_input" placeholder="Search" />
-                    </form>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-      </nav>
-
-      <nav class="tab-bar show-for-small">
-        <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-          <span> &nbsp; Code Log 👨‍💻‍ </span>
-        </a>
-      </nav>
-
-      <aside class="left-off-canvas-menu">
-        <ul class="off-canvas-list">
-
-          <li><a href="index.html">Home</a></li>
-          <li><a href="archives.html">Archives</a></li>
-          
-          <li><label>Categories</label></li>
-
-          
-          <li id="iOS"><a href="iOS.html">iOS</a></li>
-          
-          <li id="Git"><a href="Git.html">Git</a></li>
-          
-          <li id="CocoaPods"><a href="CocoaPods.html">CocoaPods</a></li>
-          
-          <li id="Django"><a href="Django.html">Django</a></li>
-          
-          <li id="Spiders"><a href="Spiders.html">Spiders</a></li>
-          
-          <li id="about"><a href="about.html">about</a></li>
-          
-
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
         </ul>
-      </aside>
 
-      <a class="exit-off-canvas" href="#"></a>
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E7%94%B5%E5%BD%B1.html">电影</a></li>
+        
+            <li><a href="%E5%85%B6%E5%AE%83.html">其它</a></li>
+        
+            <li><a href="Python.html">Python</a></li>
+        
+            <li><a href="iOS.html">iOS</a></li>
+        
+            <li><a href="%E6%88%91.html">我</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
 
 
-      <section id="main-content" role="main" class="scroll-container"> <script type="text/javascript">
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
 	$(function(){
 		$('#menu_item_index').addClass('is_active');
 	});
@@ -132,241 +108,138 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15427834492260.html">
+                <a class="clearlink" href="16076509806634.html">
                 
-                  <h1>SDWebImageview 不能加载HTTPS图片</h1>
+                  <h1>OC以及Swift中的闭包</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>这个问题是因为图片地址所在的服务器没有有效的SSL证书文件<br/>
-只需要在Options参数中设置SDWebImaweefenggeAllowInvalidSSLCertificates枚举就可</p>
+                        	<p>因为在实际开发中闭包会经常用到，几乎和代理实现同样的功能，所以我们来探究一下OC和 swift中的闭包。</p>
 
-<pre><code>[self.avatarImageView sd_setImageWithURL: [NSURL URLWithString: famousStarObject.avatar] placeholderImage: [UIImage imageNamed: @&quot;icon_default_avator&quot;] options: SDWebImageAllowInvalidSSLCertificates];
+<h3 id="toc_0">Objecticve-C</h3>
+
+<h4 id="toc_1">①声明Block</h4>
+
+<p>OC中有两种声明方式</p>
+
+<ol>
+<li><p>方式一 </p>
+<pre><code class="language-text">typedef void(^BlockName)(NSString * name);
+@property(nonatomic,copy)BlockName hello;
+</code></pre></li>
+<li><p>方式一 </p>
+<pre><code class="language-text">@property(nonatomic,copy)void(^Test)(NSString * name);
+</code></pre></li>
+</ol>
+
+<h4 id="toc_2">②实现Block</h4>
+
+<pre><code class="language-text">self.Test = ^(NSString *name) {
+        NSLog(@&quot;%@&quot;,name);
+    };
+
+self.hello = ^(NSString *name) {
+        NSLog(@&quot;%@&quot;,name);
+    };
 </code></pre>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<h4 id="toc_3">③调用Block</h4>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834492322.html">
-                
-                  <h1>UIImageView 动画的属性animationImages</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<pre><code class="language-beginImageArray.append(UIImage(named:">
-    let imageView = UIImageView(image: UIImage(named: &quot;switch 1.png&quot;))
-    imageView.center = view.center
-    imageView.animationImages = beginImageArray
-    // 动画持续时间 每一帧0.025秒，总共22帧
-    imageView.animationDuration = 0.025 * 22
-    imageView.animationRepeatCount = 1
-    // 动画结束后要把imageView的image属性设置成动画最后的一帧
-    imageView.image = UIImage(named: &quot;switch 22.png&quot;)
-    imageView.startAnimating()
-    view.addSubview(imageView)
+<pre><code class="language-text">self.Test(@&quot;hello&quot;);
+self.hello(@&quot;hello&quot;);
 </code></pre>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<h3 id="toc_4">One more thing</h3>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834492390.html">
-                
-                  <h1>Xcode打包遇到的坑</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>由于是接手别人做的项目，所以当把程序打包的时候出现了问题，证书和描述文件的问题 </p>
+<p>另外类似于AFN的网络请求，我们也可以在方法当中把 block 当成参数传递。</p>
 
-<p>最开始尝试打开xcode的账户下载所有证书，结果发现并不能成功</p>
+<pre><code class="language-text">.h文件
+#import &lt;UIKit/UIKit.h&gt;
+@interface ViewController : UIViewController
 
-<p>后来手动管理证书就可以看到之前在开发者中心创建的开发和发布证书，如下图所示<br/>
-<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fnczazu4irj30pd0iejte.jpg" alt=""/><br/>
-然后会到证书管理界面，会把你选中账号的所有相关证书列下来</p>
+-(void)sayHello:(void(^)(NSString * name))hello;
 
-<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fnczelaqz6j30pd0iedi6.jpg" alt=""/></p>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15427834492390.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834492451.html">
-                
-                  <h1>Xcode编译找不到头文件</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>开发中遇到之前成功导入没有报错的头文件，后来打开工程之后报错说找不到头文件，这就很奇怪了。<br/>
-之前还是好好的，怎么睡了一觉代码还出现了问题呢。<br/><br/>
-然后就去搜索解决方法，发现是要到<code>buildsettings</code>下的<code>Search Paths</code>下面的<code>User Header Search Paths</code> 大概意思就是这个东西是头文件的搜索路径。<br/><br/>
-进去之后添加<code>${SRCROOT}</code>然后回车搞定就完成了。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834492512.html">
-                
-                  <h1>Flutter && Python && OC</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">dart的函数定义如下所示</h3>
-
-<pre><code>// Define a function.
-printInteger(int aNumber) {
-  print(&#39;The number is $aNumber.&#39;); // Print to console.
-}
-
-// This is where the app starts executing.
-main() {
-  var number = 42; // Declare and initialize a variable.
-  printInteger(number); // Call a function.
-}
-
-isNoble(atomicNumber) {
-  return _nobleGases[atomicNumber] != null;
-}
-
-如果函数只有单个语句，可以采用简略的形式：
-
-bool isNoble(int atomicNumber) =&gt; _nobleGases[atomicNumber] != null;
-
+@end
 
 </code></pre>
 
-<h3 id="toc_1">$dart取地址</h3>
+<pre><code class="language-text">.m 文件
+#import &quot;ViewController.h&quot;
 
-<pre><code>String say(String from, String msg, [String device]) {
-  var result = &#39;$from says $msg&#39;;
-  if (device != null) {
-    result = &#39;$result with a $device&#39;;
-  }
-  return result;
-}
+@implementation ViewController
 
-</code></pre>
-
-<p>以分号结尾 参数类型要指定也可以不指定<br/><br/>
-=&gt; 是{ return expr;} 的缩写</p>
-
-<h3 id="toc_2">oc的函数定义</h3>
-
-<pre><code>-(void)hello{
-
-print(@&quot;hello world&quot;);
-
-}
--(void)hello(int a,int b){
-
-print(@&quot;hello world %d %d&quot;,a,b);
-
-}
-
-
-</code></pre>
-
-<p>无需注意缩进 但是返回值类型一定要明确</p>
-
-<h3 id="toc_3">python函数定义</h3>
-
-<pre><code>def xxxx:
-    print &#39;hello world&#39;
+-(void)sayHello:(void (^)(NSString *))hello{
     
-def xxx(a,b):
-   print(a,b)
-   
-def xxx(self,a,b)
-   print a,b
-   
+    hello(@&quot;name&quot;);   
+}
 </code></pre>
 
-<p>由于没有分号和大括号所以一定要注意缩进，</p>
+<h3 id="toc_5">Swift</h3>
+
+<h4 id="toc_6">①使用别名声明 block</h4>
+
+<p>typealias HelloBlock = (_ str:String) -&gt; ()</p>
+
+<p>然后使其成为属性<br/>
+var block:HelloBlock?</p>
+
+<h4 id="toc_7">②实现block</h4>
+
+<pre><code class="language-text">self.block = {
+    str in
+    print(str)        
+}
+</code></pre>
+
+<h4 id="toc_8">③调用Block</h4>
+
+<pre><code class="language-text">block!(&quot;hello&quot;)
+</code></pre>
+
+<h3 id="toc_9">One more thing</h3>
+
+<p>和OC类似，我们在 swift 当中也可以在方法中传递闭包，把闭包当成是参数。</p>
+
+<p>声明方法</p>
+
+<pre><code class="language-text">func loadRequest(callBack : (_ str:String)-&gt;()){
+        callBack(&quot;hello&quot;)
+}
+</code></pre>
+
+<p>调用方法</p>
+
+<pre><code class="language-text">self.loadRequest { (str) in
+    print(str)
+}
+</code></pre>
+
+<h2 id="toc_10">避免循环引用的问题</h2>
+
+<p>另外还需要注意循环引用，有三种方法</p>
+
+<p>一、在闭包外写 weak var weakSelf = self<br/>
+在内部需要调用 self 的地方使用 weakSelf代替。<br/>
+二、在闭包内部写[weak self]</p>
+
+<pre><code class="language-text">self.loadRequest {[weak self] (str) in
+    
+    self.view.backgroundColor = UIColor.redColor()
+
+    print(str)
+}
+</code></pre>
+
+<p>三、在闭包中写 [unowned self]</p>
+
+<pre><code class="language-text">self.loadRequest {[unowned self] (str) in
+    
+    self.view.backgroundColor = UIColor.redColor()
+
+    print(str)
+}     
+</code></pre>
 
                         
                       </div>
@@ -375,7 +248,7 @@ def xxx(self,a,b)
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/11/21</span>
+                    <span class="date">2018/9/5</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -392,27 +265,88 @@ def xxx(self,a,b)
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834492767.html">
+                <a class="clearlink" href="16076509809415.html">
                 
-                  <h1>UISearchbar 自定义搜索图标失真</h1>
+                  <h1>一个实例对象可以通过4种方式调用其方法。</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	关于Searchbar设置搜索图标的问题
-因为这个大小在iOS中是固定的14*14
-如果UI给的切图不是这个尺寸就会出现失真的情况（ps：因为视图的默认contentMode是UIViewContentModeScaleToFill）
-网上有的方法一般是设置一个继承自UITextfield的searchBar
-去修改SearchBar的leftView。
-...
+                        	<pre><code class="language-text">- (void)test{
+    
+//type1
+    [self printStr1:@&quot;hello world 1&quot;];
+    
+//type2
+    [self performSelector:@selector(printStr1:) withObject:@&quot;hello world 2&quot;];
+    
+//type3
+    //获取方法签名
+    NSMethodSignature *sigOfPrintStr = [self methodSignatureForSelector:@selector(printStr1:)];
+    
+    //获取方法签名对应的invocation
+    NSInvocation *invocationOfPrintStr = [NSInvocation invocationWithMethodSignature:sigOfPrintStr];
+    
+    /**
+    设置消息接受者，与[invocationOfPrintStr setArgument:(__bridge void * _Nonnull)(self) atIndex:0]等价
+    */
+    [invocationOfPrintStr setTarget:self];
+    
+    /**设置要执行的selector。与[invocationOfPrintStr setArgument:@selector(printStr1:) atIndex:1] 等价*/
+    [invocationOfPrintStr setSelector:@selector(printStr1:)];
+    
+    //设置参数 
+    NSString *str = @&quot;hello world 3&quot;;
+    [invocationOfPrintStr setArgument:&amp;str atIndex:2];
+    
+    //开始执行
+    [invocationOfPrintStr invoke];
+    
+    //type4
+    ((void (*)(id,SEL,NSString *, NSArray *, NSInteger))objc_msgSend)(self, @selector(textFunctionWithParam:param2:param3:),@&quot;111&quot;,@[@2,@3],123);
+
+}
+-(void)textFunctionWithParam:(NSString *)param1 param2:(NSArray *)param2 param3:(NSInteger)param3 {
+    NSLog(@&quot;param1:%@, param2:%@, param3:%ld&quot;,param1, param2, param3);
+}
+- (void)printStr1:(NSString*)str{
+    NSLog(@&quot;printStr1  %@&quot;,str);
+}
+
+
+</code></pre>
+
+<h2 id="toc_0">下面展示block 的两种调用方式</h2>
+
+<pre><code class="language-text">- (void)test{
+
+    void (^block1)(int) = ^(int a){
+         NSLog(@&quot;block1 %d&quot;,a);
+    };
+    
+    //type1
+    block1(1);
+    
+    //type2
+    //获取block类型对应的方法签名。
+    NSMethodSignature *signature = aspect_blockMethodSignature(block1);
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
+    [invocation setTarget:block1];
+    int a=2;
+    [invocation setArgument:&amp;a atIndex:1];
+    [invocation invoke];
+}
+
+</code></pre>
+
                         
                       </div>
                   </div>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15427834492767.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/21</span>
+                  
+                    <span class="date">2018/8/30</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -429,40 +363,46 @@ def xxx(self,a,b)
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834492830.html">
+                <a class="clearlink" href="16076509807277.html">
                 
-                  <h1>CAMediaTimingFunction获取控制点：</h1>
+                  <h1>静态分析</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<pre><code>//create timing function
-CAMediaTimingFunction *function = [CAMediaTimingFunction functionWithControlPoints:1 :0 :0.75 :1];
+                        	<p>随着业务开发迭代速度越来越快，完全依赖人工保证工程质量也变得越来越不牢靠。所以，静态分析，这种可以帮助我们在编写代码的阶段就能及时发现代码错误，从而在根儿上保证工程质量的技术，就成为了 iOS 开发者最常用到的一种代码调试技术。</p>
+
+<p>Xcode 自带的静态分析工具 Analyze，通过静态语法分析能够找出在代码层面就能发现的内存泄露问题，还可以通过上下文分析出是否存在变量无用等问题。但是，Analyze 的功能还是有限，还是无法帮助我们在编写代码的阶段发现更多的问题。所以，这才诞生出了功能更全、定制化高、效率高的第三方静态检查工具。比如，OCLint、Infer、Clang 静态分析器等。</p>
+
+<p>一款优秀的静态分析器，能够帮助我们更加全面的发现人工测试中的盲点，提高检查问题的效率，寻找潜在的可用性问题，比如空指针访问、资源和内存泄露等等。</p>
+
+<h3 id="toc_0">OClint</h3>
+
+<p>OCLint 是基于 Clang Tooling 开发的静态分析工具，主要用来发现编译器检查不到的那些潜在的关键技术问题。2017 年 9 月份新发布的 OCLint 0.13 版本中，包含了 71 条规则。</p>
+
+<p>这些规则已经基本覆盖了具有通用性的规则，主要包括语法上的基础规则、Cocoa 库相关规则、一些约定俗成的规则、各种空语句检查、是否按新语法改写的检查、命名上长变量名短变量名检查、无用的语句变量和参数的检查。</p>
+
+<pre><code class="language-text">oclint Hello.m//分析单个文件
+
+oclint -report-type html -o report.html Hello.m//分析单个文件 并生成html 文件
+
 </code></pre>
 
-<p>我得到的controlPoint值似乎是错误的：</p>
+<p>OCLint 的规则索引点击下面的链接。<a href="http://docs.oclint.org/en/stable/rules/index.html">规则索引</a></p>
 
-<pre><code>CGPoint controlPoint1, controlPoint2;
-[function getControlPointAtIndex:1 values:(float *)&amp;controlPoint1]; 
-[function getControlPointAtIndex:2 values:(float *)&amp;controlPoint2];
-The controlPoint value that I get seems to be wrong:
+<h3 id="toc_1">Clang</h3>
 
-controlPoint1   CGPoint (x = 5.2635442471208903E-315, y = 4.9406564584124654E-324)  
-controlPoint2   CGPoint (x = 0.0078125018408172764, y = 2.8421186829703262E-314)    
-</code></pre>
+<p><a href="http://clang-analyzer.llvm.org/scan-build">http://clang-analyzer.llvm.org/scan-build</a></p>
 
-<p>但是，如果我使用float数组作为参数的类型values，我得到controlPoint的正确值：</p>
+<h3 id="toc_2">Infer</h3>
 
-<pre><code>float c1p[2], c2p[2];
-[function getControlPointAtIndex:1 values:c1p];
-[function getControlPointAtIndex:2 values:c2p];
-The values are:
+<p>Infer 是 Facebook 开源的、使用 OCaml 语言编写的静态分析工具，可以对 C、Java 和 Objective-C 代码进行静态分析，可以检查出空指针访问、资源泄露以及内存泄露。</p>
 
-controlPoint1   CGPoint (x = 1, y = 0)  
-controlPoint2   CGPoint (x = 0.75, y = 1) 
-</code></pre>
+<p>使用 homebrew 安装<br/>
+brew install infer</p>
 
-<p>32位设备可以使用第一种方法 但是在64位设备就行不通了 </p>
+<p>分析代码的指令如下所示<br/>
+infer -- clang -c Hello.m</p>
 
                         
                       </div>
@@ -471,7 +411,7 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/11/21</span>
+                    <span class="date">2018/8/20</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -488,26 +428,19 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834493029.html">
+                <a class="clearlink" href="16076509807837.html">
                 
-                  <h1>iOS导航条背景颜色</h1>
+                  <h1>accessoryView</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h4 id="toc_0">Situation one</h4>
+                        	<pre><code class="language-text">open var accessoryView: UIView? // if set, use custom view. ignore accessoryType. tracks if enabled can calls accessory action
+</code></pre>
 
-<p><code>self.navigationBar.barTintColor= [UIColor redColor];</code><br/>
-这时候的效果就是纯色的<br/>
-类似下面这样<br/>
-<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fsbvzqlgesj309f01oglk.jpg" alt=""/></p>
+<p><img src="media/15553377156905/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-04-15%20%E4%B8%8B%E5%8D%8810.55.00.png" alt="屏幕快照 2019-04-15 下午10.55.00"/></p>
 
-<h4 id="toc_1">Situation two</h4>
-
-<p><code>self.navigationBar.backgroundColor = [UIColor redColor];</code><br/>
-<img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fsbvypka0rj309e01p0so.jpg" alt=""/></p>
-
-<p>一种是有渐变的半透明效果，一种就是简单的纯色效果。</p>
+<p>如果要实现上面类似的效果，可以不使用自定义的cell去添加subview可以试着使用自带的方法给UITableViewCell的accessoryView赋值。</p>
 
                         
                       </div>
@@ -516,7 +449,353 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/11/21</span>
+                    <span class="date">2018/8/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15868701008905.html">
+                
+                  <h1>typealias 类型别名</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">组合协议</h2>
+
+<p>有时，你会遇到一种情况，你有多个协议，而且需要使用一个特定类型来把这些协议都实现。这种情况通常发生在当你定义了一个协议层来提高灵活性时。</p>
+
+<pre><code class="language-text">protocol CanRead {
+    func read()
+}
+protocol CanWrite {}
+protocol CanAuthorize {}
+protocol CanCreateUser {}
+
+typealias Administrator = CanRead &amp; CanWrite &amp; CanAuthorize &amp; CanCreateUser
+
+typealias User = CanRead &amp; CanWrite
+
+typealias Consumer = CanRead
+
+class Boss: Administrator{
+    func read() {
+        
+    }
+    
+}
+</code></pre>
+
+<p>在这里，我们定义了权限层。管理员可以做所有事情，用户可以读写，而消费者只能读。</p>
+
+<h2 id="toc_1">关联类型</h2>
+
+<p>这超出了本文的范围，但是协议的关联类型也可以通过类型别名来定义：</p>
+
+<pre><code class="language-text">protocol Example {
+ associatedtype Payload: Numeric
+}
+
+struct Implementation: Example {
+  typealias Payload = Int
+}
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/8/18</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509806102.html">
+                
+                  <h1>What's New in Storyboards</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h6 id="toc_0">故事板是在iOS和OS X上构建用户界面和应用程序流的好方法。了解如何有效地组织故事板，为接口定义segue，以及轻松地展开转换。深入讨论新的api，并听取关于如何创建优秀用户界面的技巧，并附带一些自定义的转场动画介绍和使用。</h6>
+
+<h2 id="toc_1">1. Refactor to Storyboard</h2>
+
+<p>在 storyboard 中选中对应的 xib 文件，然后点击Editor-&gt;Refactor to Storyboard</p>
+
+<p>可以把整个Storyboard文件中独立的部分重构出来。</p>
+
+<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.13.35.png" alt="屏幕快照 2018-12-17 上午10.13.35"/></p>
+
+<h2 id="toc_2">2. Storyboard Refrence</h2>
+
+<p>拖动Storyboard Refrence到故事版中</p>
+
+<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.42.11.png" alt="屏幕快照 2018-12-17 上午10.42.11"/></p>
+
+<p>对Storyboard Refrence进行设置，选择引用的故事版，以及故事版的引用id(必须和故事版中控制器的 Storyboard ID对应)bundle 可以为空，因为我这里是单项目工程，如果多个 bundle 的话就需要指定不同的 bundle。</p>
+
+<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.41.40.png" alt="屏幕快照 2018-12-17 上午10.41.40"/> </p>
+
+<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.44.49.png" alt="屏幕快照 2018-12-17 上午10.44.49"/></p>
+
+<h2 id="toc_3">3. Storyboard Segue</h2>
+
+<ul>
+<li><p>点击 segue 右侧Utilities -&gt; show the<br/>
+attributes inspector 可以设置自带的转场动画效果。<br/>
+<img src="media/15450120295637/15450155820528.jpg" alt=""/></p></li>
+<li><p>还可以指定Segue Class 在内部重写 perform 方法，记得要调用 [super perform]</p>
+<p><img src="media/15450120295637/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8811.37.11.png" alt="屏幕快照 2018-12-17 上午11.37.11"/></p>
+<ul>
+<li><p>user modal presentation</p>
+<ul>
+<li>赋值转换代理对象 transitioning delegate</li>
+<li>调用 [super perform] 开始    modal presentation</li>
+<li>提交动画用于 presentation</li>
+<li>展示动画效果给目标控制器</li>
+</ul></li>
+<li><p>user dismisses presentation</p></li>
+<li><p>提交动画用于 dismissal</p></li>
+<li><p>展示dissmissal动画效果（动画控制器）</p></li>
+</ul></li>
+</ul>
+
+<h2 id="toc_4">注意⚠️</h2>
+
+<h5 id="toc_5">1️⃣设置转场动画的代理要在视图加载之前设置，比如在 presentViewController 之前 还有在 viewDidAppear 里面（试了在 viewDidLoad）当中不成功。</h5>
+
+<pre><code class="language-text">#import &quot;PhotoViewController.h&quot;
+#import &quot;ScalingDismissAnimator.h&quot;
+
+@interface PhotoViewController ()&lt;UIViewControllerTransitioningDelegate&gt;
+
+@end
+
+@implementation PhotoViewController
+-(void)viewDidAppear:(BOOL)animated{
+self.transitioningDelegate = self;
+[super viewDidAppear:animated];
+}
+- (void)viewDidLoad {
+[super viewDidLoad];
+// Do any additional setup after loading the view.
+}
+
+- (IBAction)dismiss:(UIButton *)sender {
+[self dismissViewControllerAnimated:YES
+                         completion:nil];
+}
+
+-(id&lt;UIViewControllerAnimatedTransitioning&gt;)animationControllerForDismissedController:(UIViewController *)dismissed{
+return   [[ScalingDismissAnimator alloc]init];
+
+}
+
+</code></pre>
+
+<p>在UIViewControllerAnimatedTransitioning类中除了实现 init 方法之外一定要实现这两个重要方法</p>
+
+<pre><code class="language-text">- (NSTimeInterval)transitionDuration:(id &lt;UIViewControllerContextTransitioning&gt;)transitionContext {
+    
+return 动画持续时间;
+}
+
+
+-(void)animateTransition:(id&lt;UIViewControllerContextTransitioning&gt;)transitionContext{
+
+在这个方法里面做动画事件
+
+}
+
+</code></pre>
+
+<h5 id="toc_6">2️⃣fromViewController和toViewController</h5>
+
+<p>要注意fromViewController和toViewController 比如A-&gt;B（present）<br/>
+那么A是fromViewController B 是toViewController<br/>
+然后如果 dissmissViewController 的时候B是fromViewController A是toViewController</p>
+
+<h5 id="toc_7">3️⃣转场动画背景为黑色</h5>
+
+<p>可以先把目标控制器的 view 加到[transitionContext containerView]效果会好很多，然后再加入要发生动画的控制器的 view 比如</p>
+
+<pre><code class="language-text">-(void)animateTransitionEvent{
+    
+[self.containerView addSubview:self.toViewController.view];
+[self.containerView addSubview:self.fromViewController.view];
+[UIView animateWithDuration:self.transitionDuration delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+    self.fromViewController.view.transform = CGAffineTransformMakeScale(0.1, 0.1);
+} completion:^(BOOL finished) {
+    [self completeTransition];
+}];
+}
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/8/15</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509807752.html">
+                
+                  <h1>Speed Up Development with Xcode File Templates</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h4 id="toc_0">Custom Templates Directory</h4>
+
+<ul>
+<li><p>~/Library/Developer/Xcode/Templates<br/>
+进入到指定的模版路径</p></li>
+<li><p>mkdir -p ~/Library/Developer/Xcode/Templates/File\ Templates/Custom 创建一个Custom 的文件夹</p></li>
+</ul>
+
+<h5 id="toc_1">Xcode Default Templates Directory</h5>
+
+<p>/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/File Templates</p>
+
+<p>进入之后复制一些其他的模版到自己的custom模版 然后进入模版之后编辑自己经常使用的模版，可以极大的提升开发的效率。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/8/15</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509804237.html">
+                
+                  <h1>给UITableView边框加阴影</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>项目中有个需求要在UITableView加边框阴影  </p>
+
+<p>如果你的界面的UITableView是充满整个屏幕的话那么就可以使用这个简单的方法。   </p>
+
+<ul>
+<li>方法一</li>
+</ul>
+
+<pre><code class="language-text">tableView.layer.shadowColor = UIColor(white: 000000, alpha: 0.3).CGColor
+
+tableView.layer.shadowOffset = CGSize(width: -6, height: 6)
+
+tableView.layer.shadowOpacity = 1
+
+tableView.clipsToBounds = false //这句最重要了，不然就显示不出来
+</code></pre>
+
+<h4 id="toc_0">问题来了</h4>
+
+<p>我的界面UITableview上面有一个固定不动的区域，如果单纯的照上面写的话，就会出现tableview盖住上面的问题 <br/>
+其实就是因为clipsToBounds = false 不对超出边框的部分进行切割。<br/><br/>
+因为UIScrollview默认clipsToBounds = true,所以你可能之前没有见过超出部分依然还显示在界面。 </p>
+
+<p>我的界面如下图所示<br/>
+<img src="https://lh3.googleusercontent.com/-Zq0sRfLUSQA/W_Jq6QFUYnI/AAAAAAAAlSU/JFoyTporhCgZafmew7cHT7yWGo2fn1ATQCHMYCw/I/15426133929938.jpg" alt=""/></p>
+
+<p>如果父视图的clipsToBounds = true那么在上面的子控件的clipsToBounds 也是true<br/><br/>
+所以必须要在UITableview下面添加一个UIView，可以使用下面的代码<br/><br/>
+必须要使UITableView的clipsToBounds = true，下面的父视图的clipsToBounds = false</p>
+
+<ul>
+<li>方法二</li>
+</ul>
+
+<pre><code class="language-text">    self.backView = [[UIView alloc]initWithFrame:CGRectMake(originX, originY, Width,  height)];
+    self.backView.layer.shadowColor = [UIColor gh_colorFromHexString:@&quot;#002F81&quot;].CGColor;
+    self.backView.layer.shadowOffset = CGSizeMake(0, 2);
+    self.backView.layer.shadowOpacity = 0.1;
+    self.backView.layer.shadowRadius=8;//设置阴影半径
+    self.backView.clipsToBounds = false;
+    [self.view addSubview:self.backView];
+    
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,0, Width, height) style:UITableViewStylePlain];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.layer.cornerRadius = KScreenWidth/375 *4;
+    self.tableView.layer.masksToBounds = YES;
+    self.tableView.tableFooterView = [UIView new];
+    [self.backView addSubview:self.tableView];
+
+
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/8/11</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -555,9 +834,7 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
             
-                <div class="site-a-logo"><img src="/asset/img/logo.png" /></div>
-            
-                <h1>Code Log 👨‍💻‍ </h1>
+                <h1></h1>
                 <div class="site-des"></div>
                 <div class="social">
 
@@ -569,9 +846,9 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
 
 
 
-<a target="_blank" class="github" target="_blank" href="https://github.com/maweefeng" title="GitHub">GitHub</a>
+
 <a target="_blank" class="email" href="mailto:maweefeng@gmail.com" title="Email">Email</a>
-  <!-- <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a> -->
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
                 
               	 </div>
           	</div>
@@ -586,17 +863,15 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
 
       	<p class="cat-list">
         
+            <a href="%E7%94%B5%E5%BD%B1.html"><strong>电影</strong></a>
+        
+            <a href="%E5%85%B6%E5%AE%83.html"><strong>其它</strong></a>
+        
+            <a href="Python.html"><strong>Python</strong></a>
+        
             <a href="iOS.html"><strong>iOS</strong></a>
         
-            <a href="Git.html"><strong>Git</strong></a>
-        
-            <a href="CocoaPods.html"><strong>CocoaPods</strong></a>
-        
-            <a href="Django.html"><strong>Django</strong></a>
-        
-            <a href="Spiders.html"><strong>Spiders</strong></a>
-        
-            <a href="about.html"><strong>about</strong></a>
+            <a href="%E6%88%91.html"><strong>我</strong></a>
          
         </p>
 
@@ -613,31 +888,31 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
 	      
 		      
 			      <li class="post">
-			        <a href="15638450239357.html">判断bundle中存不存在某个文件</a>
+			        <a href="16076509804045.html">RACCommand</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15638515424059.html">去除tableview sectionheaderview的粘连效果</a>
+			        <a href="16076509805027.html">关于我</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15641370883413.html">快速的扩展类的初始化方法</a>
+			        <a href="16076509807659.html">点击事件发生在视图边界之外的时候</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15644628854335.html">切部分圆角</a>
+			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15646490459131.html">didSet 和 willSet</a>
+			        <a href="16076509804683.html">Xcode打包遇到的坑</a>
 			      </li>
 		     
 		  
@@ -682,11 +957,10 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
 
  <div class="page-bottom clearfix">
   <div class="row">
-   <!-- <p class="copyright">Copyright &copy; 2015
+   <p class="copyright">Copyright &copy; 2015
 Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
-Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p> -->
-<p class="copyright">日光之下 永无新事</p>
-</div>
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
 </div>
 
         </section>
@@ -713,7 +987,7 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p> -->
      
     </script>
 
-    <script src="asset/chart/all-min.js"></script><script type="text/javascript">$(function(){    var mwebii=0;    var mwebChartEleId = 'mweb-chart-ele-';    $('pre>code').each(function(){        mwebii++;        var eleiid = mwebChartEleId+mwebii;        if($(this).hasClass('language-sequence')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = Diagram.parse($(this).text());            diagram.drawSVG(eleiid,{theme: 'simple'});        }else if($(this).hasClass('language-flow')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = flowchart.parse($(this).text());            diagram.drawSVG(eleiid);        }    });});</script>
+    
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
 
 

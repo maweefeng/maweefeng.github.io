@@ -1,0 +1,441 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  iOS - 
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E7%94%B5%E5%BD%B1.html">电影</a></li>
+        
+            <li><a href="%E5%85%B6%E5%AE%83.html">其它</a></li>
+        
+            <li><a href="Python.html">Python</a></li>
+        
+            <li><a href="iOS.html">iOS</a></li>
+        
+            <li><a href="%E6%88%91.html">我</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
+</script>
+<div class="row">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="15766567217978.html">
+                
+                  <h1>iOS UICollectionView刷新时闪屏的解决方法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>在做相册的时候遇到了一个问题，就是UICollectionView刷新的时候会闪屏，网上搜了搜，解决的方法也是挺多，并没有一一尝试，只是存下来做个笔记，来看看遇到的几种方法。</p>
+
+<p>方法一：</p>
+
+<p>[UIView performWithoutAnimation:<sup>{</sup> <br/>
+   //刷新界面 <br/>
+    [self.collectionView reloadData]; <br/>
+ }];<br/>
+把刷新界面的事件放在这个BLock里就可以了！</p>
+
+<p>方法二</p>
+
+<p>[UIView animateWithDuration:0 animations:<sup>{</sup> <br/>
+  [collectionView performBatchUpdates:<sup>{</sup> <br/>
+    [collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]]; <br/>
+  } completion:nil]; <br/>
+}];<br/>
+方法三</p>
+
+<p>[UIView setAnimationsEnabled:NO]; <br/>
+[self.trackPanel performBatchUpdates:<sup>{</sup> <br/>
+  [collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]]; <br/>
+} completion:<sup>BOOL finished</sup> { <br/>
+  [UIView setAnimationsEnabled:YES]; <br/>
+}];<br/>
+如果你的APP只支持iOS7+，推荐使用第一种方式performWithoutAnimation简单方便。</p>
+
+<p>上面说的方法只能解决UIView的Animation，但是如果你的cell中还包含有CALayer的动画，比如这样：</p>
+
+<ul>
+<li><p>(void)layoutSubviews{<br/>
+[super layoutSubviews];</p>
+<p>self.frameLayer.frame = self.frameView.bounds;<br/>
+}<br/>
+上述情况多用于自定义控件使用了layer.mask的情况，如果有这种情况，上面提到的方法是无法取消CALayer的动画的，但是解决办法也很简单：</p></li>
+<li><p>(void)layoutSubviews{<br/>
+[super layoutSubviews];</p>
+<p>[CATransaction begin];<br/>
+[CATransaction setDisableActions:YES];</p>
+<p>self.frameLayer.frame = self.frameView.bounds;</p>
+<p>[CATransaction commit];<br/><br/>
+}</p></li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/12/18</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15650558092231.html">
+                
+                  <h1>Apple Developer Team</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>已经被添加到开发组当中，但是却一直在Xcode-&gt;Preferences-&gt;accounts 找不到自己已经添加的开发组。<br/>
+<img src="media/15650558092231/xcode_Account.jpg" alt="xcode_Account"/></p>
+
+<p>在百度搜了很久一直没有找到解决问题的答案，于是去了Google搜索，在stackoverflow发现了解决问题的答案。</p>
+
+<p>链接在此 <a href="https://stackoverflow.com/questions/35674208/development-team-not-showing-in-xcode/35696844">Development team not showing in Xcode</a> </p>
+
+<h2 id="toc_0">问题分析</h2>
+
+<p>首先博主声明苹果有两个系统</p>
+
+<ul>
+<li>Developer.apple.com system</li>
+<li>App Store connect system</li>
+</ul>
+
+<p>这是两个不同的系统，必须要保证同时加入了两个系统中的Team，如果对方要加入一个成员到开发组，从Developer开发者中心添加。</p>
+
+<p>看到这里依然没有解决我的答案，而且苹果已经在2018年修复了上面的问题。</p>
+
+<p>往下我看到了一个很重要的答案，就是权限问题，如果有足够的权限在开发者中心看到的页面如下。</p>
+
+<p><img src="media/15650558092231/15650583671343.jpg" alt="" style="width:1431px;"/></p>
+
+<p>如果没有足够的权限红色部分是不存在的，所以在xcode中无法查看自己所在的team，也是是无法管理描述文件，证书等等的，所以如果你没有看到红框部分，那么就需要找到管理员加入相应的权限。</p>
+
+<p><strong>答案</strong>:</p>
+
+<p>管理员去到AppStoreConnect，点击人员，划到最底下的 Developer Resources 勾选。</p>
+
+<p><img src="media/15650558092231/15650567168773.jpg" alt=""/></p>
+
+<p>这个就代表你就可以访问证书，标识，描述文件了，去到开发者中心也就发现了变化。</p>
+
+<p>此时重新打开Xcode-&gt;Preferences-&gt;accounts会发现自己加入的开发组已经出现。</p>
+
+<h2 id="toc_1">总结：</h2>
+
+<p>当你邀请某个开发人员加入开发组的时候一定要勾选允许资源访问，要不然也会遇到和我一样的问题。</p>
+
+<p>还有就是已经添加过了，但是没有足够的权限，就像我上面说的去AppStoreConnect修改权限。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/8/6</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
+
+
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   <a href="iOS_10.html">&laquo; Prev Page</a>  
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <div class="site-a-logo"><img src="/Users/cnsunrun/Desktop/507369_large.png" /></div>
+            
+                <h1></h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="email" href="mailto:maweefeng@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E7%94%B5%E5%BD%B1.html"><strong>电影</strong></a>
+        
+            <a href="%E5%85%B6%E5%AE%83.html"><strong>其它</strong></a>
+        
+            <a href="Python.html"><strong>Python</strong></a>
+        
+            <a href="iOS.html"><strong>iOS</strong></a>
+        
+            <a href="%E6%88%91.html"><strong>我</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="16076509803956.html">Xcode10报错libstdc</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804011.html">Masonry布局“Unable to simultaneously satisfy constraints”</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804045.html">RACCommand</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804076.html">代理修饰符</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804110.html">You don’t have write permissions</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+
+  </body>
+</html>

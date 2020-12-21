@@ -40,7 +40,7 @@
       <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
         <ul id="main-menu" class="left">
         
-        <li id=""><a target="self" href="index.html">Home</a></li>
+        <li id=""><a target="_self" href="index.html">Home</a></li>
         
         <li id=""><a target="_self" href="archives.html">Archives</a></li>
         
@@ -69,7 +69,7 @@
 <aside class="left-off-canvas-menu">
       <ul class="off-canvas-list">
         
-        <li><a target="self" href="index.html">Home</a></li>
+        <li><a target="_self" href="index.html">Home</a></li>
         
         <li><a target="_self" href="archives.html">Archives</a></li>
         
@@ -80,6 +80,12 @@
             <li><a href="%E7%94%B5%E5%BD%B1.html">电影</a></li>
         
             <li><a href="%E5%85%B6%E5%AE%83.html">其它</a></li>
+        
+            <li><a href="Python.html">Python</a></li>
+        
+            <li><a href="iOS.html">iOS</a></li>
+        
+            <li><a href="%E6%88%91.html">我</a></li>
          
 
       </ul>
@@ -102,131 +108,54 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="16076509804270.html">
+                <a class="clearlink" href="16076509808207.html">
                 
-                  <h1>设置图片拉伸范围</h1>
+                  <h1>APP 后台任务以及捕捉bugly无法捕捉的异常</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<pre><code class="language-text">- (UIImage *)stretchableImageWithLeftCapWidth:(NSInteger)leftCapWidth topCapHeight:(NSInteger)topCapHeight 
-</code></pre>
+                        	<h4 id="toc_0">后台任务</h4>
 
-<p>这个函数是UIImage的一个实例函数，它的功能是创建一个内容可拉伸，而边角不拉伸的图片，需要两个参数，第一个是左边不拉伸区域的宽度，第二个参数是上面不拉伸的高度。</p>
-
-<p>根据设置的宽度和高度，将接下来的一个像素进行左右扩展和上下拉伸。</p>
-
-<p>注意：可拉伸的范围都是距离leftCapWidth后的1竖排像素，和距离topCapHeight后的1横排像素。</p>
-
-<p>参数的意义是，如果参数指定10，5。那么，图片左边10个像素，上边5个像素。不会被拉伸，x坐标为11和一个像素会被横向复制，y坐标为6的一个像素会被纵向复制。</p>
-
-<blockquote>
-<p>注意：只是对一个像素进行复制到一定宽度。而图像后面的剩余像素也不会被拉伸。</p>
-</blockquote>
-
-<pre><code class="language-text">UIImage *img=[UIImage imageNamed:@&quot;bubbleSelf.png&quot;];
-img=[img stretchableImageWithLeftCapWidth:15 topCapHeight:12];
-UIImageView *imgView=[[UIImageView alloc]initWithImage:img];
-[imgView setFrame:CGRectMake(10, 10, 200, 200)];
-[self. view addSubview:imgView];
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/12/11</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509804301.html">
-                
-                  <h1>Git基础流</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">如何将本地代码提交到远程git仓库</h3>
+<p>iOS 后台保活的 5 种方式：Background Mode、Background Fetch、Silent Push、PushKit、Background Task。</p>
 
 <ul>
-<li><p>第一步：建立git仓库 <br/>
-cd到你的本地项目根目录下，执行git命令 </p>
-<blockquote>
-<p>git init</p>
-</blockquote></li>
-<li><p>第二步：将项目的所有文件添加到仓库中   </p>
-<blockquote>
-<p>git add .  </p>
-</blockquote></li>
-<li><p>第三步：将add的文件commit到仓库</p>
-<blockquote>
-<p>git commit -m &quot;注释语句&quot;</p>
-</blockquote></li>
-<li><p>第四步：去github上创建自己的Repository</p></li>
-<li><p>第五步：重点来了，将本地的仓库关联到github上    </p>
-<blockquote>
-<p>git remote add origin 仓库url</p>
-</blockquote>
-<p>后面的https链接地址换成你自己的仓库url地址，也就是上面红框中标出来的地址</p></li>
-<li><p>第六步：上传github之前，要先pull一下，执行如下命令：</p>
-<blockquote>
-<p>git pull origin master</p>
-</blockquote>
-<p>遇到refusing to merge unrelated histories 使用以下代码  </p>
-<blockquote>
-<p>git pull origin master --allow-unrelated-histories</p>
-</blockquote></li>
-<li><p>第七步，也就是最后一步，上传代码到github远程仓库</p>
-<blockquote>
-<p>git push -u origin master  </p>
-</blockquote>
-<p>遇到提示fatal: refusing to merge unrelated histories可以试一下下面的强制push</p>
-<blockquote>
-<p>git push -u origin master -f //强制push</p>
-</blockquote></li>
+<li>使用 Background Mode 方式的话，App Store 在审核时会提高对 App 的要求。通常情况下，只有那些地图、音乐播放、VoIP 类的 App 才能通过审核。</li>
+<li>Background Fetch 方式的唤醒时间不稳定，而且用户可以在系统里设置关闭这种方式，导致它的使用场景很少。</li>
+<li>Silent Push 是推送的一种，会在后台唤起 App 30 秒。它的优先级很低，会调用 application:didReceiveRemoteNotifiacation:fetchCompletionHandler: 这个 delegate，和普通的 remote push notification 推送调用的 delegate 是一样的。</li>
+<li>PushKit 后台唤醒 App 后能够保活 30 秒。它主要用于提升 VoIP 应用的体验。</li>
+<li>Background Task 方式，是使用最多的。App 退后台后，默认都会使用这种方式。</li>
 </ul>
 
-<h3 id="toc_1">列出分支的方法</h3>
+<p>接下来，我们就看一下，<strong>Background Task 方式为什么是使用最多的，它可以解决哪些问题？</strong></p>
 
-<p>列出所有远程分支<br/>
-$ git branch -r</p>
+<p>在你的程序退到后台以后，只有几秒钟的时间可以执行代码，接下来就会被系统挂起。进程挂起后所有线程都会暂停，不管这个线程是文件读写还是内存读写都会被暂停。但是，数据读写过程无法暂停只能被中断，中断时数据读写异常而且容易损坏文件，所以系统会选择主动杀掉 App 进程。</p>
 
-<p>列出所有本地分支和远程分支<br/>
-$ git branch -a</p>
+<p>而 Background Task 这种方式，就是系统提供了 beginBackgroundTaskWithExpirationHandler 方法来延长后台执行时间，可以解决你退后台后还需要一些时间去处理一些任务的诉求。</p>
 
-<h3 id="toc_2">新建分支</h3>
+<p>Background Task 方式的使用方法，如下面这段代码所示：</p>
 
-<ul>
-<li><p>新建一个分支，但依然停留在当前分支<br/><br/>
-$ git branch [branch-name]<br/><br/>
-如果想要切换到新建的分支，可以使用git checkout  [branch-name]</p></li>
-<li><p>新建一个分支，并切换到该分支<br/><br/>
-$ git checkout -b [branch]</p></li>
-<li><p>新建一个分支，指向指定commit<br/><br/>
-$ git branch [branch] [commit]</p></li>
-</ul>
+<pre><code class="language-text">- (void)applicationDidEnterBackground:(UIApplication *)application {
+    self.backgroundTaskIdentifier = [application beginBackgroundTaskWithExpirationHandler:^( void) {
+        [self yourTask];
+    }];
+}
 
-<p>之前是提交到主分支 所以使用的是git push -u origin master<br/><br/>
-现在的话不是主分支所以要改变一下分支的名称如下<br/><br/>
-最后提交的时候 可以使用git push -u origin [branch-name]</p>
+</code></pre>
 
-<blockquote>
-<p>前提:只有项目中关联一份远程git仓库的时候才可以使用以下方法去新建分支 如果没关联任何分支也查不到任何远程分支</p>
-</blockquote>
+<p>在这段代码中，yourTask 任务最多执行 3 分钟，3 分钟内 yourTask 运行完成，你的 App 就会挂起。 如果 yourTask 在 3 分钟之内没有执行完的话，系统会强制杀掉进程，从而造成崩溃，这就是为什么 App 退后台容易出现崩溃的原因。</p>
+
+<h3 id="toc_1">捕捉被系统杀死的异常</h3>
+
+<p>系统杀死的app是无法捕捉到崩溃信号的，所以上面的方法也就无效了。</p>
+
+<p>因为app在后台执行任务只会保活三分钟，如果我们在[self yourTask];中的任务执行超过三分钟，那么我们就无法捕获这种崩溃。</p>
+
+<p>但是我们可以在应用被杀死之前先把堆栈信息保存到内存当中，这样当app下次启动联网的时候就可以上传这些堆栈信息到我们自身的服务器当中，分析崩溃日志以及找出异常原因。</p>
+
+<h3 id="toc_2">打印调用堆栈信息</h3>
+
+<p>NSLog(@&quot;%@&quot;,[NSThread callStackSymbols]);</p>
 
                         
                       </div>
@@ -235,8 +164,10 @@ $ git branch [branch] [commit]</p></li>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/12/11</span>
-                    
+                    <span class="date">2020/4/10</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -250,111 +181,192 @@ $ git branch [branch] [commit]</p></li>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="16076509804341.html">
+                <a class="clearlink" href="16076509805463.html">
                 
-                  <h1>视图的绘制周期</h1>
+                  <h1>Swift & Objective-C & C++之间的混编</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>当view第一次在屏幕上显示的时候，系统会绘制它的内容，然后系统会截取内容的快照，并且将快照作为视图的可见外观，如果你永远不改变视图的内容，那么视图的绘制代码永远不会改变。如果更改了视图的内容，不用直接重新绘制，而是使用<code>setNeedsDisplay</code>或者<code>setNeedsDisplayInRect</code>方法是视图无效。这些方法会告知视图内容以及改变并且需要在下一次进行重绘。如果需要立马重绘，那么需要使用<code>layoutIfNeeded</code>方法。</p>
+                        	<h3 id="toc_0">①Objective-C 调用 C++</h3>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/12/11</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<p>OC本身可以直接调用C的代码 比如直接可以调用printf方法。<br/>
+但是OC中的.m直接编译C++的代码就会出现编译错误<br/>
+需要把OC.m改成OC.mm之后（objective-c变成了objective-c++）引入iostream(<code>#include&lt;iostream&gt;</code>)就可以直接编译了。<br/>
+这可以在.mm文件当中直接使用c++的代码。<br/>
+也可以另外新建一个c++的文件，并且创建.h文件。</p>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509804371.html">
-                
-                  <h1>设置Cell分割线顶头</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h6 id="toc_0">UITableView设置系统cell的分割线顶头</h6>
+<pre><code class="language-text">********CPPHello.hpp声明文件********
+#ifndef CPPHello_hpp
+#define CPPHello_hpp
 
-<pre><code class="language-text">- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    cell.layoutMargins = UIEdgeInsetsZero;
-    cell.separatorInset = UIEdgeInsetsZero;
-    cell.preservesSuperviewLayoutMargins = NO;
+#include &lt;stdio.h&gt;
+class CPPHello{
+    
+public:
+    static void sayHello();
+};
+
+#endif /* CPPHello_hpp */
+********CPPHello.cpp实现文件********
+#include &quot;CPPHello.hpp&quot;
+
+void CPPHello::sayHello(){
+    
+    printf(&quot;hello world&quot;);
+    
 }
 </code></pre>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/12/11</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<p><strong>注意:</strong>oc调用c++必须要把.m改成.mm,要不然会报错。</p>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509804401.html">
-                
-                  <h1>Runtime运行时</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ol>
-<li><p>runtime调用方法</p>
-<pre><code class="language-text">- (void)test {
-TestModel *objct = [[TestModel alloc] init];<br/>
-((void (*) (id, SEL)) objc_msgSend) (objct, sel_registerName(&quot;country&quot;));<br/>
-((void (*) (id, SEL, NSString *)) objc_msgSend) (objct, sel_registerName(&quot;getProvince:&quot;), @&quot;广东省&quot;)；<br/>
-((void (*) (id, SEL, NSString *, NSString *)) objc_msgSend) (objct, sel_registerName(&quot;getCity:station:&quot;), @&quot;深圳市&quot;, @&quot;世界之窗&quot;)；<br/>
-NSString *weather = ((NSString* (*) (id, SEL)) objc_msgSend) (objct, sel_registerName(&quot;getWeather&quot;));<br/>
-NSLog(@&quot;%@&quot;, weather);<br/>
-}
-</code></pre></li>
-<li><p>给分类添加属性</p>
-<pre><code class="language-#import">#import &lt;objc/runtime.h&gt;
-static void *TestStringKey = &amp;TestStringKey;<br/>
-@implementation TestModel (String)<br/>
-- (void)setTestString:(NSString *)testString {<br/>
-objc_setAssociatedObject(self, TestStringKey, testString, OBJC_ASSOCIATION_COPY);<br/>
-}<br/>
-- (NSString *)testString {<br/>
-return objc_getAssociatedObject(self, TestStringKey);<br/>
-}<br/>
+<h3 id="toc_1">②C++ 调用 Objective-C</h3>
+
+<p>新建cocoaTouch中的类，语言选择Objective-C，比如<code>objcHello.h</code>和<code>objcHello.m</code>然后在刚才的c++文件(<code>CPPHello.cpp</code>)中import <code>objcHello.h</code>就会出现编译错误。<br/>
+所以c++语言不能直接import OC的头文件要对头文件进行修改，把头文件所有内容删除替换成c++能够识别的代码比如c或者c++的代码。</p>
+
+<pre><code class="language-text">//objcHello.h
+void objcSayHello();
+</code></pre>
+
+<p>另外<code>objcHello.m</code>文件要修改成<code>objcHello.mm</code>文件，然后<code>#import &lt;Foundation/Foundation.h&gt;</code>之后就可以在<code>objcHello.mm</code>文件调用oc的代码了。<br/>
+并且可以在<code>objcHello.mm</code>文件中写oc的类了，比如如下代码。</p>
+
+<pre><code class="language-text">#import &lt;Foundation/Foundation.h&gt;
+#import &quot;ObjcHello.h&quot;
+
+@interface ObjcHello:NSObject
+
+-(void)sayHello;
+
 @end
-</code></pre></li>
-<li><p>获取属性</p>
-<pre><code class="language-text">使用class_copyIvarList获得的属性数组是Ivar类型 
-可以使用ivar_getName将ivar类型转换为char<br/>
-再使用NSString 的stringWithUTF8String方法转化为NSString类型。
-</code></pre></li>
-</ol>
+
+@implementation ObjcHello
+
+-(void)sayHello{
+    
+    NSLog(@&quot;hello objc&quot;);
+}
+@end
+
+
+void objcSayHello(){
+    
+//  NSLog(@&quot;hello Objc&quot;);
+    ObjcHello * h = [ObjcHello new];
+    [h sayHello];
+}
+</code></pre>
+
+<p>然后修改完之后引入比如<code>#include &quot;ObjcHello.h&quot;</code>就可以在里面对.h文件的方法进行调用了。</p>
+
+<pre><code class="language-text">#include &quot;CPPHello.hpp&quot;
+#include &quot;ObjcHello.h&quot;
+void CPPHello::sayHello(){
+    
+//   printf(&quot;hello world&quot;);
+    objcSayHello();
+    
+}
+</code></pre>
+
+<h3 id="toc_2">③Swift调用C</h3>
+
+<p>新建<code>CHello.h</code>文件，然后创建头文件，然后选择创建桥接文件。<br/>
+在这个桥接文件中#import其他公开头文件用来暴露给swift文件。</p>
+
+<p>1.在.h文件中声明一个方法</p>
+
+<pre><code class="language-text">CHello.h
+#ifndef CHello_h
+#define CHello_h
+
+#include &lt;stdio.h&gt;
+void sayHello();
+#endif /* CHello_h */
+</code></pre>
+
+<p>2.在.c文件中实现一个方法</p>
+
+<pre><code class="language-text">Chello.c 
+#include &quot;CHello.h&quot;
+
+void sayHello(){
+    
+    printf(&quot;hello c&quot;);
+    
+}
+</code></pre>
+
+<p>3.在桥接文件中引入<code>CHello.h</code></p>
+
+<pre><code class="language-text">//  Use this file to import your target&#39;s public headers that you would like to expose to Swift.
+//
+
+#import &quot;CHello.h&quot;
+</code></pre>
+
+<p>4.在swift当中直接调用<code>sayHello()</code>方法</p>
+
+<h3 id="toc_3">④Swift &amp; Objective-C &amp; C++混编</h3>
+
+<p>新建OC的类比如OCHello.h和OCHello.m</p>
+
+<pre><code class="language-text">#import &lt;Foundation/Foundation.h&gt;
+
+@interface OCHello : NSObject
+-(void)hello;
+@end
+</code></pre>
+
+<pre><code class="language-text">#import &quot;OCHello.h&quot;
+
+@implementation OCHello
+-(void)hello{
+    
+    NSLog(@&quot;oc sayHello&quot;);
+}
+@end
+</code></pre>
+
+<p>然后在桥接文件中引入<code>OCHello.h</code><br/>
+在swift当中就可以直接调用,代码如下所示</p>
+
+<pre><code class="language-text">import UIKit
+class ViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        var h = OCHello();
+        h.hello()
+
+    }
+}
+</code></pre>
+
+<p>如果想要swift调用c++的话可以把<code>OCHello.m</code>改成<code>OCHello.mm</code><br/>
+在.mm文件中写c++的代码如下所示</p>
+
+<pre><code class="language-text">#include &lt;iostream&gt;
+#import &quot;OCHello.h&quot;
+
+@implementation OCHello
+-(void)hello{
+    
+//    NSLog(@&quot;oc sayHello&quot;);
+    std::cout&lt;&lt;&quot;hello cpp\n&quot;;
+}
+@end
+</code></pre>
+
+<p>swift当中的代码不做任何变化，这样就做到了三种语言的混编。</p>
+
+<h4 id="toc_4">提示</h4>
+
+<p>.mm文件当中可以写oc，c，c++的代码<br/>
+oc可以完全兼容c语言的代码<br/>
+swift不可以直接执行c语言的代码,要做一些声明比如上面的调用实现。<br/>
+swift不可以执行c++的代码，要用oc做中间层，一般要避免。</p>
 
                         
                       </div>
@@ -363,8 +375,10 @@ return objc_getAssociatedObject(self, TestStringKey);<br/>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/12/11</span>
-                    
+                    <span class="date">2020/2/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -450,8 +464,10 @@ git config --global <a href="mailto:user.maweefeng@gmail.com">user.maweefeng@gma
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/12/11</span>
-                    
+                    <span class="date">2019/12/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%85%B6%E5%AE%83.html'>其它</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -465,30 +481,18 @@ git config --global <a href="mailto:user.maweefeng@gmail.com">user.maweefeng@gma
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="16076509804464.html">
+                <a class="clearlink" href="16076509806513.html">
                 
-                  <h1>终端命令设置代理</h1>
+                  <h1>狗十三</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h4 id="toc_0">让终端走代理的几种方法</h4>
+                        	<p>没有所谓的彻底反省，每次以为大家都能反省的时候，接下来就是给观众们当头一棒。</p>
 
-<p><code>Macproxyterminal</code></p>
+<p>最后李玩问起自己父母当时怎么认识的，然后李玩的爸爸立马声泪俱下，用手盖住女儿的脸，不让女儿看到自己流下的眼泪。</p>
 
-<ul>
-<li><p>方法1:<br/>
-在终端中直接运行命令<br/>
-export http_proxy=<a href="http://proxyAddress:port">http://proxyAddress:port</a><br/>
-这个办法的好处是简单直接，并且影响面很小（只对当前终端有效，退出就不行了）。<br/>
-如果你用的是ss代理，在当前终端运行以下命令，那么wget curl 这类网络命令都会经过ss代理<br/>
-export ALL_PROXY=socks5://127.0.0.1:1080</p></li>
-<li><p>方法2:<br/>
-比如我现在使用的shadowsocks工具可以直接设置全局代理，勾选就行了，一般使用的是PAC自动模式，这样可以根据条件选择代理or直连，保证速度和网站的可达性。</p></li>
-</ul>
-
-<p><img src="media/15427834491808/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-04%20%E4%B8%8B%E5%8D%881.09.57.png" alt="屏幕快照 2018-12-04 下午1.09.57"/><br/>
-shadowSocks软件的Git地址为<a href=""><code>https://github.com/shadowsocks/ShadowsocksX-NG</code></a></p>
+<p>说，自己不是个好爸，大概是年轻的时候犯下了错误，导致离婚，可能很后悔，但是再也回不去了。</p>
 
                         
                       </div>
@@ -497,8 +501,10 @@ shadowSocks软件的Git地址为<a href=""><code>https://github.com/shadowsocks/
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/12/11</span>
-                    
+                    <span class="date">2019/12/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%94%B5%E5%BD%B1.html'>电影</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -512,44 +518,77 @@ shadowSocks软件的Git地址为<a href=""><code>https://github.com/shadowsocks/
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="16076509804499.html">
+                <a class="clearlink" href="16076509804341.html">
                 
-                  <h1>Block防止内存泄漏问题</h1>
+                  <h1>视图的绘制周期</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h3 id="toc_0">关于block的一点注意 特别是网络请求这块</h3>
+                        	<p>当view第一次在屏幕上显示的时候，系统会绘制它的内容，然后系统会截取内容的快照，并且将快照作为视图的可见外观，如果你永远不改变视图的内容，那么视图的绘制代码永远不会改变。如果更改了视图的内容，不用直接重新绘制，而是使用<code>setNeedsDisplay</code>或者<code>setNeedsDisplayInRect</code>方法是视图无效。这些方法会告知视图内容以及改变并且需要在下一次进行重绘。如果需要立马重绘，那么需要使用<code>layoutIfNeeded</code>方法。</p>
 
-<p>Block捕获外界变量销毁<br/>
-我们再进一步想想，Block有个最大的特点是可以访问当前的作用域，我们随便创建一个数组，重复上面操作，是否能够销毁...</p>
+<p><img src="media/16076509804341/iOS-4.jpg" alt="iOS-4"/><br/>
+<img src="media/16076509804341/iOS-5.jpg" alt="iOS-5"/></p>
 
-<pre><code class="language-text">- (void)blockDemo {
-    NSArray *outsideArray = @[@1, @2, @3];
-    
-    [self.service requestWithParms:nil WithResult:^(id data, NSError *error) {
-        // 处理业务逻辑
-        // ...
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/10/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
         
-        NSLog(@&quot;Result from block:%@&quot;, data);
-        NSLog(@&quot;outsideArray :%@&quot;, outsideArray);
-    }];
-}
+			<div class="article">
+                <a class="clearlink" href="16076509806983.html">
+                
+                  <h1>启动优化</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><code>main 函数</code>执行开始会进入到<code>appDelegate</code> 的 <code>didFinishLaunchingWithOptions</code>方法执行</p>
 
-打印结果：
-2018-03-25 19:55:40.997535+0800 NetworkCallback[4970:3641450] NextPageViewController has been dealloc!
-2018-03-25 19:55:44.831721+0800 NetworkCallback[4970:3641450] outsideArray :(
-    1,
-    2,
-    3
-)
+<p>很多人在一些第三方 SDK 初始化配置，各种初始化的工作都放在<code>appDelegate</code> 的 <code>didFinishLaunchingWithOptions</code> 这个阶段执行，其实是不合理的，正确的做法应该是弄清楚哪些是APP 启动时候真正需要的初始化功能，哪些是在其对应功能开始使用时才需要初始化的，梳理完之后把他们都放在对应的阶段进行。</p>
+
+<p>首屏渲染这部分的代码止于<code>didFinishLaunchingWithOptions</code> 方法作用于结束。因为这时候首屏已经完成了渲染，所以可以不着急立马对其优化，但是那些阻碍线程的操作还是要优先处理的。</p>
+
+<p>首屏渲染完成之后的阶段应该是非首屏其他业务模块的初始化，监听的注册，配置文件的读取等等。</p>
+
+<h3 id="toc_0">时间统计</h3>
+
+<p>可以在<code>Edit Scheme</code>中添加<code>Arguments</code>用来统计启动时间 </p>
+
+<p><img src="media/15535088659442/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-04-09%20%E4%B8%8A%E5%8D%8811.51.38.png" alt="屏幕快照 2019-04-09 上午11.51.38"/></p>
+
+<p>添加参数<code>DYLD_PRINT_STATISTICS</code> 并且 value 为1 </p>
+
+<p>这样启动app的时候就会有时间统计 </p>
+
+<pre><code class="language-text">Total pre-main time: 3.3 seconds (100.0%)
+         dylib loading time: 551.91 milliseconds (16.4%)
+        rebase/binding time: 1.8 seconds (54.5%)
+            ObjC setup time: 754.55 milliseconds (22.5%)
+           initializer time: 217.73 milliseconds (6.4%)
+           slowest intializers :
+             libSystem.B.dylib :  12.87 milliseconds (0.3%)
 </code></pre>
 
-<p>注意，vc先销毁了，但是5s后，这个临时变量竟然还没有销毁。那么这个变量存储在哪里呢？留个悬念<br/>
-考虑一下，如果你在Block代码里访问了一个超大的文件，这个文件必然是保存内存的，然后此时你遇上了网络慢，接口好久没有返回，那么这个超大的文件就会一直占用内存<br/>
-内存小结<br/>
-使用Block无论是否有循环引用的可能，都要使用weakself，来防止vc被持有，而延迟释放<br/>
-Block会导致对象的生命周期被延长，特别是当某些大文件被Block访问时，有几率导致内存不足</p>
+<p>同时这个顺序也就代表了应用启动时的执行顺序。</p>
 
                         
                       </div>
@@ -558,8 +597,154 @@ Block会导致对象的生命周期被延长，特别是当某些大文件被Blo
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/12/11</span>
-                    
+                    <span class="date">2019/10/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509806591.html">
+                
+                  <h1>Swifter4</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ol>
+<li><p>Curring（柯里化）</p>
+<p>把接受多个参数的方法变换成接受第一个参数的方法，并且返回接受余下的参数并返回结果的新方法。</p>
+<p>在Swift2中可以将方法进行Curring 但是在Swift4不再支持方法的柯里化</p>
+<p><img src="media/15499574789691/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-02-12%20%E4%B8%8B%E5%8D%883.48.34.png" alt="屏幕快照 2019-02-12 下午3.48.34"/></p></li>
+<li><p>@autoclosure</p>
+<pre><code class="language-text">func logIfTrue(predicate: () -&gt; Bool) {
+        if predicate() {<br/>
+            print(&quot;true&quot;)<br/>
+        }<br/>
+    }<br/>
+调用方式1       <br/>
+logIfTrue(predicate: {2 &gt; 1})<br/>
+调用方式2      <br/>
+logIfTrue{2 &gt; 1}
+</code></pre>
+<p>原来的闭包的书写方式如上面所写，但是看起来不是很容易理解，这时就出现了自动闭包。</p>
+<p>swift4 中的自动闭包书写和 swift2中不同 区别点在@autoclosure的位置，swift2中是在参数之前，在 swift4中是在参数之后。</p>
+<pre><code class="language-text">func logIfTrue(predicate:@autoclosure () -&gt; Bool) {
+        if predicate() {<br/>
+            print(&quot;true&quot;)<br/>
+        }<br/>
+    }<br/>
+logIfTrue(predicate: 2 &gt; 1)
+</code></pre>
+<p>另外需要注意@autoclosure 并不支持带有输入参数的写法，只有形如（）-&gt; T 的参数才能使用这个特性进行简化。</p></li>
+<li><p>Designated、Convenience 和Required</p>
+<p>只有在子类重写了父类的 designated 方法的时候才可以直接调用父类的 convenience 方法</p>
+<p>如果添加 required 关键字修饰初始化方法，则在子类中必须对该 required 方法进行实现。这样做的好处就是可以保证依赖于某个 designated 方法的 convenience 一直可以被使用。</p></li>
+<li><p>Swift 中的Array,Dictionary和Set在集合中只能存储同一个类型的元素，但是NSArray可以存储多种不同类型的数据，如果想要Array 存储不同类型的数据，可以使用Any AnyObject</p>
+<p><code>let store:[Any] = [1,&quot;1&quot;]</code></p></li>
+</ol>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/10/10</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509805631.html">
+                
+                  <h1>UINavigationItem</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>纵观Apple的官方应用程式的导航栏你就会发现在iOS11之后导航栏的高度会自动变化，文字的大小以及位置也会随之变化。<br/>
+这是iOS11之后的新特性，苹果是使用给UINavigationItem添加扩展的方法增加的新功能，这也给了我们新的一种思路，为了不去修改之前代码的原则上添加新的功能的方式。</p>
+
+<pre><code class="language-text">extension UINavigationItem {
+    public enum LargeTitleDisplayMode : Int {
+        /// Automatically use the large out-of-line title based on the state of the previous item in the navigation bar. An item with largeTitleDisplayMode=Automatic will show or hide the large title based on the request of the previous navigation item. If the first item pushed is set to Automatic, then it will show the large title if the navigation bar has prefersLargeTitles=YES.
+        case automatic
+
+        
+        /// Always use a larger title when this item is top most.
+        case always
+
+        
+        /// Never use a larger title when this item is top most.
+        case never
+    }
+}
+</code></pre>
+
+<ul>
+<li>largeTitie的两种展现形式如下所示</li>
+</ul>
+
+<p><img src="media/15439873228318/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-05%20%E4%B8%8B%E5%8D%881.23.25.png" alt="屏幕快照 2018-12-05 下午1.23.25 " style="width:220px;"/><img src="media/15439873228318/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-05%20%E4%B8%8B%E5%8D%881.23.29.png" alt="屏幕快照 2018-12-05 下午1.23.29 " style="width:220px;"/></p>
+
+<h2 id="toc_0">设置方式</h2>
+
+<ul>
+<li><p>xib设置</p>
+<ul>
+<li>never 一直都是小标题</li>
+<li>automatic 自动切换</li>
+<li>always 一直都是大标题</li>
+</ul></li>
+</ul>
+
+<p><img src="media/15439873228318/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-05%20%E4%B8%8B%E5%8D%881.30.58.png" alt="屏幕快照 2018-12-05 下午1.30.58"/></p>
+
+<ul>
+<li><p>代码设置</p>
+<pre><code class="language-text">因为这是新增加的属性所以要做判断
+ if #available(iOS 11.0, *) {<br/>
+        self.navigationItem.largeTitleDisplayMode = .automatic<br/>
+        } else {<br/>
+            // Fallback on earlier versions<br/>
+};
+</code></pre></li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/9/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -608,7 +793,7 @@ Block会导致对象的生命周期被延长，特别是当某些大文件被Blo
 
 
 
-
+<a target="_blank" class="email" href="mailto:maweefeng@gmail.com" title="Email">Email</a>
   <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
                 
               	 </div>
@@ -627,6 +812,12 @@ Block会导致对象的生命周期被延长，特别是当某些大文件被Blo
             <a href="%E7%94%B5%E5%BD%B1.html"><strong>电影</strong></a>
         
             <a href="%E5%85%B6%E5%AE%83.html"><strong>其它</strong></a>
+        
+            <a href="Python.html"><strong>Python</strong></a>
+        
+            <a href="iOS.html"><strong>iOS</strong></a>
+        
+            <a href="%E6%88%91.html"><strong>我</strong></a>
          
         </p>
 
@@ -643,31 +834,31 @@ Block会导致对象的生命周期被延长，特别是当某些大文件被Blo
 	      
 		      
 			      <li class="post">
-			        <a href="16076509803956.html">Xcode10报错libstdc</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="16076509804011.html">Masonry布局“Unable to simultaneously satisfy constraints”</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
 			        <a href="16076509804045.html">RACCommand</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509804076.html">代理修饰符</a>
+			        <a href="16076509805027.html">关于我</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509804110.html">You don’t have write permissions</a>
+			        <a href="16076509807659.html">点击事件发生在视图边界之外的时候</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804683.html">Xcode打包遇到的坑</a>
 			      </li>
 		     
 		  

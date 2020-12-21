@@ -1,128 +1,104 @@
 <!doctype html>
 <html class="no-js" lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
     
-    iOS - Code Log 👨‍💻‍ 
-    
+  iOS - 
+  
   </title>
   
   
-  <link href="atom.xml" rel="alternate" title="Code Log 👨‍💻‍ " type="application/atom+xml">
-  <link rel="stylesheet" href="asset/css/foundation.min.css" />
-  <link rel="stylesheet" href="asset/css/docs.css" />
-  <script src="asset/js/vendor/modernizr.js"></script>
-  <script src="asset/js/vendor/jquery.js"></script>
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
   <script src="asset/highlightjs/highlight.pack.js"></script>
   <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script>
-    hljs.initHighlightingOnLoad();
-
-    window.onload = function () {
-
-      var footerPath = window.location.pathname.split('/')[window.location.pathname.split('/').length - 1];
-      if (footerPath == 'archives.html') {
-        // alert('分类');
-        document.getElementById('main-menu').getElementsByTagName("li")[1].className = "is_active";
-
-      } else if (footerPath == 'about.html') {
-        document.getElementById('main-menu').getElementsByTagName("li")[2].className = "is_active";
-
-        // alert('关于我');
-  
-      } else {
-        // alert('首页');
-        document.getElementById('main-menu').getElementsByTagName("li")[0].className = "is_active";
-      }
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
 
 
-    }
-  </script>
-  <script type="text/javascript">
-    function before_search() {
-      var searchVal = 'site: ' + document.getElementById('search_input').value;
-      document.getElementById('search_q').value = searchVal;
-      return true;
-    }
-  </script>
-</head>
-
-<body class="antialiased hide-extras">
-
-  <div class="marketing off-canvas-wrap" data-offcanvas>
-    <div class="inner-wrap">
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
 
 
-      <nav class="top-bar docs-bar hide-for-small" data-topbar>
-
-
-        <section class="top-bar-section">
-          <div class="row">
-            <div style="position: relative;width:100%;">
-              <div style="position: absolute; width:100%;">
-                <ul id="main-menu" class="left">
-                  
-                  <li id=""><a id="" target="_self" href="index.html">Home</a></li>
-                  
-                  <li id=""><a id="" target="_self" href="archives.html">Archives</a></li>
-                  
-                  <li id=""><a id="" target="_self" href="about.html">About</a></li>
-                  
-                </ul>
-
-                <ul class="right" id="search-wrap">
-                  <li>
-                    <form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
-                      <input type="hidden" id="search_q" name="q" value="" />
-                      <input tabindex="1" type="search" id="search_input" placeholder="Search" />
-                    </form>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-      </nav>
-
-      <nav class="tab-bar show-for-small">
-        <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-          <span> &nbsp; Code Log 👨‍💻‍ </span>
-        </a>
-      </nav>
-
-      <aside class="left-off-canvas-menu">
-        <ul class="off-canvas-list">
-
-          <li><a href="index.html">Home</a></li>
-          <li><a href="archives.html">Archives</a></li>
-          
-          <li><label>Categories</label></li>
-
-          
-          <li id="iOS"><a href="iOS.html">iOS</a></li>
-          
-          <li id="Git"><a href="Git.html">Git</a></li>
-          
-          <li id="CocoaPods"><a href="CocoaPods.html">CocoaPods</a></li>
-          
-          <li id="Django"><a href="Django.html">Django</a></li>
-          
-          <li id="Spiders"><a href="Spiders.html">Spiders</a></li>
-          
-          <li id="about"><a href="about.html">about</a></li>
-          
-
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
         </ul>
-      </aside>
 
-      <a class="exit-off-canvas" href="#"></a>
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E7%94%B5%E5%BD%B1.html">电影</a></li>
+        
+            <li><a href="%E5%85%B6%E5%AE%83.html">其它</a></li>
+        
+            <li><a href="Python.html">Python</a></li>
+        
+            <li><a href="iOS.html">iOS</a></li>
+        
+            <li><a href="%E6%88%91.html">我</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
 
 
-      <section id="main-content" role="main" class="scroll-container"> <script type="text/javascript">
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
 	$(function(){
 		$('#menu_item_index').addClass('is_active');
 	});
@@ -132,20 +108,108 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15638450239357.html">
+                <a class="clearlink" href="16076509804045.html">
                 
-                  <h1>判断bundle中存不存在某个文件</h1>
+                  <h1>RACCommand</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>1.xib最终会变成nib文件2.NSBundle实例方法- <code>(NSString*)pathForResource:(NSString*)name ofType:(NSString*)ext;</code></p>
+                        	<p>RACCommand是ReactiveCocoa的基本组件之一，能节省开发的大部分时间，同时使得iOS/OS X 应用更健壮。</p>
 
-<p>如果bundle中不存在某个文件，则返回的path为nil，如果存在 则会返回该文件的路径因此运行时判断xib是否存在某个xib文件（eg:TestXibController.xib）<br/>
-方法：</p>
+<p>我看到一部分ReactiveCocoa（以下简单RAC）新人并没有完全理解RACCommand，自然也就不知道怎么用它。所以我写了这个小小介绍性文章，希望能对你的理解有所帮助。RACCommand源文件里的注释写得很不错，不过它并没有给任何例子来说说具体怎么用它，对于RAC的新人来说，只看这些注释还是比较难以理解的。</p>
 
-<pre><code>NSString*nibPath = [[NSBundlemainBundle]pathForResource:@&quot;TestXibController&quot;ofType:@&quot;nib&quot;];
+<p>RACCommand类用于表示事件的执行，一般来说是在UI上的某些动作来触发这些事件，比如点击一个按钮。RACCommand的实例能够决定是否可以被执行，这个特性能反应在UI上，而且它能确保在其不可用时不会被执行。通常，当一个命令可以执行时，会将它的属性allowsConcurrentExecution设置为它的默认值：NO，从而确保在这个命令已经正在执行的时候，不会同时再执行新的操作。命令执行的返回值是一个RACSignal，因此我们能对该返回值进行next:，completed或error:，这在下文会有所展示。</p>
+
+<p>command的初始化方法中有一个enabledSignal参数，这个signal就是用来指名command能否被执行的。在我们的例子中，当用户输入的<a href="mailto:maweefeng@gmail.com">maweefeng@gmail.com</a>地址合法时，它才能被执行。self.emailValidSignal这个signal每当<a href="mailto:maweefeng@gmail.com">maweefeng@gmail.com</a>的文本更新时，会发送NO或YES。</p>
+
+<p>signalBlock参数在command需要执行时调用，这个block需要返回一个signal用来表示正在执行，之前将allowsConcurrentExecute的值设置为默认值NO，此时command会观察这个signal，而且在这个执行进度完成前，不允许新的执行。</p>
+
+<pre><code class="language-text">#import &quot;SubscribeViewModel.h&quot;
+#import &quot;AFHTTPRequestOperationManager+RACSupport.h&quot;
+#import&quot;NSString+EmailAdditions.h&quot;
+ 
+static NSString *const kSubscribeURL =@&quot;http://reactivetest.apiary.io/subscribers&quot;;
+ 
+@interface SubscribeViewModel ()
+@property(nonatomic, strong) RACSignal*emailValidSignal;
+@end
+ 
+@implementation SubscribeViewModel
+ 
+- (id)init {
+       self= [super init];
+       if(self) {
+              [self bindModel];
+       }
+       returnself;
+}
+ 
+-(void)bindModel {
+       RACSignal*startedMessageSource = [self.subscribeCommand.executionSignals map:^id(RACSignal *subscribeSignal) {
+              return NSLocalizedString(@&quot;Sending request...&quot;, nil);
+       }];
+ 
+       RACSignal*completedMessageSource = [self.subscribeCommand.executionSignals flattenMap:^RACStream *(RACSignal *subscribeSignal) {
+              return[[[subscribeSignal materialize] filter:^BOOL(RACEvent *event) {
+                     return event.eventType == RACEventTypeCompleted;
+              }]map:^id(id value) {
+                     return NSLocalizedString(@&quot;Thanks&quot;, nil);
+              }];
+       }];
+ 
+       RACSignal*failedMessageSource = [[self.subscribeCommand.errors subscribeOn:[RACScheduler mainThreadScheduler]] map:^id(NSError *error) {
+              returnNSLocalizedString(@&quot;Error :(&quot;, nil);
+       }];
+ 
+       RAC(self,statusMessage) = [RACSignal merge:@[startedMessageSource,completedMessageSource, failedMessageSource]];
+}
+ 
+- (RACCommand *)subscribeCommand {
+       if(!_subscribeCommand) {
+              @weakify(self);
+              _subscribeCommand= [[RACCommand alloc] initWithEnabled:self.emailValidSignal signalBlock:^RACSignal *(id input) {
+                     @strongify(self);
+                     return[SubscribeViewModel postEmail:self.maweefeng@gmail.com];
+              }];
+       }
+       return_subscribeCommand;
+}
+ 
++ (RACSignal *)postEmail:(NSString *)maweefeng@gmail.com{
+       AFHTTPRequestOperationManager*manager = [AFHTTPRequestOperationManager manager];
+       manager.requestSerializer= [AFJSONRequestSerializer new];
+       NSDictionary*body = @{@&quot;maweefeng@gmail.com&quot;: maweefeng@gmail.com ?: @&quot;&quot;};
+       return[[[manager rac_POST:kSubscribeURL parameters:body] logError] replayLazily];
+}
+ 
+- (RACSignal *)emailValidSignal {
+       if(!_emailValidSignal) {
+              _emailValidSignal= [RACObserve(self, maweefeng@gmail.com) map:^id(NSString *maweefeng@gmail.com) {
+                     return@([maweefeng@gmail.com isValidEmail]);
+              }];
+       }
+       return_emailValidSignal;
+}
+ 
+@end
+呃，这是个大块头，我们一点一点来看。我们最感兴趣的RACCommand的创建如下：
+- (RACCommand *)subscribeCommand {
+       if(!_subscribeCommand) {
+              @weakify(self);
+              _subscribeCommand= [[RACCommand alloc] initWithEnabled:self.emailValidSignal signalBlock:^RACSignal *(id input) {
+                     @strongify(self);
+                     return[SubscribeViewModel postEmail:self.maweefeng@gmail.com];
+              }];
+       }
+       return _subscribeCommand;
+}
+
 </code></pre>
+
+<h3 id="toc_0">executionSignals</h3>
+
+<p>executionSignals是RACCommand的signal，每当command开始执行时next:，其参数是由command创建的signal，所以这个executionSignals是一个值为signal的signal。我们在viewmodel的bindModel方法中，在command每次开始执行时得到一个包含字符串值的signal：</p>
 
                         
                       </div>
@@ -154,7 +218,7 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/3/30</span>
+                    <span class="date">2020/12/11</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -171,77 +235,336 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15638515424059.html">
+                <a class="clearlink" href="16076509807659.html">
                 
-                  <h1>去除tableview sectionheaderview的粘连效果</h1>
+                  <h1>点击事件发生在视图边界之外的时候</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<pre><code>override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        if (scrollView == self.tableView)
-        {
-            let sectionHeaderHeight: CGFloat = 49.0
-            if (scrollView.contentOffset.y &lt;= sectionHeaderHeight &amp;&amp; scrollView.contentOffset.y &gt;= 0) {
-                scrollView.contentInset = UIEdgeInsets(top: -scrollView.contentOffset.y, left: 0, bottom: 0, right: 0);
-            } else if (scrollView.contentOffset.y&gt;=sectionHeaderHeight) {
-                scrollView.contentInset = UIEdgeInsets(top: -sectionHeaderHeight, left: 0, bottom: 0, right: 0);
-            }
-        }
-    }
-</code></pre>
+                        	<p>这里有两个方法，每次有touch动作时，都会走这两个方法</p>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/3/30</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<ul>
+<li>(UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event；</li>
+<li>(BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event；</li>
+</ul>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15641370883413.html">
-                
-                  <h1>快速的扩展类的初始化方法</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<pre><code>extension UIBarButtonItem{
-    
-    convenience init(title: String?, style: UIBarButtonItem.Style, target: Any?, action: Selector?,titleColor: UIColor) {
-        self.init(title: title, style: style, target: target, action: action)
-        self.setTitleTextAttributes([NSAttributedString.Key.foregroundColor:titleColor], for: .normal)
+<p>重写方法 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event</p>
 
-    }
+<p>这是View里的一个方法，处理流程如下</p>
+
+<ul>
+<li>首先调用当前视图的pointInside:withEvent:方法判断触摸点是否在当前视图内；</li>
+<li>若返回NO,则hitTest:withEvent:返回nil;</li>
+<li>若返回YES,则向当前视图的所有子视图(subviews)发送hitTest:withEvent:消息，所有子视图的遍历顺序是从top到bottom，即从subviews数组的末尾向前遍历,直到有子视图返回非空对象或者全部子视图遍历完毕；</li>
+<li>若第一次有子视图返回非空对象,则hitTest:withEvent:方法返回此对象，处理结束；</li>
+<li>如所有子视图都返回非，则hitTest:withEvent:方法返回自身(self)。</li>
+<li>最后，这个触摸事件交给主窗口的hitTest:withEvent:方法返回的视图对象去处理。</li>
+</ul>
+
+<pre><code class="language-text">//返回一个view来响应事件
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
+ UIView *view = [super hitTest:point withEvent:event];
+ if (view == nil){
+  //转换坐标
+  CGPoint tempPoint = [self.testBtn convertPoint:point fromView:self];
+  //判断点击的点是否在按钮区域内
+  if (CGRectContainsPoint(self.testBtn.bounds, tempPoint)){
+   //返回按钮
+   return _testBtn;
+  }
+ }
+ return view;
 }
 </code></pre>
 
-<p>如果构造方法前面没有convenience单词,代表是一个初始化构造方法(指定构造方法).</p>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/12/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
-<p>如果构造方法前面有convenience单词,代表是一个便利构造方法(方便构造方法).</p>
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509806399.html">
+                
+                  <h1>Localization Issue Warning Storyboard</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>当我使用 xib 设置自动布局的时候出现了下面的警告</p>
 
-<h3 id="toc_0">指定构造方法与便利构造方法的区别:</h3>
+<p><img src="media/15474609644602/15474616779035.png" alt=""/></p>
+
+<blockquote>
+<p>Certain autolayout constraint combinations may result in an appropriate layout in the current development language but will pose issues in other languages and regions.</p>
+</blockquote>
+
+<p>然后看了苹果官方的文档，说是使用“自动布局”相对于彼此布置视图而没有固定的原点，宽度和高度，以便在语言或区域设置更改时视图重新定位和调整大小。自动布局使得可以为所有语言提供一组.storyboard和.xib文件，并且main.Storyboard默认进行本地化</p>
+
+<p>对国际化应用程序使用自动布局时，请遵循以下提示。</p>
+
+<ol>
+<li><p>删除固定宽度约束。允许显示要调整大小的本地化文本的视图。如果使用固定宽度约束，则本地化文本可能会在某些语言中出现裁剪。</p></li>
+<li><p>使用内在内容大小。文本字段和标签的默认行为是自动调整大小。如果视图未调整为本地化文本的大小，请选择视图并选择“Editor”&gt;“size To Fit”。</p></li>
+<li><p>使用leading和trailing属性。添加约束时，请使用属性leading和trailing水平约束。对于从左到右的语言，例如英语，属性leading和trailing等同于left和right。对于从右到左的语言，如希伯来语或阿拉伯语，leading并trailing等同于right和left。的leading和trailing属性是用于水平约束的默认值。</p></li>
+<li><p>将视图固定到相邻视图。这个操作会导致多米诺骨牌效应。当一个视图调整大小以适合本地化文本时，其他视图也会这样做。否则，某些语言的视图可能会重叠。</p></li>
+<li><p>不断测试您的布局更改。使用不同的语言设置测试您的应用，如测试国际化应用中所述。</p></li>
+<li><p>不要设置window的最小大小或最大大小。让window及其内容视图调整为包含视图的大小，这可能会在语言更改时更改。</p></li>
+</ol>
+
+<h2 id="toc_0">解决问题</h2>
+
+<p>在这里不作过多国际化 xib 约束的讨论，针对我遇到的问题，我可以把宽度的约束删除，改成 leading 和 trailing 结合的方式。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/6/15</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509804683.html">
+                
+                  <h1>Xcode打包遇到的坑</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>由于是接手别人做的项目，所以当把程序打包的时候出现了问题，证书和描述文件的问题 </p>
+
+<p>最开始尝试打开xcode的账户下载所有证书，结果发现并不能成功</p>
+
+<p>后来手动管理证书就可以看到之前在开发者中心创建的开发和发布证书，如下图所示<br/>
+<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fnczazu4irj30pd0iejte.jpg" alt=""/><br/>
+然后会到证书管理界面，会把你选中账号的所有相关证书列下来</p>
+
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fnczelaqz6j30pd0iedi6.jpg" alt=""/></p>
+
+<p>后面附带有状态，如果你的钥匙串keychain中没有的话，状态会是not in the keychain，顾名思义本地没有下载，这样的话要去开发者中心下载并且安装了.<br/><br/>
+下载完打包之前还要来看一下是不是已经在钥匙串中。  </p>
 
 <ul>
-<li>指定构造方法中必须对所有的属性进行初始化.</li>
-<li>便利构造方法不用对所有属性进行初始化,因为便利构造方法依赖于指定构造方法(内部要调用self.init())</li>
+<li>在钥匙串的话就可以跳过本文去愉快的打包了。<br/></li>
+<li>未在钥匙串接着看下面的操作</li>
+</ul>
+
+<p>如果还是没有在钥匙串的话，那么就比较麻烦了，我百度了一下，要先把之前的证书invoke，也就是删除，然后再回来创建，按照如图所示指引<br/><br/>
+<img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fnczjgrp8hj30m80getb7.jpg" alt=""/></p>
+
+<p>然而还有可能出现下面的情况 <br/>
+<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fnczn8eitqj30pd0ie0v3.jpg" alt=""/></p>
+
+<h3 id="toc_0">这就尴尬了是不是？</h3>
+
+<p>不用怕，把本地相关的钥匙串全部删除，并且把xcode关联的账户全部删除，最后再去添加账户，添加完账户之后继续按照手动管理证书，一步步操作生成证书就应该没有问题了。<br/><br/>
+另外还要去开发者中心找到指定的描述文件并且edit编辑，然后选中自己刚才创建的证书。<br/><br/>
+编辑完成之后下载描述文件以及证书接下来就可以进行打包了。<br/>
+<img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fnczxt1f66j30tx0imtam.jpg" alt=""/></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/5/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509807540.html">
+                
+                  <h1>图片压缩 WebP的小建议，权衡得失</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>虽然WebP在占用内存方面比较占优势，在网络传输当中体积较小，但是WebP 在 CPU 消耗和解码时间上会比 PNG 高两倍。所以，我们有时候还需要在性能和体积上做取舍。</p>
+
+<p>我的建议是，如果图片大小超过了 100KB，你可以考虑使用 WebP；而小于 100KB 时，你可以使用网页工具<a href="https://tinypng.com">TinyPng</a> 或者<a href="https://imageoptim.com/mac">GUI</a> 工具进行图片压缩。这两个工具的压缩率没有 WebP 那么高，不会改变图片压缩方式，所以解析时对性能损耗也不会增加。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/4/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15865912038980.html">
+                
+                  <h1>Xcode Tips - Spelling and Grammarly</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>勾选 Check Spelling while typing</p>
+
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gdpvk4jsifj31hs0u0x6p.jpg" alt=""/></p>
+
+<p>如果代码中的英文拼写出现错误，将会出现只能提示，在拼写错误的地方下面加入红色波浪线。</p>
+
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gdpvmsopdij317m06ognr.jpg" alt=""/></p>
+
+<p>快捷方式 <strong>command + ；</strong><br/>
+将会一条条的小时语法出现错误的地方。</p>
+
+<p>另外一个快捷方式 <strong>command + shift + ；</strong>，可以帮你推荐正确的拼写。</p>
+
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gdpvoz48z5j30qi0gwgp8.jpg" alt=""/></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/4/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509805828.html">
+                
+                  <h1>App Icon Design</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">Design</h2>
+
+<p>我们对符号的应用可以追溯到很久很久之前，总所周知我们现在使用的文字就是从象形文字发展过来的。</p>
+
+<ul>
+<li><p>象征化</p>
+<p>找到一个简单易懂的象征，物体、图形标注或者符号。</p></li>
+<li><p>简单性</p>
+<p>设计要简单，不要杂乱无章，太过复杂。如果设计的好，人们一眼就能看懂。</p></li>
+<li><p>关联性</p>
+<p>创建与用户之间的感情连接，跟UI一样，图标是应用的脸面，一定要有趣并且引人注目</p></li>
+<li><p>传统性</p>
+<p>对图标的修改要有意义而且谨慎，不建议经常更改应用图标尤其是每次升级的时候，要与时俱进。</p></li>
+</ul>
+
+<p>比如最初的keynote的图标就是一张讲台，以后的每次迭代升级都是围绕着讲台进行的改变，是与时俱进的，风格不断变化。而且如果你注意到的话讲台上都有一个话筒，这个也是一直有延续的。</p>
+
+<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.16.00.png" alt="屏幕快照 2018-12-11 下午2.16.00"/></p>
+
+<p>iOS平台与macOS设计的不同又相同。</p>
+
+<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.19.41.png" alt="屏幕快照 2018-12-11 下午2.19.41"/></p>
+
+<p>配色，元素都是类似的，而且iOS的iwork图标更是保持了一致性，一致的地平面，一致的白色，没有多余复杂的元素。</p>
+
+<p>现在来看GarageBand和Music Memos的关系，有颜色和图标来看，明显有关系。圆圈代表了木吉他上的音孔，弦的振动很清晰很有趣，让人感到动感和创造力</p>
+
+<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.24.00.png" alt="屏幕快照 2018-12-11 下午2.24.00"/></p>
+
+<h5 id="toc_1">Q:怎么不显示名字，也能让人理解。</h5>
+
+<p>A:高对比度，颜色清晰可见，设计简单，构图独特。</p>
+
+<p>下面是News的图标的例子。</p>
+
+<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.32.55.png" alt="屏幕快照 2018-12-11 下午2.32.55"/></p>
+
+<p>进行了三次改变设计，才做到简单醒目，即使在文件夹的小图标也会一目了然，这点对于App Icon Design 十分重要。</p>
+
+<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.34.30.png" alt="屏幕快照 2018-12-11 下午2.34.30"/></p>
+
+<h2 id="toc_2">Process</h2>
+
+<p>设计是一个交互过程，设计时要去考虑这些环节。</p>
+
+<ul>
+<li><p>独特性 </p>
+<p>要做到有区分性，特别是对于一些类似功能的APP</p>
+<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.41.11.png" alt="屏幕快照 2018-12-11 下午2.41.11"/></p></li>
+<li><p>实践</p>
+<p>纸笔有时候比鼠标有用的多，绘画是激发灵感的好方法。</p>
+<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.40.50.png" alt="屏幕快照 2018-12-11 下午2.40.50"/></p></li>
+<li><p>测试</p>
+<p>要在主屏，在设置，在文件夹中测试不同情形的展示效果，要用图标展现界面的话要特别注意，Clear是一个很完美的典范，简单，多彩，高对比度。</p>
+<p><img src="media/15445081328797/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-11%20%E4%B8%8B%E5%8D%882.41.54.png" alt="屏幕快照 2018-12-11 下午2.41.54"/></p></li>
+<li><p>耐心</p>
+<p>答案不会立马就来，慢慢来，检查选项，保存好作品，有时候最简单的设计或者你放弃的设计师最好的选择。</p></li>
 </ul>
 
                         
@@ -251,7 +574,7 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/3/30</span>
+                    <span class="date">2020/4/11</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -268,178 +591,54 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15644628854335.html">
+                <a class="clearlink" href="16076509808207.html">
                 
-                  <h1>切部分圆角</h1>
+                  <h1>APP 后台任务以及捕捉bugly无法捕捉的异常</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>其实就是添加mask遮罩效果</p>
+                        	<h4 id="toc_0">后台任务</h4>
 
-<pre><code>let v = UIView(frame: CGRect(x: 0, y: kScreenHeight - 300, width: kScreenWidth, height: 300))
-v.backgroundColor = .lightGray
-let path = UIBezierPath.init(roundedRect: v.bounds, byRoundingCorners: [.topLeft,.topRight], cornerRadii: CGSize(width: 5, height: 5))
-let maskLayer = CAShapeLayer()
-maskLayer.path = path.cgPath
-v.layer.mask = maskLayer
-</code></pre>
+<p>iOS 后台保活的 5 种方式：Background Mode、Background Fetch、Silent Push、PushKit、Background Task。</p>
 
-<p>但是会导致离屏渲染问题，耗费资源较多。</p>
+<ul>
+<li>使用 Background Mode 方式的话，App Store 在审核时会提高对 App 的要求。通常情况下，只有那些地图、音乐播放、VoIP 类的 App 才能通过审核。</li>
+<li>Background Fetch 方式的唤醒时间不稳定，而且用户可以在系统里设置关闭这种方式，导致它的使用场景很少。</li>
+<li>Silent Push 是推送的一种，会在后台唤起 App 30 秒。它的优先级很低，会调用 application:didReceiveRemoteNotifiacation:fetchCompletionHandler: 这个 delegate，和普通的 remote push notification 推送调用的 delegate 是一样的。</li>
+<li>PushKit 后台唤醒 App 后能够保活 30 秒。它主要用于提升 VoIP 应用的体验。</li>
+<li>Background Task 方式，是使用最多的。App 退后台后，默认都会使用这种方式。</li>
+</ul>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/3/30</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<p>接下来，我们就看一下，<strong>Background Task 方式为什么是使用最多的，它可以解决哪些问题？</strong></p>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15646490459131.html">
-                
-                  <h1>didSet 和 willSet</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>swift中并不像OC中有着一样的观察者模式，好在swift也可以实现属性观察，可以通过didSet和willSet实现。</p>
+<p>在你的程序退到后台以后，只有几秒钟的时间可以执行代码，接下来就会被系统挂起。进程挂起后所有线程都会暂停，不管这个线程是文件读写还是内存读写都会被暂停。但是，数据读写过程无法暂停只能被中断，中断时数据读写异常而且容易损坏文件，所以系统会选择主动杀掉 App 进程。</p>
 
-<p>Example<br/>
-<code><br/>
-var headerTitles: [String] = [&quot;成员&quot;,&quot;魅力值&quot;,&quot;任务完成率&quot;,&quot;学习时长&quot;,&quot;素材数量&quot;]{<br/>
-        didSet{<br/>
-            self.changeFrame()<br/>
-        }<br/>
-    }<br/>
-</code></p>
+<p>而 Background Task 这种方式，就是系统提供了 beginBackgroundTaskWithExpirationHandler 方法来延长后台执行时间，可以解决你退后台后还需要一些时间去处理一些任务的诉求。</p>
 
-<p>但是有一点需要记住，didSet证明已经赋值成功，此时打印headerTitles就会是自己设置的值。</p>
+<p>Background Task 方式的使用方法，如下面这段代码所示：</p>
 
-<p>但是willSet的调用时机是在赋值之前，此时打印headerTitles依然是旧值。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/3/30</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15647331928504.html">
-                
-                  <h1>initWithCoder和initWithFrame的区别</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>如果xib中的某个view继承自自定义View<br/>
-那么自定义view当中要实现的方法不是initWithFrame，而是initWithCoder。</p>
-
-<p>initWithoder 是当从nib文件中加载对象的时候会调用，比如你的view来自nib那么就会调用这个view的这个函数。(由框架调用) <br/>
-initWithFrame (是由用户调用，来初始化对象的) </p>
-
-<p>比如我自定义MsgChatGroupMemberView继承自UICollectionView。</p>
-
-<p>执行的时机是<br/>
-* init?(coder aDecoder: NSCoder)<br/>
-* awakeFromNib()<br/>
-如下所示</p>
-
-<pre><code>class MsgChatGroupMemberView: UICollectionView { 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.register(UINib(nibName: &quot;MsgChatBgCell&quot;, bundle: nil), forCellWithReuseIdentifier: &quot;MsgChatBgCell&quot;)
-        self.delegate = self
-        self.dataSource = self
-
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
+<pre><code class="language-text">- (void)applicationDidEnterBackground:(UIApplication *)application {
+    self.backgroundTaskIdentifier = [application beginBackgroundTaskWithExpirationHandler:^( void) {
+        [self yourTask];
+    }];
 }
 
 </code></pre>
 
-<p>同样也可以直接把awakeFromNib()中的初始化移到init?(coder aDecoder: NSCoder)方法当中。</p>
+<p>在这段代码中，yourTask 任务最多执行 3 分钟，3 分钟内 yourTask 运行完成，你的 App 就会挂起。 如果 yourTask 在 3 分钟之内没有执行完的话，系统会强制杀掉进程，从而造成崩溃，这就是为什么 App 退后台容易出现崩溃的原因。</p>
 
-<pre><code>class MsgChatGroupMemberView: UICollectionView {
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        self.register(UINib(nibName: &quot;MsgChatBgCell&quot;, bundle: nil), forCellWithReuseIdentifier: &quot;MsgChatBgCell&quot;)
-        self.delegate = self
-        self.dataSource = self
-    }
-}
+<h3 id="toc_1">捕捉被系统杀死的异常</h3>
 
-</code></pre>
+<p>系统杀死的app是无法捕捉到崩溃信号的，所以上面的方法也就无效了。</p>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/3/30</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<p>因为app在后台执行任务只会保活三分钟，如果我们在[self yourTask];中的任务执行超过三分钟，那么我们就无法捕获这种崩溃。</p>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15649763036889.html">
-                
-                  <h1>设置UITableView的分割线间距以及颜色</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<pre><code>    tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-    tableView.separatorColor = CNColorWithHex(0xf8f8f8)
-</code></pre>
+<p>但是我们可以在应用被杀死之前先把堆栈信息保存到内存当中，这样当app下次启动联网的时候就可以上传这些堆栈信息到我们自身的服务器当中，分析崩溃日志以及找出异常原因。</p>
+
+<h3 id="toc_2">打印调用堆栈信息</h3>
+
+<p>NSLog(@&quot;%@&quot;,[NSThread callStackSymbols]);</p>
 
                         
                       </div>
@@ -448,77 +647,7 @@ initWithFrame (是由用户调用，来初始化对象的) </p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/3/30</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15650558092231.html">
-                
-                  <h1>Apple Developer Team</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>已经被添加到开发组当中，但是却一直在Xcode-&gt;Preferences-&gt;accounts 找不到自己已经添加的开发组。<br/>
-<img src="media/15650558092231/xcode_Account.jpg" alt="xcode_Account"/></p>
-
-<p>在百度搜了很久一直没有找到解决问题的答案，于是去了Google搜索，在stackoverflow发现了解决问题的答案。</p>
-
-<p>链接在此 <a href="https://stackoverflow.com/questions/35674208/development-team-not-showing-in-xcode/35696844">Development team not showing in Xcode</a> </p>
-
-<h2 id="toc_0">问题分析</h2>
-
-<p>首先博主声明苹果有两个系统<br/>
-* Developer.apple.com system<br/>
-* App Store connect system</p>
-
-<p>这是两个不同的系统，必须要保证同时加入了两个系统中的Team，如果对方要加入一个成员到开发组，从Developer开发者中心添加。</p>
-
-<p>看到这里依然没有解决我的答案，而且苹果已经在2018年修复了上面的问题。</p>
-
-<p>往下我看到了一个很重要的答案，就是权限问题，如果有足够的权限在开发者中心看到的页面如下。</p>
-
-<p><img src="media/15650558092231/15650583671343.jpg" alt="" style="width:1431px;"/></p>
-
-<p>如果没有足够的权限红色部分是不存在的，所以在xcode中无法查看自己所在的team，也是是无法管理描述文件，证书等等的，所以如果你没有看到红框部分，那么就需要找到管理员加入相应的权限。</p>
-
-<p><strong>答案</strong>:</p>
-
-<p>管理员去到AppStoreConnect，点击人员，划到最底下的 Developer Resources 勾选。</p>
-
-<p><img src="media/15650558092231/15650567168773.jpg" alt=""/></p>
-
-<p>这个就代表你就可以访问证书，标识，描述文件了，去到开发者中心也就发现了变化。</p>
-
-<p>此时重新打开Xcode-&gt;Preferences-&gt;accounts会发现自己加入的开发组已经出现。</p>
-
-<h2 id="toc_1">总结：</h2>
-
-<p>当你邀请某个开发人员加入开发组的时候一定要勾选允许资源访问，要不然也会遇到和我一样的问题。</p>
-
-<p>还有就是已经添加过了，但是没有足够的权限，就像我上面说的去AppStoreConnect修改权限。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/3/30</span>
+                    <span class="date">2020/4/10</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -557,9 +686,7 @@ initWithFrame (是由用户调用，来初始化对象的) </p>
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
             
-                <div class="site-a-logo"><img src="/asset/img/logo.png" /></div>
-            
-                <h1>Code Log 👨‍💻‍ </h1>
+                <h1></h1>
                 <div class="site-des"></div>
                 <div class="social">
 
@@ -571,9 +698,9 @@ initWithFrame (是由用户调用，来初始化对象的) </p>
 
 
 
-<a target="_blank" class="github" target="_blank" href="https://github.com/maweefeng" title="GitHub">GitHub</a>
+
 <a target="_blank" class="email" href="mailto:maweefeng@gmail.com" title="Email">Email</a>
-  <!-- <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a> -->
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
                 
               	 </div>
           	</div>
@@ -588,17 +715,15 @@ initWithFrame (是由用户调用，来初始化对象的) </p>
 
       	<p class="cat-list">
         
+            <a href="%E7%94%B5%E5%BD%B1.html"><strong>电影</strong></a>
+        
+            <a href="%E5%85%B6%E5%AE%83.html"><strong>其它</strong></a>
+        
+            <a href="Python.html"><strong>Python</strong></a>
+        
             <a href="iOS.html"><strong>iOS</strong></a>
         
-            <a href="Git.html"><strong>Git</strong></a>
-        
-            <a href="CocoaPods.html"><strong>CocoaPods</strong></a>
-        
-            <a href="Django.html"><strong>Django</strong></a>
-        
-            <a href="Spiders.html"><strong>Spiders</strong></a>
-        
-            <a href="about.html"><strong>about</strong></a>
+            <a href="%E6%88%91.html"><strong>我</strong></a>
          
         </p>
 
@@ -615,31 +740,31 @@ initWithFrame (是由用户调用，来初始化对象的) </p>
 	      
 		      
 			      <li class="post">
-			        <a href="15638450239357.html">判断bundle中存不存在某个文件</a>
+			        <a href="16076509804045.html">RACCommand</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15638515424059.html">去除tableview sectionheaderview的粘连效果</a>
+			        <a href="16076509805027.html">关于我</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15641370883413.html">快速的扩展类的初始化方法</a>
+			        <a href="16076509807659.html">点击事件发生在视图边界之外的时候</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15644628854335.html">切部分圆角</a>
+			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15646490459131.html">didSet 和 willSet</a>
+			        <a href="16076509804683.html">Xcode打包遇到的坑</a>
 			      </li>
 		     
 		  
@@ -684,11 +809,10 @@ initWithFrame (是由用户调用，来初始化对象的) </p>
 
  <div class="page-bottom clearfix">
   <div class="row">
-   <!-- <p class="copyright">Copyright &copy; 2015
+   <p class="copyright">Copyright &copy; 2015
 Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
-Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p> -->
-<p class="copyright">日光之下 永无新事</p>
-</div>
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
 </div>
 
         </section>
@@ -715,7 +839,7 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p> -->
      
     </script>
 
-    <script src="asset/chart/all-min.js"></script><script type="text/javascript">$(function(){    var mwebii=0;    var mwebChartEleId = 'mweb-chart-ele-';    $('pre>code').each(function(){        mwebii++;        var eleiid = mwebChartEleId+mwebii;        if($(this).hasClass('language-sequence')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = Diagram.parse($(this).text());            diagram.drawSVG(eleiid,{theme: 'simple'});        }else if($(this).hasClass('language-flow')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = flowchart.parse($(this).text());            diagram.drawSVG(eleiid);        }    });});</script>
+    
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
 
 

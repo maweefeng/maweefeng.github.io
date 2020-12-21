@@ -1,128 +1,104 @@
 <!doctype html>
 <html class="no-js" lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
     
-    iOS - Code Log 👨‍💻‍ 
-    
+  iOS - 
+  
   </title>
   
   
-  <link href="atom.xml" rel="alternate" title="Code Log 👨‍💻‍ " type="application/atom+xml">
-  <link rel="stylesheet" href="asset/css/foundation.min.css" />
-  <link rel="stylesheet" href="asset/css/docs.css" />
-  <script src="asset/js/vendor/modernizr.js"></script>
-  <script src="asset/js/vendor/jquery.js"></script>
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
   <script src="asset/highlightjs/highlight.pack.js"></script>
   <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script>
-    hljs.initHighlightingOnLoad();
-
-    window.onload = function () {
-
-      var footerPath = window.location.pathname.split('/')[window.location.pathname.split('/').length - 1];
-      if (footerPath == 'archives.html') {
-        // alert('分类');
-        document.getElementById('main-menu').getElementsByTagName("li")[1].className = "is_active";
-
-      } else if (footerPath == 'about.html') {
-        document.getElementById('main-menu').getElementsByTagName("li")[2].className = "is_active";
-
-        // alert('关于我');
-  
-      } else {
-        // alert('首页');
-        document.getElementById('main-menu').getElementsByTagName("li")[0].className = "is_active";
-      }
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
 
 
-    }
-  </script>
-  <script type="text/javascript">
-    function before_search() {
-      var searchVal = 'site: ' + document.getElementById('search_input').value;
-      document.getElementById('search_q').value = searchVal;
-      return true;
-    }
-  </script>
-</head>
-
-<body class="antialiased hide-extras">
-
-  <div class="marketing off-canvas-wrap" data-offcanvas>
-    <div class="inner-wrap">
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
 
 
-      <nav class="top-bar docs-bar hide-for-small" data-topbar>
-
-
-        <section class="top-bar-section">
-          <div class="row">
-            <div style="position: relative;width:100%;">
-              <div style="position: absolute; width:100%;">
-                <ul id="main-menu" class="left">
-                  
-                  <li id=""><a id="" target="_self" href="index.html">Home</a></li>
-                  
-                  <li id=""><a id="" target="_self" href="archives.html">Archives</a></li>
-                  
-                  <li id=""><a id="" target="_self" href="about.html">About</a></li>
-                  
-                </ul>
-
-                <ul class="right" id="search-wrap">
-                  <li>
-                    <form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
-                      <input type="hidden" id="search_q" name="q" value="" />
-                      <input tabindex="1" type="search" id="search_input" placeholder="Search" />
-                    </form>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-      </nav>
-
-      <nav class="tab-bar show-for-small">
-        <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-          <span> &nbsp; Code Log 👨‍💻‍ </span>
-        </a>
-      </nav>
-
-      <aside class="left-off-canvas-menu">
-        <ul class="off-canvas-list">
-
-          <li><a href="index.html">Home</a></li>
-          <li><a href="archives.html">Archives</a></li>
-          
-          <li><label>Categories</label></li>
-
-          
-          <li id="iOS"><a href="iOS.html">iOS</a></li>
-          
-          <li id="Git"><a href="Git.html">Git</a></li>
-          
-          <li id="CocoaPods"><a href="CocoaPods.html">CocoaPods</a></li>
-          
-          <li id="Django"><a href="Django.html">Django</a></li>
-          
-          <li id="Spiders"><a href="Spiders.html">Spiders</a></li>
-          
-          <li id="about"><a href="about.html">about</a></li>
-          
-
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
         </ul>
-      </aside>
 
-      <a class="exit-off-canvas" href="#"></a>
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E7%94%B5%E5%BD%B1.html">电影</a></li>
+        
+            <li><a href="%E5%85%B6%E5%AE%83.html">其它</a></li>
+        
+            <li><a href="Python.html">Python</a></li>
+        
+            <li><a href="iOS.html">iOS</a></li>
+        
+            <li><a href="%E6%88%91.html">我</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
 
 
-      <section id="main-content" role="main" class="scroll-container"> <script type="text/javascript">
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
 	$(function(){
 		$('#menu_item_index').addClass('is_active');
 	});
@@ -132,280 +108,102 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15438021304374.html">
+                <a class="clearlink" href="16076509807797.html">
                 
-                  <h1>Swift & Objective-C & C++之间的混编</h1>
+                  <h1>Swift中的字典转模型方法的迭代</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h3 id="toc_0">①Objective-C 调用 C++</h3>
+                        	<p>模型可以是结构体也可以是继承自NSObject的类  </p>
 
-<p>OC本身可以直接调用C的代码 比如直接可以调用printf方法。<br/>
-但是OC中的.m直接编译C++的代码就会出现编译错误<br/>
-需要把OC.m改成OC.mm之后（objective-c变成了objective-c++）引入iostream(<code>#include&lt;iostream&gt;</code>)就可以直接编译了。<br/>
-这可以在.mm文件当中直接使用c++的代码。<br/>
-也可以另外新建一个c++的文件，并且创建.h文件...</p>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15438021304374.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/12/3</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<pre><code class="language-text">class App: NSObject {
+    var name:String = &quot;&quot;
+    var age:Int = 0
+    var boxDescription:String = &quot;&quot;
+}
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15433939231870.html">
-                
-                  <h1>dispatch_semaphore_t 信号量</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><code>dispatch_semaphore_t</code> 一种计算的信号量<br/>
-<code>dispatch_semaphore_create</code> 创建一个数值的信号量<br/>
-<code>dispatch_semaphore_signal</code> 对指定的信号量进行增加1</p>
 
-<p><code>dispatch_semaphore_wait</code> 会使传入的信号量减1，如果返回的值为0说明有任务进行中就阻碍当前的线程，如果返回的值大于0，就代表当前的线程当中没有任务再执行，就接着执行下面的任务。</p>
-
-<p>用这个可以起到顺序执行异步任务的功效。<br/>
-如果后一步的执行需要前一...</p>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15433939231870.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/28</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15433701207076.html">
-                
-                  <h1>_cmd 与 runtime 的结合</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	_cmd 是隐藏的参数，表示当前方法的selector，另外隐藏参数self表示当前方法调用的对象实例。
-这个参数是唯一的参数，在一个文件中方法名不会重复。
-所以可以让它代替运行时当中的属性的键名。...
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15433701207076.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/28</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15433027949667.html">
-                
-                  <h1>sizeThatFits和sizeToFit</h1>
-                  <div class="a-content">
-                      
-		                  <div class="a-content-img">
-                      		<img src="media/15433027949667/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-27%20%E4%B8%8B%E5%8D%883.23.06.png" />
-                      	  </div>
-		              
-                      <div class="a-content-text">
-                        
-                        	<p>今天帮同事看一个布局约束的问题，（代码也是从别人手中接过来的，所以并不清楚怎么布局的）<br/>
-view是用xib画的，约束设置很多，本以为是约束的问题，设置了约束还是不能更改整个view的高度。</p>
-
-<p>最后找了一会，我发现了一个方法 sizeThatFit 在sizeThatFit内部返回了size，所以刚才尽管指定的约束改了，但是还是不影响下面的方法返回size。</p>
-
-<p>所以就写了这个东西给不了解的同学一点点经验。</p>
-
-<pre><code>- (void)sizeToFit;                       // calls sizeThatFits: with current view bounds and changes bounds size.
-- (CGSize)sizeThatFits:(CGSize)size;     // return &#39;best&#39; size to fit given size. does not actually resize view. Default is return existing view size
-
-</code></pre>
-
-<p>上面是苹果的方法说明。</p>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15433027949667.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/27</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15428536881209.html">
-                
-                  <h1>被神化的MVVM和被错误认识的Model层</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>MVVM是一种双向绑定技术，使用VM实现数据的变化更新视图，视图的变化更新数据的处理，整个过程是一种数据绑定的过程。<br/>
-网络上可以看到大多数人吹捧MVVM，但是千奇百怪的，并没有人能很好的理解MVVM，反而使代码变得异常复杂。<br/>
-<code>MVC的关系图</code></p>
-
-<pre><code class="language-sequence">V层-&gt;C层:事件
-Note right of V层:特殊情况下可以持有M层
-C层-&gt;V层:创建/更新
-C层-&gt;M层: 调用
-M层-&gt;C层: 通知
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15428536881209.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/11/22</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834491002.html">
-                
-                  <h1>代理修饰符</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">为什么代理修饰要用weak而不是assgin</h3>
-
-<p>weak 一旦不被引用的时候就不会再使用了，就会被置位nil，oc中使用nil执行操作不会引起崩溃，所以即使再次使用也不会产生野指针。<br/><br/>
-但是如果是用assgin修饰，一旦不被引用不会自动置nil,当再次操作这个对象的代理方法的时候就会产生野指针引起程序崩溃。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15427834491194.html">
-                
-                  <h1>隐藏导航栏底部的线条</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>有时候遇到一些特殊的要求，需要隐藏导航栏底部的线条。<br/>
-两行代码就可以做到。</p>
-
-<ul>
-<li><p>方法一:<br/><br/>
-设置导航栏的背景图（setBackgroundImage方法）<br/><br/>
-设置导航栏的shadowImage (setShadowImage方法)<br/><br/>
-<code>UINavigationBar *navigationBar = self.navigationController.navigationBar;</code><br/>
-//设置透明的背景图，便于识别底部线条有没有被隐藏<br/><br/>
-<code>[navigationBar setBackgroundImage:[[UIImage alloc] init]<br/>
-                   forBarPosition:UIBarPositionAny<br/>
-                       barMetrics:UIBarMetricsDefault];</code> <br/>
-//此处使底部线条失效<br/>
-<code>[navigationBar setShadowImage:[UIImage new]];</code></p></li>
-<li><p>方法二：<br/>
-<code>self.navigationController.navigationBar.clipsToBounds = YES;</code></p></li>
-</ul>
-
-<h3 id="toc_0">导航栏全局属性设置</h3>
-
-<p>//全局设置导航栏主题</p>
-
-<pre><code>- (void)setNavigationControllerAppearance {
-    [UINavigationBar appearance].barStyle  = UIBarStyleBlack;
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithWhite:0.1 alpha:0.5]];
-    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+struct App :Decodable{
+    var name:String
+    var age:Int
+    var description:String
+    
+    init(dic:[String:AnyObject]) {
+        name = dic[&quot;name&quot;] as! String
+        age = dic[&quot;age&quot;] as! Int
+        description = dic[&quot;description&quot;] as! String
+    }
+    
 }
 
 </code></pre>
 
+<p>网络请求</p>
+
+<pre><code class="language-text"> func fetchData(){
+        let url = &quot;https://maweefeng.github.io/appfeauterd.json&quot;
+        
+        let session: URLSession = URLSession.shared
+        
+        let dataTask: URLSessionDataTask = session.dataTask(with: URL(string: url)!) { (data, response, error) in
+            if(error == nil){
+                var dict:NSDictionary? = nil
+                do {
+                    guard let jsondata = data else{return}
+                    let app = try JSONDecoder().decode(App.self, from: jsondata)
+                    print(app)
+                    
+//dict = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
+//
+//                    let app = App(dic: dict)
+//                    print(app)
+
+                    
+                } catch {
+                }
+                print(dict!)
+            }
+        }
+        dataTask.resume()
+        
+    }
+</code></pre>
+
+<h3 id="toc_0">JSONSerialization</h3>
+
+<p>之前我们字典转模型可能使用的方法可能是使用</p>
+
+<ul>
+<li><p>model为结构体</p>
+<pre><code class="language-text">dict = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
+let app = App(dic: dict)<br/>
+print(app)
+</code></pre></li>
+<li><p>model为NSObject子类</p>
+<pre><code class="language-text">dict = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
+let app = App()<br/>
+app.setValuesForKeys(dict as! [String : Any])
+</code></pre></li>
+</ul>
+
+<h3 id="toc_1">JSONDecode</h3>
+
+<p>现在使用swift4新增了一种更方法的方法，就是JSONDecode</p>
+
+<pre><code class="language-text">let app = try JSONDecoder().decode(App.self, from: jsondata)`
+
+</code></pre>
+
+<p>如果返回的data数据是一个object的字典，那么可以用上面的代码 </p>
+
+<p>如果data是一个包含app对象的数组，则可以简单的使用</p>
+
+<pre><code class="language-text">let app = try JSONDecoder().decode([App].self, from: jsondata)`
+</code></pre>
+
+<p>另外一些情况，可能数组当中并不是每个键值对都一一对应，可能存在部分键值对缺失的情况，这样的话就会报错，有一个解决办法便是使那些可以为空的属性为optional，这样就可以解决错误问题。</p>
+
                         
                       </div>
                   </div>
@@ -413,7 +211,7 @@ M层-&gt;C层: 通知
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/11/21</span>
+                    <span class="date">2018/10/30</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -430,16 +228,439 @@ M层-&gt;C层: 通知
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15427834491253.html">
+                <a class="clearlink" href="16076509807984.html">
                 
-                  <h1>堆栈的一点区别</h1>
+                  <h1>Swift单例写法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>介绍swift的单例类写法之前，可以先回顾一下oc中单例的写法如下。</p>
+
+<pre><code class="language-//首先.h文件里声明">//单例类
+@interface Manger : NSObject
++ (instancetype)sharedManger;
+@end
+
+//然后.m文件里写实现
+@implementation Manger
++ (instancetype)sharedManger {
+    static Manger *sharedManger = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&amp;onceToken, ^{
+        sharedManger = [self new];
+    });
+    return sharedManger;
+}
+
+</code></pre>
+
+<h4 id="toc_0">swift单例写法</h4>
+
+<ul>
+<li>简单写法</li>
+</ul>
+
+<pre><code class="language-text">import UIKit
+//仿OC写法
+class Manger: NSObject {
+    static let instance: Manger = Manger()
+    class func shared() -&gt; Manger {
+        return instance
+    }
+}
+//简便写法
+class Manger {
+    static let shared = Manger()
+}
+</code></pre>
+
+<p>这样对比下来swift真的是极大的减少了代码量，所有也会有一些人推荐如果开发新项目，建议使用swift开发，毫无疑问。</p>
+
+<p>另外swift 还有一种类似oc的写法如下。</p>
+
+<ul>
+<li>复杂写法</li>
+</ul>
+
+<pre><code class="language-text">class Singleton {
+    class var sharedInstance: Singleton {
+        struct Static {
+            static var oncetoken: String? = NSUUID().uuidString
+
+            static var instance: Singleton? = nil
+        }
+        DispatchQueue.once(token: Static.oncetoken) {
+            Static.instance = Singleton()
+
+        }
+        return Static.instance!
+    }
+}
+
+extension DispatchQueue {
+    private static var _onceTracker = [String]()
+    public class func once(token: String, block: () -&gt; ()) {
+        objc_sync_enter(self)
+        defer {
+            objc_sync_exit(self)
+        }
+        if _onceTracker.contains(token) {
+            return
+        }
+        _onceTracker.append(token)
+        block()
+    }
+    
+    func async(block: @escaping ()-&gt;()) {
+        self.async(execute: block)
+    }
+
+    func after(time: DispatchTime, block: @escaping ()-&gt;()) {
+        self.asyncAfter(deadline: time, execute: block)
+    }
+}
+
+</code></pre>
+
+<p>之所以写DispatchQueue的扩展是因为swift3中取消了dispatch_once_t的使用<br/>
+<code>&#39;dispatch_once&#39; is unavailable in Swift: Use lazily initialized globals instead</code></p>
+
+<p>建议使用懒加载的初始化全局替代。</p>
+
+<p>因为原来自从swift 1.x开始swift就已经开始用dispatch_one机制在后台支持线程安全的全局lazy初始化和静态属性.所以static var背后已经在使用dispatch_once了.</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/10/30</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509804270.html">
+                
+                  <h1>设置图片拉伸范围</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code class="language-text">- (UIImage *)stretchableImageWithLeftCapWidth:(NSInteger)leftCapWidth topCapHeight:(NSInteger)topCapHeight 
+</code></pre>
+
+<p>这个函数是UIImage的一个实例函数，它的功能是创建一个内容可拉伸，而边角不拉伸的图片，需要两个参数，第一个是左边不拉伸区域的宽度，第二个参数是上面不拉伸的高度。</p>
+
+<p>根据设置的宽度和高度，将接下来的一个像素进行左右扩展和上下拉伸。</p>
+
+<p>注意：可拉伸的范围都是距离leftCapWidth后的1竖排像素，和距离topCapHeight后的1横排像素。</p>
+
+<p>参数的意义是，如果参数指定10，5。那么，图片左边10个像素，上边5个像素。不会被拉伸，x坐标为11和一个像素会被横向复制，y坐标为6的一个像素会被纵向复制。</p>
+
+<blockquote>
+<p>注意：只是对一个像素进行复制到一定宽度。而图像后面的剩余像素也不会被拉伸。</p>
+</blockquote>
+
+<pre><code class="language-text">UIImage *img=[UIImage imageNamed:@&quot;bubbleSelf.png&quot;];
+img=[img stretchableImageWithLeftCapWidth:15 topCapHeight:12];
+UIImageView *imgView=[[UIImageView alloc]initWithImage:img];
+[imgView setFrame:CGRectMake(10, 10, 200, 200)];
+[self. view addSubview:imgView];
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/10/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509806365.html">
+                
+                  <h1>Value and Reference Collections</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>值类型和引用类型的集合有所不同,看下图可知。</p>
+
+<p><img src="media/15471123133942/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-01-10%20%E4%B8%8B%E5%8D%885.25.48.png" alt="屏幕快照 2019-01-10 下午5.25.48" style="width:601px;"/></p>
+
+<pre><code class="language-text">示例1      
+let x = NSMutableArray()
+x.add(&quot;🐵&quot;)
+let y = x
+y.add(&quot;🐶&quot;)    
+print(x,y)
+//结果
+(
+    &quot;🐵&quot;,
+    &quot;🐶&quot;
+) (
+    &quot;🐵&quot;,
+    &quot;🐶&quot;
+)  
+</code></pre>
+
+<pre><code class="language-text">示例2     
+var x:[String] = []
+x.append(&quot;🐵&quot;)
+var y = x
+y.append(&quot;🐶&quot;)
+    
+print(x,y)
+//结果  
+[&quot;🐵&quot;] [&quot;🐵&quot;, &quot;🐶&quot;]
+</code></pre>
+
+<p>打印内存地址，探究 x 和 y 内存指向空间的关系。</p>
+
+<pre><code class="language-text">示例3  
+var x:[String] = []
+x.append(&quot;🐵&quot;)
+let xaddress = String(format: &quot;%p&quot;, x)
+print(&quot;xaddress===\(xaddress)&quot;)
+var y = x
+let yaddress = String(format: &quot;%p&quot;, y)
+print(&quot;yaddress===\(yaddress)&quot;)
+y.append(&quot;🐶&quot;)
+print(&quot;yaddress===\(yaddress)&quot;)
+
+//结果
+xaddress===0x600000434640
+yaddress===0x6000004346a0
+yaddress===0x6000004346a0
+</code></pre>
+
+<pre><code class="language-text">示例4  
+let x = NSMutableArray()
+x.add(&quot;🐵&quot;)
+let xaddress = String(format: &quot;%p&quot;, x)
+print(&quot;xaddress===\(xaddress)&quot;)
+let y = x
+let yaddress = String(format: &quot;%p&quot;, y)
+print(&quot;yaddress===\(yaddress)&quot;)
+y.add(&quot;🐶&quot;)
+print(&quot;yaddress===\(yaddress)&quot;)
+
+//结果
+xaddress===0x6000004508c0
+yaddress===0x6000004508c0
+yaddress===0x6000004508c0
+</code></pre>
+
+<p>示例3中的  <code>var y = x</code>会使y开辟一个新的内存空间，内容是复制x的内容，y添加元素，从而不会影响到 x。</p>
+
+<p>但是示例4对于 <code>let y = x</code> 没有开辟新的内存空间 还是指向同一块区域，所以当 y 发生改变的时候 x 的值也发生了改变。</p>
+
+<h3 id="toc_0">结语</h3>
+
+<p>NS前缀的是引用类型，引用类型只存在一份内存，因此改变一个值就会引起另一个值的改变，这个需要引起注意。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/10/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509804922.html">
+                
+                  <h1>iOS开发一些小技巧</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<ul>
-<li>栈是后进先出的顺序<br/></li>
-<li>而堆是根据优先级的顺序 </li>
+<li><p>去掉xcode黄色警告的方法</p>
+<pre><code class="language-text">#pragma clang diagnostic push
+#pragma clang diagnostic ignored &quot;-Wdeprecated-declarations&quot;<br/>
+ your code with warning<br/>
+#pragma clang diagnostic pop<br/>
+#pragma clang diagnostic push<br/>
+#pragma clang diagnostic ignored &quot;-Wunused-variable&quot;<br/>
+ your code with warning<br/>
+#pragma clang diagnostic pop
+</code></pre></li>
+<li><p>控制器init方法执行时间</p>
+<pre><code class="language-text">_coverView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+在控制器init方法中初始化一个大小为self.view.bounds的uiview必须等待视图出来的时候才会进行，要不然一直在主线程等待。<br/>
+如果直接给CGRectmake设置的话不用等界面加载就会执行，应该是一个主线程问题。 <br/>
+这个时候如果直接去xib里面的控件，就会出现取不到的情况，取出来是nil。
+</code></pre></li>
+<li><p>判断字符串为空</p>
+<pre><code class="language-text">今天遇到个问题，后台用java写的，给我传回一个空字符串，类型是NSNull，用
+stringWithFormat:转出来居然是@&quot;&lt;null&gt;&quot;，<br/>
+注意，这不是空，NSNull和nil是不同的。需要用 xxx == [NSNull null]加以判断。
+</code></pre>
+<pre><code class="language-text">去掉UITableView多余的空白行分割线
+有一种简单的方法<br/>
+self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+</code></pre></li>
+<li><p>如何将本地代码提交到远程git仓库</p>
+<pre><code class="language-text">* 第一步：建立git仓库 
+cd到你的本地项目根目录下，执行git命令 <br/>
+ git init<br/>
+* 第二步：将项目的所有文件添加到仓库中   <br/>
+ git add .  <br/>
+* 第三步：将add的文件commit到仓库<br/>
+  git commit -m &quot;注释语句&quot;<br/>
+* 第四步：去github上创建自己的Repository<br/>
+* 第五步：重点来了，将本地的仓库关联到github上    <br/>
+  git remote add origin 仓库url<br/>
+ 后面的https链接地址换成你自己的仓库url地址，也就是上面红框中标出来的地址<br/>
+* 第六步：上传github之前，要先pull一下，执行如下命令：<br/>
+  git pull origin master<br/>
+* 第七步，也就是最后一步，上传代码到github远程仓库<br/>
+  git push -u origin master  <br/>
+  git push -u origin master -f //强制push<br/>
+  每次如果有代码需要提交必须要add一下 并且在本地commit 打下log 再去拉取remote代码，<br/>
+  然后push到remote的这样一个流程。
+</code></pre></li>
+<li><p>button 的文字显示不全</p>
+<pre><code class="language-text"> [label setAdjustsFontForContentSizeCategory:YES]调节字体大小.
+</code></pre></li>
+<li><p>从xib加载View</p>
+<pre><code class="language-text">// Instantiate the nib content without any reference to it.
+NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:@&quot;EPPZPlainView&quot; owner:nil options:nil];<br/>
+// Find the view among nib contents (not too hard assuming there is only one view in it).<br/>
+UIView *plainView = [nibContents lastObject];<br/>
+// Some hardcoded layout.<br/>
+CGSize padding = (CGSize){ 22.0, 22.0 };<br/>
+plainView.frame = (CGRect){padding.width, padding.height, plainView.frame.size};<br/>
+// Add to the view hierarchy (thus retain).<br/>
+[self.view addSubview:plainView];
+</code></pre></li>
+<li><p>修改导航条的颜色</p>
+<pre><code class="language-text">self.navigationController.navigationBar.barTintColor = [UIColor redColor];```
+</code></pre></li>
+</ul>
+
+<ul>
+<li><p>当某个UIView调用drawRect方法之后，它的默认背景就是黑色的</p>
+<p>解决办法有在初始化的时候设置backgroundColor</p>
+<pre><code class="language-text">- (void)awakeFromNib {
+    [super awakeFromNib];<br/>
+    self.backgroundColor = [UIColor clearColor];<br/>
+    // Initialization code<br/>
+}<br/>
+- (id)initWithFrame:(CGRect)frame<br/>
+{<br/>
+    self = [super initWithFrame:frame];<br/>
+    if (self) {<br/>
+        // Initialization code<br/>
+        self.backgroundColor = [UIColor blueColor]<br/>
+    }<br/>
+    return self;<br/>
+}
+</code></pre></li>
+<li><p>或者在drawRect里面写下如下代码 </p>
+<pre><code class="language-text">- (void)drawRect:(CGRect)rect
+{<br/>
+    // Drawing code<br/>
+    [[UIColor blueColor] setFill];  // changes are here<br/>
+    UIRectFill(rect);               // and here <br/>
+}
+</code></pre></li>
+<li><p>主线程死锁</p>
+<pre><code class="language-text">    NSLog(@&quot;1---%@&quot;,[NSThread currentThread]);
+    dispatch_sync(dispatch_get_main_queue(), ^{<br/>
+        NSLog(@&quot;2&quot;);<br/>
+    });<br/>
+    NSLog(@&quot;3&quot;);<br/>
+    NSLog(@&quot;1---%@&quot;,[NSThread currentThread]);<br/>
+    dispatch_async(dispatch_get_main_queue(), ^{<br/>
+        NSLog(@&quot;2&quot;);<br/>
+    });<br/>
+    NSLog(@&quot;3&quot;);<br/>
+    //打印顺序 1，3，2<br/>
+    先加入的通知先收到通知<br/>
+    先去执行通知的内容
+</code></pre></li>
+<li><p>解决tableviewsection悬浮的问题</p>
+<pre><code class="language-text">- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat sectionHeaderHeight = 50;<br/>
+    if (scrollView.contentOffset.y&lt;=sectionHeaderHeight&amp;&amp;scrollView.contentOffset.y&gt;=0) {<br/>
+        scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);<br/>
+    } else if (scrollView.contentOffset.y&gt;=sectionHeaderHeight) {<br/>
+        scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);<br/>
+    }<br/>
+}
+</code></pre></li>
+<li><p>NSURLSession请求</p>
+<pre><code class="language-text"> NSURLSession * session = [NSURLSession sharedSession];
+    NSURLSessionDataTask * task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {<br/>
+        NSDictionary * dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];<br/>
+        NSLog(@&quot;%@&quot;,dic);<br/>
+    }];<br/>
+    [task resume];
+</code></pre></li>
+<li><p>实现点击按钮出发一次震动，比如“即刻”app的点赞</p>
+<pre><code class="language-text">导入AudioToolBox.framework
+在按钮的点击方法中执行<br/>
+AudioServicesPlaySystemSound(kSystemSo undID_Vibrate);//上面是震动方法 不灵巧<br/>
+可以使用最新的<br/>
+ UIImpactFeedbackGenerator  * zhend = [[UIImpactFeedbackGenerator alloc]initWithStyle:UIImpactFeedbackStyleLight];<br/>
+[zhend impactOccurred];
+</code></pre></li>
+<li><p>getter方法中为何不能用self</p>
+<p>有经验的开发者应该都知道这一点，在getter方法中是不能使用self.的，比如：</p>
+<pre><code class="language-text">- (NSString *)name
+{<br/>
+    NSLog(@&quot;rewrite getter&quot;);<br/>
+    return self.name;  // 错误的写法，会造成死循环<br/>
+}
+</code></pre>
+<p>原因代码注释中已经写了，这样会造成死循环。这里需要注意的是：self.name实际上就是执行了属性name的getter方法，getter方法中又调用了self.name， 会一直递归调用，直到程序崩溃。</p></li>
 </ul>
 
                         
@@ -449,7 +670,201 @@ M层-&gt;C层: 通知
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/11/21</span>
+                    <span class="date">2018/10/15</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509809545.html">
+                
+                  <h1>Autorelease Pool 的用处</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>在 ARC 下，我们并不需要手动调用 autorelease 有关的方法，甚至可以完全不知道 autorelease 的存在，就可以正确管理好内存。因为 Cocoa Touch 的 Runloop 中，每个 runloop circle 中系统都自动加入了 Autorelease Pool 的创建和释放。</p>
+
+<p>当我们需要创建和销毁大量的对象时，使用手动创建的 autoreleasepool 可以有效的避免内存峰值的出现。因为如果不手动创建的话，外层系统创建的 pool 会在整个 runloop circle 结束之后才进行 drain，手动创建的话，会在 block 结束之后就进行 drain 操作。详情请参考苹果官方文档。一个普遍被使用的例子如下：</p>
+
+<pre><code class="language-text">for (int i = 0; i &lt; 100000000; i++)
+{
+    @autoreleasepool
+    {
+        NSString* string = @&quot;ab c&quot;;
+        NSArray* array = [string componentsSeparatedByString:string];
+    }
+}
+</code></pre>
+
+<p>如果不使用 autoreleasepool ，需要在循环结束之后释放 100000000 个字符串，如果<br/>
+使用的话，则会在每次循环结束的时候都进行 release 操作。</p>
+
+<h2 id="toc_0">Autorelease Pool 进行 Drain 的时机</h2>
+
+<p>如上面所说，系统在 runloop 中创建的 autoreleaspool 会在 runloop 一个 event 结束时进行释放操作。我们手动创建的 autoreleasepool 会在 block 执行完成之后进行 drain 操作。需要注意的是：</p>
+
+<p>当 block 以异常（exception）结束时，pool 不会被 drain</p>
+
+<p>Pool 的 drain 操作会把所有标记为 autorelease 的对象的引用计数减一，但是并不意味着这个对象一定会被释放掉，我们可以在 autorelease pool 中手动 retain 对象，以延长它的生命周期（在 MRC 中）。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/10/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509804401.html">
+                
+                  <h1>Runtime运行时</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ol>
+<li><p>runtime调用方法</p>
+<pre><code class="language-text">- (void)test {
+TestModel *objct = [[TestModel alloc] init];<br/>
+((void (*) (id, SEL)) objc_msgSend) (objct, sel_registerName(&quot;country&quot;));<br/>
+((void (*) (id, SEL, NSString *)) objc_msgSend) (objct, sel_registerName(&quot;getProvince:&quot;), @&quot;广东省&quot;)；<br/>
+((void (*) (id, SEL, NSString *, NSString *)) objc_msgSend) (objct, sel_registerName(&quot;getCity:station:&quot;), @&quot;深圳市&quot;, @&quot;世界之窗&quot;)；<br/>
+NSString *weather = ((NSString* (*) (id, SEL)) objc_msgSend) (objct, sel_registerName(&quot;getWeather&quot;));<br/>
+NSLog(@&quot;%@&quot;, weather);<br/>
+}
+</code></pre></li>
+<li><p>给分类添加属性</p>
+<pre><code class="language-#import">#import &lt;objc/runtime.h&gt;
+static void *TestStringKey = &amp;TestStringKey;<br/>
+@implementation TestModel (String)<br/>
+- (void)setTestString:(NSString *)testString {<br/>
+objc_setAssociatedObject(self, TestStringKey, testString, OBJC_ASSOCIATION_COPY);<br/>
+}<br/>
+- (NSString *)testString {<br/>
+return objc_getAssociatedObject(self, TestStringKey);<br/>
+}<br/>
+@end
+</code></pre></li>
+<li><p>获取属性</p>
+<pre><code class="language-text">使用class_copyIvarList获得的属性数组是Ivar类型 
+可以使用ivar_getName将ivar类型转换为char<br/>
+再使用NSString 的stringWithUTF8String方法转化为NSString类型。
+</code></pre></li>
+</ol>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/10/10</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509809509.html">
+                
+                  <h1>对Block的一点点认识</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>如果使用weak修饰block，那么将有可能出现野指针的错误问题</p>
+
+<p>那么strong 和 copy 有什么区别呢？ </p>
+
+<p>block本身是像对象一样可以retain，和release。但是，block在创建的时候，它的内存是分配在栈上的，而不是在堆上。他本身的作于域是属于创建时候的作用域，一旦在创建时候的作用域外面调用block将导致程序崩溃。因为栈区的特点就是创建的对象随时可能被销毁,一旦被销毁后续再次调用空对象就可能会造成程序崩溃,在对block进行copy后,block存放在堆区.<br/>
+使用retain也可以，但是block的retain行为默认是用copy的行为实现的，<br/>
+因为block变量默认是声明为栈变量的，为了能够在block的声明域外使用，所以要把block拷贝（copy）到堆，所以说为了block属性声明和实际的操作一致，最好声明为copy。</p>
+
+<h2 id="toc_0">Block防止内存泄漏问题</h2>
+
+<p>另外还需要注意的是使用 block 的时候注意到内存泄露的情况，必要的时候要使用 weak 中断两个引用。</p>
+
+<h3 id="toc_1">关于Block的一点注意 特别是网络请求这块</h3>
+
+<p>Block捕获外界变量销毁<br/>
+我们再进一步想想，Block有个最大的特点是可以访问当前的作用域，我们随便创建一个数组，重复上面操作，是否能够销毁...</p>
+
+<pre><code class="language-text">- (void)blockDemo {
+    NSArray *outsideArray = @[@1, @2, @3];
+    
+    [self.service requestWithParms:nil WithResult:^(id data, NSError *error) {
+        // 处理业务逻辑
+        // ...
+        
+        NSLog(@&quot;Result from block:%@&quot;, data);
+        NSLog(@&quot;outsideArray :%@&quot;, outsideArray);
+    }];
+}
+
+打印结果：
+2018-03-25 19:55:40.997535+0800 NetworkCallback[4970:3641450] NextPageViewController has been dealloc!
+2018-03-25 19:55:44.831721+0800 NetworkCallback[4970:3641450] outsideArray :(
+    1,
+    2,
+    3
+)
+</code></pre>
+
+<p>注意，vc先销毁了，但是5s后，这个临时变量竟然还没有销毁。那么这个变量存储在哪里呢？<br/>
+考虑一下，如果你在Block代码里访问了一个超大的文件，这个文件必然是保存在内存的，然后此时你遇上了网络慢，接口好久没有返回，那么这个超大的文件就会一直占用内存</p>
+
+<h4 id="toc_2">小结</h4>
+
+<p>使用Block无论是否有循环引用的可能，都要使用weakself，来防止vc被持有，而延迟释放<br/>
+Block会导致对象的生命周期被延长，特别是当某些大文件被Block访问时，有几率导致内存不足</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/10/7</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -488,9 +903,7 @@ M层-&gt;C层: 通知
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
             
-                <div class="site-a-logo"><img src="/asset/img/logo.png" /></div>
-            
-                <h1>Code Log 👨‍💻‍ </h1>
+                <h1></h1>
                 <div class="site-des"></div>
                 <div class="social">
 
@@ -502,9 +915,9 @@ M层-&gt;C层: 通知
 
 
 
-<a target="_blank" class="github" target="_blank" href="https://github.com/maweefeng" title="GitHub">GitHub</a>
+
 <a target="_blank" class="email" href="mailto:maweefeng@gmail.com" title="Email">Email</a>
-  <!-- <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a> -->
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
                 
               	 </div>
           	</div>
@@ -519,17 +932,15 @@ M层-&gt;C层: 通知
 
       	<p class="cat-list">
         
+            <a href="%E7%94%B5%E5%BD%B1.html"><strong>电影</strong></a>
+        
+            <a href="%E5%85%B6%E5%AE%83.html"><strong>其它</strong></a>
+        
+            <a href="Python.html"><strong>Python</strong></a>
+        
             <a href="iOS.html"><strong>iOS</strong></a>
         
-            <a href="Git.html"><strong>Git</strong></a>
-        
-            <a href="CocoaPods.html"><strong>CocoaPods</strong></a>
-        
-            <a href="Django.html"><strong>Django</strong></a>
-        
-            <a href="Spiders.html"><strong>Spiders</strong></a>
-        
-            <a href="about.html"><strong>about</strong></a>
+            <a href="%E6%88%91.html"><strong>我</strong></a>
          
         </p>
 
@@ -546,31 +957,31 @@ M层-&gt;C层: 通知
 	      
 		      
 			      <li class="post">
-			        <a href="15638450239357.html">判断bundle中存不存在某个文件</a>
+			        <a href="16076509804045.html">RACCommand</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15638515424059.html">去除tableview sectionheaderview的粘连效果</a>
+			        <a href="16076509805027.html">关于我</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15641370883413.html">快速的扩展类的初始化方法</a>
+			        <a href="16076509807659.html">点击事件发生在视图边界之外的时候</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15644628854335.html">切部分圆角</a>
+			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15646490459131.html">didSet 和 willSet</a>
+			        <a href="16076509804683.html">Xcode打包遇到的坑</a>
 			      </li>
 		     
 		  
@@ -615,11 +1026,10 @@ M层-&gt;C层: 通知
 
  <div class="page-bottom clearfix">
   <div class="row">
-   <!-- <p class="copyright">Copyright &copy; 2015
+   <p class="copyright">Copyright &copy; 2015
 Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
-Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p> -->
-<p class="copyright">日光之下 永无新事</p>
-</div>
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
 </div>
 
         </section>
@@ -646,7 +1056,7 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p> -->
      
     </script>
 
-    <script src="asset/chart/all-min.js"></script><script type="text/javascript">$(function(){    var mwebii=0;    var mwebChartEleId = 'mweb-chart-ele-';    $('pre>code').each(function(){        mwebii++;        var eleiid = mwebChartEleId+mwebii;        if($(this).hasClass('language-sequence')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = Diagram.parse($(this).text());            diagram.drawSVG(eleiid,{theme: 'simple'});        }else if($(this).hasClass('language-flow')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = flowchart.parse($(this).text());            diagram.drawSVG(eleiid);        }    });});</script>
+    
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
 
 

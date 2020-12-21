@@ -40,7 +40,7 @@
       <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
         <ul id="main-menu" class="left">
         
-        <li id=""><a target="self" href="index.html">Home</a></li>
+        <li id=""><a target="_self" href="index.html">Home</a></li>
         
         <li id=""><a target="_self" href="archives.html">Archives</a></li>
         
@@ -69,7 +69,7 @@
 <aside class="left-off-canvas-menu">
       <ul class="off-canvas-list">
         
-        <li><a target="self" href="index.html">Home</a></li>
+        <li><a target="_self" href="index.html">Home</a></li>
         
         <li><a target="_self" href="archives.html">Archives</a></li>
         
@@ -80,6 +80,12 @@
             <li><a href="%E7%94%B5%E5%BD%B1.html">电影</a></li>
         
             <li><a href="%E5%85%B6%E5%AE%83.html">其它</a></li>
+        
+            <li><a href="Python.html">Python</a></li>
+        
+            <li><a href="iOS.html">iOS</a></li>
+        
+            <li><a href="%E6%88%91.html">我</a></li>
          
 
       </ul>
@@ -102,54 +108,30 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="16076509805075.html">
+                <a class="clearlink" href="16076509804464.html">
                 
-                  <h1>消除CocoaPods引入第三方SDK的警告</h1>
+                  <h1>终端命令设置代理</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>有些强迫症不能看到xcode编译报出的警告⚠️，所以在podfile中添加一行<br/>
-<code>inhibit_all_warnings!</code><br/>
-如果没有多个<code>target</code>或者需要所有都隐藏这个黄色警告就在最外层写</p>
+                        	<h4 id="toc_0">让终端走代理的几种方法</h4>
 
-<pre><code class="language-#"># platform :ios, &#39;9.0&#39;
-inhibit_all_warnings!
+<p><code>Macproxyterminal</code></p>
 
-target &#39;MVVM&#39; do
-  # Uncomment the next line if you&#39;re using Swift or would like to use dynamic frameworks
-  # use_frameworks!
-   pod &#39;ReactiveObjC&#39;, &#39;~&gt; 3.1.0&#39;
-   pod &#39;MBProgressHUD&#39;, &#39;~&gt; 1.1.0&#39;
-   pod &#39;MJRefresh&#39;, &#39;~&gt; 3.1.15.7&#39;
-  # Pods for MVVM
+<ul>
+<li><p>方法1:<br/>
+在终端中直接运行命令<br/>
+export http_proxy=<a href="http://proxyAddress:port">http://proxyAddress:port</a><br/>
+这个办法的好处是简单直接，并且影响面很小（只对当前终端有效，退出就不行了）。<br/>
+如果你用的是ss代理，在当前终端运行以下命令，那么wget curl 这类网络命令都会经过ss代理<br/>
+export ALL_PROXY=socks5://127.0.0.1:1080</p></li>
+<li><p>方法2:<br/>
+比如我现在使用的shadowsocks工具可以直接设置全局代理，勾选就行了，一般使用的是PAC自动模式，这样可以根据条件选择代理or直连，保证速度和网站的可达性。</p></li>
+</ul>
 
-end
-</code></pre>
-
-<p>如果有多个target的话就可以在各个需要隐藏的target当中写上这句话</p>
-
-<pre><code class="language-#"># platform :ios, &#39;9.0&#39;
-
-target &#39;MVVM&#39; do
-  # Uncomment the next line if you&#39;re using Swift or would like to use dynamic frameworks
-  # use_frameworks!
-  inhibit_all_warnings!
-   pod &#39;ReactiveObjC&#39;, &#39;~&gt; 3.1.0&#39;
-   pod &#39;MBProgressHUD&#39;, &#39;~&gt; 1.1.0&#39;
-   pod &#39;MJRefresh&#39;, &#39;~&gt; 3.1.15.7&#39;
-  # Pods for MVVM
-
-end
-
-target &#39;RAC&#39; do
-  # Uncomment the next line if you&#39;re using Swift or would like to use dynamic frameworks
-  # use_frameworks!
-   pod &#39;Masonry&#39;, 
-   pod &#39;AFNetworking&#39;,   # Pods for RAC
-
-end
-</code></pre>
+<p><img src="media/15427834491808/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-04%20%E4%B8%8B%E5%8D%881.09.57.png" alt="屏幕快照 2018-12-04 下午1.09.57"/><br/>
+shadowSocks软件的Git地址为<a href=""><code>https://github.com/shadowsocks/ShadowsocksX-NG</code></a></p>
 
                         
                       </div>
@@ -158,8 +140,10 @@ end
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/12/11</span>
-                    
+                    <span class="date">2018/12/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%85%B6%E5%AE%83.html'>其它</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -173,219 +157,52 @@ end
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="16076509805121.html">
+                <a class="clearlink" href="16076509804590.html">
                 
-                  <h1>被神化的MVVM和被错误认识的Model层</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>MVVM是一种双向绑定技术，使用VM实现数据的变化更新视图，视图的变化更新数据的处理，整个过程是一种数据绑定的过程。<br/>
-网络上可以看到大多数人吹捧MVVM，但是千奇百怪的，并没有人能很好的理解MVVM，反而使代码变得异常复杂。<br/>
-<code>MVC的关系图</code></p>
-
-<pre><code class="language-sequence">V层-&gt;C层:事件
-Note right of V层:特殊情况下可以持有M层
-C层-&gt;V层:创建/更新
-C层-&gt;M层: 调用
-M层-&gt;C层: 通知
-</code></pre>
-
-<table>
-<thead>
-<tr>
-<th>M</th>
-<th>V</th>
-<th>C</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>Model模型</td>
-<td>View视图</td>
-<td>Controller控制器</td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="toc_0">1.被误解的MVC</h3>
-
-<p>最开始实行的一套机制是MVC 但是很多业务代码被放在了C层处理，导致出现了一个C中出现了上千行代码，给调试带来了很多影响。</p>
-
-<p>后来才试着把JSON数据解析成数据模型，这样把一部分代码挪到了M模型层，但是这个模型是很简单的，只是单纯的属性定义。</p>
-
-<p>这样显然是不够的，很多业务代码还是存在C层当中，并没有对C很好的进行瘦身，这样的<code>MVC</code>框架太过臃肿。</p>
-
-<p>而其实真正的MVC框架中的M层不应该只是简单的数据模型，而应该是业务模型，也就是所有业务数据和业务实现逻辑应该定义在M层，而且应该和具体的界面没有关系,可以独立存在，甚至可以编译出静态库给第三方使用，就像我们下面将要说到的ViewModel层相似。</p>
-
-<h3 id="toc_1">2.引出ViewModel层</h3>
-
-<p>其实大多时候界面和业务逻辑是绑在一起的，这个界面的展示要调用某个业务逻辑，完成之后直接更新界面，大多时候C只是多余的，所以才把这部分的逻辑代码（网络请求，数据库操作，解析，业务逻辑）抽象出一个单独的类，这个类叫VM类。</p>
-
-<pre><code class="language-sequence">V层-&gt;VM层:
-VM层-&gt;V层:
-M层-&gt;VM层:
-VM层-&gt;M层:
-C层-&gt;VM层:
-</code></pre>
-
-<p>当前的VM层负责视图、模型、C层的三个部分的交互和耦合。</p>
-
-<p>下一步考虑是不是可以把C层的事件处理也拿出来，然后就用到了RAC，负责事件的处理和传递。<br/>
-这样的话就可以达到给C层减肥的效果了。</p>
-
-<p>但是并不是说C层就没有用了。</p>
-
-<p>在MVVM中的M只是一个简单的饿数据模型的概念，如果把它当做一层，显然不符合横向切分的规则，所以MVVM中的M就是一个伪概念。</p>
-
-<h3 id="toc_2">3.MVVM的过于神化</h3>
-
-<p>同时MVVM当中的VM是严格和View绑定的，这是一种强耦合，但是实际情况下界面可能会随着升级而变化，往往业务逻辑是相对稳定的，所以上面的这种以VM为中心的设计模式很不清爽，所以MVVM当中的VM层也是一个<br/>
-伪概念。</p>
-
-<p>然后是View事件处理。C层是一个负责调度和控制的模块，他的作用就是处理视图的事件，然后调用业务逻辑，然后接收业务逻辑的处理结果通知，然后再通知视图去刷新界面，这就是C层存在的意义。<br/>
-而RAC的出现则将这部分的处理给活生生的代替掉了。也就是通过RAC所谓的响应式和触发式这种机制就能实现将事件的调度处理放在任何地方任何时候都能完成。这样做的目的使得我们可以分散和分解代码。但结果出现的问题呢？就是同一个单元调度处理逻辑和功能的构建完全放在了一个地方，但不同的单元逻辑的又分散在不同的地方，无法去分类统一管理和维护。因此你无法一下子就知道某个功能所有调度到底是如何实现以及在哪里实现的。因为RAC将功能构建和事件处理完全粘合到一个大的函数体内部，并且是代码套代码的模式，这种方式严重的破坏了面向对象里面的构建和处理分离的设计模式理论。更麻烦的是其高昂的学习和维护成本，代码阅读理解困难，以及无处不在的闭包使用。试想一下这个对于一个初学者来说是不是噩梦？，一旦出了问题对于维护和代码调试是不是噩梦？而且使用不当就会出现循环引用的严重问题。这样一来原本C层一个调度总管的职责被RAC来接管后，这些处理将变得分散和无序，当我们要做一些统一的管理比如HOOK和AOP方面的东西时就变得无法下手了。 不可否认的是RAC在处理连续调用以及顺序响应方面有一定的优势。一个例子是我们可能有连续的多个跟服务器的网络请求，这时候用RAC进行这种处理能方便的解决问题。但是我想说的是当存在这种场景时，我们更加应该将这种连续的网络调用在M层内部消化掉，而只给C层提供一个简易而方便的接口，让C层根本不需要关心这种调用的连续性。因此可以说为了把C层的代码给消化掉而引入RAC的机制，不仅没有简化掉系统反而降低了系统的可维护性和可读性。RAC机制根本就不适合用在事件处理中。优秀的应用和框架并不在代码的多寡，而是整体系统的代码简单易读，各部分职责分明，容易维护的调试。</p>
-
-<p><u>其实这一切的一切都来源于对MVC当中Model的错误认识和理解。</u></p>
-
-<h3 id="toc_3">4.正确理解MVC</h3>
-
-<p>M层不依赖C层和V层独立存在，C层负责关联二者，V层只负责展示，M层持有数据和业务的具体实现，而C层则处理事件响应以及业务的调用以及通知界面更新。三者之间一定要明确的定义为单向依赖，而不应该出现双向依赖。下面是三层的依赖关系图：</p>
-
-<pre><code class="language-sequence">M层-&gt;C层:被C层依赖
-Note right of M层:M:持有数据和业务的具体实现
-C层-&gt;V层:依赖V层
-Note left of V层:V:展示
-Note left of C层:C:关联M和V&amp;事件响应&amp;业务调用&amp;界面更新。
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/12/11</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509805209.html">
-                
-                  <h1>代理&回调&通知</h1>
+                  <h1>pod install速度过慢</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<ul>
-<li>代理和block都是单一观察者，当数据进行通知的时候，只能有一个观察者进行监听和处理，不能实现多个观察者通知更新处理。</li>
-<li>block容易引起循环引用和泄漏内存，多重嵌套，影响程序的美观。</li>
-<li>代理可以实时监听某个值得变化，如果需要实时监听的话多会使用代理而不是block</li>
-<li>kvo 和 通知可以实现通知多个观察者接收并处理。</li>
+<li>①代理VPN方式</li>
 </ul>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/12/11</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<p>相信大家已经感受到<code>pod install</code>速度越来越慢了，网上提供了几种解决方案，但是都没有完全解决速度慢的问题。</p>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509805248.html">
-                
-                  <h1>sizeThatFits和sizeToFit</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>今天帮同事看一个布局约束的问题，（代码也是从别人手中接过来的，所以并不清楚怎么布局的）<br/>
-view是用xib画的，约束设置很多，本以为是约束的问题，设置了约束还是不能更改整个view的高度。</p>
+<p>使用国内镜像的<code>Specs</code><br/>
+在<code>pod install</code>时使用命令<code>pod install --no-repo-update</code><br/>
+使用<code>proxychains</code>使终端命令走代理<br/>
+下面就来说明一下这几种方法为何没有完全解决问题</p>
 
-<p>最后找了一会，我发现了一个方法 sizeThatFit 在sizeThatFit内部返回了size，所以刚才尽管指定的约束改了，但是还是不影响下面的方法返回size。</p>
+<p>使用国内镜像的<code>Specs</code> 极大地加快了<code>Specs</code>下载更新速度，而且如果使用国内镜像<code>Specs</code>，那么<code>Podfile</code>中就必须指明使用这个<code>Specs</code>。<br/>
+在<code>pod install</code>时使用命令<code>pod install --no-repo-update</code>时不更新本地库，但如果第一次<code>install</code>还是要去<code>github clone</code>代码<br/>
+使用<code>proxychains</code>使终端命令走代理 <br/>
+这个只是使pod命令走代理，<code>git download</code>的时候不会走代理<br/>
+其实真正慢的原因并不在pod命令，而是在于github上的代码库访问速度慢，那么就知道真正的解决方案就是要加快git命令的速度。 <br/>
+我使用Shadowsocks代理，默认代理端口为1080，配置好代理之后去终端输入git配置命令，命令如下</p>
 
-<p>所以就写了这个东西给不了解的同学一点点经验。</p>
+<p><code>git config --global http.proxy socks5://127.0.0.1:1080</code></p>
 
-<pre><code class="language-text">- (void)sizeToFit;                       // calls sizeThatFits: with current view bounds and changes bounds size.
-- (CGSize)sizeThatFits:(CGSize)size;     // return &#39;best&#39; size to fit given size. does not actually resize view. Default is return existing view size
+<p>上面的命令是给git设置全局代理，但是我们并不希望国内git库也走代理，而是只需要github上的代码库走代理，命令如下</p>
 
+<p><code>git config --global http.https://github.com.proxy socks5://127.0.0.1:1080</code></p>
+
+<p>ps：如果要恢复/移除上面设置的git代理，使用如下命令</p>
+
+<pre><code class="language-text">git config --global --unset http.proxy
+git config --global --unset http.https://github.com.proxy
 </code></pre>
-
-<p>上面是苹果的方法说明。</p>
-
-<p>sizeToFit 方法会返回一个苹果自带方法计算出的合适的宽高，即使你初始化的时候的宽和高设置错误，苹果也会给你算出一个合适的size让你填充你的内容。</p>
-
-<pre><code class="language-text">-(void)addSizeToFitHelloLable{
-    
-    UILabel * hello = [[UILabel alloc]initWithFrame:CGRectMake(20, 20, 20, 100)];
-    hello.text = @&quot;hello world&quot;;
-    hello.backgroundColor = [UIColor redColor];
-    [self.view addSubview:hello];
-    [hello sizeToFit];
-    
-}
-
-</code></pre>
-
-<p>我这里设置的宽度和高度明显是不对的，但是当我调用sizeToFit之后就好多了，下面是调用前和调用之后的对比效果。</p>
 
 <ul>
-<li><p>调用之前<br/>
-<img src="media/15433027949667/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-27%20%E4%B8%8B%E5%8D%883.23.49.png" alt="屏幕快照 2018-11-27 下午3.23.49 "/></p></li>
-<li><p>调用之后<br/>
-<img src="media/15433027949667/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-27%20%E4%B8%8B%E5%8D%883.23.06.png" alt="屏幕快照 2018-11-27 下午3.23.06"/></p></li>
+<li>②更改host</li>
 </ul>
 
-<p>因为sizeToFit之后内部会调用调用sizeThatFits，所以还可以在自定义view当中重写sizeThatFits方法，去调整sizeToFit之后的size。</p>
+<pre><code class="language-text">执行下面的操作会使整个过程更快一些
 
-<pre><code class="language-text">----------customLable.m-------------
--(CGSize)sizeThatFits:(CGSize)size{
-    
-    [super sizeThatFits:size];
-    size.height = 40;
-    return size;
-    
-}
-</code></pre>
-
-<h4 id="toc_0">注意</h4>
-
-<p>添加自定义的lable到view上最后千万不能忘记调用sizeToFit方法，要不然内部重写的sizeThatFits不生效。</p>
-
-<pre><code class="language-text">-(void)addCustomeSizeThatFitLable{
-    
-    CustomLable * hello = [[CustomLable alloc]initWithFrame:CGRectMake(20, 20, 200, 100)];
-    hello.text = @&quot;hello world&quot;;
-    hello.backgroundColor = [UIColor redColor];
-    [self.view addSubview:hello];
-    [hello sizeToFit]; 
-}
+* 进入网址https://www.ipaddress.com/
+* 输入 gitHub.com 找到GitHub的ip地址 
+* 然后打开hosts (打开hosts的操作是`sudo vim /etc/hosts`)添加 ip http://github.com
 </code></pre>
 
                         
@@ -395,8 +212,10 @@ view是用xib画的，约束设置很多，本以为是约束的问题，设置�
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/12/11</span>
-                    
+                    <span class="date">2018/12/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%85%B6%E5%AE%83.html'>其它</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -410,34 +229,14 @@ view是用xib画的，约束设置很多，本以为是约束的问题，设置�
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="16076509805290.html">
+                <a class="clearlink" href="16076509808874.html">
                 
-                  <h1>_cmd 与 runtime 的结合</h1>
+                  <h1>xpath 提取div标签所有文字信息</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>只有运行时给分类添加属性，大部分都是这样的</p>
-
-<pre><code class="language-static">- (NSString *)customName {
-　　　　 return objc_getAssociatedObject(self, &amp;kExtendVarKey);
-　　 }
-- (void)setCustomName:(NSString *)customName {
-　　　　objc_setAssociatedObject(self, &amp;kExtendVarKey,, customDelegate, OBJC_ASSOCIATION_RETAIN_COPY);
-　}
-</code></pre>
-
-<p>_cmd 是隐藏的参数，表示当前方法的selector，另外隐藏参数self表示当前方法调用的对象实例。<br/>
-这个参数是唯一的参数，在一个文件中方法名不会重复。<br/>
-所以可以让它代替运行时当中的属性的键名。</p>
-
-<pre><code class="language-　　">- (NSString *)customName {
-　　　　 return objc_getAssociatedObject(self, _cmd);
-　　 }
-- (void)setCustomName:(NSString *)customName {
-　　　　objc_setAssociatedObject(self, @selector(customName), customName, OBJC_ASSOCIATION_RETAIN_COPY);
-　　}
-</code></pre>
+                        	<p><img src="media/15591149863353/15591150079270.jpg" alt=""/></p>
 
                         
                       </div>
@@ -446,8 +245,10 @@ view是用xib画的，约束设置很多，本以为是约束的问题，设置�
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/12/11</span>
-                    
+                    <span class="date">2018/12/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Python.html'>Python</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -461,315 +262,1401 @@ view是用xib画的，约束设置很多，本以为是约束的问题，设置�
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="16076509805332.html">
+                <a class="clearlink" href="16076509808368.html">
                 
-                  <h1>Protocol</h1>
+                  <h1>RunLoop</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>注意协议只是个声明文件，并没有实现。<br/>
-谁声明，谁调用。</p>
+                        	<p>Fundation 框架是对Core Fundation的封装。</p>
 
-<p>协议可用定义在单独.h文件中，也可用定义在某个类中：</p>
+<h2 id="toc_0">Fundation</h2>
 
-<p>（1） 如果这个协议只用在某个类中，应该把协议定义在该类中</p>
+<p><code>[NSRunLoop currentRunLoop];</code>//返回当前线程的RunLoop  如果不存在就会创建一个RunLoop并返回。<br/>
+//If a run loop does not yet exist for the thread, one is created and returned.</p>
 
-<p>（2） 如果这个协议用在很多类中，就应该定义在单独文件中</p>
+<p><code>[NSRunLoop mainRunLoop]</code>//获取主线程的RunLoop对象。</p>
 
-<p>不过，如果子类自身又遵循了这个协议，但并没有实现，那么在运行时，系统会一级级往上查找，直到找到父类的方法实现。也就是说，只要知道苹果的私有方法名，并且确保自己的类是这个私有方法所属类的子类，就可以在子类中通过只声明不实现的方式执行父类中该私有方法的实现。</p>
+<p>基础知识:每个线程上都对应有一个RunLoop对象，主线程RunLoop默认开启，子线程RunLoop要手动开启。<br/>
+RunLoop在线程结束的时候退出循环。</p>
 
-<h5 id="toc_0">category</h5>
+<h2 id="toc_1">Core Fundation</h2>
 
-<p>category也是一种特殊的协议，内部可以调用，外部不能调用、子类不能重写实现和重写，相当于是私有方法。</p>
+<p><code>CFRunLoopGetCurrent()</code>//<br/>
+获取当前线程的RunLoop对象</p>
 
-<h4 id="toc_1">总结</h4>
+<p><code>CFRunloopGetMain()</code>//获取主线程的RunLoop对象</p>
 
-<p>协议就是定义公共接口的地方，只要遵守协议，就等于在头文件中定义了这些方法，只要实现就行了。</p>
+<h4 id="toc_2">CFRunLoopModeRef</h4>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/12/11</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1g3chptv14yj30y60u0ju5.jpg" alt="runloop@3x"/><br/>
+每个 RunLoop其实都是一个对象，可以包含多个不同的 Mode，每个Mode又由Source、Observer、 Timer组成，而且Mode中Source、Observer、 Timer都不存在的话，这个RunLoop也不存在。</p>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509805420.html">
-                
-                  <h1>dispatch_semaphore_t 信号量</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><code>dispatch_semaphore_t</code> 一种计算的信号量<br/>
-<code>dispatch_semaphore_create</code> 创建一个数值的信号量<br/>
-<code>dispatch_semaphore_signal</code> 对指定的信号量进行增加1</p>
+<p>系统默认注册了5个Mode</p>
 
-<p><code>dispatch_semaphore_wait</code> 会使传入的信号量减1，如果返回的值为0说明有任务进行中就阻碍当前的线程，如果返回的值大于0，就代表当前的线程当中没有任务再执行，就接着执行下面的任务。</p>
+<ul>
+<li><p>kCFRunLoopDeafultMode:App的默认mode。通常主线程是在这个mode下运行。</p></li>
+<li><p>UITrakingRunLoopMode:界面跟踪mode 用于scrollview追踪触摸滑动，保证界面滑动时不受其他mode的影响。</p></li>
+<li><p>UIInitalizeationRunloopMode:在刚启动app时进入的第一个mode 启动完成后就不再使用。</p></li>
+<li><p>GSEventReceiveRunLoopMode:接受系统时间的内部mode 通常用不到</p></li>
+<li><p>kCFRunLoopCommonModes:这是一个占位用的mode 不是一种真正的mode</p></li>
+</ul>
 
-<p>用这个可以起到顺序执行异步任务的功效。<br/>
-如果后一步的执行需要前一步执行完拿到结果才行的话，这也是一种异步顺序执行的方案。</p>
+<h4 id="toc_3">CFRunLoopSourceRef</h4>
 
-<pre><code class="language-text">- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self task:@&quot;task one starting&quot;];
-        dispatch_semaphore_signal(semaphore);
-    });
-    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-    
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self task:@&quot;task two starting&quot;];
-        dispatch_semaphore_signal(semaphore);
-    });
-    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-    
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self task:@&quot;task three starting&quot;];
-        dispatch_semaphore_signal(semaphore);
-    });
-    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-    
-    // Do any additional setup after loading the view, typically from a nib.
-}
+<p>事件源（输入源）</p>
 
-- (void)task:(NSString *)taskName{
-    NSLog(@&quot;%@&quot;,taskName);
-    sleep(1);
-}
+<ul>
+<li><p>source0 非基于port的</p>
+<ul>
+<li>custom input sources</li>
+<li>cocoa perform selector sources</li>
+</ul></li>
+<li><p>source1 基于port的</p>
+<ul>
+<li>port-based sources </li>
+</ul></li>
+</ul>
 
+<h4 id="toc_4">CFRunLoopTimerRef</h4>
+
+<blockquote>
+<p>基于时间的触发器</p>
+</blockquote>
+
+<p>基本上说的就是NSTimer<br/>
+默认加到kCFRunLoopDeafultMode 但是滑动的时候定时器所在的mode会暂停，所以应该把定时器加到kCFRunLoopCommonModes中去。</p>
+
+<pre><code class="language-text">//创建定时器并开启定时任务
++ (NSTimer *)scheduledTimerWithTimeInterval:(NSTimeInterval)ti target:(id)aTarget selector:(SEL)aSelector userInfo:(nullable id)userInfo repeats:(BOOL)yesOrNo;
+//创建定时器但不开启定时任务
++ (NSTimer *)timerWithTimeInterval:(NSTimeInterval)ti target:(id)aTarget selector:(SEL)aSelector userInfo:(nullable id)userInfo repeats:(BOOL)yesOrNo;
 </code></pre>
 
-<p>先执行dispatch_semaphore_wait 然后发现线程任务还在进行，就开始堵塞当前任务的线程，等待dispatch_async内部执行完成信号量+1才会继续下面的执行。</p>
+<p>NSTimer中<code>scheduledTimerWithTimeInterval</code>方法创建的默认加到<code>kCFRunLoopDeafultMode</code>并开启，但是其他方法创建的定时器并没有开启，要去手动开启，或者直接指定一个mode，那么就会开启执行定时器任务。</p>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/12/11</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<h4 id="toc_5">CFRunLoopObserverRef</h4>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509805463.html">
-                
-                  <h1>Swift & Objective-C & C++之间的混编</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">①Objective-C 调用 C++</h3>
+<blockquote>
+<p>观察者，能够监听runloop的状态改变。</p>
+</blockquote>
 
-<p>OC本身可以直接调用C的代码 比如直接可以调用printf方法。<br/>
-但是OC中的.m直接编译C++的代码就会出现编译错误<br/>
-需要把OC.m改成OC.mm之后（objective-c变成了objective-c++）引入iostream(<code>#include&lt;iostream&gt;</code>)就可以直接编译了。<br/>
-这可以在.mm文件当中直接使用c++的代码。<br/>
-也可以另外新建一个c++的文件，并且创建.h文件。</p>
+<p>可以监听的时间点有以下几个。</p>
 
-<pre><code class="language-text">********CPPHello.hpp声明文件********
-#ifndef CPPHello_hpp
-#define CPPHello_hpp
-
-#include &lt;stdio.h&gt;
-class CPPHello{
-    
-public:
-    static void sayHello();
+<pre><code class="language-text">/* Run Loop Observer Activities */
+typedef CF_OPTIONS(CFOptionFlags, CFRunLoopActivity) {
+    kCFRunLoopEntry = (1UL &lt;&lt; 0),即将进入runloop
+    kCFRunLoopBeforeTimers = (1UL &lt;&lt; 1),即将处理timer
+    kCFRunLoopBeforeSources = (1UL &lt;&lt; 2),即将处理source
+    kCFRunLoopBeforeWaiting = (1UL &lt;&lt; 5),即将进入休眠
+    kCFRunLoopAfterWaiting = (1UL &lt;&lt; 6),刚从休眠中唤醒
+    kCFRunLoopExit = (1UL &lt;&lt; 7),即将退出runloop
+    kCFRunLoopAllActivities = 0x0FFFFFFFU监听runloop所有的情况
 };
+</code></pre>
 
-#endif /* CPPHello_hpp */
-********CPPHello.cpp实现文件********
-#include &quot;CPPHello.hpp&quot;
-
-void CPPHello::sayHello(){
+<pre><code class="language-text">//添加runloop状态的监听
+-(void)addobserver{
     
-    printf(&quot;hello world&quot;);
+    CFRunLoopObserverRef observe = CFRunLoopObserverCreateWithHandler(CFAllocatorGetDefault(), kCFRunLoopAllActivities, YES, 0, ^(CFRunLoopObserverRef observer, CFRunLoopActivity activity) {
+        
+        NSLog(@&quot;%lu&quot;,activity);
+    });
+    CFRunLoopAddObserver(CFRunLoopGetCurrent(), observe, kCFRunLoopDefaultMode);
+}
+
+CFRelease(observe);//记得要释放c中的对象
+
+
+</code></pre>
+
+<h2 id="toc_6">实战场景</h2>
+
+<p>Q:当滑动的时候对imageview设置图片并不会显示。</p>
+
+<p>A:所以可以使设置image的操作在commonmode中执行。</p>
+
+<p>比如使用方法</p>
+
+<pre><code class="language-text">UIImageView * imageView = [[UIImageView alloc]init];
+
+[imageView performSelector:@selector(setImage:) withObject:[UIImage imageNamed:@&quot;logo&quot;] afterDelay:3 inModes:@[NSRunLoopCommonModes]];
+</code></pre>
+
+<hr/>
+
+<p>Q:当滑动的时候Timer的定时任务不会执行。</p>
+
+<p>A:把Timer放到commonmode中执行。</p>
+
+<p>比如使用方法</p>
+
+<pre><code class="language-text"> NSTimer * timer =   [NSTimer scheduledTimerWithTimeInterval:2 repeats:YES block:^(NSTimer * _Nonnull timer) {
+    }];
+    
+[[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+</code></pre>
+
+<hr/>
+
+<p>创建子线程并执行事件，任务做完之后线程就销毁了。</p>
+
+<pre><code class="language-text">-(void)creatThread{
+    
+    NSThread * thread = [[NSThread alloc]initWithTarget:self selector:@selector(testThread) object:nil];
+    
+    [thread start];
+}
+
+-(void)testThread{
+      
+    NSLog(@&quot;%@&quot;,[NSThread currentThread]);
     
 }
 </code></pre>
 
-<p><strong>注意:</strong>oc调用c++必须要把.m改成.mm,要不然会报错。</p>
+<hr/>
 
-<h3 id="toc_1">②C++ 调用 Objective-C</h3>
+<p>Q:如果想要让这个线程常驻的话应该怎么操作呢</p>
 
-<p>新建cocoaTouch中的类，语言选择Objective-C，比如<code>objcHello.h</code>和<code>objcHello.m</code>然后在刚才的c++文件(<code>CPPHello.cpp</code>)中import <code>objcHello.h</code>就会出现编译错误。<br/>
-所以c++语言不能直接import OC的头文件要对头文件进行修改，把头文件所有内容删除替换成c++能够识别的代码比如c或者c++的代码。</p>
+<p>A:创建一个带有mode的runloop并开启，runloop如果不指定mode的话就不能开启循环。</p>
 
-<pre><code class="language-text">//objcHello.h
-void objcSayHello();
-</code></pre>
+<p>比如使用方法</p>
 
-<p>另外<code>objcHello.m</code>文件要修改成<code>objcHello.mm</code>文件，然后<code>#import &lt;Foundation/Foundation.h&gt;</code>之后就可以在<code>objcHello.mm</code>文件调用oc的代码了。<br/>
-并且可以在<code>objcHello.mm</code>文件中写oc的类了，比如如下代码。</p>
-
-<pre><code class="language-text">#import &lt;Foundation/Foundation.h&gt;
-#import &quot;ObjcHello.h&quot;
-
-@interface ObjcHello:NSObject
-
--(void)sayHello;
-
-@end
-
-@implementation ObjcHello
-
--(void)sayHello{
+<pre><code class="language-text">-(void)creatThread{
     
-    NSLog(@&quot;hello objc&quot;);
+    NSThread * thread = [[NSThread alloc]initWithTarget:self selector:@selector(testThread) object:nil];
+    [thread start];
 }
-@end
 
-
-void objcSayHello(){
+-(void)testThread{
     
-//  NSLog(@&quot;hello Objc&quot;);
-    ObjcHello * h = [ObjcHello new];
-    [h sayHello];
+    NSLog(@&quot;%@&quot;,[NSThread currentThread]);
+    [[NSRunLoop currentRunLoop] addPort:[NSPort port] forMode:NSRunLoopCommonModes];
+    [[NSRunLoop currentRunLoop] run];
+    //这个代码不会往下执行，所以这个任务不会结束。
 }
 </code></pre>
 
-<p>然后修改完之后引入比如<code>#include &quot;ObjcHello.h&quot;</code>就可以在里面对.h文件的方法进行调用了。</p>
+<hr/>
 
-<pre><code class="language-text">#include &quot;CPPHello.hpp&quot;
-#include &quot;ObjcHello.h&quot;
-void CPPHello::sayHello(){
+<p>Q:如果子线程加一个定时器任务，定时器任务不执行</p>
+
+<p>A:在主线程开启的定时器默认开启了runloop，但是子线程开启的定时器没有runloop需要手动开启。</p>
+
+<pre><code class="language-text">-(void)creatThread{
     
-//   printf(&quot;hello world&quot;);
-    objcSayHello();
+    self.thread = [[NSThread alloc]initWithTarget:self selector:@selector(testTimer) object:nil];
+    [_thread start];
+  
+}
+//修改前
+-(void)testTimer{
     
+    [NSTimer scheduledTimerWithTimeInterval:2 repeats:YES block:^(NSTimer * _Nonnull timer) {
+       
+        //code
+    }];
+}
+//修改后
+-(void)testTimer{
+    
+    [NSTimer scheduledTimerWithTimeInterval:2 repeats:YES block:^(NSTimer * _Nonnull timer) {
+       
+        //code
+    }];
+    1.[[NSRunLoop currentRunLoop] addPort:[NSPort port] forMode:NSRunLoopCommonModes];
+    //还可以使用下面这个方法，但是注意到如果是使用的schedue创建的方法默认是把timer加到runloop的只需要把当前的runloop run就可以了不需要再加1和2的方法，但是其他创建timer的方法没有默认把timer加到runloop就必须使用下面的这个方法把timer加到runloop当中。    
+    2.[[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+    //必须的方法，因为子线程创建的runloop需要手动开启。
+    [[NSRunLoop currentRunLoop] run];
 }
 </code></pre>
 
-<h3 id="toc_2">③Swift调用C</h3>
+<p>没有开启runloop线程被销毁了，定时器也没有被加到runloop执行，所以解决办法就是把定时器加到runloop当中的mode中并执行run方法。</p>
 
-<p>新建<code>CHello.h</code>文件，然后创建头文件，然后选择创建桥接文件。<br/>
-在这个桥接文件中#import其他公开头文件用来暴露给swift文件。</p>
+<hr/>
 
-<p>1.在.h文件中声明一个方法</p>
+<p>自动释放池</p>
 
-<pre><code class="language-text">CHello.h
-#ifndef CHello_h
-#define CHello_h
+<pre><code class="language-text">//当runloop在休眠之前会释放自动释放池，当runloop再启动时就会再创建池子
+@autoreleasepool {
+        [NSTimer scheduledTimerWithTimeInterval:2 repeats:YES block:^(NSTimer * _Nonnull timer) {
+            //code
+        }];
+        
+        [[NSRunLoop currentRunLoop] addPort:[NSPort port] forMode:NSRunLoopCommonModes];
+        [[NSRunLoop currentRunLoop] run];
+    }
 
-#include &lt;stdio.h&gt;
-void sayHello();
-#endif /* CHello_h */
 </code></pre>
 
-<p>2.在.c文件中实现一个方法</p>
+<p>runloop休眠的时候自动释放池销毁，在启动的时候再次生成自动释放池。</p>
 
-<pre><code class="language-text">Chello.c 
-#include &quot;CHello.h&quot;
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/10</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
-void sayHello(){
-    
-    printf(&quot;hello c&quot;);
-    
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509809222.html">
+                
+                  <h1>记录swift 当中超出以前认知的知识点</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">支持unicode编码的变量值</h2>
+
+<pre><code class="language-text">let a = [Int]()
+let 🐶🐮 = &quot;dogcow&quot;
+let 你好 = &quot;你好世界&quot;
+</code></pre>
+
+<h2 id="toc_1">错误处理</h2>
+
+<p>您使用错误处理来响应程序在执行期间可能遇到的错误情况。</p>
+
+<p>与可以使用值的存在或不存在来传递函数成功或失败的选项相比，错误处理允许您确定失败的根本原因，并在必要时将错误传播到程序的另一部分。</p>
+
+<p>当函数遇到错误条件时，它会抛出错误。然后该函数的调用者可以捕获错误并做出适当的响应。</p>
+
+<pre><code class="language-text">func canThrowAnError() throws {
+    // this function may or may not throw an error
 }
 </code></pre>
 
-<p>3.在桥接文件中引入<code>CHello.h</code></p>
+<p>函数表示它可以通过throws在其声明中包含关键字来引发错误。当您调用可以抛出错误的函数时，您可以将try关键字添加到表达式中。</p>
 
-<pre><code class="language-text">//  Use this file to import your target&#39;s public headers that you would like to expose to Swift.
-//
+<p>Swift会自动将错误传播出当前作用域，直到它们被catch子句处理。</p>
 
-#import &quot;CHello.h&quot;
-</code></pre>
-
-<p>4.在swift当中直接调用<code>sayHello()</code>方法</p>
-
-<h3 id="toc_3">④Swift &amp; Objective-C &amp; C++混编</h3>
-
-<p>新建OC的类比如OCHello.h和OCHello.m</p>
-
-<pre><code class="language-text">#import &lt;Foundation/Foundation.h&gt;
-
-@interface OCHello : NSObject
--(void)hello;
-@end
-</code></pre>
-
-<pre><code class="language-text">#import &quot;OCHello.h&quot;
-
-@implementation OCHello
--(void)hello{
-    
-    NSLog(@&quot;oc sayHello&quot;);
+<pre><code class="language-text">do {
+    try canThrowAnError()
+    // no error was thrown
+} catch {
+    // an error was thrown
 }
-@end
 </code></pre>
 
-<p>然后在桥接文件中引入<code>OCHello.h</code><br/>
-在swift当中就可以直接调用,代码如下所示</p>
+<p>一个do语句创建一个新的包含范围，允许误差传播到一个或多个catch条款。</p>
 
-<pre><code class="language-text">import UIKit
-class ViewController: UIViewController {
+<p>以下是如何使用错误处理来响应不同错误条件的示例：</p>
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        var h = OCHello();
-        h.hello()
+<pre><code class="language-text">func makeASandwich() throws {
+    // ...
+}
 
+do {
+    try makeASandwich()
+    eatASandwich()
+} catch SandwichError.outOfCleanDishes {
+    washDishes()
+} catch SandwichError.missingIngredients(let ingredients) {
+    buyGroceries(ingredients)
+}
+</code></pre>
+
+<p>在此示例中，makeASandwich()如果没有可用的干净菜肴或缺少任何成分，该函数将抛出错误。因为makeASandwich()可以抛出错误，函数调用包含在try表达式中。通过将函数调用包装在do语句中，抛出的任何错误都将传播到提供的catch子句。</p>
+
+<p>如果没有抛出错误，eatASandwich()则调用该函数。如果抛出错误并且它与SandwichError.outOfCleanDishes大小写匹配，则将washDishes()调用该函数。如果抛出错误并且它与SandwichError.missingIngredients大小写匹配，则buyGroceries(_:)调用该函数，并使用模式[String]捕获的关联值catch。</p>
+
+<p>错误处理中更详细地介绍了抛出，捕获和传播错误。</p>
+
+<h2 id="toc_2">一元减号算子</h2>
+
+<p>可以使用前缀-（称为一元减号运算符）来切换数值的符号：</p>
+
+<pre><code class="language-text">let three = 3
+let minusThree = -three       // minusThree equals -3
+let plusThree = -minusThree   // plusThree equals 3, or &quot;minus minus three&quot;
+</code></pre>
+
+<p>一元减号运算符（-）直接位于它运行的值之前，没有任何空格。</p>
+
+<h2 id="toc_3">一元加运算符</h2>
+
+<p>在一元加运算（+）只返回其所操作的价值，没有任何变化：</p>
+
+<pre><code class="language-text">let minusSix = -6
+let alsoMinusSix = +minusSix  // alsoMinusSix equals -6
+</code></pre>
+
+<p>虽然一元加运算符实际上没有做任何事情，但是当使用一元减运算符作为负数时，您可以使用它来为代码提供正数的对称性。</p>
+
+<h2 id="toc_4">闭区域操作员</h2>
+
+<p>的封闭范围操作符（a...b）限定了从运行范围a来b，并且包括这些值a和b。值a不得大于b。</p>
+
+<p>当在您希望使用所有值的范围内进行迭代时，闭环范围运算符非常有用，例如使用for- in循环：</p>
+
+<pre><code class="language-text">for index in 1...5 {
+    print(&quot;\(index) times 5 is \(index * 5)&quot;)
+}
+// 1 times 5 is 5
+// 2 times 5 is 10
+// 3 times 5 is 15
+// 4 times 5 is 20
+// 5 times 5 is 25
+</code></pre>
+
+<p>有关for- in循环的更多信息，请参阅控制流。</p>
+
+<h2 id="toc_5">半开放式操作员</h2>
+
+<p>所述半开区间运算符（a..&lt;b）限定了从运行范围a到b，但不包括b。它被认为是半开放的，因为它包含它的第一个值，但不是它的最终值。与闭区域运算符一样，值a不得大于b。如果值a等于b，则结果范围将为空。</p>
+
+<p>当您使用基于零的列表（如数组）时，半开范围特别有用，其中计算列表的长度（但不包括）非常有用：</p>
+
+<pre><code class="language-text">let names = [&quot;Anna&quot;, &quot;Alex&quot;, &quot;Brian&quot;, &quot;Jack&quot;]
+let count = names.count
+for i in 0..&lt;count {
+    print(&quot;Person \(i + 1) is called \(names[i])&quot;)
+}
+// Person 1 is called Anna
+// Person 2 is called Alex
+// Person 3 is called Brian
+// Person 4 is called Jack
+</code></pre>
+
+<p>请注意，该数组包含四个项目，但0..&lt;count只计算3（数组中最后一项的索引），因为它是半开放范围。有关数组的更多信息，请参阅数组。</p>
+
+<h2 id="toc_6">单面范围</h2>
+
+<p>闭区域运算符有一个替代形式，用于在一个方向上尽可能继续的范围 - 例如，包括从索引2到数组末尾的数组的所有元素的范围。在这些情况下，您可以省略范围运算符一侧的值。这种范围称为单侧范围，因为操作员仅在一侧具有值。例如：</p>
+
+<pre><code class="language-text">for name in names[2...] {
+    print(name)
+}
+// Brian
+// Jack
+
+for name in names[...2] {
+    print(name)
+}
+// Anna
+// Alex
+// Brian
+</code></pre>
+
+<p>半开放范围操作符也具有单侧形式，仅使用其最终值编写。就像在两侧都包含值一样，最终值不是范围的一部分。例如：</p>
+
+<pre><code class="language-text">for name in names[..&lt;2] {
+    print(name)
+}
+// Anna
+// Alex
+</code></pre>
+
+<p>单边范围可以在其他上下文中使用，而不仅仅在下标中使用。您不能迭代忽略第一个值的单侧范围，因为不清楚迭代应该从哪里开始。您可以迭代忽略其最终值的单侧范围; 但是，因为范围无限期地继续，请确保为循环添加显式结束条件。您还可以检查单侧范围是否包含特定值，如下面的代码所示。</p>
+
+<pre><code class="language-text">let range = ...5
+range.contains(7)   // false
+range.contains(4)   // true
+range.contains(-1)  // true
+</code></pre>
+
+<h3 id="toc_7">数组元素下标和值的对应关系</h3>
+
+<p>如果需要每个项的整数索引及其值，请使用该enumerated()方法迭代数组。对于数组中的每个项，该enumerated()方法返回由整数和项组成的<code>元组</code>。整数从零开始，每个项目加1; 如果枚举整个数组，则这些整数与项目的索引相匹配。您可以将元组分解为临时常量或变量，作为迭代的一部分：</p>
+
+<pre><code class="language-text">for (index, value) in shoppingList.enumerated() {
+    print(&quot;Item \(index + 1): \(value)&quot;)
+}
+</code></pre>
+
+<h2 id="toc_8">布尔值类型不能比较大小，元祖也是可以比较大小的。</h2>
+
+<h2 id="toc_9">创建和初始化空集</h2>
+
+<p>您可以使用初始化程序语法创建某个类型的空集：</p>
+
+<pre><code class="language-text">var letters = Set&lt;Character&gt;()
+</code></pre>
+
+<p>Swift集的类型写为Set<Element>，Element允许集存储的类型在哪里。与数组不同，集合没有等效的简写形式</p>
+
+<h2 id="toc_10">Set是一个无序的不重复元素的集合</h2>
+
+<p>Swift的Set类型没有定义的顺序。要以特定顺序迭代集合的值，请使用该sorted()方法，该方法将集合的元素作为使用&lt;运算符排序的数组返回。</p>
+
+<pre><code class="language-text">for genre in favoriteGenres.sorted() {
+    print(&quot;\(genre)&quot;)
+}
+// Classical
+// Hip hop
+// Jazz
+</code></pre>
+
+<h2 id="toc_11">使用Array Literal创建集合</h2>
+
+<p>您还可以使用数组文字初始化集合，作为将一个或多个值写为集合集合的简写方式。</p>
+
+<p>下面的示例创建一个名为favoriteGenres存储String值的集合：</p>
+
+<pre><code class="language-text">var favoriteGenres: Set&lt;String&gt; = [&quot;Rock&quot;, &quot;Classical&quot;, &quot;Hip hop&quot;]
+// favoriteGenres has been initialized with three initial items
+</code></pre>
+
+<h2 id="toc_12">Set基本集合运算</h2>
+
+<p><img src="https://docs.swift.org/swift-book/_images/setVennDiagram_2x.png" alt=""/></p>
+
+<ul>
+<li>使用该intersection(_:)方法创建一个仅包含两个集合共有值的新集合。</li>
+<li>使用该symmetricDifference(_:)方法创建一个新集合，其中包含任一集合中的值，但不能同时创建两者。</li>
+<li>使用该union(_:)方法创建包含两个集中所有值的新集。</li>
+<li>使用此subtracting(_:)方法创建一个值不在指定集中的新集。</li>
+</ul>
+
+<pre><code class="language-text">let oddDigits: Set = [1, 3, 5, 7, 9]
+let evenDigits: Set = [0, 2, 4, 6, 8]
+let singleDigitPrimeNumbers: Set = [2, 3, 5, 7]
+
+oddDigits.union(evenDigits).sorted()
+// [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+oddDigits.intersection(evenDigits).sorted()
+// []
+oddDigits.subtracting(singleDigitPrimeNumbers).sorted()
+// [1, 9]
+oddDigits.symmetricDifference(singleDigitPrimeNumbers).sorted()
+// [1, 2, 9]
+</code></pre>
+
+<ul>
+<li>使用“is equal”运算符（==）来确定两个集合是否包含所有相同的值。</li>
+<li>使用此isSubset(of:)方法确定集合的所有值是否都包含在指定的集合中。</li>
+<li>使用此isSuperset(of:)方法确定集合是否包含指定集合中的所有值。</li>
+<li>使用isStrictSubset(of:)或isStrictSuperset(of:)方法确定集合是否是指定集合的​​子集或超集，但不等于。</li>
+<li>使用该isDisjoint(with:)方法确定两个集合是否没有共同的值。</li>
+</ul>
+
+<pre><code class="language-text">let houseAnimals: Set = [&quot;🐶&quot;, &quot;🐱&quot;]
+let farmAnimals: Set = [&quot;🐮&quot;, &quot;🐔&quot;, &quot;🐑&quot;, &quot;🐶&quot;, &quot;🐱&quot;]
+let cityAnimals: Set = [&quot;🐦&quot;, &quot;🐭&quot;]
+
+houseAnimals.isSubset(of: farmAnimals)
+// true
+farmAnimals.isSuperset(of: houseAnimals)
+// true
+farmAnimals.isDisjoint(with: cityAnimals)
+// true
+</code></pre>
+
+<h2 id="toc_13">创建一个空字典</h2>
+
+<p>与数组一样，您可以Dictionary使用初始化程序语法创建某个类型的空：</p>
+
+<pre><code class="language-text">var namesOfIntegers = [Int: String]()
+// namesOfIntegers is an empty [Int: String] dictionary
+</code></pre>
+
+<h2 id="toc_14">使用Dictionary Literal创建字典</h2>
+
+<pre><code class="language-text">var airports: [String: String] = [&quot;YYZ&quot;: &quot;Toronto Pearson&quot;, &quot;DUB&quot;: &quot;Dublin&quot;]
+</code></pre>
+
+<h2 id="toc_15">迭代字典</h2>
+
+<p>您可以用字典遍历键值对for- in环。字典中的每个项都作为元组返回，您可以将元组的成员分解为临时常量或变量，作为迭代的一部分：(key, value)</p>
+
+<pre><code class="language-text">for (airportCode, airportName) in airports {
+    print(&quot;\(airportCode): \(airportName)&quot;)
+}
+// LHR: London Heathrow
+// YYZ: Toronto Pearson
+</code></pre>
+
+<h2 id="toc_16">Switch区间匹配</h2>
+
+<p>switch可以检查案例中的值是否包含在间隔中。此示例使用数字间隔为任何大小的数字提供自然语言计数：</p>
+
+<pre><code class="language-text">let approximateCount = 62
+let countedThings = &quot;moons orbiting Saturn&quot;
+let naturalCount: String
+switch approximateCount {
+case 0:
+    naturalCount = &quot;no&quot;
+case 1..&lt;5:
+    naturalCount = &quot;a few&quot;
+case 5..&lt;12:
+    naturalCount = &quot;several&quot;
+case 12..&lt;100:
+    naturalCount = &quot;dozens of&quot;
+case 100..&lt;1000:
+    naturalCount = &quot;hundreds of&quot;
+default:
+    naturalCount = &quot;many&quot;
+}
+print(&quot;There are \(naturalCount) \(countedThings).&quot;)
+// Prints &quot;There are doze
+</code></pre>
+
+<h2 id="toc_17">元组</h2>
+
+<p>您可以使用元组在同一switch语句中测试多个值。可以针对不同的值或值的间隔来测试元组的每个元素。或者，使用下划线字符（_）（也称为通配符模式）来匹配任何可能的值。</p>
+
+<p>下面的示例采用（x，y）点，表示为类型的简单元组，并将其分类在示例后面的图表上。(Int, Int)</p>
+
+<pre><code class="language-text">let somePoint = (1, 1)
+switch somePoint {
+case (0, 0):
+    print(&quot;\(somePoint) is at the origin&quot;)
+case (_, 0):
+    print(&quot;\(somePoint) is on the x-axis&quot;)
+case (0, _):
+    print(&quot;\(somePoint) is on the y-axis&quot;)
+case (-2...2, -2...2):
+    print(&quot;\(somePoint) is inside the box&quot;)
+default:
+    print(&quot;\(somePoint) is outside of the box&quot;)
+}
+// Prints &quot;(1, 1) is inside the box&quot;
+
+</code></pre>
+
+<h2 id="toc_18">Switch价值绑定</h2>
+
+<p>一个switch情况下，可以将其命名为临时常量或变量，在案件的身体使用相匹配的一个或多个值。此行为称为值绑定，因为值绑定到案例正文中的临时常量或变量。</p>
+
+<p>下面的示例采用（x，y）点，表示为类型的元组，并将其分类在下面的图表上：(Int, Int)</p>
+
+<pre><code class="language-text">let anotherPoint = (2, 0)
+switch anotherPoint {
+case (let x, 0):
+    print(&quot;on the x-axis with an x value of \(x)&quot;)
+case (0, let y):
+    print(&quot;on the y-axis with a y value of \(y)&quot;)
+case let (x, y):
+    print(&quot;somewhere else at (\(x), \(y))&quot;)
+}
+// Prints &quot;on the x-axis with an x value of 2&quot;
+
+
+</code></pre>
+
+<h2 id="toc_19">Switch-where</h2>
+
+<p>一个switch情况下可以使用where子句来检查附加条件。</p>
+
+<p>以下示例对下图中的（x，y）点进行了分类：</p>
+
+<pre><code class="language-text">let yetAnotherPoint = (1, -1)
+switch yetAnotherPoint {
+case let (x, y) where x == y:
+    print(&quot;(\(x), \(y)) is on the line x == y&quot;)
+case let (x, y) where x == -y:
+    print(&quot;(\(x), \(y)) is on the line x == -y&quot;)
+case let (x, y):
+    print(&quot;(\(x), \(y)) is just some arbitrary point&quot;)
+}
+// Prints &quot;(1, -1) is on the line x == -y&quot;
+</code></pre>
+
+<h2 id="toc_20">Switch复合案例</h2>
+
+<p>共享相同主体的多个开关盒可以通过case在每个模式之间用逗号后写几个模式来组合。如果任何模式匹配，则认为该情况匹配。如果列表很长，则可以在多行上写入模式。例如：</p>
+
+<pre><code class="language-text">let someCharacter: Character = &quot;e&quot;
+switch someCharacter {
+case &quot;a&quot;, &quot;e&quot;, &quot;i&quot;, &quot;o&quot;, &quot;u&quot;:
+    print(&quot;\(someCharacter) is a vowel&quot;)
+case &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;f&quot;, &quot;g&quot;, &quot;h&quot;, &quot;j&quot;, &quot;k&quot;, &quot;l&quot;, &quot;m&quot;,
+     &quot;n&quot;, &quot;p&quot;, &quot;q&quot;, &quot;r&quot;, &quot;s&quot;, &quot;t&quot;, &quot;v&quot;, &quot;w&quot;, &quot;x&quot;, &quot;y&quot;, &quot;z&quot;:
+    print(&quot;\(someCharacter) is a consonant&quot;)
+default:
+    print(&quot;\(someCharacter) is not a vowel or a consonant&quot;)
+}
+// Prints &quot;e is a vowel&quot;
+
+</code></pre>
+
+<h2 id="toc_21">Switch复合案例包括值绑定</h2>
+
+<p>复合案例的所有模式都必须包含同一组值绑定，并且每个绑定必须从复合案例中的所有模式中获取相同类型的值。这确保了，无论复合案例的哪个部分匹配，案例正文中的代码总是可以访问绑定的值，并且值始终具有相同的类型。</p>
+
+<pre><code class="language-text">let stillAnotherPoint = (9, 0)
+switch stillAnotherPoint {
+case (let distance, 0), (0, let distance):
+    print(&quot;On an axis, \(distance) from the origin&quot;)
+default:
+    print(&quot;Not on an axis&quot;)
+}
+// Prints &quot;On an axis, 9 from the origin&quot;
+</code></pre>
+
+<h2 id="toc_22">Swift-fallthrough</h2>
+
+<p>在Swift中，switch语句不会落入每个案例的底部并进入下一个案例。也就是说，switch一旦第一个匹配的案例完成，整个语句就完成了它的执行。相反，C要求您break在每个switch案例的末尾插入一个明确的语句，以防止通过。避免默认的下降意味着Swift switch语句比C中的对应语句更简洁和可预测，因此它们避免switch错误地执行多个案例。</p>
+
+<p>如果您需要C样式的直通行为，则可以使用fallthrough关键字逐个选择加入此行为。以下示例fallthrough用于创建数字的文本描述。</p>
+
+<pre><code class="language-text">let integerToDescribe = 5
+var description = &quot;The number \(integerToDescribe) is&quot;
+switch integerToDescribe {
+case 2, 3, 5, 7, 11, 13, 17, 19:
+    description += &quot; a prime number, and also&quot;
+    fallthrough
+default:
+    description += &quot; an integer.&quot;
+}
+print(description)
+// Prints &quot;The number 5 is a prime number, and also an integer.&quot;
+
+</code></pre>
+
+<h2 id="toc_23">检查API可用性</h2>
+
+<p>Swift内置支持检查API可用性，这可确保您不会意外使用在给定部署目标上不可用的API。</p>
+
+<p>编译器使用SDK中的可用性信息来验证代码中使用的所有API是否在项目指定的部署目标上可用。如果您尝试使用不可用的API，Swift会在编译时报告错误。</p>
+
+<p>您可以在or 语句中使用可用性条件来有条件地执行代码块，具体取决于您要使用的API是否在运行时可用。当编译器验证该代码块中的API可用时，编译器将使用可用性条件中的信息。ifguard</p>
+
+<pre><code class="language-text">if #available(iOS 10, macOS 10.12, *) {
+    // Use iOS 10 APIs on iOS, and use macOS 10.12 APIs on macOS
+} else {
+    // Fall back to earlier iOS and macOS APIs
+}
+
+</code></pre>
+
+<h2 id="toc_24">具有隐含回报的函数</h2>
+
+<p>如果函数的整个主体是单个表达式，则该函数隐式返回该表达式。例如，下面的两个函数都具有相同的行为：</p>
+
+<pre><code class="language-text">func greeting(for person: String) -&gt; String {
+    &quot;Hello, &quot; + person + &quot;!&quot;
+}
+print(greeting(for: &quot;Dave&quot;))
+// Prints &quot;Hello, Dave!&quot;
+
+func anotherGreeting(for person: String) -&gt; String {
+    return &quot;Hello, &quot; + person + &quot;!&quot;
+}
+print(anotherGreeting(for: &quot;Dave&quot;))
+// Prints &quot;Hello, Dave!&quot;
+
+</code></pre>
+
+<h2 id="toc_25">可变参数</h2>
+
+<p>函数可以具有至多一个可变参数。</p>
+
+<p>可变参数参数接受具有指定类型的零倍或更多的值。您可以使用variadic参数指定在调用函数时可以向参数传递不同数量的输入值。通过...在参数的类型名称后面插入三个句点字符（）来编写可变参数。</p>
+
+<p>传递给可变参数的值在函数体内可用作适当类型的数组。例如，在函数体内可以使用名称numbers和类型的可变参数Double...作为名为numberstype 的常量数组[Double]。</p>
+
+<p>下面的示例计算任意长度的数字列表的算术平均值（也称为平均值）：</p>
+
+<pre><code class="language-text">func arithmeticMean(_ numbers: Double...) -&gt; Double {
+    var total: Double = 0
+    for number in numbers {
+        total += number
+    }
+    return total / Double(numbers.count)
+}
+arithmeticMean(1, 2, 3, 4, 5)
+// returns 3.0, which is the arithmetic mean of these five numbers
+arithmeticMean(3, 8.25, 18.75)
+// returns 10.0, which is the arithmetic mean of these three numbers
+</code></pre>
+
+<h2 id="toc_26">进出参数</h2>
+
+<p>默认情况下，函数参数是常量。尝试从该函数体内更改函数参数的值会导致编译时错误。这意味着您无法错误地更改参数的值。如果希望函数修改参数的值，并且希望在函数调用结束后这些更改仍然存在，请将该参数定义为输入输出参数。</p>
+
+<p>您只能将变量作为输入输出参数的参数传递。您不能传递常量或文字值作为参数，因为不能修改常量和文字。&amp;当您将变量名称作为参数传递给输入输出参数时，可以将变量名称直接放在变量名称之前，以指示它可以被函数修改。</p>
+
+<p>输入输出参数不能具有默认值，并且不可变参数不能标记为inout。</p>
+
+<p>这是一个名为的函数示例swapTwoInts(_:_:)，它有两个输入输出的整数参数，a并且b：</p>
+
+<pre><code class="language-text">func swapTwoInts(_ a: inout Int, _ b: inout Int) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+</code></pre>
+
+<p>该swapTwoInts(_:_:)函数简单地交换binto a的值和ainto 的值b。该函数通过将值存储a在一个被调用的临时常量temporaryA，指定bto 的值a，然后分配给它temporaryA来执行此交换b。</p>
+
+<p>您可以swapTwoInts(_:_:)使用两个类型的变量调用该函数Int来交换它们的值。请注意，传递给函数时，someInt和的名称anotherInt前缀为＆符号swapTwoInts(_:_:)：</p>
+
+<pre><code class="language-text">var someInt = 3
+var anotherInt = 107
+swapTwoInts(&amp;someInt, &amp;anotherInt)
+print(&quot;someInt is now \(someInt), and anotherInt is now \(anotherInt)&quot;)
+// Prints &quot;someInt is now 107, and anotherInt is now 3&quot;
+</code></pre>
+
+<p>上面的示例显示函数的原始值someInt和anotherInt由swapTwoInts(_:_:)函数修改，即使它们最初是在函数外部定义的。</p>
+
+<p>输入输出参数与从函数返回值不同。swapTwoInts上面的示例没有定义返回类型或返回值，但它仍然修改了someInt和的值anotherInt。输入输出参数是函数在其函数体范围之外产生效果的另一种方法。</p>
+
+<h2 id="toc_27">嵌套函数</h2>
+
+<p>到目前为止，您在本章中遇到的所有函数都是全局函数的示例，这些函数在全局范围内定义。您还可以在其他函数体内定义函数，称为嵌套函数。</p>
+
+<p>默认情况下，嵌套函数对外界是隐藏的，但它们的封闭函数仍然可以调用它们。封闭函数也可以返回其嵌套函数之一，以允许嵌套函数在另一个范围内使用。</p>
+
+<p>您可以重写chooseStepFunction(backward:)上面的示例以使用和返回嵌套函数：</p>
+
+<pre><code class="language-text">func chooseStepFunction(backward: Bool) -&gt; (Int) -&gt; Int {
+    func stepForward(input: Int) -&gt; Int { return input + 1 }
+    func stepBackward(input: Int) -&gt; Int { return input - 1 }
+    return backward ? stepBackward : stepForward
+}
+var currentValue = -4
+let moveNearerToZero = chooseStepFunction(backward: currentValue &gt; 0)
+// moveNearerToZero now refers to the nested stepForward() function
+while currentValue != 0 {
+    print(&quot;\(currentValue)... &quot;)
+    currentValue = moveNearerToZero(currentValue)
+}
+print(&quot;zero!&quot;)
+// -4...
+// -3...
+// -2...
+// -1...
+// zero!
+
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/10</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509804011.html">
+                
+                  <h1>Masonry布局“Unable to simultaneously satisfy constraints”</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>出现这个问题是设置约束优先级错误，设置一下约束的优先级就行。</p>
+
+<pre><code class="language-text">[self.doctorTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.title.mas_left);
+            make.right.equalTo(self.title.mas_right);
+            make.top.equalTo(self.topline.mas_bottom).offset(10).priorityHigh();
+            make.height.mas_equalTo(@14);
+}];
+
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/9</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509805590.html">
+                
+                  <h1>iOS开发代码规范</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>针对我的开发经验ViewController应该是这样的。</p>
+
+<pre><code class="language-text">#pragma mark - Life Cycle|生命周期
+#pragma mark - UITableViewDataSource and UITableViewDelegate|主要是一些代理的方法
+#pragma mark - Private Method|私有方法（内部可调用）
+#pragma mark - Public  Method|公有方法
+#pragma mark - Set &amp; Get|getter 和 setter方法
+#pragma mark - Notification|接收通知之后执行的方法
+#pragma mark - Event|一些视图的点击事件 比如button
+#pragma mark - DelegeteHandler|代理的实现时间
+</code></pre>
+
+<h2 id="toc_0">1️⃣代码命名基础</h2>
+
+<h3 id="toc_1">①一般原则</h3>
+
+<ul>
+<li><p>明晰</p>
+<ul>
+<li><p>尽可能保持清晰和简洁是件好事，但由于简洁，清晰度不应受到影响：</p>
+<p>比如<code>insertObject:atIndex:</code>比较清晰，而<code>insert:at:</code>却不知道发生了什么。</p></li>
+<li><p>一般来说，不要缩写事物的名称。把它们拼出来，即使它们很长：</p>
+<p>比如<code>setBackgroundColor:</code>和<code>setBkgdColor:</code><br/>
+有些缩写是很常见且取得了各方面的共识，所以你可以继续使用它们。<a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CodingGuidelines/Articles/APIAbbreviations.html#//apple_ref/doc/uid/20001285-BCIHCGAE">可接受的缩写和缩略语</a></p></li>
+</ul></li>
+<li><p>一致性</p>
+<ul>
+<li>尝试在整个Cocoa编程接口中使用一致的名称。如果您不确定，请浏览当前头文件或参考文档以获取先例。</li>
+<li><p>当你有一个方法应该利用多态性的类时，一致性尤为重要。在不同类中执行相同操作的方法应具有相同的名称。</p>
+<table>
+<thead>
+<tr>
+<th>code</th>
+<th>comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>- (NSInteger)tag</td>
+<td>定义中NSView，NSCell，NSControl。</td>
+</tr>
+<tr>
+<td>- (void)setStringValue:(NSString *)</td>
+<td>定义在许多Cocoa类中。</td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+</ul>
+
+<h3 id="toc_2">②前缀</h3>
+
+<p>前缀是编程接口中名称的重要部分。它们区分了软件的功能区域。前缀可防止第三方开发人员定义的符号与Apple定义的符号（以及Apple自己的框架中的符号之间）发生冲突。</p>
+
+<ul>
+<li><p>前缀具有规定的格式。它由两个或三个大写字母组成，不使用下划线或“子前缀”。以下是一些示例：</p></li>
+<li><p>在命名类，协议，函数，常量和typedef结构时使用前缀。千要不能在命名方法时，使用前缀; 方法存在于由定义它们的类创建的名称空间中。另外，不要使用前缀来命名结构体的字段。</p></li>
+</ul>
+
+<h2 id="toc_3">2️⃣命名方法</h2>
+
+<h3 id="toc_4">①通用规则</h3>
+
+<p>在命名方法时，请记住以下几条一般准则：</p>
+
+<ul>
+<li>使用小写字母开始名称，并将嵌入单词的第一个字母大写。不要使用前缀。</li>
+<li>对于表示对象采取的操作的方法，使用动词开始名称(禁止使用“do”或“does”)。</li>
+<li><p>如果方法返回接收者的属性，则在属性后面命名方法。除非间接返回一个或多个值，否则不必使用<code>get</code>。</p>
+<table>
+<thead>
+<tr>
+<th>code</th>
+<th>comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>- (NSSize)cellSize;</td>
+<td>正确</td>
+</tr>
+<tr>
+<td>- (NSSize)getCellSize;</td>
+<td>错误</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>在所有参数之前使用关键字</p>
+<table>
+<thead>
+<tr>
+<th>code</th>
+<th>comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>- (void)sendAction:(SEL)aSelector toObject:(id)anObject forAllCells:(BOOL)flag;</td>
+<td>正确</td>
+</tr>
+<tr>
+<td>- (void)sendAction:(SEL)aSelector :(id)anObject :(BOOL)flag;</td>
+<td>错误</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>在参数之前创建单词描述参数。</p>
+<table>
+<thead>
+<tr>
+<th>code</th>
+<th>comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>- (id)viewWithTag:(NSInteger)aTag;</td>
+<td>正确</td>
+</tr>
+<tr>
+<td>- (id)taggedView:(int)aTag;</td>
+<td>错误</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>在创建比继承方法更具体的方法时，在现有方法的末尾添加新关键字。</p>
+<table>
+<thead>
+<tr>
+<th>code</th>
+<th>comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>- (id)initWithFrame:(CGRect)frameRect;</td>
+<td>初始化方法</td>
+</tr>
+<tr>
+<td>- (id)initWithFrame:(CGRect)frameRect backgroundColor:(UIColor*)backgroundColor;</td>
+<td>自定义初始化方法</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>不要使用“and”来链接作为接收者属性的关键字。</p>
+<table>
+<thead>
+<tr>
+<th>code</th>
+<th>comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>- (int)runModalForDirectory:(NSString *)path file:(NSString *) name types:(NSArray *)fileTypes;</td>
+<td>正确</td>
+</tr>
+<tr>
+<td>- (int)runModalForDirectory:(NSString *)path andFile:(NSString *)name andTypes:(NSArray *)fileTypes;</td>
+<td>错误</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>如果该方法描述了两个单独的操作，请使用“和”链接它们。</p>
+<table>
+<thead>
+<tr>
+<th>- (BOOL)openFile:(NSString *)fullPath withApplication:(NSString *)appName andDeactivate:(BOOL)flag;</th>
+<th>NSWorkspace</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table></li>
+</ul>
+
+<h3 id="toc_5">②访问方法</h3>
+
+<p>访问器方法是设置和返回对象属性值的方法</p>
+
+<ul>
+<li><p>如果属性表示为名词，则格式为：</p>
+<pre><code class="language-text">- (type)noun;
+- (void)setNoun：(type)aNoun ;
+</code></pre></li>
+<li><p>如果属性表示为形容词，则格式为：</p>
+<p>在声明属性的时候可以这么写<br/>
+<code>@property(nonatomic,assign,getter=isAdjective)BOOL Adjective;</code></p>
+<pre><code class="language-text">- (BOOL)isAdjective;
+- (void)setAdjective:(BOOL)flag;
+</code></pre></li>
+<li><p>如果属性表示为动词，则格式为：</p>
+<pre><code class="language-text">- (BOOL)verbObject;
+- (void)setVerbObject:(BOOL)flag;
+</code></pre></li>
+<li><p>不要使用分词将动词转换为形容词：</p>
+<table>
+<thead>
+<tr>
+<th>- (void)setAcceptsGlyphInfo:(BOOL)flag;</th>
+<th>对</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>- (BOOL)acceptsGlyphInfo;</td>
+<td>对</td>
+</tr>
+<tr>
+<td>- (void)setGlyphInfoAccepted:(BOOL)flag;</td>
+<td>错</td>
+</tr>
+<tr>
+<td>- (BOOL)glyphInfoAccepted;</td>
+<td>错</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>可以使用模态动词（动词前面加上“can”，“should”，“will”等）来澄清含义，但不要使用“do”或“does”。</p>
+<table>
+<thead>
+<tr>
+<th>- (void)setCanHide:(BOOL)flag;</th>
+<th>对</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>- (BOOL)canHide;</td>
+<td>对</td>
+</tr>
+<tr>
+<td>- (void)setShouldCloseDocument:(BOOL)flag;</td>
+<td>对</td>
+</tr>
+<tr>
+<td>- (BOOL)shouldCloseDocument;</td>
+<td>对</td>
+</tr>
+<tr>
+<td>- (void)setDoesAcceptGlyphInfo:(BOOL)flag;</td>
+<td>错</td>
+</tr>
+<tr>
+<td>- (BOOL)doesAcceptGlyphInfo;</td>
+<td>错</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>仅对间接返回对象和值的方法使用“get”。并且当需要返回多个项目时，才应将此表单用于方法。</p>
+<table>
+<thead>
+<tr>
+<th>- (void)getLineDash:(float *)pattern count:(int *)count phase:(float *)phase;</th>
+<th>NSBezierPath</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table></li>
+</ul>
+
+<h3 id="toc_6">③代理方法</h3>
+
+<p>委托方法（或委托方法）是在某些事件发生时对象在其委托中调用的方法（如果委托实现它们）。它们具有独特的形式，同样适用于在对象的数据源中调用的方法：</p>
+
+<ul>
+<li><p>方法的开始使用通过标识发送消息的对象的类(类名省略前缀，第一个字母为小写)：</p>
+<pre><code class="language-text">- (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(int)row;
+- (BOOL)application:(NSApplication *)sender openFile:(NSString *)filename;
+</code></pre></li>
+<li><p>冒号追加到类名前（参数是对委托对象的引用），并且该方法只有一个参数，即发送者。</p>
+<pre><code class="language-text">- (BOOL)applicationOpenUntitledFile:(NSApplication *)sender;
+</code></pre></li>
+<li><p>对此的一个例外是由于发布通知而调用的方法。在这种情况下，唯一的参数是通知对象。</p>
+<pre><code class="language-text">- (void)windowDidChangeScreen:(NSNotification *)notification;
+</code></pre></li>
+<li><p>对于被调用以通知委托已发生或即将发生某些事情的方法，请使用“did”或“will”。</p>
+<pre><code class="language-text">- (void)browserDidScroll:(NSBrowser *)sender;
+- (NSUndoManager *)windowWillReturnUndoManager:(NSWindow *)window;
+</code></pre></li>
+<li><p>虽然您可以使用“did”或“will”来调用要求委托代表另一个对象执行某些操作的方法，但首选“should”。</p>
+<pre><code class="language-text">- (BOOL)windowShouldClose:(id)sender;
+</code></pre></li>
+</ul>
+
+<h3 id="toc_7">④集合方法</h3>
+
+<p>对于管理对象集合的对象（每个对象称为该集合的元素），约定是具有以下形式的方法：</p>
+
+<pre><code class="language-text">- (void)addElement:(elementType)anObj;
+
+- (void)insertElement:(elementType)anObj atIndex:(int)index;
+
+- (void)removeElement:(elementType)anObj atIndex:(int)index;
+
+- (void)removeElement:(elementType)anObj;
+
+- (NSArray *)elements;
+</code></pre>
+
+<p>有一点需要主要如果集合是真正无序的，那么返回NSSet而不是NSArray</p>
+
+<h3 id="toc_8">⑤方法参数</h3>
+
+<p>有一些关于方法参数名称的一般规则：</p>
+
+<ul>
+<li>与方法一样，参数以小写字母开头，连续单词的第一个字母大写（例如，removeObject:(id)anObject）。</li>
+<li>不要在名称中使用“pointer”或“ptr”。使用参数的类型而不是它的名称声明它是否是指针。</li>
+<li>避免使用单字母和双字母名称作为参数。</li>
+<li>避免只保存几个字母的缩写。</li>
+</ul>
+
+<p>常用的方法参数</p>
+
+<pre><code class="language-...action:(sel)aselector">...alignment:(int)mode
+...atIndex:(int)index
+...content:(NSRect)aRect
+...doubleValue:(double)aDouble
+...floatValue:(float)aFloat
+...font:(NSFont *)fontObj
+...frame:(NSRect)frameRect
+...intValue:(int)anInt
+...keyEquivalent:(NSString *)charCode
+...length:(int)numBytes
+...point:(NSPoint)aPoint
+...stringValue:(NSString *)aString
+...tag:(int)anInt
+...target:(id)anObject
+...title:(NSString *)aString
+</code></pre>
+
+<h3 id="toc_9">⑥私有方法</h3>
+
+<p>在大多数情况下，私有方法名称通常遵循与公共方法名称相同的规则。但是，常见的约定是为私有方法提供前缀，以便很容易将它们与公共方法区分开来。即使采用这种约定，私有方法的名称也可能导致一种特殊类型的问题。当您设计Cocoa框架类的子类时，您无法知道您的私有方法是否无意中覆盖了具有相同名称的私有框架方法。</p>
+
+<p>Cocoa框架中大多数私有方法的名称都有一个下划线前缀（例如_fooData），以将它们标记为私有。从这个事实可以看出两个建议。</p>
+
+<ul>
+<li>不要使用下划线字符作为私有方法的前缀。</li>
+<li>如果您是一个大型Cocoa框架类（如NSView或UIView）的子类，并且您希望绝对确定您的私有方法的名称与超类中的名称不同，则可以将自己的前缀添加到私有方法中。前缀应尽可能唯一，可能基于您的公司或项目以及“XX_”形式。因此，如果您的项目名为Byte Flogger，则前缀可能是 BF_addObject:</li>
+</ul>
+
+<p>虽然给私有方法名称加一个前缀的建议似乎与先前声称方法存在于其类的命名空间中的说法相矛盾，但这里的意图是不同的：防止无意覆盖超类私有方法。</p>
+
+<h2 id="toc_10">3️⃣命名函数</h2>
+
+<p>Objective-C允许您通过函数和方法表达行为。当底层对象总是单例或者处理明显功能的子系统时，你应该使用函数而不是类方法。</p>
+
+<p>函数有一些通用的命名规则，您应该遵循：</p>
+
+<ul>
+<li><p>函数名称与方法名称类似，但有几个例外：</p>
+<ul>
+<li>它们以您用于类和常量的相同前缀开头。</li>
+<li>前缀后面的单词的第一个字母是大写的。</li>
+</ul></li>
+<li><p>大多数函数名称以描述函数具有的效果的动词开头：</p>
+<pre><code class="language-text">NSHighlightRect
+NSDeallocateObject
+</code></pre></li>
+</ul>
+
+<p>查询属性的函数具有另一组命名规则：</p>
+
+<ul>
+<li><p>如果函数返回其第一个参数的属性，则省略动词。</p>
+<pre><code class="language-text">unsigned int NSEventMaskFromType(NSEventType type)
+float NSHeight(NSRect aRect)
+</code></pre></li>
+<li><p>如果通过引用返回值，请使用“get”。</p>
+<pre><code class="language-text">const char *NSGetSizeAndAlignment(const char *typePtr, unsigned int *sizep, unsigned int *alignp)
+</code></pre></li>
+<li><p>如果返回的值是布尔值，则该函数应以变形动词开头。</p>
+<pre><code class="language-text">BOOL NSDecimalIsNotANumber(const NSDecimal *decimal)
+</code></pre></li>
+</ul>
+
+<h2 id="toc_11">4️⃣命名属性和数据类型</h2>
+
+<h4 id="toc_12">①声明的属性和实例变量</h4>
+
+<p>一个属性声明有效地声明了访问器的属性方法，如果属性表示为名词或动词，则格式为：<code>@property (…) type nounOrVerb;</code></p>
+
+<pre><code class="language-text">@property (strong) NSString *title;
+@property (assign) BOOL showsAlpha;
+</code></pre>
+
+<p>但是，如果声明的属性的名称表示为形容词，则属性名称将省略“is”前缀，但指定get访问器的常规名称，例如：</p>
+
+<pre><code class="language-text">@property (assign, getter=isEditable) BOOL editable;
+</code></pre>
+
+<h4 id="toc_13">②常量</h4>
+
+<p>常量的规则根据常量的创建方式而有所不同。</p>
+
+<h5 id="toc_14">2.1 枚举常量</h5>
+
+<ul>
+<li>对具有整数值的相关常量组使用枚举。</li>
+<li><p>枚举常量和它们分组的typedef遵循函数的命名约定。以下示例来自NSMatrix.h：</p>
+<pre><code class="language-text">typedef enum _NSMatrixMode {
+    NSRadioModeMatrix           = 0,<br/>
+    NSHighlightModeMatrix       = 1,<br/>
+    NSListModeMatrix            = 2,<br/>
+    NSTrackModeMatrix           = 3<br/>
+} NSMatrixMode;
+</code></pre>
+<p>⚠️注意，typedef标签是不必要的。</p></li>
+<li><p>可以用位掩码等内容创建未命名的枚举，例如：</p>
+<pre><code class="language-text">enum {
+    NSBorderlessWindowMask      = 0,<br/>
+    NSTitledWindowMask          = 1 &lt;&lt; 0,<br/>
+    NSClosableWindowMask        = 1 &lt;&lt; 1,<br/>
+    NSMiniaturizableWindowMask  = 1 &lt;&lt; 2,<br/>
+    NSResizableWindowMask       = 1 &lt;&lt; 3<br/>
+};
+</code></pre></li>
+</ul>
+
+<h5 id="toc_15">2.2 用const创建的常量</h5>
+
+<ul>
+<li>const创建浮点值常量。如果常量与其他常量无关，则可以用来const创建整数常量; 否则，使用枚举。</li>
+<li><p>const常量的格式由以下声明举例说明：</p>
+<pre><code class="language-text">const float NSLightGray;
+</code></pre></li>
+</ul>
+
+<h5 id="toc_16">2.3其他类型的常量</h5>
+
+<ul>
+<li>通常，不要使用#define预处理器命令来创建常量。对于整数常量，使用枚举，对于浮点常量，使用const限定符，如上所述。</li>
+<li><p>对预处理器在确定是否将处理代码块时评估的符号使用大写字母。例如：<code>#ifdef DEBUG</code></p></li>
+<li><p>请注意，编译器定义的宏具有前导和尾随双下划线字符。例如：<code>__MACH__</code></p></li>
+<li><p>定义用于通知名称和字典键等用途的字符串的常量。通过使用字符串常量。如：<code>APPKIT_EXTERN NSString * NSPrintCopies;</code></p>
+<pre><code class="language-text">#import &lt;UIKit/UIKitDefines.h&gt;
+UIKIT_EXTERN  NSString * NSPrintCopies;
+</code></pre></li>
+</ul>
+
+<h4 id="toc_17">③通知和异常</h4>
+
+<p>通知和例外的名称遵循类似的规则。但两者都有自己推荐的使用模式。</p>
+
+<ul>
+<li>通知</li>
+</ul>
+
+<p>如果一个类有一个委托，那么它的大部分通知都可能由委托通过一个已定义的委托方法接收。这些通知的名称应反映相应的委托方法。例如，全局NSApplication对象的委托自动注册，以便applicationDidBecomeActive:在应用程序发布时接收消息NSApplicationDidBecomeActiveNotification。</p>
+
+<pre><code class="language-text">通知由全局NSString对象标识，其名称以这种方式组成：
+[关联类的名称] + [Did | will] + [UniquePartOfName] +通知
+NSApplicationDidBecomeActiveNotification
+NSWindowDidMiniaturizeNotification
+NSTextViewDidChangeSelectionNotification
+NSColorPanelColorDidChangeNotification
+
+</code></pre>
+
+<ul>
+<li>异常</li>
+</ul>
+
+<p>用来处理抛出的NSException使用异常。</p>
+
+<p>异常由全局NSString对象标识，其名称以这种方式组成：</p>
+
+<p><code>[Prefix] + [UniquePartOfName] + Exception<br/>
+</code>比如</p>
+
+<pre><code class="language-text">NSColorListIOException
+NSColorListNotEditableException
+NSDraggingException
+NSFontUnavailableException
+NSIllegalSelectorException
+</code></pre>
+
+<h2 id="toc_18">5️⃣框架开发人员的技巧和技巧</h2>
+
+<p>开发框架有他们如何编写自己的代码比其他开发商更加谨慎。许多客户端应用程序可以在其框架中链接，并且由于这种广泛的暴露，框架中的任何缺陷可能会在整个系统中被放大。以下各项讨论了可以采用的编程技术，以确保框架的效率和完整性。</p>
+
+<ul>
+<li>类初始化</li>
+</ul>
+
+<p>在调用类的任何其他方法之前，initialize  类方法为您提供了一个懒惰地执行一次代码的地方。</p>
+
+<p>运行时发送initialize到继承链中的每个类，即使它没有实现它; 因此它可能initialize不止一次地调用一个类的方法（例如，如果一个子类没有实现它）。通常，您希望初始化代码只执行一次。确保这种情况发生的一种方法是使用dispatch_once()：</p>
+
+<pre><code class="language-text">+ (void)initialize {
+    static dispatch_once_t onceToken = 0;
+    dispatch_once(&amp;onceToken, ^{
+        // the initializing code
     }
 }
 </code></pre>
 
-<p>如果想要swift调用c++的话可以把<code>OCHello.m</code>改成<code>OCHello.mm</code><br/>
-在.mm文件中写c++的代码如下所示</p>
+<p>⚠️注意：  因为运行时将initialize发送到每个类，所以可能initialize会在子类的上下文中调用 - 如果子类没有实现initialize，那么调用将落入超类。如果您特别需要在相关类的上下文中执行初始化，则可以执行以下检查而不是使用dispatch_once()：</p>
 
-<pre><code class="language-text">#include &lt;iostream&gt;
-#import &quot;OCHello.h&quot;
-
-@implementation OCHello
--(void)hello{
-    
-//    NSLog(@&quot;oc sayHello&quot;);
-    std::cout&lt;&lt;&quot;hello cpp\n&quot;;
+<pre><code class="language-text">if（self == [NSFoo class]）{
+    //初始化代码
 }
-@end
 </code></pre>
 
-<p>swift当中的代码不做任何变化，这样就做到了三种语言的混编。</p>
+<ul>
+<li>指定的初始化器</li>
+</ul>
 
-<h4 id="toc_4">提示</h4>
+<p>指定的初始值设定init项是调用init超类方法的类的方法。（其他初始值设定项调用init类定义的方法。）每个公共类都应该有一个或多个指定的初始值设定项。</p>
 
-<p>.mm文件当中可以写oc，c，c++的代码<br/>
-oc可以完全兼容c语言的代码<br/>
-swift不可以直接执行c语言的代码,要做一些声明比如上面的调用实现。<br/>
-swift不可以执行c++的代码，要用oc做中间层，一般要避免。</p>
+<p>当您实现一个框架类时，您通常还必须实现其归档方法：initWithCoder:和encodeWithCoder:。注意不要在初始化代码路径中执行在取消归档对象时不会发生的事情。实现这一目标的一个好方法是，initWithCoder:如果您的类实现了归档，则从您指定的初始化程序和（它本身是指定的初始化程序）调用一个公共例程。</p>
+
+<ul>
+<li><p>初始化期间的错误检测</p>
+<ul>
+<li>通过调用重新分配自我super的指定初始化。</li>
+<li>检查返回值nil，这表示超类初始化中发生了一些错误。</li>
+<li>如果在初始化当前类时发生错误，请释放该对象并返回nil。</li>
+</ul></li>
+</ul>
+
+<p>下面是🌰代码</p>
+
+<pre><code class="language-text">- (id)init {
+    self = [super init];  // Call a designated initializer here.
+    if (self != nil) {
+        // Initialize object  ...
+        if (someError) {
+            [self release];
+            self = nil;
+        }
+    }
+    return self;
+}
+</code></pre>
+
+<h4 id="toc_19">参考</h4>
+
+<p>[1]<a href="https://dwz.cn/oY1q9z0N">Apple Guideline</a><br/>
+[2]<a href="https://juejin.im/entry/5be2810e518825158c530d9b">iOS Coding Style Guide 代码规范</a></p>
 
                         
                       </div>
@@ -778,8 +1665,67 @@ swift不可以执行c++的代码，要用oc做中间层，一般要避免。</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/12/11</span>
-                    
+                    <span class="date">2018/12/1</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509808030.html">
+                
+                  <h1>Enumerate枚举遍历数组</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code class="language-text">let arr: NSArray = [1,2,3,4,5]
+var result = 0
+arr.enumerateObjectsUsingBlock { (num, idx, stop) -&gt; Void in
+    result += num as! Int
+    if idx == 2 {
+        stop.memory = true
+    }
+}
+print(result)
+// 输出：6
+</code></pre>
+
+<p>虽然说使用 enumerateObjectsUsingBlock: 非常方便，但是其实从性能上来说这个方法并不理想 (这里有一篇四年前的星期五问答阐述了这个问题，而且一直以来情况都没什么变化)。另外这个方法要求作用在 NSArray 上，这显然已经不符合 Swift 的编码方式了。在 Swift 中，我们在遇到这样的需求的时候，有一个效率，安全性和可读性都很好的替代，那就是快速枚举某个数组的 EnumerateGenerator，它的元素是同时包含了元素下标索引以及元素本身的多元组：</p>
+
+<pre><code class="language-text">var result = 0
+for (idx, num) in [1,2,3,4,5].enumerate() {
+    result += num
+    if idx == 2 {
+        break
+    }
+}
+print(result)
+</code></pre>
+
+<p>基本上来说，是时候可以和 enumerateObjectsUsingBlock: 说再见了。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/1</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -828,7 +1774,7 @@ swift不可以执行c++的代码，要用oc做中间层，一般要避免。</p>
 
 
 
-
+<a target="_blank" class="email" href="mailto:maweefeng@gmail.com" title="Email">Email</a>
   <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
                 
               	 </div>
@@ -847,6 +1793,12 @@ swift不可以执行c++的代码，要用oc做中间层，一般要避免。</p>
             <a href="%E7%94%B5%E5%BD%B1.html"><strong>电影</strong></a>
         
             <a href="%E5%85%B6%E5%AE%83.html"><strong>其它</strong></a>
+        
+            <a href="Python.html"><strong>Python</strong></a>
+        
+            <a href="iOS.html"><strong>iOS</strong></a>
+        
+            <a href="%E6%88%91.html"><strong>我</strong></a>
          
         </p>
 
@@ -863,31 +1815,31 @@ swift不可以执行c++的代码，要用oc做中间层，一般要避免。</p>
 	      
 		      
 			      <li class="post">
-			        <a href="16076509803956.html">Xcode10报错libstdc</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="16076509804011.html">Masonry布局“Unable to simultaneously satisfy constraints”</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
 			        <a href="16076509804045.html">RACCommand</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509804076.html">代理修饰符</a>
+			        <a href="16076509805027.html">关于我</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509804110.html">You don’t have write permissions</a>
+			        <a href="16076509807659.html">点击事件发生在视图边界之外的时候</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804683.html">Xcode打包遇到的坑</a>
 			      </li>
 		     
 		  

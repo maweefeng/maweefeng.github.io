@@ -1,128 +1,104 @@
 <!doctype html>
 <html class="no-js" lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
     
-    iOS - Code Log 👨‍💻‍ 
-    
+  iOS - 
+  
   </title>
   
   
-  <link href="atom.xml" rel="alternate" title="Code Log 👨‍💻‍ " type="application/atom+xml">
-  <link rel="stylesheet" href="asset/css/foundation.min.css" />
-  <link rel="stylesheet" href="asset/css/docs.css" />
-  <script src="asset/js/vendor/modernizr.js"></script>
-  <script src="asset/js/vendor/jquery.js"></script>
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
   <script src="asset/highlightjs/highlight.pack.js"></script>
   <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script>
-    hljs.initHighlightingOnLoad();
-
-    window.onload = function () {
-
-      var footerPath = window.location.pathname.split('/')[window.location.pathname.split('/').length - 1];
-      if (footerPath == 'archives.html') {
-        // alert('分类');
-        document.getElementById('main-menu').getElementsByTagName("li")[1].className = "is_active";
-
-      } else if (footerPath == 'about.html') {
-        document.getElementById('main-menu').getElementsByTagName("li")[2].className = "is_active";
-
-        // alert('关于我');
-  
-      } else {
-        // alert('首页');
-        document.getElementById('main-menu').getElementsByTagName("li")[0].className = "is_active";
-      }
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
 
 
-    }
-  </script>
-  <script type="text/javascript">
-    function before_search() {
-      var searchVal = 'site: ' + document.getElementById('search_input').value;
-      document.getElementById('search_q').value = searchVal;
-      return true;
-    }
-  </script>
-</head>
-
-<body class="antialiased hide-extras">
-
-  <div class="marketing off-canvas-wrap" data-offcanvas>
-    <div class="inner-wrap">
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
 
 
-      <nav class="top-bar docs-bar hide-for-small" data-topbar>
-
-
-        <section class="top-bar-section">
-          <div class="row">
-            <div style="position: relative;width:100%;">
-              <div style="position: absolute; width:100%;">
-                <ul id="main-menu" class="left">
-                  
-                  <li id=""><a id="" target="_self" href="index.html">Home</a></li>
-                  
-                  <li id=""><a id="" target="_self" href="archives.html">Archives</a></li>
-                  
-                  <li id=""><a id="" target="_self" href="about.html">About</a></li>
-                  
-                </ul>
-
-                <ul class="right" id="search-wrap">
-                  <li>
-                    <form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
-                      <input type="hidden" id="search_q" name="q" value="" />
-                      <input tabindex="1" type="search" id="search_input" placeholder="Search" />
-                    </form>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-      </nav>
-
-      <nav class="tab-bar show-for-small">
-        <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-          <span> &nbsp; Code Log 👨‍💻‍ </span>
-        </a>
-      </nav>
-
-      <aside class="left-off-canvas-menu">
-        <ul class="off-canvas-list">
-
-          <li><a href="index.html">Home</a></li>
-          <li><a href="archives.html">Archives</a></li>
-          
-          <li><label>Categories</label></li>
-
-          
-          <li id="iOS"><a href="iOS.html">iOS</a></li>
-          
-          <li id="Git"><a href="Git.html">Git</a></li>
-          
-          <li id="CocoaPods"><a href="CocoaPods.html">CocoaPods</a></li>
-          
-          <li id="Django"><a href="Django.html">Django</a></li>
-          
-          <li id="Spiders"><a href="Spiders.html">Spiders</a></li>
-          
-          <li id="about"><a href="about.html">about</a></li>
-          
-
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
         </ul>
-      </aside>
 
-      <a class="exit-off-canvas" href="#"></a>
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E7%94%B5%E5%BD%B1.html">电影</a></li>
+        
+            <li><a href="%E5%85%B6%E5%AE%83.html">其它</a></li>
+        
+            <li><a href="Python.html">Python</a></li>
+        
+            <li><a href="iOS.html">iOS</a></li>
+        
+            <li><a href="%E6%88%91.html">我</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
 
 
-      <section id="main-content" role="main" class="scroll-container"> <script type="text/javascript">
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
 	$(function(){
 		$('#menu_item_index').addClass('is_active');
 	});
@@ -132,127 +108,34 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15554962348970.html">
+                <a class="clearlink" href="16076509805290.html">
                 
-                  <h1>Filter, Map, Reduce  Functions</h1>
+                  <h1>_cmd 与 runtime 的结合</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h3 id="toc_0">Filter</h3>
+                        	<p>只有运行时给分类添加属性，大部分都是这样的</p>
 
-<p>Filter 函数是过滤出所有符合过滤条件的元素 </p>
-
-<p>比如下面的方法过滤出数组所有元素等于3的元素</p>
-
-<pre><code>func filter() {
-        let numbers = [1,2,3,3,3,4]
-        //过滤出所有元素为3的元素 并返回过滤之后的数据
-        let filtedNumbers = numbers.filter({return $0 == 3})
-        print(filtedNumbers)//[3,3,3]
-    }
-
+<pre><code class="language-static">- (NSString *)customName {
+　　　　 return objc_getAssociatedObject(self, &amp;kExtendVarKey);
+　　 }
+- (void)setCustomName:(NSString *)customName {
+　　　　objc_setAssociatedObject(self, &amp;kExtendVarKey,, customDelegate, OBJC_ASSOCIATION_RETAIN_COPY);
+　}
 </code></pre>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15554962348970.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2019/4/17</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<p>_cmd 是隐藏的参数，表示当前方法的selector，另外隐藏参数self表示当前方法调用的对象实例。<br/>
+这个参数是唯一的参数，在一个文件中方法名不会重复。<br/>
+所以可以让它代替运行时当中的属性的键名。</p>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15553216469263.html">
-                
-                  <h1>Swift中的字典转模型方法的迭代</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>模型可以是结构体也可以是继承自NSObject的类  </p>
-
-<pre><code>class App: NSObject {
-    var name:String = &quot;&quot;
-    var age:Int = 0
-    var boxDescription:String = &quot;&quot;
-}
-
-
-struct App :Decodable{
-    var name:String
-    var age:Int
-    var description:String
-    
-    init(dic:[String:AnyObject]) {
-        name = dic[&quot;name&quot;] as! String
-        age = dic[&quot;age&quot;] as! Int
-        description = dic[&quot;description&quot;] as! String
-    }
-    
-}
-
+<pre><code class="language-　　">- (NSString *)customName {
+　　　　 return objc_getAssociatedObject(self, _cmd);
+　　 }
+- (void)setCustomName:(NSString *)customName {
+　　　　objc_setAssociatedObject(self, @selector(customName), customName, OBJC_ASSOCIATION_RETAIN_COPY);
+　　}
 </code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15553216469263.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2019/4/15</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15553140637126.html">
-                
-                  <h1>Speed Up Development with Xcode File Templates</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h4 id="toc_0">Custom Templates Directory</h4>
-
-<ul>
-<li><p>~/Library/Developer/Xcode/Templates<br/>
-进入到指定的模版路径</p></li>
-<li><p>mkdir -p ~/Library/Developer/Xcode/Templates/File\ Templates/Custom 创建一个Custom 的文件夹</p></li>
-</ul>
-
-<h5 id="toc_1">Xcode Default Templates Directory</h5>
-
-<p>/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/File Templates</p>
-
-<p>进入之后复制一些其他的模版到自己的custom模版 然后进入模版之后编辑自己经常使用的模版，可以极大的提升开发的效率。</p>
 
                         
                       </div>
@@ -261,7 +144,7 @@ struct App :Decodable{
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/4/15</span>
+                    <span class="date">2019/7/15</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -278,167 +161,309 @@ struct App :Decodable{
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15536750345410.html">
+                <a class="clearlink" href="16076509804989.html">
                 
-                  <h1>Swift 和 OC 实现“热加载”</h1>
+                  <h1>高效的画线</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>众所周知，Google 推出的跨平台框架Flutter 有着很好的编译优势<code>Flutter Hot Reload</code>，每次改变之后，点击 <code>reload</code> 就会实现实时编译。那么其实我们也可以实现<code>Swift</code>和<code>OC</code>的实时编译。</p>
+                        	<p>先创建一个UIBeizerPath 的对象path</p>
 
-<h4 id="toc_0">InjectionIII</h4>
-
-<p>通过这个工具可以实现类似Flutter 的快速编译。</p>
-
-<h6 id="toc_1">实现思路：</h6>
-
-<p>Injection 会监听源代码文件的变化，如果文件被改动了，Injection Server 就会执行 rebuildClass 重新进行编译、打包成动态库，也就是 .dylib 文件。编译、打包成动态库后使用 writeSting 方法通过 Socket 通知运行的 App。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15536750345410.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2019/3/27</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15506484558583.html">
-                
-                  <h1>OC以及Swift中的闭包</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>因为在实际开发中闭包会经常用到，几乎和代理实现同样的功能，所以我们来探究一下OC和 swift中的闭包。</p>
-
-<h3 id="toc_0">Objecticve-C</h3>
-
-<h4 id="toc_1">①声明Block</h4>
-
-<p>OC中有两种声明方式</p>
-
-<ol>
-<li><p>方式一 </p>
-
-<pre><code>typedef void(^BlockName)(NSString * name);
-
-@property(nonatomic,copy)BlockName hello;
-</code></pre></li>
-</ol>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15506484558583.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2019/2/20</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15474609644602.html">
-                
-                  <h1>Localization Issue Warning Storyboard</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>当我使用 xib 设置自动布局的时候出现了下面的警告</p>
-
-<p><img src="media/15474609644602/15474616779035.png" alt=""/>￼</p>
-
-<blockquote>
-<p>Certain autolayout constraint combinations may result in an appropriate layout in the current development language but will pose issues in other languages and regions.</p>
-</blockquote>
-
-<p>然后看了苹果官方的文档，说是使用“自动布局”相对于彼此布置视图而没有固定的原点，宽度和高度，以便在语言或区域设置更改时视图重新定位和调整大小。自动布局使得可以为所有语言提供一组.storyboard和.xib文件，并且main.Storyboard默认进行本地化</p>
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15474609644602.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2019/1/14</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15471123133942.html">
-                
-                  <h1>Value and Reference Collections</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>值类型和引用类型的集合有所不同,看下图可知。</p>
-
-<p><img src="media/15471123133942/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-01-10%20%E4%B8%8B%E5%8D%885.25.48.png" alt="屏幕快照 2019-01-10 下午5.25.48"/>￼</p>
-
-<pre><code>示例1      
-let x = NSMutableArray()
-x.add(&quot;🐵&quot;)
-let y = x
-y.add(&quot;🐶&quot;)    
-print(x,y)
-//结果
-(
-    &quot;🐵&quot;,
-    &quot;🐶&quot;
-) (
-    &quot;🐵&quot;,
-    &quot;🐶&quot;
-)  
+<pre><code class="language-text">UIBezierPath *path = [[UIBezierPath alloc] init];
+  [path moveToPoint:CGPointMake(175, 100)];
+  
+  [path addArcWithCenter:CGPointMake(150, 100) radius:25 startAngle:0 endAngle:2*M_PI clockwise:YES];
+  [path moveToPoint:CGPointMake(150, 125)];
+  [path addLineToPoint:CGPointMake(150, 175)];
+  [path addLineToPoint:CGPointMake(125, 225)];
+  [path moveToPoint:CGPointMake(150, 175)];
+  [path addLineToPoint:CGPointMake(175, 225)];
+  [path moveToPoint:CGPointMake(100, 150)];
+  [path addLineToPoint:CGPointMake(200, 150)];
 </code></pre>
+
+<p>然后创建CAShapeLayer添加到视图的layer上 </p>
+
+<pre><code class="language-text">CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+  shapeLayer.strokeColor = [UIColor redColor].CGColor;
+  shapeLayer.fillColor = [UIColor clearColor].CGColor;
+  shapeLayer.lineWidth = 5;
+  shapeLayer.lineJoin = kCALineJoinRound;
+  shapeLayer.lineCap = kCALineCapRound;
+  shapeLayer.path = path.CGPath;
+  //add it to our view
+  [self.containerView.layer addSublayer:shapeLayer];
+</code></pre>
+
                         
                       </div>
                   </div>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15471123133942.html">Read more</a>&nbsp;&nbsp; 
+                  
+                    <span class="date">2019/5/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509807617.html">
+                
+                  <h1>检查无用代码</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>简便的方法是使用appcode进行分析 </p>
+
+<p>在appcode中打开代码，并选择code-&gt;inspect code就可以进行静态分析。</p>
+
+<p>分析完之后，我们可以在unused code里看到所有的无用代码。如下图所示。</p>
+
+<p><img src="media/15542632266483/15542633597716.jpg" alt=""/></p>
+
+<p>接下来，我和你说一下这些无用代码的主要类型。</p>
+
+<ul>
+<li>无用类：Unused class 是无用类，Unused import statement 是无用类引入声明，Unused property 是无用的属性；</li>
+<li>无用方法：Unused method 是无用的方法，Unused parameter 是无用参数，Unused instance variable 是无用的实例变量，Unused local variable 是无用的局部变量，Unused value 是无用的值；</li>
+<li>无用宏：Unused macro 是无用的宏。</li>
+<li>无用全局：Unused global declaration 是无用全局声明。</li>
+</ul>
+
+<p>看似 AppCode 已经把所有工作都完成了，其实不然。下面，我再和你列举下 AppCode 静态检查的问题：</p>
+
+<ul>
+<li>JSONModel 里定义了未使用的协议会被判定为无用协议；</li>
+<li>如果子类使用了父类的方法，父类的这个方法不会被认为使用了；</li>
+<li>通过点的方式使用属性，该属性会被认为没有使用；</li>
+<li>使用 performSelector 方式调用的方法也检查不出来，比如 self performSelector:@selector(arrivalRefreshTime)；</li>
+<li>运行时声明类的情况检查不出来。比如通过 NSClassFromString 方式调用的类会被查出为没有使用的类，比如 layerClass = NSClassFromString(@“SMFloatLayer”)。还有以 [[self class] accessToken] 这样不指定类名的方式使用的类，会被认为该类没有被使用。像 UITableView 的自定义的 Cell 使用 registerClass，这样的情况也会认为这个 Cell 没有被使用。</li>
+</ul>
+
+<h1 id="toc_0">define RW_INITIALIZED (1&lt;&lt;29)</h1>
+
+<p>bool isInitialized() {<br/>
+   return getMeta()-&gt;data()-&gt;flags &amp; RW_INITIALIZED;<br/>
+}</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/3/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509807192.html">
+                
+                  <h1>Debug 技巧（汇编层面）</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>在Xcode中调试代码 一般都使用po 和 p命令，但是还是一种方法就是进入到汇编语言 debug。这时候就会用到了 lldb 的一个指令叫寄存器读。</p>
+
+<p><code>register read</code> // 寄存器读 </p>
+
+<h2 id="toc_0">1.怎么开启汇编语言 debug</h2>
+
+<p>首先Xcode 菜单栏 debug 如下图所示选择 debug workflow</p>
+
+<p><img src="media/15536545415554/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-03-27%20%E4%B8%8A%E5%8D%8810.43.57.png" alt="屏幕快照 2019-03-27 上午10.43.57"/></p>
+
+<p>然后选择然后选择第一项总是显示汇编窗口</p>
+
+<p><img src="media/15536545415554/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-03-27%20%E4%B8%8A%E5%8D%8810.47.06.png" alt="屏幕快照 2019-03-27 上午10.47.06"/></p>
+
+<h2 id="toc_1">2.那么进入到指定的汇编断点之后应该如何打印信息呢</h2>
+
+<p><img src="media/15536545415554/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-03-27%20%E4%B8%8A%E5%8D%8810.49.12.png" alt="屏幕快照 2019-03-27 上午10.49.12"/></p>
+
+<p>使用<code>register read</code> 就会把具体的信息给打印出来<br/>
+如下所示，还可以具体使用 <code>register read rsp</code> 等打印出来逐条的信息，不过意义不是特别大，因为register read已经可以把所有信息打印出来</p>
+
+<pre><code class="language-text">(lldb) register read
+General Purpose Registers:
+       rax = 0x0fc228d768f90060
+       rbx = 0x00000001088ebc05  &quot;count&quot;
+       rcx = 0x0000000000000111
+       rdx = 0x00000001167855c0  dyld`_main_thread
+       rdi = 0x00007fcf0bc0b300
+       rsi = 0x00000001074a8971  &quot;sayHello&quot;
+       rbp = 0x00007ffee87549f0
+       rsp = 0x00007ffee8754970
+        r8 = 0x000000010a5203a0  libsystem_pthread.dylib`_pthread_keys
+        r9 = 0x0000000000000040
+       r10 = 0x0000000000000000
+       r11 = 0x0000000000000202
+       r12 = 0x0000000000000018
+       r13 = 0x00007fcf0bc0b300
+       r14 = 0x000000010c37b9e4  UIKitCore`_UIApplicationLinkedOnVersion
+       r15 = 0x0000000107ddbd80  libobjc.A.dylib`objc_msgSend
+       rip = 0x00000001074a8341  ExchangeMethod`-[ViewController mwviewDidLoad] + 465 at ViewController.m:87
+    rflags = 0x0000000000000206
+        cs = 0x000000000000002b
+        fs = 0x0000000000000000
+        gs = 0x0000000000000000
+
+</code></pre>
+
+<p>利用<code>image list</code>命令列出所有image，第一个image就是我们APP的偏移值，也就是内存地址。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509804206.html">
+                
+                  <h1>通讯录排序</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">苹果提供的排序方法</h3>
+
+<pre><code class="language-text">NSArray *stringArr = @[@&quot;我们&quot;,@&quot;我的&quot;, @&quot;重点&quot;, @&quot;重庆&quot;,  @&quot;三&quot;]; 
+NSArray *result = [stringArr sortedArrayUsingSelector:@selector(localizedCompare:)];
+</code></pre>
+
+<p>字典当中的keyvalue 可以一个键对应一个数组。</p>
+
+<h3 id="toc_1">对数据进行排列按首字母进行分组</h3>
+
+<p>这是苹果的方法</p>
+
+<pre><code class="language--(void)usersorting:(nsmutablearray">    
+    for ( modelAgreementCitizenItem *model in modelArr) {
+        //获取汉子的首字母
+        //把中文转拼音
+        
+        NSMutableString *ms = [[NSMutableString alloc] initWithString:[model patientName]];
+        if (CFStringTransform((__bridge CFMutableStringRef)ms, 0, kCFStringTransformMandarinLatin, NO)) {
+            NSLog(@&quot;Pingying: %@&quot;, ms);
+        }
+        if (CFStringTransform((__bridge CFMutableStringRef)ms, 0, kCFStringTransformStripDiacritics, NO)) {
+            NSLog(@&quot;Pingying: %@&quot;, ms);
+        }
+        NSString *firstString = [[ms substringToIndex:1] uppercaseString];
+        
+        
+        NSMutableArray * arr = [self.nameDic objectForKey:firstString];
+        if (arr) {
+            [arr addObject:model];
+        }else{//如果没有 则需要创建一个添加到里面
+            [self.nameDic setObject:[@[model] mutableCopy] forKey:firstString];
+        }
+        
+    }
+    
+}
+
+</code></pre>
+
+<p>这个方法使用起来比较慢 耗时较长</p>
+
+<pre><code class="language--(nsmutablearray">    
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    if(self.indexArr.count){
+        [self.indexArr removeAllObjects];
+    }
+    
+    for(int i=&#39;A&#39;;i&lt;=&#39;Z&#39;;i++)
+    {
+        NSMutableArray *rulesArray = [[NSMutableArray alloc] init];
+        
+        NSString *str1=[NSString stringWithFormat:@&quot;%c&quot;,i];
+        for(int j=0;j&lt;modelArr.count;j++)
+        {
+            modelAgreementCitizenItem *model = [modelArr objectAtIndex:j];  //这个model 是我自己创建的 里面包含用户的姓名 手机号 和 转化成功后的首字母
+            
+            if([[NSString getFirstLetter:model.patientName] isEqualToString:str1])
+            {
+                [rulesArray addObject:model];    //把首字母相同的人物model 放到同一个数组里面
+                [modelArr removeObject:model];   //model 放到 rulesArray 里面说明这个model 已经拍好序了 所以从总的modelArr里面删除
+                j--;
+                
+            }else{
+                
+            }
+        }
+        if (rulesArray.count !=0) {
+            [array addObject:rulesArray];
+            [self.indexArr addObject:[NSString stringWithFormat:@&quot;%c&quot;,i]]; //把大写字母也放到一个数组里面
+        }
+    }
+    
+    if (modelArr.count !=0) {
+        [array addObject:modelArr];
+        [self.indexArr addObject:@&quot;#&quot;];  //把首字母不是A~Z里的字符全部放到 array里面 然后返回
+    }
+    
+    return array;
+    
+}
+
+
+
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
                     <span class="date">2019/1/10</span>
                     <span>posted in&nbsp;</span> 
           				  
@@ -456,44 +481,193 @@ print(x,y)
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15452016090680.html">
+                <a class="clearlink" href="16076509804775.html">
                 
-                  <h1>UICollectionView 进阶篇</h1>
+                  <h1>UISearchbar 自定义搜索图标失真</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">1. 加入手势支持</h2>
+                        	<p>关于Searchbar设置搜索图标的问题<br/>
+因为这个大小在iOS中是固定的14*14<br/>
+如果UI给的切图不是这个尺寸就会出现失真的情况（ps：因为视图的默认contentMode是UIViewContentModeScaleToFill）<br/>
+网上有的方法一般是设置一个继承自UITextfield的searchBar<br/>
+去修改SearchBar的leftView。</p>
 
-<ol>
-<li><p>为什么要加入手势</p>
+<pre><code class="language-text">UIImageView *searchIcon = [[UIImageView alloc] init];
+searchIcon.image = [UIImage imageNamed:@&quot;searchbar_textfield_search_icon&quot;];
+searchIcon.contentMode = UIViewContentModeCenter;        searchIcon.size = CGSizeMake(14, 14);
+self.leftView = searchIcon;
+self.leftViewMode = UITextFieldViewModeAlways;
 
-<p>场景</p>
+</code></pre>
 
-<ul>
-<li>触发对集合视图的布局信息的更改。</li>
-<li><p>直接操作单元格和视图。</p>
+<p>但是其实完全可以便利UISearchBar的子视图拿到textField<br/>
+再去设置textField.leftView.contendMode即可</p>
 
-<p>应该始终将手势识别器附加到UICollectionView本身 而不是特定的单元格或视图。该UICollectionView是UIScrollView的子类，所以你的附加手势识别到集合的看法是不太可能，必须跟踪的其他手势干扰。此外，由于集合视图可以访问您的数据源和布局对象，因此您仍然可以访问适当操作单元格和视图所需的所有信息。</p></li>
-</ul></li>
-<li><p>怎么通过手势改变布局信息</p>
+<p>其实系统方法<br/>
+[xxxbar setImage:forSearchBarIcon:state];<br/>
+内部就是设置了textField的leftView</p>
 
-<p>手势识别器提供了一种动态修改布局参数的简便方法。例如，您可以使用捏合手势识别器来更改自定义布局中项目之间的间距。用于配置这种手势识别器的过程相对简单。</p>
-
-<ol>
-<li>创建手势识别器。</li>
-<li>将手势识别器附加到集合视图。</li>
-<li>使用手势识别器的处理程序方法更新布局参数并使布局对象无效。</li>
-</ol></li>
-</ol>
                         
                       </div>
                   </div>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15452016090680.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2018/12/19</span>
+                  
+                    <span class="date">2018/12/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509805420.html">
+                
+                  <h1>dispatch_semaphore_t 信号量</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><code>dispatch_semaphore_t</code> 一种计算的信号量<br/>
+<code>dispatch_semaphore_create</code> 创建一个数值的信号量<br/>
+<code>dispatch_semaphore_signal</code> 对指定的信号量进行增加1</p>
+
+<p><code>dispatch_semaphore_wait</code> 会使传入的信号量减1，如果返回的值为0说明有任务进行中就阻碍当前的线程，如果返回的值大于0，就代表当前的线程当中没有任务再执行，就接着执行下面的任务。</p>
+
+<p>用这个可以起到顺序执行异步任务的功效。<br/>
+如果后一步的执行需要前一步执行完拿到结果才行的话，这也是一种异步顺序执行的方案。</p>
+
+<pre><code class="language-text">- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self task:@&quot;task one starting&quot;];
+        dispatch_semaphore_signal(semaphore);
+    });
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self task:@&quot;task two starting&quot;];
+        dispatch_semaphore_signal(semaphore);
+    });
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self task:@&quot;task three starting&quot;];
+        dispatch_semaphore_signal(semaphore);
+    });
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    
+    // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)task:(NSString *)taskName{
+    NSLog(@&quot;%@&quot;,taskName);
+    sleep(1);
+}
+
+</code></pre>
+
+<p>先执行dispatch_semaphore_wait 然后发现线程任务还在进行，就开始堵塞当前任务的线程，等待dispatch_async内部执行完成信号量+1才会继续下面的执行。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/15</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509804138.html">
+                
+                  <h1>隐藏导航栏底部的线条</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>有时候遇到一些特殊的要求，需要隐藏导航栏底部的线条。<br/>
+两行代码就可以做到。</p>
+
+<ul>
+<li>方法一:<br/>
+设置导航栏的背景图（setBackgroundImage方法）<br/>
+设置导航栏的shadowImage (setShadowImage方法)<br/></li>
+</ul>
+
+<pre><code class="language-text">UINavigationBar *navigationBar = self.navigationController.navigationBar;    
+</code></pre>
+
+<p>//设置透明的背景图，便于识别底部线条有没有被隐藏    </p>
+
+<pre><code class="language-text">[navigationBar setBackgroundImage:[[UIImage alloc] init]
+                       forBarPosition:UIBarPositionAny
+                           barMetrics:UIBarMetricsDefault]; 
+</code></pre>
+
+<p>//此处使底部线条失效</p>
+
+<pre><code class="language-text">[navigationBar setShadowImage:[UIImage new]];
+</code></pre>
+
+<ul>
+<li>方法二：</li>
+</ul>
+
+<pre><code class="language-text">self.navigationController.navigationBar.clipsToBounds = YES; 
+</code></pre>
+
+<h3 id="toc_0">导航栏全局属性设置</h3>
+
+<p>//全局设置导航栏主题</p>
+
+<pre><code class="language-text">- (void)setNavigationControllerAppearance {
+    [UINavigationBar appearance].barStyle  = UIBarStyleBlack;
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithWhite:0.1 alpha:0.5]];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+}
+
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/11</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
@@ -532,9 +706,7 @@ print(x,y)
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
             
-                <div class="site-a-logo"><img src="/asset/img/logo.png" /></div>
-            
-                <h1>Code Log 👨‍💻‍ </h1>
+                <h1></h1>
                 <div class="site-des"></div>
                 <div class="social">
 
@@ -546,9 +718,9 @@ print(x,y)
 
 
 
-<a target="_blank" class="github" target="_blank" href="https://github.com/maweefeng" title="GitHub">GitHub</a>
+
 <a target="_blank" class="email" href="mailto:maweefeng@gmail.com" title="Email">Email</a>
-  <!-- <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a> -->
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
                 
               	 </div>
           	</div>
@@ -563,17 +735,15 @@ print(x,y)
 
       	<p class="cat-list">
         
+            <a href="%E7%94%B5%E5%BD%B1.html"><strong>电影</strong></a>
+        
+            <a href="%E5%85%B6%E5%AE%83.html"><strong>其它</strong></a>
+        
+            <a href="Python.html"><strong>Python</strong></a>
+        
             <a href="iOS.html"><strong>iOS</strong></a>
         
-            <a href="Git.html"><strong>Git</strong></a>
-        
-            <a href="CocoaPods.html"><strong>CocoaPods</strong></a>
-        
-            <a href="Django.html"><strong>Django</strong></a>
-        
-            <a href="Spiders.html"><strong>Spiders</strong></a>
-        
-            <a href="about.html"><strong>about</strong></a>
+            <a href="%E6%88%91.html"><strong>我</strong></a>
          
         </p>
 
@@ -590,31 +760,31 @@ print(x,y)
 	      
 		      
 			      <li class="post">
-			        <a href="15638450239357.html">判断bundle中存不存在某个文件</a>
+			        <a href="16076509804045.html">RACCommand</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15638515424059.html">去除tableview sectionheaderview的粘连效果</a>
+			        <a href="16076509805027.html">关于我</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15641370883413.html">快速的扩展类的初始化方法</a>
+			        <a href="16076509807659.html">点击事件发生在视图边界之外的时候</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15644628854335.html">切部分圆角</a>
+			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15646490459131.html">didSet 和 willSet</a>
+			        <a href="16076509804683.html">Xcode打包遇到的坑</a>
 			      </li>
 		     
 		  
@@ -659,11 +829,10 @@ print(x,y)
 
  <div class="page-bottom clearfix">
   <div class="row">
-   <!-- <p class="copyright">Copyright &copy; 2015
+   <p class="copyright">Copyright &copy; 2015
 Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
-Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p> -->
-<p class="copyright">日光之下 永无新事</p>
-</div>
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
 </div>
 
         </section>
@@ -690,7 +859,7 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p> -->
      
     </script>
 
-    <script src="asset/chart/all-min.js"></script><script type="text/javascript">$(function(){    var mwebii=0;    var mwebChartEleId = 'mweb-chart-ele-';    $('pre>code').each(function(){        mwebii++;        var eleiid = mwebChartEleId+mwebii;        if($(this).hasClass('language-sequence')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = Diagram.parse($(this).text());            diagram.drawSVG(eleiid,{theme: 'simple'});        }else if($(this).hasClass('language-flow')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = flowchart.parse($(this).text());            diagram.drawSVG(eleiid);        }    });});</script>
+    
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
 
 

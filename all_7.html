@@ -40,7 +40,7 @@
       <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
         <ul id="main-menu" class="left">
         
-        <li id=""><a target="self" href="index.html">Home</a></li>
+        <li id=""><a target="_self" href="index.html">Home</a></li>
         
         <li id=""><a target="_self" href="archives.html">Archives</a></li>
         
@@ -69,7 +69,7 @@
 <aside class="left-off-canvas-menu">
       <ul class="off-canvas-list">
         
-        <li><a target="self" href="index.html">Home</a></li>
+        <li><a target="_self" href="index.html">Home</a></li>
         
         <li><a target="_self" href="archives.html">Archives</a></li>
         
@@ -80,6 +80,12 @@
             <li><a href="%E7%94%B5%E5%BD%B1.html">电影</a></li>
         
             <li><a href="%E5%85%B6%E5%AE%83.html">其它</a></li>
+        
+            <li><a href="Python.html">Python</a></li>
+        
+            <li><a href="iOS.html">iOS</a></li>
+        
+            <li><a href="%E6%88%91.html">我</a></li>
          
 
       </ul>
@@ -102,37 +108,30 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="16076509806399.html">
+                <a class="clearlink" href="15871981727532.html">
                 
-                  <h1>Localization Issue Warning Storyboard</h1>
+                  <h1>为什么已经存在Struct 还是需要用到Class?</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>当我使用 xib 设置自动布局的时候出现了下面的警告</p>
+                        	<p>Struct 可以理解为一个很大很大的值,只能是值传递，并不占用同一份内存。</p>
 
-<p><img src="media/15474609644602/15474616779035.png" alt=""/></p>
+<p>但是有时候需要引用同一个东西，（你的代码可以引用一个类的同一个实例）就需要用到Class，而且Class可以被继承，可以有子类，而且具有struct的所有特性，属性，方法，扩展，初始化initalize等等。</p>
 
-<blockquote>
-<p>Certain autolayout constraint combinations may result in an appropriate layout in the current development language but will pose issues in other languages and regions.</p>
-</blockquote>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gdy03uxv8fj31c00u04qr.jpg" alt=""/></p>
 
-<p>然后看了苹果官方的文档，说是使用“自动布局”相对于彼此布置视图而没有固定的原点，宽度和高度，以便在语言或区域设置更改时视图重新定位和调整大小。自动布局使得可以为所有语言提供一组.storyboard和.xib文件，并且main.Storyboard默认进行本地化</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gdy043p0etj31c00u0hdu.jpg" alt=""/></p>
 
-<p>对国际化应用程序使用自动布局时，请遵循以下提示。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gdy04bjjp0j31c00u04qq.jpg" alt=""/></p>
 
-<ol>
-<li><p>删除固定宽度约束。允许显示要调整大小的本地化文本的视图。如果使用固定宽度约束，则本地化文本可能会在某些语言中出现裁剪。</p></li>
-<li><p>使用内在内容大小。文本字段和标签的默认行为是自动调整大小。如果视图未调整为本地化文本的大小，请选择视图并选择“Editor”&gt;“size To Fit”。</p></li>
-<li><p>使用leading和trailing属性。添加约束时，请使用属性leading和trailing水平约束。对于从左到右的语言，例如英语，属性leading和trailing等同于left和right。对于从右到左的语言，如希伯来语或阿拉伯语，leading并trailing等同于right和left。的leading和trailing属性是用于水平约束的默认值。</p></li>
-<li><p>将视图固定到相邻视图。这个操作会导致多米诺骨牌效应。当一个视图调整大小以适合本地化文本时，其他视图也会这样做。否则，某些语言的视图可能会重叠。</p></li>
-<li><p>不断测试您的布局更改。使用不同的语言设置测试您的应用，如测试国际化应用中所述。</p></li>
-<li><p>不要设置window的最小大小或最大大小。让window及其内容视图调整为包含视图的大小，这可能会在语言更改时更改。</p></li>
-</ol>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gdy04jzdiej31c00u0hdu.jpg" alt=""/></p>
 
-<h2 id="toc_0">解决问题</h2>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gdy04uwatij31c00u0hdu.jpg" alt=""/></p>
 
-<p>在这里不作过多国际化 xib 约束的讨论，针对我遇到的问题，我可以把宽度的约束删除，改成 leading 和 trailing 结合的方式。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gdy052odeoj31c00u0u0y.jpg" alt=""/></p>
+
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gdy05at6roj31c00u0x6q.jpg" alt=""/></p>
 
                         
                       </div>
@@ -141,54 +140,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/12/11</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509806428.html">
-                
-                  <h1>怎么选购二手房</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ol>
-<li>选择一个靠谱的中介 </li>
-<li>调查房源所属人</li>
-<li>周边的配套是否完善</li>
-<li>还有房源是不是有抵押 </li>
-<li>调查小区的基本情况</li>
-<li>物业管理 水电 煤气 卫生 车位 安保 </li>
-<li>调查房子之前有没有发生过什么忌讳的事情</li>
-<li>观察水压 观察电线走线是否合理 煤气线路 </li>
-<li>不同的时间看看社区的人的人来人往</li>
-<li>房屋的内部结构（有没有改动过房屋的内部结构）</li>
-<li>户型是否合理 暗厅 采光不好的问题</li>
-<li>是否有漏水的现象 </li>
-</ol>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/12/11</span>
+                    <span class="date">2018/9/14</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%85%B6%E5%AE%83.html'>其它</a></span>
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -202,56 +157,40 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="16076509806471.html">
+                <a class="clearlink" href="16076509804807.html">
                 
-                  <h1>swift 中的 selector</h1>
+                  <h1>CAMediaTimingFunction获取控制点：</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>首先，@selector方法选择器是OC中很常用的一个关键字，无论是计时器相应方法，通知效应方法，按钮相应方法，自省判断是否能相应某个方法，都会用到@selector，OC中常用生成@selector的格式如下：</p>
-
-<pre><code class="language-text">- (void)func1{
-}
- 
-- (void)func1With:(id )obj{
-}
- 
-//生成选择器方法如下
-SEL selector1 = @selector(func1);
-SEL selector2 = NSSelectorFromString(@&quot;func1&quot;);
-SEL selector3 = @selector(func1With:);
-SEL selector4 = NSSelectorFromString(@&quot;func1With:&quot;);
-
+                        	<pre><code class="language-text">//create timing function
+CAMediaTimingFunction *function = [CAMediaTimingFunction functionWithControlPoints:1 :0 :0.75 :1];
 </code></pre>
 
-<p>在swift中没有@selector了，从swift2.2开始，我们开始用#selector来从暴露给OC的代码中，获取一个选择器。类似的，swift中类似于SEL的是一个叫做Selector的结构体，上述生成SEL的代码，在Swift中类似的实现方式如下：</p>
+<p>我得到的controlPoint值似乎是错误的：</p>
 
-<pre><code class="language-text">@objc func func1() {
-}
+<pre><code class="language-text">CGPoint controlPoint1, controlPoint2;
+[function getControlPointAtIndex:1 values:(float *)&amp;controlPoint1]; 
+[function getControlPointAtIndex:2 values:(float *)&amp;controlPoint2];
+The controlPoint value that I get seems to be wrong:
 
-@objc func func2(with obj:Any ) {
-}
-
-let selector1 = #selector(func1)
-let selector2 = #selector(func2(with:))
+controlPoint1   CGPoint (x = 5.2635442471208903E-315, y = 4.9406564584124654E-324)  
+controlPoint2   CGPoint (x = 0.0078125018408172764, y = 2.8421186829703262E-314)    
 </code></pre>
 
-<p>在swift4.0中，所有的swift方法都默认是OC不可见得。如果想让OC调用某些swift方法，需要在方法前面添加@objc关键字，以此暴露给OC。swift3.0及其之前，只要是NSObject的子类，编译器都会在非private得方法前默认加上@objc，此举会恶化编译器编译速度。如果此对象中有大量的OC调用，可以在类型前加@objcMembers关键字，所有非private方法都默认暴露给OC</p>
+<p>但是，如果我使用float数组作为参数的类型values，我得到controlPoint的正确值：</p>
 
-<p>最后，如果swift中两个相同命名，参数不同方法，直接生成Selector会产生二义性报错。遇此情况，添加上参数和返回值类型，强转即可。</p>
+<pre><code class="language-text">float c1p[2], c2p[2];
+[function getControlPointAtIndex:1 values:c1p];
+[function getControlPointAtIndex:2 values:c2p];
+The values are:
 
-<pre><code class="language-text">@objc func func1() {
-}
-
-@objc func func1(with obj:Any ) {
-}
-
-//如此生成即可
-let selector1 = #selector(func1 as ()-&gt;Void)
+controlPoint1   CGPoint (x = 1, y = 0)  
+controlPoint2   CGPoint (x = 0.75, y = 1) 
 </code></pre>
 
-<hr/>
+<p>32位设备可以使用第一种方法 但是在64位设备就行不通了 </p>
 
                         
                       </div>
@@ -260,45 +199,10 @@ let selector1 = #selector(func1 as ()-&gt;Void)
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/12/11</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509806513.html">
-                
-                  <h1>狗十三</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>没有所谓的彻底反省，每次以为大家都能反省的时候，接下来就是给观众们当头一棒。</p>
-
-<p>最后李玩问起自己父母当时怎么认识的，然后李玩的爸爸立马声泪俱下，用手盖住女儿的脸，不让女儿看到自己流下的眼泪。</p>
-
-<p>说，自己不是个好爸，大概是年轻的时候犯下了错误，导致离婚，可能很后悔，但是再也回不去了。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/12/11</span>
+                    <span class="date">2018/9/11</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E7%94%B5%E5%BD%B1.html'>电影</a></span>
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -312,18 +216,430 @@ let selector1 = #selector(func1 as ()-&gt;Void)
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="16076509806552.html">
+                <a class="clearlink" href="16076509808450.html">
                 
-                  <h1>七号房的礼物</h1>
+                  <h1>PromiseKit</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>要怎么才能好好的挥手道别呢，最后的时候爸爸觉得自己再也见不到自己女儿那一刻，害怕了。但是没有人能再救他回来，影片最后真的让人声泪俱下。</p>
+                        	<h2 id="toc_0">then and done</h2>
 
-<p>父女之间的爱情，狱友之间的帮助，可能多少美化了一部分，但是人的内心深处总留有那么一块正义时刻吧，由于匆忙结案酿成了一场冤假错案，如何对抗一个体制，看得实在揪心，总希望这样的事情不会发生，最后的结局可能是一种对于现实的妥协，给影片画上了一个句号，还了龙九的清白，其实如果放到现实中，恐怕这样接近圆满的结局会很困难吧。</p>
+<p>一个典型的链条⛓️</p>
 
-<p>到底真相是什么我们不得而知，但是我们知道龙九是被冤枉的没错。</p>
+<pre><code class="language-text">firstly {
+    login()
+}.then { creds in
+    fetch(avatar: creds.user)
+}.done { image in
+    self.imageView = image
+}
+</code></pre>
+
+<p>如果这段代码使用之前的方式可能会是这样</p>
+
+<pre><code class="language-text">login { creds, error in
+    if let creds = creds {
+        fetch(avatar: creds.user) { image, error in
+            if let image = image {
+                self.imageView = image
+            }
+        }
+    }
+}
+</code></pre>
+
+<p>其中重要的语法有then 是另一种方式的回调方法，但是承诺链比较容易理解，一个异步操作之后接着去执行下一个操作。</p>
+
+<p>done是一样的，但是done不返回promise，它通常是链条成功部分的终结。</p>
+
+<p>还有就是错误捕捉，比如我们以前的方法会有成功和错误的两个回调，但是现在使用了promise只需要返回一个promise就行了。如下所示</p>
+
+<pre><code class="language-text">func login() -&gt; Promise&lt;Creds&gt;
+    
+// Compared with:
+
+func login(completion: (Creds?, Error?) -&gt; Void)
+                        // ^^ ugh. Optionals. Double optionals.
+</code></pre>
+
+<h2 id="toc_1">catch</h2>
+
+<p>那么错误是怎么捕捉到的呢，那么就需要用到promise的另一个重要的方法<code>catch</code></p>
+
+<pre><code class="language-text">firstly {
+    login()
+}.then { creds in
+    fetch(avatar: creds.user)
+}.done { image in
+    self.imageView = image
+}.catch {
+    // any errors in the whole chain land here
+}
+</code></pre>
+
+<p>每个<code>promise</code>都代表一个异步任务的对象，如果任务失败，诺言会失败，执行<code>reject</code>状态，如果诺言执行成功就是<code>fulfilled</code>状态，如果执行失败会跳过后面的所有then操作进入到<code>catch</code>当中。</p>
+
+<h2 id="toc_2">ensure and finally</h2>
+
+<p>有时候我们需要执行一些必须要执行的操作，比如无论网络请求失败还是成功都隐藏请求动画，那么就需要用到ensure语句了。<br/>
+无论你的promise执行结果如何，ensure当中的代码块都将被执行。</p>
+
+<pre><code class="language-text">firstly {
+    UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    return login()
+}.then {
+    fetch(avatar: $0.user)
+}.done {
+    self.imageView = $0
+}.ensure {
+    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+}.catch {
+    //…
+}
+</code></pre>
+
+<p>另外你也可以使用<code>finally</code>方法在链条的最底部执行，无须返回任何值。</p>
+
+<pre><code class="language-text">spinner(visible: true)
+
+firstly {
+    foo()
+}.done {
+    //…
+}.catch {
+    //…
+}.finally {
+    self.spinner(visible: false)
+}
+</code></pre>
+
+<h2 id="toc_3">when</h2>
+
+<p>使用完成处理程序，对多个异步操作的响应要么很慢，要么很难。慢意味着连续执行：</p>
+
+<p><code>when</code> 有点像<code>GCD</code>当中的<code>DispatchGroup</code> 做完之后再通知到接下来的操作。</p>
+
+<pre><code class="language-text">firstly {
+    when(fulfilled: operation1(), operation2())
+}.done { result1, result2 in
+    //…
+}
+</code></pre>
+
+<p><code>when</code> 接受承诺，等待他们解决并返回包含结果的承诺。</p>
+
+<p>与任何承诺链一样，如果任何组件承诺失败，链将调用下一个<code>catch</code>。</p>
+
+<h2 id="toc_4">Making Promises</h2>
+
+<p>那么如何使自己的项目支持promise？<br/>
+标准扩展程序将带您走很长的路，但有时您仍然需要启动自己的链。也许您正在使用不提供承诺的第三方API，或者您可能编写了自己的异步系统。无论哪种方式，添加承诺都很容易。如果您查看标准扩展的代码，您会看到它使用下面描述的相同方法。</p>
+
+<pre><code class="language-text">假设我们有以下方法：
+
+func fetch(completion: (String?, Error?) -&gt; Void){
+
+    }
+我们可以使用下面方法变成promise
+func fetch() -&gt; Promise&lt;String&gt; {
+        return Promise{
+            seal in
+            fetch(completion: seal.resolve)
+        }
+
+//      或者  return Promise { fetch(completion: $0.resolve) }
+}
+
+或者    
+func fetch() -&gt; Promise&lt;String&gt; {
+        return Promise&lt;String&gt;{ seal in
+            fetch{ (result, error) in
+                seal.resolve(result, error)
+            }
+        }
+}
+</code></pre>
+
+<p>Promise的初始化程序为您提供的seal对象定义了许多处理平常的完成处理程序的方法。它甚至涵盖了各种罕见的情况，因此您可以轻松地将promises添加到现有代码库中。</p>
+
+<p>注意：在PMK 4中，此初始化程序为闭包提供了两个参数： fulfill和reject。PMK 5和6为您提供了具有两种方法fulfill和 reject方法的对象，但也提供了该方法的许多变体resolve。您通常只需将完成处理程序参数传递给，resolve并让Swift找出适用于您的特定情况的变体（如上例所示）。</p>
+
+<p>还可以使用fulfill 和 reject方法，比如上面的代码可以改成下面的样子。</p>
+
+<pre><code class="language-text"> func fetch() -&gt; Promise&lt;String&gt; {
+
+        return Promise&lt;String&gt;{ seal in
+            
+            fetch{ (result, error) in
+                if let error = error {
+                    seal.reject(error)
+                }else if let success = result{
+                    seal.fulfill(success)
+                }else{
+                    seal.reject(PMKError.invalidCallingConvention)
+                }
+            }
+        }
+    }
+</code></pre>
+
+<h2 id="toc_5">Guarantee<T></h2>
+
+<p>自从PromiseKit 5，提供了Guarantee作为补充 Promise。这样做是为了补充Swift强大的错误处理系统。</p>
+
+<p>Guarantee永不失败，所以不能拒绝。一个很好的例子是after：</p>
+
+<pre><code class="language-text">firstly {
+    after(seconds: 0.1)
+}.done {
+    // there is no way to add a `catch` because after cannot fail.
+}
+
+</code></pre>
+
+<h2 id="toc_6">APIs That Use Promises</h2>
+
+<pre><code class="language-text">class MyRestAPI {
+    func user() -&gt; Promise&lt;User&gt; {
+        return firstly {
+            URLSession.shared.dataTask(.promise, with: url)
+        }.compactMap {
+            try JSONSerialization.jsonObject(with: $0.data) as? [String: Any]
+        }.map { dict in
+            User(dict: dict)
+        }
+    }
+
+    func avatar() -&gt; Promise&lt;UIImage&gt; {
+        return user().then { user in
+            URLSession.shared.dataTask(.promise, with: user.imageUrl)
+        }.compactMap {
+            UIImage(data: $0.data)
+        }
+    }
+}
+
+</code></pre>
+
+<p>通过这种方式，异步链可以干净地无缝地整合来自整个应用程序的代码，而不会违反架构边界。</p>
+
+<h2 id="toc_7">Background Work</h2>
+
+<pre><code class="language-text">class MyRestAPI {
+    func avatar() -&gt; Promise&lt;UIImage&gt; {
+        let bgq = DispatchQueue.global(qos: .userInitiated)
+
+        return firstly {
+            user()
+        }.then(on: bgq) { user in
+            URLSession.shared.dataTask(.promise, with: user.imageUrl)
+        }.compactMap(on: bgq) {
+            UIImage(data: $0)
+        }
+    }
+}
+</code></pre>
+
+<p>所有PromiseKit处理程序都带有一个on参数，允许您指定运行处理程序的调度队列。默认值始终是主队列。</p>
+
+<p>PromiseKit 完全是线程安全的。</p>
+
+<h2 id="toc_8">Failing Chains</h2>
+
+<p>如果错误发生在链条中间，只需抛出一个错误。</p>
+
+<pre><code class="language-text">firstly {
+    foo()
+}.then { baz in
+    bar(baz)
+}.then { result in
+    guard !result.isBad else { throw MyError.myIssue }
+    //…
+    return doOtherThing()
+}
+
+</code></pre>
+
+<p>错误将在下一个catch处理程序中显示。</p>
+
+<p>由于promises处理抛出的错误，除非你真的想在本地处理错误，否则你不必将调用函数包装到块中：</p>
+
+<pre><code class="language-text">foo().then { baz in
+    bar(baz)
+}.then { result in
+    try doOtherThing()
+}.catch { error in
+    // if doOtherThing() throws, we end up here
+}
+</code></pre>
+
+<h2 id="toc_9">抽象异步性 Abstracting Away Asynchronicity</h2>
+
+<pre><code class="language-text">var fetch = API.fetch()
+
+override func viewDidAppear() {
+    fetch.then { items in
+        //…
+    }
+}
+
+func buttonPressed() {
+    fetch.then { items in
+        //…
+    }
+}
+
+func refresh() -&gt; Promise {
+    // ensure only one fetch operation happens at a time
+
+    if fetch.isResolved {
+        startSpinner()
+        fetch = API.fetch().ensure {
+            stopSpinner()
+        }
+    }
+    return fetch
+}
+</code></pre>
+
+<p>使用promises，您无需担心异步操作何时完成。就像现在一样。</p>
+
+<p>在上面，我们看到您可以根据自己的喜好多次调用then。所有块将按添加顺序执行。</p>
+
+<h2 id="toc_10">Minimum Duration</h2>
+
+<p>有时您需要一项任务至少花费一定的时间。（例如，您希望显示进度条，但如果它显示的时间少于0.3秒，则UI对用户显示为断开。）</p>
+
+<pre><code class="language-text">let waitAtLeast = after(seconds: 0.3)
+
+firstly {
+    foo()
+}.then {
+    waitAtLeast
+}.done {
+    //…
+}
+</code></pre>
+
+<p>上面的代码有效，因为我们在工作之前创建了延迟foo()。当我们等待这个承诺时，要么它已经超时，要么我们将等待0.3秒的任何剩余时间，然后继续链。</p>
+
+<h2 id="toc_11">Cancellation</h2>
+
+<p>Promise没有cancel函数，但它们通过符合CancellableError协议的特殊错误类型支持取消。</p>
+
+<pre><code class="language-text">func foo() -&gt; (Promise&lt;Void&gt;, cancel: () -&gt; Void) {
+    let task = Task(…)
+    var cancelme = false
+
+    let promise = Promise&lt;Void&gt; { seal in
+        task.completion = { value in
+            guard !cancelme else { return reject(PMKError.cancelled) }
+            seal.fulfill(value)
+        }
+        task.start()
+    }
+
+    let cancel = {
+        cancelme = true
+        task.cancel()
+    }
+
+    return (promise, cancel)
+}
+
+</code></pre>
+
+<p>被取消的链条默认不会进入到catch方法，然后也可以接收取消中断，如下</p>
+
+<pre><code class="language-text">foo.then {
+    //…
+}.catch(policy: .allErrors) {
+    // cancelled errors are handled *as well*
+}
+</code></pre>
+
+<h2 id="toc_12">Saving Previous Results</h2>
+
+<p>举个例子</p>
+
+<pre><code class="language-text">login().then { username in
+    fetch(avatar: username)
+}.done { image in
+    //…
+}
+
+</code></pre>
+
+<p>如果想在done在同时访问username和image呢 <br/>
+可以使用下面的方法</p>
+
+<pre><code class="language-text">login().then { username in
+    fetch(avatar: username).done { image in
+        // we have access to both `image` and `username`
+    }
+}.done {
+    // the chain still continues as you&#39;d expect
+}
+</code></pre>
+
+<p>然而，这种嵌套降低了链条的清晰度。相反，我们可以使用Swift元组：</p>
+
+<pre><code class="language-text">//简化版
+login().then { username in
+    fetch(avatar: username).map { ($0, username) }
+}.then { image, username in
+    //…
+}
+</code></pre>
+
+<h2 id="toc_13">Chaining Sequences</h2>
+
+<p>当你在一个数组中有一系列的任务要反应的时候</p>
+
+<pre><code class="language-text">// fade all visible table cells one by one in a “cascading” effect
+
+var fade = Guarantee.value(Bool())
+
+for cell in tableView.visibleCells {
+
+    fade = fade.then {_ in
+        UIView.animate(.promise, duration: 1, animations: {
+            cell.alpha = 0
+
+        })
+
+    }
+}
+fade.done {_ in
+
+
+}
+        
+</code></pre>
+
+<p>或者你有一个包含promise的数组</p>
+
+<pre><code class="language-text">var foo = Promise()
+for nextPromise in arrayOfPromises {
+    foo = foo.then { nextPromise }
+}
+foo.done {
+    // finish
+}
+
+</code></pre>
+
+<p>之前我们知道可以使用when同时异步执行多个promise，这种方式完成的速度更快，但是有时候我们需要promise顺序一个一个的执行，比如上面的动画。</p>
+
+<h1 id="toc_14">Promise采用关联对象进行保存对象</h1>
+
+<p>oc中运行时关联对象 宏定义写法</p>
+
+<pre><code class="language-text">extern void *PMKManualReferenceAssociatedObject;
+#define PMKRetain(obj)  objc_setAssociatedObject(obj, PMKManualReferenceAssociatedObject, obj, OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+#define PMKRelease(obj) objc_setAssociatedObject(obj, PMKManualReferenceAssociatedObject, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+</code></pre>
 
                         
                       </div>
@@ -332,72 +648,10 @@ let selector1 = #selector(func1 as ()-&gt;Void)
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/12/11</span>
+                    <span class="date">2018/9/6</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E7%94%B5%E5%BD%B1.html'>电影</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509806591.html">
-                
-                  <h1>Swifter4</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ol>
-<li><p>Curring（柯里化）</p>
-<p>把接受多个参数的方法变换成接受第一个参数的方法，并且返回接受余下的参数并返回结果的新方法。</p>
-<p>在Swift2中可以将方法进行Curring 但是在Swift4不再支持方法的柯里化</p>
-<p><img src="media/15499574789691/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-02-12%20%E4%B8%8B%E5%8D%883.48.34.png" alt="屏幕快照 2019-02-12 下午3.48.34"/></p></li>
-<li><p>@autoclosure</p>
-<pre><code class="language-text">func logIfTrue(predicate: () -&gt; Bool) {
-        if predicate() {<br/>
-            print(&quot;true&quot;)<br/>
-        }<br/>
-    }<br/>
-调用方式1       <br/>
-logIfTrue(predicate: {2 &gt; 1})<br/>
-调用方式2      <br/>
-logIfTrue{2 &gt; 1}
-</code></pre>
-<p>原来的闭包的书写方式如上面所写，但是看起来不是很容易理解，这时就出现了自动闭包。</p>
-<p>swift4 中的自动闭包书写和 swift2中不同 区别点在@autoclosure的位置，swift2中是在参数之前，在 swift4中是在参数之后。</p>
-<pre><code class="language-text">func logIfTrue(predicate:@autoclosure () -&gt; Bool) {
-        if predicate() {<br/>
-            print(&quot;true&quot;)<br/>
-        }<br/>
-    }<br/>
-logIfTrue(predicate: 2 &gt; 1)
-</code></pre>
-<p>另外需要注意@autoclosure 并不支持带有输入参数的写法，只有形如（）-&gt; T 的参数才能使用这个特性进行简化。</p></li>
-<li><p>Designated、Convenience 和Required</p>
-<p>只有在子类重写了父类的 designated 方法的时候才可以直接调用父类的 convenience 方法</p>
-<p>如果添加 required 关键字修饰初始化方法，则在子类中必须对该 required 方法进行实现。这样做的好处就是可以保证依赖于某个 designated 方法的 convenience 一直可以被使用。</p></li>
-<li><p>Swift 中的Array,Dictionary和Set在集合中只能存储同一个类型的元素，但是NSArray可以存储多种不同类型的数据，如果想要Array 存储不同类型的数据，可以使用Any AnyObject</p>
-<p><code>let store:[Any] = [1,&quot;1&quot;]</code></p></li>
-</ol>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/12/11</span>
-                    
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -551,8 +805,10 @@ var block:HelloBlock?</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/12/11</span>
-                    
+                    <span class="date">2018/9/5</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -566,56 +822,79 @@ var block:HelloBlock?</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="16076509806674.html">
+                <a class="clearlink" href="16076509809415.html">
                 
-                  <h1>设置完约束之后一定要激活约束才生效</h1>
+                  <h1>一个实例对象可以通过4种方式调用其方法。</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<pre><code class="language-text">-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        
-        UILabel * messageLabel = [[UILabel alloc]init];
-        messageLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        [self addSubview:messageLabel];
-        NSArray * constrains = @[
-        [messageLabel.topAnchor constraintEqualToAnchor:self.topAnchor],
-        [messageLabel.leadingAnchor constraintEqualToAnchor:self.leadingAnchor],
-        [messageLabel.trailingAnchor constraintEqualToAnchor:self.trailingAnchor],
-        [messageLabel.bottomAnchor constraintEqualToAnchor:self.bottomAnchor]];
-        
-        [NSLayoutConstraint activateConstraints:constrains];
-        
-        
-    }
+                        	<pre><code class="language-text">- (void)test{
     
-    return self;
+//type1
+    [self printStr1:@&quot;hello world 1&quot;];
     
+//type2
+    [self performSelector:@selector(printStr1:) withObject:@&quot;hello world 2&quot;];
+    
+//type3
+    //获取方法签名
+    NSMethodSignature *sigOfPrintStr = [self methodSignatureForSelector:@selector(printStr1:)];
+    
+    //获取方法签名对应的invocation
+    NSInvocation *invocationOfPrintStr = [NSInvocation invocationWithMethodSignature:sigOfPrintStr];
+    
+    /**
+    设置消息接受者，与[invocationOfPrintStr setArgument:(__bridge void * _Nonnull)(self) atIndex:0]等价
+    */
+    [invocationOfPrintStr setTarget:self];
+    
+    /**设置要执行的selector。与[invocationOfPrintStr setArgument:@selector(printStr1:) atIndex:1] 等价*/
+    [invocationOfPrintStr setSelector:@selector(printStr1:)];
+    
+    //设置参数 
+    NSString *str = @&quot;hello world 3&quot;;
+    [invocationOfPrintStr setArgument:&amp;str atIndex:2];
+    
+    //开始执行
+    [invocationOfPrintStr invoke];
+    
+    //type4
+    ((void (*)(id,SEL,NSString *, NSArray *, NSInteger))objc_msgSend)(self, @selector(textFunctionWithParam:param2:param3:),@&quot;111&quot;,@[@2,@3],123);
+
 }
+-(void)textFunctionWithParam:(NSString *)param1 param2:(NSArray *)param2 param3:(NSInteger)param3 {
+    NSLog(@&quot;param1:%@, param2:%@, param3:%ld&quot;,param1, param2, param3);
+}
+- (void)printStr1:(NSString*)str{
+    NSLog(@&quot;printStr1  %@&quot;,str);
+}
+
+
 </code></pre>
 
-<p>translatesAutoresizingMaskIntoConstraints属性要注意。</p>
+<h2 id="toc_0">下面展示block 的两种调用方式</h2>
 
-<p>官方注释</p>
+<pre><code class="language-text">- (void)test{
 
-<p>/* By default, the autoresizing mask on a view gives rise to constraints that fully determine <br/>
- the view&#39;s position. This allows the auto layout system to track the frames of views whose <br/>
- layout is controlled manually (through -setFrame:, for example).<br/>
- When you elect to position the view using auto layout by adding your own constraints, <br/>
- you must set this property to NO. IB will do this for you.<br/>
- */</p>
+    void (^block1)(int) = ^(int a){
+         NSLog(@&quot;block1 %d&quot;,a);
+    };
+    
+    //type1
+    block1(1);
+    
+    //type2
+    //获取block类型对应的方法签名。
+    NSMethodSignature *signature = aspect_blockMethodSignature(block1);
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
+    [invocation setTarget:block1];
+    int a=2;
+    [invocation setArgument:&amp;a atIndex:1];
+    [invocation invoke];
+}
 
-<p>默认情况下，视图上的自动调整蒙版会产生完全确定的约束<br/>
-视图的位置。这允许自动布局系统跟踪视图的框架<br/>
-布局是手动控制的(例如，通过-setFrame:)。<br/>
-当您选择通过添加自己的约束来使用自动布局来定位视图时，<br/>
-必须将此属性设置为NO。IB会为你做这件事的。</p>
-
-<p>另外还有一个比较注意的属性就是intrinsicContentSize</p>
-
-<p>intrinsicContentSize，也就是控件的内置大小。比如UILabel，UIButton等控件，他们都有自己的内置大小。控件的内置大小往往是由控件本身的内容所决定的，比如一个UILabel的文字很长，那么该UILabel的内置大小自然会很长。控件的内置大小可以通过UIView的intrinsicContentSize属性来获取内置大小，也可以通过invalidateIntrinsicContentSize方法来在下次UI规划事件中重新计算intrinsicContentSize。如果直接创建一个原始的UIView对象，显然它的内置大小为0。</p>
+</code></pre>
 
                         
                       </div>
@@ -624,8 +903,184 @@ var block:HelloBlock?</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/12/11</span>
-                    
+                    <span class="date">2018/8/30</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509807277.html">
+                
+                  <h1>静态分析</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>随着业务开发迭代速度越来越快，完全依赖人工保证工程质量也变得越来越不牢靠。所以，静态分析，这种可以帮助我们在编写代码的阶段就能及时发现代码错误，从而在根儿上保证工程质量的技术，就成为了 iOS 开发者最常用到的一种代码调试技术。</p>
+
+<p>Xcode 自带的静态分析工具 Analyze，通过静态语法分析能够找出在代码层面就能发现的内存泄露问题，还可以通过上下文分析出是否存在变量无用等问题。但是，Analyze 的功能还是有限，还是无法帮助我们在编写代码的阶段发现更多的问题。所以，这才诞生出了功能更全、定制化高、效率高的第三方静态检查工具。比如，OCLint、Infer、Clang 静态分析器等。</p>
+
+<p>一款优秀的静态分析器，能够帮助我们更加全面的发现人工测试中的盲点，提高检查问题的效率，寻找潜在的可用性问题，比如空指针访问、资源和内存泄露等等。</p>
+
+<h3 id="toc_0">OClint</h3>
+
+<p>OCLint 是基于 Clang Tooling 开发的静态分析工具，主要用来发现编译器检查不到的那些潜在的关键技术问题。2017 年 9 月份新发布的 OCLint 0.13 版本中，包含了 71 条规则。</p>
+
+<p>这些规则已经基本覆盖了具有通用性的规则，主要包括语法上的基础规则、Cocoa 库相关规则、一些约定俗成的规则、各种空语句检查、是否按新语法改写的检查、命名上长变量名短变量名检查、无用的语句变量和参数的检查。</p>
+
+<pre><code class="language-text">oclint Hello.m//分析单个文件
+
+oclint -report-type html -o report.html Hello.m//分析单个文件 并生成html 文件
+
+</code></pre>
+
+<p>OCLint 的规则索引点击下面的链接。<a href="http://docs.oclint.org/en/stable/rules/index.html">规则索引</a></p>
+
+<h3 id="toc_1">Clang</h3>
+
+<p><a href="http://clang-analyzer.llvm.org/scan-build">http://clang-analyzer.llvm.org/scan-build</a></p>
+
+<h3 id="toc_2">Infer</h3>
+
+<p>Infer 是 Facebook 开源的、使用 OCaml 语言编写的静态分析工具，可以对 C、Java 和 Objective-C 代码进行静态分析，可以检查出空指针访问、资源泄露以及内存泄露。</p>
+
+<p>使用 homebrew 安装<br/>
+brew install infer</p>
+
+<p>分析代码的指令如下所示<br/>
+infer -- clang -c Hello.m</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/8/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509807837.html">
+                
+                  <h1>accessoryView</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code class="language-text">open var accessoryView: UIView? // if set, use custom view. ignore accessoryType. tracks if enabled can calls accessory action
+</code></pre>
+
+<p><img src="media/15553377156905/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-04-15%20%E4%B8%8B%E5%8D%8810.55.00.png" alt="屏幕快照 2019-04-15 下午10.55.00"/></p>
+
+<p>如果要实现上面类似的效果，可以不使用自定义的cell去添加subview可以试着使用自带的方法给UITableViewCell的accessoryView赋值。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/8/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15868701008905.html">
+                
+                  <h1>typealias 类型别名</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">组合协议</h2>
+
+<p>有时，你会遇到一种情况，你有多个协议，而且需要使用一个特定类型来把这些协议都实现。这种情况通常发生在当你定义了一个协议层来提高灵活性时。</p>
+
+<pre><code class="language-text">protocol CanRead {
+    func read()
+}
+protocol CanWrite {}
+protocol CanAuthorize {}
+protocol CanCreateUser {}
+
+typealias Administrator = CanRead &amp; CanWrite &amp; CanAuthorize &amp; CanCreateUser
+
+typealias User = CanRead &amp; CanWrite
+
+typealias Consumer = CanRead
+
+class Boss: Administrator{
+    func read() {
+        
+    }
+    
+}
+</code></pre>
+
+<p>在这里，我们定义了权限层。管理员可以做所有事情，用户可以读写，而消费者只能读。</p>
+
+<h2 id="toc_1">关联类型</h2>
+
+<p>这超出了本文的范围，但是协议的关联类型也可以通过类型别名来定义：</p>
+
+<pre><code class="language-text">protocol Example {
+ associatedtype Payload: Numeric
+}
+
+struct Implementation: Example {
+  typealias Payload = Int
+}
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/8/18</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -674,7 +1129,7 @@ var block:HelloBlock?</p>
 
 
 
-
+<a target="_blank" class="email" href="mailto:maweefeng@gmail.com" title="Email">Email</a>
   <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
                 
               	 </div>
@@ -693,6 +1148,12 @@ var block:HelloBlock?</p>
             <a href="%E7%94%B5%E5%BD%B1.html"><strong>电影</strong></a>
         
             <a href="%E5%85%B6%E5%AE%83.html"><strong>其它</strong></a>
+        
+            <a href="Python.html"><strong>Python</strong></a>
+        
+            <a href="iOS.html"><strong>iOS</strong></a>
+        
+            <a href="%E6%88%91.html"><strong>我</strong></a>
          
         </p>
 
@@ -709,31 +1170,31 @@ var block:HelloBlock?</p>
 	      
 		      
 			      <li class="post">
-			        <a href="16076509803956.html">Xcode10报错libstdc</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="16076509804011.html">Masonry布局“Unable to simultaneously satisfy constraints”</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
 			        <a href="16076509804045.html">RACCommand</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509804076.html">代理修饰符</a>
+			        <a href="16076509805027.html">关于我</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509804110.html">You don’t have write permissions</a>
+			        <a href="16076509807659.html">点击事件发生在视图边界之外的时候</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804683.html">Xcode打包遇到的坑</a>
 			      </li>
 		     
 		  

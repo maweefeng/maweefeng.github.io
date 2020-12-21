@@ -40,7 +40,7 @@
       <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
         <ul id="main-menu" class="left">
         
-        <li id=""><a target="self" href="index.html">Home</a></li>
+        <li id=""><a target="_self" href="index.html">Home</a></li>
         
         <li id=""><a target="_self" href="archives.html">Archives</a></li>
         
@@ -69,7 +69,7 @@
 <aside class="left-off-canvas-menu">
       <ul class="off-canvas-list">
         
-        <li><a target="self" href="index.html">Home</a></li>
+        <li><a target="_self" href="index.html">Home</a></li>
         
         <li><a target="_self" href="archives.html">Archives</a></li>
         
@@ -80,6 +80,12 @@
             <li><a href="%E7%94%B5%E5%BD%B1.html">电影</a></li>
         
             <li><a href="%E5%85%B6%E5%AE%83.html">其它</a></li>
+        
+            <li><a href="Python.html">Python</a></li>
+        
+            <li><a href="iOS.html">iOS</a></li>
+        
+            <li><a href="%E6%88%91.html">我</a></li>
          
 
       </ul>
@@ -101,6 +107,309 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="16076509807192.html">
+                
+                  <h1>Debug 技巧（汇编层面）</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>在Xcode中调试代码 一般都使用po 和 p命令，但是还是一种方法就是进入到汇编语言 debug。这时候就会用到了 lldb 的一个指令叫寄存器读。</p>
+
+<p><code>register read</code> // 寄存器读 </p>
+
+<h2 id="toc_0">1.怎么开启汇编语言 debug</h2>
+
+<p>首先Xcode 菜单栏 debug 如下图所示选择 debug workflow</p>
+
+<p><img src="media/15536545415554/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-03-27%20%E4%B8%8A%E5%8D%8810.43.57.png" alt="屏幕快照 2019-03-27 上午10.43.57"/></p>
+
+<p>然后选择然后选择第一项总是显示汇编窗口</p>
+
+<p><img src="media/15536545415554/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-03-27%20%E4%B8%8A%E5%8D%8810.47.06.png" alt="屏幕快照 2019-03-27 上午10.47.06"/></p>
+
+<h2 id="toc_1">2.那么进入到指定的汇编断点之后应该如何打印信息呢</h2>
+
+<p><img src="media/15536545415554/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-03-27%20%E4%B8%8A%E5%8D%8810.49.12.png" alt="屏幕快照 2019-03-27 上午10.49.12"/></p>
+
+<p>使用<code>register read</code> 就会把具体的信息给打印出来<br/>
+如下所示，还可以具体使用 <code>register read rsp</code> 等打印出来逐条的信息，不过意义不是特别大，因为register read已经可以把所有信息打印出来</p>
+
+<pre><code class="language-text">(lldb) register read
+General Purpose Registers:
+       rax = 0x0fc228d768f90060
+       rbx = 0x00000001088ebc05  &quot;count&quot;
+       rcx = 0x0000000000000111
+       rdx = 0x00000001167855c0  dyld`_main_thread
+       rdi = 0x00007fcf0bc0b300
+       rsi = 0x00000001074a8971  &quot;sayHello&quot;
+       rbp = 0x00007ffee87549f0
+       rsp = 0x00007ffee8754970
+        r8 = 0x000000010a5203a0  libsystem_pthread.dylib`_pthread_keys
+        r9 = 0x0000000000000040
+       r10 = 0x0000000000000000
+       r11 = 0x0000000000000202
+       r12 = 0x0000000000000018
+       r13 = 0x00007fcf0bc0b300
+       r14 = 0x000000010c37b9e4  UIKitCore`_UIApplicationLinkedOnVersion
+       r15 = 0x0000000107ddbd80  libobjc.A.dylib`objc_msgSend
+       rip = 0x00000001074a8341  ExchangeMethod`-[ViewController mwviewDidLoad] + 465 at ViewController.m:87
+    rflags = 0x0000000000000206
+        cs = 0x000000000000002b
+        fs = 0x0000000000000000
+        gs = 0x0000000000000000
+
+</code></pre>
+
+<p>利用<code>image list</code>命令列出所有image，第一个image就是我们APP的偏移值，也就是内存地址。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509804529.html">
+                
+                  <h1>Git提交代码issue</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">问题①:</h3>
+
+<pre><code class="language-text">fatal:unable to access &#39;https://github.com/xxx/xxx.git&#39; OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com 443
+</code></pre>
+
+<h5 id="toc_1">解决方法：</h5>
+
+<pre><code class="language-text">env命令设置GIT_SSL_NO_VERIFY环境变量为”ture”，并同时调用正常的git clone命令 env GIT_SSL_NO_VERIFY=true git clone https://github.com/xxx/xxx.git     
+当你通过HTTPS访问Git远程仓库，如果服务器的SSL证书未经过第三方机构签署，那么Git就会报错。在克隆完毕的仓库中还需要将http.sslVerify设置为”false”。完整的命令如下：    
+git config http.sslVerify &quot;false&quot;、
+</code></pre>
+
+<h3 id="toc_2">问题②：</h3>
+
+<pre><code class="language-text">Failed to connect to 127.0.0.1 port 1080: Connection refused
+查询是否使用代理：git config --global http.proxy 
+取消代理：git config --global --unset http.proxy
+</code></pre>
+
+<h5 id="toc_3">解决方法：</h5>
+
+<pre><code class="language-text">终端走代理,在终端中直接运行命令
+export http_proxy=http://proxyAddress:port
+这个办法的好处是简单直接，并且影响面很小（只对当前终端有效，退出就不行了）。
+
+如果你用的是ss代理，在当前终端运行以下命令，那么wget curl 这类网络命令都会经过ss代理
+export ALL_PROXY=socks5://127.0.0.1:1080
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%85%B6%E5%AE%83.html'>其它</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509804206.html">
+                
+                  <h1>通讯录排序</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">苹果提供的排序方法</h3>
+
+<pre><code class="language-text">NSArray *stringArr = @[@&quot;我们&quot;,@&quot;我的&quot;, @&quot;重点&quot;, @&quot;重庆&quot;,  @&quot;三&quot;]; 
+NSArray *result = [stringArr sortedArrayUsingSelector:@selector(localizedCompare:)];
+</code></pre>
+
+<p>字典当中的keyvalue 可以一个键对应一个数组。</p>
+
+<h3 id="toc_1">对数据进行排列按首字母进行分组</h3>
+
+<p>这是苹果的方法</p>
+
+<pre><code class="language--(void)usersorting:(nsmutablearray">    
+    for ( modelAgreementCitizenItem *model in modelArr) {
+        //获取汉子的首字母
+        //把中文转拼音
+        
+        NSMutableString *ms = [[NSMutableString alloc] initWithString:[model patientName]];
+        if (CFStringTransform((__bridge CFMutableStringRef)ms, 0, kCFStringTransformMandarinLatin, NO)) {
+            NSLog(@&quot;Pingying: %@&quot;, ms);
+        }
+        if (CFStringTransform((__bridge CFMutableStringRef)ms, 0, kCFStringTransformStripDiacritics, NO)) {
+            NSLog(@&quot;Pingying: %@&quot;, ms);
+        }
+        NSString *firstString = [[ms substringToIndex:1] uppercaseString];
+        
+        
+        NSMutableArray * arr = [self.nameDic objectForKey:firstString];
+        if (arr) {
+            [arr addObject:model];
+        }else{//如果没有 则需要创建一个添加到里面
+            [self.nameDic setObject:[@[model] mutableCopy] forKey:firstString];
+        }
+        
+    }
+    
+}
+
+</code></pre>
+
+<p>这个方法使用起来比较慢 耗时较长</p>
+
+<pre><code class="language--(nsmutablearray">    
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    if(self.indexArr.count){
+        [self.indexArr removeAllObjects];
+    }
+    
+    for(int i=&#39;A&#39;;i&lt;=&#39;Z&#39;;i++)
+    {
+        NSMutableArray *rulesArray = [[NSMutableArray alloc] init];
+        
+        NSString *str1=[NSString stringWithFormat:@&quot;%c&quot;,i];
+        for(int j=0;j&lt;modelArr.count;j++)
+        {
+            modelAgreementCitizenItem *model = [modelArr objectAtIndex:j];  //这个model 是我自己创建的 里面包含用户的姓名 手机号 和 转化成功后的首字母
+            
+            if([[NSString getFirstLetter:model.patientName] isEqualToString:str1])
+            {
+                [rulesArray addObject:model];    //把首字母相同的人物model 放到同一个数组里面
+                [modelArr removeObject:model];   //model 放到 rulesArray 里面说明这个model 已经拍好序了 所以从总的modelArr里面删除
+                j--;
+                
+            }else{
+                
+            }
+        }
+        if (rulesArray.count !=0) {
+            [array addObject:rulesArray];
+            [self.indexArr addObject:[NSString stringWithFormat:@&quot;%c&quot;,i]]; //把大写字母也放到一个数组里面
+        }
+    }
+    
+    if (modelArr.count !=0) {
+        [array addObject:modelArr];
+        [self.indexArr addObject:@&quot;#&quot;];  //把首字母不是A~Z里的字符全部放到 array里面 然后返回
+    }
+    
+    return array;
+    
+}
+
+
+
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/10</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="16076509806428.html">
+                
+                  <h1>怎么选购二手房</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ol>
+<li>选择一个靠谱的中介 </li>
+<li>调查房源所属人</li>
+<li>周边的配套是否完善</li>
+<li>还有房源是不是有抵押 </li>
+<li>调查小区的基本情况</li>
+<li>物业管理 水电 煤气 卫生 车位 安保 </li>
+<li>调查房子之前有没有发生过什么忌讳的事情</li>
+<li>观察水压 观察电线走线是否合理 煤气线路 </li>
+<li>不同的时间看看社区的人的人来人往</li>
+<li>房屋的内部结构（有没有改动过房屋的内部结构）</li>
+<li>户型是否合理 暗厅 采光不好的问题</li>
+<li>是否有漏水的现象 </li>
+</ol>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/30</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%85%B6%E5%AE%83.html'>其它</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="16076509804775.html">
                 
@@ -137,8 +446,10 @@ self.leftViewMode = UITextFieldViewModeAlways;
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/12/11</span>
-                    
+                    <span class="date">2018/12/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -152,40 +463,58 @@ self.leftViewMode = UITextFieldViewModeAlways;
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="16076509804807.html">
+                <a class="clearlink" href="16076509805420.html">
                 
-                  <h1>CAMediaTimingFunction获取控制点：</h1>
+                  <h1>dispatch_semaphore_t 信号量</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<pre><code class="language-text">//create timing function
-CAMediaTimingFunction *function = [CAMediaTimingFunction functionWithControlPoints:1 :0 :0.75 :1];
+                        	<p><code>dispatch_semaphore_t</code> 一种计算的信号量<br/>
+<code>dispatch_semaphore_create</code> 创建一个数值的信号量<br/>
+<code>dispatch_semaphore_signal</code> 对指定的信号量进行增加1</p>
+
+<p><code>dispatch_semaphore_wait</code> 会使传入的信号量减1，如果返回的值为0说明有任务进行中就阻碍当前的线程，如果返回的值大于0，就代表当前的线程当中没有任务再执行，就接着执行下面的任务。</p>
+
+<p>用这个可以起到顺序执行异步任务的功效。<br/>
+如果后一步的执行需要前一步执行完拿到结果才行的话，这也是一种异步顺序执行的方案。</p>
+
+<pre><code class="language-text">- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self task:@&quot;task one starting&quot;];
+        dispatch_semaphore_signal(semaphore);
+    });
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self task:@&quot;task two starting&quot;];
+        dispatch_semaphore_signal(semaphore);
+    });
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self task:@&quot;task three starting&quot;];
+        dispatch_semaphore_signal(semaphore);
+    });
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    
+    // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)task:(NSString *)taskName{
+    NSLog(@&quot;%@&quot;,taskName);
+    sleep(1);
+}
+
 </code></pre>
 
-<p>我得到的controlPoint值似乎是错误的：</p>
-
-<pre><code class="language-text">CGPoint controlPoint1, controlPoint2;
-[function getControlPointAtIndex:1 values:(float *)&amp;controlPoint1]; 
-[function getControlPointAtIndex:2 values:(float *)&amp;controlPoint2];
-The controlPoint value that I get seems to be wrong:
-
-controlPoint1   CGPoint (x = 5.2635442471208903E-315, y = 4.9406564584124654E-324)  
-controlPoint2   CGPoint (x = 0.0078125018408172764, y = 2.8421186829703262E-314)    
-</code></pre>
-
-<p>但是，如果我使用float数组作为参数的类型values，我得到controlPoint的正确值：</p>
-
-<pre><code class="language-text">float c1p[2], c2p[2];
-[function getControlPointAtIndex:1 values:c1p];
-[function getControlPointAtIndex:2 values:c2p];
-The values are:
-
-controlPoint1   CGPoint (x = 1, y = 0)  
-controlPoint2   CGPoint (x = 0.75, y = 1) 
-</code></pre>
-
-<p>32位设备可以使用第一种方法 但是在64位设备就行不通了 </p>
+<p>先执行dispatch_semaphore_wait 然后发现线程任务还在进行，就开始堵塞当前任务的线程，等待dispatch_async内部执行完成信号量+1才会继续下面的执行。</p>
 
                         
                       </div>
@@ -194,8 +523,10 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/12/11</span>
-                    
+                    <span class="date">2018/12/15</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -209,108 +540,32 @@ controlPoint2   CGPoint (x = 0.75, y = 1)
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="16076509804860.html">
+                <a class="clearlink" href="16076509806241.html">
                 
-                  <h1>iOS导航条背景颜色</h1>
+                  <h1>Python</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h4 id="toc_0">Situation one</h4>
-
-<p><code>self.navigationBar.barTintColor= [UIColor redColor];</code><br/>
-这时候的效果就是纯色的<br/>
-类似下面这样<br/>
-<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fsbvzqlgesj309f01oglk.jpg" alt=""/></p>
-
-<h4 id="toc_1">Situation two</h4>
-
-<p><code>self.navigationBar.backgroundColor = [UIColor redColor];</code><br/>
-<img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fsbvypka0rj309e01p0so.jpg" alt=""/></p>
-
-<p>一种是有渐变的半透明效果，一种就是简单的纯色效果。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/12/11</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509804892.html">
-                
-                  <h1>检测离屏渲染了</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><code>instrumets</code> 已经取消了<code>debug options</code></p>
-
-<p>可以在xcode的<code>debug</code> - <code>view debugging</code> 找到</p>
-
-<p>“核心动画工具和模板已在工具中弃用。之前在”调试选项“下的功能已移至Xcode，位于”<code>Debug&gt; View Debugging</code>“下。</p>
-
-<p><img src="http://upload-images.jianshu.io/upload_images/1315383-752efaac717c3947.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="BB55F33F-97CC-4C28-B3F1-22456A2A7BD8.png"/></p>
-
-<p>开启后会把那些需要离屏渲染的图层高亮成黄色，这就意味着黄色图层可能存在性能问题。</p>
-
-<p>正常:是这样的<br/>
- <img src="http://upload-images.jianshu.io/upload_images/1315383-de2aad921928fa7b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="正常渲染.png"/></p>
-
-<p>有问题的图层:</p>
-
-<p><img src="http://upload-images.jianshu.io/upload_images/1315383-61746e58c6057b02.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="调试.png"/><br/>
-可以看见我设置了圆角的imageView有问题.</p>
-
-<p>### 项目开发中怎么去处理?</p>
-
-<blockquote>
-<p>抛出一个问题:  需求就是有很多圆角那我们项目中应该怎么去处理圆角呢?</p>
-</blockquote>
-
-<ol>
-<li>使用<a href="http://www.jianshu.com/p/60cd5f8bb4cb">YYWebImage去处理</a> </li>
-<li><a href="http://www.jianshu.com/p/82e68984711f">iOS中圆角图片的处理</a></li>
-</ol>
-
-<p>相信看完两篇文章,多少都会能收获一点!</p>
-
-<blockquote>
-<p>有些人说:</p>
-
-<p>iOS 9.0 之后UIButton设置圆角会触发离屏渲染，而UIImageView里png图片设置圆角不会触发离屏渲染了，如果设置其他阴影效果之类的还是会触发离屏渲染的(这句话不知道谁说的.自己有没有去尝试呢???)</p>
-</blockquote>
-
-<p>结论: 经过测试</p>
-
-<p><img src="http://upload-images.jianshu.io/upload_images/1315383-a58dfe9543375e1d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="70915C7C-7523-4008-9A88-B5682407926D.png"/></p>
-
-<p>大家可以看到, <br/>
-UIButton 的 masksToBounds = YES下发生离屏渲染与 背景图存不存在有关系, 如果没有给按钮设置   <code>btn.image = [UIImage imageName:@&quot;xxxxx&quot;];</code> 是不会产生离屏渲染的 .</p>
-
-<p>关于 UIImageView,现在测试发现(现版本: iOS10),在性能的范围之内,给UIImageView设置圆角是不会触发离屏渲染的,但是同时给UIImageView设置背景色则肯定会触发.触发离屏渲染跟 png.jpg格式并无关联(可能采取的压缩格式不同,这里不做探讨,这里我给出结果是没有关系)</p>
-
-<hr/>
+                        	<h2 id="toc_0">另类创建字典的方法</h2>
 
 <ul>
-<li> 总结: </li>
-<li>对于网上一些文章得出的结论,我觉得大家得理性分析,并不是每个人都是对的,只有经过自己实践才能得出较好的定论.本文也是,我希望哪里有理解错或者其它什么错误请提出(认真脸.),人无完人,我希望在学习的道路上能碰见更多一起进步的人!</li>
+<li><p>zip函数</p>
+<pre><code class="language-text">names = [&#39;name&#39;,&#39;age&#39;,&#39;pay&#39;,&#39;job&#39;]
+values = [&#39;sam smith&#39;,40,3000,&#39;software&#39;]<br/>
+print(list(zip(names,values)))
+</code></pre></li>
+<li><p>创建空字典</p>
+<pre><code class="language-text">names = [&#39;name&#39;,&#39;age&#39;,&#39;pay&#39;,&#39;job&#39;]
+record = dict.fromkeys(names,&quot;?&quot;)<br/>
+print(record)
+</code></pre></li>
 </ul>
+
+<h2 id="toc_1">路径</h2>
+
+<p>os.sys.path[0]获取当前 path 文件所在的文件夹<br/>
+os.sys.argv[0]获取当前 path 文件的绝对路径</p>
 
                         
                       </div>
@@ -319,8 +574,10 @@ UIButton 的 masksToBounds = YES下发生离屏渲染与 背景图存不存在�
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/12/11</span>
-                    
+                    <span class="date">2018/12/12</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Python.html'>Python</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -334,296 +591,54 @@ UIButton 的 masksToBounds = YES下发生离屏渲染与 背景图存不存在�
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="16076509804922.html">
+                <a class="clearlink" href="16076509804138.html">
                 
-                  <h1>iOS开发一些小技巧</h1>
+                  <h1>隐藏导航栏底部的线条</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<ul>
-<li><p>去掉xcode黄色警告的方法</p>
-<pre><code class="language-text">#pragma clang diagnostic push
-#pragma clang diagnostic ignored &quot;-Wdeprecated-declarations&quot;<br/>
- your code with warning<br/>
-#pragma clang diagnostic pop<br/>
-#pragma clang diagnostic push<br/>
-#pragma clang diagnostic ignored &quot;-Wunused-variable&quot;<br/>
- your code with warning<br/>
-#pragma clang diagnostic pop
-</code></pre></li>
-<li><p>控制器init方法执行时间</p>
-<pre><code class="language-text">_coverView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
-在控制器init方法中初始化一个大小为self.view.bounds的uiview必须等待视图出来的时候才会进行，要不然一直在主线程等待。<br/>
-如果直接给CGRectmake设置的话不用等界面加载就会执行，应该是一个主线程问题。 <br/>
-这个时候如果直接去xib里面的控件，就会出现取不到的情况，取出来是nil。
-</code></pre></li>
-<li><p>判断字符串为空</p>
-<pre><code class="language-text">今天遇到个问题，后台用java写的，给我传回一个空字符串，类型是NSNull，用
-stringWithFormat:转出来居然是@&quot;&lt;null&gt;&quot;，<br/>
-注意，这不是空，NSNull和nil是不同的。需要用 xxx == [NSNull null]加以判断。
-</code></pre>
-<pre><code class="language-text">去掉UITableView多余的空白行分割线
-有一种简单的方法<br/>
-self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-</code></pre></li>
-<li><p>如何将本地代码提交到远程git仓库</p>
-<pre><code class="language-text">* 第一步：建立git仓库 
-cd到你的本地项目根目录下，执行git命令 <br/>
- git init<br/>
-* 第二步：将项目的所有文件添加到仓库中   <br/>
- git add .  <br/>
-* 第三步：将add的文件commit到仓库<br/>
-  git commit -m &quot;注释语句&quot;<br/>
-* 第四步：去github上创建自己的Repository<br/>
-* 第五步：重点来了，将本地的仓库关联到github上    <br/>
-  git remote add origin 仓库url<br/>
- 后面的https链接地址换成你自己的仓库url地址，也就是上面红框中标出来的地址<br/>
-* 第六步：上传github之前，要先pull一下，执行如下命令：<br/>
-  git pull origin master<br/>
-* 第七步，也就是最后一步，上传代码到github远程仓库<br/>
-  git push -u origin master  <br/>
-  git push -u origin master -f //强制push<br/>
-  每次如果有代码需要提交必须要add一下 并且在本地commit 打下log 再去拉取remote代码，<br/>
-  然后push到remote的这样一个流程。
-</code></pre></li>
-<li><p>button 的文字显示不全</p>
-<pre><code class="language-text"> [label setAdjustsFontForContentSizeCategory:YES]调节字体大小.
-</code></pre></li>
-<li><p>从xib加载View</p>
-<pre><code class="language-text">// Instantiate the nib content without any reference to it.
-NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:@&quot;EPPZPlainView&quot; owner:nil options:nil];<br/>
-// Find the view among nib contents (not too hard assuming there is only one view in it).<br/>
-UIView *plainView = [nibContents lastObject];<br/>
-// Some hardcoded layout.<br/>
-CGSize padding = (CGSize){ 22.0, 22.0 };<br/>
-plainView.frame = (CGRect){padding.width, padding.height, plainView.frame.size};<br/>
-// Add to the view hierarchy (thus retain).<br/>
-[self.view addSubview:plainView];
-</code></pre></li>
-<li><p>修改导航条的颜色</p>
-<pre><code class="language-text">self.navigationController.navigationBar.barTintColor = [UIColor redColor];```
-</code></pre></li>
-</ul>
+                        	<p>有时候遇到一些特殊的要求，需要隐藏导航栏底部的线条。<br/>
+两行代码就可以做到。</p>
 
 <ul>
-<li><p>当某个UIView调用drawRect方法之后，它的默认背景就是黑色的</p>
-<p>解决办法有在初始化的时候设置backgroundColor</p>
-<pre><code class="language-text">- (void)awakeFromNib {
-    [super awakeFromNib];<br/>
-    self.backgroundColor = [UIColor clearColor];<br/>
-    // Initialization code<br/>
-}<br/>
-- (id)initWithFrame:(CGRect)frame<br/>
-{<br/>
-    self = [super initWithFrame:frame];<br/>
-    if (self) {<br/>
-        // Initialization code<br/>
-        self.backgroundColor = [UIColor blueColor]<br/>
-    }<br/>
-    return self;<br/>
-}
-</code></pre></li>
-<li><p>或者在drawRect里面写下如下代码 </p>
-<pre><code class="language-text">- (void)drawRect:(CGRect)rect
-{<br/>
-    // Drawing code<br/>
-    [[UIColor blueColor] setFill];  // changes are here<br/>
-    UIRectFill(rect);               // and here <br/>
-}
-</code></pre></li>
-<li><p>主线程死锁</p>
-<pre><code class="language-text">    NSLog(@&quot;1---%@&quot;,[NSThread currentThread]);
-    dispatch_sync(dispatch_get_main_queue(), ^{<br/>
-        NSLog(@&quot;2&quot;);<br/>
-    });<br/>
-    NSLog(@&quot;3&quot;);<br/>
-    NSLog(@&quot;1---%@&quot;,[NSThread currentThread]);<br/>
-    dispatch_async(dispatch_get_main_queue(), ^{<br/>
-        NSLog(@&quot;2&quot;);<br/>
-    });<br/>
-    NSLog(@&quot;3&quot;);<br/>
-    //打印顺序 1，3，2<br/>
-    先加入的通知先收到通知<br/>
-    先去执行通知的内容
-</code></pre></li>
-<li><p>解决tableviewsection悬浮的问题</p>
-<pre><code class="language-text">- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGFloat sectionHeaderHeight = 50;<br/>
-    if (scrollView.contentOffset.y&lt;=sectionHeaderHeight&amp;&amp;scrollView.contentOffset.y&gt;=0) {<br/>
-        scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);<br/>
-    } else if (scrollView.contentOffset.y&gt;=sectionHeaderHeight) {<br/>
-        scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);<br/>
-    }<br/>
-}
-</code></pre></li>
-<li><p>NSURLSession请求</p>
-<pre><code class="language-text"> NSURLSession * session = [NSURLSession sharedSession];
-    NSURLSessionDataTask * task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {<br/>
-        NSDictionary * dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];<br/>
-        NSLog(@&quot;%@&quot;,dic);<br/>
-    }];<br/>
-    [task resume];
-</code></pre></li>
-<li><p>实现点击按钮出发一次震动，比如“即刻”app的点赞</p>
-<pre><code class="language-text">导入AudioToolBox.framework
-在按钮的点击方法中执行<br/>
-AudioServicesPlaySystemSound(kSystemSo undID_Vibrate);//上面是震动方法 不灵巧<br/>
-可以使用最新的<br/>
- UIImpactFeedbackGenerator  * zhend = [[UIImpactFeedbackGenerator alloc]initWithStyle:UIImpactFeedbackStyleLight];<br/>
-[zhend impactOccurred];
-</code></pre></li>
-<li><p>getter方法中为何不能用self</p>
-<p>有经验的开发者应该都知道这一点，在getter方法中是不能使用self.的，比如：</p>
-<pre><code class="language-text">- (NSString *)name
-{<br/>
-    NSLog(@&quot;rewrite getter&quot;);<br/>
-    return self.name;  // 错误的写法，会造成死循环<br/>
-}
-</code></pre>
-<p>原因代码注释中已经写了，这样会造成死循环。这里需要注意的是：self.name实际上就是执行了属性name的getter方法，getter方法中又调用了self.name， 会一直递归调用，直到程序崩溃。</p></li>
+<li>方法一:<br/>
+设置导航栏的背景图（setBackgroundImage方法）<br/>
+设置导航栏的shadowImage (setShadowImage方法)<br/></li>
 </ul>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/12/11</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<pre><code class="language-text">UINavigationBar *navigationBar = self.navigationController.navigationBar;    
+</code></pre>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509804960.html">
-                
-                  <h1>为什么NSString使用Copy修饰符</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h6 id="toc_0">NSString为什么要用copy关键字，用strong会有什么问题？</h6>
+<p>//设置透明的背景图，便于识别底部线条有没有被隐藏    </p>
 
-<p>我们大部分的时候NSString的属性都是copy，那copy与strong的情况下到底有什么区别呢?我们以实例来说明：</p>
+<pre><code class="language-text">[navigationBar setBackgroundImage:[[UIImage alloc] init]
+                       forBarPosition:UIBarPositionAny
+                           barMetrics:UIBarMetricsDefault]; 
+</code></pre>
 
-<pre><code class="language-text">@interface ViewController ()
-@property(nonatomic,copy)NSString * str1;
-@property(nonatomic,strong)NSString*str2;
-@end
+<p>//此处使底部线条失效</p>
 
--(void)test
-{
-    NSMutableString*str=[NSMutableString stringWithFormat:@&quot;helloworld&quot;];
-    self.str1=str;
-    self.str2=str;
-    NSLog(@&quot;str:%p--%p&quot;,str,&amp;str);
-    NSLog(@&quot;copy_str:%p--%p&quot;,_str1,&amp;_str1);
-    NSLog(@&quot;strong_str:%p--%p&quot;,_str2,&amp;_str2);
+<pre><code class="language-text">[navigationBar setShadowImage:[UIImage new]];
+</code></pre>
+
+<ul>
+<li>方法二：</li>
+</ul>
+
+<pre><code class="language-text">self.navigationController.navigationBar.clipsToBounds = YES; 
+</code></pre>
+
+<h3 id="toc_0">导航栏全局属性设置</h3>
+
+<p>//全局设置导航栏主题</p>
+
+<pre><code class="language-text">- (void)setNavigationControllerAppearance {
+    [UINavigationBar appearance].barStyle  = UIBarStyleBlack;
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithWhite:0.1 alpha:0.5]];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
 }
-</code></pre>
 
-<p>最后我们运行看打印结果：</p>
-
-<pre><code class="language-text">2017-06-15 15:21:55.910 oa[1236:78490] str:0x600000075cc0--0x7fff5bd7c9d8
-2017-06-15 15:21:55.910 oa[1236:78490] copy_str:0x600000026e60--0x7fc66cc06358
-2017-06-15 15:21:55.911 oa[1236:78490] strong_str:0x600000075cc0--0x7fc66cc06360
-</code></pre>
-
-<p>从打印结果上我们可以看出str和_str2的对象地址是一样的，指向同一个对象，所以它们的值也是一样的，而str和_str1对象地址不同，是两个不同的对象，所以copy是深复制，创建了一个新的对象。 <br/>
-现在改变str的值，看看str1和str2有什么变化：</p>
-
-<pre><code class="language-text">[str appendString:@&quot;hry&quot;];
-    NSLog(@&quot;****************%@&quot;,self.str1);
-    NSLog(@&quot;****************%@&quot;,self.str2);
-</code></pre>
-
-<p>打印结果如下：</p>
-
-<pre><code class="language-text">2017-06-15 15:21:55.911 oa[1236:78490] ****************helloworld
-2017-06-15 15:21:55.911 oa[1236:78490] ****************helloworldhry
-</code></pre>
-
-<p>从打印结果可以看出经过copy关键字修饰过的str1并没有因为str的变化而变化，经过strong修饰过的str2却随str的改变而改变。 <br/>
-所以，如果一般情况下，我们都不希望字串的值跟着str变化，所以我们一般用copy来设置string的属性。 </p>
-
-<p>如果希望字串的值跟着赋值的字串的值变化，可以使用strong。</p>
-
-<p><code>注意</code>：上面的情况是针对于当把NSMutableString赋值给NSString的时候，才会有不同，如果是赋值是NSString对象，那么使用copy还是strong，结果都是一样的，因为NSString对象根本就不能改自身的值，他是不可变的。<br/>
-把一个对象赋值给一个属性变量，当这个对象变化了，如果希望属性变量变化就使用strong属性，如果希望属性变量不跟着变化，就是用copy属性。</p>
-
-<p><code>因此</code>：对源头是NSMutableString的字符串，strong仅仅是指针引用，增加了引用计数器，这样源头改变的时候，用这种strong方式声明的变量（无论被赋值的变量是可变的还是不可变的），它也会跟着改变;而copy声明的变量，它不会跟着源头改变，它实际上是深拷贝。</p>
-
-<p>对源头是NSString的字符串，无论是strong声明的变量还是copy声明的变量，当第二次源头的字符串重新指向其它的地方的时候，它还是指向原来的最初的那个位置，也就是说其实二者都是指针引用，也就是浅拷贝。</p>
-
-<p>另外说明一下，这两者对内存计数的影响都是一样的，都会增加内存引用计数，都需要在最后的时候做处理。<br/>
-其实说白了，对字符串为啥要用这两种方式？我觉得还是一个安全问题，比如声明的一个NSString *mStr变量，然后把一个NSMutableString *str变量的赋值给它了，如果要求mStr跟着str变化，那么就用strong;如果mStr不能跟着str一起变化，那就用copy。而对于要把NSString类型的字符串赋值给mStr，那两都没啥区别。不会影响安全性，内存管理也一样。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/12/11</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509804989.html">
-                
-                  <h1>高效的画线</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>先创建一个UIBeizerPath 的对象path</p>
-
-<pre><code class="language-text">UIBezierPath *path = [[UIBezierPath alloc] init];
-  [path moveToPoint:CGPointMake(175, 100)];
-  
-  [path addArcWithCenter:CGPointMake(150, 100) radius:25 startAngle:0 endAngle:2*M_PI clockwise:YES];
-  [path moveToPoint:CGPointMake(150, 125)];
-  [path addLineToPoint:CGPointMake(150, 175)];
-  [path addLineToPoint:CGPointMake(125, 225)];
-  [path moveToPoint:CGPointMake(150, 175)];
-  [path addLineToPoint:CGPointMake(175, 225)];
-  [path moveToPoint:CGPointMake(100, 150)];
-  [path addLineToPoint:CGPointMake(200, 150)];
-</code></pre>
-
-<p>然后创建CAShapeLayer添加到视图的layer上 </p>
-
-<pre><code class="language-text">CAShapeLayer *shapeLayer = [CAShapeLayer layer];
-  shapeLayer.strokeColor = [UIColor redColor].CGColor;
-  shapeLayer.fillColor = [UIColor clearColor].CGColor;
-  shapeLayer.lineWidth = 5;
-  shapeLayer.lineJoin = kCALineJoinRound;
-  shapeLayer.lineCap = kCALineCapRound;
-  shapeLayer.path = path.CGPath;
-  //add it to our view
-  [self.containerView.layer addSublayer:shapeLayer];
 </code></pre>
 
                         
@@ -633,61 +648,10 @@ AudioServicesPlaySystemSound(kSystemSo undID_Vibrate);//上面是震动方法 �
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/12/11</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="16076509805027.html">
-                
-                  <h1>关于我</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>简介：暂无介绍</p>
-
-<p>个人有着写日记的习惯，会写一些对待技术、文化、生活的看法，平时喜欢拍拍照，看看剧，看看书。  </p>
-
-<ul>
-<li>拍摄</li>
-</ul>
-
-<p>拍照用的是一款理光的相机GR2，这款相机比较小众，但是偶尔也会有路人看到我的机器后和我搭讪，这种感觉还是不错的，我个人很喜欢它的森山大道模式，（最开始也是因为这个购买它，不过后来这个模式用的其实不太多了）被别人安利了，又在网上看了看一些测评，街拍的好机器，就在淘宝下单买了，算是送给自己的生日礼物🎁，虽然功能不多，但是逼格对我来说够了。</p>
-
-<ul>
-<li>刷剧</li>
-</ul>
-
-<p>2018年追了「绝命律师」「权力的游戏」「行尸走肉」「年轻的谢尔顿」「白夜追凶」「四重奏」「去他妈的世界」「梅尔罗斯」「了不起的麦瑟尔夫人」「碧蓝之海」「我是大哥大」「深夜食堂」排名不分先后。</p>
-
-<ul>
-<li>阅读</li>
-</ul>
-
-<p>最开始在念大学的时候买了个kindle入门款，因为当时手头没有足够的💰，再加上背光对我来说并不是必要的，所以对我来说这款设备足够了，真是买完不后悔系列。当你想要看书的时候，在上面看书的感觉几乎接近于书籍，虽然我很喜欢传统纸质书籍，但是纸质书的翻页体验真的太差了，kindle的翻页要比传统书籍好过很多倍，便携性更不用说了。</p>
-
-<p>在手机里安装了<code>kindle for ios</code>，方便在我不方便使用<code>kindle</code>的时候看书，在我<code>MacBook</code>中我安装了<code>kindle for mac</code>，我一般会把它全屏为一个独立的窗口，不管是在代码编译等待的时候看，还是专门去看，那种体验很舒服，最起码比在5.5寸屏幕上的效果要好很多。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/12/11</span>
-                    
+                    <span class="date">2018/12/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='iOS.html'>iOS</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -736,7 +700,7 @@ AudioServicesPlaySystemSound(kSystemSo undID_Vibrate);//上面是震动方法 �
 
 
 
-
+<a target="_blank" class="email" href="mailto:maweefeng@gmail.com" title="Email">Email</a>
   <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
                 
               	 </div>
@@ -755,6 +719,12 @@ AudioServicesPlaySystemSound(kSystemSo undID_Vibrate);//上面是震动方法 �
             <a href="%E7%94%B5%E5%BD%B1.html"><strong>电影</strong></a>
         
             <a href="%E5%85%B6%E5%AE%83.html"><strong>其它</strong></a>
+        
+            <a href="Python.html"><strong>Python</strong></a>
+        
+            <a href="iOS.html"><strong>iOS</strong></a>
+        
+            <a href="%E6%88%91.html"><strong>我</strong></a>
          
         </p>
 
@@ -771,31 +741,31 @@ AudioServicesPlaySystemSound(kSystemSo undID_Vibrate);//上面是震动方法 �
 	      
 		      
 			      <li class="post">
-			        <a href="16076509803956.html">Xcode10报错libstdc</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="16076509804011.html">Masonry布局“Unable to simultaneously satisfy constraints”</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
 			        <a href="16076509804045.html">RACCommand</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509804076.html">代理修饰符</a>
+			        <a href="16076509805027.html">关于我</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16076509804110.html">You don’t have write permissions</a>
+			        <a href="16076509807659.html">点击事件发生在视图边界之外的时候</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509806399.html">Localization Issue Warning Storyboard</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16076509804683.html">Xcode打包遇到的坑</a>
 			      </li>
 		     
 		  
